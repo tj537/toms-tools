@@ -1,0 +1,2 @@
+# Zeilenenden so lassen, wie sie sind (LF) – Git soll die Dateien nicht umschreiben
+* text=auto eol=lf

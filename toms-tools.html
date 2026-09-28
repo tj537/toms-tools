@@ -234,8 +234,7 @@ input[type=number].inp{padding-right:4px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font:600 12px var(--mono);color:var(--acc-tx);background:var(--acc-soft);padding:5px 12px;border-radius:20px;margin-bottom:22px;animation:fade .5s both}
 .hero h1{font-size:52px;line-height:1.05;letter-spacing:-.042em;font-weight:760;animation:heroIn .65s ease both}
 @keyframes heroIn{from{opacity:0;transform:translateY(12px)}}
-.grad{background:linear-gradient(110deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-line{color:var(--tx2)}
+.grad{background:linear-gradient(110deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}.hero-line{color:var(--tx2)}
 .hero-emoji{margin-right:.45em;cursor:default}
 .hero-ff{font-weight:650;color:var(--tx);white-space:pre}
 .hero-more{display:inline-grid;place-items:center;width:24px;height:24px;margin-left:6px;vertical-align:-5px;border-radius:7px;color:var(--tx3);opacity:0;transition:opacity .2s,background .15s,color .15s,transform .3s}
@@ -318,6 +317,9 @@ input[type=number].inp{padding-right:4px}
 .modal>header h3{font-size:17px;font-weight:650;letter-spacing:-.01em}
 .modal>header p{color:var(--tx3);font-size:13px;margin-top:3px}
 .modal .body{padding:12px 22px 18px;overflow:auto}
+.welcome{display:flex;flex-direction:column;gap:14px}
+.welcome .muted{font-size:13px;line-height:1.55}
+.welcome .inp{height:42px;font-size:15px}
 .modal>footer{padding:14px 18px;display:flex;justify-content:flex-end;gap:8px;border-top:1px solid var(--line);background:color-mix(in oklab,var(--bg2) 50%,transparent);border-radius:0 0 18px 18px}
 .stack{display:flex;flex-direction:column;gap:12px}
 .callout{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:var(--acc-soft);border:1px solid color-mix(in oklab,var(--acc) 25%,transparent);font-size:13px}
@@ -681,6 +683,52 @@ input[type=number].inp{padding-right:4px}
 .cw-cheat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px 14px;margin-top:10px}
 .cw-cheat-grid div{display:flex;gap:10px;align-items:baseline;font-size:12px;color:var(--tx2)}
 .cw-cheat-grid code{font:600 12px var(--mono);color:var(--acc-tx);min-width:72px}
+/* ── LUT-Werk ── baut auf den WebP-Stilen (wp-*) auf */
+.lw-in{max-width:1320px}
+.lw-grid{grid-template-columns:minmax(0,1fr) 360px}
+@media(max-width:980px){.lw-grid{grid-template-columns:1fr}}
+.lw-main{display:flex;flex-direction:column;min-height:560px;overflow:hidden;transition:border-color .2s,background .2s}
+.lw-main.over{border-color:var(--acc);background:color-mix(in oklab,var(--acc) 7%,var(--s1))}
+.lw-main .wp-lhead{gap:12px}
+.lw-main .btn.on{color:var(--acc-tx);background:var(--acc-soft)}
+.lw-info{font:12px var(--mono);color:var(--tx3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.lw-stage{position:relative;flex:1;min-height:420px;margin:14px;display:grid;place-items:center;border-radius:12px;background:repeating-conic-gradient(color-mix(in oklab,var(--s2) 80%,transparent) 0 25%,transparent 0 50%) 0 0/18px 18px}
+.lw-stage canvas{display:block;border-radius:6px;box-shadow:0 18px 40px -18px rgba(0,0,0,.8)}
+.lw-split{position:absolute;cursor:ew-resize;touch-action:none}
+.lw-split i{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.35),0 0 12px rgba(0,0,0,.4)}
+.lw-split i::after{content:"⇆";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.lw-split span{position:absolute;top:10px;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:650;color:#fff;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);pointer-events:none}
+.lw-split-l{left:10px}
+.lw-split-r{right:10px}
+.lw-strip{display:flex;gap:8px;padding:0 14px 14px;overflow-x:auto}
+.lw-film{position:relative;flex:none;height:64px;min-width:64px;border-radius:9px;overflow:hidden;border:2px solid transparent;background:var(--s2);cursor:pointer;display:grid;place-items:center;transition:border-color .12s}
+.lw-film img{height:100%;display:block}
+.lw-film.on{border-color:var(--acc)}
+.lw-film.bad{opacity:.4}
+.lw-film-ph{width:64px;height:100%;background:linear-gradient(90deg,var(--s2),var(--s3),var(--s2));background-size:200% 100%;animation:shimmer 1.2s linear infinite}
+.lw-film-x{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.6);color:#fff;opacity:0;transition:opacity .12s}
+.lw-film:hover .lw-film-x{opacity:1}
+.lw-film-x svg{width:11px;height:11px}
+.lw-film-add{width:64px;border:2px dashed var(--line2);background:transparent;color:var(--tx3)}
+.lw-film-add:hover{color:var(--tx);border-color:var(--acc)}
+.lw-film-add svg{width:18px;height:18px}
+.lw-hd-acts{display:flex;gap:6px;text-transform:none;letter-spacing:0}
+.lw-luts{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-height:330px;overflow-y:auto;padding:2px}
+.lw-luts-t{grid-column:1/-1;font-size:11px;font-weight:650;color:var(--tx3);margin-top:4px}
+.lw-lut{display:flex;flex-direction:column;border-radius:10px;overflow:hidden;background:var(--bg2);border:1.5px solid var(--line);text-align:left;transition:border-color .12s,transform .12s}
+.lw-lut:hover{border-color:var(--line2);transform:translateY(-1px)}
+.lw-lut.on{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc-soft)}
+.lw-lut img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.lw-lut span{padding:5px 7px 6px;font-size:11.5px;font-weight:600;line-height:1.25;color:var(--tx2)}
+.lw-lut.on span{color:var(--tx)}
+.lw-lut small{display:block;font-size:10px;font-weight:500;color:var(--tx3)}
+.lw-sel{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border-radius:10px;background:var(--bg2);border:1px solid var(--line)}
+.lw-sel>b{font-size:13.5px}
+.lw-selacts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.lw-ed{display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:12px;background:color-mix(in oklab,var(--acc) 6%,var(--bg2));border:1px solid color-mix(in oklab,var(--acc) 30%,var(--line))}
+.lw-tone{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end}
+.lw-tone .bw-color{height:30px}
+@keyframes shimmer{to{background-position:-200% 0}}
 /* ── PDF-Werk ── Symbol in Logo-Farben, Bedienung in der Akzentfarbe, jede Quelldatei mit eigener Farbe (--sc) */
 .pfw{height:100%;overflow:auto;padding:28px 24px 48px}
 .pfw [hidden]{display:none!important}
@@ -2650,7 +2698,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 <script>
 (() => {
 'use strict';
-const VERSION = '1.0.0';   // X.Y.Z – neue App/großes Feature: Y+1 · Fixes & Kleinkram: Z+1 (dazu Git-Tag vX.Y.Z)
+const VERSION = '1.1.0';   // X.Y.Z – neue App/großes Feature: Y+1 · Fixes & Kleinkram: Z+1 (dazu Git-Tag vX.Y.Z)
 // Zum Testen ein Datum vorgeben, z. B. '2026-12-24' (Uhrzeit bleibt echt) – null = echtes Datum (live)
 const TEST_DATE = null;
 function appNow() {
@@ -2745,6 +2793,7 @@ const ICONS = {
   mindmap: '<circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5" r="2.2"/><circle cx="19" cy="12" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M7 12h4m4-7h-4l-4 7 4 7h4"/>',
   // Bildbert Namuel Verwaldemar: Gesicht füllt die ganze (per CSS gekippte) Kachel, Antenne kommt per CSS obendrauf
   bildbert: '<g transform="translate(12 12) scale(1.5) translate(-12 -12)" stroke-width="1.7"><circle cx="7.5" cy="9.5" r="3.3" fill="#fff" stroke="none"/><circle cx="16.5" cy="9.5" r="3.3" fill="#fff" stroke="none"/><circle cx="7.5" cy="9.5" r="1.45" fill="#14100a" stroke="none"/><circle cx="16.5" cy="9.5" r="1.45" fill="#14100a" stroke="none"/><path d="M6.5 15c1.6 4 9.4 4 11 0"/></g>',   // schaut dich direkt an, grinst
+  lut: '<path d="M12 2.5 3.5 7.2v9.6l8.5 4.7 8.5-4.7V7.2z"/><path d="m3.5 7.2 8.5 4.8 8.5-4.8"/><path d="M12 12v9.5"/><path d="m7.7 9.6 0 5.5M16.3 9.6v5.5" opacity=".55"/>',   // 3D-LUT-Würfel
   bracketR: '<path d="M7 4H4v16h3"/><path d="M17 4h3v16h-3"/><path d="M9.5 16.5v-9h3a2.5 2.5 0 0 1 0 5h-3"/><path d="m12.5 12.5 2.5 4"/>',
   phototag: '<path d="M12 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m3 17 4.5-4.5L12 17"/><path d="M15 14.5h3.5l3 3-3 3H15a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"/>',
   photo: '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
@@ -3071,8 +3120,10 @@ const ACCENTS = [
   ['Violett', '#7c6cff', '#c26bff'], ['Blau', '#3b82f6', '#22d3ee'], ['Türkis', '#14b8a6', '#4ade80'],
   ['Grün', '#22c55e', '#a3e635'], ['Orange', '#f97316', '#facc15'], ['Pink', '#ec4899', '#a855f7'], ['Rot', '#ef4444', '#f97316'],
 ];
+// Allererster Start in diesem Browser: noch gar keine Toms-Tools-Daten gespeichert → Willkommens-Dialog mit Namensabfrage
+const FIRST_RUN = (() => { try { return !Object.keys(localStorage).some(k => k.startsWith('tt:')); } catch { return false; } })();
 const S = {
-  data: Object.assign({ theme: 'dark', acc: '#7c6cff', acc2: '#c26bff', density: 'comfy', anim: true, start: 'restore', name: 'Tom', hidden: [], apps: {},
+  data: Object.assign({ theme: 'dark', acc: '#7c6cff', acc2: '#c26bff', density: 'comfy', anim: true, start: 'restore', name: '', hidden: [], apps: {},
     homeBg: 'accent', glow: 0.35, particles: true, accTime: false, imgDim: 45, imgBlur: 0, tiles: 'cards', greetStyle: 'mix',
     mascot: false, mascotSize: 200 }, Store.get('settings', {})),   // Standard: Akzentfarbe, dezente Leuchtkraft, Partikel an; Maskottchen aus
   set(k, v) { this.data[k] = v; this.save(); applyLook(); },
@@ -3717,7 +3768,7 @@ function particlesEl(space) {
 
 /* Startseite: Apps nach Themen gruppiert (Reihenfolge = Reihenfolge hier) */
 const APP_GROUPS = [
-  { id: 'bilder', name: 'Bilder & Dateien', icon: 'image', apps: ['bildwerk', 'metawerk', 'webp', 'pdfwerk', 'bildbenamung', 'bulk-rename'] },
+  { id: 'bilder', name: 'Bilder & Dateien', icon: 'image', apps: ['bildwerk', 'lutwerk', 'metawerk', 'webp', 'pdfwerk', 'bildbenamung', 'bulk-rename'] },
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
   { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
@@ -3809,7 +3860,9 @@ function renderHome() {
       bgMode === 'space' ? particlesEl(true) : S.data.particles ? particlesEl() : null),   // im Weltall immer Sterne
     h('div', { class: 'home-page' + (S.data.tiles === 'compact' ? ' tiles-compact' : '') },
     h('div', { class: 'hero' },
-      h('h1', null, `${S.data.greetStyle === 'simple' && !g.bdayHi ? GREET_SIMPLE[g.slot] : g.hi}, `, h('span', { class: 'grad' }, S.data.name || 'Tom'), S.data.greetStyle === 'simple' && !g.bdayHi ? '.' : g.punct),
+      h('h1', null, `${S.data.greetStyle === 'simple' && !g.bdayHi ? GREET_SIMPLE[g.slot] : g.hi}, `,
+        h('span', { class: 'grad' }, S.data.name?.trim() || 'Bro'),   // ohne Namen (übersprungen): einfach „Bro“
+        S.data.greetStyle === 'simple' && !g.bdayHi ? '.' : g.punct),
       S.data.greetStyle !== 'simple' || g.bday ? h('p', null, lineEl) : null),
 
     h('div', { class: 'section-t' }, 'Apps', groups.length > 1 ? allBtn : null),
@@ -4058,7 +4111,7 @@ function openSettings() {
         row('Größe', null, segEl([[80,'S'],[140,'M'],[200,'L'],[280,'XL'],[380,'XXL']], S.data.mascotSize ?? 200, v => { S.data.mascotSize = v; S.save(); applyMascot(); }))),
       sec('Startseite', homeSet),
       sec('Start',
-        row('Name', 'Wird in der Begrüßung angezeigt', h('input', { class: 'inp', value: S.data.name || 'Tom', placeholder: 'Name', spellcheck: false, autocomplete: 'off', oninput: e => { S.set('name', e.target.value); renderHome(); } })),
+        row('Name', 'Wird in der Begrüßung angezeigt', h('input', { class: 'inp', value: S.data.name || '', placeholder: 'Dein Name', spellcheck: false, autocomplete: 'off', oninput: e => { S.set('name', e.target.value); renderHome(); } })),
         row('Beim Öffnen zeigen', null, segEl([['home', 'Home'], ['restore', 'Letzte Sitzung']], S.data.start, v => S.set('start', v)))),
       sec('Apps',
         row('Legacy-App-Modus', 'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht', switchEl(S.data.bildbert, v => { S.data.bildbert = v; S.save(); applyBildbert(true); })),
@@ -5199,6 +5252,501 @@ function mountWebP(view) {
 }
 
 
+/* ================= LUT-Werk (Farb-Looks als 3D-LUT erstellen, .cube importieren/exportieren, stapelweise anwenden – alles lokal) =================
+   Eine 3D-LUT ist ein Würfel aus N×N×N Farben: für jede Eingangsfarbe steht drin, welche Farbe herauskommt.
+   Angewendet wird sie auf der Grafikkarte (3D-Textur mit trilinearer Interpolation) → auch große Stapel gehen schnell. */
+function mountLutwerk(view) {
+  const N = 33;   // Standardgröße (wie Premiere/DaVinci)
+  const DEF = () => ({ exp: 0, con: 0, sat: 0, vib: 0, temp: 0, tint: 0, hue: 0, fade: 0, sh: '#2a6f97', shA: 0, hl: '#ffb347', hlA: 0, bal: 0 });
+  const BUILTIN = [
+    ['Neutral', {}],
+    ['Teal & Orange', { con: .15, sat: .08, sh: '#1f7a8c', shA: .5, hl: '#ffa45c', hlA: .4 }],
+    ['Film warm', { temp: .14, fade: .06, con: .1, sat: -.05, hl: '#ffd8a8', hlA: .25 }],
+    ['Kühl & klar', { temp: -.18, con: .12, sat: .05, vib: .15 }],
+    ['Golden Hour', { temp: .28, sat: .12, exp: .05, hl: '#ffc16b', hlA: .4 }],
+    ['Vintage', { fade: .12, sat: -.25, con: -.05, sh: '#3a5a40', shA: .3, hl: '#f2d49b', hlA: .35 }],
+    ['Bleach Bypass', { sat: -.55, con: .35 }],
+    ['Matt Pastell', { fade: .16, con: -.2, sat: -.12, hl: '#ffe4f0', hlA: .2 }],
+    ['Kodak-Look', { con: .22, sat: .22, sh: '#0b3d2e', shA: .22, hl: '#ffe1a8', hlA: .15 }],
+    ['Nacht', { exp: -.35, temp: -.28, sat: -.2, sh: '#1b2a6b', shA: .45 }],
+    ['Cyberpunk', { con: .2, sat: .15, sh: '#3a0ca3', shA: .5, hl: '#f72585', hlA: .35 }],
+    ['Moos & Nebel', { fade: .08, sat: -.15, temp: -.05, tint: -.06, sh: '#2d4a3e', shA: .35 }],
+    ['S/W Kontrast', { sat: -1, con: .3 }],
+    ['S/W weich', { sat: -1, con: -.12, fade: .08 }],
+  ].map(([name, p], i) => ({ id: 'b:' + i, name, type: 'params', builtin: true, p: { ...DEF(), ...p } }));
+
+  const saved = Store.get('lutwerk', {});
+  const st = { own: saved.own || [], sel: saved.sel || 'b:1', amt: saved.amt ?? 1, fmt: saved.fmt || 'jpg', q: saved.q ?? 92, suffix: saved.suffix ?? '', out: saved.out || 'zip',
+    items: [], cur: 0, compare: true, split: .5, editing: null, busy: false };
+  let uid0 = saved.nid || 1;
+  const persist = debounce(() => Store.set('lutwerk', { own: st.own, sel: st.sel, amt: st.amt, fmt: st.fmt, q: st.q, suffix: st.suffix, out: st.out, nid: uid0 }), 300);
+  const allLuts = () => [...st.own, ...BUILTIN];
+  const lutById = id => allLuts().find(l => l.id === id) || BUILTIN[0];
+  const cur = () => lutById(st.sel);
+
+  /* ---------- Farbrechnung (Parameter → Funktion → LUT) ---------- */
+  const hex3 = hx => [1, 3, 5].map(i => parseInt(hx.slice(i, i + 2), 16) / 255);
+  const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+  function makeFn(p) {
+    const shc = hex3(p.sh), hlc = hex3(p.hl), ex = Math.pow(2, p.exp);
+    const tr = 1 + p.temp * .22, tb = 1 - p.temp * .22, tg = 1 - p.tint * .16;
+    const ch = Math.cos(p.hue * Math.PI / 180), sh = Math.sin(p.hue * Math.PI / 180), k = 1 + p.con;
+    const S = x => { x = clamp01(x); return x < .5 ? .5 * Math.pow(2 * x, k) : 1 - .5 * Math.pow(2 * (1 - x), k); };
+    const mid = .5 + p.bal * .25;
+    return (r, g, b) => {
+      r *= ex * tr; g *= ex * tg; b *= ex * tb;
+      if (p.hue) {   // Farbton drehen (im YIQ-Farbraum, Helligkeit bleibt)
+        const y = .299 * r + .587 * g + .114 * b, i = .596 * r - .274 * g - .322 * b, q = .211 * r - .523 * g + .312 * b;
+        const i2 = i * ch - q * sh, q2 = i * sh + q * ch;
+        r = y + .956 * i2 + .621 * q2; g = y - .272 * i2 - .647 * q2; b = y - 1.106 * i2 + 1.703 * q2;
+      }
+      if (p.con) { r = S(r); g = S(g); b = S(b); }   // S-Kurve um Mittelgrau
+      let L = .2126 * r + .7152 * g + .0722 * b, sat = 1 + p.sat;
+      if (p.vib) { const c = Math.max(r, g, b) - Math.min(r, g, b); sat *= 1 + p.vib * (1 - clamp01(c * 1.5)); }   // Dynamik: wenig Gesättigtes stärker
+      r = L + (r - L) * sat; g = L + (g - L) * sat; b = L + (b - L) * sat;
+      L = clamp01(.2126 * r + .7152 * g + .0722 * b);
+      const wS = Math.pow(clamp01((mid - L) / mid), 1.2) * p.shA * .9, wH = Math.pow(clamp01((L - mid) / (1 - mid)), 1.2) * p.hlA * .9;
+      r += (shc[0] - .5) * wS + (hlc[0] - .5) * wH; g += (shc[1] - .5) * wS + (hlc[1] - .5) * wH; b += (shc[2] - .5) * wS + (hlc[2] - .5) * wH;
+      if (p.fade) { const f = p.fade; r = f * .6 + r * (1 - f * .75); g = f * .6 + g * (1 - f * .75); b = f * .6 + b * (1 - f * .75); }
+      return [clamp01(r), clamp01(g), clamp01(b)];
+    };
+  }
+  function buildLut(p, n = N) {   // Float32, Reihenfolge wie .cube: Rot läuft am schnellsten
+    const fn = makeFn(p), out = new Float32Array(n * n * n * 3), s = 1 / (n - 1);
+    let o = 0;
+    for (let b = 0; b < n; b++) for (let g = 0; g < n; g++) for (let r = 0; r < n; r++) { const c = fn(r * s, g * s, b * s); out[o++] = c[0]; out[o++] = c[1]; out[o++] = c[2]; }
+    return out;
+  }
+  function sampleLut(d, n, r, g, b) {   // trilinear, für Umrechnungen beim Import
+    const f = [r, g, b].map(v => clamp01(v) * (n - 1)), i0 = f.map(v => Math.min(n - 2, Math.floor(v))), t = f.map((v, k) => v - i0[k]), res = [0, 0, 0];
+    for (let dz = 0; dz < 2; dz++) for (let dy = 0; dy < 2; dy++) for (let dx = 0; dx < 2; dx++) {
+      const w = (dx ? t[0] : 1 - t[0]) * (dy ? t[1] : 1 - t[1]) * (dz ? t[2] : 1 - t[2]), o = (((i0[2] + dz) * n + i0[1] + dy) * n + i0[0] + dx) * 3;
+      res[0] += d[o] * w; res[1] += d[o + 1] * w; res[2] += d[o + 2] * w;
+    }
+    return res;
+  }
+
+  /* ---------- .cube lesen & schreiben ---------- */
+  function parseCube(text) {
+    let n = 0, n1 = 0, min = [0, 0, 0], max = [1, 1, 1], title = '';
+    const vals = [];
+    for (const raw of text.split(/\r?\n/)) {
+      const l = raw.trim(); if (!l || l[0] === '#') continue;
+      const u = l.toUpperCase(), parts = l.split(/\s+/);
+      if (u.startsWith('TITLE')) { title = l.slice(5).trim().replace(/^"|"$/g, ''); continue; }
+      if (u.startsWith('LUT_3D_SIZE')) { n = parseInt(parts[1]); continue; }
+      if (u.startsWith('LUT_1D_SIZE')) { n1 = parseInt(parts[1]); continue; }
+      if (u.startsWith('DOMAIN_MIN')) { min = parts.slice(1, 4).map(Number); continue; }
+      if (u.startsWith('DOMAIN_MAX')) { max = parts.slice(1, 4).map(Number); continue; }
+      if (/^[A-Z_]/.test(u)) continue;
+      const v = parts.slice(0, 3).map(Number);
+      if (v.length === 3 && v.every(x => isFinite(x))) vals.push(v[0], v[1], v[2]);
+    }
+    const norm = i => (vals[i] - min[i % 3]) / ((max[i % 3] - min[i % 3]) || 1);
+    let src, sn;
+    if (n >= 2) {
+      if (vals.length < n * n * n * 3) throw new Error(`Die Datei hat zu wenig Werte (${vals.length / 3} statt ${n ** 3}).`);
+      src = new Float32Array(n * n * n * 3).map((_, i) => norm(i)); sn = n;
+    } else if (n1 >= 2) {   // 1D-LUT (pro Kanal eine Kurve) → in einen Würfel umrechnen
+      if (vals.length < n1 * 3) throw new Error('Die 1D-LUT ist unvollständig.');
+      const curve = (c, x) => { const f = clamp01(x) * (n1 - 1), i = Math.min(n1 - 2, Math.floor(f)), t = f - i; return norm(i * 3 + c) * (1 - t) + norm((i + 1) * 3 + c) * t; };
+      sn = N; src = new Float32Array(N ** 3 * 3); let o = 0; const s = 1 / (N - 1);
+      for (let b = 0; b < N; b++) for (let g = 0; g < N; g++) for (let r = 0; r < N; r++) { src[o++] = curve(0, r * s); src[o++] = curve(1, g * s); src[o++] = curve(2, b * s); }
+    } else throw new Error('Keine LUT_3D_SIZE gefunden – ist das eine .cube-Datei?');
+    // Größer als 33 → auf 33 verkleinern (spart Speicher, sieht gleich aus)
+    if (sn > N) {
+      const out = new Float32Array(N ** 3 * 3), s = 1 / (N - 1); let o = 0;
+      for (let b = 0; b < N; b++) for (let g = 0; g < N; g++) for (let r = 0; r < N; r++) { const c = sampleLut(src, sn, r * s, g * s, b * s); out[o++] = c[0]; out[o++] = c[1]; out[o++] = c[2]; }
+      src = out; sn = N;
+    }
+    return { n: sn, data: src, title };
+  }
+  function cubeText(name, d, n) {
+    const lines = [`TITLE "${name.replace(/"/g, '')}"`, '# Erstellt mit Toms Tools · LUT-Werk', `LUT_3D_SIZE ${n}`, 'DOMAIN_MIN 0.0 0.0 0.0', 'DOMAIN_MAX 1.0 1.0 1.0'];
+    for (let i = 0; i < d.length; i += 3) lines.push(`${d[i].toFixed(6)} ${d[i + 1].toFixed(6)} ${d[i + 2].toFixed(6)}`);
+    return lines.join('\n') + '\n';
+  }
+  // Importierte LUTs: 8 Bit pro Wert, als Base64 in einem eigenen Speicher-Eintrag (33er-LUT ≈ 140 KB)
+  const toB64 = u8 => { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); };
+  const fromB64 = b => Uint8Array.from(atob(b), c => c.charCodeAt(0));
+  const dataCache = new Map();
+  function lutData(l) {   // → { n, f: Float32Array } (für Export) – Parameter-LUTs werden jedes Mal frisch berechnet (schnell)
+    if (l.type === 'params') return { n: N, f: buildLut(l.p) };
+    if (!dataCache.has(l.id)) { const u8 = fromB64(Store.get('lutwerk:cube:' + l.id, '')), f = new Float32Array(u8.length); for (let i = 0; i < u8.length; i++) f[i] = u8[i] / 255; dataCache.set(l.id, { n: l.n, f }); }
+    return dataCache.get(l.id);
+  }
+
+  /* ---------- WebGL: Bild + 3D-Textur → Ergebnis ---------- */
+  function makeGL(alpha) {
+    const cv = document.createElement('canvas'), gl = cv.getContext('webgl2', { preserveDrawingBuffer: true, premultipliedAlpha: false, alpha, antialias: false });
+    if (!gl) return null;
+    const sh = (t, s) => { const o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(o)); return o; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, `#version 300 es
+in vec2 p; out vec2 v; void main() { v = p * 0.5 + 0.5; gl_Position = vec4(p, 0.0, 1.0); }`));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, `#version 300 es
+precision highp float; precision highp sampler3D;
+uniform sampler2D u_img; uniform sampler3D u_lut; uniform float u_amt, u_n, u_split; in vec2 v; out vec4 o;
+void main() {
+  vec4 c = texture(u_img, vec2(v.x, 1.0 - v.y));
+  vec3 l = texture(u_lut, clamp(c.rgb, 0.0, 1.0) * (u_n - 1.0) / u_n + 0.5 / u_n).rgb;
+  o = vec4(v.x < u_split ? c.rgb : mix(c.rgb, l, u_amt), c.a);
+}`));
+    gl.bindAttribLocation(prog, 0, 'p'); gl.linkProgram(prog); gl.useProgram(prog);
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    const U = n => gl.getUniformLocation(prog, n);
+    gl.uniform1i(U('u_img'), 0); gl.uniform1i(U('u_lut'), 1);
+    const tImg = gl.createTexture(), tLut = gl.createTexture();
+    const par = (tgt, f) => { gl.texParameteri(tgt, gl.TEXTURE_MIN_FILTER, f); gl.texParameteri(tgt, gl.TEXTURE_MAG_FILTER, f); gl.texParameteri(tgt, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(tgt, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); };
+    let lutN = 2;
+    return {
+      cv, max: gl.getParameter(gl.MAX_TEXTURE_SIZE),
+      setLut({ n, f }) {
+        const u8 = new Uint8Array(f.length); for (let i = 0; i < f.length; i++) u8[i] = Math.round(clamp01(f[i]) * 255);
+        gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_3D, tLut); par(gl.TEXTURE_3D, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_3D, gl.TEXTURE_WRAP_R, gl.CLAMP_TO_EDGE);
+        gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+        gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGB8, n, n, n, 0, gl.RGB, gl.UNSIGNED_BYTE, u8);
+        lutN = n;
+      },
+      setImage(src) { gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tImg); par(gl.TEXTURE_2D, gl.LINEAR); gl.pixelStorei(gl.UNPACK_ALIGNMENT, 4); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src); },
+      render(w, hh, amt, split) {
+        if (cv.width !== w || cv.height !== hh) { cv.width = w; cv.height = hh; }
+        gl.viewport(0, 0, w, hh);
+        gl.uniform1f(U('u_amt'), amt); gl.uniform1f(U('u_n'), lutN); gl.uniform1f(U('u_split'), split);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+      },
+      lose() { gl.getExtension('WEBGL_lose_context')?.loseContext(); },
+    };
+  }
+  const glPrev = makeGL(false), glOut = makeGL(true);
+  if (!glPrev || !glOut) {
+    view.append(h('div', { class: 'empty' }, h('div', { class: 'drop' }, h('div', { class: 'big' }, icon('alert')), h('h2', null, 'WebGL2 nicht verfügbar'),
+      h('p', null, 'LUT-Werk braucht die Grafikkarte (WebGL2). Bitte einen aktuellen Browser nutzen oder die Hardwarebeschleunigung aktivieren.'))));
+    return {};
+  }
+
+  /* ---------- Beispielbild (solange keine eigenen Bilder da sind) ---------- */
+  const sample = (() => {
+    const c = document.createElement('canvas'); c.width = 960; c.height = 640; const g = c.getContext('2d');
+    let gr = g.createLinearGradient(0, 0, 0, 420); gr.addColorStop(0, '#5b86b8'); gr.addColorStop(.7, '#e9b27a'); gr.addColorStop(1, '#f3d2a2');
+    g.fillStyle = gr; g.fillRect(0, 0, 960, 640);
+    g.fillStyle = '#fff4d8'; g.beginPath(); g.arc(700, 330, 60, 0, 7); g.fill();
+    gr = g.createLinearGradient(0, 380, 0, 640); gr.addColorStop(0, '#4d6b3c'); gr.addColorStop(1, '#1f2e1b');
+    g.fillStyle = gr; g.beginPath(); g.moveTo(0, 430); g.bezierCurveTo(250, 360, 480, 470, 960, 400); g.lineTo(960, 640); g.lineTo(0, 640); g.fill();
+    g.fillStyle = '#2f4a6b'; g.beginPath(); g.moveTo(0, 560); g.bezierCurveTo(300, 520, 600, 600, 960, 540); g.lineTo(960, 640); g.lineTo(0, 640); g.fill();
+    // Hautton-, Grau- und Farbfelder – daran sieht man, was ein Look mit Farben macht
+    ['#f1c7a8', '#d9a17e', '#a86f4c', '#6b4330'].forEach((col, i) => { g.fillStyle = col; g.beginPath(); g.arc(90 + i * 70, 110, 28, 0, 7); g.fill(); });
+    ['#e63946', '#f4a261', '#e9c46a', '#2a9d8f', '#457b9d', '#8e44ad'].forEach((col, i) => { g.fillStyle = col; g.fillRect(40 + i * 60, 170, 52, 40); });
+    for (let i = 0; i < 8; i++) { const v = Math.round(i / 7 * 255); g.fillStyle = `rgb(${v},${v},${v})`; g.fillRect(40 + i * 45, 225, 45, 22); }
+    return c;
+  })();
+
+  /* ---------- Bilder ---------- */
+  const IMG_RE = /\.(jpe?g|png|webp|avif|gif|bmp|tiff?)$/i;
+  let iid = 0;
+  const prevCache = new Map();   // id → ImageBitmap (Vorschaugröße), max. 4 behalten
+  async function previewBitmap(it) {
+    if (prevCache.has(it.id)) return prevCache.get(it.id);
+    const full = await createImageBitmap(it.file);
+    it.w = full.width; it.h = full.height;
+    const sc = Math.min(1, 1600 / Math.max(full.width, full.height));
+    const bm = sc < 1 ? await createImageBitmap(full, { resizeWidth: Math.round(full.width * sc), resizeHeight: Math.round(full.height * sc), resizeQuality: 'high' }) : full;
+    if (bm !== full) full.close();
+    prevCache.set(it.id, bm);
+    if (prevCache.size > 4) { const [k, v] = prevCache.entries().next().value; v.close?.(); prevCache.delete(k); }
+    return bm;
+  }
+  async function addFiles(files) {
+    const imgs = files.filter(f => /^image\//.test(f.type) || IMG_RE.test(f.name));
+    const cubes = files.filter(f => /\.cube$/i.test(f.name));
+    for (const f of cubes) await importCube(f);
+    if (!imgs.length) return;
+    const first = st.items.length;
+    for (const f of imgs) st.items.push({ id: ++iid, file: f, name: f.name, thumb: null, w: 0, h: 0 });
+    if (!first) st.cur = 0;
+    renderStrip(); showCurrent();
+    for (const it of st.items.slice(first)) {   // Vorschaubildchen nacheinander
+      try { const bm = await createImageBitmap(it.file, { resizeHeight: 120, resizeQuality: 'medium' }); const c = document.createElement('canvas'); c.width = bm.width; c.height = bm.height; c.getContext('2d').drawImage(bm, 0, 0); bm.close(); it.thumb = c.toDataURL('image/jpeg', .8); }
+      catch { it.bad = true; }
+      renderStrip();
+    }
+  }
+  async function openFolder() {
+    if (!window.showDirectoryPicker) { pickImages(); return; }
+    let dir; try { dir = await showDirectoryPicker({ id: 'lutwerk' }); } catch { return; }
+    const list = [];
+    for await (const [n, hd] of dir.entries()) if (hd.kind === 'file' && (IMG_RE.test(n) || /\.cube$/i.test(n))) list.push(await hd.getFile());
+    list.sort((a, b) => a.name.localeCompare(b.name, 'de', { numeric: true }));
+    if (!list.length) toast('In dem Ordner sind keine Bilder.', 'warn');
+    addFiles(list);
+  }
+  function pickImages() {
+    const i = h('input', { type: 'file', multiple: true, accept: 'image/*,.cube', style: { display: 'none' }, onchange: () => { addFiles([...i.files]); i.remove(); } });
+    document.body.append(i); i.click();
+  }
+
+  /* ---------- LUTs verwalten ---------- */
+  async function importCube(file) {
+    try {
+      const { n, data, title } = parseCube(await file.text());
+      const u8 = new Uint8Array(data.length); for (let i = 0; i < data.length; i++) u8[i] = Math.round(clamp01(data[i]) * 255);
+      const id = 'u:' + (uid0++);
+      Store.set('lutwerk:cube:' + id, toB64(u8));
+      if (!localStorage.getItem('tt:lutwerk:cube:' + id)) throw new Error('Browser-Speicher ist voll.');
+      st.own.unshift({ id, name: (title || file.name.replace(/\.cube$/i, '')).slice(0, 40), type: 'cube', n });
+      st.sel = id; persist(); renderLuts(); applyLut();
+      toast(`LUT „${st.own[0].name}“ importiert (${n}³)`, 'ok');
+    } catch (e) { toast(`„${file.name}“: ${e.message}`, 'err', { ms: 6000 }); }
+  }
+  function newLut(from) {
+    const base = from && from.type === 'params' ? from.p : DEF();
+    const l = { id: 'u:' + (uid0++), name: from ? from.name + ' (Kopie)' : 'Mein Look', type: 'params', p: { ...DEF(), ...base } };
+    st.own.unshift(l); st.sel = l.id; st.editing = l.id; persist(); renderLuts(); renderEditor(); applyLut();
+  }
+  function deleteLut(l) {
+    st.own = st.own.filter(x => x.id !== l.id);
+    if (l.type === 'cube') { localStorage.removeItem('tt:lutwerk:cube:' + l.id); dataCache.delete(l.id); }
+    thumbs.delete(l.id);
+    if (st.sel === l.id) st.sel = 'b:1';
+    if (st.editing === l.id) st.editing = null;
+    persist(); renderLuts(); renderEditor(); applyLut();
+  }
+  const slug = s => s.toLowerCase().replace(/[äöüß]/g, c => ({ ä: 'ae', ö: 'oe', ü: 'ue', ß: 'ss' })[c]).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'look';
+  function exportCube(l) {
+    const { n, f } = lutData(l);
+    download(slug(l.name) + '.cube', cubeText(l.name, f, n), 'text/plain');
+    toast(`${slug(l.name)}.cube gespeichert – funktioniert in Premiere, DaVinci, Photoshop, Lightroom & Co.`, 'ok', { ms: 3500 });
+  }
+
+  /* ---------- Vorschau ---------- */
+  const splitEl = h('div', { class: 'lw-split' }, h('span', { class: 'lw-split-l' }, 'Vorher'), h('span', { class: 'lw-split-r' }, 'Nachher'), h('i'));
+  const stage = h('div', { class: 'lw-stage' }, glPrev.cv, splitEl);
+  const infoEl = h('div', { class: 'lw-info' });
+  let curSrc = sample, raf = 0;
+  const queue = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; drawPrev(); }); };
+  function drawPrev() {
+    const r = stage.getBoundingClientRect(); if (!r.width) return;
+    const sw = curSrc.width, sh = curSrc.height, sc = Math.min(r.width / sw, r.height / sh), dpr = devicePixelRatio || 1;
+    const cw = Math.max(1, Math.round(sw * sc)), ch = Math.max(1, Math.round(sh * sc));
+    glPrev.cv.style.width = cw + 'px'; glPrev.cv.style.height = ch + 'px';
+    glPrev.render(Math.round(cw * dpr), Math.round(ch * dpr), st.amt, st.compare ? st.split : -1);
+    splitEl.style.cssText = `left:${(r.width - cw) / 2}px;top:${(r.height - ch) / 2}px;width:${cw}px;height:${ch}px`;
+    splitEl.hidden = !st.compare; splitEl.style.setProperty('--x', st.split * 100 + '%');
+  }
+  function applyLut() { glPrev.setLut(lutData(cur())); queue(); paintExport(); }
+  async function showCurrent() {
+    const it = st.items[st.cur];
+    if (!it) { curSrc = sample; glPrev.setImage(sample); infoEl.textContent = 'Beispielbild – zieh eigene Bilder hierher'; queue(); return; }
+    try { curSrc = await previewBitmap(it); } catch { toast(`„${it.name}“ lässt sich nicht öffnen.`, 'err'); return; }
+    glPrev.setImage(curSrc); infoEl.textContent = `${it.name} · ${it.w}×${it.h}`; queue();
+  }
+  // Vorher/Nachher-Linie ziehen
+  splitEl.addEventListener('pointerdown', e => {
+    splitEl.setPointerCapture(e.pointerId);
+    const mv = ev => { const r = splitEl.getBoundingClientRect(); st.split = clamp01((ev.clientX - r.left) / r.width); queue(); };
+    mv(e); splitEl.onpointermove = ev => { if (ev.buttons) mv(ev); };
+  });
+  new ResizeObserver(queue).observe(stage);
+
+  /* ---------- Filmstreifen ---------- */
+  const stripEl = h('div', { class: 'lw-strip' });
+  function renderStrip() {
+    stripEl.replaceChildren(
+      ...st.items.map((it, i) => h('div', { class: 'lw-film' + (i === st.cur ? ' on' : '') + (it.bad ? ' bad' : ''), title: it.name, onclick: () => { st.cur = i; renderStrip(); showCurrent(); } },
+        it.thumb ? h('img', { src: it.thumb, alt: '' }) : h('span', { class: 'lw-film-ph' }),
+        h('button', { class: 'lw-film-x', title: 'Entfernen', onclick: e => { e.stopPropagation(); prevCache.get(it.id)?.close?.(); prevCache.delete(it.id); st.items.splice(i, 1); st.cur = Math.min(st.cur, st.items.length - 1); renderStrip(); showCurrent(); paintExport(); } }, icon('x')))),
+      h('button', { class: 'lw-film lw-film-add', title: 'Bilder hinzufügen', onclick: pickImages }, icon('plus')));
+    countEl.textContent = st.items.length ? `${st.items.length} ${st.items.length === 1 ? 'Bild' : 'Bilder'}` : 'Noch keine Bilder';
+    clearBtn.hidden = !st.items.length;
+    paintExport();
+  }
+  const countEl = h('b');
+  const clearBtn = h('button', { class: 'btn sm ghost', onclick: () => { prevCache.forEach(b => b.close?.()); prevCache.clear(); st.items = []; st.cur = 0; renderStrip(); showCurrent(); } }, icon('trash'), 'Alle entfernen');
+
+  /* ---------- LUT-Liste mit Vorschaubildchen ---------- */
+  const thumbs = new Map();   // id → dataURL (auf dem Beispielbild)
+  const thumbCv = document.createElement('canvas'); thumbCv.width = 150; thumbCv.height = 100; thumbCv.getContext('2d').drawImage(sample, 0, 0, 150, 100);
+  function thumbOf(l) {
+    const key = l.type === 'params' ? JSON.stringify(l.p) : l.id;
+    const t = thumbs.get(l.id); if (t && t.key === key) return t.url;
+    glOut.setLut(lutData(l)); glOut.setImage(thumbCv); glOut.render(150, 100, 1, -1);
+    const url = glOut.cv.toDataURL('image/jpeg', .82);
+    thumbs.set(l.id, { key, url });
+    return url;
+  }
+  const lutGrid = h('div', { class: 'lw-luts' });
+  function renderLuts() {
+    const card = l => h('button', { class: 'lw-lut' + (l.id === st.sel ? ' on' : ''), title: l.name, onclick: () => { st.sel = l.id; if (st.editing && st.editing !== l.id) st.editing = null; persist(); renderLuts(); renderEditor(); applyLut(); } },
+      h('img', { src: thumbOf(l), alt: '' }), h('span', null, l.name, !l.builtin ? h('small', null, l.type === 'cube' ? 'Import' : 'Eigen') : null));
+    lutGrid.replaceChildren(
+      ...(st.own.length ? [h('div', { class: 'lw-luts-t' }, 'Meine LUTs'), ...st.own.map(card)] : []),
+      h('div', { class: 'lw-luts-t' }, 'Vorlagen'), ...BUILTIN.map(card));
+    const l = cur();
+    selActs.replaceChildren(...[
+      !l.builtin && l.type === 'params' ? h('button', { class: 'btn sm' + (st.editing === l.id ? ' primary' : ''), onclick: () => { st.editing = st.editing === l.id ? null : l.id; renderLuts(); renderEditor(); } }, icon('sliders'), st.editing === l.id ? 'Fertig' : 'Bearbeiten') : null,
+      l.type === 'params' ? h('button', { class: 'btn sm ghost', title: 'Als eigene LUT kopieren und anpassen', onclick: () => newLut(l) }, icon('copy'), 'Kopie bearbeiten') : null,
+      h('button', { class: 'btn sm ghost', title: 'Als .cube-Datei speichern', onclick: () => exportCube(l) }, icon('download'), '.cube'),
+      !l.builtin ? h('button', { class: 'mini', title: 'Löschen', onclick: () => deleteLut(l) }, icon('trash')) : null].filter(Boolean));
+    selName.textContent = l.name;
+  }
+  const selName = h('b'), selActs = h('div', { class: 'lw-selacts' });
+
+  /* ---------- Editor ---------- */
+  const edEl = h('div', { class: 'lw-ed' });
+  function renderEditor() {
+    const l = st.own.find(x => x.id === st.editing);
+    edEl.hidden = !l; if (!l) return;
+    const p = l.p;
+    const update = () => { thumbs.delete(l.id); applyLut(); persist(); updThumb(); };
+    const updThumb = debounce(() => renderLuts(), 250);
+    const sl = (key, label, min, max, step, fmt) => {
+      const val = h('span', { class: 'bw-val' }), pct = v => ((v - min) / (max - min) * 100) + '%';
+      const r = h('input', { type: 'range', class: 'bw-range', min, max, step, value: p[key], style: { '--p': pct(p[key]) },
+        oninput: () => { p[key] = +r.value; val.textContent = fmt(p[key]); r.style.setProperty('--p', pct(r.value)); update(); } });
+      val.textContent = fmt(p[key]);
+      return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h', title: 'Doppelklick: zurück auf 0', ondblclick: () => { r.value = key === 'exp' || !DEF()[key] ? 0 : DEF()[key]; r.dispatchEvent(new Event('input')); } }, h('label', null, label), val), r);
+    };
+    const pm = v => (v > 0 ? '+' : '') + Math.round(v * 100);
+    const tone = (ck, ak, label) => h('div', { class: 'lw-tone' },
+      h('input', { type: 'color', class: 'bw-color', value: p[ck], title: label + ' – Farbe', oninput: e => { p[ck] = e.target.value; update(); } }),
+      sl(ak, label, 0, 1, .01, v => Math.round(v * 100) + ' %'));
+    const nameIn = h('input', { class: 'inp', value: l.name, maxlength: 40, placeholder: 'Name', oninput: e => { l.name = e.target.value || 'Mein Look'; selName.textContent = l.name; persist(); updThumb(); } });
+    edEl.replaceChildren(
+      h('div', { class: 'wp-lbl' }, 'Look bearbeiten', h('button', { class: 'mini', title: 'Alles zurücksetzen', onclick: () => { l.p = DEF(); renderEditor(); update(); } }, icon('undo'))),
+      nameIn,
+      sl('exp', 'Belichtung', -2, 2, .05, v => (v > 0 ? '+' : '') + v.toFixed(2).replace('.', ',') + ' EV'),
+      sl('con', 'Kontrast', -.8, 1, .01, pm), sl('sat', 'Sättigung', -1, 1, .01, pm), sl('vib', 'Dynamik', -1, 1, .01, pm),
+      sl('temp', 'Wärme', -1, 1, .01, pm), sl('tint', 'Tönung (Grün ↔ Magenta)', -1, 1, .01, pm),
+      sl('hue', 'Farbton', -180, 180, 1, v => (v > 0 ? '+' : '') + v + '°'), sl('fade', 'Verblassen', 0, .5, .01, v => Math.round(v * 200)),
+      h('div', { class: 'wp-lbl', style: { marginTop: '4px' } }, 'Farbe in Schatten & Lichtern'),
+      tone('sh', 'shA', 'Schatten'), tone('hl', 'hlA', 'Lichter'), sl('bal', 'Balance', -1, 1, .01, pm));
+  }
+
+  /* ---------- Export ---------- */
+  const amtVal = h('b');
+  const amtIn = h('input', { type: 'range', class: 'bw-range', min: 0, max: 100, step: 1, value: Math.round(st.amt * 100),
+    oninput: () => { st.amt = amtIn.value / 100; amtVal.textContent = amtIn.value + ' %'; amtIn.style.setProperty('--p', amtIn.value + '%'); queue(); persist(); } });
+  amtVal.textContent = Math.round(st.amt * 100) + ' %'; amtIn.style.setProperty('--p', st.amt * 100 + '%');
+  const fmtSeg = segEl([['jpg', 'JPG'], ['png', 'PNG'], ['webp', 'WebP']], st.fmt, v => { st.fmt = v; persist(); paintExport(); });
+  const qVal = h('b'), qIn = h('input', { type: 'range', class: 'bw-range', min: 50, max: 100, step: 1, value: st.q,
+    oninput: () => { st.q = +qIn.value; qVal.textContent = st.q + ' %'; qIn.style.setProperty('--p', (st.q - 50) * 2 + '%'); persist(); } });
+  qVal.textContent = st.q + ' %'; qIn.style.setProperty('--p', (st.q - 50) * 2 + '%');
+  const qSec = h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Qualität', qVal), qIn);
+  const sufIn = h('input', { class: 'inp', value: st.suffix, placeholder: '', spellcheck: false, oninput: () => { st.suffix = sufIn.value; persist(); paintExport(); } });
+  const outSeg = segEl([['zip', 'ZIP-Datei'], ['folder', 'In Ordner speichern']], st.out, v => { st.out = v; persist(); });
+  const namePrev = h('div', { class: 'wp-prev' });
+  const goBtn = h('button', { class: 'btn primary block wp-go', onclick: () => runExport() });
+  const progFill = h('div', { class: 'wp-prog-fill' }), progTxt = h('div', { class: 'wp-prog-txt' });
+  const prog = h('div', { class: 'wp-prog', hidden: true }, h('div', { class: 'wp-prog-track' }, progFill), progTxt);
+  const ext = () => st.fmt === 'jpg' ? 'jpg' : st.fmt;
+  const suffix = () => st.suffix.trim() || '-' + slug(cur().name);
+  const outName = n => n.replace(/\.[^.]+$/, '') + suffix() + '.' + ext();
+  function paintExport() {
+    qSec.hidden = st.fmt === 'png';
+    sufIn.placeholder = '-' + slug(cur().name);
+    namePrev.replaceChildren('bild.jpg → ', h('b', null, outName('bild.jpg')));
+    const n = st.items.length;
+    goBtn.disabled = !n || st.busy;
+    goBtn.replaceChildren(icon('zap'), n ? `${n} ${n === 1 ? 'Bild' : 'Bilder'} exportieren` : 'Erst Bilder hinzufügen');
+  }
+  async function runExport() {
+    if (st.busy || !st.items.length) return;
+    st.busy = true; paintExport(); prog.hidden = false;
+    const type = { jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp' }[st.fmt], files = [], names = new Set();
+    let failed = 0;
+    try {
+      glOut.setLut(lutData(cur()));
+      for (const [i, it] of st.items.entries()) {
+        progTxt.textContent = `Bearbeite ${i + 1}/${st.items.length} · ${it.name}`; progFill.style.width = (i / st.items.length * 100) + '%';
+        await new Promise(r => setTimeout(r, 0));
+        try {
+          let bm = await createImageBitmap(it.file);
+          if (Math.max(bm.width, bm.height) > glOut.max) { const s = glOut.max / Math.max(bm.width, bm.height), b2 = await createImageBitmap(bm, { resizeWidth: Math.floor(bm.width * s), resizeHeight: Math.floor(bm.height * s), resizeQuality: 'high' }); bm.close(); bm = b2; }
+          glOut.setImage(bm); glOut.render(bm.width, bm.height, st.amt, -1); bm.close();
+          const blob = await new Promise(r => glOut.cv.toBlob(r, type, st.q / 100));
+          if (!blob) throw new Error('leer');
+          let name = outName(it.name), k = 2; while (names.has(name.toLowerCase())) name = outName(it.name).replace(/(\.[^.]+)$/, `-${k++}$1`);
+          names.add(name.toLowerCase());
+          files.push({ path: name, blob, mtime: new Date() });
+        } catch { failed++; }
+      }
+      progFill.style.width = '100%';
+      if (!files.length) throw new Error('Kein Bild konnte verarbeitet werden.');
+      if (st.out === 'folder' && window.showDirectoryPicker) {
+        progTxt.textContent = 'Ordner auswählen …';
+        let dir; try { dir = await showDirectoryPicker({ id: 'lutwerk-out', mode: 'readwrite' }); } catch { throw new Error('Kein Ordner ausgewählt.'); }
+        for (const [i, f] of files.entries()) { progTxt.textContent = `Speichere ${i + 1}/${files.length} …`; const w = await (await dir.getFileHandle(f.path, { create: true })).createWritable(); await w.write(f.blob); await w.close(); }
+      } else {
+        progTxt.textContent = 'Packe ZIP …';
+        download(`lut-${slug(cur().name)}.zip`, await makeZip(files, (i, n) => { progTxt.textContent = `Packe ZIP … ${i}/${n}`; }));
+      }
+      toast(`${files.length} ${files.length === 1 ? 'Bild' : 'Bilder'} mit „${cur().name}“ gespeichert` + (failed ? ` · ${failed} Fehler` : ''), failed ? 'warn' : 'ok');
+    } catch (e) { toast('Export: ' + e.message, 'err'); }
+    st.busy = false; prog.hidden = true; paintExport();
+  }
+
+  /* ---------- Aufbau ---------- */
+  const importBtn = h('button', { class: 'btn sm ghost', title: '.cube-Datei(en) importieren – oder einfach reinziehen', onclick: () => {
+    const i = h('input', { type: 'file', multiple: true, accept: '.cube', style: { display: 'none' }, onchange: async () => { for (const f of i.files) await importCube(f); i.remove(); } });
+    document.body.append(i); i.click();
+  } }, icon('upload'), 'Importieren');
+  const main = h('div', { class: 'wp-card lw-main' },
+    h('div', { class: 'wp-lhead' }, h('span', { class: 'wp-count' }, countEl), infoEl,
+      h('div', { class: 'wp-lacts' },
+        h('button', { class: 'btn sm ghost' + (st.compare ? ' on' : ''), title: 'Vorher/Nachher-Vergleich', onclick: e => { st.compare = !st.compare; e.currentTarget.classList.toggle('on', st.compare); queue(); } }, icon('eye'), 'Vergleich'),
+        h('button', { class: 'btn sm ghost', onclick: pickImages }, icon('image'), 'Bilder'),
+        h('button', { class: 'btn sm ghost', onclick: openFolder }, icon('folder'), 'Ordner'),
+        clearBtn)),
+    stage, stripEl);
+  const side = h('div', { class: 'wp-card wp-set lw-side' },
+    h('div', { class: 'wp-sec' },
+      h('div', { class: 'wp-lbl' }, 'Look', h('span', { class: 'lw-hd-acts' }, importBtn, h('button', { class: 'btn sm', onclick: () => newLut(null) }, icon('plus'), 'Neu'))),
+      lutGrid,
+      h('div', { class: 'lw-sel' }, selName, selActs)),
+    edEl,
+    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Stärke', amtVal), amtIn),
+    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Format'), fmtSeg),
+    qSec,
+    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Dateiname-Zusatz'), sufIn, namePrev),
+    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Ausgabe'), outSeg),
+    goBtn, prog);
+  const wrap = h('div', { class: 'wp lw' }, h('div', { class: 'wp-in lw-in' },
+    h('div', { class: 'wp-hd' },
+      h('div', { class: 'wp-logo' }, icon('lut')),
+      h('div', null, h('h2', null, 'LUT-Werk'), h('p', null, 'Farb-Looks (3D-LUTs) erstellen, importieren und auf viele Bilder anwenden')),
+      h('span', { class: 'wp-priv', title: 'Alles passiert auf deinem Rechner – nichts wird hochgeladen.' }, icon('lock'), 'Alles lokal')),
+    h('div', { class: 'wp-grid lw-grid' }, main, side)));
+  view.append(wrap);
+
+  // Drag & Drop: Bilder und .cube-Dateien
+  let dragN = 0;
+  wrap.addEventListener('dragenter', e => { if (e.dataTransfer?.types.includes('Files')) { e.preventDefault(); dragN++; main.classList.add('over'); } });
+  wrap.addEventListener('dragover', e => e.preventDefault());
+  wrap.addEventListener('dragleave', () => { if (--dragN <= 0) { dragN = 0; main.classList.remove('over'); } });
+  wrap.addEventListener('drop', e => { e.preventDefault(); dragN = 0; main.classList.remove('over'); addFiles([...e.dataTransfer.files]); });
+
+  renderLuts(); renderEditor(); renderStrip(); applyLut(); showCurrent();
+
+  return {
+    onShow: queue,
+    destroy() { prevCache.forEach(b => b.close?.()); glPrev.lose(); glOut.lose(); },
+  };
+}
+
+TT.register({
+  id: 'lutwerk', name: 'LUT-Werk', icon: 'lut', c: '#fb923c', c2: '#0d9488',   // Orange → Petrol (der klassische Teal-&-Orange-Look)
+  tagline: 'Farb-Looks erstellen & anwenden',
+  desc: 'Farb-Looks als 3D-LUT erstellen, .cube importieren und auf viele Bilder anwenden – alles lokal.',
+  settings: [
+    { store: 'lutwerk', key: 'fmt', label: 'Export-Format', type: 'seg', opts: [['jpg', 'JPG'], ['png', 'PNG'], ['webp', 'WebP']], default: 'jpg' },
+    { store: 'lutwerk', key: 'q', label: 'Qualität (JPG/WebP)', type: 'range', min: 50, max: 100, step: 1, unit: ' %', default: 92 },
+    { store: 'lutwerk', key: 'out', label: 'Ausgabe', type: 'seg', opts: [['zip', 'ZIP-Datei'], ['folder', 'In Ordner']], default: 'zip' },
+  ],
+  mount: mountLutwerk,
+});
 /* ================= PDF-Werk (PDFs zusammenführen, teilen, drehen, sortieren – alles lokal) =================
    Bibliotheken liegen als „ruhender Text" am Ende der Datei (<script type="text/plain">) und werden erst beim
    ersten Öffnen ausgeführt: pdf-lib (bearbeiten/speichern, MIT) und pdf.js (Vorschaubilder, Apache-2.0, Worker als Blob). */
@@ -16596,6 +17144,16 @@ if (S.data.start === 'restore') {
   TT.activate(sess.active || 'home');
 } else TT.activate('home');
 applyMascot();
+if (FIRST_RUN) setTimeout(() => {
+  const inp = h('input', { class: 'inp', placeholder: 'Dein Name', maxlength: 40, autocomplete: 'off', spellcheck: false });
+  const save = () => { const v = inp.value.trim(); if (!v) return; S.set('name', v); if (TT.active === 'home') renderHome(); };
+  const close = modal({
+    title: 'Willkommen bei Toms Tools 👋', sub: 'Wie dürfen wir dich nennen?', width: 420,
+    body: h('div', { class: 'welcome' }, h('p', { class: 'muted' }, 'Dein Name erscheint in der Begrüßung auf der Startseite.'), inp),
+    actions: [{ label: 'Überspringen', kind: 'ghost' }, { label: 'Los geht’s', kind: 'primary', onClick: save }],
+  });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') { save(); close(); } });
+}, 700);
 // Hintergrundbild aus IDB laden, danach Ordner-Sync starten (vergleicht Browser- und Ordner-Stand); beim Verlassen Ausstehendes sichern
 loadHomeBg().finally(() => Sync.init());
 window.addEventListener('pagehide', () => Sync.flush());

@@ -2,6 +2,11 @@
 <html lang="de" data-theme="dark">
 <head>
 <meta charset="utf-8">
+<!-- Sicherheit: Die App darf nichts aus dem Netz laden oder dorthin senden (kein fetch, keine externen Skripte,
+     Bilder, Schriften, Formulare). Erlaubt ist nur, was die Datei selbst braucht:
+     eigene Skripte/Styles, Bilder/Audio als data:/blob:, Worker & Rahmen als blob: (PDF-Vorschau, Regex, Beatwerk, Gedankenwerk). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' blob:; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob: mediastream:; connect-src data: blob:; worker-src blob:; child-src blob:; frame-src blob:; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TT · Toms Tools</title>
 <link rel="icon" id="favicon" href="data:,">
@@ -162,6 +167,14 @@ input[type=number].inp{padding-right:4px}
 /* Hintergrund klebt am Scrollbereich (Höhe = Fenster − 56px Topbar), nur die Apps scrollen */
 .home-bg{position:sticky;top:0;left:0;width:100%;height:calc(100vh - 56px);margin-bottom:calc(56px - 100vh);overflow:hidden;pointer-events:none;z-index:0}
 .home-page{max-width:1120px;margin:0 auto;padding:56px 28px 80px;position:relative;z-index:1}
+/* Kaffee-Knopf: klein & dezent unten rechts, klappt beim Drüberfahren auf */
+.coffee{position:fixed;right:18px;bottom:18px;z-index:5;display:flex;align-items:center;height:34px;padding:0 9px;border-radius:17px;
+  background:color-mix(in oklab,var(--s1) 85%,transparent);border:1px solid var(--line2);backdrop-filter:blur(8px);color:var(--tx2);
+  text-decoration:none;font-size:12.5px;font-weight:600;opacity:.65;transition:opacity .2s,box-shadow .2s,border-color .2s;box-shadow:0 6px 18px -8px rgba(0,0,0,.6)}
+.coffee-i{font-size:15px;line-height:1}
+.coffee-t{max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .25s ease,margin .25s ease}
+.coffee:hover{opacity:1;color:var(--tx);border-color:color-mix(in oklab,#f5b544 55%,transparent);box-shadow:0 8px 24px -8px rgba(245,181,68,.45)}
+.coffee:hover .coffee-t{max-width:140px;margin-left:7px}
 /* Partikel (optional): zwei vorgezeichnete Kachel-Bilder, die per transform nach oben driften → läuft komplett auf der Grafikkarte */
 .home-parts{position:absolute;inset:0;overflow:hidden}
 .home-parts i{position:absolute;left:0;right:0;top:0;background-repeat:repeat;will-change:transform}
@@ -2637,7 +2650,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 <script>
 (() => {
 'use strict';
-const VERSION = '0.1.0';
+const VERSION = '1.0.0';   // X.Y.Z – neue App/großes Feature: Y+1 · Fixes & Kleinkram: Z+1 (dazu Git-Tag vX.Y.Z)
 // Zum Testen ein Datum vorgeben, z. B. '2026-12-24' (Uhrzeit bleibt echt) – null = echtes Datum (live)
 const TEST_DATE = null;
 function appNow() {
@@ -3518,11 +3531,9 @@ const GREET_COMBO = {
   '0-evening': ["Sonntagabend. Der Montag schaut schon um die Ecke. Einfach ignorieren."],
   '0-late': ["Sonntagnacht. Der Montag klopft. Nicht aufmachen."],
 };
-// Geburtstage (MM-TT): hi ersetzt die Überschrift („Alles Gute, Tom!"), line steht darunter
-const GREET_BDAY = {
-  "01-18": { hi: "Alles Gute", line: "Happy Birthday! 🎂 Heute ist dein Tag – lass dir den Kuchen schmecken." },
-  "11-13": { line: "Heute hat Nathalie Geburtstag – alles Gute, Nathi! 🎂" },
-};
+// Geburtstage (MM-TT): hi ersetzt die Überschrift, line steht darunter – bewusst leer (keine persönlichen Daten in der Datei)
+// Beispiel: "03-15": { hi: "Alles Gute", line: "Happy Birthday! 🎂" }
+const GREET_BDAY = {};
 const GREET_DATE = {
   "01-01": "Frohes neues Jahr! Gute Vorsätze halten im Schnitt bis Mitte Januar. Du schaffst mehr.",
   "02-29": "Schalttag! Ein geschenkter Tag. Mach was Schönes draus.",
@@ -3674,6 +3685,8 @@ function greeting(d, fresh) {
   return greetPick;
 }
 
+const COFFEE_URL = 'https://paypal.me/tf443';
+
 /* Partikel für die Startseite: einmal als Kachelbilder zeichnen, danach nur noch verschieben.
    space = Weltall-Modus: weiße (leicht bläuliche/gelbliche) Sterne, dichter, mit Glühen */
 const partTiles = {};
@@ -3800,7 +3813,10 @@ function renderHome() {
       S.data.greetStyle !== 'simple' || g.bday ? h('p', null, lineEl) : null),
 
     h('div', { class: 'section-t' }, 'Apps', groups.length > 1 ? allBtn : null),
-    ...(groups.length ? groupEls : [h('div', { class: 'hg-none' }, 'Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.')])));
+    ...(groups.length ? groupEls : [h('div', { class: 'hg-none' }, 'Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.')])),
+    // Kleiner Kaffee-Knopf unten rechts → PayPal (öffnet einen neuen Tab, die App selbst bleibt offline)
+    h('a', { class: 'coffee', href: COFFEE_URL, target: '_blank', rel: 'noopener noreferrer', title: 'Gefällt dir Toms Tools? Spendier mir einen Kaffee ☕' },
+      h('span', { class: 'coffee-i' }, '☕'), h('span', { class: 'coffee-t' }, 'Kaffee spendieren')));
 }
 
 function openSettings() {
@@ -4031,7 +4047,7 @@ function openSettings() {
   const unsubSync = Sync.subscribe(() => { if (!syncEl.isConnected) { unsubSync(); return; } paintSync(); });
 
   const drawer = h('aside', { class: 'drawer' },
-    h('header', { class: 'drawer-h' }, h('div', null, h('h3', null, 'Einstellungen'), h('p', null, 'Gelten für alle Tools')), h('button', { class: 'icon-btn', onclick: close }, icon('x'))),
+    h('header', { class: 'drawer-h' }, h('div', null, h('h3', null, 'Einstellungen'), h('p', null, `Gelten für alle Tools · Version ${VERSION}`)), h('button', { class: 'icon-btn', onclick: close }, icon('x'))),
     h('div', { class: 'drawer-b' },
       sec('Darstellung',
         h('div', { class: 'set-label' }, 'Theme'), themes,
@@ -5258,7 +5274,7 @@ function mountPdfWerk(view) {
           sources.push(src); addPage(src, 0);
         } else {
           src.kind = 'pdf'; src.bytes = new Uint8Array(await f.arrayBuffer());
-          src.doc = await pdfjsLib.getDocument({ data: src.bytes.slice() }).promise;
+          src.doc = await pdfjsLib.getDocument({ data: src.bytes.slice(), isEvalSupported: false }).promise;   // kein eval (Sicherheitsrichtlinie)
           // Geschützte PDFs kann pdf-lib nicht entschlüsseln → erkennen statt kaputte Dateien erzeugen
           const probe = await PDFLib.PDFDocument.load(src.bytes, { ignoreEncryption: true, updateMetadata: false });
           if (probe.isEncrypted) { src.doc.destroy(); toast(`„${f.name}" ist geschützt und kann nicht bearbeitet werden.`, 'err', { ms: 6000 }); continue; }
@@ -15402,8 +15418,8 @@ function brotato(root, isVisible) {
     { shape:'split',color:'#ffd23f', r:15, hp:w=>2+Math.floor(w/3),    spd:w=>46+w*7,  pts:4 },   // Splitter: zerfällt in zwei kleine
     { shape:'tri',  color:'#ffd23f', r:6,  hp:1,                       spd:w=>115+w*10,pts:1 },
   ];
-  // Power-ups: Bombe, Herz (+1 Leben), Schild (unverwundbar), Dauerfeuer
-  const PU = { bomb:{c:'#ffb347'}, heart:{c:'#ff4d6d',s:'♥'}, shield:{c:'#4cc9f0',s:'◆'}, rapid:{c:'#ffe066',s:'⚡'} };
+  // Power-ups: Bombe, Herz (+1 Leben), Dauerfeuer
+  const PU = { bomb:{c:'#ffb347'}, heart:{c:'#ff4d6d',s:'♥'}, rapid:{c:'#ffe066',s:'⚡'} };
   const DASH_SPD = 760, DASH_T = .16, DASH_CD = 1.1;
 
   // Mehrfach-Schuss ab Punktzahl, Bomben (Leertaste) räumen den Umkreis frei
@@ -15411,7 +15427,7 @@ function brotato(root, isVisible) {
   const BOMB_R = 230, BOMB_MAX = 3, BOSS_EVERY = 5;
   let W, H, raf, state='idle', score, wave, waveTimer, spawnTimer, spawnInt, iframes;
   let px, py, pvx=0, pvy=0, hp, shots=1, bombs=0, flash=0, msg=null, banner=null, boss=null;
-  let combo=0, comboT=0, shake=0, shieldT=0, rapidT=0, dashT=0, dashCd=0, dashX=0, dashY=0, aimX=1, aimY=0;
+  let combo=0, comboT=0, shake=0, rapidT=0, dashT=0, dashCd=0, dashX=0, dashY=0, aimX=1, aimY=0;
   const keys={}, bullets=[], enemies=[], particles=[], pickups=[], waves=[], ebullets=[], floats=[];
   const mult = () => Math.min(5, 1 + Math.floor(combo / 6));
   let bulletCd=0, best=Store.get('brotato-best',0), lastTime=0;
@@ -15445,7 +15461,7 @@ function brotato(root, isVisible) {
     px=W/2; py=H/2; hp=PLAYER_HP;
     bullets.length=0; enemies.length=0; particles.length=0; pickups.length=0; waves.length=0; ebullets.length=0; floats.length=0;
     shots=1; bombs=1; flash=0; msg=null; boss=null; banner={text:'Welle 1',t:2};
-    combo=0; comboT=0; shake=0; shieldT=0; rapidT=0; dashT=0; dashCd=0; aimX=1; aimY=0;
+    combo=0; comboT=0; shake=0; rapidT=0; dashT=0; dashCd=0; aimX=1; aimY=0;
     syncBtn();
   }
 
@@ -15456,7 +15472,7 @@ function brotato(root, isVisible) {
   function dropPickup(x, y, kind) {
     if (!kind) {
       const r = Math.random();
-      kind = r < .34 ? 'bomb' : r < .6 ? (hp < PLAYER_HP ? 'heart' : 'rapid') : r < .8 ? 'shield' : 'rapid';
+      kind = r < .4 ? 'bomb' : r < .7 ? (hp < PLAYER_HP ? 'heart' : 'rapid') : 'rapid';
     }
     pickups.push({ x, y, t: 11, kind });
   }
@@ -15479,7 +15495,6 @@ function brotato(root, isVisible) {
   function collect(p) {
     if(p.kind==='bomb'){ if(bombs<BOMB_MAX){ bombs++; say('+1 Bombe  (Leertaste)'); } else addScore(wave*5,p.x,p.y); }
     else if(p.kind==='heart'){ if(hp<PLAYER_HP){ hp++; say('+1 Leben'); } else addScore(wave*5,p.x,p.y); }
-    else if(p.kind==='shield'){ shieldT=6; say('Schild!'); }
     else if(p.kind==='rapid'){ rapidT=7; say('Dauerfeuer!'); }
     burst(p.x,p.y,PU[p.kind].c,10);
   }
@@ -15501,7 +15516,6 @@ function brotato(root, isVisible) {
     burst(px,py,'#ffb347',40);
   }
   function hurt() {
-    if(shieldT>0){ iframes=.5; burst(px,py,'#4cc9f0',10); return; }   // Schild fängt den Treffer ab
     hp--; iframes=1.4; shake=.35; combo=0; burst(px,py,'#fff',8);
     if(hp<=0){state='dead';burst(px,py,'#fff',24);if(score>best){best=score;Store.set('brotato-best',best);}}
   }
@@ -15616,7 +15630,6 @@ function brotato(root, isVisible) {
       if(d<PLAYER_R+14){ pickups.splice(i,1); collect(p); }
     }
     if(comboT>0&&(comboT-=dt)<=0) combo=0;
-    if(shieldT>0) shieldT-=dt;
     if(rapidT>0) rapidT-=dt;
     if(shake>0) shake-=dt;
     for(let i=floats.length-1;i>=0;i--){ const f=floats[i]; f.t-=dt; f.y-=38*dt; if(f.t<=0) floats.splice(i,1); }
@@ -15701,7 +15714,7 @@ function brotato(root, isVisible) {
       cx.textAlign='center';
       drawText('BROTATO',W/2,H/2-48,32,'rgba(255,255,255,0.9)','center');
       drawText('WASD: Bewegen  ·  Pfeiltasten: Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause',W/2,H/2-12,15,'rgba(255,255,255,0.5)','center');
-      drawText('Power-ups:  ♥ Leben   ◆ Schild   ⚡ Dauerfeuer   ● Bombe  ·  schnelle Kills = Combo bis ×5',W/2,H/2+96,13,'rgba(255,255,255,0.32)','center');
+      drawText('Power-ups:  ♥ Leben   ⚡ Dauerfeuer   ● Bombe  ·  schnelle Kills = Combo bis ×5',W/2,H/2+96,13,'rgba(255,255,255,0.32)','center');
       drawText('LEERTASTE oder ENTER zum Starten',W/2,H/2+24,18,'#44ffaa','center');
       if(best>0) drawText('Bester Score: '+best,W/2,H/2+58,14,'rgba(255,255,255,0.3)','center');
       cx.textAlign='left'; return;
@@ -15754,10 +15767,6 @@ function brotato(root, isVisible) {
         cx.save(); cx.shadowColor='#4488ff'; cx.shadowBlur=18+Math.sin(Date.now()*0.006)*4;
         cx.fillStyle=rapidT>0?'#7aa8ff':'#4488ff'; cx.fillRect(px-PLAYER_R,py-PLAYER_R,PLAYER_R*2,PLAYER_R*2); cx.restore();
       }
-      if(shieldT>0&&!(shieldT<1.5&&Math.floor(shieldT*8)%2)){   // Schild-Blase (blinkt kurz vorm Ablaufen)
-        cx.save(); cx.strokeStyle='#4cc9f0'; cx.shadowColor='#4cc9f0'; cx.shadowBlur=14; cx.lineWidth=2.5; cx.globalAlpha=.85;
-        cx.beginPath(); cx.arc(px,py,PLAYER_R+9+Math.sin(Date.now()*.01)*1.5,0,Math.PI*2); cx.stroke(); cx.restore();
-      }
     }
     // fliegende Punkte
     for(const f of floats){
@@ -15788,7 +15797,7 @@ function brotato(root, isVisible) {
     cx.fillStyle=dashReady?'#4488ff':'#2c4a80'; cx.fillRect(W/2+70,H-25,46*(dashReady?1:1-dashCd/DASH_CD),8);
     drawText('Dash ⇧',W/2+93,H-30,10,dashReady?'rgba(255,255,255,0.55)':'rgba(255,255,255,0.25)','center');
     let puX=W-14;
-    for(const [t,c,l] of [[rapidT,'#ffe066','⚡ Dauerfeuer'],[shieldT,'#4cc9f0','◆ Schild']]) if(t>0){ drawText(l+' '+Math.ceil(t)+'s',puX,58,13,c,'right'); puX-=130; }
+    for(const [t,c,l] of [[rapidT,'#ffe066','⚡ Dauerfeuer']]) if(t>0){ drawText(l+' '+Math.ceil(t)+'s',puX,58,13,c,'right'); puX-=130; }
     // Boss-Lebensleiste oben
     if(boss){
       const bw2=Math.min(420,W*.5), bx2=W/2-bw2/2, by2=64;

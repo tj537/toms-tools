@@ -18,20 +18,17 @@ Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[�
 ![Kein Tracking](https://img.shields.io/badge/kein-Tracking-64748b)
 ![Deutsch · English kommt](https://img.shields.io/badge/Deutsch-English%20kommt-8b5cf6)
 ![Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-eab308)
-![Gebaut mit Claude Opus](https://img.shields.io/badge/gebaut%20mit-Claude%20Opus-d97757)
+![Gebaut mit Claude Opus 5.5](https://img.shields.io/badge/gebaut%20mit-Claude%20Opus%205.5-d97757)
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** 31 offline tools in one single HTML file – image editing, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
-
-**Inhalt:** [Hi!](#hi) · [Das Besondere](#besonders) · [Die Apps](#apps) · [So wie du's brauchst](#anpassen) · [Loslegen](#loslegen) · [Deine Daten](#daten) · [Datenschutz](#datenschutz) · [Feedback](#feedback) · [Lizenz](#lizenz)
+> 🇬🇧 **English:** 31 offline tools in one single HTML file – image editing, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
 
 ---
 
-<a id="hi"></a>
 ## 👋 Hi!
 
-Ich bin Tom. Auf der Arbeit und im Studium brauche ich ständig kleine Werkzeuge – vor allem rund um Marketing, BWL und Bilder. Also habe ich sie mir selbst gebaut, zusammen mit [Claude Opus](https://claude.ai), und stelle sie hier öffentlich. Vielleicht helfen sie ja auch dir.
+Ich bin Tom. Auf der Arbeit und im Studium brauche ich ständig kleine Werkzeuge – vor allem rund um Marketing, BWL, Bilder, Texte, Daten und Code. Also habe ich sie mir selbst gebaut, zusammen mit [Claude Opus 5.5](https://claude.ai), und stelle sie hier öffentlich. Vielleicht helfen sie ja auch dir.
 
 Toms Tools ist mein erstes größeres Projekt – Feedback ist jederzeit willkommen!
 
@@ -40,7 +37,6 @@ Toms Tools ist mein erstes größeres Projekt – Feedback ist jederzeit willkom
 - 🐛 **Bestimmt sind noch Fehler drin.** Bei Apps, die Dateien umbenennen oder verschieben (Bulk Rename, Sortierwerk), erst mit einer Kopie testen.
 - 💬 **Sag mir, was du denkst.** Ob Bug, Idee oder „das geht besser so“: einfach ein [Issue](../../issues) aufmachen.
 
-<a id="besonders"></a>
 ## ✨ Das Besondere
 
 - **Eine Datei.** Keine Installation, keine Admin-Rechte, kein Konto. Die Datei kann auf einem USB-Stick liegen oder im OneDrive – perfekt für den Arbeits-PC.
@@ -71,7 +67,7 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 <img src="docs/metawerk.png" alt="Metawerk" width="720">
 
-**Wasserzeichenwerk** – Text, Logo oder **KI-Label** auf Bilder setzen – einzeln oder ganz viele auf einmal (ZIP oder Ordner). Das KI-Label kann zusätzlich maschinenlesbar in die Datei geschrieben werden (IPTC), wie es der EU AI Act seit August 2026 verlangt.
+**Wasserzeichenwerk** – Text, Logo oder **KI-Label** auf Bilder setzen – einzeln oder ganz viele auf einmal (ZIP oder Ordner). Das KI-Label kann zusätzlich maschinenlesbar in die Datei geschrieben werden (IPTC) – das hilft bei der Kennzeichnung im Sinne des EU AI Act. Welche Pflichten für dich gelten, hängt davon ab, wie du KI nutzt; keine Rechtsberatung.
 
 <img src="docs/wasserzeichenwerk.png" alt="Wasserzeichenwerk" width="720">
 
@@ -215,7 +211,6 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 </details>
 
-<a id="anpassen"></a>
 ## 🎛️ So wie du's brauchst
 
 Du brauchst nicht alle 31 Apps? Kein Problem:
@@ -224,7 +219,6 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 - **Gruppen einklappen:** Auf der Startseite lassen sich die Gruppen (z. B. „Bilder & Dateien“) mit einem Klick zu- und aufklappen.
 - **Aussehen:** Farbthema, Akzentfarbe, eigenes Hintergrundbild, dein Name in der Begrüßung und ob beim Start die letzte Sitzung wieder aufgeht – alles unter *Einstellungen*.
 
-<a id="loslegen"></a>
 ## 🚀 Loslegen
 
 1. **[`toms-tools.html` herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)** – oder über den Download-Knopf ganz oben.
@@ -235,7 +229,6 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 
 **Browser:** Toms Tools ist für den **Desktop** gemacht – am besten **Chrome, Edge, Brave oder Opera**. Auf Handy und Tablet ist die Darstellung nicht überall geprüft. Firefox und Safari gehen für die meisten Apps auch – nur die Funktionen mit direktem Ordnerzugriff (Bulk Rename, Sortierwerk, Ordner-Sicherung) und die Pipette brauchen einen Chromium-Browser.
 
-<a id="daten"></a>
 ## 💾 Deine Daten & Speichern (Local Storage)
 
 - **Alles speichert sich automatisch** – sobald du tippst, klickst oder eine Karteikarte beantwortest. Einen Speichern-Knopf gibt es nicht, und du brauchst ihn auch nicht.
@@ -246,7 +239,6 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 - **Speicherplatz:** Der Browser gibt Toms Tools rund 5 MB. Wie viel jede App davon belegt, siehst du ebenfalls unter *Speicher & Sicherung*.
 - ⚠️ Wer die Browserdaten löscht, löscht auch die Toms-Tools-Daten. Also: Ordner-Sicherung einschalten.
 
-<a id="datenschutz"></a>
 ## 🔒 Datenschutz & Sicherheit
 
 - Die Seite bringt eine strenge **Content-Security-Policy** mit (`default-src 'none'`, Verbindungen nur zu `data:`/`blob:`). Der Browser verhindert damit jede Verbindung ins Internet – auch versehentliche.
@@ -260,12 +252,10 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 - Etwa 3,5 MB groß, davon rund 2 MB für die eingebetteten PDF-Bibliotheken (werden erst beim Öffnen von PDF-Werk geladen).
 - **WebGL2** für Shaderwerk und LUT-Werk, **File System Access API** für die Ordner-Funktionen.
 
-<a id="feedback"></a>
 ## 💬 Feedback
 
 Fehler gefunden, eine Idee für ein neues Werkzeug oder Kritik am Code? Einfach ein [Issue](../../issues) aufmachen. Ich freue mich über jede Rückmeldung, auch über ehrliche.
 
-<a id="lizenz"></a>
 ## 📄 Lizenz
 
 Toms Tools steht unter der **[MIT-Lizenz](LICENSE)** – du darfst es frei nutzen, verändern und weitergeben, solange der Lizenzhinweis erhalten bleibt.

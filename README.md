@@ -1,27 +1,27 @@
 # 🧰 Toms Tools
 
-**26 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
+**27 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
 
-Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Farbpaletten bauen, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen und Pro-&-Contra-Listen ausfüllen, Prozente, Zinsen und Kennzahlen rechnen – alles im Browser, alles auf deinem Rechner.
+Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Kennzahlen rechnen, Quellen zitieren – alles im Browser, alles auf deinem Rechner.
 
-![Version](https://img.shields.io/badge/version-1.3.2-7c6cff)
+![Version](https://img.shields.io/badge/version-1.4.0-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
 ![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
 ![Offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
 ![Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-eab308)
-![Gebaut mit Claude](https://img.shields.io/badge/gebaut%20mit-Claude-d97757)
+![Gebaut mit Claude Opus](https://img.shields.io/badge/gebaut%20mit-Claude%20Opus-d97757)
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** A collection of 26 offline tools (image editing, PDF merging, photo sorting, color palettes, shader art, invoices, business models, pros & cons, percentage and KPI calculators …) packed into one single HTML file. No install, no account, no network access – everything runs locally in your browser. Built by a beginner together with Claude and designed with a lot of love – work in progress, feedback welcome! The interface is German; an English mode for the home page is built in (Settings → Start → Language), more is coming.
+> 🇬🇧 **English:** A collection of 27 offline tools (image editing, PDF merging, photo sorting, color palettes, shader art, invoices, business models, pros & cons, percentage and KPI calculators, a source manager …) packed into one single HTML file. No install, no account, no network access – everything runs locally in your browser. Built by a beginner with Claude Opus – work in progress, feedback welcome! The interface is German; an English mode for the home page is built in (Settings → Start → Language), more is coming.
 
 ---
 
 ## 👋 Kurz vorweg
 
-Ich bin kein Entwickler, sondern **Neuling**. Gebaut habe ich Toms Tools zusammen mit [Claude](https://claude.ai), der KI von Anthropic: Ich habe beschrieben, was ich brauche, getestet, nachgebessert und entschieden, was reinkommt. Die Ideen und das Design kommen von mir, und in jeder App steckt **viel Liebe zum Detail** – bei Farben, Icons, Abständen und den kleinen Animationen.
+Ich bin **Anfänger** und habe Toms Tools mit [Claude Opus](https://claude.ai) gebaut, der KI von Anthropic. Ideen und Design kommen von mir – mit viel Liebe zum Detail. Feedback ist jederzeit willkommen!
 
-Angefangen hat es mit ein paar Helfern für meinen eigenen Alltag. Daraus sind nach und nach 26 Werkzeuge geworden, die ich selbst ständig nutze. Weil sie mir so viel bringen, stelle ich sie hier online. Vielleicht helfen sie ja auch dir.
+Angefangen hat es mit ein paar Helfern für meinen eigenen Alltag. Daraus sind nach und nach 27 Werkzeuge geworden, die ich selbst ständig nutze. Weil sie mir so viel bringen, stelle ich sie hier online. Vielleicht helfen sie ja auch dir.
 
 Was du wissen solltest:
 
@@ -80,8 +80,9 @@ Was du wissen solltest:
 ### 📊 Business & Lernen
 | App | Was sie macht |
 |---|---|
-| **Modellwerk** | 15 Modelle und Denkwerkzeuge mit Leitfragen: SWOT, PESTEL, Five Forces, Business Model Canvas, Ansoff, Stakeholder-Analyse, Marketing-Mix, Persona, Empathy Map, Customer Journey, Positionierungskarte – und für alles andere Pro & Contra, Eisenhower-Matrix, SMART-Ziel und Retrospektive. Export als Text, PNG oder PDF |
-| **Kennzahlwerk** | 16 Rechner mit Formel und Rechenweg – für den Alltag (Prozente, Netto/Brutto, Dreisatz, Zinseszins, Notendurchschnitt) und fürs Business (ROAS, ROI, CAC, CLV, NPS, Churn, Break-even, Preiselastizität, Handelsspanne, Rabatt & Skonto, Marktanteil) |
+| **Modellwerk** | 15 Vorlagen mit Leitfragen – von SWOT, Business Model Canvas und Persona bis Pro & Contra, Eisenhower-Matrix und SMART-Ziel. Export als Text, PNG oder PDF |
+| **Kennzahlwerk** | 17 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse und mehr |
+| **Quellenwerk** | Bücher, Artikel und Links mit Notizen und Zitaten sammeln – Beleg mit „vgl.“ und Literaturverzeichnis per Klick kopieren (deutsch oder APA 7) |
 
 ### 🎲 Spaß & Musik
 | App | Was sie macht |
@@ -113,7 +114,7 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer** und **Taschenrec
 - Die Seite bringt eine strenge **Content-Security-Policy** mit (`default-src 'none'`, Verbindungen nur zu `data:`/`blob:`). Der Browser verhindert damit jede Verbindung ins Internet – auch versehentliche.
 - Es gibt **keine Analyse, keine Cookies von Dritten, keine externen Schriften oder Skripte**.
 - Passwörter, Hashes und JWTs aus Textwerk/Codewerk werden **nie gespeichert**.
-- Einziger Link nach draußen: der freiwillige Kaffee-Knopf in den Einstellungen – er öffnet PayPal in einem neuen Tab.
+- Links nach draußen öffnen sich nur, wenn du sie anklickst – jeweils in einem neuen Tab: der freiwillige Kaffee-Knopf in den Einstellungen (PayPal) und die Links, die du selbst im Quellenwerk speicherst.
 
 ## ⌨️ Tastenkürzel
 

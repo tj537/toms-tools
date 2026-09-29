@@ -2789,6 +2789,77 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 .kz-f{font:11.5px/1.55 var(--mono);color:var(--tx2);background:color-mix(in oklab,var(--acc) 7%,transparent);border-left:2px solid var(--acc);border-radius:0 8px 8px 0;padding:7px 10px}
 @media(max-width:520px){.kz-ins{grid-template-columns:1fr}}
 
+/* ── Kennzahlwerk: Nutzwertanalyse ── */
+.kz-wide{grid-column:1/-1}
+.nwa-bar-top{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap}
+.nwa-add{display:flex;gap:6px;margin-left:auto}
+.nwa-wrap{overflow-x:auto;padding-bottom:2px}
+.nwa-t{display:grid;gap:6px;align-items:center;min-width:560px}
+.nwa-h{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tx3)}
+.nwa-t .inp{height:32px}
+.nwa-sc{text-align:center;font-variant-numeric:tabular-nums}
+.nwa-on{font-weight:600}
+.nwa-oh{display:flex;align-items:center;gap:2px;min-width:0}
+.nwa-sum{font:650 13px var(--mono);text-align:center;color:var(--ok)}
+.nwa-sum.off{color:var(--warn)}
+.nwa-bar{grid-column:1/-1;height:6px;border-radius:4px;background:var(--s3);overflow:hidden;margin:3px 0 1px}
+.nwa-bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--app-c,var(--acc)),var(--app-c2,var(--acc2)));transition:width .25s}
+
+/* ── Quellenwerk ── */
+.qlw{height:100%;display:grid;grid-template-columns:270px minmax(0,1fr);min-height:0}
+.qlw [hidden]{display:none!important}
+.qlw-side{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;background:color-mix(in oklab,var(--bg2) 55%,transparent)}
+.qlw-hd{display:flex;align-items:center;gap:10px;padding:16px 14px 10px;font-size:15px}
+.qlw-logo{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--app-c,var(--acc)),var(--app-c2,var(--acc2)));box-shadow:0 8px 20px -10px var(--app-c,var(--acc)),inset 0 1px 0 rgba(255,255,255,.25);flex:none}
+.qlw-logo svg{width:17px;height:17px}
+.qlw-logo.big{width:60px;height:60px;border-radius:18px}
+.qlw-logo.big svg{width:30px;height:30px}
+.qlw-tools{padding:2px 12px 8px;display:flex;flex-direction:column;gap:6px}
+.qlw-list{flex:1;overflow:auto;padding:2px 8px 10px;display:flex;flex-direction:column;gap:2px}
+.qlw-it{padding:7px 10px;border-radius:10px;cursor:pointer;color:var(--tx2);transition:background .15s,color .15s;min-width:0}
+.qlw-it:hover{background:var(--s1);color:var(--tx)}
+.qlw-it.on{background:var(--s2);color:var(--tx)}
+.qlw-it-a{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qlw-it-t{font-size:11.5px;color:var(--tx3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qlw-empty{font-size:12.5px;color:var(--tx3);padding:10px 8px;line-height:1.5}
+.qlw-foot{border-top:1px solid var(--line);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.qlw-count{font-size:11.5px;color:var(--tx3);text-align:center}
+.qlw-main{overflow:auto;min-width:0;padding:22px 24px 48px}
+.qlw-in{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:16px;align-items:start}
+.qlw-col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.qlw-sticky{position:sticky;top:0}
+.qlw-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.qlw-ta{width:100%;min-height:150px;resize:vertical;font:13px/1.55 var(--font);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;color:var(--tx);outline:none;transition:border-color .15s,box-shadow .15s}
+.qlw-ta:focus{border-color:color-mix(in oklab,var(--acc) 70%,transparent);box-shadow:0 0 0 3px var(--acc-soft)}
+.qlw-ta::placeholder{color:var(--tx3)}
+.qlw-ta.sm{min-height:64px}
+.qlw-url{display:flex;gap:6px;align-items:center}
+.qlw-url .btn{flex:none;text-decoration:none}
+.qlw-quotes{display:flex;flex-direction:column;gap:8px}
+.qlw-quotes>.btn{align-self:flex-start}
+.qlw-q{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:12px;background:color-mix(in oklab,var(--bg2) 70%,transparent);border:1px solid var(--line)}
+.qlw-q-acts{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.qlw-del{margin-left:auto}
+.qlw-pg{width:84px;flex:none;height:30px}
+.qlw-lbl{display:flex;align-items:center;gap:10px;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--tx3)}
+.qlw-pgrow{margin-top:4px}
+.qlw-entry{font:13px/1.6 var(--font);color:var(--tx);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;overflow-wrap:anywhere}
+.qlw-entry+.btn{align-self:flex-start}
+.qlw-c{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1px 8px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:6px 6px 7px 12px}
+.qlw-c small{grid-column:1/-1;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tx3)}
+.qlw-c code{font:12.5px/1.45 var(--mono);color:var(--acc-tx);overflow-wrap:anywhere}
+.qlw-welcome{max-width:560px;margin:10vh auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.qlw-welcome h2{font-size:22px;font-weight:700}
+.qlw-welcome p{color:var(--tx2);line-height:1.55}
+.qlw-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+@media(max-width:1050px){.qlw-in{grid-template-columns:1fr}.qlw-sticky{position:static}}
+@media(max-width:800px){
+  .qlw{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .qlw-side{max-height:260px;border-right:0;border-bottom:1px solid var(--line)}
+  .qlw-fields{grid-template-columns:1fr 1fr}
+  .qlw-fields>*{grid-column:auto!important}
+}
+
 </style>
 </head>
 <body>
@@ -2892,7 +2963,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 <script>
 (() => {
 'use strict';
-const VERSION = '1.3.2';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
+const VERSION = '1.4.0';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
 // Set a date for testing, e.g. '2026-12-24' (time of day stays real) – null = real date (live)
 const TEST_DATE = null;
 function appNow() {
@@ -3015,6 +3086,7 @@ const ICONS = {
   kennzahlwerk: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M15 8h4v4"/>',   // rising chart
   percent: '<path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
   cap: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c3 2.5 9 2.5 12 0v-4.5"/><path d="M22 9v5"/>',   // graduation cap
+  quellenwerk: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9.5 2v7.5l2-1.5 2 1.5V2"/>',   // book with bookmark
   briefcase: '<rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/><path d="M11 13h2v2h-2z"/>',   // business
   bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
   timerdigi: '<path d="M9 2h6"/><rect x="2" y="5" width="20" height="15" rx="3"/><path d="M6.5 10l1.5-1v7"/><path d="M11 10.2a1.8 1.8 0 0 1 3.4.8c0 1.8-3.4 3-3.4 5h3.6"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="17.5" cy="14.5" r=".5"/>',
@@ -3417,7 +3489,9 @@ const EN = {
   'SWOT, Pro & Contra, Canvas & Co.': 'SWOT, pros & cons, canvas & more',
   'Modelle und Denkwerkzeuge ausfüllen – von SWOT und Persona bis Pro & Contra und Eisenhower. Als Text, PNG oder PDF.': 'Fill in models and thinking tools – from SWOT and persona to pros & cons and Eisenhower. As text, PNG or PDF.',
   'Prozente, Zinsen, ROI & Co.': 'Percentages, interest, ROI & more',
-  'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und CLV, mit Rechenweg.': 'Calculators for everyday life, studies and business – from percentages and VAT to break-even and CLV, with working.',
+  'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und Nutzwertanalyse, mit Rechenweg.': 'Calculators for everyday life, studies and business – from percentages and VAT to break-even and weighted scoring, with working.',
+  'Quellen sammeln · richtig zitieren': 'Collect sources · cite correctly',
+  'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.': 'Save books, articles and links with notes and quotes – copy the citation with one click.',
 };
 
 /* Background colors by time of day (hour → three glow colors), softly blended in between */
@@ -4161,7 +4235,7 @@ const APP_GROUPS = [
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
   { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
-  { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk'] },
+  { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk', 'quellenwerk'] },
   { id: 'fun', name: 'Spaß & Musik', icon: 'sparkle', apps: ['entscheidung', 'spielwiese', 'beatwerk'] },
 ];
 const APP_ORDER = APP_GROUPS.flatMap(g => g.apps);
@@ -14811,6 +14885,7 @@ function kzDefs({ eur, pct, nf, div }) {
           { l: 'ECTS gesamt', v: nf(w) },
         ];
       } },
+    { id: 'nwa', topic: 'allg', custom: true },   // Nutzwertanalyse – own card, see nwaCard()
     { id: 'funnel', topic: 'online', icon: 'zap', title: 'Kampagne & Funnel', sub: 'CTR, CPC, CPM, CR, CPA, ROAS',
       in: [['cost', 'Werbekosten', '€', '2000'], ['imp', 'Impressionen', '', '250000'], ['clk', 'Klicks', '', '5000'], ['conv', 'Conversions (Käufe)', '', '150'], ['rev', 'Umsatz', '€', '9000']],
       f: 'CTR = Klicks ÷ Impressionen · CR = Conversions ÷ Klicks · ROAS = Umsatz ÷ Werbekosten',
@@ -14983,7 +15058,89 @@ function mountKennzahlwerk(view) {
     if (done) flash(); else navigator.clipboard?.writeText(txt).then(flash, () => toast('Kopieren hat nicht geklappt.', 'err'));
   }
 
+  /* ---------- Nutzwertanalyse (own card: options × weighted criteria) ---------- */
+  function nwaCard() {
+    const EX = { scale: 10,
+      crit: [{ id: 'k1', n: 'Gehalt', w: '20' }, { id: 'k2', n: 'Lerneffekt', w: '35' }, { id: 'k3', n: 'Entfernung', w: '15' }, { id: 'k4', n: 'Übernahmechance', w: '30' }],
+      opts: [{ id: 'o1', n: 'Agentur' }, { id: 'o2', n: 'Konzern' }, { id: 'o3', n: 'Start-up' }],
+      s: { o1: { k1: '6', k2: '8', k3: '9', k4: '5' }, o2: { k1: '9', k2: '7', k3: '5', k4: '8' }, o3: { k1: '4', k2: '9', k3: '7', k4: '6' } } };
+    if (!st.nwa?.crit?.length || !st.nwa?.opts?.length) st.nwa = structuredClone(EX);
+    let N = st.nwa;
+    const val = s => { const n = num(s ?? ''); return Number.isNaN(n) ? 0 : n; };
+    const table = h('div', { class: 'nwa-wrap' }), res = h('div', { class: 'kz-outs' }), stat = h('div', { class: 'cw-status' });
+    const sumEl = h('strong', { class: 'nwa-sum' });
+    let ranked = [];
+    const iconBtn = (ico, title, fn) => h('button', { class: 'cw-copy', title, onclick: fn }, icon(ico));
+
+    function renderTable() {
+      const cols = `minmax(150px,1.6fr) 84px repeat(${N.opts.length},minmax(92px,1fr)) 30px`;
+      const cells = [h('span', { class: 'nwa-h' }, 'Kriterium'), h('span', { class: 'nwa-h' }, 'Gewicht %')];
+      for (const o of N.opts) {
+        const inp = h('input', { class: 'inp nwa-on', value: o.n, placeholder: 'Option', spellcheck: false, oninput: () => { o.n = inp.value; persist(); calc(); } });
+        cells.push(h('div', { class: 'nwa-oh' }, inp, N.opts.length > 2 && iconBtn('x', 'Option entfernen', () => { N.opts = N.opts.filter(x => x !== o); delete N.s[o.id]; persist(); renderTable(); calc(); })));
+      }
+      cells.push(h('span'));
+      for (const c of N.crit) {
+        const name = h('input', { class: 'inp', value: c.n, placeholder: 'Kriterium', spellcheck: false, oninput: () => { c.n = name.value; persist(); calc(); } });
+        const w = h('input', { class: 'inp nwa-sc', value: c.w, inputMode: 'decimal', oninput: () => { c.w = w.value; persist(); calc(); } });
+        cells.push(name, w);
+        for (const o of N.opts) {
+          const sc = h('input', { class: 'inp nwa-sc', value: N.s[o.id]?.[c.id] ?? '', inputMode: 'decimal', placeholder: '–', dataset: { nwa: '1' },
+            oninput: () => { (N.s[o.id] ||= {})[c.id] = sc.value; persist(); calc(); } });
+          cells.push(sc);
+        }
+        cells.push(N.crit.length > 1 ? iconBtn('x', 'Kriterium entfernen', () => { N.crit = N.crit.filter(x => x !== c); persist(); renderTable(); calc(); }) : h('span'));
+      }
+      cells.push(h('span', { class: 'nwa-h' }, 'Summe'), sumEl);
+      table.replaceChildren(h('div', { class: 'nwa-t', style: { gridTemplateColumns: cols } }, ...cells));
+    }
+
+    function calc() {
+      const ws = N.crit.map(c => val(c.w)), wsum = ws.reduce((a, b) => a + b, 0);
+      sumEl.textContent = nf(wsum) + ' %';
+      sumEl.classList.toggle('off', Math.abs(wsum - 100) > .01);
+      // scores outside the scale get a red border
+      table.querySelectorAll('[data-nwa]').forEach(i => { const v = num(i.value); i.classList.toggle('err', i.value.trim() !== '' && (Number.isNaN(v) || v < 0 || v > N.scale)); });
+      ranked = N.opts.map(o => {
+        let tot = 0; const parts = [];
+        N.crit.forEach((c, i) => { const w = wsum ? ws[i] / wsum : 0, s = val(N.s[o.id]?.[c.id]); tot += w * s; parts.push(`${nf(s)} × ${nf(w * 100, 1)} %`); });
+        return { o, tot, parts };
+      }).sort((a, b) => b.tot - a.tot);
+      res.replaceChildren(...ranked.map((r, i) => h('div', { class: 'kz-o nwa-r' + (i === 0 && r.tot > 0 ? ' main ok' : '') },
+        h('b', null, `${i + 1}. ${r.o.n || 'Option'}`), h('strong', null, wsum ? nf(r.tot) : '–'),
+        h('div', { class: 'nwa-bar' }, h('i', { style: { width: Math.max(0, Math.min(100, r.tot / N.scale * 100)) + '%' } })),
+        h('div', { class: 'kz-w' }, '= ' + r.parts.join(' + ')))));
+      const close = ranked.length > 1 && ranked[0].tot > 0 && ranked[0].tot - ranked[1].tot < N.scale * .03;
+      const [k, t] = !wsum ? ['err', 'Mindestens ein Kriterium braucht ein Gewicht.']
+        : Math.abs(wsum - 100) > .01 ? ['', `Die Gewichte ergeben ${nf(wsum)} % – sie werden automatisch auf 100 % umgerechnet.`]
+        : close ? ['', 'Sehr knappes Ergebnis – lohnt sich, die Gewichte noch einmal kritisch anzuschauen.'] : ['ok', 'Gewichte ergeben 100 %.'];
+      stat.className = 'cw-status' + (k ? ' ' + k : ''); stat.replaceChildren(...(k === 'ok' ? [icon('check')] : k === 'err' ? [icon('alert')] : []), t);
+    }
+
+    const set = next => { N = st.nwa = next; persist(); renderTable(); calc(); };
+    const cb = h('button', { class: 'cw-copy', title: 'Ergebnis als Text kopieren', onclick: () => copy(['Nutzwertanalyse',
+      'Kriterien: ' + N.crit.map(c => `${c.n || 'Kriterium'} (${nf(val(c.w))} %)`).join(', '), `Skala: 1–${N.scale}`, '',
+      ...ranked.map((r, i) => `${i + 1}. ${r.o.n || 'Option'}: ${nf(r.tot)}  (= ${r.parts.join(' + ')})`)].join('\n'), cb) }, icon('copy'));
+    const el = h('section', { class: 'cw-card kz-wide', dataset: { topic: 'allg' } },
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('sliders')),
+        h('div', { class: 'kz-tt' }, h('h3', null, 'Nutzwertanalyse'), h('small', { class: 'kz-sub' }, 'Optionen nach gewichteten Kriterien vergleichen – z. B. Praktikum, Lieferant, Standort')),
+        h('div', { class: 'cw-acts' },
+          h('button', { class: 'btn sm ghost', title: 'Leere Tabelle', onclick: () => set({ scale: N.scale, crit: [{ id: uid(), n: '', w: '' }, { id: uid(), n: '', w: '' }], opts: [{ id: uid(), n: '' }, { id: uid(), n: '' }], s: {} }) }, icon('eraser')),
+          h('button', { class: 'btn sm ghost', title: 'Beispiel einsetzen', onclick: () => set(structuredClone(EX)) }, icon('undo')), cb)),
+      h('div', { class: 'nwa-bar-top' },
+        h('span', { class: 'kz-sub' }, 'Punkteskala'), segEl([[5, '1–5'], [10, '1–10']], N.scale, v => { N.scale = v; persist(); calc(); }),
+        h('div', { class: 'nwa-add' },
+          h('button', { class: 'btn sm', onclick: () => { if (N.crit.length >= 12) return toast('Maximal 12 Kriterien.', 'info'); N.crit.push({ id: uid(), n: '', w: '' }); persist(); renderTable(); calc(); table.querySelectorAll('.nwa-t > .inp:not(.nwa-sc)')[N.crit.length - 1]?.focus(); } }, icon('plus'), 'Kriterium'),
+          h('button', { class: 'btn sm', onclick: () => { if (N.opts.length >= 6) return toast('Maximal 6 Optionen.', 'info'); N.opts.push({ id: uid(), n: '' }); persist(); renderTable(); calc(); table.querySelectorAll('.nwa-on')[N.opts.length - 1]?.focus(); } }, icon('plus'), 'Option'))),
+      table, stat, res,
+      h('div', { class: 'kz-f' }, 'Nutzwert = Σ (Gewicht × Punkte) · alle Gewichte zusammen = 100 %'),
+      h('div', { class: 'cw-note' }, 'Tipp: Erst Kriterien und Gewichte festlegen, dann bewerten – sonst rechnet man sich das Wunschergebnis schön. Punkte: hoch = gut, auch bei Kosten oder Entfernung (günstig = viele Punkte).'));
+    renderTable(); calc();
+    return el;
+  }
+
   const cards = defs.map(d => {
+    if (d.custom) return nwaCard();
     const vals = st.v[d.id] ||= {};
     const outs = h('div', { class: 'kz-outs' });
     let rows = [];
@@ -15036,8 +15193,242 @@ function mountKennzahlwerk(view) {
 TT.register({
   id: 'kennzahlwerk', name: 'Kennzahlwerk', icon: 'kennzahlwerk', c: '#84cc16', c2: '#15803d',   // lime → forest (no other app uses it)
   tagline: 'Prozente, Zinsen, ROI & Co.',
-  desc: 'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und CLV, mit Rechenweg.',
+  desc: 'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und Nutzwertanalyse, mit Rechenweg.',
   mount: mountKennzahlwerk,
+});
+
+/* ================= Quellenwerk (sources, notes and ready-to-copy citations) ================= */
+const QW_TYPES = [['buch', 'Buch'], ['sammel', 'Sammelband'], ['artikel', 'Zeitschrift'], ['web', 'Internet']];
+function mountQuellenwerk(view) {
+  view.style.padding = '0';
+  const saved = Store.get('quellenwerk', {});
+  const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null, style: saved.style === 'apa' ? 'apa' : 'de', project: saved.project || '', q: '' };
+  const persist = debounce(() => { const { q, ...r } = st; Store.set('quellenwerk', r); }, 300);
+  const cur = () => st.items.find(x => x.id === st.active);
+  const fmtD = s => { if (!s) return ''; const [y, m, d] = s.split('-'); return `${d}.${m}.${y}`; };
+  const apa = () => st.style === 'apa';
+  let refresh = () => {};   // set by the editor: updates the citation panel without re-rendering the form
+  const touch = it => { it.updated = Date.now(); persist(); listSoon(); refresh(); };
+
+  // Copy plain text + (optionally) HTML with italics, so Word keeps the formatting
+  function copy(text, html) {
+    let ok = false;
+    const onCopy = e => { e.preventDefault(); e.clipboardData.setData('text/plain', text); if (html) e.clipboardData.setData('text/html', html); ok = true; };
+    document.addEventListener('copy', onCopy);
+    try { document.execCommand('copy'); } catch {}
+    document.removeEventListener('copy', onCopy);
+    const msg = 'Kopiert: ' + (text.length > 70 ? text.slice(0, 70) + ' …' : text);
+    if (ok) toast(msg, 'ok'); else navigator.clipboard?.writeText(text).then(() => toast(msg, 'ok'), () => toast('Kopieren hat nicht geklappt.', 'err'));
+  }
+
+  /* ---------- Citation rules ---------- */
+  // "Nachname, Vorname; Nachname, Vorname" – without a comma the whole entry counts as one name (e.g. an institution)
+  const people = s => String(s || '').split(/\s*[;&]\s*/).map(x => x.trim()).filter(Boolean).map(x => {
+    const i = x.indexOf(',');
+    return i < 0 ? { last: x, first: '' } : { last: x.slice(0, i).trim(), first: x.slice(i + 1).trim() };
+  });
+  const ini = f => f.split(/\s+/).filter(Boolean).map(w => w.split('-').map(p => p ? p[0].toUpperCase() + '.' : '').join('-')).join(' ');
+  const year = it => (it.year || '').trim() || 'o. J.';
+  const pg = p => String(p || '').trim().replace(/\s*-\s*/g, '–');
+  function shortNames(it) {
+    const ps = people(it.authors);
+    if (!ps.length) return (it.pub || '').trim() || 'o. V.';
+    if (ps.length === 1) return ps[0].last;
+    if (ps.length === 2) return ps[0].last + (apa() ? ' & ' : '/') + ps[1].last;
+    return ps[0].last + ' et al.';
+  }
+  function cite(it, p, kind) {
+    const pp = pg(p), n = shortNames(it), y = year(it), page = pp ? `, S. ${pp}` : '';
+    if (apa()) return kind === 'fn' ? `${n} (${y}${page})` : `(${n}, ${y}${page})`;
+    return kind === 'vgl' ? `(vgl. ${n} ${y}${page})` : kind === 'fn' ? `Vgl. ${n} ${y}${page}.`.replace(/\.\.$/, '.') : `(${n} ${y}${page})`;
+  }
+  const fullNames = ps => {
+    const f = ps.map(p => p.first ? `${p.last}, ${ini(p.first)}` : p.last);
+    if (!apa()) return f.join('/');
+    return f.length < 2 ? f.join('') : f.slice(0, -1).join(', ') + ', & ' + f[f.length - 1];
+  };
+  const editorNames = s => {
+    const ps = people(s);
+    if (!apa()) return fullNames(ps);
+    const f = ps.map(p => (p.first ? ini(p.first) + ' ' : '') + p.last);
+    return f.length < 3 ? f.join(' & ') : f.slice(0, -1).join(', ') + ', & ' + f[f.length - 1];
+  };
+  const edition = e => { e = String(e || '').trim(); return !e ? '' : /^\d+$/.test(e) ? e + '. Aufl.' : /aufl/i.test(e) ? e : e + ' Aufl.'; };
+  // Bibliography entry as pieces [text, italic]
+  function entry(it) {
+    const out = [], T = s => out.push([s, false]), I = s => out.push([s, true]);
+    const ps = people(it.authors), who = ps.length ? fullNames(ps) : ((it.pub || '').trim() || 'o. V.');
+    const t = (it.title || '').trim() || 'Ohne Titel', ed = edition(it.ed), pp = pg(it.pages);
+    const place = [it.place, it.pub].map(x => (x || '').trim()).filter(Boolean).join(': ');
+    if (apa()) {
+      T(`${who} (${year(it)}). `);
+      if (it.type === 'sammel') { T(`${t}. In `); if (it.editors) T(editorNames(it.editors) + ' (Hrsg.), '); I(it.book || 'Sammelband'); T(`${pp ? ` (S. ${pp})` : ''}.${it.pub ? ` ${it.pub}.` : ''}`); }
+      else if (it.type === 'artikel') { T(`${t}. `); I(it.journal || 'Zeitschrift'); if (it.vol) { T(', '); I(it.vol); } T(`${it.issue ? `(${it.issue})` : ''}${pp ? `, ${pp}` : ''}.${it.url ? ' ' + it.url : ''}`); }
+      else if (it.type === 'web') { I(t); T(`. ${ps.length && it.pub ? it.pub + '. ' : ''}${it.acc ? `Abgerufen am ${fmtD(it.acc)}, von ` : ''}${it.url || ''}`); }
+      else { I(t); T(`${ed ? ` (${ed})` : ''}.${it.pub ? ` ${it.pub}.` : ''}`); }
+    } else {
+      T(`${who} (${year(it)}): ${t}`);
+      if (it.type === 'sammel') T(`. In: ${it.editors ? editorNames(it.editors) + ' (Hrsg.): ' : ''}${it.book || 'Sammelband'}${place ? ', ' + place : ''}${pp ? `, S. ${pp}` : ''}.`);
+      else if (it.type === 'artikel') T(`. In: ${it.journal || 'Zeitschrift'}${it.vol ? `, ${it.vol}` : ''}${it.issue ? ` (${it.issue})` : ''}${pp ? `, S. ${pp}` : ''}.`);
+      else if (it.type === 'web') T(`.${ps.length && it.pub ? ` ${it.pub}.` : ''} Online unter: ${it.url || '–'}${it.acc ? ` (Zugriff am ${fmtD(it.acc)})` : ''}.`);
+      else { const rest = [ed, place].filter(Boolean).join(', '); T(rest ? `. ${rest}.` : '.'); }
+    }
+    return out;
+  }
+  const tidy = s => s.replace(/([.?!])\.(?=\s|$|<)/g, '$1').replace(/[ \t]{2,}/g, ' ').trim();
+  const asText = pcs => tidy(pcs.map(p => p[0]).join(''));
+  const asHtml = pcs => tidy(pcs.map(([s, i]) => i ? `<i>${esc(s)}</i>` : esc(s)).join(''));
+
+  /* ---------- Sidebar ---------- */
+  const search = h('input', { class: 'inp', placeholder: 'Suchen …', spellcheck: false, oninput: () => { st.q = search.value.trim().toLowerCase(); renderList(); } });
+  const projSel = h('select', { class: 'inp', title: 'Nach Projekt filtern', onchange: () => { st.project = projSel.value; persist(); renderList(); } });
+  const list = h('div', { class: 'qlw-list' }), countEl = h('div', { class: 'qlw-count' });
+  const projects = () => [...new Set(st.items.map(x => (x.project || '').trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'de'));
+  const sortKey = it => ((people(it.authors)[0]?.last || it.pub || it.title || '') + ' ' + (it.year || '')).toLowerCase();
+  const visible = () => st.items.filter(x => (!st.project || (x.project || '').trim() === st.project)
+    && (!st.q || [x.authors, x.title, x.notes, x.project, x.year, x.book, x.journal, x.pub, ...(x.quotes || []).map(q => q.t)].join(' ').toLowerCase().includes(st.q)))
+    .sort((a, b) => sortKey(a).localeCompare(sortKey(b), 'de'));
+  function renderList() {
+    const ps = projects();
+    if (st.project && !ps.includes(st.project)) st.project = '';
+    projSel.replaceChildren(h('option', { value: '' }, 'Alle Projekte'), ...ps.map(p => h('option', { value: p }, p)));
+    projSel.value = st.project; projSel.hidden = !ps.length;
+    const items = visible();
+    list.replaceChildren(...items.map(it => h('div', { class: 'qlw-it' + (it.id === st.active ? ' on' : ''), onclick: () => { st.active = it.id; persist(); render(); } },
+      h('div', { class: 'qlw-it-a' }, `${shortNames(it)} ${year(it)}`),
+      h('div', { class: 'qlw-it-t' }, it.title || 'Ohne Titel'))));
+    if (!items.length) list.append(h('div', { class: 'qlw-empty' }, st.items.length ? 'Nichts gefunden.' : 'Noch keine Quellen.'));
+    countEl.textContent = items.length === 1 ? '1 Quelle' : `${items.length} Quellen`;
+  }
+  const listSoon = debounce(renderList, 250);
+  function copyBibliography() {
+    const items = visible();
+    if (!items.length) return toast('Keine Quellen in der Liste.', 'info');
+    copy(items.map(it => asText(entry(it))).join('\n'), items.map(it => `<p>${asHtml(entry(it))}</p>`).join(''));
+  }
+
+  /* ---------- Items ---------- */
+  function create(data) {
+    const it = { id: uid(), type: 'buch', authors: '', year: '', title: '', project: st.project || '', notes: '', quotes: [], created: Date.now(), updated: Date.now(), ...data };
+    st.items.push(it); st.active = it.id; st.q = ''; search.value = ''; persist(); render();
+    if (!data) setTimeout(() => main.querySelector('.qlw-fields input')?.focus(), 30);
+  }
+  function remove(it) {
+    const i = st.items.indexOf(it);
+    st.items.splice(i, 1); st.active = null; persist(); render();
+    toast(`„${it.title || 'Quelle'}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.items.splice(i, 0, it); st.active = it.id; persist(); render(); } } });
+  }
+  const EXAMPLE = { type: 'buch', authors: 'Muster, Max; Beispiel, Erika', year: '2024', title: 'Grundlagen des Marketings', ed: '3', pub: 'Beispielverlag', place: 'Musterstadt', project: 'Beispiel',
+    notes: 'So kannst du hier festhalten, worum es in der Quelle geht:\n– Kapitel 2: Marktsegmentierung\n– Kapitel 5: Marketing-Mix\nEigene Gedanken: gut für die Einleitung der Hausarbeit.',
+    quotes: [{ id: uid(), t: 'Hier steht ein wörtliches Zitat aus der Quelle.', p: '45' }, { id: uid(), t: 'Oder eine Kernaussage in eigenen Worten.', p: '112–114' }] };
+
+  /* ---------- Editor ---------- */
+  function field(it, label, key, o = {}) {
+    const inp = h(o.area ? 'textarea' : 'input', { class: o.area ? 'qlw-ta' : 'inp', placeholder: o.ph || '', type: o.type, spellcheck: !!o.area,
+      oninput: () => { it[key] = inp.value; touch(it); } });
+    inp.value = it[key] || '';
+    return h('label', { class: 'cw-field', style: { gridColumn: `span ${o.span || 1}` } }, h('span', null, label), inp);
+  }
+  function editor(it) {
+    const F = (l, k, o) => field(it, l, k, o);
+    const specific = {
+      buch: [F('Verlag', 'pub', { ph: 'z. B. Springer Gabler', span: 2 }), F('Ort', 'place', { ph: 'z. B. Wiesbaden' }), F('Auflage', 'ed', { ph: 'z. B. 3' })],
+      sammel: [F('Herausgeber', 'editors', { ph: 'Nachname, Vorname; …', span: 2 }), F('Titel des Sammelbands', 'book', { span: 2 }), F('Verlag', 'pub', { span: 2 }), F('Ort', 'place'), F('Seiten', 'pages', { ph: 'z. B. 45–67' })],
+      artikel: [F('Zeitschrift', 'journal', { ph: 'z. B. Harvard Business Manager', span: 2 }), F('Jahrgang / Band', 'vol'), F('Heft', 'issue'), F('Seiten', 'pages', { ph: 'z. B. 12–19' })],
+      web: [F('Website / Herausgeber', 'pub', { ph: 'z. B. Statistisches Bundesamt', span: 2 }), F('Zugriff am', 'acc', { type: 'date' })],
+    }[it.type] || [];
+    // Link with "Öffnen" button
+    const open = h('a', { class: 'btn sm', target: '_blank', rel: 'noopener noreferrer', title: 'Link im Browser öffnen' }, icon('arrow'), 'Öffnen');
+    const urlIn = h('input', { class: 'inp', type: 'url', placeholder: 'https://…', spellcheck: false, oninput: () => { it.url = urlIn.value.trim(); touch(it); } });
+    urlIn.value = it.url || '';
+    const setLink = () => { const ok = /^https?:\/\/\S+$/i.test(it.url || ''); open.hidden = !ok; if (ok) open.href = it.url; };
+    const projIn = h('input', { class: 'inp', placeholder: 'z. B. Hausarbeit BWL', list: 'qlw-projects', oninput: () => { it.project = projIn.value; touch(it); } });
+    projIn.value = it.project || '';
+
+    // Quotes
+    const qList = h('div', { class: 'qlw-quotes' });
+    function drawQuotes() {
+      qList.replaceChildren(...(it.quotes ||= []).map(q => {
+        const ta = h('textarea', { class: 'qlw-ta sm', placeholder: 'Wörtliches Zitat oder Kernaussage …', oninput: () => { q.t = ta.value; touch(it); } });
+        ta.value = q.t || '';
+        const p = h('input', { class: 'inp qlw-pg', placeholder: 'Seite', spellcheck: false, oninput: () => { q.p = p.value; touch(it); } });
+        p.value = q.p || '';
+        return h('div', { class: 'qlw-q' }, ta, h('div', { class: 'qlw-q-acts' }, p,
+          h('button', { class: 'btn sm', title: 'Zitat in Anführungszeichen mit Beleg kopieren', onclick: () => copy(`„${(q.t || '').trim()}“ ${cite(it, q.p, 'direkt')}`) }, icon('copy'), 'Zitat + Beleg'),
+          h('button', { class: 'btn sm', title: 'Nur den Beleg für eine sinngemäße Wiedergabe kopieren', onclick: () => copy(cite(it, q.p, 'vgl')) }, icon('copy'), apa() ? 'Beleg' : 'vgl.'),
+          h('button', { class: 'cw-copy qlw-del', title: 'Zitat löschen', onclick: () => { it.quotes = it.quotes.filter(x => x !== q); touch(it); drawQuotes(); } }, icon('trash'))));
+      }), h('button', { class: 'btn sm', onclick: () => { it.quotes.push({ id: uid(), t: '', p: '' }); touch(it); drawQuotes(); [...qList.querySelectorAll('textarea')].pop()?.focus(); } }, icon('plus'), 'Zitat hinzufügen'));
+    }
+    drawQuotes();
+
+    // Citation panel
+    const entryEl = h('div', { class: 'qlw-entry' });
+    const page = h('input', { class: 'inp qlw-pg', placeholder: 'Seite', spellcheck: false, oninput: () => refresh() });
+    const rows = [['vgl', apa() ? 'Beleg (indirekt)' : 'Indirekt · mit vgl.'], ['direkt', 'Direkt · wörtlich'], ['fn', apa() ? 'Im Satz' : 'Fußnote']].map(([k, l]) => {
+      const code = h('code');
+      return { k, code, el: h('div', { class: 'qlw-c' }, h('small', null, l), code, h('button', { class: 'cw-copy', title: 'Kopieren', onclick: () => copy(code.textContent) }, icon('copy'))) };
+    });
+    refresh = () => { entryEl.innerHTML = asHtml(entry(it)); rows.forEach(r => { r.code.textContent = cite(it, page.value, r.k); }); setLink(); };
+
+    const card = (ico, title, acts, ...body) => h('section', { class: 'cw-card' },
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon(ico)), h('h3', null, title), acts ? h('div', { class: 'cw-acts' }, acts) : null), ...body);
+    const box = h('div', { class: 'qlw-in' },
+      h('div', { class: 'qlw-col' },
+        card('quellenwerk', 'Quelle', h('button', { class: 'cw-copy', title: 'Quelle löschen', onclick: () => remove(it) }, icon('trash')),
+          segEl(QW_TYPES, it.type, v => { it.type = v; touch(it); render(); }),
+          h('div', { class: 'qlw-fields' },
+            F('Autor*innen', 'authors', { ph: 'Nachname, Vorname; Nachname, Vorname – oder Institution', span: 3 }), F('Jahr', 'year', { ph: 'z. B. 2024' }),
+            F('Titel', 'title', { ph: 'Titel (und ggf. Untertitel)', span: 4 }),
+            ...specific,
+            h('label', { class: 'cw-field', style: { gridColumn: 'span 3' } }, h('span', null, 'Link'), h('div', { class: 'qlw-url' }, urlIn, open)),
+            h('label', { class: 'cw-field' }, h('span', null, 'Projekt'), projIn),
+            h('datalist', { id: 'qlw-projects' }, ...projects().map(p => h('option', { value: p }))))),
+        card('note', 'Inhalt & Notizen', null, field(it, 'Worum geht es? Wichtigste Aussagen, Kapitel, eigene Gedanken …', 'notes', { area: true, span: 1 })),
+        card('msg', 'Zitate & Kernaussagen', null, qList)),
+      h('div', { class: 'qlw-col qlw-sticky' },
+        card('copy', 'Zitieren', segEl([['de', 'Deutsch'], ['apa', 'APA 7']], st.style, v => { st.style = v; persist(); render(); }),
+          h('div', { class: 'qlw-lbl' }, 'Literaturverzeichnis'), entryEl,
+          h('button', { class: 'btn sm', onclick: () => copy(asText(entry(it)), asHtml(entry(it))) }, icon('copy'), 'Eintrag kopieren'),
+          h('div', { class: 'qlw-lbl qlw-pgrow' }, 'Beleg im Text', page), ...rows.map(r => r.el),
+          h('div', { class: 'cw-note' }, apa() ? 'APA 7: Autor, Jahr und Seite in Klammern, ohne „vgl.“. Titel werden kursiv kopiert, wenn du in Word einfügst.'
+            : 'Deutsche Zitierweise (Harvard) mit „vgl.“ für sinngemäße Wiedergaben. Jede Hochschule hat eigene Details – im Zweifel den Leitfaden deines Lehrstuhls prüfen.'))));
+    refresh();
+    return box;
+  }
+
+  function welcome() {
+    return h('div', { class: 'qlw-welcome' },
+      h('div', { class: 'qlw-logo big' }, icon('quellenwerk')),
+      h('h2', null, 'Quellenwerk'),
+      h('p', null, 'Bücher, Artikel und Links sammeln – mit Notizen zum Inhalt und wichtigen Zitaten. Den Beleg mit „vgl.“ oder den Eintrag fürs Literaturverzeichnis kopierst du mit einem Klick.'),
+      h('div', { class: 'qlw-row' },
+        h('button', { class: 'btn primary', onclick: () => create() }, icon('plus'), 'Neue Quelle'),
+        !st.items.length && h('button', { class: 'btn', onclick: () => create(structuredClone(EXAMPLE)) }, icon('sparkle'), 'Beispiel ansehen')));
+  }
+
+  /* ---------- Layout ---------- */
+  const main = h('div', { class: 'qlw-main' });
+  function render() {
+    refresh = () => {};
+    const it = cur();
+    main.replaceChildren(it ? editor(it) : welcome());
+    renderList();
+  }
+  view.append(h('div', { class: 'qlw' },
+    h('aside', { class: 'qlw-side' },
+      h('div', { class: 'qlw-hd' }, h('div', { class: 'qlw-logo' }, icon('quellenwerk')), h('b', null, 'Quellenwerk')),
+      h('div', { class: 'qlw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => create() }, icon('plus'), 'Neue Quelle'), search, projSel),
+      list,
+      h('div', { class: 'qlw-foot' }, h('button', { class: 'btn sm block', title: 'Alle Quellen der Liste (Filter beachten) alphabetisch kopieren', onclick: copyBibliography }, icon('copy'), 'Literaturverzeichnis kopieren'), countEl)),
+    main));
+  render();
+}
+
+TT.register({
+  id: 'quellenwerk', name: 'Quellenwerk', icon: 'quellenwerk', c: '#c77d9b', c2: '#5b2150',   // dusty rose → plum (no other app uses it)
+  tagline: 'Quellen sammeln · richtig zitieren',
+  desc: 'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.',
+  mount: mountQuellenwerk,
 });
 
 

@@ -2889,7 +2889,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 <script>
 (() => {
 'use strict';
-const VERSION = '1.3.0';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
+const VERSION = '1.3.1';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
 // Set a date for testing, e.g. '2026-12-24' (time of day stays real) – null = real date (live)
 const TEST_DATE = null;
 function appNow() {
@@ -3010,7 +3010,7 @@ const ICONS = {
   rechnungswerk: '<path d="M7 4H4v16h3"/><path d="M17 4h3v16h-3"/><path d="M14.6 8.3a4 4 0 1 0 0 7.4"/><path d="M8 11h5M8 13.2h5"/>',   // [€]
   modellwerk: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 3v18M3 12h18"/><path d="M6.5 7.5h2.5M15 7.5h2.5M6.5 16.5h2.5M15 16.5h2.5" opacity=".6"/>',   // SWOT grid
   kennzahlwerk: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M15 8h4v4"/>',   // rising chart
-  study: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c3 2.5 9 2.5 12 0v-4.5"/><path d="M22 9v5"/>',   // graduation cap
+  briefcase: '<rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/><path d="M11 13h2v2h-2z"/>',   // business
   bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
   timerdigi: '<path d="M9 2h6"/><rect x="2" y="5" width="20" height="15" rx="3"/><path d="M6.5 10l1.5-1v7"/><path d="M11 10.2a1.8 1.8 0 0 1 3.4.8c0 1.8-3.4 3-3.4 5h3.6"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="17.5" cy="14.5" r=".5"/>',
   compress: '<path d="M12 2v6"/><path d="m9 5 3 3 3-3"/><path d="M12 22v-6"/><path d="m9 19 3-3 3 3"/><path d="M4 12h16"/>',
@@ -3353,7 +3353,7 @@ const EN = {
   'Ein-/Ausklappen': 'Expand/collapse', 'Alle einklappen': 'Collapse all', 'Alle ausklappen': 'Expand all',
   'Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.': 'All apps are hidden – show them again under “Apps” in the settings.',
   'Bilder & Dateien': 'Images & Files', 'Design & Grafik': 'Design & Graphics', 'Text, Präsentation & Sprache': 'Text, Presentation & Speech',
-  'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Marketing & Studium': 'Marketing & Studies', 'Weitere': 'More',
+  'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Marketing & BWL': 'Marketing & Business', 'Weitere': 'More',
   // Welcome dialog
   'Willkommen bei Toms Tools 👋': 'Welcome to Toms Tools 👋', 'Wie dürfen wir dich nennen?': 'What should we call you?',
   'Dein Name erscheint in der Begrüßung auf der Startseite.': 'Your name shows up in the greeting on the home page.',
@@ -4156,7 +4156,7 @@ const APP_GROUPS = [
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
   { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
-  { id: 'studium', name: 'Marketing & Studium', icon: 'study', apps: ['modellwerk', 'kennzahlwerk'] },
+  { id: 'bwl', name: 'Marketing & BWL', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk'] },
   { id: 'fun', name: 'Spaß & Musik', icon: 'sparkle', apps: ['entscheidung', 'spielwiese', 'beatwerk'] },
 ];
 const APP_ORDER = APP_GROUPS.flatMap(g => g.apps);

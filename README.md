@@ -4,22 +4,22 @@
 
 Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Farbpaletten bauen, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen bauen, Marketing-Kennzahlen rechnen – alles im Browser, alles auf deinem Rechner.
 
-![Version](https://img.shields.io/badge/version-1.3.0-7c6cff)
+![Version](https://img.shields.io/badge/version-1.3.1-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
 ![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
 ![Offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
 ![Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-eab308)
-![Vibecoded mit Claude](https://img.shields.io/badge/vibecoded%20mit-Claude-d97757)
+![Gebaut mit Claude](https://img.shields.io/badge/gebaut%20mit-Claude-d97757)
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** A collection of 26 offline tools (image editing, PDF merging, photo sorting, color palettes, shader art, invoices, marketing models and KPI calculators …) packed into one single HTML file. No install, no account, no network access – everything runs locally in your browser. Vibecoded with Claude by a beginner, work in progress – feedback welcome! The interface is German; an English mode for the home page is built in (Settings → Start → Language), more is coming.
+> 🇬🇧 **English:** A collection of 26 offline tools (image editing, PDF merging, photo sorting, color palettes, shader art, invoices, marketing models and KPI calculators …) packed into one single HTML file. No install, no account, no network access – everything runs locally in your browser. Built by a beginner together with Claude and designed with a lot of love – work in progress, feedback welcome! The interface is German; an English mode for the home page is built in (Settings → Start → Language), more is coming.
 
 ---
 
 ## 👋 Kurz vorweg
 
-Ich bin kein Entwickler, sondern **Neuling**. Toms Tools ist **komplett „gevibecoded“**: Ich habe beschrieben, was ich brauche, und [Claude](https://claude.ai) (die KI von Anthropic) hat den Code geschrieben. Ich habe getestet, gemeckert, Ideen nachgeschoben und entschieden, was reinkommt.
+Ich bin kein Entwickler, sondern **Neuling**. Gebaut habe ich Toms Tools zusammen mit [Claude](https://claude.ai), der KI von Anthropic: Ich habe beschrieben, was ich brauche, getestet, nachgebessert und entschieden, was reinkommt. Die Ideen und das Design kommen von mir, und in jeder App steckt **viel Liebe zum Detail** – bei Farben, Icons, Abständen und den kleinen Animationen.
 
 Angefangen hat es mit ein paar Helfern für meinen eigenen Alltag. Daraus sind nach und nach 26 Werkzeuge geworden, die ich selbst ständig nutze. Weil sie mir so viel bringen, stelle ich sie hier online. Vielleicht helfen sie ja auch dir.
 
@@ -77,7 +77,7 @@ Was du wissen solltest:
 | **Timer** | Großer Countdown im Vollbild mit Warnfarben und Signalton |
 | **Rechnungswerk** | Saubere Rechnungen mit Logo, MwSt. und GiroCode – als PDF |
 
-### 🎓 Marketing & Studium
+### 📊 Marketing & BWL
 | App | Was sie macht |
 |---|---|
 | **Modellwerk** | Marketing-Modelle ausfüllen: SWOT, PESTEL, Five Forces, Business Model Canvas, 7P, Ansoff, Persona, Customer Journey und Positionierungskarte – mit Leitfragen, Export als Text, PNG oder PDF |
@@ -147,4 +147,4 @@ Eingebettete Fremdbibliotheken behalten ihre eigenen Lizenzen:
 
 ---
 
-<p align="center">made with ♥ by Tom &amp; Claude · vibecoded, work in progress</p>
+<p align="center">made with ♥ by Tom &amp; Claude · work in progress</p>

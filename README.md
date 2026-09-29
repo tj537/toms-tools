@@ -2,9 +2,15 @@
 
 **27 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
 
+<p align="center">
+  <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Toms Tools herunterladen" height="56"></a>
+  <br>
+  <sub>Lädt immer die neueste Version · <a href="https://github.com/tj537/toms-tools/releases">Alle Versionen & Änderungen</a></sub>
+</p>
+
 Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Kennzahlen rechnen, Quellen zitieren – alles im Browser, alles auf deinem Rechner.
 
-![Version](https://img.shields.io/badge/version-1.4.2-7c6cff)
+![Version](https://img.shields.io/badge/version-1.4.3-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
 ![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
 ![Offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
@@ -105,7 +111,7 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer** und **Taschenrec
 
 ## 🚀 Loslegen
 
-1. **`toms-tools.html` herunterladen** – unter [Releases](../../releases) oder oben über *Code → Download ZIP*.
+1. **[`toms-tools.html` herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)** – oder über den Download-Knopf ganz oben.
 2. **Doppelklick** auf die Datei – sie öffnet sich im Browser.
 3. Fertig. Tipp: Als Lesezeichen speichern oder an die Taskleiste anheften.
 

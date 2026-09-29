@@ -4,7 +4,7 @@
 
 Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Kennzahlen rechnen, Quellen zitieren – alles im Browser, alles auf deinem Rechner.
 
-![Version](https://img.shields.io/badge/version-1.4.0-7c6cff)
+![Version](https://img.shields.io/badge/version-1.4.1-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
 ![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
 ![Offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
@@ -13,27 +13,25 @@ Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortie
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** A collection of 27 offline tools (image editing, PDF merging, photo sorting, color palettes, shader art, invoices, business models, pros & cons, percentage and KPI calculators, a source manager …) packed into one single HTML file. No install, no account, no network access – everything runs locally in your browser. Built by a beginner with Claude Opus – work in progress, feedback welcome! The interface is German; an English mode for the home page is built in (Settings → Start → Language), more is coming.
+> 🇬🇧 **English:** 27 offline tools in one single HTML file – image editing, PDFs, invoices, business models, calculators, a source manager and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
 
 ---
 
-## 👋 Kurz vorweg
+## 👋 Hi!
 
-Ich bin **Anfänger** und habe Toms Tools mit [Claude Opus](https://claude.ai) gebaut, der KI von Anthropic. Ideen und Design kommen von mir – mit viel Liebe zum Detail. Feedback ist jederzeit willkommen!
+Ich bin Tom – Anfänger im Marketing und in der Webentwicklung. Toms Tools habe ich zusammen mit [Claude Opus](https://claude.ai) gebaut: Ideen und Design von mir, der Code zum großen Teil von Claude.
 
-Angefangen hat es mit ein paar Helfern für meinen eigenen Alltag. Daraus sind nach und nach 27 Werkzeuge geworden, die ich selbst ständig nutze. Weil sie mir so viel bringen, stelle ich sie hier online. Vielleicht helfen sie ja auch dir.
+Warum? Auf der Arbeit kann ich nichts installieren. Toms Tools ist nur eine HTML-Datei – Doppelklick, läuft, ganz ohne Admin-Rechte. Deshalb nutze ich es selbst jeden Tag.
 
-Was du wissen solltest:
-
-- 🚧 **Work in Progress.** Es kommen laufend neue Sachen dazu, und manches ist noch nicht rund.
-- 🐛 **Es gibt bestimmt Fehler.** Ich teste alles, aber ich übersehe sicher Dinge. Bei Apps, die Dateien auf der Festplatte ändern (Bulk Rename, Sortierwerk), gilt: erst mit einer Kopie ausprobieren.
-- 💬 **Kritik ist ausdrücklich willkommen.** Ob Bug, schlechte Idee, fehlende Funktion oder „das macht man eigentlich ganz anders“: Mach einfach ein [Issue](../../issues) auf. Ich lerne gern dazu.
+- 🚧 **Work in Progress.** Es kommt laufend Neues dazu – und nach und nach auch mehr auf Englisch.
+- 🐛 **Bestimmt sind noch Fehler drin.** Bei Apps, die Dateien umbenennen oder verschieben (Bulk Rename, Sortierwerk), erst mit einer Kopie testen.
+- 💬 **Feedback ist willkommen.** Ob Bug, Idee oder „das geht besser so“: einfach ein [Issue](../../issues) aufmachen.
 
 ---
 
-## ✨ Warum?
+## ✨ Das Besondere
 
-- **Eine Datei.** Keine Installation, kein Konto, kein Build-Schritt. Die Datei kann auf einem USB-Stick liegen oder im OneDrive.
+- **Eine Datei.** Keine Installation, keine Admin-Rechte, kein Konto. Die Datei kann auf einem USB-Stick liegen oder im OneDrive – perfekt für den Arbeits-PC.
 - **Wirklich lokal.** Eine Content-Security-Policy sperrt die Seite komplett vom Netz aus: Sie *kann* gar nichts hochladen oder nachladen. Kein Tracking, keine Werbung, keine Server.
 - **Schnell.** Alles läuft direkt im Browser, Grafik-Lastiges auf der Grafikkarte (WebGL2).
 - **Deine Daten gehören dir.** Gespeichert wird im Browser – mit Backup-Export und automatischer Sicherung in einen Ordner deiner Wahl.
@@ -92,6 +90,16 @@ Was du wissen solltest:
 | **Beatwerk** | Drums, Bass und Melodie – Beats und Loops im Browser bauen |
 
 Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer** und **Taschenrechner**.
+
+## 📸 Einblicke
+
+| Modellwerk | Kennzahlwerk |
+|---|---|
+| ![Modellwerk](docs/modellwerk.png) | ![Kennzahlwerk](docs/kennzahlwerk.png) |
+| **Quellenwerk** | **Rechnungswerk** |
+| ![Quellenwerk](docs/quellenwerk.png) | ![Rechnungswerk](docs/rechnungswerk.png) |
+| **QR-Werk** | **Farbwerk** |
+| ![QR-Werk](docs/qrwerk.png) | ![Farbwerk](docs/farbwerk.png) |
 
 ![Shaderwerk](docs/shaderwerk.png)
 

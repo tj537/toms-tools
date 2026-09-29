@@ -81,6 +81,14 @@ kbd{font:600 11px var(--mono);padding:2px 6px;border-radius:5px;background:var(-
 .tab-add:hover{background:var(--s1);color:var(--tx)}
 .icon-btn{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;color:var(--tx2);transition:.15s;flex:none}
 .icon-btn:hover{background:var(--s2);color:var(--tx)}
+.icon-btn.ok{color:var(--ok)}
+.icon-btn.err{color:var(--err)}
+.icon-btn.wait{color:var(--acc-tx);background:var(--acc-soft);box-shadow:0 0 0 2px color-mix(in oklab,var(--acc) 55%,transparent);animation:plainWait 1.2s ease-in-out infinite}
+@keyframes plainWait{50%{box-shadow:0 0 0 5px color-mix(in oklab,var(--acc) 15%,transparent)}}
+.plain-hint{font-size:12px;font-weight:550;color:var(--acc-tx);white-space:nowrap;animation:plainIn .2s ease}
+@keyframes plainIn{from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:none}}
+.plain-hint[hidden]{display:none}
+.plain-hint kbd{font-size:10.5px}
 .calc-pop{position:fixed;z-index:200;background:var(--s1);border:1px solid var(--line2);border-radius:14px;box-shadow:0 20px 50px -8px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.04);padding:10px;width:192px;display:flex;flex-direction:column;gap:7px;animation:calc-in .15s cubic-bezier(.2,.8,.4,1)}
 @keyframes calc-in{from{opacity:0;transform:scale(.94) translateY(-6px)}to{opacity:1;transform:none}}
 .calc-screen{background:var(--bg);border-radius:9px;padding:7px 10px;text-align:right;min-height:48px;display:flex;flex-direction:column;justify-content:flex-end;gap:1px;overflow:hidden}
@@ -223,7 +231,6 @@ input[type=number].inp{padding-right:4px}
 .set-imgrow{display:flex;gap:8px;align-items:center}
 .set-imgthumb{width:64px;height:40px;border-radius:8px;background:center/cover var(--s2);border:1px solid var(--line)}
 .set-sub{display:flex;flex-direction:column;gap:14px;padding:10px 0 2px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font:600 12px var(--mono);color:var(--acc-tx);background:var(--acc-soft);padding:5px 12px;border-radius:20px;margin-bottom:22px;animation:fade .5s both}
 .hero h1{font-size:52px;line-height:1.05;letter-spacing:-.042em;font-weight:760;animation:heroIn .65s ease both}
 @keyframes heroIn{from{opacity:0;transform:translateY(12px)}}
 .grad{background:linear-gradient(110deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}.hero-line{color:var(--tx2)}
@@ -248,6 +255,9 @@ input[type=number].inp{padding-right:4px}
 .hg-ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--s2);border:1px solid var(--line);color:var(--acc-tx);flex:none}
 .hg-ico svg{width:14px;height:14px}
 .hg-cnt{font:600 11px var(--mono);color:var(--tx3);background:var(--s2);padding:1px 7px;border-radius:10px;letter-spacing:0}
+.section-t .apps-cnt{text-transform:none}
+button.apps-cnt{cursor:pointer;transition:background .15s,color .15s}
+button.apps-cnt:hover{color:var(--tx);background:var(--s3)}
 .hg-body{display:grid;grid-template-rows:1fr;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1),opacity .3s}
 .hg.closed .hg-body{grid-template-rows:0fr;opacity:0}
 .hg-in{min-height:0;overflow:hidden;padding:12px 8px 26px;margin:0 -8px -14px}
@@ -287,13 +297,8 @@ input[type=number].inp{padding-right:4px}
 .card-app.soon{cursor:default}
 .card-app.soon .app-ico{filter:saturate(.55);opacity:.8}
 .card-app.soon:hover{transform:none}
-.card-add{border-style:dashed;background:transparent;align-items:center;justify-content:center;text-align:center;color:var(--tx3);cursor:default}
-.card-add:hover{transform:none;box-shadow:none}
-.card-add::before{display:none}
 .card-app[style*="--fg"] .app-ico{box-shadow:0 12px 24px -8px rgba(0,0,0,.8),0 3px 8px -2px rgba(0,0,0,.5),inset 0 -2px 0 rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.6)}   /* light icons (own icon color): dark shadow instead of glow */
 .card-app[style*="--fg"]:hover .app-ico{box-shadow:0 18px 32px -10px rgba(0,0,0,.85),0 4px 10px -2px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.6)}
-.card-add .app-ico{background:var(--s2);box-shadow:none;color:var(--tx3)}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
 .pill{display:inline-flex;align-items:center;gap:9px;height:32px;padding:0 13px;border-radius:30px;background:var(--s1);border:1px solid var(--line);color:var(--tx2);font-size:12.5px}
 .pill b{color:var(--tx);font-weight:600}
 .shortcuts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
@@ -960,40 +965,12 @@ input[type=number].inp{padding-right:4px}
 .ez-seg button{flex:1;height:46px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--tx3);transition:background .12s,color .12s}
 .ez-seg button.on{background:var(--s3);color:var(--tx);box-shadow:0 1px 8px rgba(0,0,0,.4)}
 .ez-panel{display:flex;flex-direction:column;align-items:center;gap:24px;width:100%}
-.ez-wring{position:relative;display:inline-block;cursor:pointer;border-radius:50%;transition:opacity .15s,filter .15s}
-.ez-wring:hover{opacity:.92;filter:brightness(1.05)}
-.ez-arrow{position:absolute;left:50%;top:-20px;transform:translateX(-50%);width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:22px solid var(--tx);filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
-.ez-items{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
-.ez-chip{display:flex;align-items:center;gap:6px;background:var(--s2);border-radius:10px;padding:6px 8px 6px 13px;font-size:13.5px;border:1px solid var(--line)}
-.ez-dot{width:10px;height:10px;border-radius:50%;flex:none}
 .ez-rm{width:24px;height:24px;border-radius:6px;color:var(--tx3);font-size:16px;display:grid;place-items:center;line-height:1}
 .ez-rm:hover:not(:disabled){background:var(--s3);color:var(--tx)}
 .ez-rm:disabled{opacity:.3;cursor:default}
 .ez-addinp{height:40px;flex:1;min-width:0;border:1.5px solid var(--line2);border-radius:10px;padding:0 13px;background:var(--s1);color:var(--tx);font:inherit;font-size:14px}
 .ez-addinp:focus{outline:none;border-color:var(--acc)}
-.ez-cscene{perspective:1000px;user-select:none;padding:16px 0}
-.ez-coin{width:240px;height:240px;transform-style:preserve-3d;position:relative;cursor:pointer;transition:filter .2s}
-.ez-coin:hover{filter:brightness(1.08)}
-.ez-face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;overflow:hidden}
-.ez-heads{background:radial-gradient(circle at 35% 30%,#fff6c0 0%,#f4c430 28%,#c8960c 58%,#8b6200 88%);box-shadow:inset 0 0 0 12px rgba(255,255,255,.15),inset 0 -14px 40px rgba(0,0,0,.35),0 14px 55px rgba(0,0,0,.7),0 0 0 3px #7a5500}
-.ez-tails{background:radial-gradient(circle at 35% 30%,#ffffff 0%,#dcdcdc 28%,#a8a8a8 60%,#626262 90%);box-shadow:inset 0 0 0 12px rgba(255,255,255,.18),inset 0 -14px 40px rgba(0,0,0,.22),0 14px 55px rgba(0,0,0,.7),0 0 0 3px #555;transform:rotateY(180deg)}
-.ez-coin-inner{position:absolute;inset:14px;border-radius:50%;border:2px solid rgba(255,255,255,.22);pointer-events:none;backface-visibility:hidden}
-.ez-cico{display:grid;place-items:center;width:96px;height:96px}
-.ez-cico svg{width:96px;height:96px;filter:drop-shadow(0 2px 7px rgba(0,0,0,.45))}
-.ez-clbl{font:700 11px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.45);text-shadow:0 1px 0 rgba(255,255,255,.28)}
-.ez-ball{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#3a3a3a 0%,#111 40%,#000 100%);box-shadow:0 16px 50px rgba(0,0,0,.8),inset 2px 3px 22px rgba(255,255,255,.07),inset -4px -4px 24px rgba(0,0,0,.5);position:relative;cursor:pointer;user-select:none}
-.ez-ball.asking{animation:ez-shake .38s ease}
-.ez-bwin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:108px;height:108px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#1e2fa0,#0a1460 60%,#04093a);display:flex;align-items:center;justify-content:center;padding:12px;box-shadow:inset 0 2px 10px rgba(0,0,0,.6)}
-.ez-b8{position:absolute;right:28px;top:22px;font-size:48px;font-weight:900;color:rgba(255,255,255,.08);line-height:1;pointer-events:none}
-.ez-bans{font-size:13.5px;font-weight:700;line-height:1.4;text-align:center;color:rgba(120,155,255,0);transition:color .5s .1s}
-.ez-bans.show{color:rgba(150,185,255,.92)}
-.ez-q{width:100%;max-width:440px;height:48px;border:1.5px solid var(--line2);border-radius:12px;padding:0 16px;background:var(--s1);color:var(--tx);font:inherit;font-size:15px;text-align:center}
-.ez-q:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
-.ez-q::placeholder{color:var(--tx3)}
-.ez-res{text-align:center;background:var(--s1);border:2px solid var(--acc);border-radius:16px;padding:18px 36px;opacity:0;transition:opacity .35s,transform .3s;transform:scale(.96);pointer-events:none;min-width:240px}
-.ez-res.on{opacity:1;pointer-events:auto;transform:scale(1)}
 .ez-reslbl{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);margin-bottom:8px}
-.ez-resval{font-size:30px;font-weight:800;color:var(--acc)}
 .cn{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
 .cn-scene{position:relative;width:300px;height:470px;margin-top:-10px;perspective:1100px;display:flex;align-items:flex-end;justify-content:center;cursor:pointer;user-select:none}
 .cn-toss{position:relative;width:220px;height:220px;margin-bottom:56px;transform-style:preserve-3d;will-change:transform}
@@ -1101,7 +1078,6 @@ input[type=number].inp{padding-right:4px}
 .mc-hchip{font-size:12px;padding:4px 10px;border-radius:20px;background:var(--s2);color:var(--tx2);border:1px solid var(--line)}
 .mc-hchip:first-child{color:var(--acc-tx);background:var(--acc-soft);border-color:transparent;font-weight:600}
 @media (max-width:820px){.mc{grid-template-columns:1fr}}
-@keyframes ez-shake{0%{transform:rotate(-8deg)}25%{transform:rotate(7deg)}50%{transform:rotate(-5deg)}75%{transform:rotate(4deg)}100%{transform:rotate(0)}}
 /* ── Image naming ──────────────────────────────────── */
 .bnv{height:100%;display:flex;flex-direction:column;background:var(--bg)}
 .bnv-zero{flex:1;display:flex;align-items:center;justify-content:center;padding:32px}
@@ -1146,7 +1122,6 @@ input[type=number].inp{padding-right:4px}
 .bnv-result-name{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--acc);letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .bnv-result-empty{font-size:13px;color:var(--tx3);font-style:italic}
 .bnv-warn{font-size:11px;color:var(--warn)}
-.bnv-groups{display:flex;flex-direction:column;gap:14px}
 .bnv-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
 .bnv-chip{border:1px solid var(--line);background:var(--s2);border-radius:999px;padding:5px 13px;font-size:13px;font-weight:550;display:inline-flex;align-items:center;gap:6px;transition:.15s;cursor:pointer}
 .bnv-chip:hover{border-color:var(--acc);color:var(--acc);background:var(--acc-soft);transform:translateY(-1px)}
@@ -2044,7 +2019,6 @@ input[type=number].inp{padding-right:4px}
 /* Password panel */
 .pw-card{display:flex;align-items:center;justify-content:center;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:18px 24px;min-height:88px;overflow:hidden}
 .pw-disp{font-family:var(--mono);font-size:17px;font-weight:650;color:var(--tx);letter-spacing:.06em;word-break:break-all;text-align:center;line-height:1.6}
-.pw-lbl{font-size:12px;color:var(--tx3);white-space:nowrap}
 
 
 /* Textwerk Teleprompter */
@@ -2276,11 +2250,6 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 .rw-brief-sig{padding:28px 36px 0;font-size:12.5px;font-weight:600;color:#111;padding-bottom:32px}
 .rw-brief-doc .rw-doc-footer{margin:0 36px;padding:10px 0 28px;border-top:1px solid #ececec;font-size:9.5px;color:#ccc;display:flex;gap:10px;flex-wrap:wrap}
 /* Placeholder */
-.rw-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px;color:var(--tx3);text-align:center;padding:48px}
-.rw-ph-ico{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc-tx)}
-.rw-ph-ico svg{width:28px;height:28px;stroke-width:1.5}
-.rw-placeholder h3{font-size:19px;font-weight:680;color:var(--tx2);letter-spacing:-.01em}
-.rw-placeholder p{font-size:13.5px;color:var(--tx3);max-width:340px;line-height:1.65}
 /* Pomodoro */
 .pomo-pop{position:fixed;z-index:200;background:var(--s1);border:1px solid var(--line2);border-radius:16px;box-shadow:0 20px 50px -8px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.04);padding:14px;width:216px;display:flex;flex-direction:column;gap:11px;animation:calc-in .15s cubic-bezier(.2,.8,.4,1)}
 .pomo-phases{display:flex;gap:2px;background:var(--s2);border-radius:9px;padding:3px}
@@ -2306,7 +2275,6 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 /* Pitcher */
 .pt-root{display:flex;height:100%;overflow:hidden}
 .pt-left{flex:1;min-width:0;overflow:hidden;border-right:1px solid var(--line);display:flex;flex-direction:column;background:var(--s1)}
-.pt-panel-hd{padding:10px 14px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tx3);border-bottom:1px solid var(--line);flex-shrink:0}
 .pt-editor-wrap{flex:1;display:flex;overflow:hidden;position:relative}
 .pt-editor{flex:1;resize:none;background:transparent;border:none;color:var(--tx);font-family:var(--mono);font-size:13px;line-height:1.75;outline:none;padding:16px;overflow-y:auto;caret-color:var(--pt-acc,var(--acc))}
 .pt-left-foot{border-top:1px solid var(--line);padding:8px 12px;display:flex;align-items:center;gap:8px;flex-shrink:0}
@@ -3056,6 +3024,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
     <div class="tt-clock"><span id="ttClock"></span><span id="ttDate"></span></div>
     <button class="icon-btn" id="btnPomo" title="Pomodoro Timer"></button>
     <button class="icon-btn" id="btnCalc" title="Taschenrechner"></button>
+    <button class="icon-btn" id="btnPlain" title="Formatierung entfernen"></button>
     <button class="icon-btn" id="btnSettings" title="Einstellungen (Strg+,)"></button>
   </header>
   <main id="views"></main>
@@ -3165,6 +3134,19 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+// Save with a short delay (batched while typing). Pending saves are written right away when an app closes
+// or the page is hidden/left – so the last keystrokes never get lost. Registered early: runs before the folder sync.
+const PENDING_SAVES = new Set();
+const saveLater = (fn, ms = 300) => {
+  let t = null;
+  const run = () => { clearTimeout(t); t = null; PENDING_SAVES.delete(run); fn(); };
+  const call = () => { clearTimeout(t); t = setTimeout(run, ms); PENDING_SAVES.add(run); };
+  call.flush = () => { if (t !== null) run(); };
+  return call;
+};
+const flushSaves = () => { for (const run of [...PENDING_SAVES]) { try { run(); } catch {} } };
+addEventListener('pagehide', flushSaves);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushSaves(); });
 const groupBy = (arr, fn) => { const m = new Map(); for (const x of arr) { const k = fn(x); if (!m.has(k)) m.set(k, []); m.get(k).push(x); } return m; };
 const uid = () => Math.random().toString(36).slice(2, 10);
 
@@ -3276,6 +3258,7 @@ const ICONS = {
   diagrammwerk: '<path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12" y="8" width="3" height="10" rx="1"/><rect x="17" y="5" width="3" height="13" rx="1"/>',   // column chart
   karteiwerk: '<rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/><path d="M7 12h6M7 15.5h4"/>',   // stacked index cards
   quellenwerk: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9.5 2v7.5l2-1.5 2 1.5V2"/>',   // book with bookmark
+  clearfmt: '<path d="M5 6V4h13v2"/><path d="M11 4v16"/><path d="M8 20h6"/><path d="m15.5 13.5 5 5m0-5-5 5"/>',   // T with a small x: remove formatting
   briefcase: '<rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/><path d="M11 13h2v2h-2z"/>',   // business
   bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
   timerdigi: '<path d="M9 2h6"/><rect x="2" y="5" width="20" height="15" rx="3"/><path d="M6.5 10l1.5-1v7"/><path d="M11 10.2a1.8 1.8 0 0 1 3.4.8c0 1.8-3.4 3-3.4 5h3.6"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="17.5" cy="14.5" r=".5"/>',
@@ -3612,14 +3595,14 @@ const T = (s, vars) => {
 const appName = a => T(a.name);
 const EN = {
   // Top bar & tabs
-  'Taschenrechner': 'Calculator', 'Einstellungen (Strg+,)': 'Settings (Ctrl+,)',
+  'Taschenrechner': 'Calculator', 'Formatierung entfernen – kopierten Text als reinen Text in die Zwischenablage legen': 'Remove formatting – put copied text back on the clipboard as plain text', 'Die Zwischenablage ist leer (oder enthält keinen Text).': 'The clipboard is empty (or holds no text).', 'Jetzt': 'Now', 'Strg': 'Ctrl', 'Das hat nicht geklappt – bitte noch einmal versuchen.': 'That didn’t work – please try again.', 'Einstellungen (Strg+,)': 'Settings (Ctrl+,)',
   'Schließen (Alt+W)': 'Close (Alt+W)', 'App öffnen': 'Open app', 'In Planung': 'Planned',
   // Home page
   'Funfact: ': 'Fun fact: ', 'Noch einer!': 'Another one!', 'Geöffnet': 'Running', 'Bereit': 'Ready', 'Öffnen': 'Open',
   'Ein-/Ausklappen': 'Expand/collapse', 'Alle einklappen': 'Collapse all', 'Alle ausklappen': 'Expand all',
   'Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.': 'All apps are hidden – show them again under “Apps” in the settings.',
   'Bilder & Dateien': 'Images & Files', 'Design & Grafik': 'Design & Graphics', 'Text, Präsentation & Sprache': 'Text, Presentation & Speech',
-  'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Business & Lernen': 'Business & Learning', 'Weitere': 'More',
+  '{n} ausgeblendet – in den Einstellungen unter „Apps“ einblenden': '{n} hidden – show them again in Settings under “Apps”', '{n} Apps': '{n} apps', 'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Business & Lernen': 'Business & Learning', 'Weitere': 'More',
   // Welcome dialog
   'Willkommen bei Toms Tools 👋': 'Welcome to Toms Tools 👋', 'Wie dürfen wir dich nennen?': 'What should we call you?',
   'Dein Name erscheint in der Begrüßung auf der Startseite.': 'Your name shows up in the greeting on the home page.',
@@ -3996,6 +3979,7 @@ const TT = {
     const inst = this.inst.get(id);
     if (inst?.beforeClose?.() === false) return;
     inst?.destroy?.();
+    flushSaves();   // write what the app still had pending
     this.views.get(id)?.remove();
     this.views.delete(id); this.inst.delete(id); this.open.splice(i, 1);
     if (this.active === id) this.activate(this.open[i] || this.open[i - 1] || 'home');
@@ -4508,6 +4492,13 @@ function renderHome() {
     groupEls.forEach(el => { const was = el.classList.contains('closed'); el.classList.toggle('closed', anyOpen); if (was && !anyOpen) el.querySelectorAll('.card-app').forEach((x, i) => { x.style.setProperty('--i', i); x.classList.remove('in'); void x.offsetWidth; x.classList.add('in'); }); });
     paintAllBtn();
   } });
+  // Counter next to „Apps“: visible apps, plus the total when some are hidden (a click opens the settings)
+  const appsCount = () => {
+    const all = [...TT.apps.values()].filter(a => !a.soon), shown = all.filter(a => !hidden.includes(a.id)).length, off = all.length - shown;
+    return off
+      ? h('button', { class: 'hg-cnt apps-cnt', title: T('{n} ausgeblendet – in den Einstellungen unter „Apps“ einblenden', { n: off }), onclick: () => openSettings() }, `${shown} / ${all.length}`)
+      : h('span', { class: 'hg-cnt apps-cnt', title: T('{n} Apps', { n: shown }) }, shown);
+  };
   const paintAllBtn = () => { allBtn.textContent = groupEls.some(el => !el.classList.contains('closed')) ? T('Alle einklappen') : T('Alle ausklappen'); };
   paintAllBtn();
   view.replaceChildren(
@@ -4522,7 +4513,7 @@ function renderHome() {
         S.data.greetStyle === 'simple' && !g.bdayHi ? '.' : g.punct),
       S.data.greetStyle !== 'simple' || g.bday ? h('p', null, lineEl) : null),
 
-    h('div', { class: 'section-t' }, 'Apps', groups.length > 1 ? allBtn : null),
+    h('div', { class: 'section-t' }, 'Apps', appsCount(), groups.length > 1 ? allBtn : null),
     ...(groups.length ? groupEls : [h('div', { class: 'hg-none' }, T('Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.'))])));
 }
 
@@ -5093,7 +5084,7 @@ function mountBulkRename(view) {
     view: 'all', q: '', undo: null, busy: false, stats: { total: 0, ok: 0, prob: 0, skip: 0 }, lastIdx: null,
   };
   const ruleErr = new Map(), cards = new Map();
-  const saveRules = debounce(() => Store.set('br:rules', st.rules.map(r => ({ id: r.id, type: r.type, on: r.on, open: r.open, p: r.p }))), 250);
+  const saveRules = saveLater(() => Store.set('br:rules', st.rules.map(r => ({ id: r.id, type: r.type, on: r.on, open: r.open, p: r.p }))), 250);
   const saveOpts = () => Store.set('br:opts', st.opts);
   let raf = 0, sraf = 0;
   const schedule = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(recompute); };
@@ -5684,7 +5675,7 @@ function mountWebP(view) {
   const IMG_EXT = /\.(png|jpe?g|gif|bmp|webp|avif)$/i;
   const QUIPS = ['Pixel werden gequetscht …', 'Farbwerte schrumpfen tapfer …', 'Kurz noch ein Druck drauf …', 'Wird durch die Mangel gedreht …', 'Qualitätskomitee tagt …'];
   const opts = { quality: 82, scaleMode: 'w', scaleVal: 1920, lower: true, dash: true, suffix: '', outMode: 'zip', ...Store.get('webp', {}) };
-  const saveOpts = debounce(() => Store.set('webp', opts), 300);
+  const saveOpts = saveLater(() => Store.set('webp', opts), 300);
   let items = [], zipBlob = null, idSeq = 0, running = false;
 
   const outName = n => {
@@ -5941,7 +5932,7 @@ function mountLutwerk(view) {
   const st = { own: saved.own || [], sel: saved.sel || 'b:1', amt: saved.amt ?? 1, fmt: saved.fmt || 'jpg', q: saved.q ?? 92, suffix: saved.suffix ?? '', out: saved.out || 'zip',
     items: [], cur: 0, compare: true, split: .5, editing: null, busy: false };
   let uid0 = saved.nid || 1;
-  const persist = debounce(() => Store.set('lutwerk', { own: st.own, sel: st.sel, amt: st.amt, fmt: st.fmt, q: st.q, suffix: st.suffix, out: st.out, nid: uid0 }), 300);
+  const persist = saveLater(() => Store.set('lutwerk', { own: st.own, sel: st.sel, amt: st.amt, fmt: st.fmt, q: st.q, suffix: st.suffix, out: st.out, nid: uid0 }), 300);
   const allLuts = () => [...st.own, ...BUILTIN];
   const lutById = id => allLuts().find(l => l.id === id) || BUILTIN[0];
   const cur = () => lutById(st.sel);
@@ -6639,7 +6630,6 @@ function mountSortierwerk(view) {
   const opt = { ...DEF, ...Store.get('sortierwerk', {}) };
   const save = () => Store.set('sortierwerk', opt);
   const LEVELS = [['year', 'Jahr'], ['month', 'Monat'], ['day', 'Tag'], ['ym', 'Jahr-Monat'], ['date', 'Datum'], ['camera', 'Kamera'], ['orient', 'Ausrichtung'], ['type', 'Dateityp']];
-  const LEVEL_NAME = Object.fromEntries(LEVELS);
   const PRESETS = [
     ['Jahr / Monat', ['year', 'month']], ['Jahr / Monat / Tag', ['year', 'month', 'day']], ['Ein Ordner pro Tag', ['date']],
     ['Kamera', ['camera']], ['Kamera / Jahr', ['camera', 'year']], ['Hoch- / Querformat', ['orient']], ['Dateityp', ['type']],
@@ -7180,7 +7170,7 @@ function mountPdfWerk(view) {
   const A4 = [595.28, 841.89];
   let sources = [], pages = [], seq = 0, busy = false, lastClicked = null;
   const opts = { name: 'dokument', every: 2, ...Store.get('pdfwerk', {}) };
-  const saveOpts = debounce(() => Store.set('pdfwerk', { name: opts.name, every: opts.every }), 300);
+  const saveOpts = saveLater(() => Store.set('pdfwerk', { name: opts.name, every: opts.every }), 300);
 
   /* ---------- Thumbnails: only visible pages, one after another ---------- */
   const queue = [];
@@ -7423,7 +7413,6 @@ function mountEntscheidung(view) {
   let mode = 'maschine';
   let coinRot = 0, coinSpinning = false;
   let oLastIdx = -1;
-  let resEl = null;
 
   const seg = h('div', { class: 'ez-seg' });
   const panel = h('div', { class: 'ez-panel' });
@@ -7444,7 +7433,6 @@ function mountEntscheidung(view) {
   function renderPanel() {
     mcStop?.(); mcStop = null;
     panel.innerHTML = '';
-    resEl = null;
     coinKey = null;
     if (mode === 'maschine') renderMachine();
     else if (mode === 'muenze') renderCoin();
@@ -7905,7 +7893,6 @@ function mountEntscheidung(view) {
   const pickOne = arr => arr[Math.floor(Math.random() * arr.length)];
   let oChat = Store.get('orakel-chat', []);
   const saveO = () => Store.set('orakel-chat', oChat.slice(-40));
-  let oKey = null;
 
   function renderOrakel() {
     const list = h('div', { class: 'oc-msgs' });
@@ -7986,12 +7973,6 @@ function mountEntscheidung(view) {
     panel.append(card);
     renderAll();
     setTimeout(() => ta.focus(), 50);
-  }
-
-  function showResult(val) {
-    if (!resEl) return;
-    resEl.querySelector('.ez-resval').textContent = val;
-    resEl.classList.add('on');
   }
 
   renderPanel();
@@ -8096,7 +8077,7 @@ function mountBildwerk(view) {
   st.paintColor = saved.paintColor || '#ffffff';
   st.layers = [baseLayer];
   let lid = 0;
-  const persist = debounce(() => {
+  const persist = saveLater(() => {
     const { mode, tol, soft, shift, feather, defringe } = st.bg;
     Store.set('bildwerk', { bg: { mode, tol, soft, shift, feather, defringe }, fmt: st.fmt, q: st.q, backdrop: st.backdrop,
       fx: baseLayer.fx, brush: { size: st.brush.size, hard: st.brush.hard, wtol: st.brush.wtol }, keepLayers: st.keepLayers, redMask: st.redMask, fill: st.fill, paintColor: st.paintColor });
@@ -9647,7 +9628,7 @@ function mountTextwerk(view) {
   const twOpt={markLong:false,longMax:20,...Store.get('textwerk',{})};
   const saveTwOpt=()=>Store.set('textwerk',{markLong:twOpt.markLong,longMax:twOpt.longMax});
   let edText=Store.get('textwerk-text','');
-  const saveEdText=debounce(()=>Store.set('textwerk-text',edText.length<300000?edText:''),400);   // Editor text survives reloads & ends up in the backup
+  const saveEdText=saveLater(()=>Store.set('textwerk-text',edText.length<300000?edText:''),400);   // Editor text survives reloads & ends up in the backup
   const WORD_RE=/[\p{L}\p{N}]+(?:[-'’.][\p{L}\p{N}]+)*/gu;
   const ABBR=new Set(['bzw','usw','ca','nr','dr','prof','str','vgl','ggf','inkl','exkl','evtl','etc','bspw','sog','mio','mrd','jh','jhd','abs','abb','tel','hr','fr','st','allg','insb','zzgl','ebd','geb','gest','max','min','mind','ff','dt','engl','kap','bd','hrsg','jr','sen','ing','dipl','mag','uvm','o.ä','u.ä','m.e','i.d.r','s.o','s.u','v.a','v.chr','n.chr','z.b','d.h','u.a','z.t','u.u']);
   const DIPH=new Set(['ei','ie','au','eu','äu','ai','ey','ay','aa','ee','oo']);
@@ -9910,7 +9891,7 @@ function mountTextwerk(view) {
 
   // ── Teleprompter tab ──
   const tpOpt={text:'',speed:2,size:56,width:80,lh:1.5,mirrorX:false,mirrorY:false,guide:true,countdown:true,fullscreen:true,...Store.get('prompter',{})};
-  const saveTp=debounce(()=>Store.set('prompter',tpOpt),300);
+  const saveTp=saveLater(()=>Store.set('prompter',tpOpt),300);
   let tpKey=null,tabCleanup=null;
   function buildPrompter(){
     const pxPerSec=()=>tpOpt.speed*tpOpt.size*0.3;
@@ -10686,7 +10667,7 @@ function mountFarbwerk(view) {
     return '#' + [f(0), f(8), f(4)].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join(''); };
   const mixHex = (a, b, t) => '#' + toRgb(a).map((x, i) => Math.round(x + (toRgb(b)[i] - x) * t).toString(16).padStart(2, '0')).join('');
   const pk = { hh: 262, s: .62, v: .9, ...(S.app('farbwerk', 'mixer') || {}) };
-  const savePk = debounce(() => S.setApp('farbwerk', 'mixer', { hh: pk.hh, s: pk.s, v: pk.v }), 400);
+  const savePk = saveLater(() => S.setApp('farbwerk', 'mixer', { hh: pk.hh, s: pk.s, v: pk.v }), 400);
   const svEl = h('div', { class: 'fw-mx-sv' }), svDot = h('i'), hueEl = h('div', { class: 'fw-mx-hue' }), hueDot = h('i');
   svEl.append(svDot); hueEl.append(hueDot);
   const bigEl = h('div', { class: 'fw-mx-big', title: 'Kopieren' }), bigLbl = h('span');
@@ -10948,7 +10929,7 @@ function mountPitcher(view) {
   const DEFAULT = '# Pitch Deck 2025\n\n## Das Problem\n\nUnternehmen verlieren täglich Stunden durch **manuelle Prozesse** und fehlende Tools.\n\n- Dateneingabe kostet *3+ Stunden täglich* pro Mitarbeiter\n- Fehlerquote bei manueller Erfassung liegt bei `~8%`\n- Keine einheitliche Datenbasis zwischen Teams\n- Berichte werden mit `Excel` erstellt – error-prone & langsam\n\n---\n\n## Die Lösung\n\n**Unsere KI-Plattform** automatisiert den gesamten Workflow von Erfassung bis Report.\n\n### Kernfunktionen\n\n- [x] Echtzeit-Datenintegration aus 50+ Quellen\n- [x] Automatische Berichterstellung per KI\n- [x] Rollenbasierte Zugriffssteuerung\n- [x] Audit-Trail & Compliance-Export\n- [ ] Mobile App für iOS & Android (Q2 2025)\n- [ ] Drittanbieter-API mit Webhook-Support (Q3 2025)\n\n### Technologie\n\n> Gebaut auf modernster Cloud-Infrastruktur – 99.9% Uptime garantiert, SOC 2 zertifiziert.\n\n## Warum wir gewinnen\n\n1. **10× schneller** als bestehende Lösungen\n2. **Keine IT-Kenntnisse** nötig – Setup in unter 1 Stunde\n3. **DSGVO-konform** – Daten bleiben in der EU\n\n---\n\n## Zahlen & Fakten\n\n1. **500+** Unternehmen im Einsatz\n2. **87%** Zeitersparnis im Durchschnitt\n3. **ROI** von 340% im ersten Jahr nachgewiesen\n\n---\n\n## Nächste Schritte\n\n> Demo-Termin vereinbaren – wir zeigen alles live in 30 Minuten.\n\n1. Kostenlose Demo buchen\n2. Pilotphase mit Ihrem Team starten\n3. Rollout & Onboarding planen';
 
   let content = Store.get('pitcher-text', null) ?? DEFAULT, ptSize = 16, presenting = false, step = 0, nSteps = 1, pMode = Store.get('pitcher-mode', 'unfold');
-  const saveContent = debounce(() => Store.set('pitcher-text', content.length < 300000 ? content : DEFAULT), 400);   // Presentation survives reloads & ends up in the backup
+  const saveContent = saveLater(() => Store.set('pitcher-text', content.length < 300000 ? content : DEFAULT), 400);   // Presentation survives reloads & ends up in the backup
 
   const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const inl = s => esc(s)
@@ -13462,7 +13443,7 @@ function mountSprechwerk(view) {
   const synth = window.speechSynthesis;
   const saved = Store.get('sprechwerk', {});
   const o = { text: '', voice: '', rate: 1, pitch: 1, volume: 1, lang: '', offline: true, keepAlive: true, ...saved };
-  const persist = debounce(() => Store.set('sprechwerk', o), 300);
+  const persist = saveLater(() => Store.set('sprechwerk', o), 300);
   const SAMPLE = {
     de: 'Hallo, ich bin {n}. So klinge ich, wenn ich dir etwas vorlese.',
     en: 'Hello, I am {n}. This is how I sound when I read to you.',
@@ -13994,7 +13975,7 @@ function mountTimer(view) {
   const PRESETS = [1, 3, 5, 10, 15, 20, 30, 45, 60];
   const COLORS = ['#ffffff', '#7c6cff', '#22d3ee', '#3ecf8e', '#f5b544', '#f97316', '#ec4899'];
   const z = { dur: 300, label: '', yellow: 120, red: 60, over: 'up', sound: true, bg: 'black', color: '#ffffff', bar: true, clock: false, ...Store.get('zeitwerk', {}) };
-  const save = debounce(() => Store.set('zeitwerk', z), 250);
+  const save = saveLater(() => Store.set('zeitwerk', z), 250);
 
   // idle → running ⇄ paused; after 0: done (counts up if enabled)
   let state = 'idle', end = 0, left = z.dur * 1000, raf = 0, idle = 0, lastSec = null, alarmed = false, actx = null;
@@ -14243,7 +14224,7 @@ function mountCodewerk(view) {
   const RX_DEFAULT = { src: '(\\w+)@(\\w+)\\.de', flags: 'g', text: 'Schreib an tom@beispiel.de oder info@firma.de – der Termin ist am 26.09.2026.', repl: '$1 bei $2' };
   const st = { json: '', b64: '', url: '', ts: '', num: '255', ...Store.get('codewerk', {}) };
   st.rx = { ...RX_DEFAULT, ...(st.rx || {}) };
-  const persist = debounce(() => Store.set('codewerk', { json: st.json.length < 200000 ? st.json : '', b64: st.b64, url: st.url, ts: st.ts, num: st.num,
+  const persist = saveLater(() => Store.set('codewerk', { json: st.json.length < 200000 ? st.json : '', b64: st.b64, url: st.url, ts: st.ts, num: st.num,
     rx: { ...st.rx, text: st.rx.text.length < 100000 ? st.rx.text : '' } }), 400);
 
   /* ---------- Building blocks ---------- */
@@ -14715,7 +14696,7 @@ function mountModellwerk(view) {
   view.style.padding = '0';
   const saved = Store.get('modellwerk', {});
   const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null };
-  const persist = debounce(() => Store.set('modellwerk', st), 300);
+  const persist = saveLater(() => Store.set('modellwerk', st), 300);
   const tplOf = id => MW_TEMPLATES.find(t => t.id === id) || MW_TEMPLATES[0];
   const cur = () => st.items.find(x => x.id === st.active);
   const PT_COLORS = ['#7c6cff', '#ef4444', '#0ea5e9', '#22c55e', '#f59e0b', '#ec4899', '#64748b'];
@@ -15226,7 +15207,7 @@ function kzDefs({ eur, pct, nf, div }) {
 
 function mountKennzahlwerk(view) {
   const st = { topic: 'all', way: true, v: {}, ...Store.get('kennzahlwerk', {}) };
-  const persist = debounce(() => Store.set('kennzahlwerk', st), 300);
+  const persist = saveLater(() => Store.set('kennzahlwerk', st), 300);
   const ok = n => typeof n === 'number' && Number.isFinite(n);
   const nf = (n, d = 2) => ok(n) ? n.toLocaleString('de-DE', { maximumFractionDigits: d }) : '–';
   const eur = n => ok(n) ? n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) : '–';
@@ -15396,7 +15377,7 @@ function mountQuellenwerk(view) {
   view.style.padding = '0';
   const saved = Store.get('quellenwerk', {});
   const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null, style: saved.style === 'apa' ? 'apa' : 'de', project: saved.project || '', q: '' };
-  const persist = debounce(() => { const { q, ...r } = st; Store.set('quellenwerk', r); }, 300);
+  const persist = saveLater(() => { const { q, ...r } = st; Store.set('quellenwerk', r); }, 300);
   const cur = () => st.items.find(x => x.id === st.active);
   const fmtD = s => { if (!s) return ''; const [y, m, d] = s.split('-'); return `${d}.${m}.${y}`; };
   const apa = () => st.style === 'apa';
@@ -15633,10 +15614,8 @@ function mountKarteiwerk(view) {
   const saved = Store.get('karteiwerk', {});
   const st = { decks: Array.isArray(saved.decks) ? saved.decks : [], active: saved.active || null, reverse: !!saved.reverse, log: saved.log || {} };
   // Save through the shared Store (→ backup & folder sync). Batched while typing, immediately after answers and when leaving the page.
-  let saveT;
-  const save = () => { clearTimeout(saveT); Store.set('karteiwerk', st); };
-  const persist = () => { clearTimeout(saveT); saveT = setTimeout(save, 300); };
-  addEventListener('pagehide', save);
+  const persist = saveLater(() => Store.set('karteiwerk', st), 300);
+  const save = () => { persist(); persist.flush(); };
 
   /* ---------- Dates ---------- */
   const p2 = n => String(n).padStart(2, '0');
@@ -15917,7 +15896,6 @@ function mountKarteiwerk(view) {
       const keys = s.mode === 'learn' ? { 1: 'again', 2: 'hard', 3: 'good' } : { 1: 'again', 2: 'good' };
       if (keys[e.key]) { e.preventDefault(); rate(keys[e.key]); }
     },
-    destroy() { save(); removeEventListener('pagehide', save); },
   };
 }
 
@@ -15952,10 +15930,8 @@ function mountDiagrammwerk(view) {
   view.style.padding = '0';
   const saved = Store.get('diagrammwerk', {});
   const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null };
-  let saveT;
-  const save = () => { clearTimeout(saveT); Store.set('diagrammwerk', st); };
-  const persist = () => { clearTimeout(saveT); saveT = setTimeout(save, 300); };
-  addEventListener('pagehide', save);
+  const persist = saveLater(() => Store.set('diagrammwerk', st), 300);
+  const save = () => { persist(); persist.flush(); };
   const cur = () => st.items.find(x => x.id === st.active);
   const touch = () => { const it = cur(); if (it) it.updated = Date.now(); persist(); drawSoon(); listSoon(); };
 
@@ -16427,7 +16403,7 @@ function mountDiagrammwerk(view) {
       list),
     main));
   render();
-  return { onShow: () => draw(), destroy() { save(); removeEventListener('pagehide', save); } };
+  return { onShow: () => draw() };
 }
 
 TT.register({
@@ -17058,7 +17034,7 @@ in vec2 p; void main() { gl_Position = vec4(p, 0.0, 1.0); }`;
   /* ---------- State ---------- */
   const saved = Store.get('shaderwerk', {});
   const S0 = { preset: 'marble', quality: 1, speed: 1, react: 1, per: {}, code: DEFAULT_CODE, png: '1920x1080', vres: '1920x1080', vsec: 10, vfps: 30, ...saved };
-  const persist = debounce(() => Store.set('shaderwerk', S0), 300);
+  const persist = saveLater(() => Store.set('shaderwerk', S0), 300);
   const preset = () => PRESETS.find(x => x.id === S0.preset) || PRESETS[3];
   function cfg(pr = preset()) {
     let c = S0.per[pr.id];
@@ -17860,7 +17836,7 @@ function mountQrwerk(view) {
   const S1 = { type: 'link', f: {}, d: { ...DESIGN, ...(saved.d || {}) }, ...saved, };
   S1.d = { ...DESIGN, ...(saved.d || {}) };
   S1.f = saved.f || {};
-  const persist = debounce(() => Store.set('qrwerk', S1), 300);
+  const persist = saveLater(() => Store.set('qrwerk', S1), 300);
   const F = (k, def = '') => S1.f[k] ?? def;
 
   const esc = s => String(s).replace(/([\\;,:"])/g, '\\$1');
@@ -19285,15 +19261,6 @@ ${[st.sSteuernr,st.sUstId,st.sEmail,st.sWeb,st.footer].some(Boolean)?`<div class
         h('div',{class:'rw-preview-scroll'}, briefDocEl)));
   }
 
-  /* ── Tab 2 placeholder ── */
-  function buildPlaceholder() {
-    return h('div',{class:'rw-placeholder'},
-      h('div',{class:'rw-ph-ico'},icon('sparkle')),
-      h('h3',null,'Angebote & Vorlagen'),
-      h('p',null,'Angebote erstellen, direkt als Rechnung übernehmen und Textvorlagen speichern.'),
-      h('span',{class:'badge'},'Kommt bald'));
-  }
-
   /* ── Tabs ── */
   let curTab = 'generator';
   const contentEl = h('div',{style:'flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden'});
@@ -20310,6 +20277,57 @@ TT.register({
 applyLook();
 $('#btnSettings').append(icon('settings'));
 $('#btnSettings').addEventListener('click', openSettings);
+
+/* Top bar: remove formatting – clipboard → plain text → clipboard. No dialog.
+   Reading the clipboard directly needs a browser permission (and file:// pages get asked every time). So:
+   if that permission is already granted → one click; otherwise the button waits for Ctrl+V – pasting never needs a permission. */
+{
+  const btn = $('#btnPlain'), mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+  const hint = h('span', { class: 'plain-hint', hidden: true }, T('Jetzt'), ' ', h('kbd', null, mac ? '⌘' : T('Strg')), ' + ', h('kbd', null, 'V'));
+  btn.before(hint); btn.append(icon('clearfmt'));
+  const clean = raw => raw.replace(/\r\n?/g, '\n')
+    .replace(/[\u200B-\u200D\u2060\uFEFF\u00AD]/g, '')   // invisible characters & soft hyphens (typical for Word)
+    .replace(/[\u00A0\u202F]/g, ' ')                      // non-breaking spaces → normal spaces
+    .replace(/[ \t]+$/gm, '');                              // spaces at the end of lines
+  let waitT = null;
+  const flash = (ok, msg) => {
+    clearTimeout(btn._t); btn.classList.remove('ok', 'err'); btn.classList.add(ok ? 'ok' : 'err'); btn.replaceChildren(icon(ok ? 'check' : 'alert'));
+    btn._t = setTimeout(() => { btn.classList.remove('ok', 'err'); btn.replaceChildren(icon('clearfmt')); }, 1400);
+    if (msg) toast(msg, 'err');
+  };
+  const stopWait = () => { clearTimeout(waitT); waitT = null; btn.classList.remove('wait'); hint.hidden = true; };
+  const startWait = () => { btn.classList.add('wait'); hint.hidden = false; clearTimeout(waitT); waitT = setTimeout(stopWait, 10000); };
+  // Write plain text synchronously inside the paste event (counts as a user action → no permission needed)
+  const writePlain = txt => {
+    let ok = false;
+    const onCopy = e => { e.preventDefault(); e.clipboardData.setData('text/plain', txt); ok = true; };
+    document.addEventListener('copy', onCopy, true);
+    try { document.execCommand('copy'); } catch {}
+    document.removeEventListener('copy', onCopy, true);
+    return ok;
+  };
+  document.addEventListener('paste', e => {
+    if (!waitT) return;
+    e.preventDefault(); e.stopPropagation(); stopWait();
+    const raw = e.clipboardData?.getData('text/plain') || '';
+    if (!raw) { flash(false, T('Die Zwischenablage ist leer (oder enthält keinen Text).')); return; }
+    writePlain(clean(raw)) ? flash(true) : flash(false, T('Das hat nicht geklappt – bitte noch einmal versuchen.'));
+  }, true);
+  document.addEventListener('keydown', e => { if (waitT && e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); stopWait(); } }, true);
+  btn.addEventListener('click', async () => {
+    if (waitT) { stopWait(); return; }
+    let granted = false;
+    try { granted = (await navigator.permissions?.query({ name: 'clipboard-read' }))?.state === 'granted'; } catch {}
+    if (granted && navigator.clipboard?.readText) {
+      try {
+        const raw = await navigator.clipboard.readText();
+        if (!raw) { flash(false, T('Die Zwischenablage ist leer (oder enthält keinen Text).')); return; }
+        await navigator.clipboard.writeText(clean(raw)); flash(true); return;
+      } catch {}
+    }
+    btn.blur(); startWait();
+  });
+}
 const _clk=document.getElementById('ttClock'),_dat=document.getElementById('ttDate');
 const _kw=d=>{const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));t.setUTCDate(t.getUTCDate()+4-(t.getUTCDay()||7));const y=new Date(Date.UTC(t.getUTCFullYear(),0,1));return Math.ceil(((t-y)/86400000+1)/7);};
 const _days=['So','Mo','Di','Mi','Do','Fr','Sa'],_daysEN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -20323,7 +20341,7 @@ _tick();setInterval(_tick,5000);
 // (apps that are already open pick up the language the next time they are opened).
 function paintLang() {
   document.documentElement.lang = isEN() ? 'en' : 'de';
-  $('#btnCalc').title = T('Taschenrechner'); $('#btnSettings').title = T('Einstellungen (Strg+,)');
+  $('#btnCalc').title = T('Taschenrechner'); $('#btnPlain').title = T('Formatierung entfernen – kopierten Text als reinen Text in die Zwischenablage legen'); $('#btnSettings').title = T('Einstellungen (Strg+,)');
 }
 function setLang(l) {
   if ((isEN() ? 'en' : 'de') === l) return;

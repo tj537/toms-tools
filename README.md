@@ -4,9 +4,9 @@
 
 <p align="center">
   <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Toms Tools herunterladen" height="56"></a>
-  <a href="https://tj537.github.io/toms-tools/"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Live-ausprobieren-1f2937?style=for-the-badge&labelColor=374151" alt="Toms Tools live im Browser ausprobieren" height="56"></a>
+  <a href="https://tj537.github.io/toms-tools/"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Live%20ausprobieren-374151?style=for-the-badge" alt="Toms Tools live im Browser ausprobieren" height="56"></a>
   <br>
-  <sub>Download lädt immer die neueste Version · Live läuft direkt im Browser · <a href="https://github.com/tj537/toms-tools/releases">Alle Versionen & Änderungen</a></sub>
+  <sub>Download lädt immer die neueste Version · Live ist zum Reinschnuppern – für den Alltag lieber herunterladen</sub>
 </p>
 
 Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[👉 Alle 31 Apps ansehen](#apps)**
@@ -24,7 +24,7 @@ Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[�
 
 > 🇬🇧 **English:** 31 offline tools in one single HTML file – image editing, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
 
-**Inhalt:** [Hi!](#hi) · [Das Besondere](#besonders) · [Die Apps](#apps) · [So wie du's brauchst](#anpassen) · [Loslegen](#loslegen) · [Deine Daten](#daten) · [Datenschutz](#datenschutz) · [Tastenkürzel](#tasten) · [Feedback](#feedback) · [Lizenz](#lizenz)
+**Inhalt:** [Hi!](#hi) · [Das Besondere](#besonders) · [Die Apps](#apps) · [So wie du's brauchst](#anpassen) · [Loslegen](#loslegen) · [Deine Daten](#daten) · [Datenschutz](#datenschutz) · [Feedback](#feedback) · [Lizenz](#lizenz)
 
 ---
 
@@ -231,15 +231,15 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 2. **Doppelklick** auf die Datei – sie öffnet sich im Browser.
 3. Fertig. Tipp: Als Lesezeichen speichern oder an die Taskleiste anheften.
 
-**Live ausprobieren:** Ohne Download geht es auch direkt im Browser unter **[tj537.github.io/toms-tools](https://tj537.github.io/toms-tools/)**. Die Daten liegen dann im Browser für diese Webseite – getrennt von der heruntergeladenen Datei. Mit *Backup exportieren / importieren* kannst du sie hin- und herschieben.
+**Live ausprobieren:** Ohne Download geht es auch direkt unter **[tj537.github.io/toms-tools](https://tj537.github.io/toms-tools/)** – ideal zum Reinschnuppern. Für den Alltag empfehle ich den Download: Die Live-Version zeigt immer den neuesten Entwicklungsstand, und deine Daten hängen dort an der Webseite statt an deiner Datei. Mit *Backup exportieren / importieren* lassen sie sich aber jederzeit umziehen.
 
 **Browser:** Toms Tools ist für den **Desktop** gemacht – am besten **Chrome, Edge, Brave oder Opera**. Auf Handy und Tablet ist die Darstellung nicht überall geprüft. Firefox und Safari gehen für die meisten Apps auch – nur die Funktionen mit direktem Ordnerzugriff (Bulk Rename, Sortierwerk, Ordner-Sicherung) und die Pipette brauchen einen Chromium-Browser.
 
 <a id="daten"></a>
-## 💾 Deine Daten & Speichern
+## 💾 Deine Daten & Speichern (Local Storage)
 
 - **Alles speichert sich automatisch** – sobald du tippst, klickst oder eine Karteikarte beantwortest. Einen Speichern-Knopf gibt es nicht, und du brauchst ihn auch nicht.
-- Die Daten liegen **nur in deinem Browser auf deinem Rechner** (pro Browser). Nichts wird an einen Server geschickt.
+- Die Daten liegen **nur im Local Storage deines Browsers auf deinem Rechner** (pro Browser). Nichts wird an einen Server geschickt.
 - **Ordner-Sicherung (empfohlen):** Unter *Einstellungen → Speicher & Sicherung* einen Ordner wählen, z. B. in OneDrive. Toms Tools schreibt dann bei jeder Änderung automatisch die Datei `toms-tools-daten.json` hinein – plus tägliche Kopien der letzten 14 Tage im Unterordner `sicherungen`. Geht in Chrome, Edge und Brave.
 - **Zweiter PC:** Dort denselben Ordner wählen und *Aus Ordner laden* – schon sind Notizen, Karteikarten, Quellen & Co. auch da.
 - **Backup exportieren / importieren:** Alles als eine Datei zum Mitnehmen – funktioniert in jedem Browser.
@@ -254,22 +254,11 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 - Passwörter, Hashes und JWTs aus Textwerk/Codewerk werden **nie gespeichert**.
 - Links nach draußen öffnen sich nur, wenn du sie anklickst – jeweils in einem neuen Tab: der freiwillige Kaffee-Knopf in den Einstellungen (PayPal) und die Links, die du selbst im Quellenwerk speicherst.
 
-<a id="tasten"></a>
-## ⌨️ Tastenkürzel
-
-| Kürzel | Aktion |
-|---|---|
-| `Alt` + `0` | Startseite |
-| `Alt` + `1` … `9` | Zum offenen Tab 1 … 9 |
-| `Alt` + `W` | Tab schließen |
-| `Strg` + `,` | Einstellungen |
-
 ## 🛠️ Unter der Haube
 
 - Reines **HTML, CSS und JavaScript** – kein Framework, keine Abhängigkeiten, kein Build.
 - Etwa 3,5 MB groß, davon rund 2 MB für die eingebetteten PDF-Bibliotheken (werden erst beim Öffnen von PDF-Werk geladen).
 - **WebGL2** für Shaderwerk und LUT-Werk, **File System Access API** für die Ordner-Funktionen.
-- Versionen nach [SemVer](https://semver.org/lang/de/), jede Version hat einen Git-Tag.
 
 <a id="feedback"></a>
 ## 💬 Feedback

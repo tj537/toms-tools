@@ -2981,6 +2981,72 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
   .kaw-card{padding:24px 20px;min-height:240px}
 }
 
+/* ── Diagrammwerk ── */
+.dgw{height:100%;display:grid;grid-template-columns:250px minmax(0,1fr);min-height:0}
+.dgw [hidden]{display:none!important}
+.dgw-side{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;background:color-mix(in oklab,var(--bg2) 55%,transparent)}
+.dgw-hd{display:flex;align-items:center;gap:10px;padding:16px 14px 10px;font-size:15px}
+.dgw-logo{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--app-c,var(--acc)),var(--app-c2,var(--acc2)));box-shadow:0 8px 20px -10px var(--app-c,var(--acc)),inset 0 1px 0 rgba(255,255,255,.25);flex:none}
+.dgw-logo svg{width:17px;height:17px}
+.dgw-tools{padding:2px 12px 8px}
+.dgw-list{flex:1;overflow:auto;padding:2px 8px 12px;display:flex;flex-direction:column;gap:2px}
+.dgw-it{display:flex;align-items:center;gap:9px;padding:7px 6px 7px 8px;border-radius:10px;cursor:pointer;color:var(--tx2);transition:background .15s,color .15s}
+.dgw-it:hover{background:var(--s1);color:var(--tx)}
+.dgw-it.on{background:var(--s2);color:var(--tx)}
+.dgw-ti{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc-tx);flex:none}
+.dgw-ti svg{width:16px;height:16px}
+.dgw-it-tx{flex:1;min-width:0}
+.dgw-it-t{font-size:13px;font-weight:550;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dgw-it-d{font-size:11px;color:var(--tx3)}
+.dgw-del{opacity:0;transition:opacity .15s,color .15s}
+.dgw-it:hover .dgw-del,.dgw-it.on .dgw-del,.dgw-del:focus-visible{opacity:1}
+.dgw-del:hover{color:var(--err)}
+@media(hover:none){.dgw-del{opacity:1}}
+.dgw-empty{font-size:12.5px;color:var(--tx3);padding:10px 8px}
+.dgw-main{overflow:auto;min-width:0;padding:22px 24px 48px}
+.dgw-in{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.dgw-col{display:flex;flex-direction:column;gap:8px}
+.dgw-h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.dgw-meta{font-size:12.5px;color:var(--tx3);margin-top:3px;line-height:1.5}
+.dgw-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.dgw-g{text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--s1);transition:border-color .15s,transform .15s,background .15s}
+.dgw-g:hover{border-color:color-mix(in oklab,var(--acc) 50%,transparent);transform:translateY(-2px);background:var(--s2)}
+.dgw-gi{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc-tx);margin-bottom:2px}
+.dgw-gi svg{width:22px;height:22px}
+.dgw-g b{font-size:14px}
+.dgw-g>span:last-child{font-size:12.5px;color:var(--tx2);line-height:1.45}
+.dgw-top{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.dgw-top-t{flex:1;min-width:240px;display:flex;flex-direction:column}
+.dgw-title{width:100%;font-size:22px;font-weight:700;letter-spacing:-.01em;background:none;border:0;border-bottom:1px dashed transparent;outline:none;padding:2px 0;color:var(--tx)}
+.dgw-sub{width:100%;font-size:13px;background:none;border:0;border-bottom:1px dashed transparent;outline:none;padding:3px 0;color:var(--tx2)}
+.dgw-title:hover,.dgw-title:focus,.dgw-sub:hover,.dgw-sub:focus{border-bottom-color:var(--line2)}
+.dgw-title::placeholder,.dgw-sub::placeholder{color:var(--tx3)}
+.dgw-acts{display:flex;gap:6px;flex-wrap:wrap}
+.dgw-bar{display:flex;gap:8px;flex-wrap:wrap}
+.dgw-segi{display:inline-flex;align-items:center;gap:6px}
+.dgw-segi svg{width:15px;height:15px}
+.dgw-opts{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;font-size:12.5px;color:var(--tx2)}
+.dgw-opt{display:inline-flex;align-items:center;gap:8px}
+.dgw-unit{width:96px;height:30px}
+.dgw-stage{position:relative;border-radius:16px;padding:12px;background:#ebeae5;border:1px solid var(--line)}
+.dgw-stage.dark{background:#0d0d0d}
+.dgw-prev svg{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 30px -18px rgba(0,0,0,.45)}
+.dgw-tip{position:absolute;pointer-events:none;z-index:3;max-width:320px;padding:7px 10px;border-radius:9px;font-size:12.5px;font-weight:550;color:#fff;background:rgba(17,17,17,.92);box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.dgw-tablewrap{overflow-x:auto}
+.dgw-t{display:grid;gap:6px;align-items:center;min-width:560px}
+.dgw-t .inp{height:32px}
+.dgw-h{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tx3)}
+.dgw-shd{display:flex;align-items:center;gap:6px;min-width:0}
+.dgw-shd .inp{font-weight:600}
+.dgw-shd.off,.dgw-v.off{opacity:.4}
+.dgw-sw{width:10px;height:10px;border-radius:3px;flex:none}
+.dgw-v{text-align:right;font-variant-numeric:tabular-nums}
+.dgw-paste{width:100%;min-height:220px;resize:vertical;font:12.5px/1.5 var(--mono);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;color:var(--tx);outline:none}
+@media(max-width:800px){
+  .dgw{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .dgw-side{max-height:200px;border-right:0;border-bottom:1px solid var(--line)}
+}
+
 </style>
 </head>
 <body>
@@ -3207,6 +3273,7 @@ const ICONS = {
   kennzahlwerk: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M15 8h4v4"/>',   // rising chart
   percent: '<path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
   cap: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c3 2.5 9 2.5 12 0v-4.5"/><path d="M22 9v5"/>',   // graduation cap
+  diagrammwerk: '<path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12" y="8" width="3" height="10" rx="1"/><rect x="17" y="5" width="3" height="13" rx="1"/>',   // column chart
   karteiwerk: '<rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/><path d="M7 12h6M7 15.5h4"/>',   // stacked index cards
   quellenwerk: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9.5 2v7.5l2-1.5 2 1.5V2"/>',   // book with bookmark
   briefcase: '<rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/><path d="M11 13h2v2h-2z"/>',   // business
@@ -3614,6 +3681,8 @@ const EN = {
   'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und Nutzwertanalyse, mit Rechenweg.': 'Calculators for everyday life, studies and business – from percentages and VAT to break-even and weighted scoring, with working.',
   'Quellen sammeln · richtig zitieren': 'Collect sources · cite correctly',
   'Karteikarten mit Lernsystem': 'Flashcards with a learning system',
+  'Diagramme & Zeitpläne': 'Charts & timelines',
+  'Säulen-, Balken-, Linien- und Kreisdiagramme oder ein Zeitplan – aus Excel einfügen, als PNG oder SVG exportieren.': 'Column, bar, line and donut charts or a timeline – paste from Excel, export as PNG or SVG.',
   'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.': 'Flashcards for any topic – the Leitner box system mainly asks what you don’t know yet.',
   'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.': 'Save books, articles and links with notes and quotes – copy the citation with one click.',
 };
@@ -4359,7 +4428,7 @@ const APP_GROUPS = [
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
   { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
-  { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk', 'quellenwerk', 'karteiwerk'] },
+  { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk', 'diagrammwerk', 'quellenwerk', 'karteiwerk'] },
   { id: 'fun', name: 'Spaß & Musik', icon: 'sparkle', apps: ['entscheidung', 'spielwiese', 'beatwerk'] },
 ];
 const APP_ORDER = APP_GROUPS.flatMap(g => g.apps);
@@ -15857,6 +15926,515 @@ TT.register({
   tagline: 'Karteikarten mit Lernsystem',
   desc: 'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.',
   mount: mountKarteiwerk,
+});
+
+/* ================= Diagrammwerk (charts & timelines → PNG / SVG) ================= */
+// Categorical palette: fixed slot order, validated for colour-vision deficiency (light & dark steps of the same hues)
+const DGW_PAL = {
+  light: ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#4a3aa7', '#e34948'],
+  dark: ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'],
+};
+const DGW_INK = {
+  light: { bg: '#fcfcfb', t1: '#0b0b0b', t2: '#52514e', mu: '#898781', grid: '#e1e0d9', base: '#c3c2b7', wk: '#f3f2ee' },
+  dark: { bg: '#1a1a19', t1: '#ffffff', t2: '#c3c2b7', mu: '#898781', grid: '#2c2c2a', base: '#383835', wk: '#232321' },
+};
+const DGW_TYPES = [['col', 'Säulen'], ['bar', 'Balken'], ['stack', 'Gestapelt'], ['line', 'Linie'], ['donut', 'Kreis'], ['gantt', 'Zeitplan']];
+const DGW_FMT = { '16:9': [960, 540], '4:3': [960, 720], '1:1': [800, 800] };
+const DGW_ICON = {
+  col: '<path d="M4 20h16"/><rect x="5" y="11" width="3" height="9" rx="1"/><rect x="10.5" y="6" width="3" height="14" rx="1"/><rect x="16" y="9" width="3" height="11" rx="1"/>',
+  bar: '<path d="M4 4v16"/><rect x="4" y="5" width="12" height="3" rx="1"/><rect x="4" y="10.5" width="16" height="3" rx="1"/><rect x="4" y="16" width="8" height="3" rx="1"/>',
+  stack: '<path d="M4 20h16"/><rect x="5" y="12" width="4" height="8" rx="1"/><rect x="5" y="7" width="4" height="4" rx="1"/><rect x="15" y="10" width="4" height="10" rx="1"/><rect x="15" y="4" width="4" height="5" rx="1"/>',
+  line: '<path d="M4 20h16"/><path d="m4 15 5-5 4 3 7-7"/><circle cx="9" cy="10" r="1.3"/><circle cx="13" cy="13" r="1.3"/>',
+  donut: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 4v4.5M19.5 15l-4-1.7"/>',
+  gantt: '<path d="M4 4v16"/><rect x="6" y="5" width="7" height="3" rx="1.5"/><rect x="10" y="10.5" width="8" height="3" rx="1.5"/><rect x="15" y="16" width="5" height="3" rx="1.5"/>',
+};
+function mountDiagrammwerk(view) {
+  view.style.padding = '0';
+  const saved = Store.get('diagrammwerk', {});
+  const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null };
+  let saveT;
+  const save = () => { clearTimeout(saveT); Store.set('diagrammwerk', st); };
+  const persist = () => { clearTimeout(saveT); saveT = setTimeout(save, 300); };
+  addEventListener('pagehide', save);
+  const cur = () => st.items.find(x => x.id === st.active);
+  const touch = () => { const it = cur(); if (it) it.updated = Date.now(); persist(); drawSoon(); listSoon(); };
+
+  /* ---------- Numbers, text, dates ---------- */
+  const FONT = 'Inter, "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif';
+  const num = s => {
+    s = String(s ?? '').replace(/[\s€%]/g, '');
+    if (!s) return NaN;
+    if (s.includes(',')) s = s.replace(/\./g, '').replace(',', '.');
+    else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, '');
+    return Number(s);
+  };
+  const nf = (n, d = 2) => n.toLocaleString('de-DE', { maximumFractionDigits: d });
+  const X = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const mctx = document.createElement('canvas').getContext('2d');
+  const tw = (s, size, w = 400) => { mctx.font = `${w} ${size}px ${FONT}`; return mctx.measureText(String(s)).width; };
+  const fit = (s, max, size, w) => { s = String(s ?? ''); if (tw(s, size, w) <= max) return s; while (s.length > 1 && tw(s + '…', size, w) > max) s = s.slice(0, -1); return s + '…'; };
+  function wrap2(s, max, size, w) {   // at most two lines, the rest gets an ellipsis
+    const words = String(s ?? '').split(/\s+/).filter(Boolean); let l1 = '';
+    while (words.length && tw((l1 ? l1 + ' ' : '') + words[0], size, w) <= max) l1 = (l1 ? l1 + ' ' : '') + words.shift();
+    if (!l1) return [fit(words.join(' '), max, size, w)];
+    return words.length ? [l1, fit(words.join(' '), max, size, w)] : [l1];
+  }
+  const WD = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+  const dayN = s => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? Math.round(Date.UTC(+m[1], m[2] - 1, +m[3]) / 864e5) : NaN; };
+  const dayD = n => new Date(n * 864e5);
+  const dayS = n => dayD(n).toISOString().slice(0, 10);
+  const dLabel = n => { const d = dayD(n); return `${WD[d.getUTCDay()]} ${String(d.getUTCDate()).padStart(2, '0')}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.`; };
+  const todayN = () => { const d = appNow(); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); };
+  function niceTicks(lo, hi, n = 5) {
+    if (lo === hi) { hi = lo + 1; }
+    const raw = (hi - lo) / n, mag = 10 ** Math.floor(Math.log10(raw)), f = raw / mag;
+    const step = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * mag;
+    const a = Math.floor(lo / step) * step, b = Math.ceil(hi / step) * step, out = [];
+    for (let v = a; v <= b + step / 2; v += step) out.push(+v.toFixed(10));
+    return out;
+  }
+
+  /* ---------- Examples ---------- */
+  function example(type) {
+    const mon = (() => { const t = todayN(); return t - ((dayD(t).getUTCDay() + 6) % 7); })();
+    const E = {
+      col: { title: 'Umsatz nach Quartal', sub: 'in Tausend Euro', unit: 'T€', labels: ['Q1', 'Q2', 'Q3', 'Q4'], series: [{ name: '2025', v: ['120', '150', '170', '210'] }, { name: '2026', v: ['140', '165', '190', '240'] }] },
+      bar: { title: 'Wo erreichen wir unsere Zielgruppe?', sub: 'Anteil der Befragten in %', unit: '%', labels: ['Instagram', 'E-Mail-Newsletter', 'Website', 'TikTok', 'LinkedIn'], series: [{ name: 'Anteil', v: ['42', '35', '28', '21', '12'] }] },
+      stack: { title: 'Website-Besuche nach Quelle', sub: 'in Tausend', unit: 'T', labels: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun'], series: [{ name: 'Organisch', v: ['12', '13', '15', '14', '17', '19'] }, { name: 'Bezahlt', v: ['6', '8', '7', '9', '10', '12'] }, { name: 'Social', v: ['4', '5', '7', '8', '8', '10'] }] },
+      line: { title: 'Follower-Entwicklung', sub: 'Januar bis Juni', unit: '', labels: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun'], series: [{ name: 'Instagram', v: ['1200', '1350', '1600', '1720', '2050', '2400'] }, { name: 'LinkedIn', v: ['400', '460', '530', '640', '720', '850'] }] },
+      donut: { title: 'Aufteilung Marketing-Budget', sub: '', unit: '%', labels: ['Social Ads', 'Suchmaschine', 'Content', 'Events'], series: [{ name: 'Anteil', v: ['40', '25', '20', '15'] }] },
+      gantt: { title: 'Projektplan', sub: 'Wer macht was wann?', unit: '', labels: [], series: [], tasks: [
+        ['Recherche', 'Vorbereitung', 0, 1], ['Konzept', 'Vorbereitung', 1, 3], ['Umsetzung', 'Umsetzung', 3, 8], ['Feedback-Runde', 'Umsetzung', 7, 8], ['Präsentation', 'Abschluss', 9, 9],
+      ].map(([n, g, a, b]) => ({ id: uid(), n, g, s: dayS(mon + a), e: dayS(mon + b) })) },
+    }[type];
+    return { tasks: [], today: true, ...E };
+  }
+
+  /* ---------- Chart → SVG ---------- */
+  function build(it) {
+    const mode = it.dark ? 'dark' : 'light', K = DGW_INK[mode], PAL = DGW_PAL[mode];
+    let [W, H] = DGW_FMT[it.fmt] || DGW_FMT['16:9'];   // the timeline adapts its height to the number of tasks
+    const P = 32;
+    const out = [];
+    const T = (x, y, s, o = {}) => out.push(`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="${o.size || 12}" font-weight="${o.w || 400}" fill="${o.fill || K.t2}"${o.anchor ? ` text-anchor="${o.anchor}"` : ''}>${X(s)}</text>`);
+    let top = P;
+    if (it.title) { T(P, top + 22, fit(it.title, W - 2 * P, 22, 700), { size: 22, w: 700, fill: K.t1 }); top += 32; }
+    if (it.sub) { T(P, top + 16, fit(it.sub, W - 2 * P, 14), { size: 14, fill: K.t2 }); top += 24; }
+    top += 6;
+    const unitSfx = it.unit ? (/^[%€$]/.test(it.unit) || it.unit.length <= 3 ? ' ' + it.unit : ' ' + it.unit) : '';
+    const fmtV = v => nf(v) + unitSfx;
+    const legend = entries => {   // entries: [name, color]
+      if (entries.length < 2) return;
+      let x = P, y = top + 12;
+      for (const [name, c] of entries) {
+        const w = 18 + tw(name, 13) + 18;
+        if (x + w > W - P && x > P) { x = P; y += 22; }
+        out.push(`<rect x="${x}" y="${y - 10}" width="12" height="12" rx="3" fill="${c}"/>`);
+        T(x + 18, y, name, { size: 13, fill: K.t2 }); x += w;
+      }
+      top = y + 18;
+    };
+    const empty = msg => { T(W / 2, (top + H) / 2, msg, { size: 14, fill: K.mu, anchor: 'middle' }); };
+    const done = () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family='${FONT}'><rect width="${W}" height="${H}" fill="${K.bg}"/>${out.join('')}</svg>`;
+
+    if (it.type === 'gantt') return { svg: gantt(), W, H };
+    const labels = it.labels || [];
+    const series = (it.type === 'donut' ? (it.series || []).slice(0, 1) : (it.series || [])).slice(0, 8)
+      .map((s, i) => ({ name: s.name || `Reihe ${i + 1}`, c: PAL[i], v: labels.map((_, r) => num(s.v?.[r])) }));
+    if (!labels.length || !series.length) { empty('Trag unten Daten ein, dann erscheint hier das Diagramm.'); return { svg: done(), W, H }; }
+
+    if (it.type === 'donut') return { svg: donut(), W, H };
+    legend(series.map(s => [s.name, s.c]));
+
+    const stack = it.type === 'stack', horiz = it.type === 'bar', line = it.type === 'line';
+    let vals = [];
+    if (stack) vals = labels.map((_, r) => series.reduce((a, s) => a + (s.v[r] > 0 ? s.v[r] : 0), 0));
+    else series.forEach(s => s.v.forEach(v => Number.isFinite(v) && vals.push(v)));
+    if (!vals.length) { empty('Noch keine Zahlen eingetragen.'); return { svg: done(), W, H }; }
+    let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals);
+    if (line && lo === 0 && hi === 0) hi = 1;
+    const ticks = niceTicks(lo, hi); lo = ticks[0]; hi = ticks[ticks.length - 1];
+    const tickW = Math.max(...ticks.map(t => tw(nf(t), 12)));
+    const showV = it.values;
+
+    if (horiz) {
+      const labW = Math.min(W * 0.32, Math.max(...labels.map(l => tw(l, 13))) + 4);
+      const valW = showV ? Math.max(...vals.map(v => tw(fmtV(v), 12))) + 10 : 12;
+      const x0 = P + labW + 12, x1 = W - P - valW, y0 = top + 8, y1 = H - P - 22;
+      const sx = v => x0 + (v - lo) / (hi - lo) * (x1 - x0);
+      for (const t of ticks) { const x = sx(t); out.push(`<line x1="${x.toFixed(1)}" y1="${y0}" x2="${x.toFixed(1)}" y2="${y1}" stroke="${t === 0 ? K.base : K.grid}" stroke-width="1"/>`); T(x, y1 + 18, nf(t), { size: 12, fill: K.mu, anchor: 'middle' }); }
+      const n = labels.length, m = series.length, band = (y1 - y0) / n;
+      const bh = Math.max(3, Math.min(24, (band * 0.72 - (m - 1) * 2) / m)), gh = m * bh + (m - 1) * 2;
+      labels.forEach((l, r) => {
+        const yc = y0 + band * r + band / 2;
+        T(P + labW, yc + 4.5, fit(l, labW, 13), { size: 13, fill: K.t1, anchor: 'end' });
+        series.forEach((s, j) => {
+          const v = s.v[r]; if (!Number.isFinite(v)) return;
+          const y = y0 + band * r + (band - gh) / 2 + j * (bh + 2), xa = sx(0), xb = sx(v), rr = Math.min(4, bh / 2, Math.abs(xb - xa));
+          const d = xb >= xa ? `M${xa},${y}H${xb - rr}Q${xb},${y} ${xb},${y + rr}V${y + bh - rr}Q${xb},${y + bh} ${xb - rr},${y + bh}H${xa}Z`
+            : `M${xa},${y}H${xb + rr}Q${xb},${y} ${xb},${y + rr}V${y + bh - rr}Q${xb},${y + bh} ${xb + rr},${y + bh}H${xa}Z`;
+          out.push(`<path d="${d}" fill="${s.c}" data-t="${X(`${l}${m > 1 ? ' · ' + s.name : ''}: ${fmtV(v)}`)}"/>`);
+          if (showV) T(v >= 0 ? xb + 6 : xb - 6, y + bh / 2 + 4, fmtV(v), { size: 12, fill: K.t2, anchor: v >= 0 ? 'start' : 'end' });
+        });
+      });
+      return { svg: done(), W, H };
+    }
+
+    // columns, stacked columns, line
+    const n = labels.length, band0 = (W - 2 * P - tickW - 12) / n;
+    const xLines = labels.map(l => wrap2(l, band0 - 6, 12));
+    const xH = Math.max(...xLines.map(a => a.length)) * 15 + 10;
+    const endW = line && showV ? Math.max(...series.map(s => { const v = [...s.v].reverse().find(Number.isFinite); return v === undefined ? 0 : tw(fmtV(v), 12); })) + 10 : 0;
+    const x0 = P + tickW + 12, x1 = W - P - endW, y0 = top + (it.unit ? 18 : 0) + (showV && !line ? 22 : 10), y1 = H - P - xH;
+    if (it.unit) T(P, top + 8, it.unit, { size: 12, fill: K.mu });
+    const sy = v => y1 - (v - lo) / (hi - lo) * (y1 - y0), band = (x1 - x0) / n;
+    for (const t of ticks) { const y = sy(t); out.push(`<line x1="${x0}" y1="${y.toFixed(1)}" x2="${x1}" y2="${y.toFixed(1)}" stroke="${t === 0 ? K.base : K.grid}" stroke-width="1"/>`); T(x0 - 8, y + 4, nf(t), { size: 12, fill: K.mu, anchor: 'end' }); }
+    labels.forEach((l, r) => xLines[r].forEach((ln, k) => T(x0 + band * r + band / 2, y1 + 18 + k * 15, ln, { size: 12, fill: K.t2, anchor: 'middle' })));
+    const colPath = (x, ya, yb, w, rr) => yb <= ya
+      ? `M${x},${ya}V${yb + rr}Q${x},${yb} ${x + rr},${yb}H${x + w - rr}Q${x + w},${yb} ${x + w},${yb + rr}V${ya}Z`
+      : `M${x},${ya}V${yb - rr}Q${x},${yb} ${x + rr},${yb}H${x + w - rr}Q${x + w},${yb} ${x + w},${yb - rr}V${ya}Z`;
+
+    if (line) {
+      const cx = r => x0 + band * r + band / 2, dots = n <= 30;
+      series.forEach(s => {
+        let d = '', pen = false;
+        s.v.forEach((v, r) => { if (!Number.isFinite(v)) { pen = false; return; } d += `${pen ? 'L' : 'M'}${cx(r).toFixed(1)},${sy(v).toFixed(1)}`; pen = true; });
+        out.push(`<path d="${d}" fill="none" stroke="${s.c}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`);
+      });
+      series.forEach(s => s.v.forEach((v, r) => {
+        if (!Number.isFinite(v)) return;
+        out.push(`<circle cx="${cx(r).toFixed(1)}" cy="${sy(v).toFixed(1)}" r="${dots ? 4 : 2.5}" fill="${s.c}" stroke="${K.bg}" stroke-width="2" data-t="${X(`${labels[r]}${series.length > 1 ? ' · ' + s.name : ''}: ${fmtV(v)}`)}"/>`);
+      }));
+      if (showV) series.forEach(s => { const r = s.v.map((v, i) => Number.isFinite(v) ? i : -1).filter(i => i >= 0).pop(); if (r !== undefined) T(cx(r) + 8, sy(s.v[r]) + 4, fmtV(s.v[r]), { size: 12, fill: K.t2 }); });
+      return { svg: done(), W, H };
+    }
+
+    if (stack) {
+      const bw = Math.min(40, band * 0.6);
+      labels.forEach((l, r) => {
+        let acc = 0; const x = x0 + band * r + (band - bw) / 2;
+        const parts = series.map(s => ({ s, v: s.v[r] > 0 ? s.v[r] : 0 })).filter(p => p.v > 0);
+        parts.forEach((p, k) => {
+          const ya = sy(acc) - (k ? 2 : 0), yb = sy(acc + p.v), last = k === parts.length - 1;
+          if (ya - yb > 0.5) out.push(last ? `<path d="${colPath(x, ya, yb, bw, Math.min(4, bw / 2, ya - yb))}" fill="${p.s.c}" data-t="${X(`${l} · ${p.s.name}: ${fmtV(p.v)}`)}"/>`
+            : `<rect x="${x}" y="${yb.toFixed(1)}" width="${bw}" height="${(ya - yb).toFixed(1)}" fill="${p.s.c}" data-t="${X(`${l} · ${p.s.name}: ${fmtV(p.v)}`)}"/>`);
+          acc += p.v;
+        });
+        if (showV && acc > 0) T(x + bw / 2, sy(acc) - 7, fmtV(acc), { size: 12, fill: K.t2, anchor: 'middle' });
+      });
+      return { svg: done(), W, H };
+    }
+
+    const m = series.length, bw = Math.max(3, Math.min(24, (band * 0.72 - (m - 1) * 2) / m)), gw = m * bw + (m - 1) * 2;
+    labels.forEach((l, r) => series.forEach((s, j) => {
+      const v = s.v[r]; if (!Number.isFinite(v)) return;
+      const x = x0 + band * r + (band - gw) / 2 + j * (bw + 2), ya = sy(0), yb = sy(v);
+      out.push(`<path d="${colPath(x, ya, yb, bw, Math.min(4, bw / 2, Math.abs(ya - yb)))}" fill="${s.c}" data-t="${X(`${l}${m > 1 ? ' · ' + s.name : ''}: ${fmtV(v)}`)}"/>`);
+      if (showV && (m === 1 || tw(fmtV(v), 11) <= bw + 2)) T(x + bw / 2, v >= 0 ? yb - 7 : yb + 15, fmtV(v), { size: m === 1 ? 12 : 11, fill: K.t2, anchor: 'middle' });   // multi-series: only labels that fit, the rest is in tooltip & table
+    }));
+    return { svg: done(), W, H };
+
+    function donut() {
+      const s = series[0], parts = labels.map((l, r) => ({ l, v: s.v[r] > 0 ? s.v[r] : 0, c: PAL[r % 8] })).filter(p => p.v > 0);
+      const sum = parts.reduce((a, p) => a + p.v, 0), pctOnly = (it.unit || '').trim() === '%';
+      if (!sum) { empty('Noch keine positiven Zahlen eingetragen.'); return done(); }
+      const legW = Math.min(W * 0.42, Math.max(...parts.map(p => tw(p.l, 13) + tw(`${fmtV(p.v)} · ${nf(p.v / sum * 100, 1)} %`, 12))) + 40);
+      const aw = W - 2 * P - legW - 24, ah = H - P - top, R = Math.max(40, Math.min(aw, ah) / 2 - 6), r0 = R * 0.62;
+      const cx = P + aw / 2, cy = top + ah / 2;
+      let a = -Math.PI / 2;
+      const pt = (ang, rad) => `${(cx + rad * Math.cos(ang)).toFixed(2)},${(cy + rad * Math.sin(ang)).toFixed(2)}`;
+      for (const p of parts) {
+        const b = a + p.v / sum * Math.PI * 2, big = b - a > Math.PI ? 1 : 0;
+        const d = parts.length === 1
+          ? `M${pt(-Math.PI / 2, R)}A${R},${R} 0 1 1 ${pt(Math.PI * 1.5 - 1e-4, R)}Z M${pt(-Math.PI / 2, r0)}A${r0},${r0} 0 1 0 ${pt(Math.PI * 1.5 - 1e-4, r0)}Z`
+          : `M${pt(a, R)}A${R},${R} 0 ${big} 1 ${pt(b, R)}L${pt(b, r0)}A${r0},${r0} 0 ${big} 0 ${pt(a, r0)}Z`;
+        out.push(`<path d="${d}" fill="${p.c}" fill-rule="evenodd" stroke="${K.bg}" stroke-width="2" stroke-linejoin="round" data-t="${X(`${p.l}: ${fmtV(p.v)} · ${nf(p.v / sum * 100, 1)} %`)}"/>`);
+        a = b;
+      }
+      T(cx, cy + 6, nf(sum) + unitSfx, { size: Math.min(28, r0 / 2.2), w: 700, fill: K.t1, anchor: 'middle' });
+      T(cx, cy + 26, 'gesamt', { size: 12, fill: K.mu, anchor: 'middle' });
+      let ly = cy - parts.length * (it.values ? 40 : 26) / 2 + 13; const lx = Math.min(W - P - legW, cx + R + 56);
+      for (const p of parts) {
+        out.push(`<rect x="${lx}" y="${ly - 10}" width="12" height="12" rx="3" fill="${p.c}"/>`);
+        T(lx + 20, ly, fit(p.l, legW - 20, 13), { size: 13, fill: K.t1 });
+        if (it.values) T(lx + 20, ly + 16, pctOnly ? fmtV(p.v) : `${fmtV(p.v)} · ${nf(p.v / sum * 100, 1)} %`, { size: 12, fill: K.t2 });
+        ly += it.values ? 40 : 26;
+      }
+      return done();
+    }
+
+    function gantt() {
+      const tasks = (it.tasks || []).map(t => ({ ...t, a: dayN(t.s), b: dayN(t.e || t.s) })).filter(t => Number.isFinite(t.a) && Number.isFinite(t.b)).map(t => t.b < t.a ? { ...t, a: t.b, b: t.a } : t);
+      if (!tasks.length) { empty('Trag unten Aufgaben mit Start und Ende ein.'); return done(); }
+      const groups = [...new Set(tasks.map(t => (t.g || '').trim()))];
+      const gc = g => PAL[groups.indexOf((g || '').trim()) % 8];
+      if (groups.length > 1) legend(groups.map(g => [g || 'Ohne Gruppe', gc(g)]));
+      const min = Math.min(...tasks.map(t => t.a)), max = Math.max(...tasks.map(t => t.b)), days = max - min + 1;
+      const labW = Math.min(W * 0.3, Math.max(...tasks.map(t => tw(t.n || 'Aufgabe', 13))) + 4);
+      const x0 = P + labW + 14, x1 = W - P, axisH = days <= 31 ? 36 : 22, yA = top + 4, y0 = yA + axisH;
+      const rowH = 40, bh = 22, y1 = y0 + tasks.length * rowH + 6;
+      H = Math.max(320, y1 + P + (it.today ? 18 : 0));
+      const dw = (x1 - x0) / days;
+      const dx = n => x0 + (n - min) * dw;
+      // weekends + day grid
+      for (let n = min; n <= max; n++) {
+        const wd = dayD(n).getUTCDay();
+        if ((wd === 0 || wd === 6) && days <= 120) out.push(`<rect x="${dx(n).toFixed(1)}" y="${y0}" width="${dw.toFixed(1)}" height="${y1 - y0}" fill="${K.wk}"/>`);
+      }
+      const every = days <= 31 ? 1 : 7;
+      for (let n = min; n <= max + 1; n++) {
+        const monday = dayD(n).getUTCDay() === 1;
+        if (days <= 62 || monday) out.push(`<line x1="${dx(n).toFixed(1)}" y1="${y0}" x2="${dx(n).toFixed(1)}" y2="${y1}" stroke="${K.grid}" stroke-width="1"/>`);
+        if (n > max) continue;
+        if (every === 1) {
+          const d = dayD(n), wd = WD[d.getUTCDay()];
+          if (dw >= 26 || (dw >= 14 && monday)) {
+            T(dx(n) + dw / 2, yA + 12, dw >= 26 ? wd : wd[0], { size: 11, w: 600, fill: K.t2, anchor: 'middle' });
+            T(dx(n) + dw / 2, yA + 27, `${d.getUTCDate()}.${dw >= 34 ? (d.getUTCMonth() + 1) + '.' : ''}`, { size: 11, fill: K.mu, anchor: 'middle' });
+          }
+        } else if (monday) T(dx(n) + 3, yA + 14, dLabel(n).slice(3), { size: 11, fill: K.mu });
+      }
+      out.push(`<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="${K.base}" stroke-width="1"/>`);
+      tasks.forEach((t, i) => {
+        const yc = y0 + rowH * i + rowH / 2, dur = t.b - t.a + 1;
+        T(P + labW, yc + 4.5, fit(t.n || 'Aufgabe', labW, 13), { size: 13, fill: K.t1, anchor: 'end' });
+        const x = dx(t.a) + 1.5, w = Math.max(4, dur * dw - 3), rr = Math.min(4, bh / 2);
+        out.push(`<rect x="${x.toFixed(1)}" y="${(yc - bh / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${bh}" rx="${rr}" fill="${gc(t.g)}" data-t="${X(`${t.n || 'Aufgabe'}${t.g ? ' (' + t.g + ')' : ''}: ${dLabel(t.a)}${dur > 1 ? ' – ' + dLabel(t.b) : ''} · ${dur} ${dur === 1 ? 'Tag' : 'Tage'}`)}"/>`);
+      });
+      const tn = todayN();
+      if (it.today && tn >= min && tn <= max) {
+        const x = dx(tn) + dw / 2;
+        out.push(`<line x1="${x.toFixed(1)}" y1="${y0 - 2}" x2="${x.toFixed(1)}" y2="${y1}" stroke="${K.t1}" stroke-opacity=".55" stroke-width="1.5"/>`);
+        T(x, y1 + 14, 'Heute', { size: 11, w: 600, fill: K.t2, anchor: 'middle' });
+      }
+      return done();
+    }
+  }
+
+  /* ---------- Export ---------- */
+  const fileName = it => (it.title || 'Diagramm').replace(/[\\/:*?"<>|]+/g, '').trim().slice(0, 80) || 'Diagramm';
+  function toCanvas(it) {
+    return new Promise((res, rej) => {
+      const { svg, W, H } = build(it), url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' })), img = new Image();
+      img.onload = () => { const cv = h('canvas', { width: W * 2, height: H * 2 }), g = cv.getContext('2d'); g.drawImage(img, 0, 0, W * 2, H * 2); URL.revokeObjectURL(url); res(cv); };
+      img.onerror = e => { URL.revokeObjectURL(url); rej(e); };
+      img.src = url;
+    });
+  }
+  async function exportPng(it) {
+    try { const cv = await toCanvas(it); cv.toBlob(b => { download(fileName(it) + '.png', b); toast('PNG gespeichert', 'ok'); }, 'image/png'); }
+    catch { toast('PNG-Export hat nicht geklappt.', 'err'); }
+  }
+  function exportSvg(it) { download(fileName(it) + '.svg', build(it).svg, 'image/svg+xml'); toast('SVG gespeichert', 'ok'); }
+  async function copyPng(it) {
+    try {
+      const cv = await toCanvas(it), blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+      toast('Bild kopiert – jetzt in Word oder PowerPoint einfügen.', 'ok');
+    } catch { toast('Kopieren geht in diesem Browser nicht – nimm „PNG“.', 'err'); }
+  }
+
+  /* ---------- Paste from Excel ---------- */
+  function parseTable(text) {
+    const rows = text.replace(/\r/g, '').split('\n').filter(l => l.trim()).map(l => l.split(l.includes('\t') ? '\t' : ';').map(c => c.trim()));
+    if (!rows.length) return null;
+    const cols = Math.max(...rows.map(r => r.length));
+    if (cols < 2) return null;
+    const header = rows[0].slice(1).some(c => c && Number.isNaN(num(c))) || !rows[0][0] ? rows.shift() : null;
+    const n = Math.min(8, cols - 1);
+    return {
+      labels: rows.map(r => r[0] || ''),
+      series: Array.from({ length: n }, (_, j) => ({ name: header?.[j + 1] || `Reihe ${j + 1}`, v: rows.map(r => r[j + 1] ?? '') })),
+    };
+  }
+  function openPaste(it) {
+    const ta = h('textarea', { class: 'dgw-paste', placeholder: 'Monat\tUmsatz\tKosten\nJan\t120\t80\nFeb\t150\t90', spellcheck: false });
+    const info = h('div', { class: 'hint' });
+    const upd = () => { const r = parseTable(ta.value); info.textContent = r ? `${r.labels.length} Zeilen · ${r.series.length} Datenreihe${r.series.length === 1 ? '' : 'n'} (${r.series.map(s => s.name).join(', ')})` : 'Zellen in Excel markieren, kopieren und hier einfügen. Erste Spalte = Beschriftung, erste Zeile = Namen der Datenreihen.'; };
+    ta.addEventListener('input', upd); upd();
+    modal({ title: 'Aus Excel einfügen', sub: 'Ersetzt die aktuellen Daten', width: 620, body: h('div', { class: 'dgw-col' }, ta, info),
+      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: 'Übernehmen', kind: 'primary', onClick: () => {
+        const r = parseTable(ta.value); if (!r) { toast('Keine Tabelle erkannt.', 'err'); return false; }
+        it.labels = r.labels; it.series = r.series; touch(); render();
+      } }] });
+  }
+
+  /* ---------- Sidebar ---------- */
+  const list = h('div', { class: 'dgw-list' });
+  function renderList() {
+    const items = [...st.items].sort((a, b) => b.updated - a.updated);
+    list.replaceChildren(...items.map(it => h('div', { class: 'dgw-it' + (it.id === st.active ? ' on' : ''), onclick: () => { st.active = it.id; persist(); render(); } },
+      h('span', { class: 'dgw-ti', html: `<svg viewBox="0 0 24 24" class="i">${DGW_ICON[it.type] || DGW_ICON.col}</svg>` }),
+      h('div', { class: 'dgw-it-tx' }, h('div', { class: 'dgw-it-t' }, it.title || 'Ohne Titel'), h('div', { class: 'dgw-it-d' }, (DGW_TYPES.find(t => t[0] === it.type) || [, ''])[1])),
+      h('button', { class: 'cw-copy dgw-del', title: 'Diagramm löschen', onclick: e => { e.stopPropagation(); remove(it); } }, icon('trash')))));
+    if (!items.length) list.append(h('div', { class: 'dgw-empty' }, 'Noch keine Diagramme.'));
+  }
+  const listSoon = debounce(renderList, 250);
+  function create(type) {
+    const it = { id: uid(), type, fmt: '16:9', dark: false, values: type === 'bar' || type === 'donut' || type === 'stack', created: Date.now(), updated: Date.now(), ...example(type) };
+    st.items.push(it); st.active = it.id; save(); render();
+  }
+  function remove(it) {
+    const i = st.items.indexOf(it);
+    st.items.splice(i, 1); if (st.active === it.id) st.active = null; save(); render();
+    toast(`„${it.title || 'Diagramm'}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.items.splice(i, 0, it); st.active = it.id; save(); render(); } } });
+  }
+
+  /* ---------- Editor ---------- */
+  let preview = null, tip = null;
+  function draw() {
+    const it = cur(); if (!it || !preview) return;
+    preview.innerHTML = build(it).svg;
+    const svg = preview.querySelector('svg'); svg.removeAttribute('width'); svg.removeAttribute('height');
+  }
+  const drawSoon = debounce(draw, 120);
+
+  function dataTable(it) {
+    const wrap = h('div', { class: 'dgw-tablewrap' });
+    const one = it.type === 'donut';
+    function paint() {
+      const PAL = DGW_PAL.light, m = it.series.length;
+      const cols = `minmax(140px,1.4fr) repeat(${m},minmax(96px,1fr)) 30px`;
+      const cells = [h('span', { class: 'dgw-h' }, 'Beschriftung')];
+      it.series.forEach((s, j) => {
+        const inp = h('input', { class: 'inp dgw-sn', value: s.name, placeholder: `Reihe ${j + 1}`, spellcheck: false, oninput: () => { s.name = inp.value; touch(); } });
+        cells.push(h('div', { class: 'dgw-shd' + (one && j ? ' off' : '') }, h('i', { class: 'dgw-sw', style: { background: one ? 'var(--tx3)' : PAL[j] } }), inp,
+          m > 1 ? h('button', { class: 'cw-copy', title: 'Datenreihe entfernen', onclick: () => { it.series.splice(j, 1); touch(); paint(); } }, icon('x')) : null));
+      });
+      cells.push(h('span'));
+      it.labels.forEach((l, r) => {
+        const li = h('input', { class: 'inp', value: l, placeholder: 'Beschriftung', spellcheck: false, oninput: () => { it.labels[r] = li.value; touch(); } });
+        cells.push(li);
+        it.series.forEach((s, j) => {
+          const vi = h('input', { class: 'inp dgw-v' + (one && j ? ' off' : ''), value: s.v[r] ?? '', inputMode: 'decimal', placeholder: '–', spellcheck: false,
+            oninput: () => { s.v[r] = vi.value; vi.classList.toggle('err', vi.value.trim() !== '' && Number.isNaN(num(vi.value))); touch(); } });
+          cells.push(vi);
+        });
+        cells.push(h('button', { class: 'cw-copy', title: 'Zeile entfernen', onclick: () => { it.labels.splice(r, 1); it.series.forEach(s => s.v.splice(r, 1)); touch(); paint(); } }, icon('x')));
+      });
+      wrap.replaceChildren(h('div', { class: 'dgw-t', style: { gridTemplateColumns: cols } }, ...cells));
+    }
+    paint();
+    return h('section', { class: 'cw-card' },
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('table')), h('h3', null, 'Daten'),
+        h('div', { class: 'cw-acts' },
+          h('button', { class: 'btn sm', onclick: () => { if (it.labels.length >= 60) return; it.labels.push(''); it.series.forEach(s => s.v.push('')); touch(); paint(); wrap.querySelectorAll('.dgw-t > .inp:not(.dgw-v)')[it.labels.length - 1]?.focus(); } }, icon('plus'), 'Zeile'),
+          !one && h('button', { class: 'btn sm', onclick: () => { if (it.series.length >= 8) return toast('Maximal 8 Datenreihen – mehr Farben lassen sich nicht sicher unterscheiden.', 'info'); it.series.push({ name: '', v: it.labels.map(() => '') }); touch(); paint(); } }, icon('plus'), 'Datenreihe'),
+          h('button', { class: 'btn sm ghost', onclick: () => openPaste(it) }, icon('upload'), 'Aus Excel einfügen'))),
+      wrap,
+      one && it.series.length > 1 ? h('div', { class: 'cw-note' }, 'Das Kreisdiagramm zeigt nur die erste Datenreihe.') : null);
+  }
+
+  function taskTable(it) {
+    const wrap = h('div', { class: 'dgw-tablewrap' });
+    const dl = h('datalist', { id: 'dgw-groups' });
+    function paint() {
+      const groups = [...new Set(it.tasks.map(t => (t.g || '').trim()))];
+      dl.replaceChildren(...groups.filter(Boolean).map(g => h('option', { value: g })));
+      const cells = ['Aufgabe', 'Gruppe / Phase', 'Start', 'Ende', ''].map(t => h('span', { class: 'dgw-h' }, t));
+      it.tasks.forEach((t, i) => {
+        const inp = (k, o = {}) => { const e = h('input', { class: 'inp', value: t[k] || '', spellcheck: false, ...o, oninput: () => { t[k] = e.value; if (k === 's' && t.s && (!t.e || t.e < t.s)) { t.e = t.s; eIn.value = t.e; } touch(); if (k === 'g') { clearTimeout(e._p); e._p = setTimeout(sw, 300); } } }); return e; };
+        const gi = inp('g', { placeholder: 'z. B. Konzept', list: 'dgw-groups' });
+        const sw = () => { const gs = [...new Set(it.tasks.map(x => (x.g || '').trim()))]; dot.style.background = DGW_PAL.light[gs.indexOf((t.g || '').trim()) % 8]; };
+        const dot = h('i', { class: 'dgw-sw' }); sw();
+        const eIn = inp('e', { type: 'date' });
+        cells.push(inp('n', { placeholder: 'Aufgabe' }), h('div', { class: 'dgw-shd' }, dot, gi), inp('s', { type: 'date' }), eIn,
+          h('button', { class: 'cw-copy', title: 'Aufgabe entfernen', onclick: () => { it.tasks.splice(i, 1); touch(); paint(); } }, icon('x')));
+      });
+      wrap.replaceChildren(h('div', { class: 'dgw-t', style: { gridTemplateColumns: 'minmax(150px,1.5fr) minmax(140px,1fr) 150px 150px 30px' } }, ...cells), dl);
+    }
+    paint();
+    return h('section', { class: 'cw-card' },
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('timer')), h('h3', null, 'Aufgaben'),
+        h('div', { class: 'cw-acts' },
+          h('label', { class: 'cw-sw' }, 'Heute-Linie', switchEl(it.today, v => { it.today = v; touch(); })),
+          h('button', { class: 'btn sm', onclick: () => {
+            const last = it.tasks[it.tasks.length - 1], s = last ? dayS(dayN(last.e || last.s) + 1) : dayS(todayN());
+            it.tasks.push({ id: uid(), n: '', g: last?.g || '', s, e: s }); touch(); paint(); wrap.querySelectorAll('.dgw-t > .inp')[(it.tasks.length - 1) * 3]?.focus();
+          } }, icon('plus'), 'Aufgabe'))),
+      wrap,
+      h('div', { class: 'cw-note' }, 'Gleiche Gruppe = gleiche Farbe. Eine Aufgabe über einen Tag: Start und Ende gleich. Wochenenden sind grau hinterlegt.'));
+  }
+
+  function editor(it) {
+    const title = h('input', { class: 'dgw-title', value: it.title || '', placeholder: 'Titel des Diagramms', spellcheck: false, oninput: () => { it.title = title.value; touch(); } });
+    const sub = h('input', { class: 'dgw-sub', value: it.sub || '', placeholder: 'Untertitel, z. B. Quelle oder Einheit (optional)', spellcheck: false, oninput: () => { it.sub = sub.value; touch(); } });
+    const unit = h('input', { class: 'inp dgw-unit', value: it.unit || '', placeholder: 'z. B. €, %', spellcheck: false, oninput: () => { it.unit = unit.value; touch(); } });
+    preview = h('div', { class: 'dgw-prev' });
+    tip = h('div', { class: 'dgw-tip', hidden: true });
+    preview.addEventListener('mousemove', e => {
+      const m = e.target.closest?.('[data-t]');
+      if (!m) { tip.hidden = true; return; }
+      const r = preview.getBoundingClientRect();
+      tip.textContent = m.getAttribute('data-t'); tip.hidden = false;
+      const x = Math.min(e.clientX - r.left + 14, r.width - tip.offsetWidth - 6);
+      tip.style.left = Math.max(6, x) + 'px'; tip.style.top = (e.clientY - r.top + 16) + 'px';
+    });
+    preview.addEventListener('mouseleave', () => { tip.hidden = true; });
+    const typeSeg = segEl(DGW_TYPES.map(([k, l]) => [k, h('span', { class: 'dgw-segi' }, h('span', { html: `<svg viewBox="0 0 24 24" class="i">${DGW_ICON[k]}</svg>` }), l)]), it.type, v => {
+      const wasGantt = it.type === 'gantt'; it.type = v;
+      if (v === 'gantt' && !it.tasks?.length) it.tasks = example('gantt').tasks;
+      if (wasGantt && v !== 'gantt' && !it.labels?.length) { const e = example(v); it.labels = e.labels; it.series = e.series; it.unit = e.unit; }
+      touch(); render();
+    });
+    const nonGantt = it.type !== 'gantt';
+    return h('div', { class: 'dgw-in' },
+      h('div', { class: 'dgw-top' },
+        h('div', { class: 'dgw-top-t' }, title, sub),
+        h('div', { class: 'dgw-acts' },
+          h('button', { class: 'btn sm', title: 'Als Bild in die Zwischenablage (für Word, PowerPoint …)', onclick: () => copyPng(it) }, icon('copy'), 'Kopieren'),
+          h('button', { class: 'btn sm', title: 'Als PNG-Bild speichern (doppelte Auflösung)', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
+          h('button', { class: 'btn sm', title: 'Als SVG speichern – gestochen scharf in jeder Größe', onclick: () => exportSvg(it) }, icon('download'), 'SVG'))),
+      h('div', { class: 'dgw-bar' }, typeSeg),
+      h('div', { class: 'dgw-opts' },
+        nonGantt && h('label', { class: 'dgw-opt' }, 'Einheit', unit),
+        nonGantt && h('label', { class: 'cw-sw' }, it.type === 'line' ? 'Endwerte zeigen' : it.type === 'donut' ? 'Werte in der Legende' : 'Werte zeigen', switchEl(it.values, v => { it.values = v; touch(); })),
+        h('label', { class: 'cw-sw' }, 'Dunkler Hintergrund', switchEl(it.dark, v => { it.dark = v; touch(); })),
+        nonGantt && h('div', { class: 'dgw-opt' }, 'Format', segEl(Object.keys(DGW_FMT).map(k => [k, k]), it.fmt || '16:9', v => { it.fmt = v; touch(); }))),
+      h('div', { class: 'dgw-stage' + (it.dark ? ' dark' : '') }, preview, tip),
+      nonGantt ? dataTable(it) : taskTable(it));
+  }
+
+  function gallery() {
+    return h('div', { class: 'dgw-in' },
+      h('div', null, h('h2', { class: 'dgw-h2' }, st.items.length ? 'Neues Diagramm' : 'Willkommen im Diagrammwerk'),
+        h('p', { class: 'dgw-meta' }, 'Diagrammart wählen – es startet mit Beispieldaten, die du einfach überschreibst oder aus Excel einfügst. Export als PNG, SVG oder direkt in die Zwischenablage.')),
+      h('div', { class: 'dgw-gal' }, ...[
+        ['col', 'Werte vergleichen, z. B. Umsatz pro Quartal.'],
+        ['bar', 'Ranglisten und lange Beschriftungen.'],
+        ['stack', 'Zusammensetzung pro Kategorie.'],
+        ['line', 'Entwicklung über die Zeit.'],
+        ['donut', 'Anteile an einem Ganzen – am besten bis 6 Teile.'],
+        ['gantt', 'Zeitplan: Mo–Di Recherche, Di–Do Konzept …'],
+      ].map(([k, d]) => h('button', { class: 'dgw-g', onclick: () => create(k) },
+        h('span', { class: 'dgw-gi', html: `<svg viewBox="0 0 24 24" class="i">${DGW_ICON[k]}</svg>` }),
+        h('b', null, DGW_TYPES.find(t => t[0] === k)[1]), h('span', null, d)))));
+  }
+
+  /* ---------- Layout ---------- */
+  const main = h('div', { class: 'dgw-main' });
+  function render() {
+    preview = null;
+    const it = cur();
+    main.replaceChildren(it ? editor(it) : gallery());
+    if (it) draw();
+    renderList();
+  }
+  view.append(h('div', { class: 'dgw' },
+    h('aside', { class: 'dgw-side' },
+      h('div', { class: 'dgw-hd' }, h('div', { class: 'dgw-logo' }, icon('diagrammwerk')), h('b', null, 'Diagrammwerk')),
+      h('div', { class: 'dgw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => { st.active = null; persist(); render(); } }, icon('plus'), 'Neues Diagramm')),
+      list),
+    main));
+  render();
+  return { onShow: () => draw(), destroy() { save(); removeEventListener('pagehide', save); } };
+}
+
+TT.register({
+  id: 'diagrammwerk', name: 'Diagrammwerk', icon: 'diagrammwerk', c: '#2a78d6', c2: '#eb6834',   // blue → orange: the first two chart colours
+  tagline: 'Diagramme & Zeitpläne',
+  desc: 'Säulen-, Balken-, Linien- und Kreisdiagramme oder ein Zeitplan – aus Excel einfügen, als PNG oder SVG exportieren.',
+  mount: mountDiagrammwerk,
 });
 
 

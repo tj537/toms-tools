@@ -1,6 +1,6 @@
 # 🧰 Toms Tools
 
-**28 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
+**29 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
 
 <p align="center">
   <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Toms Tools herunterladen" height="56"></a>
@@ -8,7 +8,7 @@
   <sub>Lädt immer die neueste Version · <a href="https://github.com/tj537/toms-tools/releases">Alle Versionen & Änderungen</a></sub>
 </p>
 
-Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Kennzahlen rechnen, Quellen zitieren, mit Karteikarten lernen – alles im Browser, alles auf deinem Rechner.
+Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Diagramme bauen, Kennzahlen rechnen, Quellen zitieren, mit Karteikarten lernen – alles im Browser, alles auf deinem Rechner.
 
 ![Version](https://img.shields.io/badge/version-1.4.3-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
@@ -19,7 +19,7 @@ Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortie
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** 28 offline tools in one single HTML file – image editing, PDFs, invoices, business models, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
+> 🇬🇧 **English:** 29 offline tools in one single HTML file – image editing, PDFs, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
 
 ---
 
@@ -85,6 +85,7 @@ Warum? Auf der Arbeit kann ich nichts installieren. Toms Tools ist nur eine HTML
 | App | Was sie macht |
 |---|---|
 | **Modellwerk** | 15 Vorlagen mit Leitfragen – von SWOT, Business Model Canvas und Persona bis Pro & Contra, Eisenhower-Matrix und SMART-Ziel. Export als Text, PNG oder PDF |
+| **Diagrammwerk** | Säulen-, Balken-, Linien- und Kreisdiagramme und Zeitpläne (z. B. Mo–Di Recherche, Di–Do Konzept) – Daten aus Excel einfügen, als PNG oder SVG exportieren oder direkt in Word/PowerPoint kopieren |
 | **Kennzahlwerk** | 17 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse und mehr |
 | **Quellenwerk** | Bücher, Artikel und Links mit Notizen und Zitaten sammeln – Beleg mit „vgl.“ und Literaturverzeichnis per Klick kopieren (deutsch oder APA 7) |
 | **Karteiwerk** | Karteikarten für jedes Thema mit Karteikasten-Prinzip: Du übst vor allem, was noch nicht sitzt. Import und Export für Anki und Quizlet, Lernserie 🔥 |
@@ -98,6 +99,14 @@ Warum? Auf der Arbeit kann ich nichts installieren. Toms Tools ist nur eine HTML
 
 Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer** und **Taschenrechner**.
 
+### 🎛️ So wie du's brauchst
+
+Du brauchst nicht alle 29 Apps? Kein Problem:
+
+- **Apps ausblenden:** Unter *Einstellungen → Apps* schaltest du jede App einzeln an oder aus. Ausgeblendete Apps verschwinden von der Startseite – übrig bleibt dein persönlicher Werkzeugkasten. Deine Daten bleiben dabei erhalten.
+- **Gruppen einklappen:** Auf der Startseite lassen sich die Gruppen (z. B. „Bilder & Dateien“) mit einem Klick zu- und aufklappen.
+- **Aussehen:** Farbthema, Akzentfarbe, eigenes Hintergrundbild, dein Name in der Begrüßung und ob beim Start die letzte Sitzung wieder aufgeht – alles unter *Einstellungen*.
+
 ## 📸 Einblicke
 
 | Modellwerk | Kennzahlwerk |
@@ -105,8 +114,8 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer** und **Taschenrec
 | ![Modellwerk](docs/modellwerk.png) | ![Kennzahlwerk](docs/kennzahlwerk.png) |
 | **Quellenwerk** | **Rechnungswerk** |
 | ![Quellenwerk](docs/quellenwerk.png) | ![Rechnungswerk](docs/rechnungswerk.png) |
-| **Karteiwerk** | **Pitcher** |
-| ![Karteiwerk](docs/karteiwerk.png) | ![Pitcher](docs/pitcher.png) |
+| **Diagrammwerk** | **Karteiwerk** |
+| ![Diagrammwerk](docs/diagrammwerk.png) | ![Karteiwerk](docs/karteiwerk.png) |
 | **QR-Werk** | **Farbwerk** |
 | ![QR-Werk](docs/qrwerk.png) | ![Farbwerk](docs/farbwerk.png) |
 
@@ -120,11 +129,15 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer** und **Taschenrec
 
 **Browser:** Am besten **Chrome, Edge, Brave oder Opera**. Firefox und Safari gehen für die meisten Apps auch – nur die Funktionen mit direktem Ordnerzugriff (Bulk Rename, Sortierwerk, Ordner-Sicherung) und die Pipette brauchen einen Chromium-Browser.
 
-## 💾 Deine Daten
+## 💾 Deine Daten & Speichern
 
-- Alles wird im **Browser-Speicher** abgelegt (pro Browser und Rechner).
-- Unter **Einstellungen → Speicher & Sicherung** kannst du ein **Backup exportieren/importieren** oder die **Ordner-Sicherung** einschalten: Toms Tools schreibt dann automatisch eine Sicherung in einen Ordner deiner Wahl (z. B. OneDrive) – samt täglicher Kopien. So kommst du auch auf einem zweiten PC an deine Daten.
-- ⚠️ Wer die Browserdaten löscht, löscht auch die Toms-Tools-Daten. Also: Sicherung einschalten.
+- **Alles speichert sich automatisch** – sobald du tippst, klickst oder eine Karteikarte beantwortest. Einen Speichern-Knopf gibt es nicht, und du brauchst ihn auch nicht.
+- Die Daten liegen **nur in deinem Browser auf deinem Rechner** (pro Browser). Nichts wird an einen Server geschickt.
+- **Ordner-Sicherung (empfohlen):** Unter *Einstellungen → Speicher & Sicherung* einen Ordner wählen, z. B. in OneDrive. Toms Tools schreibt dann bei jeder Änderung automatisch die Datei `toms-tools-daten.json` hinein – plus tägliche Kopien der letzten 14 Tage im Unterordner `sicherungen`. Geht in Chrome, Edge und Brave.
+- **Zweiter PC:** Dort denselben Ordner wählen und *Aus Ordner laden* – schon sind Notizen, Karteikarten, Quellen & Co. auch da.
+- **Backup exportieren / importieren:** Alles als eine Datei zum Mitnehmen – funktioniert in jedem Browser.
+- **Speicherplatz:** Der Browser gibt Toms Tools rund 5 MB. Wie viel jede App davon belegt, siehst du ebenfalls unter *Speicher & Sicherung*.
+- ⚠️ Wer die Browserdaten löscht, löscht auch die Toms-Tools-Daten. Also: Ordner-Sicherung einschalten.
 
 ## 🔒 Datenschutz & Sicherheit
 

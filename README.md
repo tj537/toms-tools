@@ -10,7 +10,7 @@
 
 Doppelklick, und es läuft. Bilder bearbeiten, Wasserzeichen und KI-Labels setzen, PDFs zusammenfügen, Texte vergleichen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Diagramme bauen, Kennzahlen rechnen, Quellen zitieren, mit Karteikarten lernen – alles im Browser, alles auf deinem Rechner.
 
-![Version](https://img.shields.io/badge/version-1.5.0-7c6cff)
+![Version](https://img.shields.io/badge/version-1.6.0-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
 ![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
 ![Offline](https://img.shields.io/badge/100%25-offline-0ea5e9)

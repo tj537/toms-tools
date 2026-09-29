@@ -1,6 +1,6 @@
 # 🧰 Toms Tools
 
-**31 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
+**32 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
 
 <p align="center">
   <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Toms Tools herunterladen" height="56"></a>
@@ -9,7 +9,7 @@
   <sub>Download lädt immer die neueste Version · Live ist zum Reinschnuppern – für den Alltag lieber herunterladen</sub>
 </p>
 
-Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[👉 Alle 31 Apps ansehen](#apps)**
+Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[👉 Alle 32 Apps ansehen](#apps)**
 
 ![100 % offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
 ![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
@@ -22,7 +22,7 @@ Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[�
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** 31 offline tools in one single HTML file – image editing, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
+> 🇬🇧 **English:** 32 offline tools in one single HTML file – image editing, screenshots, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
 
 ---
 
@@ -52,12 +52,16 @@ Klick auf eine Gruppe, um ihre Apps mit Screenshot aufzuklappen.
 Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechner** und **Formatierung entfernen** – Text z. B. aus Word kopieren, auf den Knopf klicken, Strg + V drücken (Mac: ⌘ + V): Schon liegt er als reiner Text in der Zwischenablage, ohne Schrift, Farben und Word-Ballast.
 
 <details>
-<summary><b>🖼️ Bilder & Dateien</b> · 9 Apps</summary>
+<summary><b>🖼️ Bilder & Dateien</b> · 10 Apps</summary>
 <br>
 
 **Bildwerk** – Bilder zuschneiden, freistellen, mit Ebenen, Text und Effekten bearbeiten.
 
 <img src="docs/bildwerk.png" alt="Bildwerk" width="720">
+
+**Screenshotwerk** – Bildschirm aufnehmen (mit Selbstauslöser) oder mit Strg + V einfügen, dann mit Pfeilen, Rahmen, Text, nummerierten Schritten und Textmarker markieren, Namen & Daten verpixeln – und schick gemacht mit Hintergrund und Browserrahmen kopieren oder speichern.
+
+<img src="docs/screenshotwerk.png" alt="Screenshotwerk" width="720">
 
 **LUT-Werk** – Farb-Looks als 3D-LUT erstellen, `.cube` importieren und auf viele Bilder anwenden.
 
@@ -213,9 +217,9 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 ## 🎛️ So wie du's brauchst
 
-Du brauchst nicht alle 31 Apps? Kein Problem:
+Du brauchst nicht alle 32 Apps? Kein Problem:
 
-- **Apps ausblenden:** Unter *Einstellungen → Apps* schaltest du jede App einzeln an oder aus. Ausgeblendete Apps verschwinden von der Startseite – übrig bleibt dein persönlicher Werkzeugkasten. Deine Daten bleiben dabei erhalten. Oben neben „Apps“ siehst du, wie viele gerade aktiv sind (z. B. „24 / 31“).
+- **Apps ausblenden:** Unter *Einstellungen → Apps* schaltest du jede App einzeln an oder aus. Ausgeblendete Apps verschwinden von der Startseite – übrig bleibt dein persönlicher Werkzeugkasten. Deine Daten bleiben dabei erhalten. Oben neben „Apps“ siehst du, wie viele gerade aktiv sind (z. B. „24 / 32“).
 - **Gruppen einklappen:** Auf der Startseite lassen sich die Gruppen (z. B. „Bilder & Dateien“) mit einem Klick zu- und aufklappen.
 - **Dein Name:** Die Startseite begrüßt dich persönlich. Den Namen trägst du unter *Einstellungen → Start* ein – und kannst ihn dort jederzeit ändern.
 - **Maskottchen:** Auf der Startseite schwebt ein kleiner Roboter mit Raketenantrieb – und macht ein Nickerchen, wenn du eine Weile nichts tust. Unter *Einstellungen → Maskottchen* stellst du seine Größe ein oder blendest ihn aus.

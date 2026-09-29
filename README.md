@@ -1,6 +1,6 @@
 # 🧰 Toms Tools
 
-**27 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
+**28 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
 
 <p align="center">
   <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Toms Tools herunterladen" height="56"></a>
@@ -8,7 +8,7 @@
   <sub>Lädt immer die neueste Version · <a href="https://github.com/tj537/toms-tools/releases">Alle Versionen & Änderungen</a></sub>
 </p>
 
-Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Kennzahlen rechnen, Quellen zitieren – alles im Browser, alles auf deinem Rechner.
+Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Kennzahlen rechnen, Quellen zitieren, mit Karteikarten lernen – alles im Browser, alles auf deinem Rechner.
 
 ![Version](https://img.shields.io/badge/version-1.4.3-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
@@ -19,7 +19,7 @@ Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortie
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** 27 offline tools in one single HTML file – image editing, PDFs, invoices, business models, calculators, a source manager and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
+> 🇬🇧 **English:** 28 offline tools in one single HTML file – image editing, PDFs, invoices, business models, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
 
 ---
 
@@ -87,6 +87,7 @@ Warum? Auf der Arbeit kann ich nichts installieren. Toms Tools ist nur eine HTML
 | **Modellwerk** | 15 Vorlagen mit Leitfragen – von SWOT, Business Model Canvas und Persona bis Pro & Contra, Eisenhower-Matrix und SMART-Ziel. Export als Text, PNG oder PDF |
 | **Kennzahlwerk** | 17 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse und mehr |
 | **Quellenwerk** | Bücher, Artikel und Links mit Notizen und Zitaten sammeln – Beleg mit „vgl.“ und Literaturverzeichnis per Klick kopieren (deutsch oder APA 7) |
+| **Karteiwerk** | Karteikarten für jedes Thema mit Karteikasten-Prinzip: Du übst vor allem, was noch nicht sitzt. Import und Export für Anki und Quizlet, Lernserie 🔥 |
 
 ### 🎲 Spaß & Musik
 | App | Was sie macht |
@@ -104,6 +105,8 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer** und **Taschenrec
 | ![Modellwerk](docs/modellwerk.png) | ![Kennzahlwerk](docs/kennzahlwerk.png) |
 | **Quellenwerk** | **Rechnungswerk** |
 | ![Quellenwerk](docs/quellenwerk.png) | ![Rechnungswerk](docs/rechnungswerk.png) |
+| **Karteiwerk** | **Pitcher** |
+| ![Karteiwerk](docs/karteiwerk.png) | ![Pitcher](docs/pitcher.png) |
 | **QR-Werk** | **Farbwerk** |
 | ![QR-Werk](docs/qrwerk.png) | ![Farbwerk](docs/farbwerk.png) |
 

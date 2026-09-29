@@ -2865,6 +2865,122 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
   .qlw-fields>*{grid-column:auto!important}
 }
 
+/* ── Karteiwerk ── */
+.kaw{height:100%;display:grid;grid-template-columns:250px minmax(0,1fr);min-height:0;--k0:#94a3b8;--k1:#ef4444;--k2:#f97316;--k3:#eab308;--k4:#84cc16;--k5:#22c55e}
+.kaw [hidden]{display:none!important}
+.kaw-sidebar{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;background:color-mix(in oklab,var(--bg2) 55%,transparent)}
+.kaw-hd{display:flex;align-items:center;gap:10px;padding:16px 14px 10px;font-size:15px}
+.kaw-logo{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--app-c,var(--acc)),var(--app-c2,var(--acc2)));box-shadow:0 8px 20px -10px var(--app-c,var(--acc)),inset 0 1px 0 rgba(255,255,255,.25);flex:none}
+.kaw-logo svg{width:17px;height:17px}
+.kaw-logo.big{width:60px;height:60px;border-radius:18px}
+.kaw-logo.big svg{width:30px;height:30px}
+.kaw-tools{padding:2px 12px 8px}
+.kaw-list{flex:1;overflow:auto;padding:2px 8px 10px;display:flex;flex-direction:column;gap:2px}
+.kaw-it{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 10px;border-radius:10px;cursor:pointer;color:var(--tx2);transition:background .15s,color .15s}
+.kaw-it:hover{background:var(--s1);color:var(--tx)}
+.kaw-it.on{background:var(--s2);color:var(--tx)}
+.kaw-it-tx{flex:1;min-width:0}
+.kaw-it-n{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kaw-it-s{font-size:11px;color:var(--tx3)}
+.kaw-dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+.kaw-dot.big{width:16px;height:16px}
+.kaw-due{min-width:22px;height:20px;padding:0 6px;border-radius:10px;display:grid;place-items:center;font:700 11px var(--mono);color:#fff;background:var(--app-c2,var(--acc))}
+.kaw-ok{color:var(--ok);display:grid;place-items:center}
+.kaw-ok svg{width:14px;height:14px}
+.kaw-empty{font-size:12.5px;color:var(--tx3);padding:10px 8px;line-height:1.5}
+.kaw-foot{border-top:1px solid var(--line);padding:12px 14px;font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.kaw-foot small{font-size:11.5px;color:var(--tx3);font-weight:500}
+.kaw-main{overflow:auto;min-width:0;padding:22px 24px 48px}
+.kaw-in{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.kaw-col{display:flex;flex-direction:column;gap:8px}
+.kaw-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.kaw-name{flex:1;min-width:200px;font-size:22px;font-weight:700;letter-spacing:-.01em;background:none;border:0;border-bottom:1px dashed transparent;outline:none;padding:2px 0;color:var(--tx)}
+.kaw-name:hover,.kaw-name:focus{border-bottom-color:var(--line2)}
+.kaw-sw{display:flex;gap:5px}
+.kaw-swb{width:18px;height:18px;border-radius:50%;border:2px solid transparent;transition:transform .12s}
+.kaw-swb:hover{transform:scale(1.15)}
+.kaw-swb.on{border-color:var(--tx);box-shadow:0 0 0 2px var(--bg)}
+.kaw-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kaw-stats>div{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column}
+.kaw-stats b{font:700 22px var(--mono)}
+.kaw-stats span{font-size:12px;color:var(--tx3)}
+.kaw-stats .hot b{color:var(--app-c,var(--acc))}
+.kaw-bar{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--s3);gap:2px}
+.kaw-bar i{display:block;min-width:4px}
+.kaw-leg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:var(--tx3)}
+.kaw-leg span{display:inline-flex;align-items:center;gap:5px}
+.kaw-leg i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.kaw-leg b{color:var(--tx2)}
+.kaw-b0{background:var(--k0)}.kaw-b1{background:var(--k1)}.kaw-b2{background:var(--k2)}.kaw-b3{background:var(--k3)}.kaw-b4{background:var(--k4)}.kaw-b5{background:var(--k5)}
+.kaw-acts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px}
+.kaw-go{height:40px;padding:0 18px;font-size:14px}
+.kaw-done{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ok);background:color-mix(in oklab,var(--ok) 12%,transparent);padding:9px 14px;border-radius:10px}
+.kaw-done svg{width:16px;height:16px}
+.kaw-rev{margin-left:auto}
+.kaw-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kaw-ta{width:100%;resize:vertical;min-height:64px;font:13.5px/1.5 var(--font);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;color:var(--tx);outline:none;transition:border-color .15s,box-shadow .15s}
+.kaw-ta:focus{border-color:color-mix(in oklab,var(--acc) 70%,transparent);box-shadow:0 0 0 3px var(--acc-soft)}
+.kaw-ta::placeholder{color:var(--tx3)}
+.kaw-imp{min-height:220px;font-family:var(--mono);font-size:12.5px}
+.kaw-row-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.kaw-row-acts.center{justify-content:center}
+.kaw-q{width:220px;height:30px}
+.kaw-cards{display:flex;flex-direction:column;gap:6px}
+.kaw-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto auto;gap:8px;align-items:start;padding:6px 6px 6px 8px;border-radius:10px;background:var(--bg2);border:1px solid var(--line)}
+.kaw-ce{width:100%;resize:none;overflow:hidden;min-height:30px;font:13px/1.5 var(--font);background:none;border:1px solid transparent;border-radius:7px;padding:4px 6px;color:var(--tx);outline:none}
+.kaw-ce:hover{border-color:var(--line)}
+.kaw-ce:focus{border-color:color-mix(in oklab,var(--acc) 60%,transparent);background:var(--bg)}
+.kaw-row .kaw-ce:first-child{font-weight:600}
+.kaw-chip{font:700 10.5px var(--mono);padding:3px 7px;border-radius:6px;color:#111;margin-top:5px;white-space:nowrap}
+.kaw-row .cw-copy{margin-top:1px}
+.kaw-how{line-height:1.5}
+/* Study */
+.kaw-study{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;min-height:100%}
+.kaw-sbar{display:flex;align-items:center;gap:12px}
+.kaw-prog{flex:1;height:6px;border-radius:4px;background:var(--s3);overflow:hidden}
+.kaw-prog i{display:block;height:100%;border-radius:4px;transition:width .3s}
+.kaw-count{font:600 12px var(--mono);color:var(--tx3);min-width:52px;text-align:right}
+.kaw-meta{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--tx3);justify-content:center}
+.kaw-card{position:relative;min-height:300px;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:34px 36px;border-radius:20px;cursor:pointer;background:linear-gradient(180deg,color-mix(in oklab,var(--dc) 9%,var(--s1)),var(--s1));border:1px solid color-mix(in oklab,var(--dc) 30%,var(--line));box-shadow:0 30px 60px -40px color-mix(in oklab,var(--dc) 60%,transparent);text-align:center;animation:kawIn .25s ease}
+.kaw-card.shown{cursor:default}
+@keyframes kawIn{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
+.kaw-side{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tx3)}
+.kaw-q-tx{font-size:24px;font-weight:650;line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere}
+.kaw-a{border-top:1px dashed var(--line2);padding-top:18px;display:flex;flex-direction:column;gap:8px;animation:kawIn .25s ease}
+.kaw-a-tx{font-size:17px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--tx)}
+.kaw-tap{font-size:12px;color:var(--tx3)}
+.kaw-rate{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.kaw-show{height:44px;padding:0 22px;font-size:14.5px}
+.kaw-show kbd,.kaw-rb kbd{margin-left:6px;opacity:.8}
+.kaw-rb{--rc:var(--acc);min-width:150px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 8px;text-align:left;padding:10px 14px;border-radius:12px;background:color-mix(in oklab,var(--rc) 12%,var(--s1));border:1px solid color-mix(in oklab,var(--rc) 40%,transparent);transition:transform .1s,background .15s}
+.kaw-rb:hover{background:color-mix(in oklab,var(--rc) 22%,var(--s1))}
+.kaw-rb:active{transform:scale(.97)}
+.kaw-rb b{font-size:14px;color:color-mix(in oklab,var(--rc) 65%,var(--tx))}
+.kaw-rb small{grid-column:1;font-size:11.5px;color:var(--tx3)}
+.kaw-rb kbd{grid-column:2;grid-row:1/3}
+.kaw-rb.r{--rc:#ef4444}.kaw-rb.y{--rc:#f59e0b}.kaw-rb.g{--rc:#22c55e}
+.kaw-end{margin:8vh auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.kaw-party{font-size:46px;animation:kawIn .4s ease}
+.kaw-end h2{font-size:24px;font-weight:700}
+.kaw-end p{color:var(--tx2)}
+.kaw-endstats{display:flex;gap:10px;margin:8px 0 6px}
+.kaw-endstats>div{min-width:96px;padding:10px 14px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);display:flex;flex-direction:column}
+.kaw-endstats b{font:700 24px var(--mono)}
+.kaw-endstats span{font-size:12px;color:var(--tx3)}
+.kaw-endstats .g b{color:var(--ok)}.kaw-endstats .y b{color:var(--warn)}.kaw-endstats .r b{color:var(--err)}
+.kaw-welcome{max-width:560px;margin:10vh auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.kaw-welcome h2{font-size:22px;font-weight:700}
+.kaw-welcome p{color:var(--tx2);line-height:1.55}
+@media(max-width:800px){
+  .kaw{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .kaw-sidebar{max-height:220px;border-right:0;border-bottom:1px solid var(--line)}
+  .kaw-stats{grid-template-columns:1fr 1fr}
+  .kaw-two{grid-template-columns:1fr}
+  .kaw-row{grid-template-columns:1fr auto auto}
+  .kaw-row .kaw-ce:nth-child(2){grid-column:1;grid-row:2}
+  .kaw-card{padding:24px 20px;min-height:240px}
+}
+
 </style>
 </head>
 <body>
@@ -3091,6 +3207,7 @@ const ICONS = {
   kennzahlwerk: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M15 8h4v4"/>',   // rising chart
   percent: '<path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
   cap: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c3 2.5 9 2.5 12 0v-4.5"/><path d="M22 9v5"/>',   // graduation cap
+  karteiwerk: '<rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/><path d="M7 12h6M7 15.5h4"/>',   // stacked index cards
   quellenwerk: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9.5 2v7.5l2-1.5 2 1.5V2"/>',   // book with bookmark
   briefcase: '<rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/><path d="M11 13h2v2h-2z"/>',   // business
   bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
@@ -3496,6 +3613,8 @@ const EN = {
   'Prozente, Zinsen, ROI & Co.': 'Percentages, interest, ROI & more',
   'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und Nutzwertanalyse, mit Rechenweg.': 'Calculators for everyday life, studies and business – from percentages and VAT to break-even and weighted scoring, with working.',
   'Quellen sammeln · richtig zitieren': 'Collect sources · cite correctly',
+  'Karteikarten mit Lernsystem': 'Flashcards with a learning system',
+  'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.': 'Flashcards for any topic – the Leitner box system mainly asks what you don’t know yet.',
   'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.': 'Save books, articles and links with notes and quotes – copy the citation with one click.',
 };
 
@@ -4240,7 +4359,7 @@ const APP_GROUPS = [
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
   { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
-  { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk', 'quellenwerk'] },
+  { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk', 'quellenwerk', 'karteiwerk'] },
   { id: 'fun', name: 'Spaß & Musik', icon: 'sparkle', apps: ['entscheidung', 'spielwiese', 'beatwerk'] },
 ];
 const APP_ORDER = APP_GROUPS.flatMap(g => g.apps);
@@ -15434,6 +15553,310 @@ TT.register({
   tagline: 'Quellen sammeln · richtig zitieren',
   desc: 'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.',
   mount: mountQuellenwerk,
+});
+
+/* ================= Karteiwerk (flashcards with a Leitner box system) ================= */
+// Box 0 = new, boxes 1–5 = learned; after "Gewusst" a card comes back after KAW_DAYS[box] days
+const KAW_DAYS = [0, 1, 3, 7, 14, 30];
+const KAW_COLORS = ['#2dd4bf', '#7c6cff', '#f59e0b', '#ef4444', '#22c55e', '#0ea5e9', '#ec4899', '#64748b'];
+function mountKarteiwerk(view) {
+  view.style.padding = '0';
+  const saved = Store.get('karteiwerk', {});
+  const st = { decks: Array.isArray(saved.decks) ? saved.decks : [], active: saved.active || null, reverse: !!saved.reverse, log: saved.log || {} };
+  // Save through the shared Store (→ backup & folder sync). Batched while typing, immediately after answers and when leaving the page.
+  let saveT;
+  const save = () => { clearTimeout(saveT); Store.set('karteiwerk', st); };
+  const persist = () => { clearTimeout(saveT); saveT = setTimeout(save, 300); };
+  addEventListener('pagehide', save);
+
+  /* ---------- Dates ---------- */
+  const p2 = n => String(n).padStart(2, '0');
+  const ymd = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
+  const today = () => ymd(appNow());
+  const addDays = n => { const d = appNow(); d.setDate(d.getDate() + n); return ymd(d); };
+  const inDays = n => n <= 0 ? 'heute' : n === 1 ? 'morgen' : `in ${n} Tagen`;
+  const fmtD = s => { const [y, m, d] = s.split('-'); return `${d}.${m}.`; };
+
+  /* ---------- Helpers ---------- */
+  const deck = () => st.decks.find(d => d.id === st.active);
+  const isDue = c => !c.box || !c.due || c.due <= today();
+  const dueCards = d => d.cards.filter(isDue);
+  const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const cardsWord = n => n === 1 ? '1 Karte' : `${n} Karten`;
+  const logToday = () => { const t = today(); st.log[t] = (st.log[t] || 0) + 1; };
+  function streak() {
+    let n = 0; const d = appNow();
+    if (!st.log[ymd(d)]) d.setDate(d.getDate() - 1);   // today not learned yet: the streak up to yesterday still counts
+    while (st.log[ymd(d)]) { n++; d.setDate(d.getDate() - 1); }
+    return n;
+  }
+  function pruneLog() {   // keep the daily log small (last 400 days)
+    const keys = Object.keys(st.log).sort();
+    for (const k of keys.slice(0, Math.max(0, keys.length - 400))) delete st.log[k];
+  }
+  const grow = ta => { ta.style.height = '0'; ta.style.height = ta.scrollHeight + 'px'; };
+
+  /* ---------- Decks & cards ---------- */
+  function newDeck(name = 'Neuer Stapel', cards = []) {
+    const d = { id: uid(), name, color: KAW_COLORS[st.decks.length % KAW_COLORS.length], created: Date.now(), cards };
+    st.decks.push(d); st.active = d.id; save(); render();
+    return d;
+  }
+  const mkCard = (f, b) => ({ id: uid(), f, b, box: 0, due: null, right: 0, wrong: 0, created: Date.now() });
+  function removeDeck(d) {
+    const i = st.decks.indexOf(d);
+    st.decks.splice(i, 1); if (st.active === d.id) st.active = null; save(); render();
+    toast(`Stapel „${d.name}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.decks.splice(i, 0, d); st.active = d.id; save(); render(); } } });
+  }
+  const EXAMPLE = [
+    ['Wofür steht STP?', 'Segmentierung, Targeting, Positionierung – den Markt aufteilen, Zielgruppen auswählen und das Angebot im Kopf der Kunden verankern.'],
+    ['Die 4P des Marketing-Mix', 'Product, Price, Place, Promotion'],
+    ['Was ist ein USP?', 'Unique Selling Proposition – das Alleinstellungsmerkmal, das ein Angebot von der Konkurrenz abhebt.'],
+    ['AIDA-Modell', 'Attention, Interest, Desire, Action – die Stufen, die Werbung bei Kunden auslösen soll.'],
+    ['Wie berechnet man die CTR?', 'Klicks ÷ Impressionen'],
+    ['Was ist ein Touchpoint?', 'Jeder Berührungspunkt zwischen Kunde und Marke – z. B. Werbung, Website, Laden oder Kundenservice.'],
+    ['B2B vs. B2C', 'B2B: Unternehmen verkauft an Unternehmen.\nB2C: Unternehmen verkauft an Endkunden.'],
+    ['Was misst der Net Promoter Score?', 'Die Bereitschaft, weiterzuempfehlen: % Promotoren (9–10) minus % Detraktoren (0–6).'],
+  ];
+
+  /* ---------- Import / export (tab-separated, like Anki & Quizlet) ---------- */
+  function parseImport(text) {
+    const out = []; let skipped = 0;
+    for (const raw of text.split(/\r?\n/)) {
+      const line = raw.trim(); if (!line) continue;
+      const sep = raw.includes('\t') ? '\t' : line.includes(';') ? ';' : null;
+      if (!sep) { skipped++; continue; }
+      const i = raw.indexOf(sep), f = raw.slice(0, i).trim(), b = raw.slice(i + 1).trim();
+      if (!f || !b) { skipped++; continue; }
+      const un = s => s.replace(/<br\s*\/?>/gi, '\n');
+      out.push([un(f), un(b)]);
+    }
+    return { cards: out, skipped };
+  }
+  function openImport(d) {
+    const ta = h('textarea', { class: 'kaw-ta kaw-imp', placeholder: 'Begriff ; Erklärung\nHaus ; house\nHauptstadt von Spanien ; Madrid', spellcheck: false });
+    const info = h('div', { class: 'hint' });
+    const upd = () => { const r = parseImport(ta.value); info.textContent = r.cards.length || r.skipped ? `${cardsWord(r.cards.length)} erkannt${r.skipped ? ` · ${r.skipped} Zeile${r.skipped === 1 ? '' : 'n'} ohne Trennzeichen übersprungen` : ''}` : 'Eine Karte pro Zeile. Vorder- und Rückseite mit Semikolon ; oder Tab trennen (Export aus Excel, Anki und Quizlet passt direkt).'; };
+    ta.addEventListener('input', upd); upd();
+    modal({
+      title: 'Karten importieren', sub: `in „${d.name}“`, width: 620, body: h('div', { class: 'kaw-col' }, ta, info),
+      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: 'Importieren', kind: 'primary', onClick: () => {
+        const r = parseImport(ta.value);
+        if (!r.cards.length) { toast('Keine Karten erkannt.', 'err'); return false; }
+        const have = new Set(d.cards.map(c => c.f.trim().toLowerCase()));
+        const fresh = r.cards.filter(([f]) => !have.has(f.toLowerCase()));
+        d.cards.push(...fresh.map(([f, b]) => mkCard(f, b))); save(); render();
+        toast(`${cardsWord(fresh.length)} importiert${r.cards.length > fresh.length ? ` · ${r.cards.length - fresh.length} doppelte übersprungen` : ''}`, 'ok');
+      } }],
+    });
+  }
+  const exportText = d => d.cards.map(c => [c.f, c.b].map(s => s.replace(/\t/g, ' ').replace(/\r?\n/g, '<br>')).join('\t')).join('\n');
+  function copyText(txt) {
+    let ok = false;
+    const onCopy = e => { e.preventDefault(); e.clipboardData.setData('text/plain', txt); ok = true; };
+    document.addEventListener('copy', onCopy); try { document.execCommand('copy'); } catch {} document.removeEventListener('copy', onCopy);
+    if (ok) toast('Karten kopiert – z. B. in Anki oder Quizlet importieren.', 'ok');
+    else navigator.clipboard?.writeText(txt).then(() => toast('Karten kopiert.', 'ok'), () => toast('Kopieren hat nicht geklappt.', 'err'));
+  }
+
+  /* ---------- Sidebar ---------- */
+  const list = h('div', { class: 'kaw-list' }), footEl = h('div', { class: 'kaw-foot' });
+  function renderSide() {
+    list.replaceChildren(...st.decks.map(d => {
+      const due = dueCards(d).length;
+      return h('div', { class: 'kaw-it' + (d.id === st.active ? ' on' : ''), onclick: () => { session = null; st.active = d.id; persist(); render(); } },
+        h('i', { class: 'kaw-dot', style: { background: d.color } }),
+        h('div', { class: 'kaw-it-tx' }, h('div', { class: 'kaw-it-n' }, d.name || 'Ohne Namen'), h('div', { class: 'kaw-it-s' }, cardsWord(d.cards.length))),
+        due ? h('span', { class: 'kaw-due', title: 'Heute fällig' }, due) : h('span', { class: 'kaw-ok', title: 'Für heute alles gelernt' }, icon('check')));
+    }));
+    if (!st.decks.length) list.append(h('div', { class: 'kaw-empty' }, 'Noch keine Stapel.'));
+    const s = streak(), n = st.log[today()] || 0;
+    footEl.replaceChildren(h('div', null, s ? `🔥 ${s} ${s === 1 ? 'Tag' : 'Tage'} in Folge` : 'Heute schon gelernt?'), h('small', null, n ? `Heute ${cardsWord(n)} gelernt` : 'Jede Karte zählt'));
+  }
+
+  /* ---------- Deck view ---------- */
+  function deckView(d) {
+    const due = dueCards(d), boxes = [0, 1, 2, 3, 4, 5].map(b => d.cards.filter(c => (c.box || 0) === b).length);
+    const next = d.cards.filter(c => c.box && c.due > today()).map(c => c.due).sort()[0];
+    const name = h('input', { class: 'kaw-name', value: d.name, placeholder: 'Name des Stapels', spellcheck: false, oninput: () => { d.name = name.value; persist(); renderSide(); } });
+    const swatches = h('div', { class: 'kaw-sw' }, ...KAW_COLORS.map(c => h('button', { class: 'kaw-swb' + (c === d.color ? ' on' : ''), style: { background: c }, title: 'Farbe', onclick: () => { d.color = c; save(); render(); } })));
+    const more = h('button', { class: 'btn sm ghost', title: 'Mehr', onclick: e => popMenu(e.currentTarget, [
+      { label: 'Karten importieren', icon: 'upload', onClick: () => openImport(d) },
+      { label: 'Als Text kopieren', icon: 'copy', desc: 'Tab-getrennt, für Anki & Quizlet', disabled: !d.cards.length, onClick: () => copyText(exportText(d)) },
+      { label: 'Als Datei speichern', icon: 'download', disabled: !d.cards.length, onClick: () => download((d.name || 'Karteikarten').replace(/[\\/:*?"<>|]+/g, '') + '.txt', exportText(d), 'text/plain;charset=utf-8') },
+      '-',
+      { label: 'Lernstand zurücksetzen', icon: 'undo', disabled: !d.cards.length, onClick: async () => { if (!await confirmBox('Lernstand zurücksetzen?', 'Alle Karten dieses Stapels kommen wieder ins Fach „Neu“. Die Karten selbst bleiben erhalten.', 'Zurücksetzen', 'danger')) return; d.cards.forEach(c => { c.box = 0; c.due = null; }); save(); render(); } },
+      { label: 'Stapel löschen', icon: 'trash', danger: true, onClick: () => removeDeck(d) }]) }, icon('grip'));
+
+    // Box distribution
+    const LBL = ['Neu', 'Fach 1', 'Fach 2', 'Fach 3', 'Fach 4', 'Fach 5'];
+    const bar = h('div', { class: 'kaw-bar' }, ...boxes.map((n, b) => n ? h('i', { class: 'kaw-b' + b, style: { flex: n }, title: `${LBL[b]}: ${cardsWord(n)}` }) : null));
+    const legend = h('div', { class: 'kaw-leg' }, ...boxes.map((n, b) => h('span', null, h('i', { class: 'kaw-b' + b }), `${LBL[b]} `, h('b', null, n))));
+
+    // New card
+    const fIn = h('textarea', { class: 'kaw-ta', placeholder: 'Vorderseite – Frage oder Begriff', rows: 2 });
+    const bIn = h('textarea', { class: 'kaw-ta', placeholder: 'Rückseite – Antwort oder Erklärung', rows: 2 });
+    const add = () => {
+      const f = fIn.value.trim(), b = bIn.value.trim();
+      if (!f || !b) { toast('Bitte Vorder- und Rückseite ausfüllen.', 'info'); (f ? bIn : fIn).focus(); return; }
+      d.cards.push(mkCard(f, b)); save(); fIn.value = ''; bIn.value = ''; render(); setTimeout(() => main.querySelector('.kaw-add textarea')?.focus(), 20);
+    };
+    for (const t of [fIn, bIn]) t.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); add(); } });
+
+    // Card list
+    const q = h('input', { class: 'inp kaw-q', placeholder: 'Karten durchsuchen …', spellcheck: false, oninput: () => drawCards() });
+    const cardsEl = h('div', { class: 'kaw-cards' });
+    function drawCards() {
+      const s = q.value.trim().toLowerCase();
+      const cs = d.cards.filter(c => !s || (c.f + ' ' + c.b).toLowerCase().includes(s)).slice().reverse();
+      cardsEl.replaceChildren(...cs.map(c => {
+        const ta = (k, ph) => { const t = h('textarea', { class: 'kaw-ce', placeholder: ph, rows: 1, oninput: () => { c[k] = t.value; grow(t); persist(); } }); t.value = c[k]; return t; };
+        const box = c.box || 0;
+        return h('div', { class: 'kaw-row' }, ta('f', 'Vorderseite'), ta('b', 'Rückseite'),
+          h('span', { class: 'kaw-chip kaw-b' + box, title: box ? `Wieder dran: ${c.due <= today() ? 'heute' : fmtD(c.due)}` : 'Noch nicht gelernt' }, box ? 'Fach ' + box : 'Neu'),
+          h('button', { class: 'cw-copy', title: 'Karte löschen', onclick: () => {
+            const i = d.cards.indexOf(c); d.cards.splice(i, 1); save(); render();
+            toast('Karte gelöscht', 'info', { action: { label: 'Rückgängig', fn: () => { d.cards.splice(i, 0, c); save(); render(); } } });
+          } }, icon('trash')));
+      }));
+      if (!cs.length) cardsEl.append(h('div', { class: 'kaw-empty' }, d.cards.length ? 'Keine Treffer.' : 'Noch keine Karten – oben die erste anlegen oder über ⋮ importieren.'));
+      requestAnimationFrame(() => cardsEl.querySelectorAll('textarea').forEach(grow));
+    }
+    drawCards();
+
+    const learnBtn = due.length
+      ? h('button', { class: 'btn primary kaw-go', onclick: () => start(d, 'learn') }, icon('play'), `Lernen · ${due.length} fällig`)
+      : h('div', { class: 'kaw-done' }, icon('check'), d.cards.length ? `Für heute alles gelernt${next ? ` · weiter ${inDays(Math.round((new Date(next) - new Date(today())) / 864e5))}` : ''}` : 'Leg ein paar Karten an, dann kann’s losgehen.');
+    return h('div', { class: 'kaw-in' },
+      h('div', { class: 'kaw-top' }, h('i', { class: 'kaw-dot big', style: { background: d.color } }), name, swatches, more),
+      h('section', { class: 'cw-card kaw-learn' },
+        h('div', { class: 'kaw-stats' },
+          h('div', null, h('b', null, d.cards.length), h('span', null, 'Karten')),
+          h('div', { class: due.length ? 'hot' : '' }, h('b', null, due.length), h('span', null, 'heute fällig')),
+          h('div', null, h('b', null, boxes[0]), h('span', null, 'neu')),
+          h('div', null, h('b', null, boxes[5]), h('span', null, 'sitzen sicher'))),
+        d.cards.length ? bar : null, d.cards.length ? legend : null,
+        h('div', { class: 'kaw-acts' }, learnBtn,
+          d.cards.length ? h('button', { class: 'btn', onclick: () => start(d, 'practice'), title: 'Alle Karten in zufälliger Reihenfolge – ändert die Fächer nicht' }, icon('refresh'), 'Alle üben') : null,
+          d.cards.length ? h('label', { class: 'cw-sw kaw-rev' }, 'Rückseite zuerst', switchEl(st.reverse, v => { st.reverse = v; persist(); })) : null)),
+      h('section', { class: 'cw-card kaw-add' },
+        h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('plus')), h('h3', null, 'Neue Karte'), h('div', { class: 'cw-acts' }, h('span', { class: 'hint' }, 'Strg + Enter'))),
+        h('div', { class: 'kaw-two' }, fIn, bIn),
+        h('div', { class: 'kaw-row-acts' }, h('button', { class: 'btn primary sm', onclick: add }, icon('plus'), 'Karte hinzufügen'), h('button', { class: 'btn sm ghost', onclick: () => openImport(d) }, icon('upload'), 'Viele auf einmal importieren'))),
+      h('section', { class: 'cw-card' },
+        h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('layers')), h('h3', null, `Alle Karten (${d.cards.length})`), h('div', { class: 'cw-acts' }, q)),
+        cardsEl),
+      h('div', { class: 'cw-note kaw-how' }, 'So funktioniert’s: Neue Karten starten im Fach „Neu“. Gewusst → ein Fach weiter und erst später wieder dran (1, 3, 7, 14, 30 Tage). Nicht gewusst → zurück in Fach 1. So übst du genau das, was noch nicht sitzt.'));
+  }
+
+  /* ---------- Learning session ---------- */
+  let session = null;
+  function start(d, mode, ids) {
+    const pool = ids ? d.cards.filter(c => ids.includes(c.id)) : mode === 'learn' ? dueCards(d) : d.cards.slice();
+    if (!pool.length) return;
+    session = { d, mode, queue: shuffle(pool.map(c => c.id)), done: 0, total: pool.length, shown: false, res: { again: 0, hard: 0, good: 0 }, wrong: new Set() };
+    render();
+  }
+  function rate(k) {
+    const s = session, c = s.d.cards.find(x => x.id === s.queue[0]);
+    if (!c || !s.shown) return;
+    s.queue.shift(); s.shown = false; s.res[k]++; logToday(); pruneLog();
+    if (k === 'again') { c.wrong = (c.wrong || 0) + 1; s.wrong.add(c.id); s.queue.splice(Math.min(s.queue.length, 3 + Math.floor(Math.random() * 3)), 0, c.id); }   // comes back a few cards later
+    else { c.right = (c.right || 0) + 1; s.done++; }
+    if (s.mode === 'learn') {
+      if (k === 'good' && s.wrong.has(c.id)) { c.box = 1; c.due = addDays(1); }   // failed earlier in this round → stays in box 1, back tomorrow
+      else if (k === 'good') { c.box = Math.min(5, (c.box || 0) + 1); c.due = addDays(KAW_DAYS[c.box]); }
+      else if (k === 'hard') { c.box = Math.max(1, c.box || 0); c.due = addDays(1); }
+      else { c.box = 1; c.due = today(); }
+    }
+    save(); render();
+  }
+  function studyView() {
+    const s = session, d = s.d;
+    if (!s.queue.length) return endView();
+    const c = d.cards.find(x => x.id === s.queue[0]);
+    if (!c) { s.queue.shift(); return studyView(); }
+    const [q, a] = st.reverse ? [c.b, c.f] : [c.f, c.b];
+    const goodIn = s.wrong.has(c.id) ? 1 : KAW_DAYS[Math.min(5, (c.box || 0) + 1)];
+    const btn = (k, cls, label, sub, key) => h('button', { class: 'kaw-rb ' + cls, onclick: () => rate(k) }, h('b', null, label), h('small', null, sub), h('kbd', null, key));
+    const card = h('div', { class: 'kaw-card' + (s.shown ? ' shown' : ''), style: { '--dc': d.color }, onclick: () => { if (!s.shown) { s.shown = true; render(); } } },
+      h('div', { class: 'kaw-side' }, st.reverse ? 'Rückseite' : 'Vorderseite'),
+      h('div', { class: 'kaw-q-tx' }, q),
+      s.shown ? h('div', { class: 'kaw-a' }, h('div', { class: 'kaw-side' }, st.reverse ? 'Vorderseite' : 'Rückseite'), h('div', { class: 'kaw-a-tx' }, a)) : h('div', { class: 'kaw-tap' }, 'Klicken oder Leertaste zum Umdrehen'));
+    const acts = !s.shown
+      ? h('div', { class: 'kaw-rate' }, h('button', { class: 'btn primary kaw-show', onclick: () => { s.shown = true; render(); } }, 'Antwort zeigen', h('kbd', null, 'Leertaste')))
+      : s.mode === 'learn'
+        ? h('div', { class: 'kaw-rate' }, btn('again', 'r', 'Nochmal', 'gleich noch mal', '1'), btn('hard', 'y', 'Schwer', 'morgen', '2'), btn('good', 'g', 'Gewusst', inDays(goodIn), '3'))
+        : h('div', { class: 'kaw-rate' }, btn('again', 'r', 'Nicht gewusst', 'kommt gleich wieder', '1'), btn('good', 'g', 'Gewusst', 'weiter', '2'));
+    return h('div', { class: 'kaw-study' },
+      h('div', { class: 'kaw-sbar' },
+        h('button', { class: 'btn sm ghost', onclick: () => { session = null; render(); } }, icon('chevl'), 'Beenden'),
+        h('div', { class: 'kaw-prog' }, h('i', { style: { width: (s.done / s.total * 100) + '%', background: d.color } })),
+        h('span', { class: 'kaw-count' }, `${s.done} / ${s.total}`)),
+      h('div', { class: 'kaw-meta' }, h('i', { class: 'kaw-dot', style: { background: d.color } }), d.name, ' · ', s.mode === 'learn' ? 'Lernen' : 'Üben', c.box ? ` · Fach ${c.box}` : ' · neue Karte'),
+      card, acts);
+  }
+  function endView() {
+    const s = session, d = s.d, r = s.res, wrong = [...s.wrong];
+    return h('div', { class: 'kaw-study' }, h('div', { class: 'kaw-end' },
+      h('div', { class: 'kaw-party' }, '🎉'),
+      h('h2', null, 'Runde geschafft!'),
+      h('p', null, `${cardsWord(s.total)} durchgearbeitet.`),
+      h('div', { class: 'kaw-endstats' },
+        h('div', { class: 'g' }, h('b', null, r.good), h('span', null, 'gewusst')),
+        s.mode === 'learn' ? h('div', { class: 'y' }, h('b', null, r.hard), h('span', null, 'schwer')) : null,
+        h('div', { class: 'r' }, h('b', null, r.again), h('span', null, 'nochmal'))),
+      h('div', { class: 'kaw-row-acts center' },
+        wrong.length ? h('button', { class: 'btn primary', onclick: () => start(d, 'practice', wrong) }, icon('refresh'), `Schwierige nochmal üben (${wrong.length})`) : null,
+        h('button', { class: 'btn', onclick: () => { session = null; render(); } }, 'Zurück zum Stapel'))));
+  }
+
+  function welcome() {
+    return h('div', { class: 'kaw-welcome' },
+      h('div', { class: 'kaw-logo big' }, icon('karteiwerk')),
+      h('h2', null, 'Karteiwerk'),
+      h('p', null, 'Karteikarten für jedes Thema – Vokabeln, Fachbegriffe, Formeln, Prüfungsfragen. Das Karteikasten-Prinzip sorgt dafür, dass du vor allem übst, was noch nicht sitzt.'),
+      h('div', { class: 'kaw-row-acts center' },
+        h('button', { class: 'btn primary', onclick: () => { newDeck(); setTimeout(() => main.querySelector('.kaw-name')?.select(), 30); } }, icon('plus'), 'Neuer Stapel'),
+        !st.decks.length && h('button', { class: 'btn', onclick: () => newDeck('Marketing-Grundbegriffe', EXAMPLE.map(([f, b]) => mkCard(f, b))) }, icon('sparkle'), 'Beispiel-Stapel')));
+  }
+
+  /* ---------- Layout ---------- */
+  const main = h('div', { class: 'kaw-main' });
+  function render() {
+    if (session && !st.decks.includes(session.d)) session = null;
+    const d = deck();
+    main.replaceChildren(session ? studyView() : d ? deckView(d) : welcome());
+    renderSide();
+  }
+  view.append(h('div', { class: 'kaw' },
+    h('aside', { class: 'kaw-sidebar' },
+      h('div', { class: 'kaw-hd' }, h('div', { class: 'kaw-logo' }, icon('karteiwerk')), h('b', null, 'Karteiwerk')),
+      h('div', { class: 'kaw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => { session = null; newDeck(); setTimeout(() => main.querySelector('.kaw-name')?.select(), 30); } }, icon('plus'), 'Neuer Stapel')),
+      list, footEl),
+    main));
+  render();
+  return {
+    onShow: () => { if (!session) render(); },   // new day → due counts update
+    onKey(e) {
+      if (!session || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.ctrlKey || e.metaKey || e.altKey) return;
+      const s = session;
+      if (e.key === 'Escape') { e.preventDefault(); session = null; render(); return; }
+      if (!s.queue.length) return;
+      if (!s.shown && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); s.shown = true; render(); return; }
+      if (!s.shown) return;
+      const keys = s.mode === 'learn' ? { 1: 'again', 2: 'hard', 3: 'good' } : { 1: 'again', 2: 'good' };
+      if (keys[e.key]) { e.preventDefault(); rate(keys[e.key]); }
+    },
+    destroy() { save(); removeEventListener('pagehide', save); },
+  };
+}
+
+TT.register({
+  id: 'karteiwerk', name: 'Karteiwerk', icon: 'karteiwerk', c: '#2dd4bf', c2: '#0f766e',   // mint → deep teal
+  tagline: 'Karteikarten mit Lernsystem',
+  desc: 'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.',
+  mount: mountKarteiwerk,
 });
 
 

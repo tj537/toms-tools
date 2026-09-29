@@ -2816,7 +2816,12 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 .qlw-logo.big svg{width:30px;height:30px}
 .qlw-tools{padding:2px 12px 8px;display:flex;flex-direction:column;gap:6px}
 .qlw-list{flex:1;overflow:auto;padding:2px 8px 10px;display:flex;flex-direction:column;gap:2px}
-.qlw-it{padding:7px 10px;border-radius:10px;cursor:pointer;color:var(--tx2);transition:background .15s,color .15s;min-width:0}
+.qlw-it{display:flex;align-items:center;gap:6px;padding:7px 6px 7px 10px;border-radius:10px;cursor:pointer;color:var(--tx2);transition:background .15s,color .15s;min-width:0}
+.qlw-it-tx{flex:1;min-width:0}
+.qlw-it-del{opacity:0;transition:opacity .15s,background .15s,color .15s}
+.qlw-it:hover .qlw-it-del,.qlw-it.on .qlw-it-del,.qlw-it-del:focus-visible{opacity:1}
+.qlw-it-del:hover{color:var(--err)}
+@media(hover:none){.qlw-it-del{opacity:1}}
 .qlw-it:hover{background:var(--s1);color:var(--tx)}
 .qlw-it.on{background:var(--s2);color:var(--tx)}
 .qlw-it-a{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -2963,7 +2968,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 <script>
 (() => {
 'use strict';
-const VERSION = '1.4.1';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
+const VERSION = '1.4.2';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
 // Set a date for testing, e.g. '2026-12-24' (time of day stays real) – null = real date (live)
 const TEST_DATE = null;
 function appNow() {
@@ -15295,8 +15300,8 @@ function mountQuellenwerk(view) {
     projSel.value = st.project; projSel.hidden = !ps.length;
     const items = visible();
     list.replaceChildren(...items.map(it => h('div', { class: 'qlw-it' + (it.id === st.active ? ' on' : ''), onclick: () => { st.active = it.id; persist(); render(); } },
-      h('div', { class: 'qlw-it-a' }, `${shortNames(it)} ${year(it)}`),
-      h('div', { class: 'qlw-it-t' }, it.title || 'Ohne Titel'))));
+      h('div', { class: 'qlw-it-tx' }, h('div', { class: 'qlw-it-a' }, `${shortNames(it)} ${year(it)}`), h('div', { class: 'qlw-it-t' }, it.title || 'Ohne Titel')),
+      h('button', { class: 'cw-copy qlw-it-del', title: 'Quelle löschen', onclick: e => { e.stopPropagation(); remove(it); } }, icon('trash')))));
     if (!items.length) list.append(h('div', { class: 'qlw-empty' }, st.items.length ? 'Nichts gefunden.' : 'Noch keine Quellen.'));
     countEl.textContent = items.length === 1 ? '1 Quelle' : `${items.length} Quellen`;
   }
@@ -15315,7 +15320,7 @@ function mountQuellenwerk(view) {
   }
   function remove(it) {
     const i = st.items.indexOf(it);
-    st.items.splice(i, 1); st.active = null; persist(); render();
+    st.items.splice(i, 1); if (st.active === it.id) st.active = null; persist(); render();
     toast(`„${it.title || 'Quelle'}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.items.splice(i, 0, it); st.active = it.id; persist(); render(); } } });
   }
   const EXAMPLE = { type: 'buch', authors: 'Muster, Max; Beispiel, Erika', year: '2024', title: 'Grundlagen des Marketings', ed: '3', pub: 'Beispielverlag', place: 'Musterstadt', project: 'Beispiel',

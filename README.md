@@ -49,7 +49,7 @@ Toms Tools ist mein erstes größeres Projekt – Feedback ist jederzeit willkom
 
 Klick auf eine Gruppe, um ihre Apps mit Screenshot aufzuklappen.
 
-Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechner** und **Formatierung entfernen** – Text z. B. aus Word kopieren, auf den Knopf klicken, Strg + V drücken: Schon liegt er als reiner Text in der Zwischenablage, ohne Schrift, Farben und Word-Ballast.
+Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechner** und **Formatierung entfernen** – Text z. B. aus Word kopieren, auf den Knopf klicken, Strg + V drücken (Mac: ⌘ + V): Schon liegt er als reiner Text in der Zwischenablage, ohne Schrift, Farben und Word-Ballast.
 
 <details>
 <summary><b>🖼️ Bilder & Dateien</b> · 9 Apps</summary>
@@ -217,7 +217,9 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 
 - **Apps ausblenden:** Unter *Einstellungen → Apps* schaltest du jede App einzeln an oder aus. Ausgeblendete Apps verschwinden von der Startseite – übrig bleibt dein persönlicher Werkzeugkasten. Deine Daten bleiben dabei erhalten. Oben neben „Apps“ siehst du, wie viele gerade aktiv sind (z. B. „24 / 31“).
 - **Gruppen einklappen:** Auf der Startseite lassen sich die Gruppen (z. B. „Bilder & Dateien“) mit einem Klick zu- und aufklappen.
-- **Aussehen:** Farbthema, Akzentfarbe, eigenes Hintergrundbild, dein Name in der Begrüßung und ob beim Start die letzte Sitzung wieder aufgeht – alles unter *Einstellungen*.
+- **Dein Name:** Die Startseite begrüßt dich persönlich. Den Namen trägst du unter *Einstellungen → Start* ein – und kannst ihn dort jederzeit ändern.
+- **Maskottchen:** Auf der Startseite schwebt ein kleiner Roboter mit Raketenantrieb – und macht ein Nickerchen, wenn du eine Weile nichts tust. Unter *Einstellungen → Maskottchen* stellst du seine Größe ein oder blendest ihn aus.
+- **Aussehen:** Farbthema, Akzentfarbe, eigenes Hintergrundbild oder Weltall, Funfacts in der Begrüßung und ob beim Start die letzte Sitzung wieder aufgeht – alles unter *Einstellungen*.
 
 ## 🚀 Loslegen
 

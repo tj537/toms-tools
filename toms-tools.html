@@ -2709,6 +2709,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 .mdw-acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .mdw-tip{font-size:12.5px;color:var(--tx2);background:color-mix(in oklab,var(--acc) 7%,transparent);border-left:2px solid var(--acc);border-radius:0 9px 9px 0;padding:8px 12px;line-height:1.5}
 .mdw-tip b{color:var(--tx)}
+.mdw-gcat{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tx3);margin:6px 0 -4px}
 .mdw-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .mdw-g{text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--s1);transition:border-color .15s,transform .15s,background .15s}
 .mdw-g:hover{border-color:color-mix(in oklab,var(--acc) 50%,transparent);transform:translateY(-2px);background:var(--s2)}
@@ -2761,7 +2762,9 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 
 /* ── Kennzahlwerk (builds on the Codewerk cards) ── */
 .kz-bar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap}
-.kz-tt{display:flex;flex-direction:column;min-width:0}
+.kz .cw-ch{flex-wrap:nowrap;align-items:flex-start}
+.kz .cw-acts{flex-wrap:nowrap}
+.kz-tt{display:flex;flex-direction:column;min-width:0;flex:1}
 .kz-sub{font-size:11.5px;color:var(--tx3);font-weight:500}
 .kz-ins{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
 .kz-in{display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -2889,7 +2892,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 <script>
 (() => {
 'use strict';
-const VERSION = '1.3.1';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
+const VERSION = '1.3.2';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
 // Set a date for testing, e.g. '2026-12-24' (time of day stays real) – null = real date (live)
 const TEST_DATE = null;
 function appNow() {
@@ -3010,6 +3013,8 @@ const ICONS = {
   rechnungswerk: '<path d="M7 4H4v16h3"/><path d="M17 4h3v16h-3"/><path d="M14.6 8.3a4 4 0 1 0 0 7.4"/><path d="M8 11h5M8 13.2h5"/>',   // [€]
   modellwerk: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 3v18M3 12h18"/><path d="M6.5 7.5h2.5M15 7.5h2.5M6.5 16.5h2.5M15 16.5h2.5" opacity=".6"/>',   // SWOT grid
   kennzahlwerk: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M15 8h4v4"/>',   // rising chart
+  percent: '<path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
+  cap: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c3 2.5 9 2.5 12 0v-4.5"/><path d="M22 9v5"/>',   // graduation cap
   briefcase: '<rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/><path d="M11 13h2v2h-2z"/>',   // business
   bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
   timerdigi: '<path d="M9 2h6"/><rect x="2" y="5" width="20" height="15" rx="3"/><path d="M6.5 10l1.5-1v7"/><path d="M11 10.2a1.8 1.8 0 0 1 3.4.8c0 1.8-3.4 3-3.4 5h3.6"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="17.5" cy="14.5" r=".5"/>',
@@ -3353,7 +3358,7 @@ const EN = {
   'Ein-/Ausklappen': 'Expand/collapse', 'Alle einklappen': 'Collapse all', 'Alle ausklappen': 'Expand all',
   'Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.': 'All apps are hidden – show them again under “Apps” in the settings.',
   'Bilder & Dateien': 'Images & Files', 'Design & Grafik': 'Design & Graphics', 'Text, Präsentation & Sprache': 'Text, Presentation & Speech',
-  'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Marketing & BWL': 'Marketing & Business', 'Weitere': 'More',
+  'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Business & Lernen': 'Business & Learning', 'Weitere': 'More',
   // Welcome dialog
   'Willkommen bei Toms Tools 👋': 'Welcome to Toms Tools 👋', 'Wie dürfen wir dich nennen?': 'What should we call you?',
   'Dein Name erscheint in der Begrüßung auf der Startseite.': 'Your name shows up in the greeting on the home page.',
@@ -3409,10 +3414,10 @@ const EN = {
   'Fotos automatisch in Ordner sortieren': 'Sort photos into folders automatically',
   'Fotoordner nach Aufnahmedatum, Kamera, Ausrichtung oder Dateityp in Unterordner sortieren.': 'Sort a photo folder into subfolders by capture date, camera, orientation or file type.',
   'Kleine Spiele für zwischendurch – Tippen, Reaktion und mehr.': 'Little games for in between – typing, reaction and more.',
-  'SWOT, Persona, Canvas & Co.': 'SWOT, persona, canvas & more',
-  'Marketing-Modelle wie SWOT, PESTEL, Business Model Canvas oder Persona ausfüllen – als Text, PNG oder PDF.': 'Fill in marketing models like SWOT, PESTEL, Business Model Canvas or persona – as text, PNG or PDF.',
-  'ROI, CLV, Break-even & Co.': 'ROI, CLV, break-even & more',
-  'Marketing-Kennzahlen wie ROAS, CAC, CLV, NPS oder Break-even berechnen – mit Formel und Rechenweg.': 'Calculate marketing KPIs like ROAS, CAC, CLV, NPS or break-even – with formula and working.',
+  'SWOT, Pro & Contra, Canvas & Co.': 'SWOT, pros & cons, canvas & more',
+  'Modelle und Denkwerkzeuge ausfüllen – von SWOT und Persona bis Pro & Contra und Eisenhower. Als Text, PNG oder PDF.': 'Fill in models and thinking tools – from SWOT and persona to pros & cons and Eisenhower. As text, PNG or PDF.',
+  'Prozente, Zinsen, ROI & Co.': 'Percentages, interest, ROI & more',
+  'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und CLV, mit Rechenweg.': 'Calculators for everyday life, studies and business – from percentages and VAT to break-even and CLV, with working.',
 };
 
 /* Background colors by time of day (hour → three glow colors), softly blended in between */
@@ -4156,7 +4161,7 @@ const APP_GROUPS = [
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
   { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
-  { id: 'bwl', name: 'Marketing & BWL', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk'] },
+  { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk'] },
   { id: 'fun', name: 'Spaß & Musik', icon: 'sparkle', apps: ['entscheidung', 'spielwiese', 'beatwerk'] },
 ];
 const APP_ORDER = APP_GROUPS.flatMap(g => g.apps);
@@ -14287,8 +14292,9 @@ const MW_JOURNEY_ROWS = [
 ];
 const MW_RATES = { l: ['gering', '#16a34a'], m: ['mittel', '#d97706'], h: ['hoch', '#dc2626'] };
 // cols/areas = CSS grid of the board; field k doubles as grid-area name. hint = guiding questions (placeholder)
+const MW_CATS = [['marketing', 'Marketing'], ['bwl', 'Strategie & BWL'], ['allg', 'Allgemein & Projekte']];
 const MW_TEMPLATES = [
-  { id: 'swot', short: 'SWOT', name: 'SWOT-Analyse',
+  { id: 'swot', cat: 'bwl', short: 'SWOT', name: 'SWOT-Analyse',
     desc: 'Stärken und Schwächen (intern), Chancen und Risiken (extern) auf einen Blick.',
     tip: 'Stärken/Schwächen betreffen das Unternehmen selbst, Chancen/Risiken kommen aus dem Umfeld. Aus den Kombinationen entstehen SO-, ST-, WO- und WT-Strategien (TOWS-Matrix).',
     cols: '1fr 1fr', areas: ['s w', 'o t'], fields: [
@@ -14297,7 +14303,7 @@ const MW_TEMPLATES = [
       { k: 'o', label: 'Chancen', sub: 'extern · positiv', c: '#3b82f6', hint: 'Welche Trends, Zielgruppen oder Marktlücken können wir nutzen?' },
       { k: 't', label: 'Risiken', sub: 'extern · negativ', c: '#ef4444', hint: 'Welche Wettbewerber, Gesetze oder Entwicklungen gefährden uns?' },
     ] },
-  { id: 'pestel', short: 'PESTEL', name: 'PESTEL-Analyse',
+  { id: 'pestel', cat: 'bwl', short: 'PESTEL', name: 'PESTEL-Analyse',
     desc: 'Das Makro-Umfeld in sechs Bereichen: Politik, Wirtschaft, Gesellschaft, Technik, Umwelt, Recht.',
     tip: 'PESTEL liefert die externen Faktoren – ideal als Vorarbeit für Chancen und Risiken in der SWOT-Analyse. Nur Faktoren notieren, die für den Markt wirklich relevant sind.',
     cols: '1fr 1fr 1fr', areas: ['p e s', 't en l'], fields: [
@@ -14308,7 +14314,7 @@ const MW_TEMPLATES = [
       { k: 'en', label: 'Ökologisch', c: '#22c55e', hint: 'Klimawandel, Nachhaltigkeit, Ressourcen, Umweltauflagen …' },
       { k: 'l', label: 'Rechtlich', c: '#f59e0b', hint: 'DSGVO, UWG, Verbraucherschutz, Kennzeichnungspflichten …' },
     ] },
-  { id: 'porter', short: '5 Forces', name: 'Porter’s Five Forces',
+  { id: 'porter', cat: 'bwl', short: '5 Forces', name: 'Porter’s Five Forces',
     desc: 'Fünf Wettbewerbskräfte, die bestimmen, wie attraktiv eine Branche ist.',
     tip: 'Je stärker die Kräfte, desto unattraktiver die Branche. Bewerte jede Kraft (gering/mittel/hoch) und begründe die Einschätzung in Stichpunkten.',
     cols: '1fr 1.15fr 1fr', areas: ['. n .', 'l r k', '. e .'], fields: [
@@ -14318,7 +14324,7 @@ const MW_TEMPLATES = [
       { k: 'k', label: 'Kunden', sub: 'Verhandlungsmacht', c: '#f59e0b', rate: true, hint: 'Wie leicht können Kunden wechseln?\nWie preissensibel sind sie?' },
       { k: 'e', label: 'Ersatzprodukte', sub: 'Bedrohung', c: '#22c55e', rate: true, hint: 'Welche anderen Lösungen erfüllen denselben Zweck?' },
     ] },
-  { id: 'bmc', short: 'BMC', name: 'Business Model Canvas',
+  { id: 'bmc', cat: 'bwl', short: 'BMC', name: 'Business Model Canvas',
     desc: 'Ein ganzes Geschäftsmodell auf einer Seite – neun Bausteine nach Osterwalder.',
     tip: 'Am besten rechts anfangen: Kundensegmente → Nutzenversprechen → Kanäle → Beziehungen → Einnahmen. Danach die linke Seite (wie liefern wir das?) und die Kosten.',
     cols: 'repeat(10,minmax(0,1fr))', areas: ['kp kp ka ka vp vp cr cr cs cs', 'kp kp kr kr vp vp ch ch cs cs', 'co co co co co rs rs rs rs rs'], fields: [
@@ -14332,7 +14338,7 @@ const MW_TEMPLATES = [
       { k: 'co', label: 'Kostenstruktur', c: '#94a3b8', hint: 'Was sind die wichtigsten Kosten? Fix oder variabel?' },
       { k: 'rs', label: 'Einnahmequellen', c: '#22c55e', hint: 'Wofür zahlen Kunden? Preismodell, Abo, Provision …' },
     ] },
-  { id: 'mix', short: '7P', name: 'Marketing-Mix (7P)',
+  { id: 'mix', cat: 'marketing', short: '7P', name: 'Marketing-Mix (7P)',
     desc: 'Die klassischen 4P plus die drei Dienstleistungs-P: People, Process, Physical Evidence.',
     tip: 'Die 4P (Product, Price, Place, Promotion) passen für Sachgüter. Für Dienstleistungen kommen People, Process und Physical Evidence dazu. Alle Instrumente müssen zur Positionierung passen.',
     cols: 'repeat(12,minmax(0,1fr))', areas: ['pr pr pr pi pi pi pl pl pl pm pm pm', 'pe pe pe pe pc pc pc pc px px px px'], fields: [
@@ -14344,7 +14350,7 @@ const MW_TEMPLATES = [
       { k: 'pc', label: 'Prozesse', sub: 'Process', c: '#f59e0b', hint: 'Wie läuft die Leistung ab? Wartezeiten, Buchung …' },
       { k: 'px', label: 'Ausstattung', sub: 'Physical Evidence', c: '#8b5cf6', hint: 'Räume, Website, Uniformen, Belege – was macht die Leistung sichtbar?' },
     ] },
-  { id: 'ansoff', short: 'Ansoff', name: 'Ansoff-Matrix',
+  { id: 'ansoff', cat: 'bwl', short: 'Ansoff', name: 'Ansoff-Matrix',
     desc: 'Vier Wachstumsstrategien aus bestehenden oder neuen Produkten und Märkten.',
     tip: 'Das Risiko steigt von links oben (Marktdurchdringung) nach rechts unten (Diversifikation). Pro Feld konkrete Maßnahmen notieren.',
     cols: '1fr 1fr', areas: ['a b', 'c d'], fields: [
@@ -14353,7 +14359,7 @@ const MW_TEMPLATES = [
       { k: 'c', label: 'Marktentwicklung', sub: 'bestehende Produkte · neue Märkte', c: '#f59e0b', hint: 'Neue Regionen, Zielgruppen oder Kanäle?' },
       { k: 'd', label: 'Diversifikation', sub: 'neue Produkte · neue Märkte', c: '#ef4444', hint: 'Komplett neues Geschäftsfeld? Chancen und Risiken?' },
     ] },
-  { id: 'persona', short: 'Persona', name: 'Persona',
+  { id: 'persona', cat: 'marketing', short: 'Persona', name: 'Persona',
     desc: 'Ein greifbarer Steckbrief der Zielgruppe – mit Zielen, Frust und Mediennutzung.',
     tip: 'Eine Persona ist fiktiv, beruht aber auf echten Daten (Umfragen, Interviews, Analytics). Lieber eine konkrete Person als einen Durchschnitt beschreiben.',
     cols: '1fr 1fr 1fr', areas: ['who q q', 'goals pains beh', 'mot ch media'], fields: [
@@ -14366,16 +14372,75 @@ const MW_TEMPLATES = [
       { k: 'ch', label: 'Kanäle', c: '#ec4899', hint: 'Wo erreichen wir sie? Instagram, TikTok, Newsletter, Laden …' },
       { k: 'media', label: 'Marken & Medien', c: '#64748b', hint: 'Welche Marken, Podcasts, Influencer mag sie?' },
     ] },
-  { id: 'journey', short: 'Journey', name: 'Customer Journey',
+  { id: 'journey', cat: 'marketing', short: 'Journey', name: 'Customer Journey',
     desc: 'Der Weg der Kunden durch fünf Phasen – mit Touchpoints, Gefühlen und Pain Points.',
     tip: 'Aus Sicht der Kunden denken, nicht aus Sicht des Unternehmens. Die Pain Points sind die wichtigste Zeile: Dort entstehen die Chancen für Maßnahmen.',
     matrix: true, cols: '130px repeat(5,minmax(0,1fr))',
     fields: MW_JOURNEY_ROWS.flatMap(([r, label, c, hint]) => MW_JOURNEY_PH.map((ph, i) => ({ k: r + i, label, group: ph, c, hint: i ? '' : hint }))) },
-  { id: 'map', short: 'Map', name: 'Positionierungskarte',
+  { id: 'map', cat: 'marketing', short: 'Map', name: 'Positionierungskarte',
     desc: 'Marken auf zwei Achsen einordnen und Lücken im Markt finden (Perceptual Map).',
     tip: 'Achsen wählen, die für die Kaufentscheidung wirklich zählen (z. B. Preis und Qualität). Punkte ziehen, um Marken einzuordnen. Freie Flächen zeigen mögliche Positionierungslücken.',
     map: true, fields: [
       { k: 'notes', label: 'Erkenntnisse', c: '#6366f1', hint: 'Wo gibt es Lücken?\nWer sind die direkten Konkurrenten?\nWo wollen wir hin?' },
+    ] },
+  { id: 'empathy', cat: 'marketing', short: 'Empathy', name: 'Empathy Map',
+    desc: 'Sich in die Zielgruppe hineinversetzen: Was sie denkt, sieht, hört und tut.',
+    tip: 'Kommt aus dem Design Thinking. Immer eine konkrete Person im Kopf haben – passt perfekt zur Persona. Pains und Gains zeigen, wo ein Angebot ansetzen kann.',
+    cols: '1fr 1fr', areas: ['think see', 'hear say', 'pain gain'], fields: [
+      { k: 'think', label: 'Denkt & fühlt', c: '#8b5cf6', hint: 'Was beschäftigt die Person wirklich?\nSorgen, Hoffnungen, Träume …' },
+      { k: 'see', label: 'Sieht', c: '#0ea5e9', hint: 'Umfeld, Freunde, Angebote am Markt …' },
+      { k: 'hear', label: 'Hört', c: '#f59e0b', hint: 'Was sagen Freunde, Familie, Influencer, Kollegen?' },
+      { k: 'say', label: 'Sagt & tut', c: '#ec4899', hint: 'Verhalten, Aussagen, Gewohnheiten …' },
+      { k: 'pain', label: 'Pains', sub: 'Frust · Ängste · Hürden', c: '#ef4444', hint: 'Was stört oder bremst sie?' },
+      { k: 'gain', label: 'Gains', sub: 'Wünsche · Ziele · Nutzen', c: '#22c55e', hint: 'Was will sie erreichen? Woran misst sie Erfolg?' },
+    ] },
+  { id: 'stakeholder', cat: 'bwl', short: 'Stakeh.', name: 'Stakeholder-Analyse',
+    desc: 'Wer ist von einem Projekt betroffen – und wie geht man mit wem um? Sortiert nach Einfluss und Interesse.',
+    tip: 'Oben rechts stehen die Schlüsselpersonen mit viel Einfluss und viel Interesse: eng einbinden. Unten links reicht es, sie im Blick zu behalten.',
+    cols: '1fr 1fr', areas: ['sat key', 'mon inf'], fields: [
+      { k: 'sat', label: 'Zufriedenstellen', sub: 'viel Einfluss · wenig Interesse', c: '#f59e0b', hint: 'z. B. Geschäftsführung, Behörden …\nRegelmäßig abholen, nicht überfordern.' },
+      { k: 'key', label: 'Eng einbinden', sub: 'viel Einfluss · viel Interesse', c: '#ef4444', hint: 'Auftraggeber, Investoren, Projektleitung …\nFrüh einbeziehen, oft sprechen.' },
+      { k: 'mon', label: 'Beobachten', sub: 'wenig Einfluss · wenig Interesse', c: '#64748b', hint: 'Wer ist nur am Rand betroffen?' },
+      { k: 'inf', label: 'Informieren', sub: 'wenig Einfluss · viel Interesse', c: '#0ea5e9', hint: 'z. B. Mitarbeitende, Anwohner, Community …\nAuf dem Laufenden halten.' },
+    ] },
+  { id: 'procon', cat: 'allg', short: 'Pro/Con', name: 'Pro & Contra',
+    desc: 'Eine Entscheidung sauber abwägen – mit Argumenten dafür, dagegen und einem klaren Fazit.',
+    tip: 'Erst sammeln, dann gewichten: Welche drei Argumente wiegen am schwersten? Das Fazit ist die Entscheidung in einem Satz – mit Begründung.',
+    cols: '1fr 1fr', areas: ['q q', 'pro con', 'fz fz'], fields: [
+      { k: 'q', label: 'Frage', c: '#6366f1', hint: 'z. B. Soll ich ein Auslandssemester machen?' },
+      { k: 'pro', label: 'Pro', sub: 'dafür', c: '#22c55e', hint: 'Was spricht dafür?' },
+      { k: 'con', label: 'Contra', sub: 'dagegen', c: '#ef4444', hint: 'Was spricht dagegen?' },
+      { k: 'fz', label: 'Fazit', c: '#0ea5e9', hint: 'Wie entscheide ich mich – und warum?' },
+    ] },
+  { id: 'eisenhower', cat: 'allg', short: 'Eisenh.', name: 'Eisenhower-Matrix',
+    desc: 'Aufgaben nach wichtig und dringend sortieren – und wissen, was zuerst dran ist.',
+    tip: 'Das Feld „Planen“ ist das wertvollste: Dort liegen Lernen, Gesundheit und große Ziele. Was weder wichtig noch dringend ist, darf weg.',
+    cols: '1fr 1fr', areas: ['a b', 'c d'], fields: [
+      { k: 'a', label: 'Sofort erledigen', sub: 'wichtig · dringend', c: '#ef4444', hint: 'Deadlines, Prüfungen, echte Notfälle …' },
+      { k: 'b', label: 'Planen', sub: 'wichtig · nicht dringend', c: '#22c55e', hint: 'Lernen, Projekte, Sport, Beziehungen …\nFeste Termine dafür eintragen.' },
+      { k: 'c', label: 'Abgeben', sub: 'nicht wichtig · dringend', c: '#f59e0b', hint: 'Anrufe, manche Mails, Kleinkram …\nDelegieren oder schnell abhaken.' },
+      { k: 'd', label: 'Weglassen', sub: 'nicht wichtig · nicht dringend', c: '#64748b', hint: 'Zeitfresser wie endloses Scrollen …' },
+    ] },
+  { id: 'smart', cat: 'allg', short: 'SMART', name: 'SMART-Ziel',
+    desc: 'Ein Ziel so formulieren, dass es klar, messbar und erreichbar ist.',
+    tip: 'Am Ende steht ein einziger Satz, der alle fünf Kriterien erfüllt – z. B. „Bis zum 31.12. steigern wir die Newsletter-Anmeldungen um 20 % durch ein Gewinnspiel.“',
+    cols: 'repeat(5,minmax(0,1fr))', areas: ['g g g g g', 's m a r t', 'z z z z z'], fields: [
+      { k: 'g', label: 'Ziel (grob)', c: '#6366f1', hint: 'Was will ich erreichen?' },
+      { k: 's', label: 'Spezifisch', c: '#0ea5e9', hint: 'Was genau? Wer, was, wo?' },
+      { k: 'm', label: 'Messbar', c: '#22c55e', hint: 'Woran erkenne ich den Erfolg?' },
+      { k: 'a', label: 'Attraktiv', c: '#f59e0b', hint: 'Warum lohnt es sich?' },
+      { k: 'r', label: 'Realistisch', c: '#ec4899', hint: 'Mit meinen Mitteln schaffbar?' },
+      { k: 't', label: 'Terminiert', c: '#ef4444', hint: 'Bis wann? Zwischenschritte?' },
+      { k: 'z', label: 'SMART formuliert', c: '#8b5cf6', hint: 'Das Ziel in einem Satz, der alle fünf Punkte erfüllt.' },
+    ] },
+  { id: 'retro', cat: 'allg', short: 'Retro', name: 'Retrospektive',
+    desc: 'Nach einem Projekt oder einer Gruppenarbeit zurückschauen: Was lief gut, was ändern wir?',
+    tip: 'Ehrlich, aber fair: Es geht um Abläufe, nicht um Schuld. Am Ende sollten zwei, drei konkrete Maßnahmen mit Verantwortlichen stehen.',
+    cols: '1fr 1fr 1fr', areas: ['good bad idea', 'todo todo todo'], fields: [
+      { k: 'good', label: 'Lief gut', sub: 'beibehalten', c: '#22c55e', hint: 'Was hat funktioniert?' },
+      { k: 'bad', label: 'Lief nicht gut', sub: 'lassen', c: '#ef4444', hint: 'Was hat genervt oder Zeit gekostet?' },
+      { k: 'idea', label: 'Ideen', sub: 'ausprobieren', c: '#f59e0b', hint: 'Was machen wir nächstes Mal anders?' },
+      { k: 'todo', label: 'Maßnahmen', sub: 'wer macht was bis wann?', c: '#6366f1', hint: 'z. B. Wöchentlicher Check-in – Lisa – ab Montag' },
     ] },
 ];
 
@@ -14452,9 +14517,10 @@ function mountModellwerk(view) {
   function gallery() {
     return h('div', { class: 'mdw-in' },
       h('div', null, h('h2', { class: 'mdw-h2' }, st.items.length ? 'Neues Modell' : 'Willkommen im Modellwerk'),
-        h('p', { class: 'mdw-meta' }, 'Vorlage wählen und losschreiben. Jedes Feld hat Leitfragen, eine Zeile ist ein Stichpunkt. Export als Text, PNG oder PDF.')),
-      h('div', { class: 'mdw-gal' }, ...MW_TEMPLATES.map(t => h('button', { class: 'mdw-g', onclick: () => create(t.id) },
-        h('span', { class: 'mdw-badge' }, t.short), h('b', null, t.name), h('span', null, t.desc)))));
+        h('p', { class: 'mdw-meta' }, 'Vorlage wählen und losschreiben – für Marketing, BWL, Projekte oder die nächste große Entscheidung. Jedes Feld hat Leitfragen, eine Zeile ist ein Stichpunkt. Export als Text, PNG oder PDF.')),
+      ...MW_CATS.flatMap(([cat, label]) => [h('div', { class: 'mdw-gcat' }, label),
+        h('div', { class: 'mdw-gal' }, ...MW_TEMPLATES.filter(t => t.cat === cat).map(t => h('button', { class: 'mdw-g', onclick: () => create(t.id) },
+          h('span', { class: 'mdw-badge' }, t.short), h('b', null, t.name), h('span', null, t.desc))))]));
   }
 
   /* ---------- Editor ---------- */
@@ -14674,16 +14740,77 @@ img{max-width:100%;max-height:${land ? 188 : 275}mm;object-fit:contain}</style><
 
 TT.register({
   id: 'modellwerk', name: 'Modellwerk', icon: 'modellwerk', c: '#0ea5e9', c2: '#6366f1',
-  tagline: 'SWOT, Persona, Canvas & Co.',
-  desc: 'Marketing-Modelle wie SWOT, PESTEL, Business Model Canvas oder Persona ausfüllen – als Text, PNG oder PDF.',
+  tagline: 'SWOT, Pro & Contra, Canvas & Co.',
+  desc: 'Modelle und Denkwerkzeuge ausfüllen – von SWOT und Persona bis Pro & Contra und Eisenhower. Als Text, PNG oder PDF.',
   mount: mountModellwerk,
 });
 
 /* ================= Kennzahlwerk (marketing KPIs with formula and calculation path) ================= */
 // in: [key, label, unit, example value] · out(v) → rows { l: label, v: value, w: calculation path, main, t: tone } or { say: text }
-const KZ_TOPICS = [['all', 'Alle'], ['online', 'Kampagne & Online'], ['kunden', 'Kunden'], ['preis', 'Preis & Kosten'], ['markt', 'Markt']];
+const KZ_TOPICS = [['all', 'Alle'], ['allg', 'Allgemein'], ['online', 'Kampagne & Online'], ['kunden', 'Kunden'], ['preis', 'Preis & Kosten'], ['markt', 'Markt']];
 function kzDefs({ eur, pct, nf, div }) {
+  const sp = n => Number.isFinite(n) ? (n > 0 ? '+' : '') + pct(n) : '–';   // signed percent
   return [
+    { id: 'pct', topic: 'allg', icon: 'percent', title: 'Prozentrechnung', sub: 'Anteil, Veränderung, plus und minus',
+      in: [['a', 'Wert A (Teil / vorher)', '', '45'], ['b', 'Wert B (Ganzes / nachher)', '', '60'], ['p', 'Prozentsatz', '%', '15']],
+      f: 'Anteil = A ÷ B · Veränderung = (B − A) ÷ A · A ± p % = A × (1 ± p ÷ 100)',
+      note: 'Prozent ist nicht Prozentpunkt: Steigt eine Quote von 10 % auf 12 %, sind das 2 Prozentpunkte – aber 20 % mehr.',
+      out: v => [
+        { l: 'A ist … von B', v: pct(div(v.a, v.b), 2), w: `${nf(v.a)} ÷ ${nf(v.b)}`, main: true },
+        { l: 'Veränderung von A nach B', v: sp(div(v.b - v.a, v.a)), w: `(${nf(v.b)} − ${nf(v.a)}) ÷ ${nf(v.a)}`, t: v.b >= v.a ? 'ok' : 'err' },
+        { l: `${nf(v.p)} % von A`, v: nf(v.a * v.p / 100), w: `${nf(v.a)} × ${nf(v.p)} %` },
+        { l: `A plus ${nf(v.p)} %`, v: nf(v.a * (1 + v.p / 100)), w: `${nf(v.a)} × ${nf(1 + v.p / 100, 4)}` },
+        { l: `A minus ${nf(v.p)} %`, v: nf(v.a * (1 - v.p / 100)), w: `${nf(v.a)} × ${nf(1 - v.p / 100, 4)}` },
+      ] },
+    { id: 'vat', topic: 'allg', icon: 'file', title: 'Netto / Brutto', sub: 'Mehrwertsteuer drauf- oder rausrechnen',
+      in: [['x', 'Betrag', '€', '119'], ['s', 'Steuersatz', '%', '19']],
+      f: 'Brutto = Netto × (1 + Satz) · Netto = Brutto ÷ (1 + Satz)',
+      note: 'In Deutschland gelten 19 % und ermäßigt 7 % (z. B. Lebensmittel, Bücher). Typischer Fehler: 19 % vom Bruttobetrag abziehen – das ergibt zu wenig.',
+      out: v => {
+        const q = 1 + v.s / 100, net = div(v.x, q);
+        return [
+          { l: 'Betrag ist brutto → netto', v: eur(net), w: `${eur(v.x)} ÷ ${nf(q, 4)}`, main: true },
+          { l: 'Darin enthaltene Steuer', v: eur(v.x - net), w: `${eur(v.x)} − ${eur(net)}` },
+          { l: 'Betrag ist netto → brutto', v: eur(v.x * q), w: `${eur(v.x)} × ${nf(q, 4)}` },
+          { l: 'Steuer obendrauf', v: eur(v.x * v.s / 100), w: `${eur(v.x)} × ${nf(v.s)} %` },
+        ];
+      } },
+    { id: 'dreisatz', topic: 'allg', icon: 'arrow', title: 'Dreisatz', sub: 'A gehört zu B – was gehört zu C?',
+      in: [['a', 'Wenn … (A)', '', '3'], ['b', '… dann … (B)', '', '12'], ['c', 'Was ergibt … (C)?', '', '5']],
+      f: 'proportional: C × B ÷ A · antiproportional: A × B ÷ C',
+      note: 'Proportional heißt: je mehr, desto mehr (3 kg kosten 12 € – was kosten 5 kg?). Antiproportional: je mehr, desto weniger (3 Leute brauchen 12 Tage – wie lange brauchen 5?).',
+      out: v => [
+        { l: 'Proportional', v: nf(div(v.c * v.b, v.a), 4), w: `${nf(v.c)} × ${nf(v.b)} ÷ ${nf(v.a)}`, main: true },
+        { l: 'Antiproportional', v: nf(div(v.a * v.b, v.c), 4), w: `${nf(v.a)} × ${nf(v.b)} ÷ ${nf(v.c)}` },
+      ] },
+    { id: 'zins', topic: 'allg', icon: 'kennzahlwerk', title: 'Zinseszins & Sparplan', sub: 'Wie wächst Geld über die Jahre?',
+      in: [['k', 'Startkapital', '€', '5000'], ['r', 'Sparrate pro Monat', '€', '100'], ['i', 'Zinssatz pro Jahr', '%', '5'], ['n', 'Laufzeit', 'Jahre', '10']],
+      f: 'Endkapital = K × (1 + i/12)ᴺ + Rate × ((1 + i/12)ᴺ − 1) ÷ (i/12), N = Jahre × 12',
+      note: 'Vereinfacht: Zinsen werden monatlich gutgeschrieben, die Sparrate kommt am Monatsende. Steuern, Gebühren und Inflation sind nicht eingerechnet.',
+      out: v => {
+        const m = v.i / 100 / 12, N = Math.max(0, Math.min(1200, Math.round(v.n * 12))), f = (1 + m) ** N;
+        const paid = v.k + v.r * N, end = v.k * f + (m ? v.r * (f - 1) / m : v.r * N);
+        return [
+          { l: 'Eingezahlt', v: eur(paid), w: `${eur(v.k)} + ${eur(v.r)} × ${N} Monate` },
+          { l: 'Endkapital', v: eur(end), w: `${eur(v.k)} × ${nf(f, 4)} + ${eur(v.r)} × (${nf(f, 4)} − 1) ÷ ${nf(m, 6)}`, main: true },
+          { l: 'Davon Zinsen', v: eur(end - paid), w: `${eur(end)} − ${eur(paid)}`, t: end >= paid ? 'ok' : 'err' },
+          { say: paid > 0 && end > 0 ? `Aus jedem eingezahlten Euro werden ${eur(end / paid)}.` : '' },
+        ];
+      } },
+    { id: 'noten', topic: 'allg', icon: 'cap', title: 'Notendurchschnitt', sub: 'Gewichtet nach ECTS oder Credits',
+      in: [1, 2, 3, 4, 5].flatMap(i => [['n' + i, 'Note ' + i, '', ['1,7', '2,3', '1,3', '', ''][i - 1]], ['c' + i, 'ECTS ' + i, '', ['5', '10', '5', '', ''][i - 1]]]),
+      f: 'Schnitt = Σ (Note × ECTS) ÷ Σ ECTS',
+      note: 'Leere Zeilen zählen nicht. Ohne Gewichtung einfach überall 1 als ECTS eintragen. Viele Hochschulen schneiden nach der ersten Nachkommastelle ab, statt zu runden.',
+      out: v => {
+        let sum = 0, w = 0; const parts = [];
+        for (let i = 1; i <= 5; i++) { const n = v['n' + i], c = v['c' + i]; if (n && c) { sum += n * c; w += c; parts.push(`${nf(n)} × ${nf(c)}`); } }
+        const avg = div(sum, w);
+        return [
+          { l: 'Durchschnitt', v: nf(avg), w: parts.length ? `(${parts.join(' + ')}) ÷ ${nf(w)}` : '', main: true },
+          { l: 'Abgeschnitten', v: Number.isFinite(avg) ? nf(Math.floor(avg * 10 + 1e-9) / 10, 1) : '–', w: 'nur die erste Nachkommastelle zählt' },
+          { l: 'ECTS gesamt', v: nf(w) },
+        ];
+      } },
     { id: 'funnel', topic: 'online', icon: 'zap', title: 'Kampagne & Funnel', sub: 'CTR, CPC, CPM, CR, CPA, ROAS',
       in: [['cost', 'Werbekosten', '€', '2000'], ['imp', 'Impressionen', '', '250000'], ['clk', 'Klicks', '', '5000'], ['conv', 'Conversions (Käufe)', '', '150'], ['rev', 'Umsatz', '€', '9000']],
       f: 'CTR = Klicks ÷ Impressionen · CR = Conversions ÷ Klicks · ROAS = Umsatz ÷ Werbekosten',
@@ -14799,6 +14926,20 @@ function kzDefs({ eur, pct, nf, div }) {
           { l: 'Rohgewinn pro Stück', v: eur(vk - v.ek), w: `${eur(vk)} − ${eur(v.ek)}` },
         ];
       } },
+    { id: 'rabatt', topic: 'preis', icon: 'percent', title: 'Rabatt & Skonto', sub: 'Vom Listenpreis zum Überweisungsbetrag',
+      in: [['lp', 'Listenpreis', '€', '1200'], ['r', 'Rabatt', '%', '10'], ['s', 'Skonto', '%', '2']],
+      f: 'Zielpreis = Listenpreis × (1 − Rabatt) · Barzahlungspreis = Zielpreis × (1 − Skonto)',
+      note: 'Rabatt gibt es sofort (Menge, Aktion, Treue), Skonto nur bei schneller Zahlung, z. B. „2 % innerhalb von 10 Tagen“. Die Prozente werden nacheinander gerechnet, nicht addiert.',
+      out: v => {
+        const zp = v.lp * (1 - v.r / 100), bp = zp * (1 - v.s / 100);
+        return [
+          { l: 'Rabatt', v: eur(v.lp - zp), w: `${eur(v.lp)} × ${nf(v.r)} %` },
+          { l: 'Zielpreis', v: eur(zp), w: `${eur(v.lp)} − ${eur(v.lp - zp)}` },
+          { l: 'Skonto', v: eur(zp - bp), w: `${eur(zp)} × ${nf(v.s)} %` },
+          { l: 'Barzahlungspreis', v: eur(bp), w: `${eur(zp)} − ${eur(zp - bp)}`, main: true },
+          { l: 'Ersparnis gesamt', v: `${eur(v.lp - bp)} · ${pct(div(v.lp - bp, v.lp))}`, w: `${eur(v.lp)} − ${eur(bp)}`, t: 'ok' },
+        ];
+      } },
     { id: 'share', topic: 'markt', icon: 'layers', title: 'Marktanteil & Marktpotenzial', sub: 'Wie groß ist unser Stück vom Kuchen?',
       in: [['own', 'Eigener Umsatz', 'Mio. €', '12'], ['top', 'Umsatz größter Wettbewerber', 'Mio. €', '20'], ['vol', 'Marktvolumen', 'Mio. €', '80'], ['pot', 'Marktpotenzial', 'Mio. €', '120']],
       f: 'Marktanteil = eigener Umsatz ÷ Marktvolumen · relativer Marktanteil = eigener Umsatz ÷ größter Wettbewerber',
@@ -14883,7 +15024,7 @@ function mountKennzahlwerk(view) {
   root.append(h('div', { class: 'cw-in' },
     h('div', { class: 'cw-hd' },
       h('div', { class: 'cw-logo' }, icon('kennzahlwerk')),
-      h('div', null, h('h2', null, 'Kennzahlwerk'), h('p', null, 'Marketing-Kennzahlen mit Formel und Rechenweg. Komma oder Punkt, beides geht.'))),
+      h('div', null, h('h2', null, 'Kennzahlwerk'), h('p', null, 'Rechner für Alltag, Studium, BWL und Marketing – mit Formel und Rechenweg. Komma oder Punkt, beides geht.'))),
     h('div', { class: 'kz-bar' },
       segEl(KZ_TOPICS, st.topic, v => { st.topic = v; persist(); filter(); }),
       h('label', { class: 'cw-sw' }, 'Rechenweg zeigen', switchEl(st.way, v => { st.way = v; persist(); root.classList.toggle('noway', !v); }))),
@@ -14893,9 +15034,9 @@ function mountKennzahlwerk(view) {
 }
 
 TT.register({
-  id: 'kennzahlwerk', name: 'Kennzahlwerk', icon: 'kennzahlwerk', c: '#f59e0b', c2: '#ef4444',
-  tagline: 'ROI, CLV, Break-even & Co.',
-  desc: 'Marketing-Kennzahlen wie ROAS, CAC, CLV, NPS oder Break-even berechnen – mit Formel und Rechenweg.',
+  id: 'kennzahlwerk', name: 'Kennzahlwerk', icon: 'kennzahlwerk', c: '#84cc16', c2: '#15803d',   // lime → forest (no other app uses it)
+  tagline: 'Prozente, Zinsen, ROI & Co.',
+  desc: 'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und CLV, mit Rechenweg.',
   mount: mountKennzahlwerk,
 });
 

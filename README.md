@@ -227,15 +227,29 @@ Du brauchst nicht alle 31 Apps? Kein Problem:
 2. **Doppelklick** auf die Datei – sie öffnet sich im Browser.
 3. Fertig. Tipp: Als Lesezeichen speichern oder an die Taskleiste anheften.
 
-**Live ausprobieren:** Ohne Download geht es auch direkt unter **[tj537.github.io/toms-tools](https://tj537.github.io/toms-tools/)** – ideal zum Reinschnuppern. Für den Alltag empfehle ich den Download: Die Live-Version zeigt immer den neuesten Entwicklungsstand, und deine Daten hängen dort an der Webseite statt an deiner Datei. Mit *Backup exportieren / importieren* lassen sie sich aber jederzeit umziehen.
+**Live ausprobieren:** Ohne Download geht es auch direkt unter **[tj537.github.io/toms-tools](https://tj537.github.io/toms-tools/)** – ideal zum Reinschnuppern. Was der Unterschied zum Download ist, steht [gleich hier drunter](#live).
 
 **Browser:** Toms Tools ist für den **Desktop** gemacht – am besten **Chrome, Edge, Brave oder Opera**. Auf Handy und Tablet ist die Darstellung nicht überall geprüft. Firefox und Safari gehen für die meisten Apps auch – nur die Funktionen mit direktem Ordnerzugriff (Bulk Rename, Sortierwerk, Ordner-Sicherung) und die Pipette brauchen einen Chromium-Browser.
+
+<a id="live"></a>
+## 🌐 Download oder live?
+
+Beides ist dieselbe App. Für den Alltag empfehle ich trotzdem den Download – das hier ist der Unterschied:
+
+| | ⬇️ Download | ▶️ Live im Browser |
+|---|---|---|
+| **Stand** | fester, getesteter Release | immer der allerneueste Stand – auch Dinge, die noch in Arbeit sind |
+| **Internet** | läuft komplett offline | braucht zum Laden eine Verbindung; in manchen Firmennetzen ist `github.io` gesperrt |
+| **Deine Daten** | liegen im Browser auf deinem Rechner | hängen an der Webadresse – Browser dürfen sie bei längerer Nichtnutzung aufräumen (Safari z. B. nach 7 Tagen) |
+| **Updates** | neue Version einfach herunterladen | kommen automatisch |
+
+Die Daten der beiden Varianten sind getrennt. Mit *Einstellungen → Speicher & Sicherung → Backup exportieren / importieren* ziehst du sie jederzeit von der einen zur anderen um.
 
 ## 💾 Deine Daten & Speichern (Local Storage)
 
 - **Alles speichert sich automatisch** – sobald du tippst, klickst oder eine Karteikarte beantwortest. Einen Speichern-Knopf gibt es nicht, und du brauchst ihn auch nicht.
 - Die Daten liegen **nur im Local Storage deines Browsers auf deinem Rechner** (pro Browser). Nichts wird an einen Server geschickt.
-- **Ordner-Sicherung (empfohlen):** Unter *Einstellungen → Speicher & Sicherung* einen Ordner wählen, z. B. in OneDrive. Toms Tools schreibt dann bei jeder Änderung automatisch die Datei `toms-tools-daten.json` hinein – plus tägliche Kopien der letzten 14 Tage im Unterordner `sicherungen`. Geht in Chrome, Edge und Brave.
+- **Ordner-Sicherung (empfohlen):** Unter *Einstellungen → Speicher & Sicherung* einen Ordner wählen, z. B. in OneDrive. Toms Tools sichert dann automatisch in die Datei `toms-tools-daten.json` – gesammelt, sobald du kurz innehältst, also nicht bei jedem Tastendruck. Dazu kommt pro Tag eine Kopie im Unterordner `sicherungen`; ältere als 14 Tage werden automatisch gelöscht, der Ordner bleibt also übersichtlich. Geht in Chrome, Edge und Brave.
 - **Zweiter PC:** Dort denselben Ordner wählen und *Aus Ordner laden* – schon sind Notizen, Karteikarten, Quellen & Co. auch da.
 - **Backup exportieren / importieren:** Alles als eine Datei zum Mitnehmen – funktioniert in jedem Browser.
 - **Speicherplatz:** Der Browser gibt Toms Tools rund 5 MB. Wie viel jede App davon belegt, siehst du ebenfalls unter *Speicher & Sicherung*.

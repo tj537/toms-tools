@@ -1,6 +1,6 @@
 # 🧰 Toms Tools
 
-**29 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
+**31 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
 
 <p align="center">
   <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Toms Tools herunterladen" height="56"></a>
@@ -8,7 +8,7 @@
   <sub>Lädt immer die neueste Version · <a href="https://github.com/tj537/toms-tools/releases">Alle Versionen & Änderungen</a></sub>
 </p>
 
-Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Diagramme bauen, Kennzahlen rechnen, Quellen zitieren, mit Karteikarten lernen – alles im Browser, alles auf deinem Rechner.
+Doppelklick, und es läuft. Bilder bearbeiten, Wasserzeichen und KI-Labels setzen, PDFs zusammenfügen, Texte vergleichen, Fotos sortieren, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen ausfüllen, Diagramme bauen, Kennzahlen rechnen, Quellen zitieren, mit Karteikarten lernen – alles im Browser, alles auf deinem Rechner.
 
 ![Version](https://img.shields.io/badge/version-1.5.0-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
@@ -19,7 +19,7 @@ Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortie
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** 29 offline tools in one single HTML file – image editing, PDFs, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
+> 🇬🇧 **English:** 31 offline tools in one single HTML file – image editing, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus. The interface is German for now – more English is coming step by step (the home page already has it: Settings → Start → Language). Feedback welcome!
 
 ---
 
@@ -50,6 +50,7 @@ Warum? Auf der Arbeit kann ich nichts installieren. Toms Tools ist nur eine HTML
 | **Bildwerk** | Bilder zuschneiden, freistellen, mit Ebenen, Text und Effekten bearbeiten |
 | **LUT-Werk** | Farb-Looks als 3D-LUT erstellen, `.cube` importieren und auf viele Bilder anwenden |
 | **Metawerk** | EXIF-Metadaten von Bildern ansehen, bearbeiten oder entfernen |
+| **Wasserzeichenwerk** | Text, Logo oder **KI-Label** auf Bilder setzen – einzeln oder ganz viele auf einmal (ZIP oder Ordner). Das KI-Label kann zusätzlich maschinenlesbar in die Datei geschrieben werden (IPTC), wie es der EU AI Act seit August 2026 verlangt |
 | **WebP Converter** | Bilder stapelweise ins platzsparende WebP-Format umwandeln |
 | **PDF-Werk** | PDFs zusammenführen, teilen, Seiten drehen und sortieren |
 | **Bildbenamung** | Bildnamen aus Bausteinen zusammenklicken und direkt umbenennen |
@@ -67,6 +68,7 @@ Warum? Auf der Arbeit kann ich nichts installieren. Toms Tools ist nur eine HTML
 | App | Was sie macht |
 |---|---|
 | **Textwerk** | Textstatistik & Lesbarkeit, Teleprompter, Blindtext, sichere Passwörter |
+| **Vergleichswerk** | Zwei Textversionen vergleichen – Änderungen Wort für Wort (oder Zeichen / Zeile) farbig markiert, mit Statistik und Sprung von Änderung zu Änderung |
 | **Codewerk** | JSON, Regex, Base64, URL, Hashes, UUIDs, Zeitstempel, Zahlensysteme, JWT |
 | **Spickzettel** | Sonderzeichen, Snippets und Vorlagen – ein Klick kopiert |
 | **Pitcher** | Markdown schreiben und als Präsentation im Vollbild zeigen |
@@ -101,9 +103,9 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 ### 🎛️ So wie du's brauchst
 
-Du brauchst nicht alle 29 Apps? Kein Problem:
+Du brauchst nicht alle 31 Apps? Kein Problem:
 
-- **Apps ausblenden:** Unter *Einstellungen → Apps* schaltest du jede App einzeln an oder aus. Ausgeblendete Apps verschwinden von der Startseite – übrig bleibt dein persönlicher Werkzeugkasten. Deine Daten bleiben dabei erhalten. Oben neben „Apps“ siehst du, wie viele gerade aktiv sind (z. B. „24 / 29“).
+- **Apps ausblenden:** Unter *Einstellungen → Apps* schaltest du jede App einzeln an oder aus. Ausgeblendete Apps verschwinden von der Startseite – übrig bleibt dein persönlicher Werkzeugkasten. Deine Daten bleiben dabei erhalten. Oben neben „Apps“ siehst du, wie viele gerade aktiv sind (z. B. „24 / 31“).
 - **Gruppen einklappen:** Auf der Startseite lassen sich die Gruppen (z. B. „Bilder & Dateien“) mit einem Klick zu- und aufklappen.
 - **Aussehen:** Farbthema, Akzentfarbe, eigenes Hintergrundbild, dein Name in der Begrüßung und ob beim Start die letzte Sitzung wieder aufgeht – alles unter *Einstellungen*.
 
@@ -116,6 +118,8 @@ Du brauchst nicht alle 29 Apps? Kein Problem:
 | ![Quellenwerk](docs/quellenwerk.png) | ![Rechnungswerk](docs/rechnungswerk.png) |
 | **Diagrammwerk** | **Karteiwerk** |
 | ![Diagrammwerk](docs/diagrammwerk.png) | ![Karteiwerk](docs/karteiwerk.png) |
+| **Wasserzeichenwerk** | **Vergleichswerk** |
+| ![Wasserzeichenwerk](docs/wasserzeichenwerk.png) | ![Vergleichswerk](docs/vergleichswerk.png) |
 | **QR-Werk** | **Farbwerk** |
 | ![QR-Werk](docs/qrwerk.png) | ![Farbwerk](docs/farbwerk.png) |
 

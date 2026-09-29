@@ -3015,6 +3015,106 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
   .dgw-side{max-height:200px;border-right:0;border-bottom:1px solid var(--line)}
 }
 
+/* ── Wasserzeichenwerk ── */
+.wzw{height:100%;display:grid;grid-template-columns:320px minmax(0,1fr);min-height:0}
+.wzw [hidden]{display:none!important}
+.wzw.drag .wzw-stage{outline:2px dashed color-mix(in oklab,var(--acc) 70%,transparent);outline-offset:-10px}
+.wzw-side{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;background:color-mix(in oklab,var(--bg2) 55%,transparent)}
+.wzw-hd{display:flex;align-items:center;gap:10px;padding:16px 16px 6px;font-size:15px}
+.wzw-logoi{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--app-c,var(--acc)),var(--app-c2,var(--acc2)));box-shadow:0 8px 20px -10px var(--app-c,var(--acc)),inset 0 1px 0 rgba(255,255,255,.25);flex:none}
+.wzw-logoi svg{width:17px;height:17px}
+.wzw-panel{flex:1;overflow:auto;padding:8px 16px 20px;display:flex;flex-direction:column;gap:6px}
+.wzw-modes .seg{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+.wzw-modes .seg button{justify-content:center}
+.wzw-sec{display:flex;flex-direction:column;gap:10px;padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.wzw-sec:last-child{border-bottom:0}
+.wzw-sec-t{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--tx3)}
+.wzw-row{display:flex;align-items:center;gap:8px}
+.wzw-row.wrap{flex-wrap:wrap;gap:8px 16px}
+.wzw-col{display:flex;flex-direction:column;gap:6px;align-items:flex-start;min-width:0}
+.wzw-lbl{font-size:12.5px;color:var(--tx2);white-space:nowrap}
+.wzw-sw{font-size:12.5px}
+.wzw-color{width:36px;height:34px;border:0;padding:0;background:none;border-radius:8px;cursor:pointer;flex:none}
+.wzw-note{font-size:11.5px;color:var(--tx3);line-height:1.5}
+.wzw-logo{width:72px;height:72px;border-radius:12px;flex:none;display:grid;place-items:center;overflow:hidden;font-size:11px;color:var(--tx3);text-align:center;
+  background:repeating-conic-gradient(var(--s2) 0 25%,var(--s1) 0 50%) 0 0/14px 14px;border:1px solid var(--line)}
+.wzw-logo img{max-width:88%;max-height:88%;object-fit:contain}
+.wzw-posrow{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.wzw-pos{display:grid;grid-template-columns:repeat(3,30px);gap:4px;padding:6px;border-radius:12px;background:var(--bg2);border:1px solid var(--line)}
+.wzw-pos.off{opacity:.45}
+.wzw-pc{width:30px;height:22px;border-radius:6px;display:grid;place-items:center;transition:background .15s}
+.wzw-pc i{width:8px;height:8px;border-radius:50%;background:var(--s3);transition:.15s}
+.wzw-pc:hover i{background:var(--tx3)}
+.wzw-pc.on{background:var(--acc-soft)}
+.wzw-pc.on i{background:var(--acc);box-shadow:0 0 0 3px color-mix(in oklab,var(--acc) 25%,transparent)}
+.wzw-main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.wzw-stage{flex:1;min-height:0;position:relative;display:flex;background:repeating-conic-gradient(color-mix(in oklab,var(--bg2) 70%,var(--bg)) 0 25%,var(--bg) 0 50%) 0 0/22px 22px}
+.wzw-canvas{flex:1;min-width:0;min-height:0;display:grid;place-items:center;padding:12px}
+.wzw-cv{display:block;border-radius:6px;box-shadow:0 20px 50px -24px rgba(0,0,0,.7)}
+.wzw-drop{margin:auto;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;color:var(--tx2);padding:40px}
+.wzw-drop b{font-size:17px;color:var(--tx)}
+.wzw-drop small{color:var(--tx3)}
+.wzw-drop-ico{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc-tx)}
+.wzw-drop-ico svg{width:28px;height:28px}
+.wzw-strip{display:flex;gap:8px;padding:10px 14px;overflow-x:auto;border-top:1px solid var(--line);background:var(--bg2);flex:none}
+.wzw-th{position:relative;width:64px;height:64px;border-radius:10px;overflow:hidden;flex:none;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.wzw-th.on{border-color:var(--acc)}
+.wzw-th img{width:100%;height:100%;object-fit:cover;display:block}
+.wzw-x{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:rgba(0,0,0,.6);color:#fff;opacity:0;transition:opacity .15s}
+.wzw-x svg{width:12px;height:12px}
+.wzw-th:hover .wzw-x{opacity:1}
+.wzw-add{width:64px;height:64px;border-radius:10px;border:1px dashed var(--line2);display:grid;place-items:center;color:var(--tx3);flex:none}
+.wzw-add:hover{color:var(--tx);border-color:var(--tx3)}
+.wzw-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line);flex:none;min-height:52px}
+.wzw-count{font-size:12.5px;font-weight:600;color:var(--tx2)}
+.wzw-prog{font-size:12.5px;color:var(--acc-tx)}
+.wzw-acts{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+@media(max-width:860px){
+  .wzw{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .wzw-side{max-height:45vh;border-right:0;border-bottom:1px solid var(--line)}
+}
+
+/* ── Vergleichswerk (builds on the Codewerk cards) ── */
+.vgw-in{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:stretch}
+.vgw-col{display:flex;flex-direction:column;gap:6px;min-width:0}
+.vgw-lh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:12px;color:var(--tx2)}
+.vgw-lh b{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--tx3)}
+.vgw-c{font:11.5px var(--mono);color:var(--tx3)}
+.vgw-ta{width:100%;min-height:200px;height:220px;resize:vertical;font:13.5px/1.6 var(--font);background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--tx);outline:none;transition:border-color .15s,box-shadow .15s}
+.vgw-ta:focus{border-color:color-mix(in oklab,var(--acc) 70%,transparent);box-shadow:0 0 0 3px var(--acc-soft)}
+.vgw-ta::placeholder{color:var(--tx3)}
+.vgw-swap{align-self:center;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--tx3);background:var(--s1);border:1px solid var(--line);transition:.15s}
+.vgw-swap:hover{color:var(--tx);background:var(--s2)}
+.vgw-swap svg{width:15px;height:15px}
+.vgw-bar{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap}
+.vgw-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.vgw-stats:empty{display:none}
+.vgw-st{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column}
+.vgw-st b{font:700 20px var(--mono)}
+.vgw-st span{font-size:12px;color:var(--tx3)}
+.vgw-st.del b{color:#f2555a}
+.vgw-st.ins b{color:#3dd68c}
+.vgw-nav{display:inline-flex;align-items:center;gap:2px}
+.vgw-nav-i{font:600 12px var(--mono);color:var(--tx3);min-width:42px;text-align:center}
+.vgw-res{min-height:60px}
+.vgw-side{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vgw-doc{background:var(--bg2);border:1px solid var(--line);border-radius:12px;min-width:0;overflow:hidden}
+.vgw-dh{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--tx3);padding:8px 14px;border-bottom:1px solid var(--line)}
+.vgw-dt{padding:12px 14px;font:13.5px/1.7 var(--font);white-space:pre-wrap;overflow-wrap:anywhere;max-height:60vh;overflow:auto;color:var(--tx2)}
+.vgw del,.vgw ins{text-decoration:none;border-radius:4px;padding:1px 1px;color:var(--tx)}
+.vgw del{background:rgba(229,72,77,.22);text-decoration:line-through;text-decoration-color:rgba(242,85,90,.75)}
+.vgw ins{background:rgba(48,164,108,.26)}
+.vgw-gap{display:inline-block;width:3px;height:1.1em;vertical-align:-2px;border-radius:2px;background:var(--tx3);opacity:.5;margin:0 1px}
+.vgw .cur{outline:2px solid var(--acc);outline-offset:1px}
+.vgw-empty,.vgw-same{padding:18px;text-align:center;font-size:13px;color:var(--tx3)}
+.vgw-same{color:var(--ok);display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600}
+.vgw-same svg{width:16px;height:16px}
+.vgw-leg{display:flex;gap:14px;align-items:center;font-size:12px;flex-wrap:wrap}
+.vgw-leg .hint{margin-left:auto}
+[data-theme=light] .vgw-st.del b{color:#c9282e}
+[data-theme=light] .vgw-st.ins b{color:#1d7a4c}
+@media(max-width:820px){.vgw-in{grid-template-columns:1fr}.vgw-swap{justify-self:center}.vgw-side{grid-template-columns:1fr}.vgw-stats{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body>
@@ -3255,6 +3355,8 @@ const ICONS = {
   kennzahlwerk: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M15 8h4v4"/>',   // rising chart
   percent: '<path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
   cap: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c3 2.5 9 2.5 12 0v-4.5"/><path d="M22 9v5"/>',   // graduation cap
+  wasserzeichenwerk: '<path d="M12 3s-6 6.2-6 10.2a6 6 0 0 0 12 0C18 9.2 12 3 12 3z"/><path d="M9.2 14a2.9 2.9 0 0 0 2.8 2.8"/>',   // water drop
+  vergleichswerk: '<rect x="3" y="4" width="7.5" height="16" rx="1.5"/><rect x="13.5" y="4" width="7.5" height="16" rx="1.5"/><path d="M5.5 8.5h2.5M5.5 12h2.5M16 8.5h2.5M16 12h2.5M16 15.5h2.5"/>',   // two documents side by side
   diagrammwerk: '<path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12" y="8" width="3" height="10" rx="1"/><rect x="17" y="5" width="3" height="13" rx="1"/>',   // column chart
   karteiwerk: '<rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/><path d="M7 12h6M7 15.5h4"/>',   // stacked index cards
   quellenwerk: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9.5 2v7.5l2-1.5 2 1.5V2"/>',   // book with bookmark
@@ -3665,6 +3767,10 @@ const EN = {
   'Quellen sammeln · richtig zitieren': 'Collect sources · cite correctly',
   'Karteikarten mit Lernsystem': 'Flashcards with a learning system',
   'Diagramme & Zeitpläne': 'Charts & timelines',
+  'Wasserzeichen & KI-Label': 'Watermarks & AI labels',
+  'Text, Logo oder KI-Kennzeichnung auf Bilder setzen – einzeln oder ganz viele auf einmal.': 'Put text, a logo or an AI label on images – one at a time or many at once.',
+  'Zwei Texte vergleichen': 'Compare two texts',
+  'Zwei Textversionen nebeneinander – Änderungen Wort für Wort farbig markiert.': 'Two versions of a text side by side – changes highlighted word by word.',
   'Säulen-, Balken-, Linien- und Kreisdiagramme oder ein Zeitplan – aus Excel einfügen, als PNG oder SVG exportieren.': 'Column, bar, line and donut charts or a timeline – paste from Excel, export as PNG or SVG.',
   'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.': 'Flashcards for any topic – the Leitner box system mainly asks what you don’t know yet.',
   'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.': 'Save books, articles and links with notes and quotes – copy the citation with one click.',
@@ -4408,9 +4514,9 @@ function particlesEl(space) {
 
 /* Home page: apps grouped by topic (order = order here) */
 const APP_GROUPS = [
-  { id: 'bilder', name: 'Bilder & Dateien', icon: 'image', apps: ['bildwerk', 'lutwerk', 'metawerk', 'webp', 'pdfwerk', 'bildbenamung', 'bulk-rename', 'sortierwerk'] },
+  { id: 'bilder', name: 'Bilder & Dateien', icon: 'image', apps: ['bildwerk', 'lutwerk', 'metawerk', 'wasserzeichenwerk', 'webp', 'pdfwerk', 'bildbenamung', 'bulk-rename', 'sortierwerk'] },
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
-  { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
+  { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'vergleichswerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
   { id: 'bwl', name: 'Business & Lernen', icon: 'briefcase', apps: ['modellwerk', 'kennzahlwerk', 'diagrammwerk', 'quellenwerk', 'karteiwerk'] },
   { id: 'fun', name: 'Spaß & Musik', icon: 'sparkle', apps: ['entscheidung', 'spielwiese', 'beatwerk'] },
@@ -16411,6 +16517,484 @@ TT.register({
   tagline: 'Diagramme & Zeitpläne',
   desc: 'Säulen-, Balken-, Linien- und Kreisdiagramme oder ein Zeitplan – aus Excel einfügen, als PNG oder SVG exportieren.',
   mount: mountDiagrammwerk,
+});
+
+/* ================= Wasserzeichenwerk (text / logo watermarks & AI labels, single or bulk) ================= */
+const WZW_KI_LABELS = ['KI-generiert', 'Mit KI erstellt', 'KI-bearbeitet', 'Enthält KI-Inhalte', 'AI-generated'];
+// IPTC "Digital Source Type" – the machine-readable marker for AI content (read e.g. by Google & Meta)
+const WZW_DST = {
+  ai: ['Komplett mit KI erzeugt', 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia'],
+  edit: ['Mit KI bearbeitet / Teile KI', 'http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia'],
+};
+function mountWasserzeichenwerk(view) {
+  view.style.padding = '0';
+  const FONT = 'Inter, "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif';
+  const DEF = {
+    mode: 'text', pos: 'br', margin: 3, fmt: 'orig', q: 92, suffix: '-wz',
+    text: { txt: '© ' + (S.data.name?.trim() || 'Dein Name'), size: 4, color: '#ffffff', opacity: 70, bold: true, shadow: true, tile: false },
+    logo: { data: '', size: 18, opacity: 85, tile: false },
+    ki: { label: 'KI-generiert', custom: '', dark: true, size: 3, meta: true, kind: 'ai' },
+  };
+  const saved = Store.get('wasserzeichenwerk', {});
+  const st = { ...DEF, ...saved, text: { ...DEF.text, ...saved.text }, logo: { ...DEF.logo, ...saved.logo }, ki: { ...DEF.ki, ...saved.ki } };
+  const persist = saveLater(() => {
+    const o = structuredClone(st);
+    if (o.logo.data.length > 400000) o.logo.data = '';   // very big logos are only kept for this session
+    Store.set('wasserzeichenwerk', o);
+  }, 300);
+  const set = () => { persist(); drawSoon(); };
+
+  /* ---------- Images (kept only for this session) ---------- */
+  let imgs = [], sel = -1, bmpCache = { id: null, bmp: null }, logoImg = null;
+  const IMG_RE = /\.(jpe?g|png|webp|gif|bmp|avif)$/i;
+  async function addFiles(list) {
+    const files = [...list].filter(f => f.type.startsWith('image/') || IMG_RE.test(f.name));
+    if (!files.length) { toast('Keine Bilder dabei.', 'info'); return; }
+    for (const f of files) imgs.push({ id: uid(), file: f, name: f.name, thumb: URL.createObjectURL(f) });
+    if (sel < 0) sel = 0;
+    render();
+  }
+  function removeImg(i) {
+    URL.revokeObjectURL(imgs[i].thumb); imgs.splice(i, 1);
+    if (sel >= imgs.length) sel = imgs.length - 1;
+    render();
+  }
+  async function bitmapOf(im) {
+    if (bmpCache.id === im.id) return bmpCache.bmp;
+    bmpCache.bmp?.close?.();
+    const bmp = await createImageBitmap(im.file);   // respects the EXIF orientation
+    bmpCache = { id: im.id, bmp };
+    return bmp;
+  }
+  function loadLogo() {
+    logoImg = null;
+    if (!st.logo.data) return Promise.resolve();
+    return new Promise(res => { const i = new Image(); i.onload = () => { logoImg = i; res(); }; i.onerror = () => res(); i.src = st.logo.data; });
+  }
+
+  /* ---------- Drawing (identical for preview and export – all sizes relative to the image) ---------- */
+  const kiText = () => (st.ki.label === '__own' ? st.ki.custom.trim() : st.ki.label) || 'KI-generiert';
+  function place(W, H, w, hh, m) {
+    const [v, hz] = st.pos;   // e.g. "br": bottom-right, "mc": middle-center
+    const x = hz === 'l' ? m : hz === 'r' ? W - m - w : (W - w) / 2;
+    const y = v === 't' ? m : v === 'b' ? H - m - hh : (H - hh) / 2;
+    return [x, y];
+  }
+  function tile(g, W, H, w, hh, drawAt) {
+    const gapX = w * 0.9 + Math.min(W, H) * 0.06, gapY = hh * 2.6 + Math.min(W, H) * 0.05, D = Math.hypot(W, H);
+    g.save(); g.translate(W / 2, H / 2); g.rotate(-Math.PI / 6);
+    let row = 0;
+    for (let y = -D / 2; y < D / 2; y += gapY, row++) for (let x = -D / 2 + (row % 2) * (w + gapX) / 2; x < D / 2; x += w + gapX) drawAt(x, y);
+    g.restore();
+  }
+  function draw(g, W, H, bmp) {
+    g.clearRect(0, 0, W, H);
+    if (bmp) g.drawImage(bmp, 0, 0, W, H);
+    const base = Math.min(W, H), m = base * st.margin / 100;
+    if (st.mode === 'text') {
+      const t = st.text, txt = t.txt.trim(); if (!txt) return;
+      const fs = Math.max(6, base * t.size / 100);
+      g.save(); g.font = `${t.bold ? 700 : 500} ${fs}px ${FONT}`; g.textBaseline = 'top'; g.fillStyle = t.color; g.globalAlpha = t.opacity / 100;
+      if (t.shadow) { g.shadowColor = 'rgba(0,0,0,.55)'; g.shadowBlur = fs * 0.25; g.shadowOffsetY = fs * 0.05; }
+      const w = g.measureText(txt).width, hh = fs * 1.15;
+      if (t.tile) tile(g, W, H, w, hh, (x, y) => g.fillText(txt, x, y));
+      else { const [x, y] = place(W, H, w, hh, m); g.fillText(txt, x, y); }
+      g.restore();
+    } else if (st.mode === 'logo') {
+      if (!logoImg) return;
+      const L = st.logo, w = W * L.size / 100, hh = w * logoImg.naturalHeight / logoImg.naturalWidth;
+      g.save(); g.globalAlpha = L.opacity / 100;
+      if (L.tile) tile(g, W, H, w, hh, (x, y) => g.drawImage(logoImg, x, y, w, hh));
+      else { const [x, y] = place(W, H, w, hh, m); g.drawImage(logoImg, x, y, w, hh); }
+      g.restore();
+    } else {
+      const K = st.ki, txt = kiText(), fs = Math.max(8, base * K.size / 100);
+      g.save(); g.font = `600 ${fs}px ${FONT}`; g.textBaseline = 'middle';
+      const icon = fs * 0.95, padX = fs * 0.7, gap = fs * 0.45, w = padX * 2 + icon + gap + g.measureText(txt).width, hh = fs * 2;
+      const [x, y] = place(W, H, w, hh, m), r = hh / 2;
+      g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + hh, r); g.arcTo(x + w, y + hh, x, y + hh, r); g.arcTo(x, y + hh, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath();
+      g.fillStyle = K.dark ? 'rgba(17,17,20,.72)' : 'rgba(255,255,255,.88)'; g.fill();
+      g.lineWidth = Math.max(1, fs * 0.06); g.strokeStyle = K.dark ? 'rgba(255,255,255,.22)' : 'rgba(0,0,0,.12)'; g.stroke();
+      // four-point sparkle
+      const cx = x + padX + icon / 2, cy = y + hh / 2, s = icon / 2;
+      g.beginPath(); g.moveTo(cx, cy - s); g.quadraticCurveTo(cx, cy, cx + s, cy); g.quadraticCurveTo(cx, cy, cx, cy + s); g.quadraticCurveTo(cx, cy, cx - s, cy); g.quadraticCurveTo(cx, cy, cx, cy - s); g.closePath();
+      g.fillStyle = K.dark ? '#fff' : '#111'; g.fill();
+      g.fillText(txt, x + padX + icon + gap, cy + fs * 0.04);
+      g.restore();
+    }
+  }
+
+  /* ---------- Machine-readable AI marker (XMP with IPTC DigitalSourceType) ---------- */
+  const xmlEsc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const xmpPacket = () => '<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?><x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'
+    + `<rdf:Description rdf:about="" xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/" xmlns:dc="http://purl.org/dc/elements/1.1/" Iptc4xmpExt:DigitalSourceType="${WZW_DST[st.ki.kind][1]}">`
+    + `<dc:description><rdf:Alt><rdf:li xml:lang="x-default">${xmlEsc(kiText())}</rdf:li></rdf:Alt></dc:description></rdf:Description></rdf:RDF></x:xmpmeta><?xpacket end="w"?>`;
+  function withXmp(u8, type) {
+    const xmp = new TextEncoder().encode(xmpPacket());
+    if (type === 'image/jpeg') {   // APP1 segment right after SOI/APP0 (JFIF)
+      const hdr = new TextEncoder().encode('http://ns.adobe.com/xap/1.0/\0'), len = 2 + hdr.length + xmp.length;
+      if (len > 65535) return u8;
+      let at = 2; if (u8[2] === 0xFF && u8[3] === 0xE0) at = 4 + (u8[4] << 8 | u8[5]);
+      const seg = new Uint8Array(2 + len); seg[0] = 0xFF; seg[1] = 0xE1; seg[2] = len >> 8; seg[3] = len & 255; seg.set(hdr, 4); seg.set(xmp, 4 + hdr.length);
+      const out = new Uint8Array(u8.length + seg.length); out.set(u8.subarray(0, at)); out.set(seg, at); out.set(u8.subarray(at), at + seg.length);
+      return out;
+    }
+    if (type === 'image/png') {   // iTXt chunk "XML:com.adobe.xmp" right after IHDR
+      const kw = new TextEncoder().encode('XML:com.adobe.xmp'), data = new Uint8Array(kw.length + 5 + xmp.length);
+      data.set(kw); data.set(xmp, kw.length + 5);   // null, compression flag 0, method 0, empty language, empty translation
+      const chunk = new Uint8Array(12 + data.length), dv = new DataView(chunk.buffer);
+      dv.setUint32(0, data.length); chunk.set([105, 84, 88, 116], 4); chunk.set(data, 8);   // "iTXt"
+      dv.setUint32(8 + data.length, crc32(chunk.subarray(4, 8 + data.length)));
+      const at = 33, out = new Uint8Array(u8.length + chunk.length);
+      out.set(u8.subarray(0, at)); out.set(chunk, at); out.set(u8.subarray(at), at + chunk.length);
+      return out;
+    }
+    return u8;
+  }
+
+  /* ---------- Export ---------- */
+  const EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+  function outType(file) {
+    if (st.fmt === 'jpg') return 'image/jpeg';
+    if (st.fmt === 'png') return 'image/png';
+    if (st.fmt === 'webp') return 'image/webp';
+    return EXT[file.type] ? file.type : 'image/png';   // gif/bmp/avif → png
+  }
+  const outName = im => im.name.replace(/\.[^.]+$/, '') + (st.suffix || '') + '.' + EXT[outType(im.file)];
+  async function renderBlob(im) {
+    const bmp = await createImageBitmap(im.file), cv = h('canvas', { width: bmp.width, height: bmp.height }), g = cv.getContext('2d');
+    const type = outType(im.file);
+    if (type === 'image/jpeg') { g.fillStyle = '#fff'; g.fillRect(0, 0, cv.width, cv.height); }
+    draw(g, cv.width, cv.height, bmp); bmp.close?.();
+    let blob = await new Promise(r => cv.toBlob(r, type, st.q / 100));
+    if (st.mode === 'ki' && st.ki.meta && (type === 'image/jpeg' || type === 'image/png')) blob = new Blob([withXmp(new Uint8Array(await blob.arrayBuffer()), type)], { type });
+    return blob;
+  }
+  async function saveOne() {
+    const im = imgs[sel]; if (!im) return;
+    try { download(outName(im), await renderBlob(im)); toast('Gespeichert: ' + outName(im), 'ok'); } catch { toast('Das Bild konnte nicht verarbeitet werden.', 'err'); }
+  }
+  let busy = false;
+  async function saveAll(toFolder) {
+    if (busy || !imgs.length) return;
+    let dir = null;
+    if (toFolder) { try { dir = await window.showDirectoryPicker({ id: 'wasserzeichen', mode: 'readwrite' }); } catch { return; } }
+    busy = true; render();
+    const files = [], used = new Set(); let fail = 0;
+    try {
+      for (let i = 0; i < imgs.length; i++) {
+        prog.textContent = `Bild ${i + 1} von ${imgs.length} …`;
+        let name = outName(imgs[i]);
+        for (let n = 2; used.has(name.toLowerCase()); n++) name = outName(imgs[i]).replace(/(\.[^.]+)$/, `-${n}$1`);
+        used.add(name.toLowerCase());
+        try {
+          const blob = await renderBlob(imgs[i]);
+          if (dir) { const fh = await dir.getFileHandle(name, { create: true }), w = await fh.createWritable(); await w.write(blob); await w.close(); }
+          else files.push({ path: name, blob });
+        } catch { fail++; }
+      }
+      if (!dir && files.length) { prog.textContent = 'Packe ZIP …'; download('wasserzeichen.zip', await makeZip(files)); }
+      toast(`${imgs.length - fail} ${imgs.length - fail === 1 ? 'Bild' : 'Bilder'} gespeichert${dir ? ` in „${dir.name}“` : ' als ZIP'}${fail ? ` · ${fail} fehlgeschlagen` : ''}`, fail ? 'err' : 'ok');
+    } finally { busy = false; prog.textContent = ''; render(); }
+  }
+
+  /* ---------- UI building blocks ---------- */
+  const slider = (label, obj, key, min, max, step, fmt) => {
+    const pct = v => ((v - min) / (max - min) * 100) + '%', val = h('span', { class: 'bw-val' }, fmt(obj[key]));
+    const r = h('input', { type: 'range', class: 'bw-range', min, max, step, value: obj[key], style: { '--p': pct(obj[key]) },
+      oninput: () => { obj[key] = +r.value; val.textContent = fmt(+r.value); r.style.setProperty('--p', pct(r.value)); set(); } });
+    return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, label), val), r);
+  };
+  const toggle = (label, obj, key, after) => h('label', { class: 'cw-sw wzw-sw' }, label, switchEl(obj[key], v => { obj[key] = v; set(); after?.(); }));
+  const sec = (title, ...kids) => h('div', { class: 'wzw-sec' }, h('div', { class: 'wzw-sec-t' }, title), ...kids);
+
+  function posGrid(allowTile, tileObj) {
+    const cells = ['tl', 'tc', 'tr', 'ml', 'mc', 'mr', 'bl', 'bc', 'br'];
+    const grid = h('div', { class: 'wzw-pos' + (tileObj?.tile ? ' off' : '') }, ...cells.map(c => h('button', { class: 'wzw-pc' + (st.pos === c ? ' on' : ''), title: 'Position', onclick: () => { st.pos = c; if (tileObj) tileObj.tile = false; set(); renderPanel(); } }, h('i'))));
+    return h('div', { class: 'wzw-posrow' }, grid, allowTile ? toggle('Über das ganze Bild kacheln', tileObj, 'tile', renderPanel) : null);
+  }
+
+  const panel = h('div', { class: 'wzw-panel' });
+  function renderPanel() {
+    const modeSeg = segEl([['text', 'Text'], ['logo', 'Logo'], ['ki', 'KI-Label']], st.mode, v => { st.mode = v; if (v === 'ki' && /^m/.test(st.pos)) st.pos = 'bl'; set(); renderPanel(); });
+    const parts = [h('div', { class: 'wzw-modes' }, modeSeg)];
+    if (st.mode === 'text') {
+      const t = st.text;
+      const inp = h('input', { class: 'inp', value: t.txt, placeholder: '© Dein Name', spellcheck: false, oninput: () => { t.txt = inp.value; set(); } });
+      const col = h('input', { type: 'color', class: 'wzw-color', value: t.color, title: 'Farbe', oninput: () => { t.color = col.value; set(); } });
+      parts.push(sec('Text', h('div', { class: 'wzw-row' }, inp, col)),
+        sec('Aussehen', slider('Größe', t, 'size', 1, 20, 0.5, v => nfmt(v) + ' %'), slider('Deckkraft', t, 'opacity', 5, 100, 1, v => v + ' %'),
+          h('div', { class: 'wzw-row wrap' }, toggle('Fett', t, 'bold'), toggle('Schatten', t, 'shadow'))),
+        sec('Position', posGrid(true, t)));
+    } else if (st.mode === 'logo') {
+      const L = st.logo;
+      const prev = h('div', { class: 'wzw-logo' }, L.data ? h('img', { src: L.data, alt: 'Logo' }) : h('span', null, 'Noch kein Bild'));
+      const pick = h('button', { class: 'btn sm', onclick: async () => {
+        const f = await pickFile('image/*'); if (!f) return;
+        const r = new FileReader(); r.onload = async () => { L.data = r.result; await loadLogo(); if (L.data.length > 400000) toast('Großes Bild – es wird nur für diese Sitzung gemerkt. Tipp: ein kleines PNG nehmen.', 'info'); set(); renderPanel(); }; r.readAsDataURL(f);
+      } }, icon('upload'), L.data ? 'Anderes Bild' : 'Bild wählen');
+      parts.push(sec('Logo oder Bild', h('div', { class: 'wzw-row' }, prev, h('div', { class: 'wzw-col' }, pick, h('span', { class: 'hint' }, 'Am besten ein PNG mit transparentem Hintergrund.')))),
+        sec('Aussehen', slider('Größe', L, 'size', 3, 80, 1, v => v + ' % der Breite'), slider('Deckkraft', L, 'opacity', 5, 100, 1, v => v + ' %')),
+        sec('Position', posGrid(true, L)));
+    } else {
+      const K = st.ki;
+      const own = h('input', { class: 'inp', value: K.custom, placeholder: 'Eigener Text', spellcheck: false, hidden: K.label !== '__own', oninput: () => { K.custom = own.value; set(); } });
+      const pick = h('select', { class: 'inp', onchange: () => { K.label = pick.value; own.hidden = K.label !== '__own'; if (!own.hidden) own.focus(); set(); } },
+        ...WZW_KI_LABELS.map(l => h('option', { value: l, selected: K.label === l }, l)), h('option', { value: '__own', selected: K.label === '__own' }, 'Eigener Text …'));
+      parts.push(
+        sec('Label', pick, own, h('div', { class: 'wzw-row wrap' }, h('span', { class: 'wzw-lbl' }, 'Stil'), segEl([[true, 'Dunkel'], [false, 'Hell']], K.dark, v => { K.dark = v; set(); }))),
+        sec('Aussehen', slider('Größe', K, 'size', 1.5, 8, 0.25, v => nfmt(v) + ' %')),
+        sec('Position', posGrid(false)),
+        sec('Maschinenlesbar', toggle('Kennzeichnung in die Bilddatei einbetten', K, 'meta', renderPanel),
+          K.meta ? segEl(Object.entries(WZW_DST).map(([k, [l]]) => [k, l]), K.kind, v => { K.kind = v; set(); }) : null,
+          h('p', { class: 'wzw-note' }, 'Schreibt den IPTC-Standard „Digital Source Type“ in die Metadaten (bei JPG und PNG), den z. B. Google und Meta auslesen. Seit 2. August 2026 verlangt der EU AI Act (Art. 50), dass KI-Inhalte erkennbar gekennzeichnet sind – das Label hilft dabei, ist aber keine Rechtsberatung.')));
+    }
+    parts.push(sec('Speichern',
+      h('div', { class: 'wzw-row wrap' }, h('span', { class: 'wzw-lbl' }, 'Format'), segEl([['orig', 'Wie Original'], ['jpg', 'JPG'], ['png', 'PNG'], ['webp', 'WebP']], st.fmt, v => { st.fmt = v; set(); renderPanel(); })),
+      st.fmt === 'png' ? null : slider('Qualität', st, 'q', 50, 100, 1, v => v + ' %'),
+      slider('Abstand zum Rand', st, 'margin', 0, 15, 0.5, v => nfmt(v) + ' %'),
+      h('label', { class: 'wzw-row' }, h('span', { class: 'wzw-lbl' }, 'Dateiname +'), (() => { const i = h('input', { class: 'inp', value: st.suffix, placeholder: 'z. B. -wz', spellcheck: false, oninput: () => { st.suffix = i.value.replace(/[\\/:*?"<>|]/g, ''); persist(); } }); return i; })()),
+      h('p', { class: 'wzw-note' }, 'Die Originale bleiben unverändert. Beim Speichern werden Kamera- und Standortdaten der Originale nicht übernommen.')));
+    panel.replaceChildren(...parts);
+  }
+  const nfmt = v => String(v).replace('.', ',');
+
+  /* ---------- Stage ---------- */
+  const cv = h('canvas', { class: 'wzw-cv' }), g = cv.getContext('2d');
+  const stageBox = h('div', { class: 'wzw-canvas' }, cv);
+  const drop = h('div', { class: 'wzw-drop' },
+    h('div', { class: 'wzw-drop-ico' }, icon('image')), h('b', null, 'Bilder hierher ziehen'),
+    h('span', null, 'oder'), h('button', { class: 'btn primary', onclick: () => fileIn.click() }, icon('plus'), 'Bilder auswählen'),
+    h('small', null, 'Einzeln oder ganz viele auf einmal – JPG, PNG, WebP'));
+  const fileIn = h('input', { type: 'file', accept: 'image/*', multiple: true, hidden: true, onchange: () => { addFiles(fileIn.files); fileIn.value = ''; } });
+  const strip = h('div', { class: 'wzw-strip' }), prog = h('span', { class: 'wzw-prog' });
+  const bar = h('div', { class: 'wzw-bar' });
+  let drawSeq = 0;
+  async function drawPreview() {
+    const im = imgs[sel]; if (!im) return;
+    const my = ++drawSeq, bmp = await bitmapOf(im).catch(() => null);
+    if (my !== drawSeq) return;
+    if (!bmp) { toast(`„${im.name}“ lässt sich nicht öffnen.`, 'err'); return; }
+    const box = stageBox.getBoundingClientRect(), maxW = Math.max(200, box.width - 24), maxH = Math.max(200, box.height - 24);
+    const sc = Math.min(maxW / bmp.width, maxH / bmp.height, 1), dpr = devicePixelRatio || 1;
+    const W = Math.round(bmp.width * sc), H = Math.round(bmp.height * sc);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    draw(g, cv.width, cv.height, bmp);
+  }
+  const drawSoon = debounce(drawPreview, 30);
+  function render() {
+    const has = imgs.length > 0;
+    drop.hidden = has; stageBox.hidden = !has;
+    strip.replaceChildren(...imgs.map((im, i) => h('div', { class: 'wzw-th' + (i === sel ? ' on' : ''), title: im.name, onclick: () => { sel = i; render(); } },
+      h('img', { src: im.thumb, alt: '' }),
+      h('button', { class: 'wzw-x', title: 'Entfernen', onclick: e => { e.stopPropagation(); removeImg(i); } }, icon('x')))),
+      has ? h('button', { class: 'wzw-add', title: 'Weitere Bilder', onclick: () => fileIn.click() }, icon('plus')) : '');
+    bar.replaceChildren(
+      h('span', { class: 'wzw-count' }, has ? `${imgs.length} ${imgs.length === 1 ? 'Bild' : 'Bilder'}` : ''), prog,
+      h('div', { class: 'wzw-acts' },
+        has ? h('button', { class: 'btn sm ghost', disabled: busy, onclick: () => { imgs.forEach(im => URL.revokeObjectURL(im.thumb)); imgs = []; sel = -1; render(); } }, icon('trash'), 'Alle entfernen') : null,
+        h('button', { class: 'btn sm', disabled: !has || busy, onclick: saveOne }, icon('download'), 'Dieses Bild'),
+        imgs.length > 1 && window.showDirectoryPicker ? h('button', { class: 'btn sm', disabled: busy, onclick: () => saveAll(true), title: 'Alle direkt in einen Ordner speichern' }, icon('folder'), 'Alle in Ordner') : null,
+        imgs.length > 1 ? h('button', { class: 'btn sm primary', disabled: busy, onclick: () => saveAll(false) }, icon('archive'), `Alle als ZIP`) : null));
+    strip.hidden = !has;
+    drawSoon();
+  }
+
+  const root = h('div', { class: 'wzw' },
+    h('aside', { class: 'wzw-side' },
+      h('div', { class: 'wzw-hd' }, h('div', { class: 'wzw-logoi' }, icon('wasserzeichenwerk')), h('b', null, 'Wasserzeichenwerk')),
+      panel),
+    h('div', { class: 'wzw-main' }, h('div', { class: 'wzw-stage' }, drop, stageBox), strip, bar, fileIn));
+  root.addEventListener('dragover', e => { e.preventDefault(); root.classList.add('drag'); });
+  root.addEventListener('dragleave', e => { if (!root.contains(e.relatedTarget)) root.classList.remove('drag'); });
+  root.addEventListener('drop', e => { e.preventDefault(); root.classList.remove('drag'); if (e.dataTransfer?.files?.length) addFiles(e.dataTransfer.files); });
+  view.append(root);
+  const onResize = debounce(drawPreview, 150);
+  addEventListener('resize', onResize);
+  renderPanel(); render();
+  loadLogo().then(drawSoon);
+  return {
+    onShow: () => drawSoon(),
+    destroy() { removeEventListener('resize', onResize); imgs.forEach(im => URL.revokeObjectURL(im.thumb)); bmpCache.bmp?.close?.(); },
+  };
+}
+
+TT.register({
+  id: 'wasserzeichenwerk', name: 'Wasserzeichenwerk', icon: 'wasserzeichenwerk', c: '#8fae94', c2: '#56775f',   // sage (no other app uses it)
+  tagline: 'Wasserzeichen & KI-Label',
+  desc: 'Text, Logo oder KI-Kennzeichnung auf Bilder setzen – einzeln oder ganz viele auf einmal.',
+  mount: mountWasserzeichenwerk,
+});
+
+/* ================= Vergleichswerk (compare two text versions) ================= */
+function mountVergleichswerk(view) {
+  const st = { a: '', b: '', mode: 'word', ic: false, iw: false, view: 'side', ...Store.get('vergleichswerk', {}) };
+  const persist = saveLater(() => Store.set('vergleichswerk', { ...st, a: st.a.length < 300000 ? st.a : '', b: st.b.length < 300000 ? st.b : '' }), 400);
+
+  /* ---------- Diff (Myers) ---------- */
+  // Returns ops [type, fromA, toA, fromB, toB] with type '=' | '-' | '+'. null = too many differences for this level.
+  function myers(A, B, eq, budget = 25e6) {
+    let s = 0; while (s < A.length && s < B.length && eq(A[s], B[s])) s++;
+    let eA = A.length, eB = B.length; while (eA > s && eB > s && eq(A[eA - 1], B[eB - 1])) { eA--; eB--; }
+    const a = A.slice(s, eA), b = B.slice(s, eB), N = a.length, M = b.length, max = N + M, off = max + 1;
+    const ops = [];
+    if (s) ops.push(['=', 0, s, 0, s]);
+    if (N || M) {
+      const V = new Int32Array(2 * max + 3), trace = []; let D = -1, cost = 0;
+      outer: for (let d = 0; d <= max; d++) {
+        trace.push(V.slice(off - d - 1, off + d + 2)); cost += 2 * d + 3;
+        if (cost > budget) return null;
+        for (let k = -d; k <= d; k += 2) {
+          let x = k === -d || (k !== d && V[off + k - 1] < V[off + k + 1]) ? V[off + k + 1] : V[off + k - 1] + 1, y = x - k;
+          while (x < N && y < M && eq(a[x], b[y])) { x++; y++; }
+          V[off + k] = x;
+          if (x >= N && y >= M) { D = d; break outer; }
+        }
+      }
+      const steps = []; let x = N, y = M;   // backtrack
+      for (let d = D; d > 0; d--) {
+        const T = trace[d], at = k => T[k + d + 1], k = x - y;
+        const pk = k === -d || (k !== d && at(k - 1) < at(k + 1)) ? k + 1 : k - 1, px = at(pk), py = px - pk;
+        while (x > px && y > py) { steps.push(['=', x - 1, y - 1]); x--; y--; }
+        if (x === px) steps.push(['+', x, y - 1]); else steps.push(['-', x - 1, y]);
+        x = px; y = py;
+      }
+      while (x > 0 && y > 0) { steps.push(['=', x - 1, y - 1]); x--; y--; }
+      steps.reverse();
+      for (const [t, i, j] of steps) {   // compress into runs
+        const L = ops[ops.length - 1], ia = s + i, jb = s + j;
+        if (t === '=') { if (L && L[0] === '=' && L[2] === ia && L[4] === jb) { L[2]++; L[4]++; } else ops.push(['=', ia, ia + 1, jb, jb + 1]); }
+        else if (t === '-') { if (L && L[0] === '-' && L[2] === ia) L[2]++; else ops.push(['-', ia, ia + 1, jb, jb]); }
+        else { if (L && L[0] === '+' && L[4] === jb) L[4]++; else ops.push(['+', ia, ia, jb, jb + 1]); }
+      }
+    }
+    if (eA < A.length) ops.push(['=', eA, A.length, eB, B.length]);
+    return ops;
+  }
+  const tokWord = s => s.match(/\s+|[\p{L}\p{N}_]+(?:[-'’][\p{L}\p{N}_]+)*|[^\s\p{L}\p{N}_]/gu) || [];
+  const tokChar = s => [...s];
+  const tokLine = s => s.match(/[^\n]*\n|[^\n]+$/g) || [];
+  function compare() {
+    const norm = t => { let k = st.ic ? t.toLowerCase() : t; if (st.iw) k = /^\s+$/.test(k) ? (k.includes('\n') ? '\n' : ' ') : k.replace(/[ \t]+/g, ' ').replace(/ ?\n$/, '\n').trim(); return k; };
+    const eq = (x, y) => x === y || norm(x) === norm(y);
+    const la = tokLine(st.a), lb = tokLine(st.b);
+    const lines = myers(la, lb, eq, 40e6) || [['-', 0, la.length, 0, 0], ['+', la.length, la.length, 0, lb.length]];
+    const out = [];   // [type, text]
+    const push = (t, s) => { if (!s) return; const L = out[out.length - 1]; if (L && L[0] === t) L[1] += s; else out.push([t, s]); };
+    for (let i = 0; i < lines.length; i++) {
+      const [t, a0, a1, b0, b1] = lines[i];
+      if (t === '=') { push('=', la.slice(a0, a1).join('')); continue; }
+      // a block of deleted + inserted lines → refine by words / characters
+      let da = '', db = '';
+      if (t === '-') { da = la.slice(a0, a1).join(''); if (lines[i + 1]?.[0] === '+') { const n = lines[++i]; db = lb.slice(n[3], n[4]).join(''); } }
+      else db = lb.slice(b0, b1).join('');
+      if (st.mode === 'line' || !da || !db) { push('-', da); push('+', db); continue; }
+      const tk = st.mode === 'char' ? tokChar : tokWord, ta = tk(da), tb = tk(db);
+      const fine = myers(ta, tb, eq, 8e6);
+      if (!fine) { push('-', da); push('+', db); continue; }
+      for (const [ft, x0, x1, y0, y1] of fine) ft === '+' ? push('+', tb.slice(y0, y1).join('')) : push(ft, ta.slice(x0, x1).join(''));
+    }
+    // Changes that are only separated by spaces become one change ("klassische Werbung" → "Social Media" instead of two)
+    const merged = [];
+    for (let i = 0; i < out.length; i++) {
+      if (out[i][0] === '=') { merged.push(out[i]); continue; }
+      let del = '', ins = '', j = i;
+      while (j < out.length) {
+        const [t, txt] = out[j];
+        if (t === '-') del += txt; else if (t === '+') ins += txt;
+        else if (/^[ \t]+$/.test(txt) && out[j + 1] && out[j + 1][0] !== '=') { del += txt; ins += txt; }
+        else break;
+        j++;
+      }
+      if (del) merged.push(['-', del]); if (ins) merged.push(['+', ins]);
+      i = j - 1;
+    }
+    return merged;
+  }
+
+  /* ---------- UI ---------- */
+  const words = s => (s.match(/[\p{L}\p{N}]+/gu) || []).length;
+  const area = (k, ph) => { const t = h('textarea', { class: 'vgw-ta', placeholder: ph, spellcheck: false, oninput: () => { st[k] = t.value; persist(); cnt(); runSoon(); } }); t.value = st[k]; return t; };
+  const taA = area('a', 'Ursprünglicher Text – z. B. die erste Fassung deiner Hausarbeit'), taB = area('b', 'Neue Version');
+  const cA = h('span', { class: 'vgw-c' }), cB = h('span', { class: 'vgw-c' });
+  const cnt = () => { cA.textContent = `${words(st.a).toLocaleString('de-DE')} Wörter`; cB.textContent = `${words(st.b).toLocaleString('de-DE')} Wörter`; };
+  const stats = h('div', { class: 'vgw-stats' }), res = h('div', { class: 'vgw-res' }), navInfo = h('span', { class: 'vgw-nav-i' });
+  let changes = [], cur = -1;
+
+  function run() {
+    if (!st.a && !st.b) { stats.replaceChildren(); res.replaceChildren(h('div', { class: 'vgw-empty' }, 'Füge oben zwei Texte ein – die Unterschiede erscheinen hier.')); changes = []; paintNav(); return; }
+    const ops = compare();
+    let del = 0, ins = 0, same = 0, n = 0;
+    for (const [t, s] of ops) { const w = words(s); if (t === '-') del += w; else if (t === '+') ins += w; else same += w; }
+    const sim = (2 * same) / Math.max(1, words(st.a) + words(st.b));
+    // group neighbouring - / + into one change (for navigation)
+    const mk = (t, s, cid) => h(t === '-' ? 'del' : t === '+' ? 'ins' : 'span', cid != null ? { dataset: { c: cid } } : null, s);
+    const left = [], right = [], inline = [];
+    for (let i = 0; i < ops.length; i++) {
+      const [t, s] = ops[i];
+      if (t === '=') { left.push(s); right.push(s); inline.push(s); continue; }
+      const cid = n++;
+      if (t === '-') { left.push(mk('-', s, cid)); inline.push(mk('-', s, cid)); if (ops[i + 1]?.[0] === '+') { const s2 = ops[++i][1]; right.push(mk('+', s2, cid)); inline.push(mk('+', s2, cid)); } else right.push(h('mark', { class: 'vgw-gap', dataset: { c: cid } })); }
+      else { right.push(mk('+', s, cid)); inline.push(mk('+', s, cid)); left.push(h('mark', { class: 'vgw-gap', dataset: { c: cid } })); }
+    }
+    const fmt = x => x.toLocaleString('de-DE');
+    stats.replaceChildren(
+      h('div', { class: 'vgw-st' }, h('b', null, n ? `${fmt(n)}` : '0'), h('span', null, n === 1 ? 'Änderung' : 'Änderungen')),
+      h('div', { class: 'vgw-st del' }, h('b', null, '− ' + fmt(del)), h('span', null, del === 1 ? 'Wort entfernt' : 'Wörter entfernt')),
+      h('div', { class: 'vgw-st ins' }, h('b', null, '+ ' + fmt(ins)), h('span', null, ins === 1 ? 'Wort neu' : 'Wörter neu')),
+      h('div', { class: 'vgw-st' }, h('b', null, Math.round(sim * 100) + ' %'), h('span', null, 'gleich')));
+    res.replaceChildren(n === 0 ? h('div', { class: 'vgw-same' }, icon('check'), st.ic || st.iw ? 'Keine Unterschiede (mit den gewählten Ausnahmen).' : 'Die Texte sind identisch.')
+      : st.view === 'side' ? h('div', { class: 'vgw-side' }, h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dh' }, 'Vorher'), h('div', { class: 'vgw-dt' }, ...left)), h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dh' }, 'Nachher'), h('div', { class: 'vgw-dt' }, ...right)))
+      : h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dt' }, ...inline)));
+    changes = [...Array(n).keys()]; cur = -1; paintNav();
+  }
+  const runSoon = debounce(run, 250);
+  function go(dir) {
+    if (!changes.length) return;
+    cur = cur < 0 ? (dir > 0 ? 0 : changes.length - 1) : (cur + dir + changes.length) % changes.length;
+    res.querySelectorAll('.cur').forEach(e => e.classList.remove('cur'));
+    const els = res.querySelectorAll(`[data-c="${cur}"]`);
+    els.forEach(e => e.classList.add('cur'));
+    els[0]?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    paintNav();
+  }
+  function paintNav() { navInfo.textContent = changes.length ? (cur < 0 ? `${changes.length}` : `${cur + 1} / ${changes.length}`) : ''; }
+
+  const EX_A = 'Das Unternehmen setzt vor allem auf klassische Werbung in Zeitungen und im Radio.\nDie Zielgruppe sind Menschen zwischen 30 und 50 Jahren.\nIm nächsten Jahr soll der Umsatz um 5 % steigen.';
+  const EX_B = 'Das Unternehmen setzt vor allem auf Social Media und Influencer-Marketing.\nDie Zielgruppe sind Menschen zwischen 20 und 35 Jahren.\nIm nächsten Jahr soll der Umsatz um 12 % steigen.\nDazu kommt ein eigener Online-Shop.';
+  const setTexts = (a, b) => { st.a = a; st.b = b; taA.value = a; taB.value = b; persist(); cnt(); run(); };
+
+  const root = h('div', { class: 'cw vgw' }, h('div', { class: 'cw-in' },
+    h('div', { class: 'cw-hd' }, h('div', { class: 'cw-logo' }, icon('vergleichswerk')),
+      h('div', null, h('h2', null, 'Vergleichswerk'), h('p', null, 'Zwei Textversionen vergleichen – was ist neu, was ist weg? Alles bleibt auf deinem Rechner.'))),
+    h('div', { class: 'vgw-in' },
+      h('div', { class: 'vgw-col' }, h('div', { class: 'vgw-lh' }, h('b', null, 'Vorher'), cA), taA),
+      h('button', { class: 'vgw-swap', title: 'Texte tauschen', onclick: () => setTexts(st.b, st.a) }, icon('refresh')),
+      h('div', { class: 'vgw-col' }, h('div', { class: 'vgw-lh' }, h('b', null, 'Nachher'), cB), taB)),
+    h('div', { class: 'vgw-bar' },
+      segEl([['word', 'Wörter'], ['char', 'Zeichen'], ['line', 'Zeilen']], st.mode, v => { st.mode = v; persist(); run(); }),
+      h('label', { class: 'cw-sw' }, 'Groß/klein egal', switchEl(st.ic, v => { st.ic = v; persist(); run(); })),
+      h('label', { class: 'cw-sw' }, 'Leerzeichen egal', switchEl(st.iw, v => { st.iw = v; persist(); run(); })),
+      h('div', { class: 'cw-acts' },
+        h('button', { class: 'btn sm ghost', onclick: () => setTexts(EX_A, EX_B) }, icon('sparkle'), 'Beispiel'),
+        h('button', { class: 'btn sm ghost', onclick: () => setTexts('', '') }, icon('eraser'), 'Leeren'))),
+    stats,
+    h('section', { class: 'cw-card' },
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('vergleichswerk')), h('h3', null, 'Unterschiede'),
+        h('div', { class: 'cw-acts' },
+          segEl([['side', 'Nebeneinander'], ['inline', 'Zusammen']], st.view, v => { st.view = v; persist(); run(); }),
+          h('div', { class: 'vgw-nav' }, h('button', { class: 'btn sm ghost', title: 'Vorherige Änderung', onclick: () => go(-1) }, icon('up')), navInfo, h('button', { class: 'btn sm ghost', title: 'Nächste Änderung', onclick: () => go(1) }, icon('down'))))),
+      res,
+      h('div', { class: 'vgw-leg' }, h('span', null, h('del', null, 'entfernt')), h('span', null, h('ins', null, 'neu')), h('span', { class: 'hint' }, 'Tipp: „Zeichen“ findet auch einzelne Tippfehler.')))));
+  view.append(root);
+  cnt(); run();
+}
+
+TT.register({
+  id: 'vergleichswerk', name: 'Vergleichswerk', icon: 'vergleichswerk', c: '#e5484d', c2: '#30a46c',   // red → green: removed / added
+  tagline: 'Zwei Texte vergleichen',
+  desc: 'Zwei Textversionen nebeneinander – Änderungen Wort für Wort farbig markiert.',
+  mount: mountVergleichswerk,
 });
 
 

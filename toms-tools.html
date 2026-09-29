@@ -2677,6 +2677,115 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 @keyframes flameBreath{0%,100%{transform:scale(1,1)}50%{transform:scale(1.05,.86)}}
 @media(max-width:700px){#mascot{display:none}}
 
+/* ── Modellwerk ── */
+.mdw{height:100%;display:grid;grid-template-columns:250px minmax(0,1fr);min-height:0}
+.mdw [hidden]{display:none!important}
+.mdw-side{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;background:color-mix(in oklab,var(--bg2) 55%,transparent)}
+.mdw-side-hd{display:flex;align-items:center;gap:10px;padding:16px 14px 10px;font-size:15px}
+.mdw-logo{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--app-c,var(--acc)),var(--app-c2,var(--acc2)));box-shadow:0 8px 20px -10px var(--app-c,var(--acc)),inset 0 1px 0 rgba(255,255,255,.25);flex:none}
+.mdw-logo svg{width:17px;height:17px}
+.mdw-side-new{padding:2px 12px 10px}
+.mdw-list{flex:1;overflow:auto;padding:2px 8px 14px;display:flex;flex-direction:column;gap:2px}
+.mdw-empty{font-size:12.5px;color:var(--tx3);padding:10px 8px;line-height:1.5}
+.mdw-it{display:flex;align-items:center;gap:9px;padding:7px 6px 7px 8px;border-radius:10px;cursor:pointer;color:var(--tx2);transition:background .15s,color .15s}
+.mdw-it:hover{background:var(--s1);color:var(--tx)}
+.mdw-it.on{background:var(--s2);color:var(--tx)}
+.mdw-it-tx{flex:1;min-width:0}
+.mdw-it-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:550}
+.mdw-it-d{font-size:11px;color:var(--tx3)}
+.mdw-badge{font:700 10px var(--mono);padding:3px 6px;border-radius:6px;background:var(--acc-soft);color:var(--acc-tx);flex:none;min-width:50px;text-align:center;white-space:nowrap}
+.mdw-more{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:var(--tx3);flex:none;opacity:0;transition:opacity .15s,background .15s,color .15s}
+.mdw-more svg{width:14px;height:14px}
+.mdw-more:hover{background:var(--s3);color:var(--tx)}
+.mdw-it:hover .mdw-more,.mdw-it.on .mdw-more,.mdw-more.on{opacity:1}
+.mdw-main{overflow:auto;min-width:0;padding:22px 24px 48px}
+.mdw-in{max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.mdw-h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.mdw-meta{font-size:12.5px;color:var(--tx3);margin-top:3px}
+.mdw-top{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.mdw-top-t{flex:1;min-width:240px}
+.mdw-title{width:100%;font-size:22px;font-weight:700;letter-spacing:-.01em;background:none;border:0;border-bottom:1px dashed transparent;outline:none;padding:2px 0;color:var(--tx)}
+.mdw-title:hover,.mdw-title:focus{border-bottom-color:var(--line2)}
+.mdw-acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.mdw-tip{font-size:12.5px;color:var(--tx2);background:color-mix(in oklab,var(--acc) 7%,transparent);border-left:2px solid var(--acc);border-radius:0 9px 9px 0;padding:8px 12px;line-height:1.5}
+.mdw-tip b{color:var(--tx)}
+.mdw-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.mdw-g{text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--s1);transition:border-color .15s,transform .15s,background .15s}
+.mdw-g:hover{border-color:color-mix(in oklab,var(--acc) 50%,transparent);transform:translateY(-2px);background:var(--s2)}
+.mdw-g b{font-size:14px}
+.mdw-g>span:last-child{font-size:12.5px;color:var(--tx2);line-height:1.45}
+.mdw-board{display:grid;gap:10px}
+.mdw-f{--fc:var(--acc);display:flex;flex-direction:column;min-width:0;min-height:150px;border-radius:14px;border:1px solid color-mix(in oklab,var(--fc) 32%,var(--line));background:linear-gradient(180deg,color-mix(in oklab,var(--fc) 10%,var(--s1)),var(--s1));padding:10px 12px 8px;transition:border-color .15s,box-shadow .15s}
+.mdw-f:focus-within{border-color:color-mix(in oklab,var(--fc) 70%,transparent);box-shadow:0 0 0 3px color-mix(in oklab,var(--fc) 16%,transparent)}
+.mdw-fh{display:flex;align-items:center;gap:4px 8px;flex-wrap:wrap;margin-bottom:4px;min-height:24px}
+.mdw-fh b{font-size:13px;font-weight:700;color:color-mix(in oklab,var(--fc) 62%,var(--tx))}
+.mdw-fh small{font-size:11px;color:var(--tx3)}
+.mdw-rate{margin-left:auto}
+.mdw-rate .seg{padding:2px}
+.mdw-rate .seg button{height:21px;padding:0 7px;font-size:11px}
+.mdw-ta{flex:1 1 auto;width:100%;min-height:96px;resize:none;background:none;border:0;outline:none;font:13px/1.55 var(--font);color:var(--tx);overflow:hidden}
+.mdw-ta::placeholder{color:var(--tx3)}
+.mdw-f.sm{min-height:104px;padding:8px 10px}
+.mdw-f.sm .mdw-ta{min-height:84px;font-size:12.5px}
+.mdw-lab{--fc:var(--tx3);display:flex;align-items:center;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:color-mix(in oklab,var(--fc) 70%,var(--tx));padding:4px 6px;line-height:1.3}
+.mdw-lab.col{justify-content:center;text-align:center;background:var(--s1);border:1px solid var(--line);border-radius:10px;color:var(--tx2);min-height:34px}
+.mdw-mapwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(250px,1fr);gap:12px;align-items:start}
+.mdw-mapside{display:flex;flex-direction:column;gap:10px;min-width:0}
+.mdw-map{position:relative;aspect-ratio:1/1;max-height:680px;border-radius:14px;border:1px solid var(--line);background:var(--s1);touch-action:none;overflow:hidden;user-select:none}
+.mdw-ax{position:absolute;background:var(--line2)}
+.mdw-ax.x{left:6%;right:6%;top:50%;height:2px;margin-top:-1px}
+.mdw-ax.y{top:6%;bottom:6%;left:50%;width:2px;margin-left:-1px}
+.mdw-axl{position:absolute;width:30%;height:26px;background:var(--bg2);border:1px solid var(--line);border-radius:7px;font-size:12px;padding:0 7px;color:var(--tx2);text-align:center;outline:none;z-index:1}
+.mdw-axl:focus{border-color:color-mix(in oklab,var(--acc) 70%,transparent);color:var(--tx)}
+.mdw-axl.x0{left:2%;top:calc(50% + 8px);text-align:left}
+.mdw-axl.x1{right:2%;top:calc(50% + 8px);text-align:right}
+.mdw-axl.y1{top:2%;left:calc(50% + 8px);text-align:left}
+.mdw-axl.y0{bottom:2%;left:calc(50% + 8px);text-align:left}
+.mdw-pt{position:absolute;transform:translate(-50%,-9px);display:flex;flex-direction:column;align-items:center;gap:3px;cursor:grab;touch-action:none;z-index:2}
+.mdw-pt i{width:18px;height:18px;border-radius:50%;background:var(--pc);border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.35);transition:transform .12s}
+.mdw-pt span{font-size:11.5px;font-weight:600;padding:1px 6px;border-radius:6px;background:color-mix(in oklab,var(--bg) 78%,transparent);white-space:nowrap}
+.mdw-pt:hover i,.mdw-pt.drag i{transform:scale(1.2)}
+.mdw-pt.drag{cursor:grabbing;z-index:3}
+.mdw-plist{display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.mdw-plist>.btn{align-self:flex-start;margin-top:2px}
+.mdw-prow{display:flex;align-items:center;gap:6px}
+.mdw-prow input[type=color]{width:30px;height:30px;border:0;padding:0;background:none;border-radius:8px;cursor:pointer;flex:none}
+@media(max-width:900px){
+  .mdw{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .mdw-side{border-right:0;border-bottom:1px solid var(--line);max-height:210px}
+  .mdw-mapwrap{grid-template-columns:1fr}
+  .mdw-board{grid-template-columns:1fr!important;grid-template-areas:none!important}
+  .mdw-board>*{grid-area:auto!important}
+  .mdw-board>div:empty{display:none}
+}
+
+/* ── Kennzahlwerk (builds on the Codewerk cards) ── */
+.kz-bar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap}
+.kz-tt{display:flex;flex-direction:column;min-width:0}
+.kz-sub{font-size:11.5px;color:var(--tx3);font-weight:500}
+.kz-ins{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+.kz-in{display:flex;flex-direction:column;gap:4px;min-width:0}
+.kz-in>span{font-size:11.5px;color:var(--tx2);line-height:1.3}
+.kz-box{position:relative;display:flex;align-items:center;margin-top:auto}
+.kz-box .inp{text-align:right;font-variant-numeric:tabular-nums}
+.kz-box.u .inp{padding-right:52px}
+.kz-u{position:absolute;right:10px;font-size:11.5px;font-style:normal;color:var(--tx3);pointer-events:none}
+.kz-outs{display:flex;flex-direction:column;gap:6px}
+.kz-o{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:baseline;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:7px 12px}
+.kz-o b{font-size:12.5px;font-weight:550;color:var(--tx2)}
+.kz-o strong{font:650 14px var(--mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--tx)}
+.kz-o.main{border-color:color-mix(in oklab,var(--acc) 35%,var(--line));background:color-mix(in oklab,var(--acc) 7%,var(--bg2))}
+.kz-o.main b{color:var(--tx)}
+.kz-o.main strong{font-size:18px;color:var(--acc-tx)}
+.kz-o.ok strong{color:var(--ok)}
+.kz-o.warn strong{color:var(--warn)}
+.kz-o.err strong{color:var(--err)}
+.kz-w{grid-column:1/-1;font:11.5px/1.45 var(--mono);color:var(--tx3);overflow-wrap:anywhere}
+.kz.noway .kz-w{display:none}
+.kz-say{font-size:12.5px;color:var(--tx2);line-height:1.45;padding:0 2px}
+.kz-f{font:11.5px/1.55 var(--mono);color:var(--tx2);background:color-mix(in oklab,var(--acc) 7%,transparent);border-left:2px solid var(--acc);border-radius:0 8px 8px 0;padding:7px 10px}
+@media(max-width:520px){.kz-ins{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -2780,7 +2889,7 @@ textarea.rw-inp{height:auto;padding:6px 8px;resize:none;line-height:1.5;font-siz
 <script>
 (() => {
 'use strict';
-const VERSION = '1.2.2';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
+const VERSION = '1.3.0';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
 // Set a date for testing, e.g. '2026-12-24' (time of day stays real) – null = real date (live)
 const TEST_DATE = null;
 function appNow() {
@@ -2899,6 +3008,9 @@ const ICONS = {
   fit: '<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>',
   textwerk: '<path d="M4 6h16M4 10h16M4 14h10M4 18h13"/>',
   rechnungswerk: '<path d="M7 4H4v16h3"/><path d="M17 4h3v16h-3"/><path d="M14.6 8.3a4 4 0 1 0 0 7.4"/><path d="M8 11h5M8 13.2h5"/>',   // [€]
+  modellwerk: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 3v18M3 12h18"/><path d="M6.5 7.5h2.5M15 7.5h2.5M6.5 16.5h2.5M15 16.5h2.5" opacity=".6"/>',   // SWOT grid
+  kennzahlwerk: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M15 8h4v4"/>',   // rising chart
+  study: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c3 2.5 9 2.5 12 0v-4.5"/><path d="M22 9v5"/>',   // graduation cap
   bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
   timerdigi: '<path d="M9 2h6"/><rect x="2" y="5" width="20" height="15" rx="3"/><path d="M6.5 10l1.5-1v7"/><path d="M11 10.2a1.8 1.8 0 0 1 3.4.8c0 1.8-3.4 3-3.4 5h3.6"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="17.5" cy="14.5" r=".5"/>',
   compress: '<path d="M12 2v6"/><path d="m9 5 3 3 3-3"/><path d="M12 22v-6"/><path d="m9 19 3-3 3 3"/><path d="M4 12h16"/>',
@@ -3241,7 +3353,7 @@ const EN = {
   'Ein-/Ausklappen': 'Expand/collapse', 'Alle einklappen': 'Collapse all', 'Alle ausklappen': 'Expand all',
   'Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.': 'All apps are hidden – show them again under “Apps” in the settings.',
   'Bilder & Dateien': 'Images & Files', 'Design & Grafik': 'Design & Graphics', 'Text, Präsentation & Sprache': 'Text, Presentation & Speech',
-  'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Weitere': 'More',
+  'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Marketing & Studium': 'Marketing & Studies', 'Weitere': 'More',
   // Welcome dialog
   'Willkommen bei Toms Tools 👋': 'Welcome to Toms Tools 👋', 'Wie dürfen wir dich nennen?': 'What should we call you?',
   'Dein Name erscheint in der Begrüßung auf der Startseite.': 'Your name shows up in the greeting on the home page.',
@@ -3297,6 +3409,10 @@ const EN = {
   'Fotos automatisch in Ordner sortieren': 'Sort photos into folders automatically',
   'Fotoordner nach Aufnahmedatum, Kamera, Ausrichtung oder Dateityp in Unterordner sortieren.': 'Sort a photo folder into subfolders by capture date, camera, orientation or file type.',
   'Kleine Spiele für zwischendurch – Tippen, Reaktion und mehr.': 'Little games for in between – typing, reaction and more.',
+  'SWOT, Persona, Canvas & Co.': 'SWOT, persona, canvas & more',
+  'Marketing-Modelle wie SWOT, PESTEL, Business Model Canvas oder Persona ausfüllen – als Text, PNG oder PDF.': 'Fill in marketing models like SWOT, PESTEL, Business Model Canvas or persona – as text, PNG or PDF.',
+  'ROI, CLV, Break-even & Co.': 'ROI, CLV, break-even & more',
+  'Marketing-Kennzahlen wie ROAS, CAC, CLV, NPS oder Break-even berechnen – mit Formel und Rechenweg.': 'Calculate marketing KPIs like ROAS, CAC, CLV, NPS or break-even – with formula and working.',
 };
 
 /* Background colors by time of day (hour → three glow colors), softly blended in between */
@@ -4040,6 +4156,7 @@ const APP_GROUPS = [
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
   { id: 'text', name: 'Text, Präsentation & Sprache', icon: 'note', apps: ['textwerk', 'codewerk', 'spickzettel', 'pitcher', 'sprechwerk'] },
   { id: 'orga', name: 'Organisation & Planung', icon: 'todo', apps: ['notizen', 'todo', 'gedankenwerk', 'zeitwerk', 'rechnungswerk'] },
+  { id: 'studium', name: 'Marketing & Studium', icon: 'study', apps: ['modellwerk', 'kennzahlwerk'] },
   { id: 'fun', name: 'Spaß & Musik', icon: 'sparkle', apps: ['entscheidung', 'spielwiese', 'beatwerk'] },
 ];
 const APP_ORDER = APP_GROUPS.flatMap(g => g.apps);
@@ -14158,6 +14275,630 @@ TT.register({
   desc: 'Kleine Helfer für Code, Daten und Formate – alles an einem Ort.',
   mount: mountCodewerk,
 });
+
+/* ================= Modellwerk (marketing models as fillable canvases) ================= */
+const MW_JOURNEY_PH = ['Aufmerksamkeit', 'Überlegung', 'Kauf', 'Nutzung', 'Bindung'];
+const MW_JOURNEY_ROWS = [
+  ['tp', 'Touchpoints', '#3b82f6', 'Wo kommt die Person mit der Marke in Kontakt?'],
+  ['do', 'Handlungen', '#8b5cf6', 'Was tut die Person in dieser Phase?'],
+  ['feel', 'Gedanken & Gefühle', '#ec4899', 'Was denkt und fühlt sie?'],
+  ['pain', 'Pain Points', '#ef4444', 'Was nervt sie oder hält sie auf?'],
+  ['idea', 'Chancen', '#22c55e', 'Was können wir hier verbessern?'],
+];
+const MW_RATES = { l: ['gering', '#16a34a'], m: ['mittel', '#d97706'], h: ['hoch', '#dc2626'] };
+// cols/areas = CSS grid of the board; field k doubles as grid-area name. hint = guiding questions (placeholder)
+const MW_TEMPLATES = [
+  { id: 'swot', short: 'SWOT', name: 'SWOT-Analyse',
+    desc: 'Stärken und Schwächen (intern), Chancen und Risiken (extern) auf einen Blick.',
+    tip: 'Stärken/Schwächen betreffen das Unternehmen selbst, Chancen/Risiken kommen aus dem Umfeld. Aus den Kombinationen entstehen SO-, ST-, WO- und WT-Strategien (TOWS-Matrix).',
+    cols: '1fr 1fr', areas: ['s w', 'o t'], fields: [
+      { k: 's', label: 'Stärken', sub: 'intern · positiv', c: '#22c55e', hint: 'Was können wir besser als die Konkurrenz?\nWelche Ressourcen, Marke, Know-how haben wir?' },
+      { k: 'w', label: 'Schwächen', sub: 'intern · negativ', c: '#f97316', hint: 'Wo sind wir schlechter als andere?\nWas fehlt uns (Budget, Personal, Reichweite)?' },
+      { k: 'o', label: 'Chancen', sub: 'extern · positiv', c: '#3b82f6', hint: 'Welche Trends, Zielgruppen oder Marktlücken können wir nutzen?' },
+      { k: 't', label: 'Risiken', sub: 'extern · negativ', c: '#ef4444', hint: 'Welche Wettbewerber, Gesetze oder Entwicklungen gefährden uns?' },
+    ] },
+  { id: 'pestel', short: 'PESTEL', name: 'PESTEL-Analyse',
+    desc: 'Das Makro-Umfeld in sechs Bereichen: Politik, Wirtschaft, Gesellschaft, Technik, Umwelt, Recht.',
+    tip: 'PESTEL liefert die externen Faktoren – ideal als Vorarbeit für Chancen und Risiken in der SWOT-Analyse. Nur Faktoren notieren, die für den Markt wirklich relevant sind.',
+    cols: '1fr 1fr 1fr', areas: ['p e s', 't en l'], fields: [
+      { k: 'p', label: 'Politisch', c: '#6366f1', hint: 'Regierung, Steuern, Handelspolitik, Förderprogramme …' },
+      { k: 'e', label: 'Ökonomisch', c: '#0ea5e9', hint: 'Konjunktur, Inflation, Kaufkraft, Zinsen, Wechselkurse …' },
+      { k: 's', label: 'Soziokulturell', c: '#ec4899', hint: 'Werte, Demografie, Lebensstile, Trends, Bildung …' },
+      { k: 't', label: 'Technologisch', c: '#8b5cf6', hint: 'Digitalisierung, KI, neue Kanäle, Innovationen …' },
+      { k: 'en', label: 'Ökologisch', c: '#22c55e', hint: 'Klimawandel, Nachhaltigkeit, Ressourcen, Umweltauflagen …' },
+      { k: 'l', label: 'Rechtlich', c: '#f59e0b', hint: 'DSGVO, UWG, Verbraucherschutz, Kennzeichnungspflichten …' },
+    ] },
+  { id: 'porter', short: '5 Forces', name: 'Porter’s Five Forces',
+    desc: 'Fünf Wettbewerbskräfte, die bestimmen, wie attraktiv eine Branche ist.',
+    tip: 'Je stärker die Kräfte, desto unattraktiver die Branche. Bewerte jede Kraft (gering/mittel/hoch) und begründe die Einschätzung in Stichpunkten.',
+    cols: '1fr 1.15fr 1fr', areas: ['. n .', 'l r k', '. e .'], fields: [
+      { k: 'n', label: 'Neue Anbieter', sub: 'Bedrohung', c: '#8b5cf6', rate: true, hint: 'Wie hoch sind die Markteintrittsbarrieren?\nKapitalbedarf, Markentreue, Regulierung …' },
+      { k: 'l', label: 'Lieferanten', sub: 'Verhandlungsmacht', c: '#0ea5e9', rate: true, hint: 'Wie viele Lieferanten gibt es?\nWie teuer ist ein Wechsel?' },
+      { k: 'r', label: 'Rivalität im Markt', sub: 'Wettbewerbsintensität', c: '#ef4444', rate: true, hint: 'Wie viele Wettbewerber, wie ähnlich sind die Angebote?\nWie stark wächst der Markt?' },
+      { k: 'k', label: 'Kunden', sub: 'Verhandlungsmacht', c: '#f59e0b', rate: true, hint: 'Wie leicht können Kunden wechseln?\nWie preissensibel sind sie?' },
+      { k: 'e', label: 'Ersatzprodukte', sub: 'Bedrohung', c: '#22c55e', rate: true, hint: 'Welche anderen Lösungen erfüllen denselben Zweck?' },
+    ] },
+  { id: 'bmc', short: 'BMC', name: 'Business Model Canvas',
+    desc: 'Ein ganzes Geschäftsmodell auf einer Seite – neun Bausteine nach Osterwalder.',
+    tip: 'Am besten rechts anfangen: Kundensegmente → Nutzenversprechen → Kanäle → Beziehungen → Einnahmen. Danach die linke Seite (wie liefern wir das?) und die Kosten.',
+    cols: 'repeat(10,minmax(0,1fr))', areas: ['kp kp ka ka vp vp cr cr cs cs', 'kp kp kr kr vp vp ch ch cs cs', 'co co co co co rs rs rs rs rs'], fields: [
+      { k: 'kp', label: 'Schlüsselpartner', c: '#64748b', hint: 'Wer hilft uns? Lieferanten, Kooperationen, Dienstleister …' },
+      { k: 'ka', label: 'Schlüsselaktivitäten', c: '#6366f1', hint: 'Was müssen wir tun, damit das Nutzenversprechen funktioniert?' },
+      { k: 'kr', label: 'Schlüsselressourcen', c: '#8b5cf6', hint: 'Was brauchen wir? Personal, Technik, Marke, Kapital …' },
+      { k: 'vp', label: 'Nutzenversprechen', c: '#ef4444', hint: 'Welches Problem lösen wir?\nWelchen Wert liefern wir den Kunden?' },
+      { k: 'cr', label: 'Kundenbeziehungen', c: '#ec4899', hint: 'Wie gewinnen und halten wir Kunden?\nPersönlich, Self-Service, Community …' },
+      { k: 'ch', label: 'Kanäle', c: '#f59e0b', hint: 'Wie erreichen wir die Kunden?\nShop, Social Media, Handel …' },
+      { k: 'cs', label: 'Kundensegmente', c: '#0ea5e9', hint: 'Für wen schaffen wir Wert?\nWer sind die wichtigsten Kunden?' },
+      { k: 'co', label: 'Kostenstruktur', c: '#94a3b8', hint: 'Was sind die wichtigsten Kosten? Fix oder variabel?' },
+      { k: 'rs', label: 'Einnahmequellen', c: '#22c55e', hint: 'Wofür zahlen Kunden? Preismodell, Abo, Provision …' },
+    ] },
+  { id: 'mix', short: '7P', name: 'Marketing-Mix (7P)',
+    desc: 'Die klassischen 4P plus die drei Dienstleistungs-P: People, Process, Physical Evidence.',
+    tip: 'Die 4P (Product, Price, Place, Promotion) passen für Sachgüter. Für Dienstleistungen kommen People, Process und Physical Evidence dazu. Alle Instrumente müssen zur Positionierung passen.',
+    cols: 'repeat(12,minmax(0,1fr))', areas: ['pr pr pr pi pi pi pl pl pl pm pm pm', 'pe pe pe pe pc pc pc pc px px px px'], fields: [
+      { k: 'pr', label: 'Produkt', sub: 'Product', c: '#6366f1', hint: 'Leistung, Qualität, Design, Marke, Verpackung, Service …' },
+      { k: 'pi', label: 'Preis', sub: 'Price', c: '#22c55e', hint: 'Preisstrategie, Rabatte, Zahlungsbedingungen …' },
+      { k: 'pl', label: 'Distribution', sub: 'Place', c: '#0ea5e9', hint: 'Absatzkanäle, Standorte, Logistik, online/offline …' },
+      { k: 'pm', label: 'Kommunikation', sub: 'Promotion', c: '#ef4444', hint: 'Werbung, Social Media, PR, Verkaufsförderung …' },
+      { k: 'pe', label: 'Personal', sub: 'People', c: '#ec4899', hint: 'Wer hat Kundenkontakt? Schulung, Auftreten …' },
+      { k: 'pc', label: 'Prozesse', sub: 'Process', c: '#f59e0b', hint: 'Wie läuft die Leistung ab? Wartezeiten, Buchung …' },
+      { k: 'px', label: 'Ausstattung', sub: 'Physical Evidence', c: '#8b5cf6', hint: 'Räume, Website, Uniformen, Belege – was macht die Leistung sichtbar?' },
+    ] },
+  { id: 'ansoff', short: 'Ansoff', name: 'Ansoff-Matrix',
+    desc: 'Vier Wachstumsstrategien aus bestehenden oder neuen Produkten und Märkten.',
+    tip: 'Das Risiko steigt von links oben (Marktdurchdringung) nach rechts unten (Diversifikation). Pro Feld konkrete Maßnahmen notieren.',
+    cols: '1fr 1fr', areas: ['a b', 'c d'], fields: [
+      { k: 'a', label: 'Marktdurchdringung', sub: 'bestehende Produkte · bestehende Märkte', c: '#22c55e', hint: 'Wie verkaufen wir mehr an bestehende Kunden?\nPreisaktionen, Werbung, Kundenbindung …' },
+      { k: 'b', label: 'Produktentwicklung', sub: 'neue Produkte · bestehende Märkte', c: '#0ea5e9', hint: 'Welche neuen Produkte passen zu unseren Kunden?' },
+      { k: 'c', label: 'Marktentwicklung', sub: 'bestehende Produkte · neue Märkte', c: '#f59e0b', hint: 'Neue Regionen, Zielgruppen oder Kanäle?' },
+      { k: 'd', label: 'Diversifikation', sub: 'neue Produkte · neue Märkte', c: '#ef4444', hint: 'Komplett neues Geschäftsfeld? Chancen und Risiken?' },
+    ] },
+  { id: 'persona', short: 'Persona', name: 'Persona',
+    desc: 'Ein greifbarer Steckbrief der Zielgruppe – mit Zielen, Frust und Mediennutzung.',
+    tip: 'Eine Persona ist fiktiv, beruht aber auf echten Daten (Umfragen, Interviews, Analytics). Lieber eine konkrete Person als einen Durchschnitt beschreiben.',
+    cols: '1fr 1fr 1fr', areas: ['who q q', 'goals pains beh', 'mot ch media'], fields: [
+      { k: 'who', label: 'Steckbrief', c: '#6366f1', hint: 'Name, Alter, Beruf, Wohnort, Einkommen, Familie …' },
+      { k: 'q', label: 'Typisches Zitat', c: '#8b5cf6', hint: '„Ich will nicht ewig vergleichen – es soll einfach passen.“' },
+      { k: 'goals', label: 'Ziele & Wünsche', c: '#22c55e', hint: 'Was will die Person erreichen?' },
+      { k: 'pains', label: 'Frust & Pain Points', c: '#ef4444', hint: 'Was nervt sie? Was hält sie vom Kauf ab?' },
+      { k: 'beh', label: 'Verhalten & Alltag', c: '#0ea5e9', hint: 'Wie sieht ein typischer Tag aus? Wie informiert sie sich?' },
+      { k: 'mot', label: 'Kaufmotive', c: '#f59e0b', hint: 'Preis, Qualität, Status, Nachhaltigkeit, Bequemlichkeit …' },
+      { k: 'ch', label: 'Kanäle', c: '#ec4899', hint: 'Wo erreichen wir sie? Instagram, TikTok, Newsletter, Laden …' },
+      { k: 'media', label: 'Marken & Medien', c: '#64748b', hint: 'Welche Marken, Podcasts, Influencer mag sie?' },
+    ] },
+  { id: 'journey', short: 'Journey', name: 'Customer Journey',
+    desc: 'Der Weg der Kunden durch fünf Phasen – mit Touchpoints, Gefühlen und Pain Points.',
+    tip: 'Aus Sicht der Kunden denken, nicht aus Sicht des Unternehmens. Die Pain Points sind die wichtigste Zeile: Dort entstehen die Chancen für Maßnahmen.',
+    matrix: true, cols: '130px repeat(5,minmax(0,1fr))',
+    fields: MW_JOURNEY_ROWS.flatMap(([r, label, c, hint]) => MW_JOURNEY_PH.map((ph, i) => ({ k: r + i, label, group: ph, c, hint: i ? '' : hint }))) },
+  { id: 'map', short: 'Map', name: 'Positionierungskarte',
+    desc: 'Marken auf zwei Achsen einordnen und Lücken im Markt finden (Perceptual Map).',
+    tip: 'Achsen wählen, die für die Kaufentscheidung wirklich zählen (z. B. Preis und Qualität). Punkte ziehen, um Marken einzuordnen. Freie Flächen zeigen mögliche Positionierungslücken.',
+    map: true, fields: [
+      { k: 'notes', label: 'Erkenntnisse', c: '#6366f1', hint: 'Wo gibt es Lücken?\nWer sind die direkten Konkurrenten?\nWo wollen wir hin?' },
+    ] },
+];
+
+function mountModellwerk(view) {
+  view.style.padding = '0';
+  const saved = Store.get('modellwerk', {});
+  const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null };
+  const persist = debounce(() => Store.set('modellwerk', st), 300);
+  const tplOf = id => MW_TEMPLATES.find(t => t.id === id) || MW_TEMPLATES[0];
+  const cur = () => st.items.find(x => x.id === st.active);
+  const PT_COLORS = ['#7c6cff', '#ef4444', '#0ea5e9', '#22c55e', '#f59e0b', '#ec4899', '#64748b'];
+  const fmtD = t => new Date(t).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' });
+  let board = null;   // current board element (source for the PNG export)
+
+  function copy(txt) {
+    const t = h('textarea', { style: { position: 'fixed', left: '-9999px', opacity: '0' } });
+    t.value = txt; document.body.append(t); t.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch {}
+    t.remove();
+    if (ok) toast('Als Text kopiert – z. B. in Word einfügen.', 'ok');
+    else navigator.clipboard?.writeText(txt).then(() => toast('Als Text kopiert.', 'ok'), () => toast('Kopieren hat nicht geklappt.', 'err'));
+  }
+  const grow = ta => { ta.style.height = '0'; ta.style.height = ta.scrollHeight + 'px'; };
+  const growAll = () => view.querySelectorAll('.mdw-ta').forEach(grow);
+  const touch = () => { const it = cur(); if (it) it.updated = Date.now(); persist(); listSoon(); };
+
+  /* ---------- Items ---------- */
+  function create(type) {
+    const tp = tplOf(type);
+    const it = { id: uid(), type, title: tp.name, created: Date.now(), updated: Date.now(), f: {}, rates: {} };
+    if (tp.map) it.map = { x0: 'günstig', x1: 'teuer', y0: 'klassisch', y1: 'modern', pts: [
+      { id: uid(), n: 'Unsere Marke', x: .62, y: .72, c: PT_COLORS[0] },
+      { id: uid(), n: 'Wettbewerber A', x: .25, y: .3, c: PT_COLORS[1] },
+      { id: uid(), n: 'Wettbewerber B', x: .8, y: .25, c: PT_COLORS[2] }] };
+    st.items.push(it); st.active = it.id; persist(); render();
+    setTimeout(() => { const t = view.querySelector('.mdw-title'); t?.focus(); t?.select(); }, 30);
+  }
+  function duplicate(it) {
+    const c = { ...structuredClone(it), id: uid(), title: it.title + ' (Kopie)', created: Date.now(), updated: Date.now() };
+    st.items.push(c); st.active = c.id; persist(); render();
+  }
+  function remove(it) {
+    const i = st.items.indexOf(it), wasActive = st.active === it.id;
+    st.items.splice(i, 1);
+    if (wasActive) st.active = null;
+    persist(); render();
+    toast(`„${it.title}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.items.splice(i, 0, it); st.active = it.id; persist(); render(); } } });
+  }
+  function clearFields(it) {
+    const old = structuredClone(it);
+    it.f = {}; it.rates = {}; touch(); render();
+    toast('Alle Felder geleert', 'info', { action: { label: 'Rückgängig', fn: () => { Object.assign(it, old); touch(); render(); } } });
+  }
+
+  /* ---------- Sidebar ---------- */
+  const list = h('div', { class: 'mdw-list' });
+  function renderList() {
+    const items = [...st.items].sort((a, b) => b.updated - a.updated);
+    list.replaceChildren(...items.map(it => {
+      const tp = tplOf(it.type);
+      const more = h('button', { class: 'mdw-more', title: 'Mehr', onclick: e => { e.stopPropagation(); popMenu(e.currentTarget, [
+        { label: 'Duplizieren', icon: 'copy', onClick: () => duplicate(it) },
+        { label: 'Löschen', icon: 'trash', danger: true, onClick: () => remove(it) }]); } }, icon('grip'));
+      return h('div', { class: 'mdw-it' + (it.id === st.active ? ' on' : ''), onclick: () => { st.active = it.id; persist(); render(); } },
+        h('span', { class: 'mdw-badge' }, tp.short),
+        h('div', { class: 'mdw-it-tx' }, h('div', { class: 'mdw-it-t' }, it.title || tp.name), h('div', { class: 'mdw-it-d' }, fmtD(it.updated))),
+        more);
+    }));
+    if (!items.length) list.append(h('div', { class: 'mdw-empty' }, 'Noch keine Modelle. Wähle rechts eine Vorlage.'));
+  }
+  const listSoon = debounce(renderList, 250);
+
+  /* ---------- Gallery (new model) ---------- */
+  function gallery() {
+    return h('div', { class: 'mdw-in' },
+      h('div', null, h('h2', { class: 'mdw-h2' }, st.items.length ? 'Neues Modell' : 'Willkommen im Modellwerk'),
+        h('p', { class: 'mdw-meta' }, 'Vorlage wählen und losschreiben. Jedes Feld hat Leitfragen, eine Zeile ist ein Stichpunkt. Export als Text, PNG oder PDF.')),
+      h('div', { class: 'mdw-gal' }, ...MW_TEMPLATES.map(t => h('button', { class: 'mdw-g', onclick: () => create(t.id) },
+        h('span', { class: 'mdw-badge' }, t.short), h('b', null, t.name), h('span', null, t.desc)))));
+  }
+
+  /* ---------- Editor ---------- */
+  function fieldEl(f, it, tp) {
+    const ta = h('textarea', { class: 'mdw-ta', placeholder: f.hint || '…', oninput: () => { it.f[f.k] = ta.value; grow(ta); touch(); } });
+    ta.value = it.f[f.k] || '';
+    const head = tp.matrix ? null : h('div', { class: 'mdw-fh' }, h('b', null, f.label), f.sub && h('small', null, f.sub),
+      f.rate && h('div', { class: 'mdw-rate' }, segEl([['', '–'], ...Object.entries(MW_RATES).map(([k, [l]]) => [k, l])], it.rates?.[f.k] || '', v => { (it.rates ||= {})[f.k] = v; touch(); })));
+    return h('div', { class: 'mdw-f' + (tp.matrix ? ' sm' : ''), style: { '--fc': f.c, ...(tp.areas && { gridArea: f.k }) }, dataset: { x: 'field', k: f.k } }, head, ta);
+  }
+
+  function mapEditor(it, tp) {
+    const m = it.map;
+    const area = h('div', { class: 'mdw-map', dataset: { x: 'map' } }, h('i', { class: 'mdw-ax x' }), h('i', { class: 'mdw-ax y' }));
+    const axIn = (k, cls, title) => { const i = h('input', { class: 'mdw-axl ' + cls, value: m[k], title, spellcheck: false, oninput: () => { m[k] = i.value; touch(); } }); return i; };
+    area.append(axIn('x0', 'x0', 'Achse links'), axIn('x1', 'x1', 'Achse rechts'), axIn('y1', 'y1', 'Achse oben'), axIn('y0', 'y0', 'Achse unten'));
+    const clamp = v => Math.min(1, Math.max(0, v));
+    const place = (el, p) => { el.style.left = (6 + p.x * 88) + '%'; el.style.top = (6 + (1 - p.y) * 88) + '%'; };
+    function drawPts() {
+      area.querySelectorAll('.mdw-pt').forEach(n => n.remove());
+      for (const p of m.pts) {
+        const el = h('div', { class: 'mdw-pt', style: { '--pc': p.c }, title: 'Ziehen zum Verschieben' }, h('i'), h('span', null, p.n || '?'));
+        place(el, p);
+        el.addEventListener('pointerdown', e => {
+          e.preventDefault(); el.setPointerCapture(e.pointerId); el.classList.add('drag');
+          const move = ev => {
+            const r = area.getBoundingClientRect();
+            p.x = clamp(((ev.clientX - r.left) / r.width - .06) / .88);
+            p.y = clamp(1 - ((ev.clientY - r.top) / r.height - .06) / .88);
+            place(el, p);
+          };
+          const up = () => { el.classList.remove('drag'); el.removeEventListener('pointermove', move); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', up); touch(); };
+          el.addEventListener('pointermove', move); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+        });
+        area.append(el);
+      }
+    }
+    const plist = h('div', { class: 'mdw-plist' });
+    function drawList() {
+      plist.replaceChildren(...m.pts.map(p => h('div', { class: 'mdw-prow' },
+        h('input', { type: 'color', value: p.c, title: 'Farbe', oninput: e => { p.c = e.target.value; drawPts(); touch(); } }),
+        h('input', { class: 'inp', value: p.n, placeholder: 'Marke', spellcheck: false, oninput: e => { p.n = e.target.value; drawPts(); touch(); } }),
+        h('button', { class: 'mdw-more on', title: 'Entfernen', onclick: () => { m.pts = m.pts.filter(q => q !== p); drawPts(); drawList(); touch(); } }, icon('trash')))),
+      h('button', { class: 'btn sm', onclick: () => {
+        m.pts.push({ id: uid(), n: 'Marke ' + (m.pts.length + 1), x: .35 + Math.random() * .3, y: .35 + Math.random() * .3, c: PT_COLORS[m.pts.length % PT_COLORS.length] });
+        drawPts(); drawList(); touch(); plist.querySelectorAll('.inp')[m.pts.length - 1]?.select();
+      } }, icon('plus'), 'Marke hinzufügen'));
+    }
+    drawPts(); drawList();
+    return h('div', { class: 'mdw-mapwrap' }, area,
+      h('div', { class: 'mdw-mapside' }, fieldEl(tp.fields[0], it, tp),   // notes first: the brand list is not part of the export
+        h('div', { class: 'mdw-f', style: { '--fc': '#64748b' } }, h('div', { class: 'mdw-fh' }, h('b', null, 'Marken'), h('small', null, 'Punkte in der Karte ziehen')), plist)));
+  }
+
+  function editor(it) {
+    const tp = tplOf(it.type);
+    if (tp.map) board = mapEditor(it, tp);
+    else if (tp.matrix) {
+      board = h('div', { class: 'mdw-board', style: { gridTemplateColumns: tp.cols } }, h('div'),
+        ...MW_JOURNEY_PH.map(ph => h('div', { class: 'mdw-lab col', dataset: { x: 'label' } }, ph)),
+        ...MW_JOURNEY_ROWS.flatMap(([r, label, c]) => [h('div', { class: 'mdw-lab', style: { '--fc': c }, dataset: { x: 'label' } }, label),
+          ...tp.fields.filter(f => f.k.startsWith(r) && /^\d$/.test(f.k.slice(r.length))).map(f => fieldEl(f, it, tp))]));
+    } else board = h('div', { class: 'mdw-board', style: { gridTemplateColumns: tp.cols, gridTemplateAreas: tp.areas.map(r => `"${r}"`).join(' ') } }, ...tp.fields.map(f => fieldEl(f, it, tp)));
+    const title = h('input', { class: 'mdw-title', value: it.title, placeholder: tp.name, spellcheck: false, oninput: () => { it.title = title.value; touch(); } });
+    const moreBtn = h('button', { class: 'btn sm ghost', title: 'Mehr', onclick: e => popMenu(e.currentTarget, [
+      { label: 'Duplizieren', icon: 'copy', onClick: () => duplicate(it) },
+      { label: 'Alle Felder leeren', icon: 'eraser', onClick: () => clearFields(it) },
+      '-',
+      { label: 'Löschen', icon: 'trash', danger: true, onClick: () => remove(it) }]) }, icon('grip'));
+    return h('div', { class: 'mdw-in' },
+      h('div', { class: 'mdw-top' },
+        h('div', { class: 'mdw-top-t' }, title, h('div', { class: 'mdw-meta' }, tp.name + ' · zuletzt geändert ' + fmtD(it.updated))),
+        h('div', { class: 'mdw-acts' },
+          h('button', { class: 'btn sm', title: 'Als Text mit Stichpunkten kopieren (für Word, Notizen …)', onclick: () => copy(toText(it)) }, icon('copy'), 'Text'),
+          h('button', { class: 'btn sm', title: 'Als Bild speichern', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
+          h('button', { class: 'btn sm', title: 'Drucken oder als PDF speichern', onclick: () => exportPdf(it) }, icon('file'), 'PDF'),
+          moreBtn)),
+      h('div', { class: 'mdw-tip' }, h('b', null, 'Tipp: '), tp.tip),
+      board);
+  }
+
+  /* ---------- Export ---------- */
+  const bullets = s => String(s || '').split('\n').map(l => l.trim().replace(/^[-•*–]\s*/, '')).filter(Boolean);
+  function toText(it) {
+    const tp = tplOf(it.type), out = [it.title || tp.name, tp.name, ''];
+    if (tp.map) {
+      const m = it.map;
+      out.push('Achsen', `- horizontal: ${m.x0} → ${m.x1}`, `- vertikal: ${m.y0} → ${m.y1}`, '', 'Marken (Skala 0–10)',
+        ...m.pts.map(p => `- ${p.n || '?'}: ${m.x1 || 'x'} ${(p.x * 10).toFixed(1).replace('.', ',')} · ${m.y1 || 'y'} ${(p.y * 10).toFixed(1).replace('.', ',')}`), '');
+    }
+    for (const f of tp.fields) {
+      const b = bullets(it.f[f.k]), r = MW_RATES[it.rates?.[f.k]];
+      if (!b.length && !r) continue;
+      out.push((f.group ? f.group + ' – ' : '') + f.label + (r ? ` (${r[0]})` : ''), ...b.map(l => '- ' + l), '');
+    }
+    return out.join('\n').trim() + '\n';
+  }
+
+  const rgba = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; };
+  function rr(g, x, y, w, hh, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + hh, r); g.arcTo(x + w, y + hh, x, y + hh, r); g.arcTo(x, y + hh, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+  function wrap(g, text, maxW) {
+    const lines = []; let line = '';
+    for (const word of text.split(/\s+/)) {
+      let w = word;
+      while (g.measureText(w).width > maxW && w.length > 1) {   // over-long word: break by characters
+        let n = w.length; while (n > 1 && g.measureText(w.slice(0, n)).width > maxW) n--;
+        if (line) { lines.push(line); line = ''; }
+        lines.push(w.slice(0, n)); w = w.slice(n);
+      }
+      const test = line ? line + ' ' + w : w;
+      if (g.measureText(test).width > maxW && line) { lines.push(line); line = w; } else line = test;
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+  function renderCanvas(it) {
+    const tp = tplOf(it.type), FONT = getComputedStyle(document.body).fontFamily;
+    const B = board.getBoundingClientRect(), S = 2, PAD = 28, HEAD = 62;
+    const W = Math.ceil(B.width + PAD * 2), H = Math.ceil(B.height + PAD * 2 + HEAD);
+    const cv = h('canvas', { width: W * S, height: H * S }), g = cv.getContext('2d');
+    g.scale(S, S); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.textBaseline = 'alphabetic';
+    g.fillStyle = '#111827'; g.font = `700 22px ${FONT}`; g.fillText(it.title || tp.name, PAD, PAD + 20);
+    g.fillStyle = '#6b7280'; g.font = `500 12.5px ${FONT}`; g.fillText(tp.name + ' · ' + fmtD(it.updated), PAD, PAD + 42);
+    const ox = PAD - B.left, oy = PAD + HEAD - B.top;
+    for (const el of board.querySelectorAll('[data-x]')) {
+      const r = el.getBoundingClientRect(), x = r.left + ox, y = r.top + oy, w = r.width, hh = r.height, kind = el.dataset.x;
+      if (kind === 'label') {
+        const col = el.classList.contains('col');
+        if (col) { rr(g, x, y, w, hh, 8); g.fillStyle = '#f3f4f6'; g.fill(); }
+        g.fillStyle = col ? '#374151' : (el.style.getPropertyValue('--fc') || '#374151'); g.font = `700 11.5px ${FONT}`;
+        const ls = wrap(g, el.textContent.toUpperCase(), w - 12);
+        ls.forEach((l, i) => { const tx = col ? x + (w - g.measureText(l).width) / 2 : x + 6; g.fillText(l, tx, y + hh / 2 + 4 + (i - (ls.length - 1) / 2) * 14); });
+      } else if (kind === 'map') drawMap(g, x, y, w, hh, it.map, FONT);
+      else {
+        const f = tp.fields.find(q => q.k === el.dataset.k); if (!f) continue;
+        rr(g, x, y, w, hh, 12); g.fillStyle = rgba(f.c, .07); g.fill(); g.strokeStyle = rgba(f.c, .5); g.lineWidth = 1.2; g.stroke();
+        let ty = y + 8;
+        if (!tp.matrix) {
+          g.font = `700 13px ${FONT}`; g.fillStyle = f.c; g.fillText(f.label, x + 12, y + 22);
+          let hx = x + 12 + g.measureText(f.label).width + 8;
+          if (f.sub) { g.font = `500 11px ${FONT}`; g.fillStyle = '#6b7280'; g.fillText(f.sub, hx, y + 22); hx += g.measureText(f.sub).width + 8; }
+          const rt = MW_RATES[it.rates?.[f.k]];
+          if (rt) { g.font = `700 10.5px ${FONT}`; const tw = g.measureText(rt[0]).width; rr(g, x + w - tw - 26, y + 9, tw + 14, 18, 9); g.fillStyle = rgba(rt[1], .14); g.fill(); g.fillStyle = rt[1]; g.fillText(rt[0], x + w - tw - 19, y + 22); }
+          ty = y + 32;
+        }
+        const items = bullets(it.f[f.k]), availH = y + hh - ty - 8;
+        let fs = 13, lines;
+        for (; fs >= 8.5; fs -= .5) {   // shrink the font until everything fits into the box
+          g.font = `400 ${fs}px ${FONT}`;
+          lines = items.map(t => wrap(g, t, w - 38));
+          if (lines.flat().length * fs * 1.45 <= availH) break;
+        }
+        g.fillStyle = '#1f2937'; let ly = ty + fs * 1.1;
+        g.save(); rr(g, x, y, w, hh, 12); g.clip();
+        for (const ls of lines) {
+          g.fillStyle = f.c; g.fillText('•', x + 13, ly); g.fillStyle = '#1f2937';
+          for (const l of ls) { g.fillText(l, x + 25, ly); ly += fs * 1.45; }
+        }
+        g.restore();
+      }
+    }
+    return { cv, W, H };
+  }
+  function drawMap(g, x, y, w, hh, m, FONT) {
+    rr(g, x, y, w, hh, 12); g.fillStyle = '#f9fafb'; g.fill(); g.strokeStyle = '#e5e7eb'; g.lineWidth = 1; g.stroke();
+    g.strokeStyle = '#9ca3af'; g.lineWidth = 1.5; g.beginPath();
+    g.moveTo(x + w * .06, y + hh / 2); g.lineTo(x + w * .94, y + hh / 2); g.moveTo(x + w / 2, y + hh * .06); g.lineTo(x + w / 2, y + hh * .94); g.stroke();
+    g.font = `600 12px ${FONT}`; g.fillStyle = '#4b5563';
+    g.fillText(m.x0, x + 10, y + hh / 2 + 18);
+    g.fillText(m.x1, x + w - 10 - g.measureText(m.x1).width, y + hh / 2 + 18);
+    g.fillText(m.y1, x + w / 2 + 8, y + 20);
+    g.fillText(m.y0, x + w / 2 + 8, y + hh - 12);
+    for (const p of m.pts) {
+      const px = x + w * (.06 + p.x * .88), py = y + hh * (.06 + (1 - p.y) * .88);
+      g.beginPath(); g.arc(px, py, 9, 0, Math.PI * 2); g.fillStyle = p.c; g.fill(); g.strokeStyle = '#fff'; g.lineWidth = 2.5; g.stroke();
+      g.font = `700 12px ${FONT}`; const tw = g.measureText(p.n || '?').width;
+      g.lineWidth = 4; g.strokeStyle = 'rgba(255,255,255,.9)'; g.strokeText(p.n || '?', px - tw / 2, py + 25); g.fillStyle = '#111827'; g.fillText(p.n || '?', px - tw / 2, py + 25);
+    }
+  }
+  const fileName = it => (it.title || 'Modell').replace(/[\\/:*?"<>|]+/g, '').trim().slice(0, 80) || 'Modell';
+  function exportPng(it) {
+    const { cv } = renderCanvas(it);
+    cv.toBlob(b => { download(fileName(it) + '.png', b); toast('PNG gespeichert', 'ok'); }, 'image/png');
+  }
+  function exportPdf(it) {
+    const { cv, W, H } = renderCanvas(it), land = W >= H;
+    const w = window.open('', '_blank', 'width=1100,height=800');
+    if (!w) { toast('Bitte Pop-ups für diese Seite erlauben.', 'err'); return; }
+    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${esc(fileName(it))}</title><style>
+@page{size:A4 ${land ? 'landscape' : 'portrait'};margin:10mm}html,body{margin:0}body{display:flex;justify-content:center}
+img{max-width:100%;max-height:${land ? 188 : 275}mm;object-fit:contain}</style></head><body><img src="${cv.toDataURL('image/png')}"></body></html>`);
+    w.document.close();
+    setTimeout(() => { w.focus(); w.print(); }, 400);
+  }
+
+  /* ---------- Layout ---------- */
+  const main = h('div', { class: 'mdw-main' });
+  function render() {
+    board = null;
+    const it = cur();
+    main.replaceChildren(it ? editor(it) : gallery());
+    main.scrollTop = 0;
+    renderList();
+    requestAnimationFrame(growAll);
+  }
+  view.append(h('div', { class: 'mdw' },
+    h('aside', { class: 'mdw-side' },
+      h('div', { class: 'mdw-side-hd' }, h('div', { class: 'mdw-logo' }, icon('modellwerk')), h('b', null, 'Modellwerk')),
+      h('div', { class: 'mdw-side-new' }, h('button', { class: 'btn primary sm block', onclick: () => { st.active = null; persist(); render(); } }, icon('plus'), 'Neues Modell')),
+      list),
+    main));
+  render();
+  const onResize = debounce(growAll, 150);
+  addEventListener('resize', onResize);
+  return { onShow: () => requestAnimationFrame(growAll), destroy() { removeEventListener('resize', onResize); } };
+}
+
+TT.register({
+  id: 'modellwerk', name: 'Modellwerk', icon: 'modellwerk', c: '#0ea5e9', c2: '#6366f1',
+  tagline: 'SWOT, Persona, Canvas & Co.',
+  desc: 'Marketing-Modelle wie SWOT, PESTEL, Business Model Canvas oder Persona ausfüllen – als Text, PNG oder PDF.',
+  mount: mountModellwerk,
+});
+
+/* ================= Kennzahlwerk (marketing KPIs with formula and calculation path) ================= */
+// in: [key, label, unit, example value] · out(v) → rows { l: label, v: value, w: calculation path, main, t: tone } or { say: text }
+const KZ_TOPICS = [['all', 'Alle'], ['online', 'Kampagne & Online'], ['kunden', 'Kunden'], ['preis', 'Preis & Kosten'], ['markt', 'Markt']];
+function kzDefs({ eur, pct, nf, div }) {
+  return [
+    { id: 'funnel', topic: 'online', icon: 'zap', title: 'Kampagne & Funnel', sub: 'CTR, CPC, CPM, CR, CPA, ROAS',
+      in: [['cost', 'Werbekosten', '€', '2000'], ['imp', 'Impressionen', '', '250000'], ['clk', 'Klicks', '', '5000'], ['conv', 'Conversions (Käufe)', '', '150'], ['rev', 'Umsatz', '€', '9000']],
+      f: 'CTR = Klicks ÷ Impressionen · CR = Conversions ÷ Klicks · ROAS = Umsatz ÷ Werbekosten',
+      note: 'ROAS 1 : 1 heißt nur: Werbekosten wieder drin. Waren- und sonstige Kosten sind damit noch nicht gedeckt.',
+      out: v => [
+        { l: 'CTR (Klickrate)', v: pct(div(v.clk, v.imp), 2), w: `${nf(v.clk)} ÷ ${nf(v.imp)}` },
+        { l: 'CPM (Tausenderpreis)', v: eur(div(v.cost, v.imp) * 1000), w: `${eur(v.cost)} ÷ ${nf(v.imp)} × 1.000` },
+        { l: 'CPC (Kosten pro Klick)', v: eur(div(v.cost, v.clk)), w: `${eur(v.cost)} ÷ ${nf(v.clk)}` },
+        { l: 'Conversion Rate', v: pct(div(v.conv, v.clk), 2), w: `${nf(v.conv)} ÷ ${nf(v.clk)}` },
+        { l: 'CPA / CPO (Kosten pro Kauf)', v: eur(div(v.cost, v.conv)), w: `${eur(v.cost)} ÷ ${nf(v.conv)}` },
+        { l: 'Ø Warenkorb', v: eur(div(v.rev, v.conv)), w: `${eur(v.rev)} ÷ ${nf(v.conv)}` },
+        { l: 'ROAS', v: Number.isFinite(div(v.rev, v.cost)) ? `${nf(div(v.rev, v.cost))} : 1 · ${pct(div(v.rev, v.cost), 0)}` : '–', w: `${eur(v.rev)} ÷ ${eur(v.cost)}`, main: true, t: div(v.rev, v.cost) >= 1 ? 'ok' : 'err' },
+      ] },
+    { id: 'roi', topic: 'online', icon: 'arrow', title: 'ROI / ROMI', sub: 'Lohnt sich die Maßnahme?',
+      in: [['rev', 'Zusätzlicher Umsatz durch die Maßnahme', '€', '30000'], ['m', 'Marge (Deckungsbeitrag)', '%', '40'], ['cost', 'Kosten der Maßnahme', '€', '8000']],
+      f: 'Gewinn = Umsatz × Marge − Kosten · ROI = Gewinn ÷ Kosten × 100',
+      note: 'Break-even-ROAS = 1 ÷ Marge: Ab diesem ROAS bringt Werbung mehr ein, als sie kostet.',
+      out: v => {
+        const db = v.rev * v.m / 100, g = db - v.cost, roi = div(g, v.cost);
+        return [
+          { l: 'Deckungsbeitrag', v: eur(db), w: `${eur(v.rev)} × ${nf(v.m)} %` },
+          { l: 'Gewinn der Maßnahme', v: eur(g), w: `${eur(db)} − ${eur(v.cost)}`, t: g >= 0 ? '' : 'err' },
+          { l: 'ROI', v: pct(roi), w: `${eur(g)} ÷ ${eur(v.cost)}`, main: true, t: roi >= 0 ? 'ok' : 'err' },
+          { l: 'Break-even-ROAS', v: Number.isFinite(div(100, v.m)) ? nf(div(100, v.m)) + ' : 1' : '–', w: `1 ÷ ${nf(v.m)} %` },
+          { say: !Number.isFinite(roi) ? '' : roi >= 0 ? `Jeder eingesetzte Euro bringt ${eur(1 + roi)} zurück.` : `Verlust: Von jedem eingesetzten Euro kommen nur ${eur(1 + roi)} zurück.` },
+        ];
+      } },
+    { id: 'cac', topic: 'kunden', icon: 'user', title: 'CAC', sub: 'Kosten pro Neukunde',
+      in: [['mk', 'Marketingkosten', '€', '20000'], ['vk', 'Vertriebskosten', '€', '10000'], ['n', 'Gewonnene Neukunden', '', '400']],
+      f: 'CAC = (Marketingkosten + Vertriebskosten) ÷ Neukunden',
+      note: 'Immer denselben Zeitraum für Kosten und Neukunden nehmen, z. B. ein Quartal.',
+      out: v => [{ l: 'CAC', v: eur(div(v.mk + v.vk, v.n)), w: `(${eur(v.mk)} + ${eur(v.vk)}) ÷ ${nf(v.n)}`, main: true }] },
+    { id: 'clv', topic: 'kunden', icon: 'sparkle', title: 'Customer Lifetime Value', sub: 'Was ist ein Kunde wert?',
+      in: [['aov', 'Ø Bestellwert', '€', '60'], ['fq', 'Käufe pro Jahr', '', '4'], ['m', 'Marge', '%', '35'], ['r', 'Bindungsrate pro Jahr', '%', '70'], ['i', 'Kalkulationszins', '%', '8'], ['n', 'Betrachtung in Jahren', '', '5'], ['cac', 'CAC (optional)', '€', '75']],
+      f: 'Beitrag/Jahr m = Bestellwert × Käufe × Marge · CLV = Σ m × Bindungsrateᵗ ÷ (1 + Zins)ᵗ für t = 0 … Jahre − 1',
+      note: 'Faustregel: CLV : CAC von mindestens 3 : 1 gilt als gesund. Unter 1 : 1 kostet jeder Neukunde Geld.',
+      out: v => {
+        const my = v.aov * v.fq * v.m / 100, n = Math.max(0, Math.min(100, Math.round(v.n))), r = v.r / 100, i = v.i / 100;
+        let clv = 0; for (let t = 0; t < n; t++) clv += my * r ** t / (1 + i) ** t;
+        const ratio = div(clv, v.cac);
+        return [
+          { l: 'Beitrag pro Jahr', v: eur(my), w: `${eur(v.aov)} × ${nf(v.fq)} × ${nf(v.m)} %` },
+          { l: 'CLV einfach', v: eur(my * n), w: `${eur(my)} × ${n} Jahre (ohne Abwanderung und Zins)` },
+          { l: 'CLV (mit Bindung & Zins)', v: Number.isFinite(clv) ? eur(clv) : '–', w: `Σ ${eur(my)} × ${nf(r)}ᵗ ÷ ${nf(1 + i, 3)}ᵗ, t = 0 … ${Math.max(0, n - 1)}`, main: true },
+          v.cac > 0 && { l: 'CLV : CAC', v: Number.isFinite(ratio) ? nf(ratio, 1) + ' : 1' : '–', w: `${eur(clv)} ÷ ${eur(v.cac)}`, t: ratio >= 3 ? 'ok' : ratio >= 1 ? 'warn' : 'err' },
+        ];
+      } },
+    { id: 'nps', topic: 'kunden', icon: 'msg', title: 'Net Promoter Score', sub: '„Würden Sie uns weiterempfehlen?“ (0–10)',
+      in: [['pro', 'Promotoren (9–10)', '', '120'], ['pas', 'Passive (7–8)', '', '50'], ['det', 'Detraktoren (0–6)', '', '30']],
+      f: 'NPS = % Promotoren − % Detraktoren (Skala −100 bis +100)',
+      note: 'Über 0 ist okay, über 30 gut, über 50 sehr gut. Passive zählen nur im Nenner mit.',
+      out: v => {
+        const all = v.pro + v.pas + v.det, pp = div(v.pro, all), pd = div(v.det, all), nps = (pp - pd) * 100;
+        return [
+          { l: 'Befragte', v: nf(all), w: `${nf(v.pro)} + ${nf(v.pas)} + ${nf(v.det)}` },
+          { l: 'Promotoren / Detraktoren', v: `${pct(pp)} / ${pct(pd)}`, w: `${nf(v.pro)} ÷ ${nf(all)} · ${nf(v.det)} ÷ ${nf(all)}` },
+          { l: 'NPS', v: Number.isFinite(nps) ? (nps > 0 ? '+' : '') + nf(nps, 1) : '–', w: `${pct(pp)} − ${pct(pd)}`, main: true, t: nps >= 30 ? 'ok' : nps >= 0 ? 'warn' : 'err' },
+        ];
+      } },
+    { id: 'churn', topic: 'kunden', icon: 'refresh', title: 'Kundenbindung & Churn', sub: 'Wie viele Kunden bleiben?',
+      in: [['s', 'Kunden am Anfang', '', '1000'], ['e', 'Kunden am Ende', '', '1050'], ['nw', 'Neukunden im Zeitraum', '', '200']],
+      f: 'Bindungsrate = (Ende − Neukunden) ÷ Anfang · Churn = 1 − Bindungsrate',
+      note: 'Ø Kundenlebensdauer ≈ 1 ÷ Churn-Rate, gemessen in der gewählten Periode (z. B. Jahre).',
+      out: v => {
+        const kept = v.e - v.nw, ret = div(kept, v.s), churn = 1 - ret;
+        return [
+          { l: 'Verlorene Kunden', v: nf(v.s - kept), w: `${nf(v.s)} − (${nf(v.e)} − ${nf(v.nw)})` },
+          { l: 'Bindungsrate', v: pct(ret), w: `(${nf(v.e)} − ${nf(v.nw)}) ÷ ${nf(v.s)}`, main: true },
+          { l: 'Churn-Rate', v: pct(churn), w: `1 − ${pct(ret)}`, t: churn > .3 ? 'err' : '' },
+          { l: 'Ø Kundenlebensdauer', v: churn > 0 ? nf(1 / churn, 1) + ' Perioden' : '–', w: `1 ÷ ${pct(churn)}` },
+        ];
+      } },
+    { id: 'bep', topic: 'preis', icon: 'table', title: 'Break-even', sub: 'Ab wann schreiben wir schwarze Zahlen?',
+      in: [['fix', 'Fixkosten', '€', '50000'], ['p', 'Preis pro Stück (netto)', '€', '25'], ['kv', 'Variable Kosten pro Stück', '€', '15'], ['q', 'Geplante Menge (optional)', 'Stk.', '6000']],
+      f: 'Deckungsbeitrag/Stück = Preis − variable Kosten · Break-even-Menge = Fixkosten ÷ DB/Stück',
+      note: 'Der Deckungsbeitrag ist der Teil des Preises, der die Fixkosten „deckt“. Ist er 0 oder negativ, gibt es keinen Break-even.',
+      out: v => {
+        const db = v.p - v.kv, bq = div(v.fix, db), ok = db > 0;
+        return [
+          { l: 'Deckungsbeitrag / Stück', v: eur(db), w: `${eur(v.p)} − ${eur(v.kv)}`, t: ok ? '' : 'err' },
+          { l: 'DB-Quote', v: pct(div(db, v.p)), w: `${eur(db)} ÷ ${eur(v.p)}` },
+          { l: 'Break-even-Menge', v: ok ? nf(Math.ceil(bq)) + ' Stück' : '–', w: `${eur(v.fix)} ÷ ${eur(db)} = ${nf(bq)} → aufgerundet`, main: true },
+          { l: 'Break-even-Umsatz', v: ok ? eur(Math.ceil(bq) * v.p) : '–', w: `${nf(Math.ceil(bq))} × ${eur(v.p)}` },
+          ok && v.q > 0 && { l: 'Gewinn bei geplanter Menge', v: eur(v.q * db - v.fix), w: `${nf(v.q)} × ${eur(db)} − ${eur(v.fix)}`, t: v.q * db >= v.fix ? 'ok' : 'err' },
+          ok && v.q > 0 && { l: 'Sicherheitsabstand', v: pct(div(v.q - bq, v.q)), w: `(${nf(v.q)} − ${nf(bq)}) ÷ ${nf(v.q)}` },
+        ];
+      } },
+    { id: 'elast', topic: 'preis', icon: 'sliders', title: 'Preiselastizität', sub: 'Wie reagiert die Nachfrage auf den Preis?',
+      in: [['p1', 'Preis vorher', '€', '10'], ['p2', 'Preis nachher', '€', '12'], ['q1', 'Absatz vorher', 'Stk.', '1000'], ['q2', 'Absatz nachher', 'Stk.', '850']],
+      f: 'ε = (Δ Menge ÷ Menge) ÷ (Δ Preis ÷ Preis) · Bogenelastizität mit Mittelwerten als Basis',
+      note: '|ε| > 1: elastisch – Preiserhöhung senkt den Umsatz. |ε| < 1: unelastisch – Preiserhöhung steigert den Umsatz.',
+      out: v => {
+        const dq = v.q2 - v.q1, dp = v.p2 - v.p1;
+        const e = div(div(dq, v.q1), div(dp, v.p1)), eb = div(div(dq, (v.q1 + v.q2) / 2), div(dp, (v.p1 + v.p2) / 2));
+        const u1 = v.p1 * v.q1, u2 = v.p2 * v.q2, a = Math.abs(eb);
+        return [
+          { l: 'Elastizität (einfach)', v: nf(e), w: `(${nf(dq)} ÷ ${nf(v.q1)}) ÷ (${nf(dp)} ÷ ${nf(v.p1)})` },
+          { l: 'Bogenelastizität', v: nf(eb), w: `(${nf(dq)} ÷ ${nf((v.q1 + v.q2) / 2)}) ÷ (${nf(dp)} ÷ ${nf((v.p1 + v.p2) / 2)})`, main: true },
+          { l: 'Umsatz vorher → nachher', v: `${eur(u1)} → ${eur(u2)}`, w: `${eur(v.p1)} × ${nf(v.q1)} → ${eur(v.p2)} × ${nf(v.q2)}`, t: u2 >= u1 ? 'ok' : 'err' },
+          { say: !Number.isFinite(eb) ? '' : a > 1.02 ? 'Elastisch: Die Menge reagiert stärker als der Preis.' : a < .98 ? 'Unelastisch: Die Menge reagiert schwächer als der Preis.' : 'Etwa isoelastisch: Der Umsatz bleibt ungefähr gleich.' },
+        ];
+      } },
+    { id: 'markup', topic: 'preis', icon: 'tag', title: 'Aufschlag & Handelsspanne', sub: 'Handelskalkulation',
+      in: [['ek', 'Einkaufspreis (netto)', '€', '40'], ['a', 'Kalkulationsaufschlag', '%', '60'], ['mwst', 'Umsatzsteuer', '%', '19']],
+      f: 'VK netto = EK × (1 + Aufschlag) · Handelsspanne = (VK − EK) ÷ VK',
+      note: 'Klausurfalle: Der Aufschlag bezieht sich auf den Einkaufspreis, die Spanne auf den Verkaufspreis. Spanne = Aufschlag ÷ (100 % + Aufschlag).',
+      out: v => {
+        const vk = v.ek * (1 + v.a / 100), br = vk * (1 + v.mwst / 100);
+        return [
+          { l: 'Verkaufspreis netto', v: eur(vk), w: `${eur(v.ek)} × (1 + ${nf(v.a)} %)` },
+          { l: 'Verkaufspreis brutto', v: eur(br), w: `${eur(vk)} × (1 + ${nf(v.mwst)} %)`, main: true },
+          { l: 'Handelsspanne', v: pct(div(vk - v.ek, vk)), w: `(${eur(vk)} − ${eur(v.ek)}) ÷ ${eur(vk)}` },
+          { l: 'Rohgewinn pro Stück', v: eur(vk - v.ek), w: `${eur(vk)} − ${eur(v.ek)}` },
+        ];
+      } },
+    { id: 'share', topic: 'markt', icon: 'layers', title: 'Marktanteil & Marktpotenzial', sub: 'Wie groß ist unser Stück vom Kuchen?',
+      in: [['own', 'Eigener Umsatz', 'Mio. €', '12'], ['top', 'Umsatz größter Wettbewerber', 'Mio. €', '20'], ['vol', 'Marktvolumen', 'Mio. €', '80'], ['pot', 'Marktpotenzial', 'Mio. €', '120']],
+      f: 'Marktanteil = eigener Umsatz ÷ Marktvolumen · relativer Marktanteil = eigener Umsatz ÷ größter Wettbewerber',
+      note: 'Relativer Marktanteil > 1 heißt Marktführer (wichtig für die BCG-Matrix). Sättigungsgrad = Marktvolumen ÷ Marktpotenzial.',
+      out: v => {
+        const rel = div(v.own, v.top);
+        return [
+          { l: 'Marktanteil', v: pct(div(v.own, v.vol)), w: `${nf(v.own)} ÷ ${nf(v.vol)}`, main: true },
+          { l: 'Relativer Marktanteil', v: nf(rel), w: `${nf(v.own)} ÷ ${nf(v.top)}`, t: rel > 1 ? 'ok' : '' },
+          { l: 'Sättigungsgrad', v: pct(div(v.vol, v.pot)), w: `${nf(v.vol)} ÷ ${nf(v.pot)}` },
+          { l: 'Freies Potenzial', v: nf(v.pot - v.vol) + ' Mio. €', w: `${nf(v.pot)} − ${nf(v.vol)}` },
+        ];
+      } },
+  ];
+}
+
+function mountKennzahlwerk(view) {
+  const st = { topic: 'all', way: true, v: {}, ...Store.get('kennzahlwerk', {}) };
+  const persist = debounce(() => Store.set('kennzahlwerk', st), 300);
+  const ok = n => typeof n === 'number' && Number.isFinite(n);
+  const nf = (n, d = 2) => ok(n) ? n.toLocaleString('de-DE', { maximumFractionDigits: d }) : '–';
+  const eur = n => ok(n) ? n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) : '–';
+  const pct = (n, d = 1) => ok(n) ? (n * 100).toLocaleString('de-DE', { maximumFractionDigits: d }) + ' %' : '–';
+  const div = (a, b) => b ? a / b : NaN;
+  // German & English input: "1.234,5" · "1234.5" · "1.500" (thousands) · spaces/€/% are ignored
+  const num = s => {
+    s = String(s ?? '').replace(/[\s€%]/g, '');
+    if (!s) return NaN;
+    if (s.includes(',')) s = s.replace(/\./g, '').replace(',', '.');
+    else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, '');
+    return Number(s);
+  };
+  const defs = kzDefs({ eur, pct, nf, div });
+
+  function copy(txt, btn) {
+    const t = h('textarea', { style: { position: 'fixed', left: '-9999px', opacity: '0' } });
+    t.value = txt; document.body.append(t); t.select();
+    let done = false; try { done = document.execCommand('copy'); } catch {}
+    t.remove();
+    const flash = () => { btn.classList.add('done'); btn.replaceChildren(icon('check')); setTimeout(() => { btn.classList.remove('done'); btn.replaceChildren(icon('copy')); }, 1200); };
+    if (done) flash(); else navigator.clipboard?.writeText(txt).then(flash, () => toast('Kopieren hat nicht geklappt.', 'err'));
+  }
+
+  const cards = defs.map(d => {
+    const vals = st.v[d.id] ||= {};
+    const outs = h('div', { class: 'kz-outs' });
+    let rows = [];
+    function calc() {
+      const v = {}; let bad = false;
+      for (const [k, , , ex] of d.in) { const raw = vals[k] ?? ex; v[k] = raw.trim() === '' ? 0 : num(raw); if (Number.isNaN(v[k])) bad = true; }
+      if (bad) { rows = []; outs.replaceChildren(h('div', { class: 'cw-status err' }, icon('alert'), 'Bitte nur Zahlen eingeben, z. B. 1.250,50')); return; }
+      rows = d.out(v).filter(Boolean);
+      outs.replaceChildren(...rows.map(r => r.say != null
+        ? (r.say ? h('div', { class: 'kz-say' }, r.say) : null)
+        : h('div', { class: 'kz-o' + (r.main ? ' main' : '') + (r.t ? ' ' + r.t : '') }, h('b', null, r.l), h('strong', null, r.v), r.w && h('div', { class: 'kz-w' }, '= ' + r.w))));
+    }
+    const inputs = d.in.map(([k, label, unit, ex]) => {
+      const inp = h('input', { class: 'inp', inputMode: 'decimal', value: vals[k] ?? ex, spellcheck: false, autocomplete: 'off',
+        oninput: () => { vals[k] = inp.value; persist(); calc(); } });
+      return { k, ex, inp, el: h('label', { class: 'kz-in' }, h('span', null, label), h('div', { class: 'kz-box' + (unit ? ' u' : '') }, inp, unit && h('i', { class: 'kz-u' }, unit))) };
+    });
+    const reset = () => { for (const x of inputs) { x.inp.value = x.ex; delete vals[x.k]; } persist(); calc(); };
+    const clear = () => { for (const x of inputs) { x.inp.value = ''; vals[x.k] = ''; } persist(); calc(); inputs[0].inp.focus(); };
+    const cb = h('button', { class: 'cw-copy', title: 'Ergebnis als Text kopieren', onclick: () => copy([d.title, ...d.in.map(([k, l, u]) => `${l}: ${inputs.find(x => x.k === k).inp.value || '0'}${u ? ' ' + u : ''}`), '',
+      ...rows.filter(r => r.l).map(r => `${r.l}: ${r.v}${r.w ? `  (= ${r.w})` : ''}`)].join('\n'), cb) }, icon('copy'));
+    const el = h('section', { class: 'cw-card', dataset: { topic: d.topic } },
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon(d.icon)), h('div', { class: 'kz-tt' }, h('h3', null, d.title), h('small', { class: 'kz-sub' }, d.sub)),
+        h('div', { class: 'cw-acts' },
+          h('button', { class: 'btn sm ghost', title: 'Alle Felder leeren', onclick: clear }, icon('eraser')),
+          h('button', { class: 'btn sm ghost', title: 'Beispielwerte einsetzen', onclick: reset }, icon('undo')), cb)),
+      h('div', { class: 'kz-ins' }, ...inputs.map(x => x.el)),
+      outs,
+      h('div', { class: 'kz-f' }, d.f),
+      h('div', { class: 'cw-note' }, d.note));
+    calc();
+    return el;
+  });
+
+  const root = h('div', { class: 'cw kz' + (st.way ? '' : ' noway') });
+  const grid = h('div', { class: 'cw-grid' }, ...cards);
+  const filter = () => cards.forEach(c => { c.hidden = st.topic !== 'all' && c.dataset.topic !== st.topic; });
+  root.append(h('div', { class: 'cw-in' },
+    h('div', { class: 'cw-hd' },
+      h('div', { class: 'cw-logo' }, icon('kennzahlwerk')),
+      h('div', null, h('h2', null, 'Kennzahlwerk'), h('p', null, 'Marketing-Kennzahlen mit Formel und Rechenweg. Komma oder Punkt, beides geht.'))),
+    h('div', { class: 'kz-bar' },
+      segEl(KZ_TOPICS, st.topic, v => { st.topic = v; persist(); filter(); }),
+      h('label', { class: 'cw-sw' }, 'Rechenweg zeigen', switchEl(st.way, v => { st.way = v; persist(); root.classList.toggle('noway', !v); }))),
+    grid));
+  view.append(root);
+  filter();
+}
+
+TT.register({
+  id: 'kennzahlwerk', name: 'Kennzahlwerk', icon: 'kennzahlwerk', c: '#f59e0b', c2: '#ef4444',
+  tagline: 'ROI, CLV, Break-even & Co.',
+  desc: 'Marketing-Kennzahlen wie ROAS, CAC, CLV, NPS oder Break-even berechnen – mit Formel und Rechenweg.',
+  mount: mountKennzahlwerk,
+});
+
 
 /* ================= Shaderwerk (GPU-Shader) ================= */
 function mountShaderwerk(view) {

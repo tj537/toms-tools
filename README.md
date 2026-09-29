@@ -1,10 +1,10 @@
 # 🧰 Toms Tools
 
-**24 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
+**26 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
 
-Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Farbpaletten bauen, Shader-Kunst rendern, Rechnungen schreiben – alles im Browser, alles auf deinem Rechner.
+Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortieren, Farbpaletten bauen, Shader-Kunst rendern, Rechnungen schreiben, SWOT-Analysen bauen, Marketing-Kennzahlen rechnen – alles im Browser, alles auf deinem Rechner.
 
-![Version](https://img.shields.io/badge/version-1.2.2-7c6cff)
+![Version](https://img.shields.io/badge/version-1.3.0-7c6cff)
 ![Lizenz: MIT](https://img.shields.io/badge/lizenz-MIT-22c55e)
 ![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
 ![Offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
@@ -13,7 +13,7 @@ Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortie
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** A collection of 24 offline tools (image editing, PDF merging, photo sorting, color palettes, shader art, invoices …) packed into one single HTML file. No install, no account, no network access – everything runs locally in your browser. Vibecoded with Claude by a beginner, work in progress – feedback welcome! The interface is German; an English mode for the home page is built in (Settings → Start → Language), more is coming.
+> 🇬🇧 **English:** A collection of 26 offline tools (image editing, PDF merging, photo sorting, color palettes, shader art, invoices, marketing models and KPI calculators …) packed into one single HTML file. No install, no account, no network access – everything runs locally in your browser. Vibecoded with Claude by a beginner, work in progress – feedback welcome! The interface is German; an English mode for the home page is built in (Settings → Start → Language), more is coming.
 
 ---
 
@@ -21,7 +21,7 @@ Doppelklick, und es läuft. Bilder bearbeiten, PDFs zusammenfügen, Fotos sortie
 
 Ich bin kein Entwickler, sondern **Neuling**. Toms Tools ist **komplett „gevibecoded“**: Ich habe beschrieben, was ich brauche, und [Claude](https://claude.ai) (die KI von Anthropic) hat den Code geschrieben. Ich habe getestet, gemeckert, Ideen nachgeschoben und entschieden, was reinkommt.
 
-Angefangen hat es mit ein paar Helfern für meinen eigenen Alltag. Daraus sind nach und nach 24 Werkzeuge geworden, die ich selbst ständig nutze. Weil sie mir so viel bringen, stelle ich sie hier online. Vielleicht helfen sie ja auch dir.
+Angefangen hat es mit ein paar Helfern für meinen eigenen Alltag. Daraus sind nach und nach 26 Werkzeuge geworden, die ich selbst ständig nutze. Weil sie mir so viel bringen, stelle ich sie hier online. Vielleicht helfen sie ja auch dir.
 
 Was du wissen solltest:
 
@@ -76,6 +76,12 @@ Was du wissen solltest:
 | **Gedankenwerk** | Mindmaps bauen, gestalten und als Bild oder Text exportieren |
 | **Timer** | Großer Countdown im Vollbild mit Warnfarben und Signalton |
 | **Rechnungswerk** | Saubere Rechnungen mit Logo, MwSt. und GiroCode – als PDF |
+
+### 🎓 Marketing & Studium
+| App | Was sie macht |
+|---|---|
+| **Modellwerk** | Marketing-Modelle ausfüllen: SWOT, PESTEL, Five Forces, Business Model Canvas, 7P, Ansoff, Persona, Customer Journey und Positionierungskarte – mit Leitfragen, Export als Text, PNG oder PDF |
+| **Kennzahlwerk** | Marketing-Kennzahlen mit Formel und Rechenweg: CTR, CPC, ROAS, ROI, CAC, CLV, NPS, Churn, Break-even, Preiselastizität, Handelsspanne, Marktanteil |
 
 ### 🎲 Spaß & Musik
 | App | Was sie macht |

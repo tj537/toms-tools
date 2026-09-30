@@ -5085,7 +5085,7 @@ const F = {
 
 const RULES = {
   replace: {
-    label: 'Suchen & Ersetzen', badge: 'ab', color: '#4cc2ff', desc: 'Text finden und ersetzen',
+    label: 'Suchen & Ersetzen', badge: 'ab', color: '#4cc2ff', desc: 'ab → cd',
     defaults: () => ({ find: '', repl: '', cs: false, all: true, scope: 'name' }),
     compile: p => p.find ? new RegExp(escRe(p.find), (p.all ? 'g' : '') + (p.cs ? '' : 'i')) : null,
     apply: (s, p, re) => re ? s.replace(re, () => p.repl) : s,
@@ -5098,7 +5098,7 @@ const RULES = {
       F.scope(p, set)],
   },
   regex: {
-    label: 'Regex', badge: '.*', color: '#c084fc', desc: 'Reguläre Ausdrücke mit Gruppen ($1, $2 …)',
+    label: 'Regex', badge: '.*', color: '#c084fc', desc: '(.*) → $1',
     defaults: () => ({ pattern: '', repl: '', g: true, i: false, scope: 'name' }),
     compile: p => p.pattern ? new RegExp(p.pattern, (p.g ? 'g' : '') + (p.i ? 'i' : '')) : null,
     apply: (s, p, re) => re ? s.replace(re, p.repl) : s,
@@ -5111,16 +5111,16 @@ const RULES = {
       F.scope(p, set)],
   },
   case: {
-    label: 'Groß-/Kleinschreibung', badge: 'Aa', color: '#34d399', desc: 'klein, GROSS, Titel oder Satz',
+    label: 'Groß-/Kleinschreibung', badge: 'Aa', color: '#34d399', desc: 'abc · ABC · Abc Def',
     defaults: () => ({ mode: 'lower', scope: 'all' }),
     apply: (s, p) => p.mode === 'lower' ? s.toLowerCase() : p.mode === 'upper' ? s.toUpperCase()
       : p.mode === 'title' ? s.toLowerCase().replace(/(^|[\s_\-.(\[])(\p{L})/gu, (m, a, b) => a + b.toUpperCase())
       : s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(),
-    summary: p => ({ lower: 'alles klein', upper: 'ALLES GROSS', title: 'Jedes Wort Groß', sentence: 'Nur Anfang groß' })[p.mode] + ' · ' + scopeLabel(p.scope),
-    form: (p, set) => [F.seg('Modus', p, 'mode', set, [['lower', 'klein'], ['upper', 'GROSS'], ['title', 'Titel'], ['sentence', 'Satz']]), F.scope(p, set)],
+    summary: p => ({ lower: 'abc', upper: 'ABC', title: 'Abc Def', sentence: 'Abc def' })[p.mode] + ' · ' + scopeLabel(p.scope),
+    form: (p, set) => [F.seg('Modus', p, 'mode', set, [['lower', 'abc'], ['upper', 'ABC'], ['title', 'Abc Def'], ['sentence', 'Abc def']]), F.scope(p, set)],
   },
   clean: {
-    label: 'Sonderzeichen bereinigen', badge: '✦', color: '#fbbf24', desc: 'Umlaute, Akzente, Leerzeichen & Co.',
+    label: 'Sonderzeichen bereinigen', badge: '✦', color: '#fbbf24', desc: 'ä → ae · é → e · ␣ → _',
     defaults: () => ({ umlauts: true, accents: true, space: '_', utoD: false, strict: true, collapse: true, trim: true, scope: 'name' }),
     apply: (s, p) => {
       let t = s;
@@ -5133,19 +5133,19 @@ const RULES = {
       if (p.trim) t = t.replace(/^[ ._-]+|[ ._-]+$/g, '');
       return t;
     },
-    summary: p => [p.umlauts && 'Umlaute', p.accents && 'Akzente', p.space !== 'keep' && `Leerz. → ${p.space || '∅'}`, p.utoD && '_ → -', p.strict && 'nur a–z 0–9'].filter(Boolean).join(' · ') || 'Nur verbotene Zeichen',
+    summary: p => [p.umlauts && 'ä → ae', p.accents && 'é → e', p.space !== 'keep' && `␣ → ${p.space || '∅'}`, p.utoD && '_ → -', p.strict && 'a–z 0–9'].filter(Boolean).join(' · ') || 'Nur verbotene Zeichen',
     form: (p, set) => [
-      F.sw('Umlaute umschreiben (ä → ae, ß → ss)', p, 'umlauts', set),
-      F.sw('Akzente entfernen (é → e)', p, 'accents', set),
-      F.sel('Leerzeichen', p, 'space', set, [['_', 'durch Unterstrich _ ersetzen'], ['-', 'durch Bindestrich - ersetzen'], ['.', 'durch Punkt . ersetzen'], ['', 'entfernen'], ['keep', 'behalten']]),
-      F.sw('Unterstriche → Bindestriche (_ → -)', p, 'utoD', set),
-      F.sw('Nur a–z, 0–9, _ - . erlauben', p, 'strict', set),
-      F.sw('Doppelte Trenner zusammenfassen', p, 'collapse', set),
-      F.sw('Trenner am Anfang/Ende entfernen', p, 'trim', set),
+      F.sw('ä → ae, ß → ss', p, 'umlauts', set),
+      F.sw('é → e', p, 'accents', set),
+      F.sel('Leerzeichen', p, 'space', set, [['_', '→ _'], ['-', '→ -'], ['.', '→ .'], ['', '→ ∅'], ['keep', 'behalten']]),
+      F.sw('_ → -', p, 'utoD', set),
+      F.sw('Nur a–z 0–9 _ - .', p, 'strict', set),
+      F.sw('__ → _', p, 'collapse', set),
+      F.sw('_abc_ → abc', p, 'trim', set),
       F.scope(p, set)],
   },
   insert: {
-    label: 'Text einfügen', badge: '+', color: '#60a5fa', desc: 'Präfix, Suffix oder an Position', rerender: ['pos'],
+    label: 'Text einfügen', badge: '+', color: '#60a5fa', desc: 'Präfix · Suffix · Position', rerender: ['pos'],
     defaults: () => ({ text: '', pos: 'start', at: 0, scope: 'name' }),
     apply: (s, p, c, ctx) => {
       const t = tokens(p.text, ctx);
@@ -5156,7 +5156,7 @@ const RULES = {
     },
     summary: p => p.text ? `„${p.text}“ ${p.pos === 'start' ? 'am Anfang' : p.pos === 'end' ? 'am Ende' : 'nach Zeichen ' + p.at}` : 'Kein Text',
     form: (p, set) => [
-      F.text('Text', p, 'text', set, { ph: 'z. B. {date}_', hint: '{date} {time} {folder}' }),
+      F.text('Text', p, 'text', set, { ph: '{date}_', hint: '{date} {time} {folder}' }),
       F.seg('Position', p, 'pos', set, [['start', 'Anfang'], ['end', 'Ende'], ['at', 'Position …']]),
       p.pos === 'at' && F.num('Nach Zeichen Nr. (negativ = von hinten)', p, 'at', set),
       F.scope(p, set)],
@@ -5179,20 +5179,20 @@ const RULES = {
     form: (p, set) => [
       F.row(F.num('Erste N Zeichen', p, 'first', set, { min: 0 }), F.num('Letzte N Zeichen', p, 'last', set, { min: 0 })),
       F.row(F.num('Ab Position', p, 'from', set, { min: 0 }), F.num('Anzahl', p, 'count', set, { min: 0 })),
-      F.sw('Klammern inkl. Inhalt – (1) [x] {y}', p, 'brackets', set),
-      F.sw('Alle Ziffern', p, 'digits', set),
+      F.sw('(1) [x] {y}', p, 'brackets', set),
+      F.sw('0–9', p, 'digits', set),
       F.sw('Alle Leerzeichen', p, 'spaces', set),
       F.scope(p, set)],
   },
   number: {
-    label: 'Nummerierung', badge: '#', color: '#f472b6', desc: 'Fortlaufend nummerieren mit Muster', noScope: true,
+    label: 'Nummerierung', badge: '#', color: '#f472b6', desc: '001 · 002 · 003 …', noScope: true,
     defaults: () => ({ pattern: '{name}_{n}', start: 1, step: 1, pad: 3, perFolder: false }),
     apply: (s, p, c, ctx) => {
       const n = String(p.start + (p.perFolder ? ctx.dirIdx : ctx.idx) * (p.step || 1));
       const num = p.pad > 0 && !n.startsWith('-') ? n.padStart(p.pad, '0') : n;
       return p.pattern.replace(/\{(name|n|date|time|folder)\}/g, (m, k) => k === 'name' ? s : k === 'n' ? num : ctx[k]);
     },
-    summary: p => `${p.pattern} · ab ${p.start} · ${p.pad} Stellen`,
+    summary: p => p.pattern.replace('{n}', String(p.start).padStart(p.pad, '0')),
     form: (p, set) => [
       F.text('Muster', p, 'pattern', set, { mono: true, ph: '{name}_{n}', hint: '{name} {n} {date} {folder}' }),
       h('div', { class: 'row3' }, F.num('Start', p, 'start', set), F.num('Schritt', p, 'step', set), F.num('Stellen', p, 'pad', set, { min: 0, max: 12 })),
@@ -5203,10 +5203,10 @@ const RULES = {
 
 const mkRule = (type, p = {}, on = true) => ({ id: uid(), type, on, open: true, p: { ...RULES[type].defaults(), ...p } });
 const BR_PRESETS = [
-  { name: 'Web-tauglich', desc: 'klein, ohne Umlaute & Sonderzeichen, Bindestriche', rules: [['clean', { space: '-' }], ['case', { mode: 'lower', scope: 'all' }]] },
-  { name: 'Unterstriche statt Leerzeichen', desc: 'nur Leerzeichen → _', rules: [['replace', { find: ' ', repl: '_' }]] },
+  { name: 'Web-tauglich', desc: 'Mein Foto.JPG → mein-foto.jpg', rules: [['clean', { space: '-' }], ['case', { mode: 'lower', scope: 'all' }]] },
+  { name: 'Unterstriche statt Leerzeichen', desc: 'a b.jpg → a_b.jpg', rules: [['replace', { find: ' ', repl: '_' }]] },
   { name: 'Fotos nummerieren', desc: 'foto_001, foto_002 …', rules: [['number', { pattern: 'foto_{n}', pad: 3 }], ['case', { mode: 'lower', scope: 'ext' }]] },
-  { name: 'Datum voranstellen', desc: 'Änderungsdatum als Präfix', rules: [['insert', { text: '{date}_', pos: 'start' }]] },
+  { name: 'Datum voranstellen', desc: '{date}_name.jpg', rules: [['insert', { text: '{date}_', pos: 'start' }]] },
   { name: 'Kopie-Zusätze entfernen', desc: '„ - Kopie“, „(1)“, „copy“', rules: [['regex', { pattern: '(\\s*(-\\s*Kopie|\\(\\d+\\)|copy))+$', repl: '', i: true }]] },
   { name: 'Endungen klein', desc: '.JPG → .jpg', rules: [['case', { mode: 'lower', scope: 'ext' }]] },
 ];
@@ -5361,7 +5361,7 @@ function mountBulkRename(view) {
   /* --- Source --- */
   const fileInput = h('input', { type: 'file', multiple: true, webkitdirectory: true, style: { display: 'none' }, onchange: e => { const f = [...e.target.files]; e.target.value = ''; if (f.length) loadFileList(f); } });
   const srcBox = h('div', { class: 'stack' });
-  const extInp = h('input', { class: 'inp', placeholder: 'alle – oder z. B. jpg, png, pdf', value: st.opts.exts, spellcheck: false, oninput: debounce(e => { st.opts.exts = e.target.value; saveOpts(); applyFilter(); }, 200) });
+  const extInp = h('input', { class: 'inp', placeholder: 'jpg, png, pdf …', value: st.opts.exts, spellcheck: false, oninput: debounce(e => { st.opts.exts = e.target.value; saveOpts(); applyFilter(); }, 200) });
   const sortSel = h('select', { class: 'inp', onchange: e => { st.opts.sort = e.target.value; saveOpts(); schedule(); } },
     [['name', 'Name (natürlich)'], ['mtime', 'Änderungsdatum'], ['size', 'Größe'], ['ext', 'Dateityp']].map(([v, l]) => h('option', { value: v, selected: st.opts.sort === v }, l)));
   const dirBtn = h('button', { class: 'mini boxed', title: 'Reihenfolge umkehren', onclick: () => { st.opts.desc = !st.opts.desc; saveOpts(); dirBtn.replaceChildren(icon(st.opts.desc ? 'down' : 'up')); schedule(); } }, icon(st.opts.desc ? 'down' : 'up'));
@@ -5386,7 +5386,7 @@ function mountBulkRename(view) {
       h('div', { class: 'panel-actions' },
         h('button', { class: 'btn sm ghost', onclick: e => presetMenu(e.currentTarget) }, icon('save'), 'Vorlagen'),
         h('button', { class: 'btn sm primary', onclick: e => popMenu(e.currentTarget, Object.entries(RULES).map(([t, d]) => ({ label: d.label, desc: d.desc, badge: d.badge, color: d.color, onClick: () => addRule(t) }))) }, icon('plus'), 'Regel'))),
-    h('div', { class: 'panel-b' }, rulesEl, h('p', { class: 'hint' }, 'Regeln laufen von oben nach unten. Ziehen am Griff zum Sortieren. Doppelklick auf einen neuen Namen = manuell ändern.')));
+    h('div', { class: 'panel-b' }, rulesEl, h('p', { class: 'hint' }, 'Regeln: oben → unten · Doppelklick auf einen Namen = manuell ändern')));
 
   /* --- List --- */
   const segFilter = h('div', { class: 'seg' });
@@ -5400,13 +5400,13 @@ function mountBulkRename(view) {
   const empty = h('div', { class: 'empty' }, h('div', { class: 'drop' },
     h('div', { class: 'big' }, icon('bracketR')),
     h('h2', null, 'Ordner auswählen'),
-    h('p', null, 'Ziehe einen Ordner hierher oder öffne ihn direkt. Alles passiert lokal – nichts wird hochgeladen.'),
+    h('p', null, 'Ordner hierher ziehen oder öffnen – alles bleibt lokal.'),
     h('div', { class: 'drop-actions' },
       h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), 'Ordner öffnen'),
       h('button', { class: 'btn', onclick: () => fileInput.click() }, icon('lock'), 'Nur-Lesen-Modus')),
     (!hasPicker || inFrame) ? h('div', { class: 'callout warn' }, icon('alert'), h('div', null, h('b', null, inFrame ? 'Seite läuft eingebettet' : 'Direkter Ordnerzugriff nicht verfügbar'),
       h('p', null, inFrame ? 'Öffne die HTML-Datei direkt in Chrome/Edge, damit direktes Umbenennen klappt. Nur-Lesen + Skript geht trotzdem.' : 'Nutze Chrome oder Edge – oder den Nur-Lesen-Modus mit .bat-Export.')))
-      : h('div', { class: 'callout' }, icon('info'), h('div', null, h('b', null, 'Ordner gesperrt?'), h('p', null, 'Der Nur-Lesen-Modus liest die Dateien nur ein. Umbenannt wird dann per .bat-Skript (ohne Admin-Rechte) oder du lädst ein ZIP mit den neuen Namen.')))));
+      : h('div', { class: 'callout' }, icon('info'), h('div', null, h('b', null, 'Ordner gesperrt?'), h('p', null, 'Nur-Lesen-Modus: Umbenennen per .bat-Skript (ohne Admin-Rechte) oder als ZIP.')))));
   const listwrap = h('div', { class: 'listwrap empty-mode' }, empty, table,
     h('div', { class: 'drop-ov' }, h('div', null, icon('folder'), 'Ordner ablegen')));
 
@@ -5804,7 +5804,7 @@ function mountBulkRename(view) {
     let res;
     const close = modal({
       title: 'Manuell umbenennen', sub: e.name,
-      body: h('div', { class: 'field' }, h('label', null, 'Neuer Name (überschreibt die Regeln für diese Datei)'), inp),
+      body: h('div', { class: 'field' }, h('label', null, 'Neuer Name'), inp),
       actions: [
         e.manual != null && { label: 'Auf Regeln zurücksetzen', kind: 'ghost', onClick: () => { res = null; } },
         { label: 'Abbrechen', kind: 'ghost', onClick: () => { res = undefined; } },
@@ -5895,7 +5895,7 @@ function mountBulkRename(view) {
     let zipAll = false;
     const prog = h('div', { class: 'exp-prog' });
     const opt = (ic, title, desc, fn, badge) => h('button', { class: 'exp-opt', onclick: fn }, h('div', { class: 'exp-i' }, icon(ic)), h('div', null, h('b', null, title, badge && h('span', { class: 'badge acc' }, badge)), h('small', null, desc)));
-    const zipBtn = opt('archive', 'ZIP mit umbenannten Kopien', 'Originale bleiben unangetastet. Ohne Kompression, dafür schnell.', async () => {
+    const zipBtn = opt('archive', 'ZIP mit umbenannten Kopien', 'Originale bleiben unangetastet.', async () => {
       const src = zipAll ? st.batch.filter(e => e.checked && e.status !== 'invalid') : ops.map(o => o.e);
       const total = src.reduce((s, e) => s + e.size, 0);
       if (total > 1.8e9) { toast('Zu groß für ein Browser-ZIP (> 1,8 GB). Nimm das Skript.', 'err'); return; }
@@ -5913,12 +5913,12 @@ function mountBulkRename(view) {
       title: 'Exportieren', width: 580,
       sub: writable() ? 'Alternative zum direkten Umbenennen' : 'Nur-Lesen-Modus – der Browser darf hier nicht direkt umbenennen.',
       body: h('div', { class: 'exp' },
-        opt('terminal', 'Windows-Skript (.bat)', `In den Ordner „${name}“ legen und doppelklicken. Braucht keine Admin-Rechte.`, () => download(base + '.bat', makeBat(ops, name), 'text/plain'), 'Empfohlen'),
-        opt('terminal', 'PowerShell-Skript (.ps1)', 'Kann durch Ausführungsrichtlinien blockiert sein.', () => download(base + '.ps1', makePs1(ops, name), 'text/plain')),
-        opt('terminal', 'Shell-Skript (.sh)', 'Für macOS / Linux. Überschreibt nie (mv -n).', () => download(base + '.sh', makeSh(ops), 'text/plain')),
+        opt('terminal', 'Windows-Skript (.bat)', `In „${name}“ legen & doppelklicken – ohne Admin-Rechte.`, () => download(base + '.bat', makeBat(ops, name), 'text/plain'), 'Empfohlen'),
+        opt('terminal', 'PowerShell-Skript (.ps1)', 'Wird manchmal von der IT blockiert.', () => download(base + '.ps1', makePs1(ops, name), 'text/plain')),
+        opt('terminal', 'Shell-Skript (.sh)', 'macOS / Linux · mv -n', () => download(base + '.sh', makeSh(ops), 'text/plain')),
         zipBtn,
         h('div', { class: 'exp-zip' }, h('span', { class: 'hint' }, 'ZIP-Inhalt'), segEl([['changed', 'Nur geänderte'], ['all', 'Alle Dateien']], 'changed', v => { zipAll = v === 'all'; })),
-        opt('table', 'Liste als CSV', 'Alt → Neu zum Dokumentieren, öffnet in Excel.', () => download(base + '.csv', makeCsv(ops), 'text/csv')),
+        opt('table', 'CSV', 'Alt → Neu · Excel', () => download(base + '.csv', makeCsv(ops), 'text/csv')),
         prog),
       actions: [{ label: 'Schließen', kind: 'ghost' }],
     });
@@ -6004,7 +6004,7 @@ function mountWebP(view) {
     h('div', { class: 'wp-lacts' },
       h('button', { class: 'btn sm ghost', onclick: pickImgs }, icon('plus'), 'Bilder'),
       h('button', { class: 'btn sm ghost', onclick: pickDir }, icon('folder'), 'Ordner'),
-      h('button', { class: 'btn sm ghost', title: 'Liste leeren', onclick: () => { if (!running) { items = []; listEl.replaceChildren(); resetResult(); paint(); } } }, icon('trash'), 'Leeren')));
+      h('button', { class: 'btn sm ghost', onclick: () => { if (!running) { items = []; listEl.replaceChildren(); resetResult(); paint(); } } }, icon('trash'), 'Leeren')));
   const files = h('div', { class: 'wp-card wp-files',
     ondragover: e => { if ([...(e.dataTransfer?.items || [])].some(i => i.kind === 'file')) { e.preventDefault(); files.classList.add('over'); } },
     ondragleave: e => { if (!files.contains(e.relatedTarget)) files.classList.remove('over'); },
@@ -6061,7 +6061,7 @@ function mountWebP(view) {
   const qRange = h('input', { type: 'range', class: 'bw-range', min: 1, max: 100, value: opts.quality, style: { '--p': opts.quality + '%' },
     oninput: () => setQuality(+qRange.value) });
   const presets = h('div', { class: 'wp-presets' });
-  const PRESETS = [['Klein', 60], ['Ausgewogen', 82], ['Hoch', 92]];
+  const PRESETS = [['S', 60], ['M', 82], ['L', 92]];
   function setQuality(q) {
     opts.quality = q; saveOpts();
     qVal.textContent = q + ' %'; qRange.value = q; qRange.style.setProperty('--p', q + '%');
@@ -6070,17 +6070,17 @@ function mountWebP(view) {
   }
   const scaleInp = h('input', { type: 'number', class: 'inp wp-num', min: 16, max: 9999, value: opts.scaleVal,
     oninput: () => { opts.scaleVal = Math.max(16, Math.min(9999, +scaleInp.value || 1920)); saveOpts(); resetResult(); } });
-  const scaleSeg = segEl([['off', 'Original'], ['w', 'Max. Breite'], ['h', 'Max. Höhe']], opts.scaleMode, v => { opts.scaleMode = v; scaleInp.disabled = v === 'off'; saveOpts(); resetResult(); });
+  const scaleSeg = segEl([['off', 'Original'], ['w', 'max ↔'], ['h', 'max ↕']], opts.scaleMode, v => { opts.scaleMode = v; scaleInp.disabled = v === 'off'; saveOpts(); resetResult(); });
   scaleInp.disabled = opts.scaleMode === 'off';
   const nameEx = h('div', { class: 'wp-prev' });
   const paintName = () => { const ex = items[0]?.name || 'Mein Foto_01.PNG'; nameEx.replaceChildren(ex, ' → ', h('b', null, outName(ex))); };
-  const suffixInp = h('input', { type: 'text', class: 'inp', placeholder: 'Suffix, z. B. -web', maxlength: 40, spellcheck: false, autocomplete: 'off', value: opts.suffix,
+  const suffixInp = h('input', { type: 'text', class: 'inp', placeholder: 'Suffix: -web', maxlength: 40, spellcheck: false, autocomplete: 'off', value: opts.suffix,
     oninput: () => { opts.suffix = suffixInp.value.trim(); saveOpts(); paintName(); } });
   const swRow = (label, key) => h('label', { class: 'wp-sw' }, h('span', null, label), switchEl(opts[key], v => { opts[key] = v; saveOpts(); paintName(); }));
-  const outSeg = segEl([['zip', 'ZIP-Datei'], ['folder', 'In Ordner speichern']], opts.outMode, v => { opts.outMode = v; saveOpts(); resetResult(); });
+  const outSeg = segEl([['zip', 'ZIP'], ['folder', 'Ordner']], opts.outMode, v => { opts.outMode = v; saveOpts(); resetResult(); });
 
   /* ---------- Start & result ---------- */
-  const goLbl = h('span', null, 'Konvertieren');
+  const goLbl = h('span', null, '→ WebP');
   const goBtn = h('button', { class: 'btn primary block wp-go', onclick: go }, icon('zap'), goLbl);
   const progFill = h('div', { class: 'wp-prog-fill' }), progTxt = h('div', { class: 'wp-prog-txt' });
   const prog = h('div', { class: 'wp-prog', hidden: true }, h('div', { class: 'wp-prog-track' }, progFill), progTxt);
@@ -6093,7 +6093,7 @@ function mountWebP(view) {
     empty.hidden = !!n; listHead.hidden = listEl.hidden = !n;
     countEl.replaceChildren(`${n} ${n === 1 ? 'Bild' : 'Bilder'}`, h('small', null, fmtSize(total)));
     goBtn.disabled = !n || running;
-    goLbl.textContent = n ? `${n} ${n === 1 ? 'Bild' : 'Bilder'} konvertieren` : 'Konvertieren';
+    goLbl.textContent = n ? `${n} → WebP` : '→ WebP';
     paintName();
   }
 
@@ -6128,7 +6128,7 @@ function mountWebP(view) {
       result.replaceChildren(
         h('div', { class: 'wp-res-top' }, h('span', { class: 'wp-res-big' + (p < 0 ? ' bad' : '') }, (p >= 0 ? '−' : '+') + Math.abs(p) + ' %'),
           h('div', null, h('b', null, `${fmtSize(before)} → ${fmtSize(after)}`), h('small', null, `${n} ${n === 1 ? 'Bild' : 'Bilder'} ${opts.outMode === 'folder' ? 'gespeichert' : 'konvertiert'}` + (failed ? ` · ${failed} Fehler` : '')))),
-        zipBlob ? h('button', { class: 'btn primary', onclick: () => download('webp-bilder.zip', zipBlob) }, icon('download'), `ZIP herunterladen (${fmtSize(zipBlob.size)})`) : null);
+        zipBlob ? h('button', { class: 'btn primary', onclick: () => download('webp-bilder.zip', zipBlob) }, icon('download'), `ZIP · ${fmtSize(zipBlob.size)}`) : null);
       result.hidden = false;
       toast(`${n} ${n === 1 ? 'Bild' : 'Bilder'} ${opts.outMode === 'folder' ? 'gespeichert' : 'konvertiert'}`, 'ok');
     } else if (!files.length) toast('Kein Bild konnte konvertiert werden.', 'err');
@@ -6158,14 +6158,14 @@ function mountWebP(view) {
   view.append(h('div', { class: 'wp' }, h('div', { class: 'wp-in' },
     h('div', { class: 'wp-hd' },
       h('div', { class: 'wp-logo' }, icon('compress')),
-      h('div', null, h('h2', null, 'WebP Converter'), h('p', null, 'Bilder stapelweise verkleinern und ins WebP-Format umwandeln')),
-      h('div', { class: 'wp-priv', title: 'EXIF, GPS-Standort, Kameradaten und XMP landen nicht im WebP. Die Bildausrichtung bleibt erhalten. Alles passiert lokal.' }, icon('lock'), 'Metadaten werden entfernt')),
+      h('div', null, h('h2', null, 'WebP Converter'), h('p', null, 'JPG · PNG · GIF · AVIF → WebP')),
+      h('div', { class: 'wp-priv', title: 'EXIF, GPS & XMP ✕ · Ausrichtung bleibt' }, icon('lock'), 'Ohne EXIF & GPS')),
     h('div', { class: 'wp-grid' },
       files,
       h('div', { class: 'wp-card wp-set' },
         sec(['Qualität', qVal], qRange, presets),
         sec('Größe begrenzen', h('div', { class: 'wp-row2' }, scaleSeg, scaleInp, h('span', { class: 'hint' }, 'px'))),
-        sec('Dateinamen', swRow('Kleinbuchstaben', 'lower'), swRow('Leerzeichen & _ → -', 'dash'), suffixInp, nameEx),
+        sec('Dateinamen', swRow('Abc → abc', 'lower'), swRow('Leerzeichen & _ → -', 'dash'), suffixInp, nameEx),
         sec('Ausgabe', outSeg),
         h('div', { class: 'wp-sec' }, goBtn, prog))))));
   setQuality(opts.quality); resetResult(); paint();
@@ -6457,7 +6457,7 @@ void main() {
   function exportCube(l) {
     const { n, f } = lutData(l);
     download(slug(l.name) + '.cube', cubeText(l.name, f, n), 'text/plain');
-    toast(`${slug(l.name)}.cube gespeichert – funktioniert in Premiere, DaVinci, Photoshop, Lightroom & Co.`, 'ok', { ms: 3500 });
+    toast(`${slug(l.name)}.cube ✓ · Premiere, DaVinci, Photoshop, Lightroom …`, 'ok', { ms: 3500 });
   }
 
   /* ---------- Preview ---------- */
@@ -6526,8 +6526,8 @@ void main() {
     const l = cur();
     selActs.replaceChildren(...[
       !l.builtin && l.type === 'params' ? h('button', { class: 'btn sm' + (st.editing === l.id ? ' primary' : ''), onclick: () => { st.editing = st.editing === l.id ? null : l.id; renderLuts(); renderEditor(); } }, icon('sliders'), st.editing === l.id ? 'Fertig' : 'Bearbeiten') : null,
-      l.type === 'params' ? h('button', { class: 'btn sm ghost', title: 'Als eigene LUT kopieren und anpassen', onclick: () => newLut(l) }, icon('copy'), 'Kopie bearbeiten') : null,
-      h('button', { class: 'btn sm ghost', title: 'Als .cube-Datei speichern', onclick: () => exportCube(l) }, icon('download'), '.cube'),
+      l.type === 'params' ? h('button', { class: 'btn sm ghost', onclick: () => newLut(l) }, icon('copy'), 'Kopie bearbeiten') : null,
+      h('button', { class: 'btn sm ghost', onclick: () => exportCube(l) }, icon('download'), '.cube'),
       !l.builtin ? h('button', { class: 'mini', title: 'Löschen', onclick: () => deleteLut(l) }, icon('trash')) : null].filter(Boolean));
     selName.textContent = l.name;
   }
@@ -6558,7 +6558,7 @@ void main() {
       nameIn,
       sl('exp', 'Belichtung', -2, 2, .05, v => (v > 0 ? '+' : '') + v.toFixed(2).replace('.', ',') + ' EV'),
       sl('con', 'Kontrast', -.8, 1, .01, pm), sl('sat', 'Sättigung', -1, 1, .01, pm), sl('vib', 'Dynamik', -1, 1, .01, pm),
-      sl('temp', 'Wärme', -1, 1, .01, pm), sl('tint', 'Tönung (Grün ↔ Magenta)', -1, 1, .01, pm),
+      sl('temp', 'Wärme', -1, 1, .01, pm), sl('tint', 'Grün ↔ Magenta', -1, 1, .01, pm),
       sl('hue', 'Farbton', -180, 180, 1, v => (v > 0 ? '+' : '') + v + '°'), sl('fade', 'Verblassen', 0, .5, .01, v => Math.round(v * 200)),
       h('div', { class: 'wp-lbl', style: { marginTop: '4px' } }, 'Farbe in Schatten & Lichtern'),
       tone('sh', 'shA', 'Schatten'), tone('hl', 'hlA', 'Lichter'), sl('bal', 'Balance', -1, 1, .01, pm));
@@ -6575,7 +6575,7 @@ void main() {
   qVal.textContent = st.q + ' %'; qIn.style.setProperty('--p', (st.q - 50) * 2 + '%');
   const qSec = h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Qualität', qVal), qIn);
   const sufIn = h('input', { class: 'inp', value: st.suffix, placeholder: '', spellcheck: false, oninput: () => { st.suffix = sufIn.value; persist(); paintExport(); } });
-  const outSeg = segEl([['zip', 'ZIP-Datei'], ['folder', 'In Ordner speichern']], st.out, v => { st.out = v; persist(); });
+  const outSeg = segEl([['zip', 'ZIP'], ['folder', 'Ordner']], st.out, v => { st.out = v; persist(); });
   const namePrev = h('div', { class: 'wp-prev' });
   const goBtn = h('button', { class: 'btn primary block wp-go', onclick: () => runExport() });
   const progFill = h('div', { class: 'wp-prog-fill' }), progTxt = h('div', { class: 'wp-prog-txt' });
@@ -6589,7 +6589,7 @@ void main() {
     namePrev.replaceChildren('bild.jpg → ', h('b', null, outName('bild.jpg')));
     const n = st.items.length;
     goBtn.disabled = !n || st.busy;
-    goBtn.replaceChildren(icon('zap'), n ? `${n} ${n === 1 ? 'Bild' : 'Bilder'} exportieren` : 'Erst Bilder hinzufügen');
+    goBtn.replaceChildren(icon('zap'), n ? `${n} → ${ext().toUpperCase()}` : 'Erst Bilder hinzufügen');
   }
   async function runExport() {
     if (st.busy || !st.items.length) return;
@@ -6628,14 +6628,14 @@ void main() {
   }
 
   /* ---------- Layout ---------- */
-  const importBtn = h('button', { class: 'btn sm ghost', title: '.cube-Datei(en) importieren – oder einfach reinziehen', onclick: () => {
+  const importBtn = h('button', { class: 'btn sm ghost', onclick: () => {
     const i = h('input', { type: 'file', multiple: true, accept: '.cube', style: { display: 'none' }, onchange: async () => { for (const f of i.files) await importCube(f); i.remove(); } });
     document.body.append(i); i.click();
-  } }, icon('upload'), 'Importieren');
+  } }, icon('upload'), '.cube');
   const main = h('div', { class: 'wp-card lw-main' },
     h('div', { class: 'wp-lhead' }, h('span', { class: 'wp-count' }, countEl), infoEl,
       h('div', { class: 'wp-lacts' },
-        h('button', { class: 'btn sm ghost' + (st.compare ? ' on' : ''), title: 'Vorher/Nachher-Vergleich', onclick: e => { st.compare = !st.compare; e.currentTarget.classList.toggle('on', st.compare); queue(); } }, icon('eye'), 'Vergleich'),
+        h('button', { class: 'btn sm ghost' + (st.compare ? ' on' : ''), onclick: e => { st.compare = !st.compare; e.currentTarget.classList.toggle('on', st.compare); queue(); } }, icon('eye'), 'Vergleich'),
         h('button', { class: 'btn sm ghost', onclick: pickImages }, icon('image'), 'Bilder'),
         h('button', { class: 'btn sm ghost', onclick: openFolder }, icon('folder'), 'Ordner'),
         clearBtn)),
@@ -6649,14 +6649,14 @@ void main() {
     h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Stärke', amtVal), amtIn),
     h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Format'), fmtSeg),
     qSec,
-    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Dateiname-Zusatz'), sufIn, namePrev),
+    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Suffix'), sufIn, namePrev),
     h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Ausgabe'), outSeg),
     goBtn, prog);
   const wrap = h('div', { class: 'wp lw' }, h('div', { class: 'wp-in lw-in' },
     h('div', { class: 'wp-hd' },
       h('div', { class: 'wp-logo' }, icon('lut')),
-      h('div', null, h('h2', null, 'LUT-Werk'), h('p', null, 'Farb-Looks (3D-LUTs) erstellen, importieren und auf viele Bilder anwenden')),
-      h('span', { class: 'wp-priv', title: 'Alles passiert auf deinem Rechner – nichts wird hochgeladen.' }, icon('lock'), 'Alles lokal')),
+      h('div', null, h('h2', null, 'LUT-Werk'), h('p', null, 'Farb-Looks · 3D-LUT · .cube')),
+      h('span', { class: 'wp-priv' }, icon('lock'), 'Offline')),
     h('div', { class: 'wp-grid lw-grid' }, main, side)));
   view.append(wrap);
 
@@ -6899,8 +6899,8 @@ function mountSortierwerk(view) {
   const save = () => Store.set('sortierwerk', opt);
   const LEVELS = [['year', 'Jahr'], ['month', 'Monat'], ['day', 'Tag'], ['ym', 'Jahr-Monat'], ['date', 'Datum'], ['camera', 'Kamera'], ['orient', 'Ausrichtung'], ['type', 'Dateityp']];
   const PRESETS = [
-    ['Jahr / Monat', ['year', 'month']], ['Jahr / Monat / Tag', ['year', 'month', 'day']], ['Ein Ordner pro Tag', ['date']],
-    ['Kamera', ['camera']], ['Kamera / Jahr', ['camera', 'year']], ['Hoch- / Querformat', ['orient']], ['Dateityp', ['type']],
+    ['2024 / 03', ['year', 'month']], ['2024 / 03 / 15', ['year', 'month', 'day']], ['2024-03-15', ['date']],
+    ['Kamera', ['camera']], ['Kamera / 2024', ['camera', 'year']], ['▯ / ▭', ['orient']], ['.jpg / .mp4', ['type']],
   ];
   const SRC = { exif: ['EXIF', 'Aufnahmedatum aus den Kameradaten'], video: ['Video', 'Aufnahmedatum aus dem Video'], name: ['Name', 'Datum aus dem Dateinamen'], file: ['Datei', 'Änderungsdatum der Datei (Notlösung)'] };
   const ORIENT = { port: 'Hochformat', land: 'Querformat', square: 'Quadratisch', '': 'Unbekannt' };
@@ -7309,9 +7309,9 @@ function mountSortierwerk(view) {
         h('span', null, 'oder einen Ordner hierher ziehen'),
         h('div', { class: 'wp-empty-btns' },
           h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), 'Ordner öffnen'),
-          hasPicker ? h('button', { class: 'btn ghost', title: 'Falls der Browser keinen Schreibzugriff erlaubt (z. B. Firmen-PC): Ordner nur lesen, am Ende ein Skript ausführen', onclick: pickReadOnly }, 'Nur lesen') : null),
-        h('small', null, 'Sortiert nach Aufnahmedatum (EXIF), Kamera, Hoch-/Querformat oder Dateityp – direkt auf der Festplatte. Vorher siehst du genau, wohin jede Datei wandert.'),
-        !hasPicker ? h('small', { class: 'so-warn' }, 'Dein Browser erlaubt keinen Schreibzugriff auf Ordner. Die App liest den Ordner nur und gibt dir am Ende ein Skript, das die Dateien verschiebt. Direkt geht es in Chrome oder Edge.') : null));
+          hasPicker ? h('button', { class: 'btn ghost', title: 'Ohne Schreibzugriff (z. B. Firmen-PC) – am Ende gibt’s ein Skript', onclick: pickReadOnly }, 'Nur lesen') : null),
+        h('small', null, 'Mit Vorschau – du siehst vorher, wohin jede Datei wandert.'),
+        !hasPicker ? h('small', { class: 'so-warn' }, 'Kein Schreibzugriff in diesem Browser – am Ende gibt’s ein Skript. Direkt geht es in Chrome oder Edge.') : null));
     } else if (st.phase === 'scan') {
       scanTxt = h('div', { class: 'so-scan-t' }); scanFill = h('div', { class: 'wp-prog-fill' });
       main.replaceChildren(head(), h('div', { class: 'so-scan' }, h('div', { class: 'pfw-spin' }), scanTxt, h('div', { class: 'wp-prog-track so-scan-bar' }, scanFill)));
@@ -7346,16 +7346,16 @@ function mountSortierwerk(view) {
         h('div', { class: 'so-lvls' }, opt.levels.map(levelSel), opt.levels.length < 4 ? h('button', { class: 'so-lvl-add', title: 'Weitere Ordner-Ebene', disabled: lock, onclick: () => { opt.levels.push(opt.levels.includes('camera') ? 'type' : 'camera'); save(); paintSide(); replan(); } }, icon('plus')) : null),
         h('div', { class: 'wp-prev so-ex' }, icon('folder'), ' ', h('b', null, ex), ' / IMG_0042.jpg')),
       usesNames ? h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Ordnernamen'),
-        segEl([['short', 'Kurz'], ['name', 'Monatsname'], ['full', 'Mit Jahr']], opt.names, v => { opt.names = v; save(); paintSide(); replan(); })) : null,
+        segEl([['short', '03'], ['name', '03 März'], ['full', '2024-03']], opt.names, v => { opt.names = v; save(); paintSide(); replan(); })) : null,
       h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Dateien'),
         segEl([['media', 'Fotos & Videos'], ['all', 'Alle Dateien']], opt.scope, v => { opt.scope = v; save(); replan(); })),
       h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Aktion'),
         segEl([['move', 'Verschieben'], ['copy', 'Kopieren']], opt.action, v => { opt.action = v; save(); paintSide(); replan(); })),
       h('div', { class: 'wp-sec so-sws' },
-        sw('Unterordner einbeziehen', 'recursive', 'Auch Dateien in Unterordnern einsortieren'),
+        sw('Unterordner einbeziehen', 'recursive'),
         usesDate ? sw('Dateidatum als Notlösung', 'fileDate', 'Sonst landen Dateien ohne Aufnahmedatum in „Ohne Datum“') : null,
         sw('Begleitdateien mitnehmen', 'sidecar', '.xmp, .aae, .thm wandern mit ihrem Foto'),
-        opt.recursive && opt.action === 'move' ? sw('Leere Ordner aufräumen', 'prune', 'Ordner, die nach dem Verschieben leer sind, löschen') : null),
+        opt.recursive && opt.action === 'move' ? sw('Leere Ordner löschen', 'prune') : null),
       h('div', { class: 'wp-sec' },
         h('button', { class: 'btn primary wp-go', disabled: !n || lock, onclick: confirmRun },
           icon(st.readOnly ? 'download' : 'sortierwerk'), st.readOnly ? 'Skript erstellen' : n ? `${fmtN(p.main)} Dateien ${opt.action === 'copy' ? 'kopieren' : 'sortieren'}` : 'Sortieren'),
@@ -7366,8 +7366,8 @@ function mountSortierwerk(view) {
   const wrap = h('div', { class: 'wp so' }, h('div', { class: 'wp-in so-in' },
     h('div', { class: 'wp-hd' },
       h('div', { class: 'wp-logo' }, icon('sortierwerk')),
-      h('div', null, h('h2', null, 'Sortierwerk'), h('p', null, 'Fotoordner automatisch in Unterordner sortieren – nach Datum, Kamera, Format oder Dateityp')),
-      h('span', { class: 'wp-priv', title: 'Die Dateien werden direkt auf deinem Rechner verschoben – nichts wird hochgeladen.' }, icon('lock'), 'Alles lokal')),
+      h('div', null, h('h2', null, 'Sortierwerk'), h('p', null, 'Fotos sortieren nach Datum, Kamera, Format oder Dateityp')),
+      h('span', { class: 'wp-priv' }, icon('lock'), 'Offline')),
     h('div', { class: 'wp-grid so-grid' }, main, side)));
   view.append(wrap);
 
@@ -7509,8 +7509,8 @@ function mountPdfWerk(view) {
       ondragover: e => { if (!dragging) return; e.preventDefault(); const r = p.el.getBoundingClientRect(); markDrop(p, e.clientX > r.left + r.width / 2); },
       ondrop: e => { if (!dragging) return; e.preventDefault(); e.stopPropagation(); const r = p.el.getBoundingClientRect(); moveTo(p, e.clientX > r.left + r.width / 2); } },
       h('div', { class: 'pfw-thumb-box' }, p.thumb, h('span', { class: 'pfw-check' }, icon('check')),
-        h('div', { class: 'pfw-acts' }, act('rotl', 'Links drehen', () => rotate([p], -90)), act('rotr', 'Rechts drehen', () => rotate([p], 90)), act('trash', 'Seite entfernen', () => remove([p])))),
-      h('div', { class: 'pfw-cap' }, p.no, h('span', { class: 'pfw-src', title: src.name }, src.kind === 'img' ? 'Bild' : `S. ${index + 1}`)));
+        h('div', { class: 'pfw-acts' }, act('rotl', '−90°', () => rotate([p], -90)), act('rotr', '+90°', () => rotate([p], 90)), act('trash', 'Seite entfernen', () => remove([p])))),
+      h('div', { class: 'pfw-cap' }, p.no, h('span', { class: 'pfw-src', title: src.name }, src.kind === 'img' ? 'Bild' : `#${index + 1}`)));
     pages.push(p);
   }
 
@@ -7592,13 +7592,13 @@ function mountPdfWerk(view) {
     h('b', null, 'PDFs oder Bilder hierher ziehen'),
     h('span', null, 'oder'),
     h('button', { class: 'btn primary', onclick: pick }, icon('plus'), 'Dateien auswählen'),
-    h('small', null, 'Mehrere PDFs werden zu einem Dokument zusammengeführt. Bilder werden zu A4-Seiten.'));
+    h('small', null, 'PDF + PDF → 1 PDF · JPG/PNG → A4'));
   const head = h('div', { class: 'pfw-lhead' }, countEl,
     h('div', { class: 'pfw-lacts' },
       h('button', { class: 'btn sm ghost', onclick: pick }, icon('plus'), 'Dateien'),
-      h('button', { class: 'btn sm ghost', title: 'Alle bzw. keine auswählen', onclick: () => { const all = pages.every(p => p.sel); pages.forEach(p => { p.sel = !all; }); paint(); } }, icon('check'), 'Alle'),
-      h('button', { class: 'btn sm ghost', title: 'Reihenfolge umkehren', onclick: () => { pages.reverse(); paint(); } }, icon('down'), 'Umkehren'),
-      h('button', { class: 'btn sm ghost', title: 'Alles entfernen', onclick: () => remove([...pages]) }, icon('trash'), 'Leeren')));
+      h('button', { class: 'btn sm ghost', onclick: () => { const all = pages.every(p => p.sel); pages.forEach(p => { p.sel = !all; }); paint(); } }, icon('check'), 'Alle'),
+      h('button', { class: 'btn sm ghost', onclick: () => { pages.reverse(); paint(); } }, icon('down'), 'Umkehren'),
+      h('button', { class: 'btn sm ghost', onclick: () => remove([...pages]) }, icon('trash'), 'Leeren')));
   const main = h('div', { class: 'pfw-card pfw-main',
     ondragover: e => { if (!dragging && [...(e.dataTransfer?.items || [])].some(i => i.kind === 'file')) { e.preventDefault(); main.classList.add('over'); } },
     ondragleave: e => { if (!main.contains(e.relatedTarget)) main.classList.remove('over'); },
@@ -7608,14 +7608,14 @@ function mountPdfWerk(view) {
   // Sidebar
   const selInfo = h('div', { class: 'pfw-selinfo' });
   const selBtns = [
-    h('button', { class: 'btn sm', onclick: () => rotate(selected(), -90) }, icon('rotl'), 'Links'),
-    h('button', { class: 'btn sm', onclick: () => rotate(selected(), 90) }, icon('rotr'), 'Rechts'),
+    h('button', { class: 'btn sm', onclick: () => rotate(selected(), -90) }, icon('rotl'), '−90°'),
+    h('button', { class: 'btn sm', onclick: () => rotate(selected(), 90) }, icon('rotr'), '+90°'),
     h('button', { class: 'btn sm', onclick: () => remove(selected()) }, icon('trash'), 'Entfernen')];
-  const selSave = h('button', { class: 'btn block', onclick: saveSel }, icon('download'), 'Auswahl als PDF');
+  const selSave = h('button', { class: 'btn block', onclick: saveSel }, icon('download'), 'Auswahl → PDF');
   const nameInp = h('input', { class: 'inp', value: opts.name, placeholder: 'Dateiname', spellcheck: false, autocomplete: 'off', oninput: () => { opts.name = nameInp.value; saveOpts(); } });
   const everyInp = h('input', { class: 'inp pfw-every', type: 'number', min: 1, max: 999, value: opts.every, oninput: () => { opts.every = Math.max(1, Math.min(999, Math.round(+everyInp.value) || 1)); saveOpts(); paint(); } });
   const saveBtn = h('button', { class: 'btn primary block pfw-go', onclick: saveAll }, icon('download'), h('span'));
-  const splitOne = h('button', { class: 'btn block', onclick: () => saveSplit(1) }, icon('layers'), 'Jede Seite einzeln (ZIP)');
+  const splitOne = h('button', { class: 'btn block', onclick: () => saveSplit(1) }, icon('layers'), '1 Seite = 1 PDF · ZIP');
   const splitN = h('button', { class: 'btn', onclick: () => saveSplit(opts.every) }, 'Teilen');
   const side = h('div', { class: 'pfw-card pfw-side' },
     h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, 'Auswahl'), selInfo, h('div', { class: 'pfw-row' }, ...selBtns), selSave),
@@ -7639,9 +7639,9 @@ function mountPdfWerk(view) {
       if (grid.children[i] !== p.el) grid.insertBefore(p.el, grid.children[i] || null);
       if (!p.rendered && p.src.kind === 'pdf') io.observe(p.el);
     });
-    selInfo.textContent = sel ? `${sel} ${sel === 1 ? 'Seite' : 'Seiten'} ausgewählt` : 'Seiten anklicken (⇧ für Bereiche)';
+    selInfo.textContent = sel ? `${sel} ${sel === 1 ? 'Seite' : 'Seiten'} ausgewählt` : 'Klick · ⇧ + Klick';
     selBtns.forEach(b => { b.disabled = !sel || busy; }); selSave.disabled = !sel || busy;
-    saveBtn.lastChild.textContent = n > 1 && sources.length > 1 ? 'Zusammenführen & speichern' : 'Als PDF speichern';
+    saveBtn.lastChild.textContent = n > 1 && sources.length > 1 ? 'Zusammenführen → PDF' : 'PDF';
     saveBtn.disabled = splitOne.disabled = splitN.disabled = !n || busy;
     everyInp.disabled = !n || busy;
   }
@@ -7650,7 +7650,7 @@ function mountPdfWerk(view) {
     h('div', { class: 'pfw-hd' },
       h('div', { class: 'pfw-logo' }, icon('files')),
       h('h2', null, 'PDF-Werk'),
-      h('div', { class: 'pfw-priv', title: 'Deine PDFs verlassen nie diesen Computer – alles wird direkt im Browser verarbeitet, auch ohne Internet.' }, icon('lock'), 'Alles lokal')),
+      h('div', { class: 'pfw-priv' }, icon('lock'), 'Offline')),
     h('div', { class: 'pfw-grid2' }, main, side))));
   paint();
   // Prepare the libraries in the background already so the first add is faster
@@ -8043,7 +8043,7 @@ function mountEntscheidung(view) {
       h('label', { class: 'chk-row' }, h('span', null, 'Gezogene Option danach entfernen', h('small', { class: 'hint', style: { display: 'block' } }, 'Für Ausscheide-Runden')), switchEl(mst.remove, v => { mst.remove = v; saveM(); })),
       h('label', { class: 'chk-row' }, 'Geräusche', switchEl(mst.sound, v => { mst.sound = v; saveM(); })),
       h('div', { class: 'mc-hwrap' }, h('div', { class: 'ez-reslbl' }, 'Zuletzt entschieden'), histEl));
-    const wrap = h('div', { class: 'mc' }, h('div', { class: 'mc-stage' }, cvWrap, goBtn, h('p', { class: 'hint' }, 'Hebel oder Kuppel anklicken · Leertaste')), side);
+    const wrap = h('div', { class: 'mc' }, h('div', { class: 'mc-stage' }, cvWrap, goBtn, h('p', { class: 'hint' }, 'Klick · Leertaste')), side);
     panel.append(wrap);
     syncBalls(); renderList(); renderHist(); paintBtn();
     for (let i = 0; i < 240; i++) physics(1 / 120, false);   // let the capsules settle beforehand
@@ -8142,7 +8142,7 @@ function mountEntscheidung(view) {
       h('div', { class: 'cn-bar' }, bar),
       histEl,
       h('button', { class: 'btn sm ghost', onclick: () => { cst.k = cst.z = 0; cst.hist = []; saveC(); paintStats(); big.classList.remove('on'); } }, icon('undo'), 'Statistik zurücksetzen'));
-    panel.append(h('div', { class: 'cn' }, scene, big, btn, h('p', { class: 'hint' }, 'Münze anklicken oder Leertaste'), stats));
+    panel.append(h('div', { class: 'cn' }, scene, big, btn, h('p', { class: 'hint' }, 'Klick · Leertaste'), stats));
     paintStats();
     coinKey = e => { if (/^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(e.target.tagName) || e.ctrlKey || e.metaKey) return; if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); } };
   }
@@ -8167,7 +8167,7 @@ function mountEntscheidung(view) {
     const ta = h('textarea', { class: 'oc-in', rows: 1, placeholder: 'Frag das Orakel … (oder einfach senden)', maxLength: 300,
       oninput: () => { ta.style.height = 'auto'; ta.style.height = Math.min(140, ta.scrollHeight) + 'px'; },
       onkeydown: e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } } });
-    const sendBtn = h('button', { class: 'oc-send', title: 'Senden (Enter)', onclick: () => send() }, icon('up'));
+    const sendBtn = h('button', { class: 'oc-send', title: 'Enter', onclick: () => send() }, icon('up'));
     let busy = false;
     const orb = () => h('span', { class: 'oc-orb' });
     function bubble(m) {
@@ -9330,7 +9330,7 @@ function mountBildwerk(view) {
   const ups = [];
   const sync = () => { ups.forEach(f => f()); persist(); };
 
-  const toolsEl = h('div', { class: 'bw-tools' }, [['move', 'hand', 'Ansehen & Ebenen verschieben (V)'], ['crop', 'crop', 'Zuschneiden (C)'], ['pick', 'pipette', 'Hintergrundfarbe aufnehmen (I)'], ['wand', 'wand', 'Zauberstab – Fläche mit einem Klick entfernen, Alt = zurückholen (W)'], ['erase', 'eraser', 'Maske von Hand nachbessern: wegnehmen & hinzufügen (E) · X = umschalten · Alt = kurz umkehren'], ['paint', 'brush', 'Pinsel – malen auf eigener Ebene (B)']]
+  const toolsEl = h('div', { class: 'bw-tools' }, [['move', 'hand', 'Verschieben (V)'], ['crop', 'crop', 'Zuschneiden (C)'], ['pick', 'pipette', 'Pipette (I)'], ['wand', 'wand', 'Zauberstab (W) · Alt = zurückholen'], ['erase', 'eraser', 'Maske (E) · X = umschalten · Alt = umkehren'], ['paint', 'brush', 'Pinsel – malen auf eigener Ebene (B)']]
     .map(([t, ic, ti]) => h('button', { class: t === st.tool ? 'on' : '', dataset: { t }, title: ti, onclick: () => setTool(t) }, icon(ic))));
   // Brush options (only visible with the eraser)
   const brushSeg = segEl([['erase', '− Wegnehmen'], ['restore', '+ Hinzufügen']], st.brush.restore ? 'restore' : 'erase', v => { st.brush.restore = v === 'restore'; sync(); queue(); });
@@ -9342,10 +9342,10 @@ function mountBildwerk(view) {
     return [inp, val];
   };
   const paintCol = h('input', { type: 'color', class: 'bw-color', title: 'Pinselfarbe', value: st.paintColor, oninput: e => { st.paintColor = e.target.value; persist(); queue(); } });
-  const sizeLbl = h('label', { title: 'Pinselgröße ( [ und ] )' }, 'Größe', ...brushRange('size', 2, 300, ' px'));
-  const hardLbl = h('label', { title: 'Weiche oder harte Kante' }, 'Härte', ...brushRange('hard', 0, 100, ' %'));
-  const wtolLbl = h('label', { title: 'Wie ähnlich die Farben sein müssen' }, 'Toleranz', ...brushRange('wtol', 1, 100, ''));
-  const redBtn = h('button', { class: 'btn sm bw-red', title: 'Entferntes rot über dem Original zeigen (M)', onclick: () => { st.redMask = !st.redMask; sync(); draw(); } }, 'Rot zeigen');
+  const sizeLbl = h('label', { title: '[ ]' }, 'Größe', ...brushRange('size', 2, 300, ' px'));
+  const hardLbl = h('label', null, 'Härte', ...brushRange('hard', 0, 100, ' %'));
+  const wtolLbl = h('label', null, 'Toleranz', ...brushRange('wtol', 1, 100, ''));
+  const redBtn = h('button', { class: 'btn sm bw-red', title: 'M', onclick: () => { st.redMask = !st.redMask; sync(); draw(); } }, 'Rot zeigen');
   const brushEl = h('div', { class: 'bw-brush' }, brushSeg, paintCol, sizeLbl, hardLbl, wtolLbl, redBtn);
   ups.push(() => {
     brushEl.style.display = st.tool === 'erase' || st.tool === 'paint' || st.tool === 'wand' ? '' : 'none';
@@ -9359,7 +9359,7 @@ function mountBildwerk(view) {
   });
   // "Before": press and hold to show the original (also key O)
   const peekOn = v => { if (peek === v || !st.src) return; peek = v; peekBtn.classList.toggle('on', v); if (st.tool !== 'crop') draw(); };
-  const peekBtn = h('button', { class: 'btn sm bw-peek', title: 'Gedrückt halten = Original zeigen (O)',
+  const peekBtn = h('button', { class: 'btn sm bw-peek', title: 'O',
     onpointerdown: e => { e.preventDefault(); peekOn(true); }, onpointerup: () => peekOn(false), onpointerleave: () => peekOn(false) }, icon('eye'), 'Vorher');
   ups.push(() => { peekBtn.style.display = st.tool === 'crop' ? 'none' : ''; });
   const bgsEl = h('div', { class: 'bw-bgs' }, [['checker', 'Transparenz-Raster'], ['light', 'Weiß'], ['dark', 'Schwarz']].map(([b, ti]) =>
@@ -9377,7 +9377,7 @@ function mountBildwerk(view) {
   ups.push(() => { if (!st.src) return; fileT.firstChild.textContent = st.name; fileT.lastChild.textContent = `${st.src.width} × ${st.src.height} px · ${fmtSize(st.fsize)}`; });
   const navT = h('div', { class: 'bw-nav-t' });
   const prevBtn = h('button', { class: 'mini boxed', title: 'Vorheriges Bild (←)', onclick: () => step(-1) }, icon('chevl'));
-  const nextBtn = h('button', { class: 'mini boxed', title: 'Nächstes Bild (→)', onclick: () => step(1) }, icon('chevr'));
+  const nextBtn = h('button', { class: 'mini boxed', title: '→', onclick: () => step(1) }, icon('chevr'));
   const keepSw = h('span', { class: 'sw' }, h('input', { type: 'checkbox', onchange: e => { st.keepLayers = e.target.checked; sync(); } }), h('span'));
   const navEl = h('div', { class: 'bw-nav-wrap', style: { display: 'flex', flexDirection: 'column', gap: '10px' } },
     h('div', { class: 'bw-nav' }, prevBtn, navT, nextBtn),
@@ -9393,8 +9393,8 @@ function mountBildwerk(view) {
   });
   const pFile = h('section', { class: 'panel' }, h('div', { class: 'panel-b', style: { paddingTop: '14px' } },
     h('div', { class: 'src-chip' }, h('div', { class: 'fi' }, icon('image')), fileT,
-      h('button', { class: 'mini', title: 'Anderes Bild öffnen (Strg+O)', onclick: openFile }, icon('image')),
-      h('button', { class: 'mini', title: 'Ordner öffnen – Bild für Bild durchgehen', onclick: openFolder }, icon('folder')),
+      h('button', { class: 'mini', title: 'Strg+O', onclick: openFile }, icon('image')),
+      h('button', { class: 'mini', title: 'Ordner', onclick: openFolder }, icon('folder')),
       h('button', { class: 'mini', title: 'Schließen', onclick: closeImg }, icon('x'))),
     navEl));
 
@@ -9413,8 +9413,8 @@ function mountBildwerk(view) {
   const cropStart = h('button', { class: 'btn sm', onclick: () => setTool('crop') }, icon('crop'), 'Rahmen');
   ups.push(() => { const on = st.tool === 'crop'; cropDone.style.display = on ? '' : 'none'; cropStart.style.display = on ? 'none' : ''; });
   const pCrop = panel('crop', 'Zuschneiden', h('div', { class: 'panel-actions' },
-    h('button', { class: 'mini', title: 'Links drehen', onclick: () => rotate('l') }, icon('rotl')),
-    h('button', { class: 'mini', title: 'Rechts drehen', onclick: () => rotate('r') }, icon('rotr')),
+    h('button', { class: 'mini', title: '−90°', onclick: () => rotate('l') }, icon('rotl')),
+    h('button', { class: 'mini', title: '+90°', onclick: () => rotate('r') }, icon('rotr')),
     h('button', { class: 'mini', title: 'Spiegeln', onclick: () => rotate('flip') }, icon('flip'))),
     ratiosEl,
     h('div', { class: 'bw-r4' }, cropInps.map((inp, i) => h('div', { class: 'bw-num' }, h('span', null, 'XYBH'[i]), inp))),
@@ -9448,7 +9448,7 @@ function mountBildwerk(view) {
     lockBtn.classList.toggle('on', st.size.lock);
     lockBtn.replaceChildren(icon(st.size.lock ? 'lock' : 'unlock'));
     scaleInfo.replaceChildren(h('span', null, 'Ausgabe ', h('b', null, `${W} × ${H} px`)),
-      h('span', { class: pct > 100.5 ? 'up' : '' }, pct > 100.5 ? `↑ ${Math.round(pct)} % hochskaliert` : `${Math.round(pct)} %`));
+      h('span', { class: pct > 100.5 ? 'up' : '' }, pct > 100.5 ? `↑ ${Math.round(pct)} %` : `${Math.round(pct)} %`));
   });
   const fitOrQueue = () => { if (st.tool === 'crop') return; st.fitted ? fit() : queue(); };
   const sizeChips = h('div', { class: 'bw-ratios' },
@@ -9507,8 +9507,8 @@ function mountBildwerk(view) {
     h('div', { class: 'field bw-keep' }, h('label', null, 'Hintergrundfarbe'), h('div', { class: 'bw-row' }, colsEl, h('div', { class: 'sp' }), pickBtn)),
     h('div', { class: 'field' }, modeSeg, modeHint),
     h('div', { class: 'bw-row bw-keep', style: { flexWrap: 'wrap' } },
-      h('button', { class: 'btn sm', title: 'Klick auf eine Fläche entfernt sie (W)', onclick: () => { setTool('wand'); sync(); } }, icon('wand'), 'Zauberstab'),
-      h('button', { class: 'btn sm', title: 'Maske mit dem Pinsel nachbessern – wegnehmen & hinzufügen (E)', onclick: () => { st.sel = 0; st.redMask = true; setTool('erase'); sync(); draw(); } }, icon('eraser'), 'Maske nachbessern')),
+      h('button', { class: 'btn sm', title: 'W', onclick: () => { setTool('wand'); sync(); } }, icon('wand'), 'Zauberstab'),
+      h('button', { class: 'btn sm', title: 'E', onclick: () => { st.sel = 0; st.redMask = true; setTool('erase'); sync(); draw(); } }, icon('eraser'), 'Maske nachbessern')),
     slider('Toleranz', 'tol', 0, 100, 1, '', 'wie ähnlich'),
     slider('Weichheit', 'soft', 0, 50, 1, '', 'Übergang'),
     slider('Kante', 'shift', -10, 10, 1, ' px', '− enger · + weiter'),
@@ -9517,7 +9517,7 @@ function mountBildwerk(view) {
   ups.push(() => {
     bgSwitch.firstChild.checked = st.bg.on;
     pBg.classList.toggle('bw-off', !st.bg.on);
-    modeHint.textContent = st.bg.mode === 'edge' ? 'Wächst vom Bildrand aus und folgt dabei auch Farbverläufen – schützt helle Stellen im Motiv.' : 'Entfernt die Farbe überall, auch in Löchern (z. B. Logo-Innenflächen).';
+    modeHint.textContent = st.bg.mode === 'edge' ? 'Vom Rand aus – schützt helle Stellen im Motiv.' : 'Überall – auch in Löchern (z. B. im Logo).';
   });
 
   // ── Layers & effects ──
@@ -9554,7 +9554,7 @@ function mountBildwerk(view) {
       return h('div', { class: 'bw-lay' + (i === st.sel ? ' on' : '') + (L.visible ? '' : ' off'), onclick: () => { st.sel = i; sync(); queue(); } },
         thumbOf(L), h('div', { class: 'bw-lay-n' }, L.base ? 'Bild' : L.name, h('small', null, L.base && fxNames(L).length ? fxNames(L).join(' · ') : sub)),
         h('button', { class: 'mini', title: L.visible ? 'Ausblenden' : 'Einblenden', onclick: e => { e.stopPropagation(); L.visible = !L.visible; sync(); queue(); } }, icon(L.visible ? 'eye' : 'eyeoff')),
-        !L.base && h('button', { class: 'mini', title: 'Ebene löschen (Entf)', onclick: e => { e.stopPropagation(); removeLayer(i); } }, icon('trash')));
+        !L.base && h('button', { class: 'mini', title: 'Entf', onclick: e => { e.stopPropagation(); removeLayer(i); } }, icon('trash')));
     }).reverse());
   }
   ups.push(updLays);
@@ -9589,8 +9589,8 @@ function mountBildwerk(view) {
       h('button', { class: 'btn sm ghost', title: 'Duplizieren', onclick: () => dupLayer(st.sel) }, icon('copy'), 'Kopie')));
   ups.push(() => { lprops.style.display = cur().base ? 'none' : ''; if (!cur().base) blendSel.value = cur().blend; });
   const pLayers = panel('layers', 'Ebenen', h('div', { class: 'panel-actions' },
-      h('button', { class: 'btn sm', title: 'Text-Ebene hinzufügen (T)', onclick: addText }, icon('type'), 'Text'),
-      h('button', { class: 'btn sm', title: 'Bild als neue Ebene hinzufügen – oder einfach aufs Bild ziehen', onclick: addLayerFile }, icon('plus'), 'Bild')),
+      h('button', { class: 'btn sm', title: 'T', onclick: addText }, icon('type'), 'Text'),
+      h('button', { class: 'btn sm', title: 'Oder aufs Bild ziehen', onclick: addLayerFile }, icon('plus'), 'Bild')),
     laysEl, textProps, lprops);
 
   const fxColor = key => {
@@ -9610,7 +9610,7 @@ function mountBildwerk(view) {
   const dirSl = gslider('Richtung', () => S().angle, v => S().angle = v, 0, 360, 1, '°');
   const distSl = gslider('Abstand', () => S().dist, v => S().dist = v, 0, 25, .1, ' %');
   ups.push(() => { const floor = S().type === 'floor'; dirSl.style.display = distSl.style.display = floor ? 'none' : ''; });
-  const shadowHint = h('div', { class: 'hint', style: { fontSize: '12px' } }, 'Tipp: Der Schatten sieht man erst, wenn das Bild freigestellt ist – oder auf Ebenen mit Transparenz.');
+  const shadowHint = h('div', { class: 'hint', style: { fontSize: '12px' } }, 'Sichtbar erst bei Transparenz (z. B. freigestellt).');
   ups.push(() => { shadowHint.style.display = cur().base && S().on && !st.bg.on && !st.erased ? '' : 'none'; });
   const fxTitle = h('span', { style: { fontSize: '12px', color: 'var(--tx3)', fontWeight: 500 } });
   ups.push(() => { fxTitle.textContent = cur().base ? 'für: Bild' : 'für: ' + cur().name; });
@@ -9649,7 +9649,7 @@ function mountBildwerk(view) {
     toast(`Auto: Helligkeit ${b > 0 ? '+' : ''}${b} · Kontrast +${c} · Sättigung ${s > 0 ? '+' : ''}${s}`, 'ok', { ms: 2500 });
   }
   const adjTitle = h('span', { style: { fontSize: '12px', color: 'var(--tx3)', fontWeight: 500 } });
-  const autoBtn = h('button', { class: 'btn sm', title: 'Helligkeit, Kontrast & Farbe automatisch', onclick: autoFix }, icon('wand'), 'Auto');
+  const autoBtn = h('button', { class: 'btn sm', onclick: autoFix }, icon('wand'), 'Auto');
   ups.push(() => { adjTitle.textContent = cur().base ? 'für: Bild' : 'für: ' + cur().name; autoBtn.style.display = cur().base ? '' : 'none'; });
   const pAdj = panel('sliders', 'Anpassungen', adjTitle, adjPresets,
     gslider('Helligkeit', () => A().b, v => A().b = v, -100, 100, 1, ''),
@@ -9678,19 +9678,19 @@ function mountBildwerk(view) {
     if (st.src && document.activeElement !== nameInp && !nameInp.dataset.touched) nameInp.value = st.file + (st.bg.on ? '-freigestellt' : '');
   });
   nameInp.addEventListener('input', () => { nameInp.dataset.touched = 1; });
-  const nextExpBtn = h('button', { class: 'btn block', title: 'Exportieren und das nächste Bild im Ordner öffnen (Strg+Shift+Enter)', onclick: () => exportNext() }, icon('download'), 'Exportieren & weiter', icon('chevr'));
+  const nextExpBtn = h('button', { class: 'btn block', title: 'Strg+Shift+Enter', onclick: () => exportNext() }, icon('download'), 'Exportieren & weiter', icon('chevr'));
   ups.push(() => { nextExpBtn.style.display = st.folder && st.folder.idx < st.folder.list.length - 1 ? '' : 'none'; });
   async function exportNext() { if (await doExport(false) !== false) step(1); }
   const fillSw = h('span', { class: 'sw' }, h('input', { type: 'checkbox', onchange: e => { st.fill.on = e.target.checked; sync(); queue(); } }), h('span'));
   const fillCol = h('input', { type: 'color', class: 'bw-color', title: 'Füllfarbe', oninput: e => { st.fill.color = e.target.value; st.fill.on = true; sync(); queue(); } });
   ups.push(() => { fillSw.firstChild.checked = st.fill.on; fillCol.value = st.fill.color; });
-  const fillRow = h('label', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)', cursor: 'pointer' }, title: 'Transparente Stellen mit einer Farbe füllen, z. B. Weiß für Produktfotos' },
+  const fillRow = h('label', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)', cursor: 'pointer' }, title: 'z. B. Weiß für Produktfotos' },
     fillSw, 'Hintergrund füllen', h('div', { class: 'sp' }), fillCol);
   const pExp = panel('download', 'Export', fmtSeg, qSl, fillRow,
     h('div', { class: 'field' }, h('label', null, 'Dateiname'), h('div', { class: 'bw-row' }, nameInp, extEl)),
     h('div', { class: 'bw-go' },
       h('button', { class: 'btn primary block', onclick: () => doExport(false) }, icon('download'), 'Exportieren'),
-      h('button', { class: 'btn', title: 'Als PNG in die Zwischenablage', onclick: () => doExport(true) }, icon('copy'))),
+      h('button', { class: 'btn', title: 'PNG → 📋', onclick: () => doExport(true) }, icon('copy'))),
     nextExpBtn,
     h('div', { class: 'bw-info' }, h('span', null, 'Letzter Export'), sizeEl));
   function syncLayerProps() { ups.forEach(f => f()); }
@@ -10045,7 +10045,7 @@ function mountTextwerk(view) {
       hl.scrollTop=ta.scrollTop;
       jumpBtn.lastChild.textContent=` Nächster (${jumpIdx+1}/${longs.length})`;
     }
-    const jumpBtn=h('button',{class:'btn sm',title:'Zum nächsten langen Satz springen',onclick:jump},icon('arrow'),' Nächster');
+    const jumpBtn=h('button',{class:'btn sm',onclick:jump},icon('arrow'),' Nächster');
     const maxIn=h('input',{type:'number',class:'ed-in ed-num',min:8,max:80,value:twOpt.longMax,
       onchange:e=>{twOpt.longMax=Math.max(8,Math.min(80,Math.round(+e.target.value)||20));e.target.value=twOpt.longMax;saveTwOpt();analyze();}});
     const markOpts=h('div',{class:'ed-mark-opts'},
@@ -10131,7 +10131,7 @@ function mountTextwerk(view) {
     }
     const side=h('div',{class:'ed-side'},
       h('div',{class:'ed-sec'},
-        h('button',{class:'btn ed-plain',title:'HTML-Tags, Skripte und Styles entfernen und den reinen Text kopieren (Strg+Z macht es rückgängig)',onclick:copyPlain},icon('copy'),'Klartext kopieren')),
+        h('button',{class:'btn ed-plain',title:'HTML → Text · Strg+Z = rückgängig',onclick:copyPlain},icon('copy'),'Klartext kopieren')),
       h('div',{class:'ed-sec'},
         h('div',{class:'ed-lbl'},'Suchen & Ersetzen'),
         h('div',{class:'ed-row'},findIn,rxBtn,caseBtn),
@@ -10144,10 +10144,10 @@ function mountTextwerk(view) {
       h('div',{class:'ed-sec'},
         h('div',{class:'ed-lbl'},'Statistik'),
         stat('Wörter',wV),stat('Zeichen',cV),stat('Zeilen',lV),stat('Sätze',sV),
-        stat('Lesezeit',rtV),h('div',{class:'ed-stat',title:'Vorlesen / Vortrag, ca. 130 Wörter pro Minute'},h('span',{},'Sprechzeit'),stV)),
+        stat('Lesezeit',rtV),h('div',{class:'ed-stat',title:'≈ 130 Wörter/min'},h('span',{},'Sprechzeit'),stV)),
       h('div',{class:'ed-sec'},
         h('div',{class:'ed-lbl'},'Lesbarkeit'),
-        h('div',{class:'ed-fl',title:'Flesch-Lesbarkeitsindex für Deutsch (Amstad): 180 − Satzlänge − 58,5 × Silben pro Wort'},
+        h('div',{class:'ed-fl',title:'180 − Ø Satzlänge − 58,5 × Ø Silben/Wort'},
           h('div',{class:'ed-fl-top'},flV,h('div',null,h('small',null,'Flesch (Amstad)'),flL)),
           h('div',{class:'ed-fl-track'},flFill),flD),
         stat('Ø Wörter / Satz',aslV),stat('Ø Silben / Wort',aswV),
@@ -10199,15 +10199,15 @@ function mountTextwerk(view) {
     const setup=h('div',{class:'tp-setup'},
       h('div',{class:'tp-edit'},
         h('div',{class:'tp-edit-h'},h('span',{class:'ed-lbl'},'Text'),h('div',{style:{flex:1}}),
-          h('button',{class:'btn sm ghost',title:'Text leeren',onclick:()=>{ta.value='';tpOpt.text='';saveTp();estimate();ta.focus();}},icon('trash'))),
+          h('button',{class:'btn sm ghost',onclick:()=>{ta.value='';tpOpt.text='';saveTp();estimate();ta.focus();}},icon('trash'))),
         ta,infoEl),
       h('aside',{class:'tp-set'},
         h('div',{class:'ed-lbl'},'Einstellungen'),
         sSpeed.el,sSize.el,sWidth.el,sLh.el,
         h('div',{class:'tp-sep'}),
-        sw('mirrorX','Spiegeln horizontal','Für Teleprompter-Glas'),
-        sw('mirrorY','Spiegeln vertikal','Kopfüber, z. B. bei Montage unten'),
-        sw('guide','Leselinie','Markiert die Zeile, die du gerade liest'),
+        sw('mirrorX','Spiegeln ↔','Für Teleprompter-Glas'),
+        sw('mirrorY','Spiegeln ↕','Kopfüber'),
+        sw('guide','Leselinie'),
         sw('countdown','Countdown 3 · 2 · 1','Vor dem Start vom Anfang'),
         sw('fullscreen','Im Vollbild starten'),
         h('div',{style:{flex:1}}),
@@ -10224,18 +10224,18 @@ function mountTextwerk(view) {
     const guide=h('div',{class:'tp-guide'},h('i'),h('i'));
     const cdEl=h('div',{class:'tp-cd'});
     const progFill=h('div',{class:'tp-prog-fill'});
-    const playBtn=h('button',{class:'tp-play',title:'Start/Pause (Leertaste)',onclick:e=>{e.stopPropagation();toggle();}});
+    const playBtn=h('button',{class:'tp-play',title:'Leertaste',onclick:e=>{e.stopPropagation();toggle();}});
     const spdVal=h('span',{class:'tp-val'});
     const timeEl=h('span',{class:'tp-time'});
-    const fsBtn=h('button',{class:'tp-hb',title:'Vollbild (F)',onclick:()=>toggleFs()});
-    const mxBtn=h('button',{class:'tp-hb',title:'Horizontal spiegeln (M)',onclick:()=>{tpOpt.mirrorX=!tpOpt.mirrorX;saveTp();applyLook();}},icon('flip'));
+    const fsBtn=h('button',{class:'tp-hb',title:'F',onclick:()=>toggleFs()});
+    const mxBtn=h('button',{class:'tp-hb',title:'↔ (M)',onclick:()=>{tpOpt.mirrorX=!tpOpt.mirrorX;saveTp();applyLook();}},icon('flip'));
     const hb=(ic,title,fn,txtLbl)=>h('button',{class:'tp-hb',title,onclick:e=>{e.stopPropagation();fn();}},ic&&icon(ic),txtLbl);
     const hud=h('div',{class:'tp-hud',onclick:e=>e.stopPropagation(),onmousedown:e=>e.preventDefault()},
-      hb('x','Beenden (Esc)',()=>endRun()),
-      hb('skipb','Zum Anfang (Pos1)',()=>jump(-Infinity)),
+      hb('x','Esc',()=>endRun()),
+      hb('skipb','Pos1',()=>jump(-Infinity)),
       playBtn,
-      h('div',{class:'tp-grp'},hb(null,'Langsamer (↓)',()=>setSpeed(-0.5),'−'),h('div',{class:'tp-grp-l'},h('small',null,'Tempo'),spdVal),hb(null,'Schneller (↑)',()=>setSpeed(0.5),'+')),
-      h('div',{class:'tp-grp'},hb(null,'Kleiner (−)',()=>setSize(-4),'A−'),hb(null,'Größer (+)',()=>setSize(4),'A+')),
+      h('div',{class:'tp-grp'},hb(null,'↓',()=>setSpeed(-0.5),'−'),h('div',{class:'tp-grp-l'},h('small',null,'Tempo'),spdVal),hb(null,'↑',()=>setSpeed(0.5),'+')),
+      h('div',{class:'tp-grp'},hb(null,'−',()=>setSize(-4),'A−'),hb(null,'+',()=>setSize(4),'A+')),
       mxBtn,fsBtn,timeEl);
     const stage=h('div',{class:'tp-stage',onclick:()=>toggle()},scroller,h('div',{class:'tp-fade tp-fade-t'}),h('div',{class:'tp-fade tp-fade-b'}),guide,cdEl,h('div',{class:'tp-prog'},progFill));
     const run=h('div',{class:'tp-run',onmousemove:()=>wake()},stage,hud);
@@ -10593,7 +10593,7 @@ function mountTodo(view) {
 
     let addBar = null;
     if(vf!=='done' || mode==='board') {
-      addInpRef = h('input',{class:'td-addi',placeholder:'Aufgabe eingeben… (Enter)',
+      addInpRef = h('input',{class:'td-addi',placeholder:'Aufgabe eingeben …',
         onkeydown:e=>{if(e.key==='Enter') doAdd();}});
       const prioBtn = h('div',{class:'td-opt',onclick:()=>{addPrio=(addPrio+1)%4;render();},title:'Priorität'},
         h('span',{style:{color:PCLR[addPrio]||'var(--tx3)',fontSize:'11px'}},PICO[addPrio]),
@@ -10664,7 +10664,7 @@ function mountTodo(view) {
           }
           return card;
         }),
-        !ts.length && h('div',{class:'td-col-empty'}, col.id==='doing' ? 'Hierher ziehen, woran du gerade arbeitest' : col.id==='done' ? 'Fertiges landet hier' : 'Nichts offen 🎉'),
+        !ts.length && h('div',{class:'td-col-empty'}, col.id==='doing' ? 'Hierher ziehen' : col.id==='done' ? '✓' : 'Nichts offen 🎉'),
         more ? h('div',{class:'td-col-empty'},`+ ${more} ältere – unter „Erledigt“ in der Liste`) : null);
       const colEl = h('div',{class:'td-col',style:{'--td-c':col.c}},
         h('div',{class:'td-col-h'},h('span',{class:'td-col-dot'}),col.name,h('span',{class:'td-col-n'},pool.filter(col.has).length)),
@@ -10882,7 +10882,7 @@ function mountFarbwerk(view) {
 
   /* ── Pipette (EyeDropper-API: Chrome, Edge, Brave, Opera) ── */
   const hasED = 'EyeDropper' in window;
-  const ED_HINT = 'Die Pipette gibt es nur in Chrome, Edge, Brave und Opera – Firefox und Safari unterstützen sie noch nicht.';
+  const ED_HINT = 'Pipette: nur Chrome, Edge, Brave, Opera';
   const toRgb = hex => [1,3,5].map(i=>parseInt(hex.slice(i,i+2),16));
   function toHsl(hex) {
     const [r,g,b]=toRgb(hex).map(v=>v/255), mx=Math.max(r,g,b), mn=Math.min(r,g,b), l=(mx+mn)/2;
@@ -10914,10 +10914,10 @@ function mountFarbwerk(view) {
     return h('div',{class:'fw-picks'},
       h('div',{class:'fw-pk-big',style:{background:cur},title:'Kopieren',onclick:()=>copyHex(cur)}),
       h('div',{class:'fw-pk-fmts'},fmt('HEX',cur),fmt('RGB',`rgb(${r}, ${g}, ${b})`),fmt('HSL',`hsl(${hh}, ${sat}%, ${l}%)`)),
-      h('div',{class:'fw-pk-hist'},...picks.slice(1).map(c=>h('button',{class:'fw-pk-chip',style:{background:c},title:c+' – klicken zum Auswählen & Kopieren',
+      h('div',{class:'fw-pk-hist'},...picks.slice(1).map(c=>h('button',{class:'fw-pk-chip',style:{background:c},title:c,
         onclick:()=>{addPick(c);copyHex(c);render();}}))),
       h('div',{class:'fw-pk-acts'},
-        h('div',{class:'fw-hd-btn',title:'Neue Palette aus den letzten (bis zu 5) Farben',onclick:()=>{modalData={id:null,name:'',colors:picks.slice(0,5),genVal:''};render();}},'+ Als Palette'),
+        h('div',{class:'fw-hd-btn',title:'Letzte 5 Farben → Palette',onclick:()=>{modalData={id:null,name:'',colors:picks.slice(0,5),genVal:''};render();}},'+ Als Palette'),
         h('div',{class:'fw-card-act',title:'Verlauf leeren',onclick:()=>{S.setApp('farbwerk','picks',[]);render();}},icon('trash'))));
   }
 
@@ -10979,8 +10979,8 @@ function mountFarbwerk(view) {
       h('div', { class: 'fw-mx-grp' }, h('small', null, 'Heller ↔ Dunkler'), shadesEl),
       harmEl,
       h('div', { class: 'fw-mx-acts' },
-        h('div', { class: 'fw-hd-btn', title: 'In den Verlauf oben legen', onclick: () => { addPick(curHex()); copyHex(curHex()); render(); } }, icon('plus'), ' Merken'),
-        h('div', { class: 'fw-hd-btn', title: 'Die Abstufungen als neue Palette', onclick: () => { const hx = curHex(); modalData = { id: null, name: '', colors: [.65, .3, 0, -.35, -.65].map(t => t > 0 ? mixHex(hx, '#ffffff', t) : t < 0 ? mixHex(hx, '#000000', -t) : hx), genVal: '' }; render(); } }, icon('layers'), ' Als Palette'))));
+        h('div', { class: 'fw-hd-btn', onclick: () => { addPick(curHex()); copyHex(curHex()); render(); } }, icon('plus'), ' Merken'),
+        h('div', { class: 'fw-hd-btn', title: 'Abstufungen → Palette', onclick: () => { const hx = curHex(); modalData = { id: null, name: '', colors: [.65, .3, 0, -.35, -.65].map(t => t > 0 ? mixHex(hx, '#ffffff', t) : t < 0 ? mixHex(hx, '#000000', -t) : hx), genVal: '' }; render(); } }, icon('layers'), ' Als Palette'))));
   paintMx();
 
   /* ── root DOM ── */
@@ -11001,7 +11001,7 @@ function mountFarbwerk(view) {
     const hd = h('div',{class:'fw-hd'},
       h('span',{class:'fw-title'},'Farbwerk'),
       fileIn,
-      h('div',{class:'fw-hd-btn fw-eye'+(hasED?'':' fw-off'),title:hasED?'Farbe irgendwo auf dem Bildschirm aufnehmen – HEX wird kopiert':ED_HINT,onclick:pickToHistory},icon('pipette'),' Pipette'),
+      h('div',{class:'fw-hd-btn fw-eye'+(hasED?'':' fw-off'),title:hasED?'HEX → 📋':ED_HINT,onclick:pickToHistory},icon('pipette'),' Pipette'),
       h('div',{class:'fw-hd-btn',onclick:()=>fileIn.click()},icon('upload'),' Importieren'),
       h('div',{class:'fw-hd-btn',onclick:exportAll},icon('download'),' Exportieren'),
       h('div',{class:'fw-hd-btn fw-prim',onclick:()=>openModal(null)},'+  Neue Palette')
@@ -11012,7 +11012,7 @@ function mountFarbwerk(view) {
       ? D.palettes.map(p => buildCard(p))
       : [h('div',{class:'fw-empty'},
           h('div',{class:'fw-empty-ico'},'🎨'),
-          h('div',{class:'fw-empty-txt'},'Noch keine eigenen Paletten.\nKlick auf „Neue Palette" oder übernimm unten eine Vorlage.'))];
+          h('div',{class:'fw-empty-txt'},'Noch keine eigenen Paletten.\n„Neue Palette“ oder unten eine Vorlage nehmen.'))];
     const grid = h('div',{class:'fw-grid'},...cards);
 
     /* Presets with filter */
@@ -11252,10 +11252,10 @@ function mountPitcher(view) {
   }
 
   /* ── Presentation: step by step ── */
-  const navBack = h('button', {class:'pt-nav-back', title:'Zurück (←)', onclick:() => go(-1)}, icon('chev'));
+  const navBack = h('button', {class:'pt-nav-back', title:'←', onclick:() => go(-1)}, icon('chev'));
   const navCnt = h('span', {class:'pt-nav-cnt'});
   const navNextLbl = h('span', null, 'Weiter');
-  const navNext = h('button', {class:'pt-nav-next', title:'Weiter (Leertaste / →)', onclick:() => go(1)}, navNextLbl, icon('chev'));
+  const navNext = h('button', {class:'pt-nav-next', title:'→ · Leertaste', onclick:() => go(1)}, navNextLbl, icon('chev'));
   const navEl = h('div', {class:'pt-nav'}, navBack, navCnt, navNext);
   function showStep(dir) {
     const secs = [...preview.children];
@@ -11287,7 +11287,7 @@ function mountPitcher(view) {
     if (m === 'unfold') preview.children[step]?.scrollIntoView({block:'start'});
   });
   modeSeg.classList.add('pt-mode');
-  modeSeg.title = 'Normal: alles auf einmal, frei scrollen · Aufklappen: Abschnitte erscheinen nacheinander untereinander · Einzeln: immer nur ein Abschnitt';
+  modeSeg.title = 'Aufklappen = Schritt für Schritt · Einzeln = ein Abschnitt';
 
   preview.addEventListener('click', e => {
     const item = e.target.closest('[data-li]');
@@ -11342,7 +11342,7 @@ function mountPitcher(view) {
   }
 
   /* ── Fullscreen: content only, controlled with the arrow keys ── */
-  const fsBtn = h('button', {class:'pt-present-btn pt-fs-btn', title:'Vollbild (F) – alle Bedienelemente ausgeblendet, weiter mit den Pfeiltasten', onclick: () => toggleFs()}, icon('expand'), ' Vollbild');
+  const fsBtn = h('button', {class:'pt-present-btn pt-fs-btn', title:'F · ← →', onclick: () => toggleFs()}, icon('expand'), ' Vollbild');
   async function toggleFs() {
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
@@ -11418,10 +11418,10 @@ function mountPitcher(view) {
     h('div', {class:'pt-hd-row'},
       h('span', {class:'pt-hd-lbl'}, 'Markdown'),
       h('div', {class:'pt-hd-btns'},
-        h('button', {class:'pt-hd-btn pt-hd-brk', title:'Umbruch einfügen (Strg/⌘+Enter) – im Präsentationsmodus klappt hier der nächste Schritt auf', onclick:insertBreak}, '+++'),
+        h('button', {class:'pt-hd-btn pt-hd-brk', title:'Umbruch · Strg/⌘+Enter', onclick:insertBreak}, '+++'),
         h('button', {class:'pt-hd-btn', title:'Markdown-Referenz', onclick:toggleRef}, '?'),
-        h('button', {class:'pt-hd-btn', title:'Markdown importieren', onclick:()=>fileIn.click()}, '↑'),
-        h('button', {class:'pt-hd-btn', title:'Als Markdown herunterladen', onclick:downloadMd}, '↓'))),
+        h('button', {class:'pt-hd-btn', title:'.md ↑', onclick:()=>fileIn.click()}, '↑'),
+        h('button', {class:'pt-hd-btn', title:'.md ↓', onclick:downloadMd}, '↓'))),
     fileIn,
     h('div', {class:'pt-editor-wrap'}, refPanel, editorEl),
     h('div', {class:'pt-left-foot'},
@@ -11733,7 +11733,7 @@ function mountNotizen(view) {
     const panel = h('div', { class: 'nz-big', style: { '--nc': note.c } });
     const meta = h('span', { class: 'nz-meta' });
     const body = makeEditor({
-      cls: 'nz-big-body', placeholder: 'Schreib los …   Tipp: „[] " am Zeilenanfang macht ein Kästchen.',
+      cls: 'nz-big-body', placeholder: 'Schreib los …   „[] " = ☐',
       onChange: (v, p) => { note.body = v; meta.textContent = countWords(p); saveSoon(); },
     });
     body.setValue(note.body); meta.textContent = countWords(body.plain());
@@ -11759,9 +11759,9 @@ function mountNotizen(view) {
       renderGrid();
     };
     panel.append(
-      h('div', { class: 'nz-big-top' }, title, h('button', { class: 'icon-btn', title: 'Schließen (Esc)', onclick: close }, icon('x'))),
+      h('div', { class: 'nz-big-top' }, title, h('button', { class: 'icon-btn', title: 'Esc', onclick: close }, icon('x'))),
       h('div', { class: 'nz-big-tools' },
-        h('button', { class: 'btn sm', title: 'Aktuelle oder markierte Zeilen als Checkliste', onmousedown: e => e.preventDefault(), onclick: body.toggleChecklist }, icon('check'), 'Checkliste'),
+        h('button', { class: 'btn sm', title: 'Zeilen → ☐', onmousedown: e => e.preventDefault(), onclick: body.toggleChecklist }, icon('check'), 'Checkliste'),
         h('div', { class: 'nz-colors' }, dots),
         meta,
         h('button', { class: 'nz-del', title: 'Notiz löschen', onclick: () => { close(); removeNote(note); } }, icon('trash'))),
@@ -11778,7 +11778,7 @@ function mountNotizen(view) {
   const padMeta = h('span');
   const curTab = () => D.pad.tabs.find(t => t.id === D.pad.active) || D.pad.tabs[0];
   const padEd = makeEditor({
-    cls: 'nz-pad-ta', placeholder: 'Einfach drauflos schreiben – Gedanken, Links, Zwischenstände …   „[] " macht ein Kästchen.',
+    cls: 'nz-pad-ta', placeholder: 'Einfach drauflos schreiben …   „[] " = ☐',
     onChange: (v, p) => { curTab().body = v; padMeta.textContent = countWords(p); saveSoon(); },
   });
   let renaming = null;
@@ -11837,7 +11837,7 @@ function mountNotizen(view) {
   const secHd = (ico, name) => h('div', { class: 'nz-sec-hd' }, h('span', { class: 'nz-sec-ico' }, icon(ico)), h('b', null, name));
   view.replaceChildren(h('div', { class: 'nz' },
     h('div', { class: 'nz-hd' }, h('h2', null, 'Notizen'), countEl,
-      h('button', { class: 'btn sm', title: 'Alle Karten und Notizblock-Tabs als eine Markdown-Datei', onclick: exportMd }, icon('download'), 'Alle exportieren')),
+      h('button', { class: 'btn sm', title: 'Alles → .md', onclick: exportMd }, icon('download'), 'Alle exportieren')),
     h('section', { class: 'nz-sec' },
       secHd('note', 'Karten'),
       grid),
@@ -11845,7 +11845,7 @@ function mountNotizen(view) {
       secHd('zap', 'Notizblock'),
       h('div', { class: 'nz-pad' }, tabsEl, padEd.el,
         h('div', { class: 'nz-pad-foot' }, padMeta,
-          h('button', { class: 'btn sm ghost', title: 'Aktuelle oder markierte Zeilen als Checkliste', onmousedown: e => e.preventDefault(), onclick: padEd.toggleChecklist }, icon('check'), 'Checkliste'))))));
+          h('button', { class: 'btn sm ghost', title: 'Zeilen → ☐', onmousedown: e => e.preventDefault(), onclick: padEd.toggleChecklist }, icon('check'), 'Checkliste'))))));
   renderGrid();
   showTab(D.pad.active);   // also saves right away in the new format
 
@@ -12016,8 +12016,8 @@ function mountBildbenamung(view) {
       ico,
       h('h2', null, me.name),
       h('p', null, supported
-        ? 'Ordner wählen und Bilder aus Bausteinen zusammenklicken — PSD, JPG, PNG, WebP und mehr.'
-        : 'Bitte Chrome, Edge oder Brave verwenden — andere Browser unterstützen keinen Ordnerzugriff.'),
+        ? 'Bildnamen aus Bausteinen klicken · PSD, JPG, PNG, WebP …'
+        : 'Nur in Chrome, Edge oder Brave.'),
       supported ? h('button', { class:'btn primary', onclick: pickFolder }, icon('folder'), ' Ordner öffnen') : null,
       h('button', { class:'btn', style:'margin-top:6px', onclick: openEditor }, icon('settings'), ' Bausteine bearbeiten')
     );
@@ -13210,11 +13210,11 @@ function mountMetawerk(view) {
   const errEl = h('div', { class: 'callout warn mw-err', hidden: true });
   const fileT = h('div', { class: 'src-t' }, h('b'), h('small'));
   const dirtyB = h('span', { class: 'badge acc' }, 'Geändert');
-  const undoBtn = h('button', { class: 'btn sm ghost', title: 'Rückgängig (Strg+Z)', onclick: undo }, icon('undo'), 'Rückgängig');
+  const undoBtn = h('button', { class: 'btn sm ghost', title: 'Strg+Z', onclick: undo }, icon('undo'), 'Rückgängig');
   const resetBtn = h('button', { class: 'btn sm ghost', title: 'Alle Änderungen verwerfen', onclick: reset }, icon('refresh'), 'Zurücksetzen');
   const bar = h('div', { class: 'mw-bar' },
     h('div', { class: 'src-chip' }, h('div', { class: 'fi' }, icon('image')), fileT,
-      h('button', { class: 'mini', title: 'Anderes Bild öffnen (Strg+O)', onclick: openFile }, icon('folder')),
+      h('button', { class: 'mini', title: 'Strg+O', onclick: openFile }, icon('folder')),
       h('button', { class: 'mini', title: 'Schließen', onclick: closeImg }, icon('x'))),
     dirtyB, h('div', { style: { flex: 1 } }), undoBtn, resetBtn,
     h('button', { class: 'btn sm', title: 'Viele Bilder auf einmal bereinigen', onclick: () => openBatch() }, icon('layers'), 'Stapel'));
@@ -13631,7 +13631,7 @@ function mountMetawerk(view) {
     h('div', { class: 'tp-sep' }),
     bText('artist', 'Urheber eintragen', 'Name'),
     bText('copyright', 'Copyright eintragen', '© 2026 Name'),
-    h('p', { class: 'hint' }, 'Die Bildpixel werden nicht verändert – nichts wird neu komprimiert. Die Originaldateien bleiben unangetastet.'),
+    h('p', { class: 'hint' }, 'Verlustfrei – Pixel und Originale bleiben unangetastet.'),
     bRunBtn,
     h('div', { class: 'mw-bprog' }, bFill), bProgT, bResult);
   const batchEl = h('div', { class: 'mw-batch' },
@@ -13648,11 +13648,11 @@ function mountMetawerk(view) {
   const empty = h('div', { class: 'empty' }, h('div', { class: 'drop' },
     h('div', { class: 'big' }, icon('tag')),
     h('h2', null, 'Bild öffnen'),
-    h('p', null, 'EXIF-Daten ansehen, bearbeiten oder komplett löschen – verlustfrei, ohne Neukomprimierung. Dazu Export als WebP.'),
+    h('p', null, 'EXIF ansehen, bearbeiten, löschen – verlustfrei · Export als WebP'),
     h('div', { class: 'drop-actions' }, h('button', { class: 'btn primary', onclick: openFile }, icon('folder'), 'Bild auswählen'),
       h('button', { class: 'btn', title: 'Viele Bilder auf einmal bereinigen', onclick: async () => { const f = await pickFiles(); if (f.length) addBatch(f); } }, icon('layers'), 'Mehrere Bilder (Stapel)'),
       backBtn),
-    h('p', { class: 'hint', style: { marginTop: '16px' } }, 'oder hierher ziehen · JPG, PNG, WebP · mehrere Dateien = Stapelverarbeitung')));
+    h('p', { class: 'hint', style: { marginTop: '16px' } }, 'oder hierher ziehen · JPG, PNG, WebP · mehrere = Stapel')));
   const dropOv = h('div', { class: 'drop-ov' }, h('div', null, icon('tag'), 'Bild(er) loslassen'));
   const wrap = h('div', { class: 'mw-wrap' }, empty, batchEl,
     h('div', { class: 'mw' },
@@ -13981,7 +13981,7 @@ function mountSprechwerk(view) {
   function recordInfo() {
     const isWin = /Windows/.test(navigator.userAgent);
     modal({
-      title: 'Als Audiodatei aufnehmen', sub: 'Browser können Sprachausgabe nicht direkt speichern – daher nehmen wir den Systemton auf.', width: 520,
+      title: '→ WAV', sub: 'Browser können Sprachausgabe nicht direkt speichern – daher nehmen wir den Systemton auf.', width: 520,
       body: h('div', { class: 'sp-steps' },
         h('div', { class: 'sp-step' }, h('b', null, '1'), h('span', null, 'Im nächsten Fenster ', h('strong', null, '„Gesamter Bildschirm“'), ' wählen.')),
         h('div', { class: 'sp-step' }, h('b', null, '2'), h('span', null, 'Unten ', h('strong', null, '„Systemaudio teilen“'), ' einschalten und auf „Teilen“ klicken.')),
@@ -14051,8 +14051,8 @@ function mountSprechwerk(view) {
   }
 
   /* ---------- UI: Transport ---------- */
-  const playBtn = h('button', { class: 'sp-play', title: 'Vorlesen / Pause (Strg+Enter)', onclick: togglePlay });
-  const stopBtn = h('button', { class: 'sp-tbtn', title: 'Stopp (Esc)', onclick: () => { if (rec) rec.mr.state === 'recording' && rec.mr.stop(); stop(); } }, icon('stop'));
+  const playBtn = h('button', { class: 'sp-play', title: 'Strg+Enter', onclick: togglePlay });
+  const stopBtn = h('button', { class: 'sp-tbtn', title: 'Esc', onclick: () => { if (rec) rec.mr.state === 'recording' && rec.mr.stop(); stop(); } }, icon('stop'));
   const prevBtn = h('button', { class: 'sp-tbtn', title: 'Vorheriger Satz', onclick: () => jumpTo(eng.i - 1) }, icon('skipb'));
   const nextBtn = h('button', { class: 'sp-tbtn', title: 'Nächster Satz', onclick: () => jumpTo(eng.i + 1) }, icon('skipf'));
   const progFill = h('div', { class: 'sp-prog-fill' });
@@ -14181,14 +14181,14 @@ function mountSprechwerk(view) {
       vList),
     panel('settings', 'Klang', h('button', { class: 'btn sm ghost', onclick: () => [sRate, sPitch, sVol].forEach(s => s.reset()) }, icon('undo'), 'Zurücksetzen'),
       sRate.el, sPitch.el, sVol.el,
-      h('label', { class: 'chk-row', title: 'Spielt beim Vorlesen ein unhörbar leises Rauschen ab, damit Kopfhörer/Lautsprecher in Satzpausen nicht abschalten.' },
+      h('label', { class: 'chk-row', title: 'Unhörbares Rauschen hält Kopfhörer & Lautsprecher wach' },
         h('span', null, 'Knackschutz', h('small', { class: 'hint', style: { display: 'block' } }, 'Gegen Knacken in Satzpausen (Bluetooth, USB-Audio)')),
         switchEl(o.keepAlive, v => { o.keepAlive = v; persist(); if (!v) keepAlive(false); else if (eng.playing) keepAlive(true); })),
       /Firefox\//.test(navigator.userAgent)
         ? h('div', { class: 'sp-note warn' }, icon('info'), h('span', null, 'In Firefox kann es in Satzpausen leise knacken. Safari und Chrome klingen meist sauberer.'))
         : h('div', { class: 'sp-note' }, icon('info'), h('span', null, 'Die Klangqualität hängt vom Browser ab – Safari und Chrome klingen meist sauberer als Firefox.'))),
     panel('download', 'Exportieren', null,
-      h('p', { class: 'hint' }, 'Nimmt die Sprachausgabe über den Systemton auf und speichert sie als WAV-Datei.'),
+      h('p', { class: 'hint' }, 'Systemton aufnehmen → WAV'),
       recBtn, resEl));
 
   const wrap = h('div', { class: 'sp-wrap' },
@@ -14380,7 +14380,7 @@ function mountTimer(view) {
     paint(); wake();
   }
 
-  const playBtn = h('button', { class: 'zw-play', title: 'Start / Pause (Leertaste)', onclick: () => toggle() });
+  const playBtn = h('button', { class: 'zw-play', title: 'Leertaste', onclick: () => toggle() });
   const cb = (ic, title, fn, lbl) => h('button', { class: 'zw-cb', title, onclick: e => { e.stopPropagation(); fn(); } }, ic && icon(ic), lbl);
   const fsBtn = cb('expand', 'Vollbild (F)', () => toggleFs());
   const setBtn = cb('settings', 'Einstellungen', () => wrap.classList.toggle('zw-open'));
@@ -14576,12 +14576,12 @@ function mountCodewerk(view) {
     return rxW;
   };
   let rxFlags = st.rx.flags;
-  const rxSrc = h('input', { class: 'cw-rx-in', spellcheck: false, autocomplete: 'off', placeholder: 'Muster, z. B. \\d{5}', value: st.rx.src, oninput: () => { st.rx.src = rxSrc.value; persist(); rxQueue(); } });
+  const rxSrc = h('input', { class: 'cw-rx-in', spellcheck: false, autocomplete: 'off', placeholder: '\\d{5}', value: st.rx.src, oninput: () => { st.rx.src = rxSrc.value; persist(); rxQueue(); } });
   const rxHl = h('div', { class: 'cw-rx-hl', 'aria-hidden': 'true' });
   const rxText = h('textarea', { class: 'cw-ta', spellcheck: false, placeholder: 'Testtext …', oninput: () => { st.rx.text = rxText.value; persist(); rxQueue(); }, onscroll: () => { rxHl.scrollTop = rxText.scrollTop; } });
   rxText.value = st.rx.text;
-  const rxRepl = h('input', { class: 'inp mono', spellcheck: false, autocomplete: 'off', placeholder: 'Ersetzen durch … ($1, $2, $<name>)', value: st.rx.repl, oninput: () => { st.rx.repl = rxRepl.value; persist(); rxQueue(); } });
-  const rxOut = h('textarea', { class: 'cw-ta', readOnly: true, rows: 3, spellcheck: false, placeholder: 'Ergebnis nach dem Ersetzen' });
+  const rxRepl = h('input', { class: 'inp mono', spellcheck: false, autocomplete: 'off', placeholder: '→ $1, $2, $<name> …', value: st.rx.repl, oninput: () => { st.rx.repl = rxRepl.value; persist(); rxQueue(); } });
+  const rxOut = h('textarea', { class: 'cw-ta', readOnly: true, rows: 3, spellcheck: false, placeholder: 'Ergebnis' });
   const rxStat = status(), rxCount = h('span', { class: 'cw-rx-count' }), rxList = h('div', { class: 'cw-rx-list' });
   const FLAGS = [['g', 'Alle Treffer (global)'], ['i', 'Groß-/Kleinschreibung egal'], ['m', '^ und $ gelten pro Zeile'], ['s', 'Punkt passt auch auf Zeilenumbrüche'], ['u', 'Unicode (z. B. Emojis, \\p{L})']];
   const rxFlagEl = h('div', { class: 'cw-flags' });
@@ -14713,7 +14713,7 @@ function mountCodewerk(view) {
     uuList);
 
   /* ---------- 6. Timestamp ---------- */
-  const tIn = h('input', { class: 'inp mono', placeholder: 'Unix-Zeit oder Datum, z. B. 1700000000 oder 26.09.2026 14:30', value: st.ts, spellcheck: false, autocomplete: 'off', oninput: () => { st.ts = tIn.value; persist(); tRun(); } });
+  const tIn = h('input', { class: 'inp mono', placeholder: '1700000000 · 26.09.2026 14:30', value: st.ts, spellcheck: false, autocomplete: 'off', oninput: () => { st.ts = tIn.value; persist(); tRun(); } });
   const tStat = status();
   const tOuts = { lokal: out('Lokal'), iso: out('ISO / UTC'), s: out('Unix s'), ms: out('Unix ms'), rel: out('Relativ') };
   const rtf = new Intl.RelativeTimeFormat('de', { numeric: 'auto' });
@@ -15033,7 +15033,7 @@ function mountModellwerk(view) {
   function gallery() {
     return h('div', { class: 'mdw-in' },
       h('div', null, h('h2', { class: 'mdw-h2' }, st.items.length ? 'Neues Modell' : 'Willkommen im Modellwerk'),
-        h('p', { class: 'mdw-meta' }, 'Vorlage wählen und losschreiben – für Marketing, BWL, Projekte oder die nächste große Entscheidung. Jedes Feld hat Leitfragen, eine Zeile ist ein Stichpunkt. Export als Text, PNG oder PDF.')),
+        h('p', { class: 'mdw-meta' }, 'Vorlage wählen und losschreiben – eine Zeile = ein Stichpunkt · Text, PNG, PDF')),
       ...MW_CATS.flatMap(([cat, label]) => [h('div', { class: 'mdw-gcat' }, label),
         h('div', { class: 'mdw-gal' }, ...MW_TEMPLATES.filter(t => t.cat === cat).map(t => h('button', { class: 'mdw-g', onclick: () => create(t.id) },
           h('span', { class: 'mdw-badge' }, t.short), h('b', null, t.name), h('span', null, t.desc))))]));
@@ -15110,9 +15110,9 @@ function mountModellwerk(view) {
       h('div', { class: 'mdw-top' },
         h('div', { class: 'mdw-top-t' }, title, h('div', { class: 'mdw-meta' }, tp.name + ' · zuletzt geändert ' + fmtD(it.updated))),
         h('div', { class: 'mdw-acts' },
-          h('button', { class: 'btn sm', title: 'Als Text mit Stichpunkten kopieren (für Word, Notizen …)', onclick: () => copy(toText(it)) }, icon('copy'), 'Text'),
-          h('button', { class: 'btn sm', title: 'Als Bild speichern', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
-          h('button', { class: 'btn sm', title: 'Drucken oder als PDF speichern', onclick: () => exportPdf(it) }, icon('file'), 'PDF'),
+          h('button', { class: 'btn sm', title: 'Text → 📋', onclick: () => copy(toText(it)) }, icon('copy'), 'Text'),
+          h('button', { class: 'btn sm', title: 'PNG', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
+          h('button', { class: 'btn sm', title: 'PDF / Drucken', onclick: () => exportPdf(it) }, icon('file'), 'PDF'),
           moreBtn)),
       h('div', { class: 'mdw-tip' }, h('b', null, 'Tipp: '), tp.tip),
       board);
@@ -15612,12 +15612,12 @@ function mountKennzahlwerk(view) {
     }
 
     const set = next => { N = st.nwa = next; persist(); renderTable(); calc(); };
-    const cb = h('button', { class: 'cw-copy', title: 'Ergebnis als Text kopieren', onclick: () => copy(['Nutzwertanalyse',
+    const cb = h('button', { class: 'cw-copy', title: 'Text → 📋', onclick: () => copy(['Nutzwertanalyse',
       'Kriterien: ' + N.crit.map(c => `${c.n || 'Kriterium'} (${nf(val(c.w))} %)`).join(', '), `Skala: 1–${N.scale}`, '',
       ...ranked.map((r, i) => `${i + 1}. ${r.o.n || 'Option'}: ${nf(r.tot)}  (= ${r.parts.join(' + ')})`)].join('\n'), cb) }, icon('copy'));
     const el = h('section', { class: 'cw-card kz-wide', dataset: { topic: 'allg' } },
       h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('sliders')),
-        h('div', { class: 'kz-tt' }, h('h3', null, 'Nutzwertanalyse'), h('small', { class: 'kz-sub' }, 'Optionen nach gewichteten Kriterien vergleichen – z. B. Praktikum, Lieferant, Standort')),
+        h('div', { class: 'kz-tt' }, h('h3', null, 'Nutzwertanalyse'), h('small', { class: 'kz-sub' }, 'Optionen nach gewichteten Kriterien vergleichen')),
         h('div', { class: 'cw-acts' },
           h('button', { class: 'btn sm ghost', title: 'Leere Tabelle', onclick: () => set({ scale: N.scale, crit: [{ id: uid(), n: '', w: '' }, { id: uid(), n: '', w: '' }], opts: [{ id: uid(), n: '' }, { id: uid(), n: '' }], s: {} }) }, icon('eraser')),
           h('button', { class: 'btn sm ghost', title: 'Beispiel einsetzen', onclick: () => set(structuredClone(EX)) }, icon('undo')), cb)),
@@ -15654,7 +15654,7 @@ function mountKennzahlwerk(view) {
     });
     const reset = () => { for (const x of inputs) { x.inp.value = x.ex; delete vals[x.k]; } persist(); calc(); };
     const clear = () => { for (const x of inputs) { x.inp.value = ''; vals[x.k] = ''; } persist(); calc(); inputs[0].inp.focus(); };
-    const cb = h('button', { class: 'cw-copy', title: 'Ergebnis als Text kopieren', onclick: () => copy([d.title, ...d.in.map(([k, l, u]) => `${l}: ${inputs.find(x => x.k === k).inp.value || '0'}${u ? ' ' + u : ''}`), '',
+    const cb = h('button', { class: 'cw-copy', title: 'Text → 📋', onclick: () => copy([d.title, ...d.in.map(([k, l, u]) => `${l}: ${inputs.find(x => x.k === k).inp.value || '0'}${u ? ' ' + u : ''}`), '',
       ...rows.filter(r => r.l).map(r => `${r.l}: ${r.v}${r.w ? `  (= ${r.w})` : ''}`)].join('\n'), cb) }, icon('copy'));
     const el = h('section', { class: 'cw-card', dataset: { topic: d.topic } },
       h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon(d.icon)), h('div', { class: 'kz-tt' }, h('h3', null, d.title), h('small', { class: 'kz-sub' }, d.sub)),
@@ -15675,7 +15675,7 @@ function mountKennzahlwerk(view) {
   root.append(h('div', { class: 'cw-in' },
     h('div', { class: 'cw-hd' },
       h('div', { class: 'cw-logo' }, icon('kennzahlwerk')),
-      h('div', null, h('h2', null, 'Kennzahlwerk'), h('p', null, 'Rechner für Alltag, Studium, BWL und Marketing – mit Formel und Rechenweg. Komma oder Punkt, beides geht.'))),
+      h('div', null, h('h2', null, 'Kennzahlwerk'), h('p', null, 'Rechner mit Formel und Rechenweg · 1,5 = 1.5'))),
     h('div', { class: 'kz-bar' },
       segEl(KZ_TOPICS, st.topic, v => { st.topic = v; persist(); filter(); }),
       h('label', { class: 'cw-sw' }, 'Rechenweg zeigen', switchEl(st.way, v => { st.way = v; persist(); root.classList.toggle('noway', !v); }))),
@@ -15848,8 +15848,8 @@ function mountQuellenwerk(view) {
         const p = h('input', { class: 'inp qlw-pg', placeholder: 'Seite', spellcheck: false, oninput: () => { q.p = p.value; touch(it); } });
         p.value = q.p || '';
         return h('div', { class: 'qlw-q' }, ta, h('div', { class: 'qlw-q-acts' }, p,
-          h('button', { class: 'btn sm', title: 'Zitat in Anführungszeichen mit Beleg kopieren', onclick: () => copy(`„${(q.t || '').trim()}“ ${cite(it, q.p, 'direkt')}`) }, icon('copy'), 'Zitat + Beleg'),
-          h('button', { class: 'btn sm', title: 'Nur den Beleg für eine sinngemäße Wiedergabe kopieren', onclick: () => copy(cite(it, q.p, 'vgl')) }, icon('copy'), apa() ? 'Beleg' : 'vgl.'),
+          h('button', { class: 'btn sm', title: '„…“ + Beleg', onclick: () => copy(`„${(q.t || '').trim()}“ ${cite(it, q.p, 'direkt')}`) }, icon('copy'), 'Zitat + Beleg'),
+          h('button', { class: 'btn sm', title: 'vgl. …', onclick: () => copy(cite(it, q.p, 'vgl')) }, icon('copy'), apa() ? 'Beleg' : 'vgl.'),
           h('button', { class: 'cw-copy qlw-del', title: 'Zitat löschen', onclick: () => { it.quotes = it.quotes.filter(x => x !== q); touch(it); drawQuotes(); } }, icon('trash'))));
       }), h('button', { class: 'btn sm', onclick: () => { it.quotes.push({ id: uid(), t: '', p: '' }); touch(it); drawQuotes(); [...qList.querySelectorAll('textarea')].pop()?.focus(); } }, icon('plus'), 'Zitat hinzufügen'));
     }
@@ -15894,7 +15894,7 @@ function mountQuellenwerk(view) {
     return h('div', { class: 'qlw-welcome' },
       h('div', { class: 'qlw-logo big' }, icon('quellenwerk')),
       h('h2', null, 'Quellenwerk'),
-      h('p', null, 'Bücher, Artikel und Links sammeln – mit Notizen zum Inhalt und wichtigen Zitaten. Den Beleg mit „vgl.“ oder den Eintrag fürs Literaturverzeichnis kopierst du mit einem Klick.'),
+      h('p', null, 'Bücher, Artikel und Links mit Notizen und Zitaten – Beleg („vgl.“) und Literaturverzeichnis per Klick kopieren.'),
       h('div', { class: 'qlw-row' },
         h('button', { class: 'btn primary', onclick: () => create() }, icon('plus'), 'Neue Quelle'),
         !st.items.length && h('button', { class: 'btn', onclick: () => create(structuredClone(EXAMPLE)) }, icon('sparkle'), 'Beispiel ansehen')));
@@ -15913,7 +15913,7 @@ function mountQuellenwerk(view) {
       h('div', { class: 'qlw-hd' }, h('div', { class: 'qlw-logo' }, icon('quellenwerk')), h('b', null, 'Quellenwerk')),
       h('div', { class: 'qlw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => create() }, icon('plus'), 'Neue Quelle'), search, projSel),
       list,
-      h('div', { class: 'qlw-foot' }, h('button', { class: 'btn sm block', title: 'Alle Quellen der Liste (Filter beachten) alphabetisch kopieren', onclick: copyBibliography }, icon('copy'), 'Literaturverzeichnis kopieren'), countEl)),
+      h('div', { class: 'qlw-foot' }, h('button', { class: 'btn sm block', title: 'A–Z → 📋', onclick: copyBibliography }, icon('copy'), 'Literaturverzeichnis kopieren'), countEl)),
     main));
   render();
 }
@@ -16023,7 +16023,7 @@ function mountKarteiwerk(view) {
     let ok = false;
     const onCopy = e => { e.preventDefault(); e.clipboardData.setData('text/plain', txt); ok = true; };
     document.addEventListener('copy', onCopy); try { document.execCommand('copy'); } catch {} document.removeEventListener('copy', onCopy);
-    if (ok) toast('Karten kopiert – z. B. in Anki oder Quizlet importieren.', 'ok');
+    if (ok) toast('Karten kopiert · Anki, Quizlet …', 'ok');
     else navigator.clipboard?.writeText(txt).then(() => toast('Karten kopiert.', 'ok'), () => toast('Kopieren hat nicht geklappt.', 'err'));
   }
 
@@ -16062,8 +16062,8 @@ function mountKarteiwerk(view) {
     const legend = h('div', { class: 'kaw-leg' }, ...boxes.map((n, b) => h('span', null, h('i', { class: 'kaw-b' + b }), `${LBL[b]} `, h('b', null, n))));
 
     // New card
-    const fIn = h('textarea', { class: 'kaw-ta', placeholder: 'Vorderseite – Frage oder Begriff', rows: 2 });
-    const bIn = h('textarea', { class: 'kaw-ta', placeholder: 'Rückseite – Antwort oder Erklärung', rows: 2 });
+    const fIn = h('textarea', { class: 'kaw-ta', placeholder: 'Vorderseite', rows: 2 });
+    const bIn = h('textarea', { class: 'kaw-ta', placeholder: 'Rückseite', rows: 2 });
     const add = () => {
       const f = fIn.value.trim(), b = bIn.value.trim();
       if (!f || !b) { toast('Bitte Vorder- und Rückseite ausfüllen.', 'info'); (f ? bIn : fIn).focus(); return; }
@@ -16105,7 +16105,7 @@ function mountKarteiwerk(view) {
           h('div', null, h('b', null, boxes[5]), h('span', null, 'sitzen sicher'))),
         d.cards.length ? bar : null, d.cards.length ? legend : null,
         h('div', { class: 'kaw-acts' }, learnBtn,
-          d.cards.length ? h('button', { class: 'btn', onclick: () => start(d, 'practice'), title: 'Alle Karten in zufälliger Reihenfolge – ändert die Fächer nicht' }, icon('refresh'), 'Alle üben') : null,
+          d.cards.length ? h('button', { class: 'btn', onclick: () => start(d, 'practice'), title: 'Zufällig – Fächer bleiben' }, icon('refresh'), 'Alle üben') : null,
           d.cards.length ? h('label', { class: 'cw-sw kaw-rev' }, 'Rückseite zuerst', switchEl(st.reverse, v => { st.reverse = v; persist(); })) : null)),
       h('section', { class: 'cw-card kaw-add' },
         h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('plus')), h('h3', null, 'Neue Karte'), h('div', { class: 'cw-acts' }, h('span', { class: 'hint' }, 'Strg + Enter'))),
@@ -16183,7 +16183,7 @@ function mountKarteiwerk(view) {
     return h('div', { class: 'kaw-welcome' },
       h('div', { class: 'kaw-logo big' }, icon('karteiwerk')),
       h('h2', null, 'Karteiwerk'),
-      h('p', null, 'Karteikarten für jedes Thema – Vokabeln, Fachbegriffe, Formeln, Prüfungsfragen. Das Karteikasten-Prinzip sorgt dafür, dass du vor allem übst, was noch nicht sitzt.'),
+      h('p', null, 'Karteikarten für jedes Thema – du übst vor allem, was noch nicht sitzt.'),
       h('div', { class: 'kaw-row-acts center' },
         h('button', { class: 'btn primary', onclick: () => { newDeck(); setTimeout(() => main.querySelector('.kaw-name')?.select(), 30); } }, icon('plus'), 'Neuer Stapel'),
         !st.decks.length && h('button', { class: 'btn', onclick: () => newDeck('Marketing-Grundbegriffe', EXAMPLE.map(([f, b]) => mkCard(f, b))) }, icon('sparkle'), 'Beispiel-Stapel')));
@@ -16526,7 +16526,7 @@ function mountDiagrammwerk(view) {
     try {
       const cv = await toCanvas(it), blob = await new Promise(r => cv.toBlob(r, 'image/png'));
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-      toast('Bild kopiert – jetzt in Word oder PowerPoint einfügen.', 'ok');
+      toast('Bild kopiert ✓', 'ok');
     } catch { toast('Kopieren geht in diesem Browser nicht – nimm „PNG“.', 'err'); }
   }
 
@@ -16615,7 +16615,7 @@ function mountDiagrammwerk(view) {
       h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('table')), h('h3', null, 'Daten'),
         h('div', { class: 'cw-acts' },
           h('button', { class: 'btn sm', onclick: () => { if (it.labels.length >= 60) return; it.labels.push(''); it.series.forEach(s => s.v.push('')); touch(); paint(); wrap.querySelectorAll('.dgw-t > .inp:not(.dgw-v)')[it.labels.length - 1]?.focus(); } }, icon('plus'), 'Zeile'),
-          !one && h('button', { class: 'btn sm', onclick: () => { if (it.series.length >= 8) return toast('Maximal 8 Datenreihen – mehr Farben lassen sich nicht sicher unterscheiden.', 'info'); it.series.push({ name: '', v: it.labels.map(() => '') }); touch(); paint(); } }, icon('plus'), 'Datenreihe'),
+          !one && h('button', { class: 'btn sm', onclick: () => { if (it.series.length >= 8) return toast('Maximal 8 Datenreihen.', 'info'); it.series.push({ name: '', v: it.labels.map(() => '') }); touch(); paint(); } }, icon('plus'), 'Datenreihe'),
           h('button', { class: 'btn sm ghost', onclick: () => openPaste(it) }, icon('upload'), 'Aus Excel einfügen'))),
       wrap,
       one && it.series.length > 1 ? h('div', { class: 'cw-note' }, 'Das Kreisdiagramm zeigt nur die erste Datenreihe.') : null);
@@ -16654,7 +16654,7 @@ function mountDiagrammwerk(view) {
 
   function editor(it) {
     const title = h('input', { class: 'dgw-title', value: it.title || '', placeholder: 'Titel des Diagramms', spellcheck: false, oninput: () => { it.title = title.value; touch(); } });
-    const sub = h('input', { class: 'dgw-sub', value: it.sub || '', placeholder: 'Untertitel, z. B. Quelle oder Einheit (optional)', spellcheck: false, oninput: () => { it.sub = sub.value; touch(); } });
+    const sub = h('input', { class: 'dgw-sub', value: it.sub || '', placeholder: 'Untertitel (optional)', spellcheck: false, oninput: () => { it.sub = sub.value; touch(); } });
     const unit = h('input', { class: 'inp dgw-unit', value: it.unit || '', placeholder: 'z. B. €, %', spellcheck: false, oninput: () => { it.unit = unit.value; touch(); } });
     preview = h('div', { class: 'dgw-prev' });
     tip = h('div', { class: 'dgw-tip', hidden: true });
@@ -16678,9 +16678,9 @@ function mountDiagrammwerk(view) {
       h('div', { class: 'dgw-top' },
         h('div', { class: 'dgw-top-t' }, title, sub),
         h('div', { class: 'dgw-acts' },
-          h('button', { class: 'btn sm', title: 'Als Bild in die Zwischenablage (für Word, PowerPoint …)', onclick: () => copyPng(it) }, icon('copy'), 'Kopieren'),
-          h('button', { class: 'btn sm', title: 'Als PNG-Bild speichern (doppelte Auflösung)', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
-          h('button', { class: 'btn sm', title: 'Als SVG speichern – gestochen scharf in jeder Größe', onclick: () => exportSvg(it) }, icon('download'), 'SVG'))),
+          h('button', { class: 'btn sm', title: 'PNG → 📋 · Word, PowerPoint …', onclick: () => copyPng(it) }, icon('copy'), 'Kopieren'),
+          h('button', { class: 'btn sm', title: '2×', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
+          h('button', { class: 'btn sm', title: 'Vektor', onclick: () => exportSvg(it) }, icon('download'), 'SVG'))),
       h('div', { class: 'dgw-bar' }, typeSeg),
       h('div', { class: 'dgw-opts' },
         nonGantt && h('label', { class: 'dgw-opt' }, 'Einheit', unit),
@@ -16694,7 +16694,7 @@ function mountDiagrammwerk(view) {
   function gallery() {
     return h('div', { class: 'dgw-in' },
       h('div', null, h('h2', { class: 'dgw-h2' }, st.items.length ? 'Neues Diagramm' : 'Willkommen im Diagrammwerk'),
-        h('p', { class: 'dgw-meta' }, 'Diagrammart wählen – es startet mit Beispieldaten, die du einfach überschreibst oder aus Excel einfügst. Export als PNG, SVG oder direkt in die Zwischenablage.')),
+        h('p', { class: 'dgw-meta' }, 'Diagrammart wählen, Beispieldaten überschreiben oder aus Excel einfügen · PNG, SVG, 📋')),
       h('div', { class: 'dgw-gal' }, ...[
         ['col', 'Werte vergleichen, z. B. Umsatz pro Quartal.'],
         ['bar', 'Ranglisten und lange Beschriftungen.'],
@@ -16945,9 +16945,9 @@ function mountWasserzeichenwerk(view) {
       const prev = h('div', { class: 'wzw-logo' }, L.data ? h('img', { src: L.data, alt: 'Logo' }) : h('span', null, 'Noch kein Bild'));
       const pick = h('button', { class: 'btn sm', onclick: async () => {
         const f = await pickFile('image/*'); if (!f) return;
-        const r = new FileReader(); r.onload = async () => { L.data = r.result; await loadLogo(); if (L.data.length > 400000) toast('Großes Bild – es wird nur für diese Sitzung gemerkt. Tipp: ein kleines PNG nehmen.', 'info'); set(); renderPanel(); }; r.readAsDataURL(f);
+        const r = new FileReader(); r.onload = async () => { L.data = r.result; await loadLogo(); if (L.data.length > 400000) toast('Großes Bild – wird nur für diese Sitzung gemerkt.', 'info'); set(); renderPanel(); }; r.readAsDataURL(f);
       } }, icon('upload'), L.data ? 'Anderes Bild' : 'Bild wählen');
-      parts.push(sec('Logo oder Bild', h('div', { class: 'wzw-row' }, prev, h('div', { class: 'wzw-col' }, pick, h('span', { class: 'hint' }, 'Am besten ein PNG mit transparentem Hintergrund.')))),
+      parts.push(sec('Logo oder Bild', h('div', { class: 'wzw-row' }, prev, h('div', { class: 'wzw-col' }, pick, h('span', { class: 'hint' }, 'Am besten PNG mit Transparenz')))),
         sec('Aussehen', slider('Größe', L, 'size', 3, 80, 1, v => v + ' % der Breite'), slider('Deckkraft', L, 'opacity', 5, 100, 1, v => v + ' %')),
         sec('Position', posGrid(true, L)));
     } else {
@@ -16961,14 +16961,14 @@ function mountWasserzeichenwerk(view) {
         sec('Position', posGrid(false)),
         sec('Maschinenlesbar', toggle('Kennzeichnung in die Bilddatei einbetten', K, 'meta', renderPanel),
           K.meta ? segEl(Object.entries(WZW_DST).map(([k, [l]]) => [k, l]), K.kind, v => { K.kind = v; set(); }) : null,
-          h('p', { class: 'wzw-note' }, 'Schreibt den IPTC-Standard „Digital Source Type“ in die Metadaten (bei JPG und PNG), den z. B. Google und Meta auslesen. Das hilft bei der Kennzeichnung im Sinne des EU AI Act (Art. 50) – welche Pflichten für dich gelten, hängt davon ab, wie du KI nutzt. Keine Rechtsberatung.')));
+          h('p', { class: 'wzw-note' }, 'Schreibt IPTC „Digital Source Type“ in JPG/PNG (lesen z. B. Google & Meta) – hilft bei der Kennzeichnung nach EU AI Act, Art. 50. Welche Pflichten gelten, hängt vom Einsatz ab. Keine Rechtsberatung.')));
     }
     parts.push(sec('Speichern',
       h('div', { class: 'wzw-row wrap' }, h('span', { class: 'wzw-lbl' }, 'Format'), segEl([['orig', 'Wie Original'], ['jpg', 'JPG'], ['png', 'PNG'], ['webp', 'WebP']], st.fmt, v => { st.fmt = v; set(); renderPanel(); })),
       st.fmt === 'png' ? null : slider('Qualität', st, 'q', 50, 100, 1, v => v + ' %'),
       slider('Abstand zum Rand', st, 'margin', 0, 15, 0.5, v => nfmt(v) + ' %'),
       h('label', { class: 'wzw-row' }, h('span', { class: 'wzw-lbl' }, 'Dateiname +'), (() => { const i = h('input', { class: 'inp', value: st.suffix, placeholder: 'z. B. -wz', spellcheck: false, oninput: () => { st.suffix = i.value.replace(/[\\/:*?"<>|]/g, ''); persist(); } }); return i; })()),
-      h('p', { class: 'wzw-note' }, 'Die Originale bleiben unverändert. Beim Speichern werden Kamera- und Standortdaten der Originale nicht übernommen.')));
+      h('p', { class: 'wzw-note' }, 'Originale bleiben unverändert · ohne Kamera- & GPS-Daten')));
     panel.replaceChildren(...parts);
   }
   const nfmt = v => String(v).replace('.', ',');
@@ -16979,7 +16979,7 @@ function mountWasserzeichenwerk(view) {
   const drop = h('div', { class: 'wzw-drop' },
     h('div', { class: 'wzw-drop-ico' }, icon('image')), h('b', null, 'Bilder hierher ziehen'),
     h('span', null, 'oder'), h('button', { class: 'btn primary', onclick: () => fileIn.click() }, icon('plus'), 'Bilder auswählen'),
-    h('small', null, 'Einzeln oder ganz viele auf einmal – JPG, PNG, WebP'));
+    h('small', null, 'JPG, PNG, WebP · einzeln oder viele'));
   const fileIn = h('input', { type: 'file', accept: 'image/*', multiple: true, hidden: true, onchange: () => { addFiles(fileIn.files); fileIn.value = ''; } });
   const strip = h('div', { class: 'wzw-strip' }), prog = h('span', { class: 'wzw-prog' });
   const bar = h('div', { class: 'wzw-bar' });
@@ -17180,7 +17180,7 @@ function mountVergleichswerk(view) {
 
   const root = h('div', { class: 'cw vgw' }, h('div', { class: 'cw-in' },
     h('div', { class: 'cw-hd' }, h('div', { class: 'cw-logo' }, icon('vergleichswerk')),
-      h('div', null, h('h2', null, 'Vergleichswerk'), h('p', null, 'Zwei Textversionen vergleichen – was ist neu, was ist weg? Alles bleibt auf deinem Rechner.'))),
+      h('div', null, h('h2', null, 'Vergleichswerk'), h('p', null, 'Zwei Textversionen vergleichen – was ist neu, was ist weg?'))),
     h('div', { class: 'vgw-in' },
       h('div', { class: 'vgw-col' }, h('div', { class: 'vgw-lh' }, h('b', null, 'Vorher'), cA), taA),
       h('button', { class: 'vgw-swap', title: 'Texte tauschen', onclick: () => setTexts(st.b, st.a) }, icon('refresh')),
@@ -17199,7 +17199,7 @@ function mountVergleichswerk(view) {
           segEl([['side', 'Nebeneinander'], ['inline', 'Zusammen']], st.view, v => { st.view = v; persist(); run(); }),
           h('div', { class: 'vgw-nav' }, h('button', { class: 'btn sm ghost', title: 'Vorherige Änderung', onclick: () => go(-1) }, icon('up')), navInfo, h('button', { class: 'btn sm ghost', title: 'Nächste Änderung', onclick: () => go(1) }, icon('down'))))),
       res,
-      h('div', { class: 'vgw-leg' }, h('span', null, h('del', null, 'entfernt')), h('span', null, h('ins', null, 'neu')), h('span', { class: 'hint' }, 'Tipp: „Zeichen“ findet auch einzelne Tippfehler.')))));
+      h('div', { class: 'vgw-leg' }, h('span', null, h('del', null, 'entfernt')), h('span', null, h('ins', null, 'neu')), h('span', { class: 'hint' }, '„Zeichen“ findet auch Tippfehler')))));
   view.append(root);
   cnt(); run();
 }
@@ -17457,7 +17457,7 @@ function mountScreenshotwerk(view) {
     try {
       const blob = await new Promise(r => finalCanvas().toBlob(r, 'image/png'));
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-      flash(copyBtn); toast('Kopiert – jetzt z. B. in Word, Teams oder eine Mail einfügen.', 'ok');
+      flash(copyBtn); toast('Kopiert ✓', 'ok');
     } catch { toast('Kopieren geht hier nicht – nimm „Speichern“.', 'err'); }
   }
   function save() {
@@ -17472,10 +17472,10 @@ function mountScreenshotwerk(view) {
   const toolBtns = SSW_TOOLS.map(([k, l, key]) => h('button', { class: 'ssw-tool', title: `${l} (${key})`, onclick: () => { st.tool = k; pending = null; set(); }, html: `<svg viewBox="0 0 24 24" class="i">${SSW_TOOL_ICON[k]}</svg>` }));
   const colorBtns = SSW_COLORS.map(c => h('button', { class: 'ssw-col', style: { '--c': c }, title: 'Farbe', onclick: () => { st.color = c; set(); } }));
   const sizeSeg = h('div', { class: 'ssw-sizes' }, ...[1, 2, 3].map(n => h('button', { class: 'ssw-size', title: ['Dünn', 'Mittel', 'Dick'][n - 1], onclick: () => { st.size = n; set(); } }, h('i', { style: { width: (3 + n * 3) + 'px', height: (3 + n * 3) + 'px' } }))));
-  const undoBtn = h('button', { class: 'icon-btn', title: `Rückgängig (${MOD}+Z)`, onclick: undo }, icon('undo'));
-  const redoBtn = h('button', { class: 'icon-btn ssw-redo', title: `Wiederholen (${MOD}+Y)`, onclick: redo }, icon('undo'));
+  const undoBtn = h('button', { class: 'icon-btn', title: `${MOD}+Z`, onclick: undo }, icon('undo'));
+  const redoBtn = h('button', { class: 'icon-btn ssw-redo', title: `${MOD}+Y`, onclick: redo }, icon('undo'));
   const clearBtn = h('button', { class: 'icon-btn', title: 'Alle Markierungen entfernen', onclick: () => { if (doc.ann.length) commit({ ...doc, ann: [] }); } }, icon('eraser'));
-  const copyBtn = h('button', { class: 'btn sm primary', title: `In die Zwischenablage (${MOD}+C)`, onclick: copyImg }, icon('copy'), 'Kopieren');
+  const copyBtn = h('button', { class: 'btn sm primary', title: `${MOD}+C`, onclick: copyImg }, icon('copy'), 'Kopieren');
   const saveBtn = h('button', { class: 'btn sm', onclick: save }, icon('download'), 'Speichern');
   const newBtn = h('button', { class: 'btn sm ghost', title: 'Neuen Screenshot machen', onclick: capture }, icon('photo'), 'Neu');
   const toolbar = h('div', { class: 'ssw-bar' },
@@ -17494,14 +17494,14 @@ function mountScreenshotwerk(view) {
       h('div', { class: 'ssw-ways' },
         h('div', { class: 'ssw-way' },
           h('b', null, '1 · Aufnehmen'),
-          h('span', null, 'Bildschirm, Fenster oder Tab wählen – mit Selbstauslöser, falls du vorher noch etwas öffnen willst.'),
+          h('span', null, 'Bildschirm, Fenster oder Tab – auch mit Selbstauslöser'),
           h('div', { class: 'ssw-row' }, timerSeg()),
           h('button', { class: 'btn primary', onclick: capture }, icon('photo'), 'Bildschirm aufnehmen')),
         h('div', { class: 'ssw-way' },
           h('b', null, '2 · Einfügen'),
           h('span', null, 'Mit ', ...(mac ? [h('kbd', null, 'Ctrl'), ' + ', h('kbd', null, 'Shift'), ' + ', h('kbd', null, '⌘'), ' + ', h('kbd', null, '4')] : [h('kbd', null, 'Win'), ' + ', h('kbd', null, 'Shift'), ' + ', h('kbd', null, 'S')]), ' einen Ausschnitt machen und hier ', h('kbd', null, MOD), ' + ', h('kbd', null, 'V'), ' drücken.'),
           h('button', { class: 'btn', onclick: () => fileIn.click() }, icon('image'), 'Oder Bild öffnen'))),
-      h('small', null, 'Beim Aufnehmen fragt der Browser jedes Mal, was geteilt werden soll – das ist eine Schutzfunktion.'));
+      h('small', null, 'Der Browser fragt jedes Mal nach – das ist Absicht.'));
   }
   renderEmpty();
 
@@ -17528,7 +17528,7 @@ function mountScreenshotwerk(view) {
         h('div', { class: 'ssw-lbl' }, 'Rahmen'), segEl([['none', 'Ohne'], ['browser', 'Browser'], ['window', 'Fenster']], st.frame, v => { st.frame = v; set(); })),
       h('div', { class: 'ssw-side-b' },
         h('div', { class: 'ssw-lbl' }, 'Speichern als'), segEl([['png', 'PNG'], ['jpg', 'JPG']], st.fmt, v => { st.fmt = v; persist(); }),
-        h('p', { class: 'ssw-note' }, 'Tipp: Verpixle Namen, E-Mails oder Kundendaten, bevor du teilst. Das Original bleibt nur hier im Tab – nichts wird gespeichert oder hochgeladen.')));
+        h('p', { class: 'ssw-note' }, 'Tipp: Namen, E-Mails & Kundendaten vor dem Teilen verpixeln. Nichts wird gespeichert oder hochgeladen.')));
   }
 
   const stage = h('div', { class: 'ssw-stage' }, empty, stageIn, cropBar, countEl);
@@ -18474,15 +18474,15 @@ void main() {
     errEl.textContent = codeErr.replace(/ERROR: 0:(\d+):/g, (_, n) => `Zeile ${Math.max(1, n - HEAD_LINES)}:`).trim();
   }
 
-  const playBtn = h('button', { class: 'sh-ib', title: 'Pause / Weiter (Leertaste)', onclick: () => togglePlay() });
-  const showBtn = h('button', { class: 'sh-ib', title: 'Diashow: alle 12 Sekunden eine neue Vorlage (D)', onclick: () => toggleShow() }, icon('slideshow'));
+  const playBtn = h('button', { class: 'sh-ib', title: 'Leertaste', onclick: () => togglePlay() });
+  const showBtn = h('button', { class: 'sh-ib', title: 'Diashow · 12 s (D)', onclick: () => toggleShow() }, icon('slideshow'));
   function toggleShow(force) {
     const on = force ?? !show;
     clearInterval(show); show = null;
     showBtn.classList.toggle('on', on);
     canvas.style.opacity = '';
     if (on) {
-      toast('Diashow läuft – alle 12 Sekunden eine neue Vorlage. D beendet sie.', 'info');
+      toast('Diashow ▶ · alle 12 s · D = Stopp', 'info');
       show = setInterval(() => {
         canvas.style.opacity = '0';
         setTimeout(() => {
@@ -18660,7 +18660,7 @@ void main() {
       h('div', { class: 'field' }, h('label', null, 'Länge'), sel([[5, '5 s'], [10, '10 s'], [15, '15 s'], [30, '30 s'], [60, '60 s']], S0.vsec, v => { S0.vsec = +v; persist(); })),
       h('div', { class: 'field' }, h('label', null, 'Bilder/s'), sel([[30, '30 fps'], [60, '60 fps']], S0.vfps, v => { S0.vfps = +v; persist(); }))),
     vidBtn,
-    h('p', { class: 'hint' }, 'Das Video wird in Echtzeit aufgenommen – bei hoher Auflösung und schweren Shadern können Bilder fehlen.'));
+    h('p', { class: 'hint' }, 'Aufnahme in Echtzeit – bei hoher Auflösung können Bilder fehlen.'));
 
   /* ---------- Music panel ---------- */
   const musicEl = h('div', { class: 'sh-music' });
@@ -18716,7 +18716,7 @@ void main() {
     return '#' + [f(0), f(8), f(4)].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
   }
   const pParams = panel('settings', 'Parameter', h('div', { class: 'panel-actions' },
-      h('button', { class: 'btn sm ghost', title: 'Zufällige Werte & Farben (Z)', onclick: randomize }, icon('sparkle'), 'Zufall'),
+      h('button', { class: 'btn sm ghost', title: 'Zufall (Z)', onclick: randomize }, icon('sparkle'), 'Zufall'),
       h('button', { class: 'mini', title: 'Alles zurücksetzen', onclick: () => { S0.per[preset().id] = fresh(preset()); persist(); renderSide(); } }, icon('undo'))),
     paramsEl);
   const side = h('aside', { class: 'sh-side' },
@@ -18741,7 +18741,7 @@ void main() {
 
   if (!gl) {
     view.append(h('div', { class: 'empty' }, h('div', { class: 'drop' }, h('div', { class: 'big' }, icon('alert')),
-      h('h2', null, 'WebGL2 nicht verfügbar'), h('p', null, 'Dein Browser oder deine Grafikkarte unterstützt kein WebGL2. Bitte einen aktuellen Browser verwenden oder die Hardwarebeschleunigung aktivieren.'))));
+      h('h2', null, 'WebGL2 nicht verfügbar'), h('p', null, 'Kein WebGL2 – aktuellen Browser nutzen oder Hardwarebeschleunigung einschalten.'))));
     return {};
   }
   const initGL = () => {
@@ -19127,7 +19127,7 @@ function mountQrwerk(view) {
     sms: () => [fld('sms.num', 'Telefonnummer', '+49 170 1234567', { wide: true, type: 'tel' }), fld('sms.msg', 'Nachricht', 'Text der SMS …', { wide: true, area: true })],
     tel: () => [fld('tel.num', 'Telefonnummer', '+49 170 1234567', { wide: true, type: 'tel' })],
     geo: () => [fld('geo.lat', 'Breitengrad', '52.520008', { mode: 'decimal' }), fld('geo.lon', 'Längengrad', '13.404954', { mode: 'decimal' }),
-      h('p', { class: 'hint wide' }, 'Tipp: In Karten-Apps Rechtsklick auf einen Ort → Koordinaten kopieren.')],
+      h('p', { class: 'hint wide' }, 'Tipp: in Karten-Apps Rechtsklick auf einen Ort → Koordinaten kopieren')],
   };
   const typeGrid = h('div', { class: 'qr-types' });
   const formEl = h('div', { class: 'qr-form' });
@@ -19156,7 +19156,7 @@ function mountQrwerk(view) {
     try { qr = QRCode.encode(text, hasLogo && d.ecl !== 'H' ? 'H' : d.ecl, true); }
     catch (err) {
       current = null;
-      prevEl.replaceChildren(h('div', { class: 'qr-empty err' }, icon('alert'), h('b', null, 'Zu viel Inhalt'), h('span', null, 'Ein QR-Code fasst maximal etwa 2.900 Zeichen. Bitte kürzen.')));
+      prevEl.replaceChildren(h('div', { class: 'qr-empty err' }, icon('alert'), h('b', null, 'Zu viel Inhalt'), h('span', null, 'Max. ≈ 2.900 Zeichen – bitte kürzen.')));
       infoEl.textContent = ''; paintExport(); return;
     }
     const svg = svgFor(qr, d);
@@ -19193,11 +19193,11 @@ function mountQrwerk(view) {
     } finally { URL.revokeObjectURL(url); }
   }
   const pngBtn = h('button', { class: 'btn primary', onclick: async () => { if (!current) return; const b = await toPng(S1.d.png); download(`${fileBase()}-${S1.d.png}px.png`, b); toast(`PNG gespeichert · ${S1.d.png}×${S1.d.png}`, 'ok'); } }, icon('download'), 'PNG');
-  const svgBtn = h('button', { class: 'btn', onclick: () => { if (!current) return; download(`${fileBase()}.svg`, current.svg, 'image/svg+xml'); toast('SVG gespeichert – beliebig skalierbar.', 'ok'); } }, icon('download'), 'SVG');
-  const copyBtn = h('button', { class: 'btn', title: 'Als Bild in die Zwischenablage', onclick: async () => {
+  const svgBtn = h('button', { class: 'btn', onclick: () => { if (!current) return; download(`${fileBase()}.svg`, current.svg, 'image/svg+xml'); toast('SVG ✓', 'ok'); } }, icon('download'), 'SVG');
+  const copyBtn = h('button', { class: 'btn', title: 'PNG → 📋', onclick: async () => {
     if (!current) return;
-    try { const b = await toPng(1024); await navigator.clipboard.write([new ClipboardItem({ 'image/png': b })]); toast('QR-Code kopiert – einfach einfügen.', 'ok'); }
-    catch { toast('Kopieren wird von diesem Browser nicht unterstützt – bitte PNG speichern.', 'warn'); }
+    try { const b = await toPng(1024); await navigator.clipboard.write([new ClipboardItem({ 'image/png': b })]); toast('QR-Code kopiert ✓', 'ok'); }
+    catch { toast('Kopieren geht hier nicht – nimm „PNG“.', 'warn'); }
   } }, icon('copy'), 'Kopieren');
   const pngSize = segEl([[512, '512'], [1024, '1024'], [2048, '2048'], [4096, '4096']], S1.d.png, v => { S1.d.png = v; persist(); });
   function paintExport() { [pngBtn, svgBtn, copyBtn].forEach(b => b.disabled = !current); }
@@ -19915,7 +19915,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
       const inp = h('input', { class: 'inp cs-gen-in', value: st.genText, placeholder: 'Dein Text …', maxlength: 120, spellcheck: false, oninput: e => { st.genText = e.target.value; save(); paint(); } });
       paint();
       setTimeout(() => inp.focus(), 30);
-      return [inp, h('p', { class: 'hint' }, 'Umlaute und Sonderzeichen bleiben in den meisten Stilen unverändert – Unicode hat dafür keine Varianten.'), out];
+      return [inp, h('p', { class: 'hint' }, 'ä, ö, ü & Sonderzeichen bleiben meist unverändert.'), out];
     }
     if (id === 'fav') {
       const favs = st.fav.length ? [h('div', { class: 'cs-favs' }, st.fav.map(f => {
@@ -19951,7 +19951,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
           el.querySelector('.cs-star'));
         return el;
       });
-      return [form, st.mine.length ? h('div', { class: 'cs-sns' }, list) : h('div', { class: 'cs-empty' }, h('b', null, 'Noch keine eigenen Snippets'), h('span', null, 'Oben Titel und Text eintragen – z. B. Adresse, IBAN, Signatur oder Standardantworten.'))];
+      return [form, st.mine.length ? h('div', { class: 'cs-sns' }, list) : h('div', { class: 'cs-empty' }, h('b', null, 'Noch keine eigenen Snippets'), h('span', null, 'Oben eintragen – z. B. Adresse, IBAN, Signatur.'))];
     }
     return [];
   }
@@ -19980,7 +19980,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
       class: 'cs-nb' + (st.cat === id && !query ? ' on' : ''), onclick: () => { st.cat = id; save(); searchIn.value = ''; query = ''; render(true); renderNav(); },
     }, h('span', { class: 'cs-ico' + (ico.length > 3 ? ' txt' : '') }, ico), h('span', { class: 'cs-nm' }, name), h('span', { class: 'cs-cnt' }, count(id))))]));
   }
-  const searchIn = h('input', { class: 'cs-search-in', placeholder: 'Alles durchsuchen … (Pfeil, Euro, zentrieren, git, Umarmung …)', spellcheck: false,
+  const searchIn = h('input', { class: 'cs-search-in', placeholder: 'Suchen … (Pfeil, €, git, ♥ …)', spellcheck: false,
     oninput: debounce(e => { query = e.target.value.trim(); render(true); renderNav(); }, 120),
     onkeydown: e => {
       if (e.key === 'Escape') { searchIn.value = ''; query = ''; render(true); renderNav(); }
@@ -19993,7 +19993,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
     if (query) {
       const res = search(query);
       kids = res.length
-        ? [h('div', { class: 'cs-h' }, h('div', null, h('h2', null, `${res.reduce((a, r) => a + r[1].length, 0)} Treffer für „${query}“`), h('p', null, 'Enter kopiert den ersten Treffer · Esc leert die Suche'))),
+        ? [h('div', { class: 'cs-h' }, h('div', null, h('h2', null, `${res.reduce((a, r) => a + r[1].length, 0)} Treffer für „${query}“`), h('p', null, 'Enter = 1. Treffer kopieren · Esc = leeren'))),
           ...res.map(([id, hits]) => h('section', { class: 'cs-sec' }, h('div', { class: 'cs-sec-h' }, h('span', null, `${CAT[id].ico}  ${CAT[id].name}`)),
             hits[0].classList.contains('cs-ch') ? h('div', { class: 'cs-chars' + (DATA[id]?.wide ? ' wide' : '') }, hits) : h('div', { class: hits[0].classList.contains('cs-kv') ? 'cs-kvs' : 'cs-sns' }, hits)))]
         : [h('div', { class: 'cs-empty big' }, h('b', null, `Nichts gefunden für „${query}“`), h('span', null, 'Tipp: Leg dir unter „Eigene Snippets“ einfach selbst etwas an.'))];
@@ -21121,7 +21121,7 @@ function reaction(root) {
       h('div', { class: 'rx-card' }, h('small', null, 'Schnellste Reaktion'), h('b', null, S.bestSingle ? ms(S.bestSingle) : '–')),
       h('div', { class: 'rx-card' }, h('small', null, 'Letzte Durchgänge'),
         avgs.length ? h('div', { class: 'rx-hist' }, avgs.map(v => h('div', { class: 'rx-hb', title: ms(v), style: { height: Math.max(8, v / max * 100) + '%' } }))) : h('p', { class: 'hint' }, 'Noch keine Durchgänge.')),
-      h('p', { class: 'rx-tip' }, 'Tipp: Der Durchschnitt liegt bei etwa 250–300 ms. Klick, Tippen oder Leertaste zählen.'));
+      h('p', { class: 'rx-tip' }, 'Ø ≈ 250–300 ms · Klick, Tippen oder Leertaste'));
   }
   function idle() { state = 'idle'; times = []; fouls = 0; setPad('idle', 'Reaktionstest', `${ROUNDS} Runden · Klick oder Leertaste zum Start`, '⚡'); paintDots(); }
   function arm() {
@@ -21152,7 +21152,7 @@ function reaction(root) {
     Store.set('spiele-reaktion', S);
     const r = RANKS.find(x => avg < x[0]);
     setPad('result', ms(avg), `${r[2]} – ${r[3]}${fouls ? ` · ${fouls} Fehlstart${fouls > 1 ? 's' : ''}` : ''}${newBest ? ' · 🎉 Neuer Bestwert!' : ''}`, r[1]);
-    pad.querySelector('.rx-in').append(h('span', { class: 'rx-again' }, 'Klick oder Leertaste für eine neue Runde'));
+    pad.querySelector('.rx-in').append(h('span', { class: 'rx-again' }, 'Klick · Leertaste → neue Runde'));
     paintSide(); paintDots();
   }
   idle(); paintSide();
@@ -21190,7 +21190,7 @@ function dodge(root, visible) {
            h('p', null, newBest ? '🎉 Neuer Bestwert!' : `Bestwert: ${S.best.toFixed(1).replace('.', ',')} s`)]
         : [h('div', { class: 'dg-emoji' }, '☄️'), h('h3', null, 'Ausweichen'), h('p', null, 'Weich den fallenden Brocken aus – je länger du überlebst, desto besser. Es wird immer schneller!')],
       h('button', { class: 'btn primary', onclick: () => start() }, icon('play'), state === 'over' ? 'Nochmal' : 'Los geht’s'),
-      h('small', null, 'Steuerung: Maus oder ← → · Start mit Leertaste')));
+      h('small', null, 'Maus oder ← → · Start: Leertaste')));
   }
   function spawn() {
     const lvl = 1 + t / 20, r = 8 + Math.random() * (10 + Math.min(18, t * 0.4));

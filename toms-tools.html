@@ -3764,11 +3764,49 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Bildwerk
+  'Frei': 'Free', '1,91:1': '1.91:1', 'Weich': 'Soft', 'Hart': 'Hard', 'Lang': 'Long', 'Boden': 'Floor', 'S/W': 'B/W', 'Kühl': 'Cool', 'Kräftig': 'Vivid', 'Matt': 'Matte', 'Plakativ': 'Bold',
+  'Schreibschrift': 'Script', 'Ebene ziehen = verschieben · Ecke = Größe · Entf = löschen · Mausrad = Zoom': 'Drag layer = move · corner = size · Del = delete · wheel = zoom',
+  'Ziehen = verschieben · Mausrad = Zoom · Bilder hierher ziehen = neue Ebene': 'Drag = pan · wheel = zoom · drop images here = new layer',
+  'Rahmen ziehen · Enter = fertig · Esc = abbrechen': 'Drag the frame · Enter = done · Esc = cancel', 'Klick auf den Hintergrund = Farbe entfernen': 'Click the background = remove color',
+  'Klick = zusammenhängende Fläche entfernen · Alt+Klick = zurückholen · Strg+Z = rückgängig': 'Click = remove connected area · Alt+click = restore · Ctrl+Z = undo',
+  'Malen legt eine neue Ebene „Malen“ an · [ ] = Pinsel · Strg+Z = zurück': 'Painting creates a new layer “Paint” · [ ] = brush · Ctrl+Z = undo', 'Wegnehmen': 'Remove', 'Hinzufügen': 'Add',
+  'Die gewählte Ebene ist ausgeblendet.': 'The selected layer is hidden.', 'Das ist keine Bilddatei.': 'That’s not an image file.', 'Bild': 'Image', 'Eingefügtes Bild': 'Pasted image',
+  'Keine Bilder gefunden.': 'No images found.', 'Bild konnte nicht gelesen werden: ': 'Couldn’t read the image: ', 'Malen': 'Paint',
+  'Ausgabe zu groß (max. ~120 MP).': 'Output too large (max. ~120 MP).', 'Export fehlgeschlagen.': 'Export failed.', 'Verschieben (V)': 'Move (V)', 'Zuschneiden (C)': 'Crop (C)',
+  'Pipette (I)': 'Eyedropper (I)', 'Zauberstab (W) · Alt = zurückholen': 'Magic wand (W) · Alt = restore', 'Maske (E) · X = umschalten · Alt = umkehren': 'Mask (E) · X = toggle · Alt = invert',
+  'Pinsel – malen auf eigener Ebene (B)': 'Brush – paint on its own layer (B)', '− Wegnehmen': '− Remove', '+ Hinzufügen': '+ Add', 'Pinselfarbe': 'Brush color', 'Größe': 'Size', 'Härte': 'Hardness',
+  'Toleranz': 'Tolerance', 'Rot zeigen': 'Show red', 'Vorher': 'Before', 'Transparenz-Raster': 'Transparency grid', 'Weiß': 'White', 'Schwarz': 'Black', 'Einpassen (F)': 'Fit (F)',
+  'Vorheriges Bild (←)': 'Previous image (←)', 'Z. B. ein Logo als Wasserzeichen auf jedes Bild': 'E.g. a logo as a watermark on every image',
+  'Ebenen ins nächste Bild mitnehmen': 'Carry layers over to the next image', 'Ordner': 'Folder', 'Schließen': 'Close', 'Fertig': 'Done', 'Rahmen': 'Frame', 'Zuschneiden': 'Crop', 'Spiegeln': 'Flip',
+  'Seitenverhältnis sperren': 'Lock aspect ratio', 'Ausgabe ': 'Output ', 'Pipette': 'Eyedropper', 'keine Farbe erkannt': 'no color detected', 'Automatisch zurücksetzen': 'Reset to automatic',
+  'Entfernen': 'Remove', 'Hintergrund entfernen an/aus': 'Background removal on/off', 'Vom Rand aus': 'From the edge', 'Überall': 'Everywhere', 'Hintergrund entfernen': 'Remove background',
+  'Hintergrundfarbe': 'Background color', 'Zauberstab': 'Magic wand', 'Maske nachbessern': 'Refine mask', 'wie ähnlich': 'how similar', 'Weichheit': 'Softness', 'Übergang': 'transition',
+  'Kante': 'Edge', '− enger · + weiter': '− tighter · + wider', 'Weichzeichnen': 'Blur', 'Farbsaum entfernen': 'Remove color fringe',
+  'Vom Rand aus – schützt helle Stellen im Motiv.': 'From the edge – protects light areas in the subject.',
+  'Überall – auch in Löchern (z. B. im Logo).': 'Everywhere – also in holes (e.g. inside a logo).', 'Doppelklick = Standard': 'Double-click = default', 'Schatten': 'Shadow', 'Kontur': 'Outline',
+  'Leuchten': 'Glow', 'Zuschnitt, Größe & Freistellen': 'Crop, size & cut-out', 'Malebene': 'Paint layer', 'Ebene': 'Layer', 'Ausblenden': 'Hide', 'Einblenden': 'Show', 'Entf': 'Del',
+  'Textfarbe': 'Text color', 'Fett': 'Bold', 'Kursiv': 'Italic', 'Linksbündig': 'Align left', 'Zentriert': 'Centered', 'Rechtsbündig': 'Align right', 'Multiplizieren': 'Multiply',
+  'Negativ multiplizieren': 'Screen', 'Ineinanderkopieren': 'Overlay', 'Weiches Licht': 'Soft light', 'Hartes Licht': 'Hard light', 'Abdunkeln': 'Darken', 'Aufhellen': 'Lighten',
+  'Farbig abwedeln': 'Color dodge', 'Differenz': 'Difference', 'Luminanz': 'Luminosity', 'Deckkraft': 'Opacity', 'Mischmodus': 'Blend mode', 'der Bildbreite': 'of image width', 'Drehung': 'Rotation',
+  'Nach oben': 'Move up', 'Nach unten': 'Move down', 'Zentrieren': 'Center', 'Duplizieren': 'Duplicate', 'Kopie': 'Copy', 'Ebenen': 'Layers', 'Oder aufs Bild ziehen': 'Or drop onto the image',
+  'Farbe': 'Color', 'Richtung': 'Direction', 'Abstand': 'Distance', 'Sichtbar erst bei Transparenz (z. B. freigestellt).': 'Only visible with transparency (e.g. cut out).', 'für: Bild': 'for: image',
+  'für: ': 'for: ', 'Effekte': 'Effects', 'Schlagschatten': 'Drop shadow', 'Breite': 'Width', 'Stärke': 'Strength', 'Anpassungen': 'Adjustments', 'Helligkeit': 'Brightness', 'Kontrast': 'Contrast',
+  'Sättigung': 'Saturation', 'Wärme': 'Warmth', '− kühl · + warm': '− cool · + warm', 'Farbton': 'Hue', 'dunkle Ecken': 'dark corners', 'Zurücksetzen': 'Reset', 'Qualität': 'Quality',
+  'Exportieren & weiter': 'Export & next', 'Füllfarbe': 'Fill color', 'z. B. Weiß für Produktfotos': 'e.g. white for product photos', 'Hintergrund füllen': 'Fill background',
+  'Dateiname': 'File name', 'Exportieren': 'Export', 'Bild öffnen': 'Open image',
+  'Zuschneiden, Größe ändern, Hintergrund entfernen – und als PNG oder WebP exportieren.': 'Crop, resize, remove the background – and export as PNG or WebP.', 'Bild auswählen': 'Choose image',
+  'Ordner öffnen': 'Open folder', 'oder hierher ziehen (mehrere = durchblättern) · Strg+V zum Einfügen': 'or drop here (several = browse) · Ctrl+V to paste',
+  'Loslassen = als neue Ebene aufs Bild legen': 'Release = add as a new layer', 'Bild loslassen': 'Drop image', 'Auswahl': 'Selection', 'Als Ebene eingefügt': 'Added as a layer',
+  'Stattdessen öffnen': 'Open instead', 'Ganzes Bild': 'Whole image', '{m} auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben': '{m} on “{n}” · Alt = invert · [ ] = brush · Space = pan',
+  'Malen auf „{n}“ · [ ] = Pinsel · Strg+Z = zurück': 'Painting on “{n}” · [ ] = brush · Ctrl+Z = undo', '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.',
+  '{a}: {p} % des Bildes': '{a}: {p} % of the image', 'Zurückgeholt': 'Restored', 'Entfernt': 'Removed', '„{n}“ als Ebene eingefügt': '“{n}” added as a layer',
+  '{n} Ebenen eingefügt': '{n} layers added', 'B': 'W', 'F': 'B', 'K': 'I',
   // Settings, app settings, folder backup & diagnostics
   'Einstellungen': 'Settings', 'Gelten für alle Tools · Version {v}': 'Apply to all tools · version {v}', 'Darstellung': 'Appearance', 'Theme': 'Theme', 'Akzentfarbe': 'Accent color',
   'Animationen': 'Animations', 'Maskottchen': 'Mascot', 'Anzeigen': 'Show', 'Größe': 'Size', 'Startseite': 'Home page', 'Start': 'Startup', 'Name': 'Name',
   'Wird in der Begrüßung angezeigt': 'Shown in the greeting', 'Sprache · Language': 'Language · Sprache',
-  'Englisch: bisher Startseite, Oberleiste & Einstellungen': 'English so far: home page, top bar & settings', 'Beim Öffnen zeigen': 'Show on launch', 'Home': 'Home', 'Letzte Sitzung': 'Last session',
+  'Englisch kommt App für App': 'English is coming app by app', 'Offene Apps wechseln die Sprache beim nächsten Öffnen.': 'Open apps switch language the next time you open them.', 'Beim Öffnen zeigen': 'Show on launch', 'Home': 'Home', 'Letzte Sitzung': 'Last session',
   'Apps': 'Apps', 'Legacy-App-Modus': 'Legacy app mode',
   'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht': 'Image Naming is called “Bildbert Namuel Verwaldemar” again – with a face', 'App-Einstellungen': 'App settings',
   'System & Diagnose': 'System & diagnostics', 'Hilft, wenn sich Ordner nicht öffnen lassen.': 'Helps when folders won’t open.', 'Ordnerzugriff testen': 'Test folder access',
@@ -5009,6 +5047,8 @@ function openSettings(keepScroll) {
   const drawer = h('aside', { class: 'drawer' },
     h('header', { class: 'drawer-h' }, h('div', null, h('h3', null, T('Einstellungen')), h('p', null, T('Gelten für alle Tools · Version {v}', { v: VERSION }))), h('button', { class: 'icon-btn', onclick: close }, icon('x'))),
     h('div', { class: 'drawer-b' },
+      // Language on top – label in both languages so it can be found either way
+      h('section', { class: 'set-sec' }, row('Sprache · Language', 'Englisch kommt App für App', segEl([['de', 'Deutsch'], ['en', 'English']], isEN() ? 'en' : 'de', v => setLang(v)))),
       sec('Darstellung',
         h('div', { class: 'set-label' }, T('Theme')), themes,
         h('div', { class: 'set-label' }, T('Akzentfarbe')), sw,
@@ -5019,8 +5059,6 @@ function openSettings(keepScroll) {
       sec('Startseite', homeSet),
       sec('Start',
         row('Name', 'Wird in der Begrüßung angezeigt', h('input', { class: 'inp', value: S.data.name || '', placeholder: T('Dein Name'), spellcheck: false, autocomplete: 'off', oninput: e => { S.set('name', e.target.value); renderHome(); } })),
-        // Label in both languages so it can be found either way
-        row('Sprache · Language', 'Englisch: bisher Startseite, Oberleiste & Einstellungen', segEl([['de', 'Deutsch'], ['en', 'English']], isEN() ? 'en' : 'de', v => setLang(v))),
         row('Beim Öffnen zeigen', null, segEl(tr([['home', 'Home'], ['restore', 'Letzte Sitzung']]), S.data.start, v => S.set('start', v)))),
       sec('Apps',
         row('Legacy-App-Modus', 'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht', switchEl(S.data.bildbert, v => { S.data.bildbert = v; S.save(); applyBildbert(true); })),
@@ -8301,7 +8339,7 @@ function mountGedankenwerk(view) { return mountFrameApp(view, GW_HTML, 'gedanken
 
 /* ================= App: Bildwerk ================= */
 function mountBildwerk(view) {
-  const RATIOS = [['free', 'Frei'], ['orig', 'Original'], ['1:1', '1:1'], ['4:3', '4:3'], ['3:2', '3:2'], ['16:9', '16:9'], ['4:5', '4:5'], ['1.91:1', '1,91:1']];
+  const RATIOS = [['free', T('Frei')], ['orig', 'Original'], ['1:1', '1:1'], ['4:3', '4:3'], ['3:2', '3:2'], ['16:9', '16:9'], ['4:5', '4:5'], ['1.91:1', T('1,91:1')]];
   const BG_DEF = { mode: 'edge', tol: 18, soft: 12, shift: 0, feather: 1, defringe: 75 };
   const PREVIEW_MAX = 1400;
   const saved = Store.get('bildwerk', {});
@@ -8325,22 +8363,22 @@ function mountBildwerk(view) {
     glow: { on: false, blur: 6, op: 75, color: '#ffffff' },
   });
   const SHADOW_PRESETS = [
-    ['Weich', { type: 'drop', angle: 70, dist: 2.5, blur: 6, op: 40 }],
-    ['Hart', { type: 'drop', angle: 45, dist: 1.5, blur: .4, op: 60 }],
-    ['Lang', { type: 'drop', angle: 45, dist: 7, blur: 3.5, op: 35 }],
-    ['Boden', { type: 'floor', blur: 4, op: 55 }],
+    [T('Weich'), { type: 'drop', angle: 70, dist: 2.5, blur: 6, op: 40 }],
+    [T('Hart'), { type: 'drop', angle: 45, dist: 1.5, blur: .4, op: 60 }],
+    [T('Lang'), { type: 'drop', angle: 45, dist: 7, blur: 3.5, op: 35 }],
+    [T('Boden'), { type: 'floor', blur: 4, op: 55 }],
   ];
   const mergeFx = f => { const d = FX_DEF(); for (const k in d) Object.assign(d[k], f?.[k] || {}); return d; };
   // Adjustments (like Camera Raw light): per layer
   const ADJ_DEF = () => ({ b: 0, c: 0, s: 0, t: 0, hue: 0, blur: 0, vig: 0, gray: 0, sepia: 0 });
   const ADJ_PRESETS = [
-    ['Original', {}], ['S/W', { gray: 100, c: 12 }], ['Sepia', { sepia: 80, c: 5, vig: 25 }], ['Warm', { t: 35, s: 10 }], ['Kühl', { t: -35, s: -5 }],
-    ['Kräftig', { c: 18, s: 35, b: 3 }], ['Matt', { c: -22, b: 6, s: -18 }], ['Vintage', { sepia: 35, c: -12, t: 20, s: -10, vig: 40 }], ['Drama', { c: 40, s: -25, b: -6, vig: 55 }],
+    ['Original', {}], [T('S/W'), { gray: 100, c: 12 }], ['Sepia', { sepia: 80, c: 5, vig: 25 }], ['Warm', { t: 35, s: 10 }], [T('Kühl'), { t: -35, s: -5 }],
+    [T('Kräftig'), { c: 18, s: 35, b: 3 }], [T('Matt'), { c: -22, b: 6, s: -18 }], ['Vintage', { sepia: 35, c: -12, t: 20, s: -10, vig: 40 }], ['Drama', { c: 40, s: -25, b: -6, vig: 55 }],
   ];
   const isAdj = a => Object.keys(a).some(k => a[k] !== 0);
   const FONTS = [['Inter, "Segoe UI Variable Display", "Segoe UI", sans-serif', 'Modern'], ['Georgia, "Times New Roman", serif', 'Serif'], ['Impact, "Arial Black", sans-serif', 'Impact'],
-    ['"Arial Black", Arial, sans-serif', 'Plakativ'], ['Consolas, "Cascadia Mono", "Courier New", monospace', 'Mono'], ['"Segoe Script", "Brush Script MT", cursive', 'Schreibschrift'], ['"Comic Sans MS", "Comic Neue", cursive', 'Comic']];
-  const baseLayer = { id: 0, base: true, name: 'Bild', visible: true, opacity: 1, blend: 'source-over', fx: mergeFx(saved.fx), adj: ADJ_DEF() };
+    ['"Arial Black", Arial, sans-serif', T('Plakativ')], ['Consolas, "Cascadia Mono", "Courier New", monospace', 'Mono'], ['"Segoe Script", "Brush Script MT", cursive', T('Schreibschrift')], ['"Comic Sans MS", "Comic Neue", cursive', 'Comic']];
+  const baseLayer = { id: 0, base: true, name: T('Bild'), visible: true, opacity: 1, blend: 'source-over', fx: mergeFx(saved.fx), adj: ADJ_DEF() };
   st.fill = { on: false, color: '#ffffff', ...(saved.fill || {}) };
   st.paintColor = saved.paintColor || '#ffffff';
   st.layers = [baseLayer];
@@ -8800,12 +8838,12 @@ function mountBildwerk(view) {
   function updHint() {
     const [W, H] = outDims();
     const t = {
-      move: [st.layers.length > 1 ? 'Ebene ziehen = verschieben · Ecke = Größe · Entf = löschen · Mausrad = Zoom' : 'Ziehen = verschieben · Mausrad = Zoom · Bilder hierher ziehen = neue Ebene'],
-      crop: ['Rahmen ziehen · Enter = fertig · Esc = abbrechen'],
-      pick: ['Klick auf den Hintergrund = Farbe entfernen'],
-      wand: ['Klick = zusammenhängende Fläche entfernen · Alt+Klick = zurückholen · Strg+Z = rückgängig'],
-      erase: [`${eraseMode() ? 'Wegnehmen' : 'Hinzufügen'} auf „${st.layers[st.sel]?.name}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben`],
-      paint: [st.layers[st.sel] && !st.layers[st.sel].base && !st.layers[st.sel].text ? `Malen auf „${st.layers[st.sel].name}“ · [ ] = Pinsel · Strg+Z = zurück` : 'Malen legt eine neue Ebene „Malen“ an · [ ] = Pinsel · Strg+Z = zurück'],
+      move: [st.layers.length > 1 ? T('Ebene ziehen = verschieben · Ecke = Größe · Entf = löschen · Mausrad = Zoom') : T('Ziehen = verschieben · Mausrad = Zoom · Bilder hierher ziehen = neue Ebene')],
+      crop: [T('Rahmen ziehen · Enter = fertig · Esc = abbrechen')],
+      pick: [T('Klick auf den Hintergrund = Farbe entfernen')],
+      wand: [T('Klick = zusammenhängende Fläche entfernen · Alt+Klick = zurückholen · Strg+Z = rückgängig')],
+      erase: [T('{m} auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben', { m: T(eraseMode() ? T('Wegnehmen') : T('Hinzufügen')), n: st.layers[st.sel]?.name })],
+      paint: [st.layers[st.sel] && !st.layers[st.sel].base && !st.layers[st.sel].text ? T('Malen auf „{n}“ · [ ] = Pinsel · Strg+Z = zurück', { n: st.layers[st.sel].name }) : T('Malen legt eine neue Ebene „Malen“ an · [ ] = Pinsel · Strg+Z = zurück')],
     }[st.tool];
     hintEl.replaceChildren(h('b', null, `${W} × ${H}`), t[0]);
   }
@@ -8949,7 +8987,7 @@ function mountBildwerk(view) {
   }
   function startStroke(mx, my) {
     const L = st.tool === 'paint' ? paintLayer() : st.layers[st.sel];
-    if (!L || !L.visible) { toast('Die gewählte Ebene ist ausgeblendet.', 'warn'); return false; }
+    if (!L || !L.visible) { toast(T('Die gewählte Ebene ist ausgeblendet.'), 'warn'); return false; }
     const targets = strokeTargets(L);
     // Backup of the masks for undo (only the painted area is kept at the end)
     const backups = targets.map(([c]) => { const b = mk(c.width, c.height); b.getContext('2d').drawImage(c, 0, 0); return b; });
@@ -9007,7 +9045,7 @@ function mountBildwerk(view) {
     }
     pushUndo(() => { for (const [c, p] of patches) { const cg = c.getContext('2d'); cg.clearRect(k.x, k.y, k.w, k.h); cg.drawImage(p, k.x, k.y); } st.eraseVer++; });
     st.eraseVer++; sync(); queue();
-    toast(`${keep ? 'Zurückgeholt' : 'Entfernt'}: ${Math.round(cnt / n * 1000) / 10} % des Bildes`, 'info', { ms: 1400 });
+    toast(T('{a}: {p} % des Bildes', { a: T(keep ? 'Zurückgeholt' : 'Entfernt'), p: Math.round(cnt / n * 1000) / 10 }), 'info', { ms: 1400 });
   }
 
   let drag = null, space = false;
@@ -9140,15 +9178,15 @@ function mountBildwerk(view) {
   }
   let loadNo = 0;
   async function load(file, fromFolder = false) {
-    if (!file || !isImg(file)) { toast('Das ist keine Bilddatei.', 'warn'); return false; }
+    if (!file || !isImg(file)) { toast(T('Das ist keine Bilddatei.'), 'warn'); return false; }
     const no = ++loadNo;
     let c;
-    try { c = await decodeImg(file); } catch { toast(`„${file.name || 'Bild'}“ konnte nicht gelesen werden.`, 'err'); return false; }
+    try { c = await decodeImg(file); } catch { toast(T('„{n}“ konnte nicht gelesen werden.', { n: file.name || T('Bild') }), 'err'); return false; }
     if (no !== loadNo) return false;   // next image already requested
     const w = c.width, hh = c.height;
     if (!fromFolder) st.folder = null;
     st.src = c; st.ver++;
-    st.name = file.name || 'Eingefügtes Bild'; st.fsize = file.size;
+    st.name = file.name || T('Eingefügtes Bild'); st.fsize = file.size;
     st.file = (file.name || 'bild').replace(/\.[^.]+$/, '').replace(/[\s_]+/g, '-') || 'bild';
     st.crop = { x: 0, y: 0, w, h: hh }; st.ratio = 'free';
     if (!fromFolder) { st.size = { w: null, h: null, lock: true }; st.bg.on = false; baseLayer.adj = ADJ_DEF(); }   // in folder mode: keep size & cut-out for the next image
@@ -9181,13 +9219,13 @@ function mountBildwerk(view) {
         i.setAttribute('webkitdirectory', ''); document.body.append(i); i.click();
       });
       if (!files.length) return;
-      name = files[0].webkitRelativePath?.split('/')[0] || 'Ordner';
+      name = files[0].webkitRelativePath?.split('/')[0] || T('Ordner');
       list = files.filter(f => IMG_EXT.test(f.name) && !f.webkitRelativePath.split('/').slice(1, -1).length).map(f => ({ name: f.name, get: async () => f }));
     }
     setFolder(name, list);
   }
   function setFolder(name, list) {
-    if (!list.length) { toast('Keine Bilder gefunden.', 'warn'); return; }
+    if (!list.length) { toast(T('Keine Bilder gefunden.'), 'warn'); return; }
     list.sort((a, b) => a.name.localeCompare(b.name, 'de', { numeric: true, sensitivity: 'base' }));
     st.folder = { name, list, idx: -1 };
     goto(0);
@@ -9199,7 +9237,7 @@ function mountBildwerk(view) {
     const prevIdx = F.idx; F.idx = i; sync();
     try {
       if (await load(await F.list[i].get(), true)) return true;
-    } catch (e) { toast('Bild konnte nicht gelesen werden: ' + e.message, 'err'); }
+    } catch (e) { toast(T('Bild konnte nicht gelesen werden: ') + e.message, 'err'); }
     if (st.folder === F) { F.idx = prevIdx; sync(); }
     return false;
   }
@@ -9208,7 +9246,7 @@ function mountBildwerk(view) {
   // ── New layer from an image file (drag & drop, paste, button) ──
   async function addLayer(file, mx, my) {
     let c;
-    try { c = await decodeImg(file); } catch { toast(`„${file.name || 'Bild'}“ konnte nicht gelesen werden.`, 'err'); return null; }
+    try { c = await decodeImg(file); } catch { toast(T('„{n}“ konnte nicht gelesen werden.', { n: file.name || T('Bild') }), 'err'); return null; }
     if (!st.src) return null;
     const [W, H] = outDims();
     let [wx, wy] = mx == null ? [W / 2, H / 2] : toWorld(mx, my);
@@ -9260,7 +9298,7 @@ function mountBildwerk(view) {
     const L = st.layers[st.sel];
     if (L && !L.base && !L.text) return L;
     const [W, H] = outDims(), k = Math.min(1, 4096 / Math.max(W, H));
-    return pushLayer(newLayer({ name: 'Malen', paint: true, src: mk(Math.round(W * k), Math.round(H * k)), x: .5, y: .5, s: 1 }));
+    return pushLayer(newLayer({ name: T('Malen'), paint: true, src: mk(Math.round(W * k), Math.round(H * k)), x: .5, y: .5, s: 1 }));
   }
   const addLayerFile = async () => { const f = await pickFile('image/*'); if (f) addLayer(f); };
   function removeLayer(i) {
@@ -9307,7 +9345,7 @@ function mountBildwerk(view) {
   async function doExport(copy) {
     if (!st.src) return;
     const [W, H] = outDims();
-    if (W * H > 120e6) { toast('Ausgabe zu groß (max. ~120 MP).', 'err'); return false; }
+    if (W * H > 120e6) { toast(T('Ausgabe zu groß (max. ~120 MP).'), 'err'); return false; }
     busyEl.classList.add('on');
     await new Promise(r => setTimeout(r, 30));
     const out = compose(1);
@@ -9315,7 +9353,7 @@ function mountBildwerk(view) {
     const blob = await new Promise(res => out.toBlob(res, type, st.q / 100));
     busyEl.classList.remove('on');
     if (st.tool !== 'crop') draw();
-    if (!blob) { toast('Export fehlgeschlagen.', 'err'); return false; }
+    if (!blob) { toast(T('Export fehlgeschlagen.'), 'err'); return false; }
     if (copy) {
       try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]); toast('Als PNG in die Zwischenablage kopiert.', 'ok'); }
       catch (e) { toast('Kopieren nicht erlaubt: ' + e.message, 'err'); }
@@ -9330,10 +9368,10 @@ function mountBildwerk(view) {
   const ups = [];
   const sync = () => { ups.forEach(f => f()); persist(); };
 
-  const toolsEl = h('div', { class: 'bw-tools' }, [['move', 'hand', 'Verschieben (V)'], ['crop', 'crop', 'Zuschneiden (C)'], ['pick', 'pipette', 'Pipette (I)'], ['wand', 'wand', 'Zauberstab (W) · Alt = zurückholen'], ['erase', 'eraser', 'Maske (E) · X = umschalten · Alt = umkehren'], ['paint', 'brush', 'Pinsel – malen auf eigener Ebene (B)']]
+  const toolsEl = h('div', { class: 'bw-tools' }, [['move', 'hand', T('Verschieben (V)')], ['crop', 'crop', T('Zuschneiden (C)')], ['pick', 'pipette', T('Pipette (I)')], ['wand', 'wand', T('Zauberstab (W) · Alt = zurückholen')], ['erase', 'eraser', T('Maske (E) · X = umschalten · Alt = umkehren')], ['paint', 'brush', T('Pinsel – malen auf eigener Ebene (B)')]]
     .map(([t, ic, ti]) => h('button', { class: t === st.tool ? 'on' : '', dataset: { t }, title: ti, onclick: () => setTool(t) }, icon(ic))));
   // Brush options (only visible with the eraser)
-  const brushSeg = segEl([['erase', '− Wegnehmen'], ['restore', '+ Hinzufügen']], st.brush.restore ? 'restore' : 'erase', v => { st.brush.restore = v === 'restore'; sync(); queue(); });
+  const brushSeg = segEl([['erase', T('− Wegnehmen')], ['restore', T('+ Hinzufügen')]], st.brush.restore ? 'restore' : 'erase', v => { st.brush.restore = v === 'restore'; sync(); queue(); });
   const brushRange = (key, min, max, unit, title) => {
     const val = h('span', { class: 'bw-val' });
     const inp = h('input', { type: 'range', class: 'bw-range', min, max, step: 1, title, oninput: e => { st.brush[key] = +e.target.value; upd(); persist(); queue(); } });
@@ -9341,11 +9379,11 @@ function mountBildwerk(view) {
     ups.push(upd);
     return [inp, val];
   };
-  const paintCol = h('input', { type: 'color', class: 'bw-color', title: 'Pinselfarbe', value: st.paintColor, oninput: e => { st.paintColor = e.target.value; persist(); queue(); } });
-  const sizeLbl = h('label', { title: '[ ]' }, 'Größe', ...brushRange('size', 2, 300, ' px'));
-  const hardLbl = h('label', null, 'Härte', ...brushRange('hard', 0, 100, ' %'));
-  const wtolLbl = h('label', null, 'Toleranz', ...brushRange('wtol', 1, 100, ''));
-  const redBtn = h('button', { class: 'btn sm bw-red', title: 'M', onclick: () => { st.redMask = !st.redMask; sync(); draw(); } }, 'Rot zeigen');
+  const paintCol = h('input', { type: 'color', class: 'bw-color', title: T('Pinselfarbe'), value: st.paintColor, oninput: e => { st.paintColor = e.target.value; persist(); queue(); } });
+  const sizeLbl = h('label', { title: '[ ]' }, T('Größe'), ...brushRange('size', 2, 300, ' px'));
+  const hardLbl = h('label', null, T('Härte'), ...brushRange('hard', 0, 100, ' %'));
+  const wtolLbl = h('label', null, T('Toleranz'), ...brushRange('wtol', 1, 100, ''));
+  const redBtn = h('button', { class: 'btn sm bw-red', title: 'M', onclick: () => { st.redMask = !st.redMask; sync(); draw(); } }, T('Rot zeigen'));
   const brushEl = h('div', { class: 'bw-brush' }, brushSeg, paintCol, sizeLbl, hardLbl, wtolLbl, redBtn);
   ups.push(() => {
     brushEl.style.display = st.tool === 'erase' || st.tool === 'paint' || st.tool === 'wand' ? '' : 'none';
@@ -9360,14 +9398,14 @@ function mountBildwerk(view) {
   // "Before": press and hold to show the original (also key O)
   const peekOn = v => { if (peek === v || !st.src) return; peek = v; peekBtn.classList.toggle('on', v); if (st.tool !== 'crop') draw(); };
   const peekBtn = h('button', { class: 'btn sm bw-peek', title: 'O',
-    onpointerdown: e => { e.preventDefault(); peekOn(true); }, onpointerup: () => peekOn(false), onpointerleave: () => peekOn(false) }, icon('eye'), 'Vorher');
+    onpointerdown: e => { e.preventDefault(); peekOn(true); }, onpointerup: () => peekOn(false), onpointerleave: () => peekOn(false) }, icon('eye'), T('Vorher'));
   ups.push(() => { peekBtn.style.display = st.tool === 'crop' ? 'none' : ''; });
-  const bgsEl = h('div', { class: 'bw-bgs' }, [['checker', 'Transparenz-Raster'], ['light', 'Weiß'], ['dark', 'Schwarz']].map(([b, ti]) =>
+  const bgsEl = h('div', { class: 'bw-bgs' }, [['checker', T('Transparenz-Raster')], ['light', T('Weiß')], ['dark', T('Schwarz')]].map(([b, ti]) =>
     h('button', { dataset: { b }, title: ti, onclick: () => { st.backdrop = b; sync(); draw(); } })));
   ups.push(() => $$('button', bgsEl).forEach(b => b.classList.toggle('on', b.dataset.b === st.backdrop)));
   const zoomEl = h('span', { class: 'bw-zoom' }, '100 %');
   const bar = h('div', { class: 'bw-bar' }, toolsEl, h('div', { class: 'bw-vsep' }), brushEl, h('div', { class: 'sp' }), peekBtn, bgsEl, h('div', { class: 'bw-vsep' }), zoomEl,
-    h('button', { class: 'mini boxed', title: 'Einpassen (F)', onclick: fit }, icon('fit')),
+    h('button', { class: 'mini boxed', title: T('Einpassen (F)'), onclick: fit }, icon('fit')),
     h('button', { class: 'btn sm', title: '100 % (1)', onclick: () => zoomAt(1, sw / 2, sh / 2) }, '1:1'));
 
   const panel = (ic, title, right, ...body) => h('section', { class: 'panel' },
@@ -9376,12 +9414,12 @@ function mountBildwerk(view) {
   const fileT = h('div', { class: 'src-t' }, h('b'), h('small'));
   ups.push(() => { if (!st.src) return; fileT.firstChild.textContent = st.name; fileT.lastChild.textContent = `${st.src.width} × ${st.src.height} px · ${fmtSize(st.fsize)}`; });
   const navT = h('div', { class: 'bw-nav-t' });
-  const prevBtn = h('button', { class: 'mini boxed', title: 'Vorheriges Bild (←)', onclick: () => step(-1) }, icon('chevl'));
+  const prevBtn = h('button', { class: 'mini boxed', title: T('Vorheriges Bild (←)'), onclick: () => step(-1) }, icon('chevl'));
   const nextBtn = h('button', { class: 'mini boxed', title: '→', onclick: () => step(1) }, icon('chevr'));
   const keepSw = h('span', { class: 'sw' }, h('input', { type: 'checkbox', onchange: e => { st.keepLayers = e.target.checked; sync(); } }), h('span'));
   const navEl = h('div', { class: 'bw-nav-wrap', style: { display: 'flex', flexDirection: 'column', gap: '10px' } },
     h('div', { class: 'bw-nav' }, prevBtn, navT, nextBtn),
-    h('label', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)', cursor: 'pointer' }, title: 'Z. B. ein Logo als Wasserzeichen auf jedes Bild' }, keepSw, 'Ebenen ins nächste Bild mitnehmen'));
+    h('label', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)', cursor: 'pointer' }, title: T('Z. B. ein Logo als Wasserzeichen auf jedes Bild') }, keepSw, T('Ebenen ins nächste Bild mitnehmen')));
   ups.push(() => {
     const F = st.folder;
     navEl.style.display = F ? 'flex' : 'none';
@@ -9394,8 +9432,8 @@ function mountBildwerk(view) {
   const pFile = h('section', { class: 'panel' }, h('div', { class: 'panel-b', style: { paddingTop: '14px' } },
     h('div', { class: 'src-chip' }, h('div', { class: 'fi' }, icon('image')), fileT,
       h('button', { class: 'mini', title: 'Strg+O', onclick: openFile }, icon('image')),
-      h('button', { class: 'mini', title: 'Ordner', onclick: openFolder }, icon('folder')),
-      h('button', { class: 'mini', title: 'Schließen', onclick: closeImg }, icon('x'))),
+      h('button', { class: 'mini', title: T('Ordner'), onclick: openFolder }, icon('folder')),
+      h('button', { class: 'mini', title: T('Schließen'), onclick: closeImg }, icon('x'))),
     navEl));
 
   const ratiosEl = h('div', { class: 'bw-ratios' }, RATIOS.map(([k, l]) => h('button', { dataset: { k }, onclick: () => applyRatio(k) }, l)));
@@ -9409,22 +9447,22 @@ function mountBildwerk(view) {
   }));
   const syncCrop = () => { if (st.crop) cropInps.forEach((inp, i) => { if (document.activeElement !== inp) inp.value = st.crop[['x', 'y', 'w', 'h'][i]]; }); };
   ups.push(syncCrop);
-  const cropDone = h('button', { class: 'btn sm primary', onclick: () => setTool('move') }, icon('check'), 'Fertig');
-  const cropStart = h('button', { class: 'btn sm', onclick: () => setTool('crop') }, icon('crop'), 'Rahmen');
+  const cropDone = h('button', { class: 'btn sm primary', onclick: () => setTool('move') }, icon('check'), T('Fertig'));
+  const cropStart = h('button', { class: 'btn sm', onclick: () => setTool('crop') }, icon('crop'), T('Rahmen'));
   ups.push(() => { const on = st.tool === 'crop'; cropDone.style.display = on ? '' : 'none'; cropStart.style.display = on ? 'none' : ''; });
-  const pCrop = panel('crop', 'Zuschneiden', h('div', { class: 'panel-actions' },
+  const pCrop = panel('crop', T('Zuschneiden'), h('div', { class: 'panel-actions' },
     h('button', { class: 'mini', title: '−90°', onclick: () => rotate('l') }, icon('rotl')),
     h('button', { class: 'mini', title: '+90°', onclick: () => rotate('r') }, icon('rotr')),
-    h('button', { class: 'mini', title: 'Spiegeln', onclick: () => rotate('flip') }, icon('flip'))),
+    h('button', { class: 'mini', title: T('Spiegeln'), onclick: () => rotate('flip') }, icon('flip'))),
     ratiosEl,
-    h('div', { class: 'bw-r4' }, cropInps.map((inp, i) => h('div', { class: 'bw-num' }, h('span', null, 'XYBH'[i]), inp))),
+    h('div', { class: 'bw-r4' }, cropInps.map((inp, i) => h('div', { class: 'bw-num' }, h('span', null, ['X', 'Y', T('B'), 'H'][i]), inp))),
     h('div', { class: 'bw-row' },
-      h('button', { class: 'btn sm ghost', onclick: () => { st.ratio = 'free'; setCrop(0, 0, st.src.width, st.src.height); sync(); st.tool === 'crop' ? draw() : (fit(), queue()); } }, icon('undo'), 'Ganzes Bild'),
+      h('button', { class: 'btn sm ghost', onclick: () => { st.ratio = 'free'; setCrop(0, 0, st.src.width, st.src.height); sync(); st.tool === 'crop' ? draw() : (fit(), queue()); } }, icon('undo'), T('Ganzes Bild')),
       h('div', { class: 'sp' }), cropStart, cropDone));
 
   const wInp = h('input', { class: 'inp', type: 'number', min: 1, max: 16384 });
   const hInp = h('input', { class: 'inp', type: 'number', min: 1, max: 16384 });
-  const lockBtn = h('button', { class: 'bw-lock', title: 'Seitenverhältnis sperren' });
+  const lockBtn = h('button', { class: 'bw-lock', title: T('Seitenverhältnis sperren') });
   const setSize = (k, v) => {
     const c = st.crop, s = st.size;
     v = clamp(Math.round(+v) || 1, 1, 16384);
@@ -9447,7 +9485,7 @@ function mountBildwerk(view) {
     if (document.activeElement !== hInp) hInp.value = H;
     lockBtn.classList.toggle('on', st.size.lock);
     lockBtn.replaceChildren(icon(st.size.lock ? 'lock' : 'unlock'));
-    scaleInfo.replaceChildren(h('span', null, 'Ausgabe ', h('b', null, `${W} × ${H} px`)),
+    scaleInfo.replaceChildren(h('span', null, T('Ausgabe '), h('b', null, `${W} × ${H} px`)),
       h('span', { class: pct > 100.5 ? 'up' : '' }, pct > 100.5 ? `↑ ${Math.round(pct)} %` : `${Math.round(pct)} %`));
   });
   const fitOrQueue = () => { if (st.tool === 'crop') return; st.fitted ? fit() : queue(); };
@@ -9460,8 +9498,8 @@ function mountBildwerk(view) {
         sync(); fitOrQueue();
       },
     }, l)));
-  const pSize = panel('scale', 'Größe', null,
-    h('div', { class: 'bw-size' }, h('div', { class: 'bw-num' }, h('span', null, 'B'), wInp), lockBtn, h('div', { class: 'bw-num' }, h('span', null, 'H'), hInp)),
+  const pSize = panel('scale', T('Größe'), null,
+    h('div', { class: 'bw-size' }, h('div', { class: 'bw-num' }, h('span', null, T('B')), wInp), lockBtn, h('div', { class: 'bw-num' }, h('span', null, 'H'), hInp)),
     sizeChips, scaleInfo);
 
   const slider = (label, key, min, max, step, unit, desc) => {
@@ -9473,11 +9511,11 @@ function mountBildwerk(view) {
     });
     const upd = () => { const v = st.bg[key]; inp.value = v; val.textContent = (key === 'shift' && v > 0 ? '+' : '') + String(v).replace('.', ',') + unit; inp.style.setProperty('--p', (v - min) / (max - min) * 100 + '%'); };
     ups.push(upd);
-    return h('div', { class: 'bw-sl', title: 'Doppelklick = Standard' },
+    return h('div', { class: 'bw-sl', title: T('Doppelklick = Standard') },
       h('div', { class: 'bw-sl-h', ondblclick: () => { st.bg[key] = BG_DEF[key]; upd(); queue(); persist(); } }, h('label', null, label, desc && h('small', null, desc)), val), inp);
   };
   const colsEl = h('div', { class: 'bw-cols' });
-  const pickBtn = h('button', { class: 'btn sm bw-pick', onclick: () => setTool(st.tool === 'pick' ? 'move' : 'pick') }, icon('pipette'), 'Pipette');
+  const pickBtn = h('button', { class: 'btn sm bw-pick', onclick: () => setTool(st.tool === 'pick' ? 'move' : 'pick') }, icon('pipette'), T('Pipette'));
   let colsSig = '';
   function updCols() {
     const auto = st.bg.auto || !st.bg.colors.length, list = auto ? (cache.cols || []) : st.bg.colors;
@@ -9486,7 +9524,7 @@ function mountBildwerk(view) {
     if (sig === colsSig) return; colsSig = sig;
     colsEl.replaceChildren(...[
       ...list.map((c, i) => h('span', {
-        class: 'bw-col rm', style: { background: `rgb(${c})` }, title: 'Entfernen',
+        class: 'bw-col rm', style: { background: `rgb(${c})` }, title: T('Entfernen'),
         onclick: () => {
           if (auto) { st.bg.auto = false; st.bg.colors = (cache.cols || []).filter((_, j) => j !== i); }
           else st.bg.colors = st.bg.colors.filter((_, j) => j !== i);
@@ -9494,30 +9532,30 @@ function mountBildwerk(view) {
           sync(); queue();
         },
       })),
-      !list.length && st.bg.on && h('span', { style: { fontSize: '12px', color: 'var(--tx3)', fontStyle: 'italic' } }, 'keine Farbe erkannt'),
-      !auto && h('button', { class: 'mini', title: 'Automatisch zurücksetzen', onclick: () => { st.bg.auto = true; st.bg.colors = []; sync(); queue(); } }, icon('refresh')),
+      !list.length && st.bg.on && h('span', { style: { fontSize: '12px', color: 'var(--tx3)', fontStyle: 'italic' } }, T('keine Farbe erkannt')),
+      !auto && h('button', { class: 'mini', title: T('Automatisch zurücksetzen'), onclick: () => { st.bg.auto = true; st.bg.colors = []; sync(); queue(); } }, icon('refresh')),
     ].filter(Boolean));
   }
   ups.push(updCols);
-  const bgSwitch = h('span', { class: 'sw', title: 'Hintergrund entfernen an/aus' }, h('input', { type: 'checkbox', onchange: e => { st.bg.on = e.target.checked; sync(); if (st.tool === 'crop') setTool('move'); else queue(); } }), h('span'));
-  const modeSeg = segEl([['edge', 'Vom Rand aus'], ['all', 'Überall']], st.bg.mode, v => { st.bg.mode = v; sync(); queue(); });
+  const bgSwitch = h('span', { class: 'sw', title: T('Hintergrund entfernen an/aus') }, h('input', { type: 'checkbox', onchange: e => { st.bg.on = e.target.checked; sync(); if (st.tool === 'crop') setTool('move'); else queue(); } }), h('span'));
+  const modeSeg = segEl([['edge', T('Vom Rand aus')], ['all', T('Überall')]], st.bg.mode, v => { st.bg.mode = v; sync(); queue(); });
   const modeHint = h('span', { class: 'hint' });
   ups.push(() => $$('button', modeSeg).forEach((b, i) => b.classList.toggle('on', ['edge', 'all'][i] === st.bg.mode)));
-  const pBg = panel('wand', 'Hintergrund entfernen', bgSwitch,
-    h('div', { class: 'field bw-keep' }, h('label', null, 'Hintergrundfarbe'), h('div', { class: 'bw-row' }, colsEl, h('div', { class: 'sp' }), pickBtn)),
+  const pBg = panel('wand', T('Hintergrund entfernen'), bgSwitch,
+    h('div', { class: 'field bw-keep' }, h('label', null, T('Hintergrundfarbe')), h('div', { class: 'bw-row' }, colsEl, h('div', { class: 'sp' }), pickBtn)),
     h('div', { class: 'field' }, modeSeg, modeHint),
     h('div', { class: 'bw-row bw-keep', style: { flexWrap: 'wrap' } },
-      h('button', { class: 'btn sm', title: 'W', onclick: () => { setTool('wand'); sync(); } }, icon('wand'), 'Zauberstab'),
-      h('button', { class: 'btn sm', title: 'E', onclick: () => { st.sel = 0; st.redMask = true; setTool('erase'); sync(); draw(); } }, icon('eraser'), 'Maske nachbessern')),
-    slider('Toleranz', 'tol', 0, 100, 1, '', 'wie ähnlich'),
-    slider('Weichheit', 'soft', 0, 50, 1, '', 'Übergang'),
-    slider('Kante', 'shift', -10, 10, 1, ' px', '− enger · + weiter'),
-    slider('Feather', 'feather', 0, 30, .5, ' px', 'Weichzeichnen'),
-    slider('Farbsaum entfernen', 'defringe', 0, 100, 1, ' %'));
+      h('button', { class: 'btn sm', title: 'W', onclick: () => { setTool('wand'); sync(); } }, icon('wand'), T('Zauberstab')),
+      h('button', { class: 'btn sm', title: 'E', onclick: () => { st.sel = 0; st.redMask = true; setTool('erase'); sync(); draw(); } }, icon('eraser'), T('Maske nachbessern'))),
+    slider(T('Toleranz'), 'tol', 0, 100, 1, '', T('wie ähnlich')),
+    slider(T('Weichheit'), 'soft', 0, 50, 1, '', T('Übergang')),
+    slider(T('Kante'), 'shift', -10, 10, 1, ' px', T('− enger · + weiter')),
+    slider('Feather', 'feather', 0, 30, .5, ' px', T('Weichzeichnen')),
+    slider(T('Farbsaum entfernen'), 'defringe', 0, 100, 1, ' %'));
   ups.push(() => {
     bgSwitch.firstChild.checked = st.bg.on;
     pBg.classList.toggle('bw-off', !st.bg.on);
-    modeHint.textContent = st.bg.mode === 'edge' ? 'Vom Rand aus – schützt helle Stellen im Motiv.' : 'Überall – auch in Löchern (z. B. im Logo).';
+    modeHint.textContent = st.bg.mode === 'edge' ? T('Vom Rand aus – schützt helle Stellen im Motiv.') : T('Überall – auch in Löchern (z. B. im Logo).');
   });
 
   // ── Layers & effects ──
@@ -9542,7 +9580,7 @@ function mountBildwerk(view) {
     thumbs.set(L.id, { key, c });
     return c;
   }
-  const fxNames = L => [L.fx.shadow.on && 'Schatten', L.fx.stroke.on && 'Kontur', L.fx.glow.on && 'Leuchten'].filter(Boolean);
+  const fxNames = L => [L.fx.shadow.on && T('Schatten'), L.fx.stroke.on && T('Kontur'), L.fx.glow.on && T('Leuchten')].filter(Boolean);
   const laysEl = h('div', { class: 'bw-lays' });
   let laysSig = '';
   function updLays() {
@@ -9550,22 +9588,22 @@ function mountBildwerk(view) {
     const sig = JSON.stringify([st.sel, st.ver, st.layers.map(L => [L.id, L.name, L.visible, fxNames(L), Math.round(L.opacity * 100), L.srcVer])]);
     if (sig === laysSig) return; laysSig = sig;
     laysEl.replaceChildren(...st.layers.map((L, i) => {
-      const sub = L.base ? 'Zuschnitt, Größe & Freistellen' : [L.text ? 'Text' : L.paint ? 'Malebene' : '', L.opacity < 1 && Math.round(L.opacity * 100) + ' %', ...fxNames(L)].filter(Boolean).join(' · ') || 'Ebene';
+      const sub = L.base ? T('Zuschnitt, Größe & Freistellen') : [L.text ? 'Text' : L.paint ? T('Malebene') : '', L.opacity < 1 && Math.round(L.opacity * 100) + ' %', ...fxNames(L)].filter(Boolean).join(' · ') || T('Ebene');
       return h('div', { class: 'bw-lay' + (i === st.sel ? ' on' : '') + (L.visible ? '' : ' off'), onclick: () => { st.sel = i; sync(); queue(); } },
-        thumbOf(L), h('div', { class: 'bw-lay-n' }, L.base ? 'Bild' : L.name, h('small', null, L.base && fxNames(L).length ? fxNames(L).join(' · ') : sub)),
-        h('button', { class: 'mini', title: L.visible ? 'Ausblenden' : 'Einblenden', onclick: e => { e.stopPropagation(); L.visible = !L.visible; sync(); queue(); } }, icon(L.visible ? 'eye' : 'eyeoff')),
-        !L.base && h('button', { class: 'mini', title: 'Entf', onclick: e => { e.stopPropagation(); removeLayer(i); } }, icon('trash')));
+        thumbOf(L), h('div', { class: 'bw-lay-n' }, L.base ? T('Bild') : L.name, h('small', null, L.base && fxNames(L).length ? fxNames(L).join(' · ') : sub)),
+        h('button', { class: 'mini', title: L.visible ? T('Ausblenden') : T('Einblenden'), onclick: e => { e.stopPropagation(); L.visible = !L.visible; sync(); queue(); } }, icon(L.visible ? 'eye' : 'eyeoff')),
+        !L.base && h('button', { class: 'mini', title: T('Entf'), onclick: e => { e.stopPropagation(); removeLayer(i); } }, icon('trash')));
     }).reverse());
   }
   ups.push(updLays);
   const textInp = h('textarea', { class: 'inp', rows: 2, spellcheck: false, style: { resize: 'vertical', minHeight: '54px', fontSize: '13px' },
     oninput: debounce(e => { const L = cur(); if (L.text) setText(L, { str: e.target.value }); }, 120) });
   const fontSel = h('select', { class: 'inp bw-sel', onchange: e => setText(cur(), { font: e.target.value }) }, FONTS.map(([v, l]) => h('option', { value: v }, l)));
-  const textCol = h('input', { type: 'color', class: 'bw-color', title: 'Textfarbe', oninput: debounce(e => setText(cur(), { color: e.target.value }), 60) });
+  const textCol = h('input', { type: 'color', class: 'bw-color', title: T('Textfarbe'), oninput: debounce(e => setText(cur(), { color: e.target.value }), 60) });
   const tBtn = (k, label, title, val) => h('button', { class: 'mini boxed', title, dataset: { k, v: val ?? '' }, onclick: () => { const T = cur().text; setText(cur(), val == null ? { [k]: !T[k] } : { [k]: val }); } }, label);
   const tBtns = h('div', { class: 'bw-row' }, fontSel, textCol,
-    tBtn('bold', h('b', null, 'F'), 'Fett'), tBtn('italic', h('i', null, 'K'), 'Kursiv'),
-    tBtn('align', '⇤', 'Linksbündig', 'left'), tBtn('align', '≡', 'Zentriert', 'center'), tBtn('align', '⇥', 'Rechtsbündig', 'right'));
+    tBtn('bold', h('b', null, T('F')), T('Fett')), tBtn('italic', h('i', null, T('K')), T('Kursiv')),
+    tBtn('align', '⇤', T('Linksbündig'), 'left'), tBtn('align', '≡', T('Zentriert'), 'center'), tBtn('align', '⇥', T('Rechtsbündig'), 'right'));
   const textProps = h('div', { class: 'bw-lprops' }, h('div', { class: 'field' }, h('label', null, 'Text'), textInp), tBtns);
   ups.push(() => {
     const T = cur().text; textProps.style.display = T ? '' : 'none'; if (!T) return;
@@ -9573,28 +9611,28 @@ function mountBildwerk(view) {
     fontSel.value = T.font; textCol.value = T.color;
     $$('button', tBtns).forEach(b => b.classList.toggle('on', b.dataset.v ? T[b.dataset.k] === b.dataset.v : !!T[b.dataset.k]));
   });
-  const BLENDS = [['source-over', 'Normal'], ['multiply', 'Multiplizieren'], ['screen', 'Negativ multiplizieren'], ['overlay', 'Ineinanderkopieren'], ['soft-light', 'Weiches Licht'], ['hard-light', 'Hartes Licht'], ['darken', 'Abdunkeln'], ['lighten', 'Aufhellen'], ['color-dodge', 'Farbig abwedeln'], ['difference', 'Differenz'], ['luminosity', 'Luminanz']];
+  const BLENDS = [['source-over', 'Normal'], ['multiply', T('Multiplizieren')], ['screen', T('Negativ multiplizieren')], ['overlay', T('Ineinanderkopieren')], ['soft-light', T('Weiches Licht')], ['hard-light', T('Hartes Licht')], ['darken', T('Abdunkeln')], ['lighten', T('Aufhellen')], ['color-dodge', T('Farbig abwedeln')], ['difference', T('Differenz')], ['luminosity', T('Luminanz')]];
   const blendSel = h('select', { class: 'inp bw-sel', onchange: e => { cur().blend = e.target.value; sync(); queue(); } }, BLENDS.map(([v, l]) => h('option', { value: v }, l)));
   const lprops = h('div', { class: 'bw-lprops' },
-    gslider('Deckkraft', () => Math.round(cur().opacity * 100), v => cur().opacity = v / 100, 0, 100, 1, ' %'),
-    h('div', { class: 'field' }, h('label', null, 'Mischmodus'), blendSel),
-    gslider('Größe', () => Math.round((cur().s || 0) * 1000) / 10, v => cur().s = Math.max(.001, v / 100), 1, 200, .5, ' %', 'der Bildbreite'),
-    gslider('Drehung', () => cur().rot || 0, v => cur().rot = v, -180, 180, 1, '°'),
+    gslider(T('Deckkraft'), () => Math.round(cur().opacity * 100), v => cur().opacity = v / 100, 0, 100, 1, ' %'),
+    h('div', { class: 'field' }, h('label', null, T('Mischmodus')), blendSel),
+    gslider(T('Größe'), () => Math.round((cur().s || 0) * 1000) / 10, v => cur().s = Math.max(.001, v / 100), 1, 200, .5, ' %', T('der Bildbreite')),
+    gslider(T('Drehung'), () => cur().rot || 0, v => cur().rot = v, -180, 180, 1, '°'),
     h('div', { class: 'bw-row' },
-      h('button', { class: 'mini boxed', title: 'Nach oben', onclick: () => moveLayer(st.sel, 1) }, icon('up')),
-      h('button', { class: 'mini boxed', title: 'Nach unten', onclick: () => moveLayer(st.sel, -1) }, icon('down')),
-      h('button', { class: 'mini boxed', title: 'Spiegeln', onclick: () => { cur().flip = !cur().flip; sync(); queue(); } }, icon('flip')),
-      h('button', { class: 'mini boxed', title: 'Zentrieren', onclick: () => { const L = cur(), p = { x: L.x, y: L.y }; L.x = L.y = .5; pushUndo(() => Object.assign(L, p)); sync(); queue(); } }, icon('fit')),
+      h('button', { class: 'mini boxed', title: T('Nach oben'), onclick: () => moveLayer(st.sel, 1) }, icon('up')),
+      h('button', { class: 'mini boxed', title: T('Nach unten'), onclick: () => moveLayer(st.sel, -1) }, icon('down')),
+      h('button', { class: 'mini boxed', title: T('Spiegeln'), onclick: () => { cur().flip = !cur().flip; sync(); queue(); } }, icon('flip')),
+      h('button', { class: 'mini boxed', title: T('Zentrieren'), onclick: () => { const L = cur(), p = { x: L.x, y: L.y }; L.x = L.y = .5; pushUndo(() => Object.assign(L, p)); sync(); queue(); } }, icon('fit')),
       h('div', { class: 'sp' }),
-      h('button', { class: 'btn sm ghost', title: 'Duplizieren', onclick: () => dupLayer(st.sel) }, icon('copy'), 'Kopie')));
+      h('button', { class: 'btn sm ghost', title: T('Duplizieren'), onclick: () => dupLayer(st.sel) }, icon('copy'), T('Kopie'))));
   ups.push(() => { lprops.style.display = cur().base ? 'none' : ''; if (!cur().base) blendSel.value = cur().blend; });
-  const pLayers = panel('layers', 'Ebenen', h('div', { class: 'panel-actions' },
+  const pLayers = panel('layers', T('Ebenen'), h('div', { class: 'panel-actions' },
       h('button', { class: 'btn sm', title: 'T', onclick: addText }, icon('type'), 'Text'),
-      h('button', { class: 'btn sm', title: 'Oder aufs Bild ziehen', onclick: addLayerFile }, icon('plus'), 'Bild')),
+      h('button', { class: 'btn sm', title: T('Oder aufs Bild ziehen'), onclick: addLayerFile }, icon('plus'), T('Bild'))),
     laysEl, textProps, lprops);
 
   const fxColor = key => {
-    const i = h('input', { type: 'color', class: 'bw-color', title: 'Farbe', oninput: e => { cur().fx[key].color = e.target.value; queue(); persistIf(); }, onchange: () => sync() });
+    const i = h('input', { type: 'color', class: 'bw-color', title: T('Farbe'), oninput: e => { cur().fx[key].color = e.target.value; queue(); persistIf(); }, onchange: () => sync() });
     ups.push(() => { i.value = cur().fx[key].color; });
     return i;
   };
@@ -9607,23 +9645,23 @@ function mountBildwerk(view) {
   const presetsEl = h('div', { class: 'bw-ratios' }, SHADOW_PRESETS.map(([l, p]) => h('button', { onclick: () => { Object.assign(cur().fx.shadow, p, { on: true }); sync(); queue(); persistIf(); } }, l)));
   ups.push(() => { const S = cur().fx.shadow; $$('button', presetsEl).forEach((b, i) => { const p = SHADOW_PRESETS[i][1]; b.classList.toggle('on', Object.keys(p).every(k => S[k] === p[k])); }); });
   const S = () => cur().fx.shadow;
-  const dirSl = gslider('Richtung', () => S().angle, v => S().angle = v, 0, 360, 1, '°');
-  const distSl = gslider('Abstand', () => S().dist, v => S().dist = v, 0, 25, .1, ' %');
+  const dirSl = gslider(T('Richtung'), () => S().angle, v => S().angle = v, 0, 360, 1, '°');
+  const distSl = gslider(T('Abstand'), () => S().dist, v => S().dist = v, 0, 25, .1, ' %');
   ups.push(() => { const floor = S().type === 'floor'; dirSl.style.display = distSl.style.display = floor ? 'none' : ''; });
-  const shadowHint = h('div', { class: 'hint', style: { fontSize: '12px' } }, 'Sichtbar erst bei Transparenz (z. B. freigestellt).');
+  const shadowHint = h('div', { class: 'hint', style: { fontSize: '12px' } }, T('Sichtbar erst bei Transparenz (z. B. freigestellt).'));
   ups.push(() => { shadowHint.style.display = cur().base && S().on && !st.bg.on && !st.erased ? '' : 'none'; });
   const fxTitle = h('span', { style: { fontSize: '12px', color: 'var(--tx3)', fontWeight: 500 } });
-  ups.push(() => { fxTitle.textContent = cur().base ? 'für: Bild' : 'für: ' + cur().name; });
-  const pFx = panel('fx', 'Effekte', fxTitle,
-    fxBox('shadow', 'Schlagschatten', presetsEl, dirSl, distSl,
-      gslider('Weichheit', () => S().blur, v => S().blur = v, 0, 25, .1, ' %'),
-      gslider('Deckkraft', () => S().op, v => S().op = v, 0, 100, 1, ' %'),
-      h('div', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)' } }, 'Farbe', h('div', { class: 'sp' }), fxColor('shadow')),
+  ups.push(() => { fxTitle.textContent = cur().base ? T('für: Bild') : T('für: ') + cur().name; });
+  const pFx = panel('fx', T('Effekte'), fxTitle,
+    fxBox('shadow', T('Schlagschatten'), presetsEl, dirSl, distSl,
+      gslider(T('Weichheit'), () => S().blur, v => S().blur = v, 0, 25, .1, ' %'),
+      gslider(T('Deckkraft'), () => S().op, v => S().op = v, 0, 100, 1, ' %'),
+      h('div', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)' } }, T('Farbe'), h('div', { class: 'sp' }), fxColor('shadow')),
       shadowHint),
-    fxBox('stroke', 'Kontur', gslider('Breite', () => cur().fx.stroke.w, v => cur().fx.stroke.w = v, .2, 8, .1, ' %')),
-    fxBox('glow', 'Leuchten',
-      gslider('Größe', () => cur().fx.glow.blur, v => cur().fx.glow.blur = v, 1, 30, .5, ' %'),
-      gslider('Stärke', () => cur().fx.glow.op, v => cur().fx.glow.op = v, 0, 100, 1, ' %')));
+    fxBox('stroke', T('Kontur'), gslider(T('Breite'), () => cur().fx.stroke.w, v => cur().fx.stroke.w = v, .2, 8, .1, ' %')),
+    fxBox('glow', T('Leuchten'),
+      gslider(T('Größe'), () => cur().fx.glow.blur, v => cur().fx.glow.blur = v, 1, 30, .5, ' %'),
+      gslider(T('Stärke'), () => cur().fx.glow.op, v => cur().fx.glow.op = v, 0, 100, 1, ' %')));
 
   // ── Adjustments ──
   const A = () => cur().adj;
@@ -9646,21 +9684,21 @@ function mountBildwerk(view) {
     const b = Math.round(clamp((122 - mid) / 255 * 70, -20, 22));
     const s = avgC < 35 ? 22 : avgC < 70 ? 12 : avgC > 120 ? -6 : 5;
     setAdj(baseLayer, { ...baseLayer.adj, b, c, s });
-    toast(`Auto: Helligkeit ${b > 0 ? '+' : ''}${b} · Kontrast +${c} · Sättigung ${s > 0 ? '+' : ''}${s}`, 'ok', { ms: 2500 });
+    toast(`Auto: ${T('Helligkeit')} ${b > 0 ? '+' : ''}${b} · ${T('Kontrast')} +${c} · ${T('Sättigung')} ${s > 0 ? '+' : ''}${s}`, 'ok', { ms: 2500 });
   }
   const adjTitle = h('span', { style: { fontSize: '12px', color: 'var(--tx3)', fontWeight: 500 } });
   const autoBtn = h('button', { class: 'btn sm', onclick: autoFix }, icon('wand'), 'Auto');
-  ups.push(() => { adjTitle.textContent = cur().base ? 'für: Bild' : 'für: ' + cur().name; autoBtn.style.display = cur().base ? '' : 'none'; });
-  const pAdj = panel('sliders', 'Anpassungen', adjTitle, adjPresets,
-    gslider('Helligkeit', () => A().b, v => A().b = v, -100, 100, 1, ''),
-    gslider('Kontrast', () => A().c, v => A().c = v, -100, 100, 1, ''),
-    gslider('Sättigung', () => A().s, v => A().s = v, -100, 100, 1, ''),
-    gslider('Wärme', () => A().t, v => A().t = v, -100, 100, 1, '', '− kühl · + warm'),
-    gslider('Farbton', () => A().hue, v => A().hue = v, -180, 180, 1, '°'),
-    gslider('Weichzeichnen', () => A().blur, v => A().blur = v, 0, 5, .05, ' %'),
-    gslider('Vignette', () => A().vig, v => A().vig = v, 0, 100, 1, ' %', 'dunkle Ecken'),
+  ups.push(() => { adjTitle.textContent = cur().base ? T('für: Bild') : T('für: ') + cur().name; autoBtn.style.display = cur().base ? '' : 'none'; });
+  const pAdj = panel('sliders', T('Anpassungen'), adjTitle, adjPresets,
+    gslider(T('Helligkeit'), () => A().b, v => A().b = v, -100, 100, 1, ''),
+    gslider(T('Kontrast'), () => A().c, v => A().c = v, -100, 100, 1, ''),
+    gslider(T('Sättigung'), () => A().s, v => A().s = v, -100, 100, 1, ''),
+    gslider(T('Wärme'), () => A().t, v => A().t = v, -100, 100, 1, '', T('− kühl · + warm')),
+    gslider(T('Farbton'), () => A().hue, v => A().hue = v, -180, 180, 1, '°'),
+    gslider(T('Weichzeichnen'), () => A().blur, v => A().blur = v, 0, 5, .05, ' %'),
+    gslider('Vignette', () => A().vig, v => A().vig = v, 0, 100, 1, ' %', T('dunkle Ecken')),
     h('div', { class: 'bw-row' }, autoBtn, h('div', { class: 'sp' }),
-      h('button', { class: 'btn sm ghost', onclick: () => setAdj(cur(), ADJ_DEF()) }, icon('undo'), 'Zurücksetzen')));
+      h('button', { class: 'btn sm ghost', onclick: () => setAdj(cur(), ADJ_DEF()) }, icon('undo'), T('Zurücksetzen'))));
 
   const nameInp = h('input', { class: 'inp', spellcheck: false, placeholder: 'dateiname' });
   const extEl = h('span', { class: 'bw-ext' });
@@ -9669,7 +9707,7 @@ function mountBildwerk(view) {
   const qSl = h('div', { class: 'bw-sl' });
   const qVal = h('span', { class: 'bw-val' });
   const qInp = h('input', { type: 'range', class: 'bw-range', min: 40, max: 100, step: 1, oninput: e => { st.q = +e.target.value; sync(); } });
-  qSl.append(h('div', { class: 'bw-sl-h' }, h('label', null, 'Qualität'), qVal), qInp);
+  qSl.append(h('div', { class: 'bw-sl-h' }, h('label', null, T('Qualität')), qVal), qInp);
   ups.push(() => {
     extEl.textContent = '.' + st.fmt;
     qSl.style.display = st.fmt === 'webp' ? '' : 'none';
@@ -9678,18 +9716,18 @@ function mountBildwerk(view) {
     if (st.src && document.activeElement !== nameInp && !nameInp.dataset.touched) nameInp.value = st.file + (st.bg.on ? '-freigestellt' : '');
   });
   nameInp.addEventListener('input', () => { nameInp.dataset.touched = 1; });
-  const nextExpBtn = h('button', { class: 'btn block', title: 'Strg+Shift+Enter', onclick: () => exportNext() }, icon('download'), 'Exportieren & weiter', icon('chevr'));
+  const nextExpBtn = h('button', { class: 'btn block', title: 'Strg+Shift+Enter', onclick: () => exportNext() }, icon('download'), T('Exportieren & weiter'), icon('chevr'));
   ups.push(() => { nextExpBtn.style.display = st.folder && st.folder.idx < st.folder.list.length - 1 ? '' : 'none'; });
   async function exportNext() { if (await doExport(false) !== false) step(1); }
   const fillSw = h('span', { class: 'sw' }, h('input', { type: 'checkbox', onchange: e => { st.fill.on = e.target.checked; sync(); queue(); } }), h('span'));
-  const fillCol = h('input', { type: 'color', class: 'bw-color', title: 'Füllfarbe', oninput: e => { st.fill.color = e.target.value; st.fill.on = true; sync(); queue(); } });
+  const fillCol = h('input', { type: 'color', class: 'bw-color', title: T('Füllfarbe'), oninput: e => { st.fill.color = e.target.value; st.fill.on = true; sync(); queue(); } });
   ups.push(() => { fillSw.firstChild.checked = st.fill.on; fillCol.value = st.fill.color; });
-  const fillRow = h('label', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)', cursor: 'pointer' }, title: 'z. B. Weiß für Produktfotos' },
-    fillSw, 'Hintergrund füllen', h('div', { class: 'sp' }), fillCol);
+  const fillRow = h('label', { class: 'bw-row', style: { fontSize: '12.5px', color: 'var(--tx2)', cursor: 'pointer' }, title: T('z. B. Weiß für Produktfotos') },
+    fillSw, T('Hintergrund füllen'), h('div', { class: 'sp' }), fillCol);
   const pExp = panel('download', 'Export', fmtSeg, qSl, fillRow,
-    h('div', { class: 'field' }, h('label', null, 'Dateiname'), h('div', { class: 'bw-row' }, nameInp, extEl)),
+    h('div', { class: 'field' }, h('label', null, T('Dateiname')), h('div', { class: 'bw-row' }, nameInp, extEl)),
     h('div', { class: 'bw-go' },
-      h('button', { class: 'btn primary block', onclick: () => doExport(false) }, icon('download'), 'Exportieren'),
+      h('button', { class: 'btn primary block', onclick: () => doExport(false) }, icon('download'), T('Exportieren')),
       h('button', { class: 'btn', title: 'PNG → 📋', onclick: () => doExport(true) }, icon('copy'))),
     nextExpBtn,
     h('div', { class: 'bw-info' }, h('span', null, 'Letzter Export'), sizeEl));
@@ -9697,12 +9735,12 @@ function mountBildwerk(view) {
 
   const empty = h('div', { class: 'empty' }, h('div', { class: 'drop' },
     h('div', { class: 'big' }, icon('cropimg')),
-    h('h2', null, 'Bild öffnen'),
-    h('p', null, 'Zuschneiden, Größe ändern, Hintergrund entfernen – und als PNG oder WebP exportieren.'),
+    h('h2', null, T('Bild öffnen')),
+    h('p', null, T('Zuschneiden, Größe ändern, Hintergrund entfernen – und als PNG oder WebP exportieren.')),
     h('div', { class: 'drop-actions' },
-      h('button', { class: 'btn primary', onclick: openFile }, icon('image'), 'Bild auswählen'),
-      h('button', { class: 'btn', onclick: openFolder }, icon('folder'), 'Ordner öffnen')),
-    h('p', { class: 'hint', style: { marginTop: '16px' } }, 'oder hierher ziehen (mehrere = durchblättern) · Strg+V zum Einfügen')));
+      h('button', { class: 'btn primary', onclick: openFile }, icon('image'), T('Bild auswählen')),
+      h('button', { class: 'btn', onclick: openFolder }, icon('folder'), T('Ordner öffnen'))),
+    h('p', { class: 'hint', style: { marginTop: '16px' } }, T('oder hierher ziehen (mehrere = durchblättern) · Strg+V zum Einfügen'))));
   const dropTxt = h('span');
   const dropOv = h('div', { class: 'drop-ov' }, h('div', null, icon('image'), dropTxt));
 
@@ -9714,7 +9752,7 @@ function mountBildwerk(view) {
   wrap.addEventListener('dragenter', e => {
     if (!e.dataTransfer?.types.includes('Files')) return;
     e.preventDefault(); dragDepth++; wrap.classList.add('dragging');
-    dropTxt.textContent = st.src ? 'Loslassen = als neue Ebene aufs Bild legen' : 'Bild loslassen';
+    dropTxt.textContent = st.src ? T('Loslassen = als neue Ebene aufs Bild legen') : T('Bild loslassen');
   });
   wrap.addEventListener('dragover', e => e.preventDefault());
   wrap.addEventListener('dragleave', () => { if (--dragDepth <= 0) { dragDepth = 0; wrap.classList.remove('dragging'); } });
@@ -9723,7 +9761,7 @@ function mountBildwerk(view) {
     const files = [...e.dataTransfer.files].filter(isImg);
     if (!files.length) return;
     if (!st.src) {
-      if (files.length > 1) setFolder('Auswahl', files.map(f => ({ name: f.name, get: async () => f })));
+      if (files.length > 1) setFolder(T('Auswahl'), files.map(f => ({ name: f.name, get: async () => f })));
       else load(files[0]);
       return;
     }
@@ -9731,7 +9769,7 @@ function mountBildwerk(view) {
     const r = cv.getBoundingClientRect(), inStage = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
     let n = 0;
     for (const [i, f] of files.entries()) if (await addLayer(f, inStage ? e.clientX - r.left + i * 24 : null, inStage ? e.clientY - r.top + i * 24 : null)) n++;
-    if (n) toast(n === 1 ? `„${files[0].name}“ als Ebene eingefügt` : `${n} Ebenen eingefügt`, 'ok', { action: { label: 'Stattdessen öffnen', fn: () => files.length > 1 ? setFolder('Auswahl', files.map(f => ({ name: f.name, get: async () => f }))) : load(files[0]) } });
+    if (n) toast(n === 1 ? T('„{n}“ als Ebene eingefügt', { n: files[0].name }) : T('{n} Ebenen eingefügt', { n }), 'ok', { action: { label: T('Stattdessen öffnen'), fn: () => files.length > 1 ? setFolder(T('Auswahl'), files.map(f => ({ name: f.name, get: async () => f }))) : load(files[0]) } });
   });
   const onPaste = e => {
     if (!view.classList.contains('active') || /^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName)) return;
@@ -9739,7 +9777,7 @@ function mountBildwerk(view) {
     if (!f) return;
     e.preventDefault();
     if (!st.src) { load(f); return; }
-    addLayer(f).then(L => L && toast('Als Ebene eingefügt', 'ok', { action: { label: 'Stattdessen öffnen', fn: () => load(f) } }));
+    addLayer(f).then(L => L && toast(T('Als Ebene eingefügt'), 'ok', { action: { label: T('Stattdessen öffnen'), fn: () => load(f) } }));
   };
   const onKeyUp = e => {
     if (e.code === 'Space') { space = false; if (!drag) cv.style.cursor = baseCursor(); }
@@ -21570,6 +21608,7 @@ function setLang(l) {
   if ((isEN() ? 'en' : 'de') === l) return;
   S.data.lang = l; S.save();
   paintLang(); _tick(true); renderTabs(); settingsRebuild?.();
+  if (TT.inst.size) toast(T('Offene Apps wechseln die Sprache beim nächsten Öffnen.'), 'info', { ms: 3500 });
   if (TT.active === 'home') renderHome();
   else document.title = `${appName(TT.apps.get(TT.active))} · TT`;
 }

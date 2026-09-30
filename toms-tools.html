@@ -3528,13 +3528,13 @@ const Backup = {
     return { tt: VERSION, exportedAt: new Date().toISOString(), count: Object.keys(data).length, data };
   },
   entries(j) {
-    if (!j || typeof j.data !== 'object') throw new Error('Das ist keine Toms-Tools-Sicherung.');
+    if (!j || typeof j.data !== 'object') throw new Error(T('Das ist keine Toms-Tools-Sicherung.'));
     const e = Object.entries(j.data).filter(([k, v]) => k.startsWith('tt:') && typeof v === 'string');
-    if (!e.length) throw new Error('Die Datei enthält keine Daten.');
+    if (!e.length) throw new Error(T('Die Datei enthält keine Daten.'));
     return e;
   },
   same(a, b) { const s = o => JSON.stringify(Object.keys(o).sort().map(k => [k, o[k]])); return s(a) === s(b); },
-  when(j) { return j?.exportedAt ? new Date(j.exportedAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }) : 'unbekanntem Datum'; },
+  when(j) { return j?.exportedAt ? new Date(j.exportedAt).toLocaleString(isEN() ? 'en-GB' : 'de-DE', { dateStyle: 'medium', timeStyle: 'short' }) : T('unbekanntem Datum'); },
   // Apply: mode 'merge' (add) or 'replace' (clear everything first); reload afterwards
   async apply(j, mode, skipArchive) {
     const entries = Backup.entries(j);
@@ -3550,16 +3550,16 @@ const Backup = {
     const entries = Backup.entries(j);
     let mode = null;
     await new Promise(res => modal({
-      title, sub: `${entries.length} Einträge vom ${Backup.when(j)}`, width: 460,
+      title: T(title), sub: T('{n} Einträge vom {d}', { n: entries.length, d: Backup.when(j) }), width: 460,
       body: h('div', { class: 'muted' },
-        h('p', null, h('b', null, 'Zusammenführen'), ' – übernimmt die Daten aus der Sicherung, alles andere bleibt erhalten.'),
-        h('p', { style: { marginTop: '8px' } }, h('b', null, 'Ersetzen'), ' – löscht zuerst alle aktuellen Daten und stellt genau diesen Stand wieder her.')),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: 'Ersetzen', kind: 'danger', onClick: () => { mode = 'replace'; } }, { label: 'Zusammenführen', kind: 'primary', onClick: () => { mode = 'merge'; } }],
+        h('p', null, h('b', null, T('Zusammenführen')), T(' – übernimmt die Daten aus der Sicherung, alles andere bleibt erhalten.')),
+        h('p', { style: { marginTop: '8px' } }, h('b', null, T('Ersetzen')), T(' – löscht zuerst alle aktuellen Daten und stellt genau diesen Stand wieder her.'))),
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: T('Ersetzen'), kind: 'danger', onClick: () => { mode = 'replace'; } }, { label: T('Zusammenführen'), kind: 'primary', onClick: () => { mode = 'merge'; } }],
       onClose: () => res(),
     }));
     if (!mode) return false;
     const n = await Backup.apply(j, mode);
-    toast(`${n} Einträge übernommen – lade neu …`, 'ok'); setTimeout(() => location.reload(), 700);
+    toast(T('{n} Einträge übernommen – lade neu …', { n }), 'ok'); setTimeout(() => location.reload(), 700);
     return true;
   },
 };
@@ -3576,8 +3576,8 @@ const Sync = (() => {
   const fail = e => {
     const was = state;
     if (e?.name === 'NotAllowedError' || e?.name === 'SecurityError') { state = 'need-permission'; err = ''; }
-    else { state = 'error'; err = e?.name === 'NotFoundError' ? 'Der Ordner wurde nicht gefunden (verschoben oder gelöscht?).' : (e?.message || String(e)); }
-    if (was === 'on') toast(state === 'error' ? 'Ordner-Sicherung gestoppt: ' + err : 'Ordner-Sicherung braucht wieder deine Erlaubnis.', 'err', { ms: 8000, action: { label: 'Beheben', fn: () => openSettings() } });
+    else { state = 'error'; err = e?.name === 'NotFoundError' ? T('Der Ordner wurde nicht gefunden (verschoben oder gelöscht?).') : (e?.message || String(e)); }
+    if (was === 'on') toast(state === 'error' ? T('Ordner-Sicherung gestoppt: ') + err : T('Ordner-Sicherung braucht wieder deine Erlaubnis.'), 'err', { ms: 8000, action: { label: T('Beheben'), fn: () => openSettings() } });
     emit();
   };
 
@@ -3638,14 +3638,14 @@ const Sync = (() => {
     if (!firstConnect && !fileNewer) return writeNow();   // only changed here → just save
     let choice = null;
     await new Promise(res => modal({
-      title: firstConnect ? 'In diesem Ordner liegt schon eine Sicherung' : 'Im Ordner gibt es neuere Daten',
-      sub: `Stand vom ${Backup.when(file)} · ${file.count ?? Object.keys(file.data).length} Einträge`, width: 480,
+      title: T(firstConnect ? 'In diesem Ordner liegt schon eine Sicherung' : 'Im Ordner gibt es neuere Daten'),
+      sub: T('Stand vom {d} · {n} Einträge', { d: Backup.when(file), n: file.count ?? Object.keys(file.data).length }), width: 480,
       body: h('div', { class: 'muted' },
-        h('p', null, firstConnect ? 'Die Daten im Ordner unterscheiden sich von denen hier im Browser.' : 'Die Sicherung im Ordner wurde nach deiner letzten Sicherung von hier geändert – vielleicht auf einem anderen PC.'),
-        h('p', { style: { marginTop: '8px' } }, 'Was du nicht wählst, bleibt als Kopie im Unterordner „sicherungen" erhalten.')),
+        h('p', null, T(firstConnect ? 'Die Daten im Ordner unterscheiden sich von denen hier im Browser.' : 'Die Sicherung im Ordner wurde nach deiner letzten Sicherung von hier geändert – vielleicht auf einem anderen PC.')),
+        h('p', { style: { marginTop: '8px' } }, T('Was du nicht wählst, bleibt als Kopie im Unterordner „sicherungen" erhalten.'))),
       actions: [
-        { label: 'Browser-Daten behalten', kind: 'ghost', onClick: () => { choice = 'keep'; } },
-        { label: 'Aus dem Ordner laden', kind: 'primary', onClick: () => { choice = 'load'; } }],
+        { label: T('Browser-Daten behalten'), kind: 'ghost', onClick: () => { choice = 'keep'; } },
+        { label: T('Aus dem Ordner laden'), kind: 'primary', onClick: () => { choice = 'load'; } }],
       onClose: () => res(),
     }));
     if (choice === 'load') {
@@ -3653,7 +3653,7 @@ const Sync = (() => {
       const d = new Date(), sd = await dir.getDirectoryHandle(SUB, { create: true });
       await write(sd, `${day(d)}_${pad2(d.getHours())}${pad2(d.getMinutes())}${pad2(d.getSeconds())}_browser-vorher.json`, JSON.stringify(local, null, 1)).catch(() => {});
       await Backup.apply(file, 'replace', true); meta('lastSync', file.exportedAt);
-      toast('Daten aus dem Ordner geladen – lade neu …', 'ok'); setTimeout(() => location.reload(), 700);
+      toast(T('Daten aus dem Ordner geladen – lade neu …'), 'ok'); setTimeout(() => location.reload(), 700);
     } else if (choice === 'keep') { await archive('ordner-vorher'); await writeNow(); }
     // Dialog simply closed: overwrite nothing, sync stays active, the next change gets saved
   }
@@ -3676,25 +3676,25 @@ const Sync = (() => {
       const p = await dir.queryPermission({ mode: 'readwrite' }).catch(() => 'denied');
       if (p === 'granted') return activate(false);
       state = 'need-permission'; emit();
-      toast(`Automatische Sicherung in „${dir.name}" pausiert – der Browser braucht kurz deine Erlaubnis.`, 'info', { ms: 15000, action: { label: 'Erlauben', fn: () => Sync.resume() } });
+      toast(T('Automatische Sicherung in „{name}" pausiert – der Browser braucht kurz deine Erlaubnis.', { name: dir.name }), 'info', { ms: 15000, action: { label: T('Erlauben'), fn: () => Sync.resume() } });
     },
     async resume() {
       if (!dir) return;
       const p = await dir.requestPermission({ mode: 'readwrite' }).catch(() => 'denied');
       if (p === 'granted') return activate(false);
-      toast('Ohne Erlaubnis kann nicht in den Ordner gesichert werden.', 'err');
+      toast(T('Ohne Erlaubnis kann nicht in den Ordner gesichert werden.'), 'err');
     },
     async connect() {
       let dh;
       try { dh = await window.showDirectoryPicker({ id: 'tt-sync', mode: 'readwrite', startIn: 'documents' }); } catch { return; }   // cancelled
       dir = dh; await IDB.set('syncDir', dh);
       await activate(true);
-      if (state === 'on') toast(`Sicherung aktiv – alles wird automatisch in „${dh.name}" gespeichert.`, 'ok');
+      if (state === 'on') toast(T('Sicherung aktiv – alles wird automatisch in „{name}" gespeichert.', { name: dh.name }), 'ok');
     },
     async disconnect() { clearTimeout(timer); dir = null; state = 'off'; err = ''; await IDB.del('syncDir').catch(() => {}); emit(); },
     async loadFromFolder() {
       const file = dir && await readMain();
-      if (!file) { toast('Im Ordner wurde keine Sicherung gefunden.', 'err'); return; }
+      if (!file) { toast(T('Im Ordner wurde keine Sicherung gefunden.'), 'err'); return; }
       await Backup.askAndApply(file, 'Aus dem Ordner laden');
     },
     flush() { if (timer) writeNow(); },
@@ -3754,7 +3754,7 @@ S.data.apps ||= {};
 /* ---------- Language ----------
    German is the source language: texts stay German in the code and get wrapped in T('…').
    In English mode T() looks the German text up in EN – anything not translated yet simply stays German.
-   Placeholders: T('{n} Apps', { n: 5 }). Translated so far: top bar, home page, welcome dialog. */
+   Placeholders: T('{n} Apps', { n: 5 }). Translated so far: top bar, home page, welcome dialog, settings (incl. app settings, folder backup & diagnostics). */
 if (FIRST_RUN && !/^de\b/i.test(navigator.language || 'de')) { S.data.lang = 'en'; S.save(); }   // very first start: follow the browser language
 const isEN = () => S.data.lang === 'en';
 const T = (s, vars) => {
@@ -3764,6 +3764,86 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Settings, app settings, folder backup & diagnostics
+  'Einstellungen': 'Settings', 'Gelten für alle Tools · Version {v}': 'Apply to all tools · version {v}', 'Darstellung': 'Appearance', 'Theme': 'Theme', 'Akzentfarbe': 'Accent color',
+  'Animationen': 'Animations', 'Maskottchen': 'Mascot', 'Anzeigen': 'Show', 'Größe': 'Size', 'Startseite': 'Home page', 'Start': 'Startup', 'Name': 'Name',
+  'Wird in der Begrüßung angezeigt': 'Shown in the greeting', 'Sprache · Language': 'Language · Sprache',
+  'Englisch: bisher Startseite, Oberleiste & Einstellungen': 'English so far: home page, top bar & settings', 'Beim Öffnen zeigen': 'Show on launch', 'Home': 'Home', 'Letzte Sitzung': 'Last session',
+  'Apps': 'Apps', 'Legacy-App-Modus': 'Legacy app mode',
+  'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht': 'Image Naming is called “Bildbert Namuel Verwaldemar” again – with a face', 'App-Einstellungen': 'App settings',
+  'System & Diagnose': 'System & diagnostics', 'Hilft, wenn sich Ordner nicht öffnen lassen.': 'Helps when folders won’t open.', 'Ordnerzugriff testen': 'Test folder access',
+  'Speicher & Sicherung': 'Storage & backup', 'Backup-Datei (manuell)': 'Backup file (manual)', 'Backup exportieren': 'Export backup', 'Backup importieren': 'Import backup', 'Zurücksetzen': 'Reset',
+  'Gefällt dir Toms Tools? Spendier mir einen Kaffee': 'Enjoying Toms Tools? Buy me a coffee', '☕ Kaffee spendieren': '☕ Buy me a coffee',
+  'Neue Versionen, Feedback & Quellcode': 'New versions, feedback & source code', '🐙 Toms Tools auf GitHub': '🐙 Toms Tools on GitHub', 'Dunkel': 'Dark', 'Graphit': 'Graphite',
+  'Mitternacht': 'Midnight', 'Mokka': 'Mocha', 'Wald': 'Forest', 'Hell': 'Light', 'Violett': 'Violet', 'Blau': 'Blue', 'Türkis': 'Turquoise', 'Grün': 'Green', 'Rot': 'Red',
+  'Eigene Farbe': 'Custom color', 'Hintergrund der Startseite': 'Home page background', 'Tageszeit': 'Time of day', 'Weltall': 'Space', 'Eigenes Bild': 'Own image', 'Schlicht': 'Plain',
+  'Die Farben wandern im Tagesverlauf weich weiter': 'The colors drift softly through the day', 'Jetzt: {n}': 'Now: {n}', 'Nacht': 'Night', 'Morgengrauen': 'Dawn', 'Sonnenaufgang': 'Sunrise',
+  'Vormittag': 'Morning', 'Mittag': 'Midday', 'Nachmittag': 'Afternoon', 'Abendrot': 'Sunset', 'Dämmerung': 'Dusk', 'Akzentfarbe folgt der Tageszeit': 'Accent color follows the time of day',
+  'Buttons & Hervorhebungen wechseln mit': 'Buttons & highlights change along', 'Anderes Bild': 'Other image', 'Entfernen': 'Remove', 'Abdunkeln': 'Darken', 'Unschärfe': 'Blur',
+  'Leuchtkraft': 'Glow', 'Partikel': 'Particles', 'Leuchtende Punkte, die langsam nach oben schweben': 'Glowing dots slowly drifting upwards', 'Kacheln': 'Tiles', 'Karten': 'Cards',
+  'Kompakt': 'Compact', 'Begrüßung': 'Greeting', 'Sprüche nach Tageszeit, Zufallsfakten oder beides': 'Time-of-day lines, random facts or both', 'Sprüche': 'Lines', 'Fakten': 'Facts',
+  'Bild konnte nicht gespeichert werden.': 'Couldn’t save the image.', 'Bild konnte nicht geladen werden.': 'Couldn’t load the image.', 'Wirklich?': 'Sure?',
+  'Nur die Einstellungen dieser App auf Standard – Inhalte bleiben': 'Reset only this app’s settings – content stays', '{app}: Einstellungen zurückgesetzt': '{app}: settings reset',
+  'Gerade geöffnet – diese Werte direkt in der App ändern oder die App erst schließen.': 'Currently open – change these values in the app itself, or close the app first.',
+  'Alle zurücksetzen': 'Reset all', 'App-Einstellungen zurückgesetzt': 'App settings reset', ' (offene Apps ausgenommen)': ' (open apps excluded)', 'Alle App-Einstellungen': 'All app settings',
+  'Auf Standard zurück – Notizen, Paletten & andere Inhalte bleiben': 'Back to defaults – notes, palettes & other content stay', 'Export-Format': 'Export format',
+  'Qualität (JPG/WebP)': 'Quality (JPG/WebP)', 'Ausgabe': 'Output', 'ZIP-Datei': 'ZIP file', 'In Ordner': 'To folder', 'Ordnernamen für Monate': 'Folder names for months', '03 März': '03 March',
+  'Begleitdateien (.xmp, .aae) mitnehmen': 'Take sidecar files (.xmp, .aae) along', 'Dateidatum, wenn kein Aufnahmedatum': 'Use the file date if there is no capture date',
+  'Vor dem Umbenennen nachfragen': 'Ask before renaming', 'Versteckte & Systemdateien ignorieren': 'Ignore hidden & system files',
+  '.dateien, Thumbs.db, desktop.ini': '.files, Thumbs.db, desktop.ini', 'Fallback: Kopieren + Löschen': 'Fallback: copy + delete',
+  'Wenn der Browser nicht direkt umbenennen kann. Änderungsdatum geht dabei verloren.': 'If the browser can’t rename directly. The modified date gets lost.', 'Qualität': 'Quality',
+  'Dateinamen kleinschreiben': 'Lowercase file names', 'Leerzeichen & _ → -': 'Spaces & _ → -', 'Sound beim Glücksrad': 'Sound for the wheel of fortune', 'WebP-Qualität': 'WebP quality',
+  'Hintergrund der Vorschau': 'Preview background', 'Raster': 'Checkerboard', 'Weiß': 'White', 'Schwarz': 'Black', 'Entferntes rot zeigen': 'Show removed areas in red',
+  'Beim Masken-Pinsel und Zauberstab': 'With the mask brush and magic wand', 'Ebenen ins nächste Bild mitnehmen': 'Carry layers over to the next image',
+  'Im Ordner-Modus – z. B. für ein Wasserzeichen': 'In folder mode – e.g. for a watermark', 'Farbprofil (ICC) behalten': 'Keep color profile (ICC)',
+  'Sonst können Farben anders aussehen': 'Otherwise colors may look different', 'Drehung (Orientation) behalten': 'Keep rotation (orientation)',
+  'Sonst liegen Handyfotos evtl. quer': 'Otherwise phone photos may end up sideways', 'Qualität beim Neu-Speichern': 'Quality when re-saving', 'Vorlese-Tempo': 'Reading speed',
+  'Nur Offline-Stimmen': 'Offline voices only', 'Stimmen ohne Internet – nichts verlässt den PC': 'Voices without internet – nothing leaves your PC', 'Signalton': 'Signal tone',
+  'Nach Ablauf': 'When time is up', 'Weiterzählen': 'Keep counting', 'Stoppen': 'Stop', 'Fortschrittsbalken': 'Progress bar', 'Uhrzeit anzeigen': 'Show clock', 'Render-Qualität': 'Render quality',
+  'Niedrig schont Grafikkarte und Akku': 'Low spares the GPU and battery', 'Niedrig': 'Low', 'Rekorde zurücksetzen': 'Reset records',
+  'Bestwerte aller Spiele löschen (Neon-Arena, Ausweichen, Reaktion, Kreis, Tippen)': 'Delete the best scores of all games (Neon Arena, Dodge, Reaction, Circle, Typing)', 'Erledigt ✓': 'Done ✓',
+  'Eigene Akzentfarbe': 'Own accent color', 'Farbe unabhängig vom globalen Theme': 'Color independent of the global theme', 'Hintergrundbild': 'Background image', 'Offene Tabs': 'Open tabs',
+  'noch nie': 'never', 'gerade eben': 'just now', 'vor {n} Min.': '{n} min ago', 'vor {n} Std.': '{n} h ago', 'Ordner-Sicherung nicht verfügbar': 'Folder backup not available',
+  'Geht nur in Chrome, Edge oder Brave. Nutze bis dahin „Backup exportieren".': 'Only works in Chrome, Edge or Brave. Until then, use “Export backup”.',
+  'Daten liegen nur im Browser': 'Your data only lives in the browser',
+  'Wähle einen Ordner – dann wird alles automatisch als Datei gesichert.': 'Pick a folder – then everything is saved there automatically as a file.', 'Ordner wählen': 'Choose folder',
+  '„{name}" braucht deine Erlaubnis': '“{name}” needs your permission',
+  'Der Browser fragt nach einem Neustart einmal nach. Bis dahin wird nicht gesichert.': 'After a restart the browser asks once. Nothing is saved until then.', 'Erlauben': 'Allow',
+  'Anderer Ordner': 'Other folder', 'Sicherung gestoppt': 'Backup stopped', 'Ordner neu wählen': 'Choose folder again', 'Automatisch gesichert in „{name}"': 'Saved automatically to “{name}”',
+  'Zuletzt {ago} · tägliche Kopien der letzten 14 Tage im Unterordner „sicherungen"': 'Last saved: {ago} · daily copies of the last 14 days in the “sicherungen” subfolder',
+  'Jetzt sichern': 'Save now', 'Gesichert.': 'Saved.', 'Ordner ändern': 'Change folder', 'Aus Ordner laden': 'Load from folder', 'Ordner trennen?': 'Disconnect folder?',
+  'Es wird nicht mehr automatisch gesichert. Die Dateien im Ordner bleiben erhalten.': 'Automatic saving stops. The files in the folder are kept.', 'Trennen': 'Disconnect',
+  'Tipp: Ein Ordner in OneDrive sichert zusätzlich in die Cloud – und du kannst die Daten auf einem anderen PC laden.': 'Tip: a folder in OneDrive also backs up to the cloud – and you can load the data on another PC.',
+  'Browser-Speicher': 'Browser storage', '{used} von ca. 5 MB': '{used} of approx. 5 MB',
+  'Liegt im größeren Browser-Speicher und zählt hier nicht mit': 'Kept in the larger browser storage and not counted here',
+  'Backup gespeichert · {n} Einträge · {size}': 'Backup saved · {n} entries · {size}', 'Import fehlgeschlagen: ': 'Import failed: ', 'Speicher voll.': 'Storage full.',
+  'Die Datei ist kein gültiges Backup.': 'The file is not a valid backup.', 'Alles zurücksetzen?': 'Reset everything?',
+  'Einstellungen, Notizen, Paletten und alle anderen App-Daten werden gelöscht.': 'Settings, notes, palettes and all other app data will be deleted.',
+  ' Der letzte Stand bleibt im Ordner „{name}" unter „sicherungen" erhalten.': ' The last state is kept in the folder “{name}” under “sicherungen”.',
+  'Das ist keine Toms-Tools-Sicherung.': 'This is not a Toms Tools backup.', 'Die Datei enthält keine Daten.': 'The file contains no data.', 'unbekanntem Datum': 'an unknown date',
+  '{n} Einträge vom {d}': '{n} entries from {d}', 'Zusammenführen': 'Merge',
+  ' – übernimmt die Daten aus der Sicherung, alles andere bleibt erhalten.': ' – takes over the data from the backup, everything else stays.', 'Ersetzen': 'Replace',
+  ' – löscht zuerst alle aktuellen Daten und stellt genau diesen Stand wieder her.': ' – first deletes all current data and restores exactly this state.', 'Abbrechen': 'Cancel',
+  '{n} Einträge übernommen – lade neu …': '{n} entries imported – reloading …', 'Aus dem Ordner laden': 'Load from the folder',
+  'Der Ordner wurde nicht gefunden (verschoben oder gelöscht?).': 'The folder wasn’t found (moved or deleted?).', 'Ordner-Sicherung gestoppt: ': 'Folder backup stopped: ',
+  'Ordner-Sicherung braucht wieder deine Erlaubnis.': 'Folder backup needs your permission again.', 'Beheben': 'Fix',
+  'In diesem Ordner liegt schon eine Sicherung': 'This folder already holds a backup', 'Im Ordner gibt es neuere Daten': 'The folder has newer data',
+  'Stand vom {d} · {n} Einträge': 'Saved {d} · {n} entries', 'Die Daten im Ordner unterscheiden sich von denen hier im Browser.': 'The data in the folder differs from the data here in the browser.',
+  'Die Sicherung im Ordner wurde nach deiner letzten Sicherung von hier geändert – vielleicht auf einem anderen PC.': 'The backup in the folder was changed after your last backup from here – maybe on another PC.',
+  'Was du nicht wählst, bleibt als Kopie im Unterordner „sicherungen" erhalten.': 'Whatever you don’t choose is kept as a copy in the “sicherungen” subfolder.',
+  'Browser-Daten behalten': 'Keep browser data', 'Daten aus dem Ordner geladen – lade neu …': 'Data loaded from the folder – reloading …',
+  'Automatische Sicherung in „{name}" pausiert – der Browser braucht kurz deine Erlaubnis.': 'Automatic backup to “{name}” paused – the browser briefly needs your permission.',
+  'Ohne Erlaubnis kann nicht in den Ordner gesichert werden.': 'Without permission nothing can be saved to the folder.',
+  'Sicherung aktiv – alles wird automatisch in „{name}" gespeichert.': 'Backup active – everything is saved to “{name}” automatically.',
+  'Im Ordner wurde keine Sicherung gefunden.': 'No backup was found in the folder.', 'Geöffnet über': 'Opened via', 'Datei (file://)': 'File (file://)', 'Sicherer Kontext': 'Secure context',
+  'ja': 'yes', 'nein': 'no', 'Eingebettet (iFrame)': 'Embedded (iframe)', 'Ordnerzugriff (File System API)': 'Folder access (File System API)', 'verfügbar': 'available', 'fehlt': 'missing',
+  'Direktes Umbenennen (move)': 'Direct renaming (move)', 'nein → Kopieren': 'no → copy', 'Nur-Lesen-Fallback': 'Read-only fallback', 'Unbekannt': 'Unknown',
+  'Die Seite läuft eingebettet (z. B. in einer Vorschau). Öffne die HTML-Datei direkt im Browser – per Doppelklick oder indem du sie in ein Chrome-/Edge-Fenster ziehst.': 'The page is running embedded (e.g. in a preview). Open the HTML file directly in the browser – by double-clicking it or dragging it into a Chrome/Edge window.',
+  'Der Browser verweigert den Ordnerzugriff. Häufige Ursache auf Firmenrechnern: eine Richtlinie der IT (z. B. „DefaultFileSystemWriteGuardSetting“ / „DefaultFileSystemReadGuardSetting“). Nachsehen unter chrome://policy bzw. edge://policy. Der Nur-Lesen-Modus mit .bat-Skript funktioniert trotzdem – ohne Admin-Rechte.': 'The browser denies folder access. A common cause on company computers: an IT policy (e.g. “DefaultFileSystemWriteGuardSetting” / “DefaultFileSystemReadGuardSetting”). Check chrome://policy or edge://policy. The read-only mode with the .bat script still works – without admin rights.',
+  'Tipp: Unter Einstellungen → System & Diagnose kannst du den Zugriff gezielt testen.': 'Tip: under Settings → System & diagnostics you can test the access directly.',
+  'Warte auf Ordnerauswahl …': 'Waiting for a folder …',
+  'Dieser Browser kennt die File System Access API nicht. Nutze Chrome oder Edge – oder den Nur-Lesen-Modus.': 'This browser doesn’t support the File System Access API. Use Chrome or Edge – or the read-only mode.',
+  '✓ Zugriff auf „{name}“ mit Schreibrecht erteilt – alles bereit.': '✓ Write access to “{name}” granted – all set.', 'Abgebrochen.': 'Cancelled.',
   // Top bar & tabs
   'Taschenrechner': 'Calculator', 'Formatierung entfernen – kopierten Text als reinen Text in die Zwischenablage legen': 'Remove formatting – put copied text back on the clipboard as plain text', 'Die Zwischenablage ist leer (oder enthält keinen Text).': 'The clipboard is empty (or holds no text).', 'Jetzt': 'Now', 'Strg': 'Ctrl', 'Das hat nicht geklappt – bitte noch einmal versuchen.': 'That didn’t work – please try again.', 'Einstellungen (Strg+,)': 'Settings (Ctrl+,)',
   'Schließen (Alt+W)': 'Close (Alt+W)', 'App öffnen': 'Open app', 'In Planung': 'Planned',
@@ -4018,8 +4098,8 @@ function confirmBox(title, text, okLabel = 'OK', kind = 'primary') {
   return new Promise(res => {
     let done = false;
     modal({
-      title, body: h('p', { class: 'muted' }, text),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: okLabel, kind, onClick: () => { done = true; res(true); } }],
+      title: T(title), body: h('p', { class: 'muted' }, T(text)),
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: T(okLabel), kind, onClick: () => { done = true; res(true); } }],
       onClose: () => { if (!done) res(false); },
     });
   });
@@ -4030,7 +4110,7 @@ function promptBox(title, label, value = '', okLabel = 'Speichern') {
     const inp = h('input', { class: 'inp', value, spellcheck: false, onkeydown: e => { if (e.key === 'Enter') { done = true; res(inp.value.trim()); close(); } } });
     const close = modal({
       title, body: h('div', { class: 'field' }, h('label', null, label), inp),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: okLabel, kind: 'primary', onClick: () => { done = true; res(inp.value.trim()); } }],
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: T(okLabel), kind: 'primary', onClick: () => { done = true; res(inp.value.trim()); } }],
       onClose: () => { if (!done) res(null); },
     });
     setTimeout(() => inp.select(), 50);
@@ -4069,7 +4149,7 @@ const hasMove = !!window.FileSystemFileHandle && 'move' in FileSystemFileHandle.
 function browserName() {
   const ua = navigator.userAgent;
   const m = ua.match(/Edg\/(\d+)/) || ua.match(/OPR\/(\d+)/) || ua.match(/Firefox\/(\d+)/) || ua.match(/Chrome\/(\d+)/) || ua.match(/Version\/(\d+).*Safari/);
-  const n = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox/.test(ua) ? 'Firefox' : /Chrome/.test(ua) ? 'Chrome' : /Safari/.test(ua) ? 'Safari' : 'Unbekannt';
+  const n = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox/.test(ua) ? 'Firefox' : /Chrome/.test(ua) ? 'Chrome' : /Safari/.test(ua) ? 'Safari' : T('Unbekannt');
   return m ? `${n} ${m[1]}` : n;
 }
 function diag() {
@@ -4085,19 +4165,19 @@ function diag() {
 }
 function fsHint(e) {
   const m = String(e?.message || '');
-  if (inFrame || /cross-origin|sub ?frame/i.test(m)) return 'Die Seite läuft eingebettet (z. B. in einer Vorschau). Öffne die HTML-Datei direkt im Browser – per Doppelklick oder indem du sie in ein Chrome-/Edge-Fenster ziehst.';
+  if (inFrame || /cross-origin|sub ?frame/i.test(m)) return T('Die Seite läuft eingebettet (z. B. in einer Vorschau). Öffne die HTML-Datei direkt im Browser – per Doppelklick oder indem du sie in ein Chrome-/Edge-Fenster ziehst.');
   if (/not allowed|permission|policy|user agent or the platform/i.test(m) || e?.name === 'SecurityError' || e?.name === 'NotAllowedError')
-    return 'Der Browser verweigert den Ordnerzugriff. Häufige Ursache auf Firmenrechnern: eine Richtlinie der IT (z. B. „DefaultFileSystemWriteGuardSetting“ / „DefaultFileSystemReadGuardSetting“). Nachsehen unter chrome://policy bzw. edge://policy. Der Nur-Lesen-Modus mit .bat-Skript funktioniert trotzdem – ohne Admin-Rechte.';
-  return 'Tipp: Unter Einstellungen → System & Diagnose kannst du den Zugriff gezielt testen.';
+    return T('Der Browser verweigert den Ordnerzugriff. Häufige Ursache auf Firmenrechnern: eine Richtlinie der IT (z. B. „DefaultFileSystemWriteGuardSetting“ / „DefaultFileSystemReadGuardSetting“). Nachsehen unter chrome://policy bzw. edge://policy. Der Nur-Lesen-Modus mit .bat-Skript funktioniert trotzdem – ohne Admin-Rechte.');
+  return T('Tipp: Unter Einstellungen → System & Diagnose kannst du den Zugriff gezielt testen.');
 }
 async function testAccess(out) {
-  out.className = 'test-out'; out.textContent = 'Warte auf Ordnerauswahl …';
-  if (!hasPicker) { out.className = 'test-out err'; out.textContent = 'Dieser Browser kennt die File System Access API nicht. Nutze Chrome oder Edge – oder den Nur-Lesen-Modus.'; return; }
+  out.className = 'test-out'; out.textContent = T('Warte auf Ordnerauswahl …');
+  if (!hasPicker) { out.className = 'test-out err'; out.textContent = T('Dieser Browser kennt die File System Access API nicht. Nutze Chrome oder Edge – oder den Nur-Lesen-Modus.'); return; }
   try {
     const d = await window.showDirectoryPicker({ mode: 'readwrite' });
-    out.className = 'test-out ok'; out.textContent = `✓ Zugriff auf „${d.name}“ mit Schreibrecht erteilt – alles bereit.`;
+    out.className = 'test-out ok'; out.textContent = T('✓ Zugriff auf „{name}“ mit Schreibrecht erteilt – alles bereit.', { name: d.name });
   } catch (e) {
-    if (e.name === 'AbortError') { out.textContent = 'Abgebrochen.'; return; }
+    if (e.name === 'AbortError') { out.textContent = T('Abgebrochen.'); return; }
     out.className = 'test-out err';
     out.replaceChildren(h('b', null, `${e.name}: ${e.message}`), h('br'), fsHint(e));
   }
@@ -4696,26 +4776,29 @@ function renderHome() {
     ...(groups.length ? groupEls : [h('div', { class: 'hg-none' }, T('Alle Apps sind ausgeblendet – in den Einstellungen unter „Apps“ wieder einblenden.'))])));
 }
 
-function openSettings() {
+// Rebuilds the open settings in place (language switch) – same scroll position, no slide-in
+let settingsRebuild = null;
+function openSettings(keepScroll) {
   if ($('.drawer')) return;
   const bd = h('div', { class: 'backdrop right' });
   const esc = e => { if (e.key === 'Escape' && !menuEl) { e.stopPropagation(); close(); } };
-  const close = () => { document.removeEventListener('keydown', esc, true); bd.classList.add('out'); setTimeout(() => bd.remove(), 180); };
-  const row = (l, d, c) => h('div', { class: 'set-row' }, h('div', { class: 'l' }, h('b', null, l), d && h('small', null, d)), c);
-  const sec = (t, ...c) => h('section', { class: 'set-sec' }, h('h4', null, t), c);
+  const close = () => { settingsRebuild = null; document.removeEventListener('keydown', esc, true); bd.classList.add('out'); setTimeout(() => bd.remove(), 180); };
+  const row = (l, d, c) => h('div', { class: 'set-row' }, h('div', { class: 'l' }, h('b', null, T(l)), d && h('small', null, T(d))), c);
+  const sec = (t, ...c) => h('section', { class: 'set-sec' }, h('h4', null, T(t)), c);
+  const tr = opts => opts.map(([k, l]) => [k, T(l)]);   // translate the labels of segEl options
   const notify = () => TT.inst.forEach(i => i.onSettings?.());
 
   const themes = h('div', { class: 'theme-cards' }, [['dark', 'Dunkel'], ['oled', 'OLED'], ['graphite', 'Graphit'], ['midnight', 'Mitternacht'], ['mocha', 'Mokka'], ['forest', 'Wald'], ['light', 'Hell']].map(([k, l]) =>
     h('button', { class: 'theme-card' + (S.data.theme === k ? ' on' : ''), dataset: { t: k }, onclick: () => { S.set('theme', k); $$('.theme-card', themes).forEach(b => b.classList.toggle('on', b.dataset.t === k)); } },
-      h('div', { class: 'tc-prev', dataset: { prev: k } }, h('i'), h('i'), h('i')), h('span', null, l))));
+      h('div', { class: 'tc-prev', dataset: { prev: k } }, h('i'), h('i'), h('i')), h('span', null, T(l)))));
 
   const sw = h('div', { class: 'swatches' });
   const renderSw = () => {
     const custom = !ACCENTS.some(x => x[1] === S.data.acc);
     sw.replaceChildren(...ACCENTS.map(([n, a, b]) => h('button', {
-      class: 'swatch' + (S.data.acc === a ? ' on' : ''), title: n, style: { background: `linear-gradient(135deg,${a},${b})` },
+      class: 'swatch' + (S.data.acc === a ? ' on' : ''), title: T(n), style: { background: `linear-gradient(135deg,${a},${b})` },
       onclick: () => { S.data.acc2 = b; S.data.accTime = false; S.set('acc', a); renderSw(); renderHomeSet(); },
-    })), h('label', { class: 'swatch custom' + (custom ? ' on' : ''), title: 'Eigene Farbe', style: custom ? { background: `linear-gradient(135deg,${S.data.acc},${S.data.acc2})` } : null },
+    })), h('label', { class: 'swatch custom' + (custom ? ' on' : ''), title: T('Eigene Farbe'), style: custom ? { background: `linear-gradient(135deg,${S.data.acc},${S.data.acc2})` } : null },
       icon('plus'), h('input', { type: 'color', value: S.data.acc, oninput: e => { S.data.acc2 = shiftHue(e.target.value, 42); S.data.accTime = false; S.set('acc', e.target.value); }, onchange: () => { renderSw(); renderHomeSet(); } })));
   };
   renderSw();
@@ -4729,7 +4812,7 @@ function openSettings() {
       // While dragging only set CSS variables; saving happens on release
       oninput: () => { S.data[key] = +r.value; val.textContent = fmt(+r.value); r.style.setProperty('--p', pct(r.value)); applyTimeLook(); applyHomeBgVars(); },
       onchange: () => S.save() });
-    return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, label), val), r);
+    return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, T(label)), val), r);
   };
   const pickBg = async () => {
     const f = await pickFile('image/*'); if (!f) return;
@@ -4739,29 +4822,29 @@ function openSettings() {
       cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height); URL.revokeObjectURL(url);
       let q = 0.82, data = cv.toDataURL('image/jpeg', q);
       while (data.length > 900000 && q > 0.4) { q -= 0.1; data = cv.toDataURL('image/jpeg', q); }
-      try { await setHomeBg(data); } catch { toast('Bild konnte nicht gespeichert werden.', 'err'); return; }
+      try { await setHomeBg(data); } catch { toast(T('Bild konnte nicht gespeichert werden.'), 'err'); return; }
       S.data.homeBg = 'image'; S.save(); refreshHome(); renderHomeSet();
-    } catch { toast('Bild konnte nicht geladen werden.', 'err'); }
+    } catch { toast(T('Bild konnte nicht geladen werden.'), 'err'); }
   };
   function renderHomeSet() {
     const mode = S.data.homeBg, tc = timeColors();
     homeSet.replaceChildren(...[
-      h('div', { class: 'set-label' }, 'Hintergrund der Startseite'),
-      segEl([['accent', 'Akzentfarbe'], ['time', 'Tageszeit'], ['space', 'Weltall'], ['image', 'Eigenes Bild'], ['calm', 'Schlicht']], mode, v => {
+      h('div', { class: 'set-label' }, T('Hintergrund der Startseite')),
+      segEl(tr([['accent', 'Akzentfarbe'], ['time', 'Tageszeit'], ['space', 'Weltall'], ['image', 'Eigenes Bild'], ['calm', 'Schlicht']]), mode, v => {
         if (v === 'image' && !homeBgUrl()) { pickBg(); return; }
         S.data.homeBg = v; if (v !== 'time') S.data.accTime = false; S.save(); refreshHome(); renderHomeSet(); renderSw();
       }),
-      mode === 'time' ? h('div', { class: 'set-bgprev', title: 'Die Farben wandern im Tagesverlauf weich weiter' }, h('span', null, `Jetzt: ${tc.name}`)) : null,
+      mode === 'time' ? h('div', { class: 'set-bgprev', title: T('Die Farben wandern im Tagesverlauf weich weiter') }, h('span', null, T('Jetzt: {n}', { n: T(tc.name) }))) : null,
       mode === 'time' ? row('Akzentfarbe folgt der Tageszeit', 'Buttons & Hervorhebungen wechseln mit', switchEl(S.data.accTime, v => { S.data.accTime = v; S.save(); refreshHome(); renderSw(); })) : null,
       mode === 'image' ? h('div', { class: 'set-imgrow' }, h('span', { class: 'set-imgthumb', style: { backgroundImage: `url(${homeBgUrl()})` } }),
-        h('button', { class: 'btn sm', onclick: pickBg }, icon('image'), 'Anderes Bild'),
-        h('button', { class: 'btn sm ghost', onclick: async () => { await setHomeBg('').catch(() => {}); S.data.homeBg = 'accent'; S.save(); refreshHome(); renderHomeSet(); } }, icon('trash'), 'Entfernen')) : null,
+        h('button', { class: 'btn sm', onclick: pickBg }, icon('image'), T('Anderes Bild')),
+        h('button', { class: 'btn sm ghost', onclick: async () => { await setHomeBg('').catch(() => {}); S.data.homeBg = 'accent'; S.save(); refreshHome(); renderHomeSet(); } }, icon('trash'), T('Entfernen'))) : null,
       mode === 'image' ? setSl('imgDim', 'Abdunkeln', 0, 85, 1, v => v + ' %') : null,
       mode === 'image' ? setSl('imgBlur', 'Unschärfe', 0, 24, 1, v => v + ' px') : null,
       mode === 'accent' || mode === 'time' ? setSl('glow', 'Leuchtkraft', 0.2, 1.6, 0.05, v => Math.round(v * 100) + ' %') : null,
       mode !== 'space' ? row('Partikel', 'Leuchtende Punkte, die langsam nach oben schweben', switchEl(S.data.particles, v => { S.data.particles = v; S.save(); renderHome(); })) : null,
-      row('Kacheln', null, segEl([['cards', 'Karten'], ['compact', 'Kompakt']], S.data.tiles, v => { S.data.tiles = v; S.save(); renderHome(); })),
-      row('Begrüßung', 'Sprüche nach Tageszeit, Zufallsfakten oder beides', segEl([['mix', 'Mix'], ['jokes', 'Sprüche'], ['facts', 'Fakten'], ['simple', 'Schlicht']], S.data.greetStyle, v => { S.data.greetStyle = v; S.save(); renderHome(); }))].filter(Boolean));
+      row('Kacheln', null, segEl(tr([['cards', 'Karten'], ['compact', 'Kompakt']]), S.data.tiles, v => { S.data.tiles = v; S.save(); renderHome(); })),
+      row('Begrüßung', 'Sprüche nach Tageszeit, Zufallsfakten oder beides', segEl(tr([['mix', 'Mix'], ['jokes', 'Sprüche'], ['facts', 'Fakten'], ['simple', 'Schlicht']]), S.data.greetStyle, v => { S.data.greetStyle = v; S.save(); renderHome(); }))].filter(Boolean));
   }
   renderHomeSet();
 
@@ -4779,9 +4862,9 @@ function openSettings() {
   const sAction = s => {
     let armed = 0;
     const b = h('button', { class: 'btn sm ghost', onclick: () => {
-      if (s.confirm && !armed) { b.textContent = 'Wirklich?'; b.classList.add('danger'); armed = setTimeout(() => { armed = 0; b.textContent = s.button; b.classList.remove('danger'); }, 3000); return; }
-      clearTimeout(armed); armed = 0; s.run(); b.textContent = s.done || s.button; b.classList.remove('danger');
-    } }, s.button);
+      if (s.confirm && !armed) { b.textContent = T('Wirklich?'); b.classList.add('danger'); armed = setTimeout(() => { armed = 0; b.textContent = T(s.button); b.classList.remove('danger'); }, 3000); return; }
+      clearTimeout(armed); armed = 0; s.run(); b.textContent = T(s.done || s.button); b.classList.remove('danger');
+    } }, T(s.button));
     return b;
   };
   // Reset an app's settings to defaults: only the setting values, no content (notes, palettes, invoices …)
@@ -4796,9 +4879,9 @@ function openSettings() {
   const twoClick = (label, run, cls = 'btn sm ghost') => {
     let armed = 0;
     const b = h('button', { class: cls, onclick: () => {
-      if (!armed) { b.textContent = 'Wirklich?'; b.classList.add('danger'); armed = setTimeout(() => { armed = 0; b.textContent = label; b.classList.remove('danger'); }, 3000); return; }
+      if (!armed) { b.textContent = T('Wirklich?'); b.classList.add('danger'); armed = setTimeout(() => { armed = 0; b.textContent = T(label); b.classList.remove('danger'); }, 3000); return; }
       clearTimeout(armed); armed = 0; run();
-    } }, label);
+    } }, T(label));
     return b;
   };
   const setApps = [...TT.apps.values()].filter(a => a.settings?.length && !a.soon);
@@ -4806,18 +4889,18 @@ function openSettings() {
   const appSecEls = new Map();
   const appSec = a => {
     const locked = TT.inst.has(a.id) && a.settings.some(s => s.store);
-    const resetBtn = twoClick('Zurücksetzen', () => { resetAppSettings(a); rebuildAppSec(a); toast(`${a.name}: Einstellungen zurückgesetzt`, 'ok', { ms: 1800 }); }, 'btn sm ghost set-app-reset');
-    resetBtn.title = 'Nur die Einstellungen dieser App auf Standard – Inhalte bleiben';
+    const resetBtn = twoClick('Zurücksetzen', () => { resetAppSettings(a); rebuildAppSec(a); toast(T('{app}: Einstellungen zurückgesetzt', { app: appName(a) }), 'ok', { ms: 1800 }); }, 'btn sm ghost set-app-reset');
+    resetBtn.title = T('Nur die Einstellungen dieser App auf Standard – Inhalte bleiben');
     if (locked) resetBtn.disabled = true;
     const el = h('div', { class: 'set-app', dataset: { app: a.id } },
-    h('div', { class: 'set-app-h' }, h('span', { class: 'ti' + (a.face ? ' face' : ''), style: { '--c': a.c, '--c2': a.c2, ...(a.fg && { '--fg': a.fg }) } }, icon(a.icon)), h('b', null, a.name),
+    h('div', { class: 'set-app-h' }, h('span', { class: 'ti' + (a.face ? ' face' : ''), style: { '--c': a.c, '--c2': a.c2, ...(a.fg && { '--fg': a.fg }) } }, icon(a.icon)), h('b', null, appName(a)),
       a.settings.some(s => s.type !== 'action') ? resetBtn : null),
-    locked ? h('p', { class: 'hint set-open' }, 'Gerade geöffnet – diese Werte direkt in der App ändern oder die App erst schließen.') : null,
+    locked ? h('p', { class: 'hint set-open' }, T('Gerade geöffnet – diese Werte direkt in der App ändern oder die App erst schließen.')) : null,
     a.settings.map(s => {
       const notify = () => TT.inst.get(a.id)?.onSettings?.();
       const dis = s.store && TT.inst.has(a.id);
       if (s.type === 'seg' || s.type === 'range' || s.type === 'action' || s.store) {
-        const ctl = s.type === 'seg' ? segEl(s.opts, sGet(a, s), v => sPut(a, s, v))
+        const ctl = s.type === 'seg' ? segEl(tr(s.opts), sGet(a, s), v => sPut(a, s, v))
           : s.type === 'range' ? sRange(a, s)
           : s.type === 'action' ? sAction(s)
           : switchEl(sGet(a, s), v => sPut(a, s, v));
@@ -4847,12 +4930,12 @@ function openSettings() {
   const appSecs = setApps.map(appSec);
   const resetAllApps = twoClick('Alle zurücksetzen', () => {
     setApps.filter(a => !(TT.inst.has(a.id) && a.settings.some(s => s.store))).forEach(a => { resetAppSettings(a); rebuildAppSec(a); });
-    toast('App-Einstellungen zurückgesetzt' + (setApps.some(a => TT.inst.has(a.id)) ? ' (offene Apps ausgenommen)' : ''), 'ok');
+    toast(T('App-Einstellungen zurückgesetzt') + (setApps.some(a => TT.inst.has(a.id)) ? T(' (offene Apps ausgenommen)') : ''), 'ok');
   });
   const appSecHead = row('Alle App-Einstellungen', 'Auf Standard zurück – Notizen, Paletten & andere Inhalte bleiben', resetAllApps);
 
   const diagEl = h('div', { class: 'diag' }, diag().map(d => h('div', { class: 'diag-row' },
-    h('span', { class: 'dot ' + (d.ok === true ? 'ok' : d.ok === false ? 'err' : '') }), h('span', { class: 'dk' }, d.k), h('span', { class: 'dv' }, d.v))));
+    h('span', { class: 'dot ' + (d.ok === true ? 'ok' : d.ok === false ? 'err' : '') }), h('span', { class: 'dk' }, T(d.k)), h('span', { class: 'dv' }, T(d.v)))));
   const testOut = h('div', { class: 'test-out' });
 
   // Backup: all tt: entries – settings, session and the data of all apps
@@ -4861,17 +4944,17 @@ function openSettings() {
     const snap = Backup.collect(), d = new Date(), stamp = `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
     const json = JSON.stringify(snap, null, 2);
     download(`toms-tools-backup-${stamp}.json`, json, 'application/json');
-    toast(`Backup gespeichert · ${snap.count} Einträge · ${fmtSize(json.length)}`, 'ok');
+    toast(T('Backup gespeichert · {n} Einträge · {size}', { n: snap.count, size: fmtSize(json.length) }), 'ok');
   };
   const importAll = async () => {
     const f = await pickFile('.json,application/json');
     if (!f) return;
     try { await Backup.askAndApply(JSON.parse(await f.text()), 'Backup importieren'); }
-    catch (e) { toast('Import fehlgeschlagen: ' + (e.name === 'QuotaExceededError' ? 'Speicher voll.' : e instanceof SyntaxError ? 'Die Datei ist kein gültiges Backup.' : e.message), 'err', { ms: 6000 }); }
+    catch (e) { toast(T('Import fehlgeschlagen: ') + (e.name === 'QuotaExceededError' ? T('Speicher voll.') : e instanceof SyntaxError ? T('Die Datei ist kein gültiges Backup.') : e.message), 'err', { ms: 6000 }); }
   };
   const resetAll = async () => {
     const st = Sync.status;
-    if (!await confirmBox('Alles zurücksetzen?', 'Einstellungen, Notizen, Paletten und alle anderen App-Daten werden gelöscht.' + (st.state === 'on' ? ` Der letzte Stand bleibt im Ordner „${st.name}" unter „sicherungen" erhalten.` : ''), 'Zurücksetzen', 'danger')) return;
+    if (!await confirmBox('Alles zurücksetzen?', T('Einstellungen, Notizen, Paletten und alle anderen App-Daten werden gelöscht.') + (st.state === 'on' ? T(' Der letzte Stand bleibt im Ordner „{name}" unter „sicherungen" erhalten.', { name: st.name }) : ''), 'Zurücksetzen', 'danger')) return;
     await Sync.archive('vor-zuruecksetzen');
     for (const k of Store.keys()) localStorage.removeItem(k);
     await IDB.del('homebg').catch(() => {});
@@ -4880,34 +4963,34 @@ function openSettings() {
 
   /* Storage & backup: folder status + storage meter, updates live */
   const APP_LABEL = k => {
-    if (k === 'tt:settings') return 'Einstellungen';
-    if (k === 'tt:homebg') return 'Hintergrundbild';
-    if (k === 'tt:session') return 'Offene Tabs';
+    if (k === 'tt:settings') return T('Einstellungen');
+    if (k === 'tt:homebg') return T('Hintergrundbild');
+    if (k === 'tt:session') return T('Offene Tabs');
     const a = [...TT.apps.values()].find(a => k.includes(a.id) || (a.id === 'bildbenamung' && k.startsWith('tt:bnv')) || (a.id === 'entscheidung' && k.includes('muenze')) || (a.id === 'spielwiese' && /spiele|arena|brotato|tipp|dodge|kreis|reakt/.test(k)));
-    return a ? a.name : k.replace(/^tt:/, '');
+    return a ? appName(a) : k.replace(/^tt:/, '');
   };
   const syncEl = h('div', { class: 'sync' }), usageEl = h('div', { class: 'usage' });
   const fmtAgo = iso => {
-    if (!iso) return 'noch nie';
+    if (!iso) return T('noch nie');
     const s = (Date.now() - new Date(iso)) / 1000;
-    return s < 60 ? 'gerade eben' : s < 3600 ? `vor ${Math.round(s / 60)} Min.` : s < 86400 ? `vor ${Math.round(s / 3600)} Std.` : new Date(iso).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' });
+    return s < 60 ? T('gerade eben') : s < 3600 ? T('vor {n} Min.', { n: Math.round(s / 60) }) : s < 86400 ? T('vor {n} Std.', { n: Math.round(s / 3600) }) : new Date(iso).toLocaleString(isEN() ? 'en-GB' : 'de-DE', { dateStyle: 'medium', timeStyle: 'short' });
   };
   function paintSync() {
     const st = Sync.status;
     const line = (cls, title, sub, ...btns) => h('div', { class: 'sync-st ' + cls }, h('span', { class: 'sync-dot' }),
-      h('div', { class: 'sync-tx' }, h('b', null, title), sub && h('small', null, sub)), h('div', { class: 'sync-btns' }, btns));
-    const btn = (label, fn, kind = '') => h('button', { class: 'btn sm ' + kind, onclick: fn }, label);
+      h('div', { class: 'sync-tx' }, h('b', null, T(title)), sub && h('small', null, T(sub))), h('div', { class: 'sync-btns' }, btns));
+    const btn = (label, fn, kind = '') => h('button', { class: 'btn sm ' + kind, onclick: fn }, T(label));
     syncEl.replaceChildren(...[
       st.state === 'unsupported' ? line('warn', 'Ordner-Sicherung nicht verfügbar', 'Geht nur in Chrome, Edge oder Brave. Nutze bis dahin „Backup exportieren".')
       : st.state === 'off' ? line('off', 'Daten liegen nur im Browser', 'Wähle einen Ordner – dann wird alles automatisch als Datei gesichert.', btn('Ordner wählen', () => Sync.connect(), 'primary'))
-      : st.state === 'need-permission' ? line('warn', `„${st.name}" braucht deine Erlaubnis`, 'Der Browser fragt nach einem Neustart einmal nach. Bis dahin wird nicht gesichert.', btn('Erlauben', () => Sync.resume(), 'primary'), btn('Anderer Ordner', () => Sync.connect()))
+      : st.state === 'need-permission' ? line('warn', T('„{name}" braucht deine Erlaubnis', { name: st.name }), 'Der Browser fragt nach einem Neustart einmal nach. Bis dahin wird nicht gesichert.', btn('Erlauben', () => Sync.resume(), 'primary'), btn('Anderer Ordner', () => Sync.connect()))
       : st.state === 'error' ? line('err', 'Sicherung gestoppt', st.err, btn('Ordner neu wählen', () => Sync.connect(), 'primary'))
-      : line('ok', `Automatisch gesichert in „${st.name}"`, `Zuletzt ${fmtAgo(st.last)} · tägliche Kopien der letzten 14 Tage im Unterordner „sicherungen"`, btn('Jetzt sichern', async () => { await Sync.now(); toast('Gesichert.', 'ok', { ms: 1500 }); })),
+      : line('ok', T('Automatisch gesichert in „{name}"', { name: st.name }), T('Zuletzt {ago} · tägliche Kopien der letzten 14 Tage im Unterordner „sicherungen"', { ago: fmtAgo(st.last) }), btn('Jetzt sichern', async () => { await Sync.now(); toast(T('Gesichert.'), 'ok', { ms: 1500 }); })),
       st.state === 'on' ? h('div', { class: 'set-actions' },
-        h('button', { class: 'btn sm ghost', onclick: () => Sync.connect() }, icon('folder'), 'Ordner ändern'),
-        h('button', { class: 'btn sm ghost', onclick: () => Sync.loadFromFolder() }, icon('upload'), 'Aus Ordner laden'),
-        h('button', { class: 'btn sm ghost', onclick: async () => { if (await confirmBox('Ordner trennen?', 'Es wird nicht mehr automatisch gesichert. Die Dateien im Ordner bleiben erhalten.', 'Trennen', 'danger')) Sync.disconnect(); } }, icon('x'), 'Trennen')) : null,
-      st.state === 'on' || st.state === 'unsupported' ? null : h('p', { class: 'hint' }, 'Tipp: Ein Ordner in OneDrive sichert zusätzlich in die Cloud – und du kannst die Daten auf einem anderen PC laden.'),
+        h('button', { class: 'btn sm ghost', onclick: () => Sync.connect() }, icon('folder'), T('Ordner ändern')),
+        h('button', { class: 'btn sm ghost', onclick: () => Sync.loadFromFolder() }, icon('upload'), T('Aus Ordner laden')),
+        h('button', { class: 'btn sm ghost', onclick: async () => { if (await confirmBox('Ordner trennen?', 'Es wird nicht mehr automatisch gesichert. Die Dateien im Ordner bleiben erhalten.', 'Trennen', 'danger')) Sync.disconnect(); } }, icon('x'), T('Trennen'))) : null,
+      st.state === 'on' || st.state === 'unsupported' ? null : h('p', { class: 'hint' }, T('Tipp: Ein Ordner in OneDrive sichert zusätzlich in die Cloud – und du kannst die Daten auf einem anderen PC laden.')),
     ].filter(Boolean));
     // Storage meter (localStorage ≈ 5 million characters; the background image is stored separately and doesn't count)
     const items = Store.keys().map(k => [k, k.length + (localStorage.getItem(k) || '').length]);
@@ -4915,64 +4998,68 @@ function openSettings() {
     const groups = new Map(); for (const [k, l] of items) { const n = APP_LABEL(k); groups.set(n, (groups.get(n) || 0) + l); }
     const top = [...groups].sort((a, b) => b[1] - a[1]).slice(0, 4);
     usageEl.replaceChildren(
-      h('div', { class: 'usage-h' }, h('span', null, 'Browser-Speicher'), h('b', null, `${fmtSize(used)} von ca. 5 MB`)),
+      h('div', { class: 'usage-h' }, h('span', null, T('Browser-Speicher')), h('b', null, T('{used} von ca. 5 MB', { used: fmtSize(used) }))),
       h('div', { class: 'usage-bar' + (pct > 85 ? ' crit' : pct > 65 ? ' warn' : '') }, h('i', { style: { width: Math.max(1, pct) + '%' } })),
       h('div', { class: 'usage-top' }, top.map(([n, l]) => h('span', null, n, h('small', null, fmtSize(l)))),
-        homeBgData ? h('span', { title: 'Liegt im größeren Browser-Speicher und zählt hier nicht mit' }, 'Hintergrundbild', h('small', null, fmtSize(homeBgData.length) + ' · extra')) : null));
+        homeBgData ? h('span', { title: T('Liegt im größeren Browser-Speicher und zählt hier nicht mit') }, T('Hintergrundbild'), h('small', null, fmtSize(homeBgData.length) + ' · extra')) : null));
   }
   paintSync();
   const unsubSync = Sync.subscribe(() => { if (!syncEl.isConnected) { unsubSync(); return; } paintSync(); });
 
   const drawer = h('aside', { class: 'drawer' },
-    h('header', { class: 'drawer-h' }, h('div', null, h('h3', null, 'Einstellungen'), h('p', null, `Gelten für alle Tools · Version ${VERSION}`)), h('button', { class: 'icon-btn', onclick: close }, icon('x'))),
+    h('header', { class: 'drawer-h' }, h('div', null, h('h3', null, T('Einstellungen')), h('p', null, T('Gelten für alle Tools · Version {v}', { v: VERSION }))), h('button', { class: 'icon-btn', onclick: close }, icon('x'))),
     h('div', { class: 'drawer-b' },
       sec('Darstellung',
-        h('div', { class: 'set-label' }, 'Theme'), themes,
-        h('div', { class: 'set-label' }, 'Akzentfarbe'), sw,
+        h('div', { class: 'set-label' }, T('Theme')), themes,
+        h('div', { class: 'set-label' }, T('Akzentfarbe')), sw,
         row('Animationen', null, switchEl(S.data.anim, v => S.set('anim', v)))),
       sec('Maskottchen',
         row('Anzeigen', null, switchEl(S.data.mascot ?? true, v => { S.data.mascot = v; S.save(); applyMascot(); })),
         row('Größe', null, segEl([[80,'S'],[140,'M'],[200,'L'],[280,'XL'],[380,'XXL']], S.data.mascotSize ?? 200, v => { S.data.mascotSize = v; S.save(); applyMascot(); }))),
       sec('Startseite', homeSet),
       sec('Start',
-        row('Name', 'Wird in der Begrüßung angezeigt', h('input', { class: 'inp', value: S.data.name || '', placeholder: 'Dein Name', spellcheck: false, autocomplete: 'off', oninput: e => { S.set('name', e.target.value); renderHome(); } })),
+        row('Name', 'Wird in der Begrüßung angezeigt', h('input', { class: 'inp', value: S.data.name || '', placeholder: T('Dein Name'), spellcheck: false, autocomplete: 'off', oninput: e => { S.set('name', e.target.value); renderHome(); } })),
         // Label in both languages so it can be found either way
-        row('Sprache · Language', 'Englisch: bisher Startseite & Oberleiste', segEl([['de', 'Deutsch'], ['en', 'English']], isEN() ? 'en' : 'de', v => setLang(v))),
-        row('Beim Öffnen zeigen', null, segEl([['home', 'Home'], ['restore', 'Letzte Sitzung']], S.data.start, v => S.set('start', v)))),
+        row('Sprache · Language', 'Englisch: bisher Startseite, Oberleiste & Einstellungen', segEl([['de', 'Deutsch'], ['en', 'English']], isEN() ? 'en' : 'de', v => setLang(v))),
+        row('Beim Öffnen zeigen', null, segEl(tr([['home', 'Home'], ['restore', 'Letzte Sitzung']]), S.data.start, v => S.set('start', v)))),
       sec('Apps',
         row('Legacy-App-Modus', 'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht', switchEl(S.data.bildbert, v => { S.data.bildbert = v; S.save(); applyBildbert(true); })),
         ...appGroups().map(g => {
           const list = g.apps.map(id => TT.apps.get(id)).filter(a => a && !a.soon);
           if (!list.length) return null;
-          return h('div', { class: 'set-grp' }, h('div', { class: 'set-grp-t' }, icon(g.icon), g.name),
+          return h('div', { class: 'set-grp' }, h('div', { class: 'set-grp-t' }, icon(g.icon), T(g.name)),
             list.map(a => h('div', { class: 'set-row', dataset: { id: a.id } },
               h('span', { class: 'set-app-ico' + (a.face ? ' face' : ''), style: { '--c': a.c, '--c2': a.c2, ...(a.fg && { '--fg': a.fg }) } }, icon(a.icon)),
-              h('div', { class: 'l', style: 'flex:1' }, h('b', null, a.name)),
+              h('div', { class: 'l', style: 'flex:1' }, h('b', null, appName(a))),
               switchEl(!(S.data.hidden || []).includes(a.id), v => { const hid = (S.data.hidden || []).filter(x => x !== a.id); S.data.hidden = v ? hid : [...hid, a.id]; S.save(); renderHome(); const se = appSecEls.get(a.id); if (se) se.hidden = !v; }))));
         }).filter(Boolean)),
       appSecs.length && (() => {   // collapsed by default – a click on the heading expands it
         const body = h('div', { class: 'set-fold-b', hidden: true }, appSecHead, appSecs);
         const head = h('button', { class: 'set-fold', onclick: () => { body.hidden = !body.hidden; head.classList.toggle('open', !body.hidden); } },
-          h('h4', null, 'App-Einstellungen'), h('small', null, `${setApps.length} Apps`), icon('chev'));
+          h('h4', null, T('App-Einstellungen')), h('small', null, T('{n} Apps', { n: setApps.length })), icon('chev'));
         return h('section', { class: 'set-sec' }, head, body);
       })(),
-      sec('System & Diagnose', h('p', { class: 'hint' }, 'Hilft, wenn sich Ordner nicht öffnen lassen.'), diagEl,
-        h('div', { class: 'set-actions' }, h('button', { class: 'btn sm', onclick: () => testAccess(testOut) }, icon('folder'), 'Ordnerzugriff testen')), testOut),
+      sec('System & Diagnose', h('p', { class: 'hint' }, T('Hilft, wenn sich Ordner nicht öffnen lassen.')), diagEl,
+        h('div', { class: 'set-actions' }, h('button', { class: 'btn sm', onclick: () => testAccess(testOut) }, icon('folder'), T('Ordnerzugriff testen'))), testOut),
       sec('Speicher & Sicherung', syncEl, usageEl,
-        h('div', { class: 'set-label' }, 'Backup-Datei (manuell)'),
+        h('div', { class: 'set-label' }, T('Backup-Datei (manuell)')),
         h('div', { class: 'set-actions' },
-          h('button', { class: 'btn sm', onclick: exportAll }, icon('download'), 'Backup exportieren'),
-          h('button', { class: 'btn sm', onclick: importAll }, icon('upload'), 'Backup importieren'),
-          h('button', { class: 'btn sm danger', onclick: resetAll }, icon('trash'), 'Zurücksetzen'))),
+          h('button', { class: 'btn sm', onclick: exportAll }, icon('download'), T('Backup exportieren')),
+          h('button', { class: 'btn sm', onclick: importAll }, icon('upload'), T('Backup importieren')),
+          h('button', { class: 'btn sm danger', onclick: resetAll }, icon('trash'), T('Zurücksetzen')))),
       h('div', { class: 'about-foot' }, 'made with ♥ by Tom & Claude',
         // the only two links out of the app – both open in a new tab, the app itself stays offline
         h('div', { class: 'about-links' },
-          h('a', { class: 'about-coffee', href: COFFEE_URL, target: '_blank', rel: 'noopener noreferrer', title: 'Gefällt dir Toms Tools? Spendier mir einen Kaffee' }, '☕ Kaffee spendieren'),
-          h('a', { class: 'about-coffee about-gh', href: GITHUB_URL, target: '_blank', rel: 'noopener noreferrer', title: 'Neue Versionen, Feedback & Quellcode' }, '🐙 Toms Tools auf GitHub')))));
+          h('a', { class: 'about-coffee', href: COFFEE_URL, target: '_blank', rel: 'noopener noreferrer', title: T('Gefällt dir Toms Tools? Spendier mir einen Kaffee') }, T('☕ Kaffee spendieren')),
+          h('a', { class: 'about-coffee about-gh', href: GITHUB_URL, target: '_blank', rel: 'noopener noreferrer', title: T('Neue Versionen, Feedback & Quellcode') }, T('🐙 Toms Tools auf GitHub'))))));
   bd.append(drawer);
   bd.addEventListener('mousedown', e => { if (e.target === bd) close(); });
+  const body = $('.drawer-b', drawer);
+  if (keepScroll != null) { bd.style.animation = drawer.style.animation = 'none'; }
   $('#layer').append(bd);
+  if (keepScroll != null) body.scrollTop = keepScroll;
   document.addEventListener('keydown', esc, true);
+  settingsRebuild = () => { const top = body.scrollTop; settingsRebuild = null; document.removeEventListener('keydown', esc, true); bd.remove(); openSettings(top); };
 }
 
 /* ================= App: Bulk Rename ================= */
@@ -19160,7 +19247,7 @@ function mountQrwerk(view) {
       URL.revokeObjectURL(url);
       S1.d.logoText = '';
       setD('logo', cv.toDataURL('image/png'));
-    } catch { toast('Bild konnte nicht geladen werden.', 'err'); }
+    } catch { toast(T('Bild konnte nicht geladen werden.'), 'err'); }
   } });
   function renderDesign() {
     const d = S1.d;
@@ -21474,7 +21561,7 @@ const _tick=force=>{const d=new Date(),h=String(d.getHours()).padStart(2,'0'),m=
 _tick();setInterval(_tick,5000);
 
 // Language (Settings → Start): switches live – the home page, tabs and top bar re-render right away
-// (apps that are already open pick up the language the next time they are opened).
+// (apps that are already open pick up the language the next time they are opened; open settings are rebuilt).
 function paintLang() {
   document.documentElement.lang = isEN() ? 'en' : 'de';
   $('#btnCalc').title = T('Taschenrechner'); $('#btnPlain').title = T('Formatierung entfernen – kopierten Text als reinen Text in die Zwischenablage legen'); $('#btnSettings').title = T('Einstellungen (Strg+,)');
@@ -21482,7 +21569,7 @@ function paintLang() {
 function setLang(l) {
   if ((isEN() ? 'en' : 'de') === l) return;
   S.data.lang = l; S.save();
-  paintLang(); _tick(true); renderTabs();
+  paintLang(); _tick(true); renderTabs(); settingsRebuild?.();
   if (TT.active === 'home') renderHome();
   else document.title = `${appName(TT.apps.get(TT.active))} · TT`;
 }

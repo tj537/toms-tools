@@ -179,7 +179,7 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 <img src="docs/modellwerk.png" alt="Modellwerk" width="720">
 
-**Kennzahlwerk** – 17 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse und mehr.
+**Kennzahlwerk** – 20 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse, Preiskalkulation (Handel), Zuschlagskalkulation, Betriebsergebnis und mehr.
 
 <img src="docs/kennzahlwerk.png" alt="Kennzahlwerk" width="720">
 

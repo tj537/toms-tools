@@ -15361,6 +15361,58 @@ function kzDefs({ eur, pct, nf, div }) {
           { l: 'Ersparnis gesamt', v: `${eur(v.lp - bp)} · ${pct(div(v.lp - bp, v.lp))}`, w: `${eur(v.lp)} − ${eur(bp)}`, t: 'ok' },
         ];
       } },
+    { id: 'handelskalk', topic: 'preis', icon: 'tag', title: 'Preiskalkulation (Handel)', sub: 'Vom Einkaufspreis zum Verkaufspreis – Schritt für Schritt',
+      in: [['lep', 'Listeneinkaufspreis', '€', '800'], ['r1', 'Liefererrabatt', '%', '10'], ['s1', 'Liefererskonto', '%', '2'], ['bk', 'Bezugskosten (Fracht …)', '€', '25'],
+        ['hk', 'Handlungskosten', '%', '30'], ['g', 'Gewinnzuschlag', '%', '10'], ['s2', 'Kundenskonto', '%', '2'], ['p', 'Vertreterprovision', '%', '0'], ['r2', 'Kundenrabatt', '%', '15'], ['ust', 'Umsatzsteuer', '%', '19']],
+      f: 'Rabatt & Skonto beim Einkauf werden abgezogen („vom Hundert“), Kundenskonto, Provision & Kundenrabatt werden aufgeschlagen („im Hundert“: ÷ (1 − Satz))',
+      note: 'Klausurfalle: Kundenskonto und Kundenrabatt werden im Hundert gerechnet – der Kunde zieht sie später vom höheren Preis ab, darum wird durch (1 − Satz) geteilt, nicht mit (1 + Satz) multipliziert.',
+      out: v => {
+        const zep = v.lep * (1 - v.r1 / 100), bep = zep * (1 - v.s1 / 100), bp = bep + v.bk, sk = bp * (1 + v.hk / 100), bvp = sk * (1 + v.g / 100);
+        const zvp = div(bvp, 1 - (v.s2 + v.p) / 100), lvp = div(zvp, 1 - v.r2 / 100), brutto = lvp * (1 + v.ust / 100);
+        return [
+          { l: 'Zieleinkaufspreis', v: eur(zep), w: `${eur(v.lep)} − ${nf(v.r1)} % Rabatt` },
+          { l: 'Bareinkaufspreis', v: eur(bep), w: `${eur(zep)} − ${nf(v.s1)} % Skonto` },
+          { l: 'Bezugspreis (Einstandspreis)', v: eur(bp), w: `${eur(bep)} + ${eur(v.bk)} Bezugskosten` },
+          { l: 'Selbstkosten', v: eur(sk), w: `${eur(bp)} + ${nf(v.hk)} % Handlungskosten` },
+          { l: 'Barverkaufspreis', v: eur(bvp), w: `${eur(sk)} + ${nf(v.g)} % Gewinn` },
+          { l: 'Zielverkaufspreis', v: eur(zvp), w: `${eur(bvp)} ÷ (1 − ${nf(v.s2 + v.p)} %) – Skonto${v.p ? ' + Provision' : ''} im Hundert` },
+          { l: 'Listenverkaufspreis (netto)', v: eur(lvp), w: `${eur(zvp)} ÷ (1 − ${nf(v.r2)} %) – Rabatt im Hundert`, main: true },
+          { l: 'Verkaufspreis brutto', v: eur(brutto), w: `${eur(lvp)} × (1 + ${nf(v.ust)} %)` },
+          { l: 'Kalkulationszuschlag', v: pct(div(lvp - bp, bp)), w: `(${eur(lvp)} − ${eur(bp)}) ÷ ${eur(bp)}` },
+          { l: 'Kalkulationsfaktor', v: nf(div(lvp, bp), 4), w: `${eur(lvp)} ÷ ${eur(bp)}` },
+          { l: 'Handelsspanne', v: pct(div(lvp - bp, lvp)), w: `(${eur(lvp)} − ${eur(bp)}) ÷ ${eur(lvp)}` },
+        ];
+      } },
+    { id: 'zuschlag', topic: 'preis', icon: 'layers', title: 'Zuschlagskalkulation (KLR)', sub: 'Kostenträgerrechnung: Was kostet ein Produkt?',
+      in: [['fm', 'Fertigungsmaterial', '€', '200'], ['mgk', 'Materialgemeinkosten', '%', '15'], ['fl', 'Fertigungslöhne', '€', '120'], ['fgk', 'Fertigungsgemeinkosten', '%', '180'],
+        ['sekf', 'Sondereinzelkosten Fertigung', '€', '0'], ['vwgk', 'Verwaltungsgemeinkosten', '%', '12'], ['vtgk', 'Vertriebsgemeinkosten', '%', '8'], ['sekv', 'Sondereinzelkosten Vertrieb', '€', '0'], ['g', 'Gewinnzuschlag', '%', '10']],
+      f: 'Materialkosten + Fertigungskosten = Herstellkosten · + Verwaltungs- & Vertriebsgemeinkosten (auf die Herstellkosten) = Selbstkosten · + Gewinn = Barverkaufspreis',
+      note: 'Die Zuschlagssätze kommen aus dem Betriebsabrechnungsbogen (BAB). Einzelkosten lassen sich dem Produkt direkt zurechnen, Gemeinkosten werden per Zuschlag verteilt.',
+      out: v => {
+        const mk = v.fm * (1 + v.mgk / 100), fk = v.fl * (1 + v.fgk / 100) + v.sekf, hk = mk + fk;
+        const vw = hk * v.vwgk / 100, vt = hk * v.vtgk / 100, sk = hk + vw + vt + v.sekv, bvp = sk * (1 + v.g / 100);
+        return [
+          { l: 'Materialkosten', v: eur(mk), w: `${eur(v.fm)} + ${nf(v.mgk)} % MGK` },
+          { l: 'Fertigungskosten', v: eur(fk), w: `${eur(v.fl)} + ${nf(v.fgk)} % FGK${v.sekf ? ` + ${eur(v.sekf)} SEKF` : ''}` },
+          { l: 'Herstellkosten', v: eur(hk), w: `${eur(mk)} + ${eur(fk)}` },
+          { l: 'Verwaltungs- & Vertriebsgemeinkosten', v: eur(vw + vt), w: `${eur(hk)} × (${nf(v.vwgk)} % + ${nf(v.vtgk)} %)` },
+          { l: 'Selbstkosten', v: eur(sk), w: `${eur(hk)} + ${eur(vw + vt)}${v.sekv ? ` + ${eur(v.sekv)} SEKV` : ''}`, main: true },
+          { l: 'Barverkaufspreis', v: eur(bvp), w: `${eur(sk)} + ${nf(v.g)} % Gewinn` },
+        ];
+      } },
+    { id: 'betriebsergebnis', topic: 'preis', icon: 'table', title: 'Betriebsergebnis (KLR)', sub: 'Leistungen minus Kosten einer Periode',
+      in: [['u', 'Umsatzerlöse', '€', '500000'], ['bv', 'Bestandsveränderung (+/−)', '€', '20000'], ['ae', 'Aktivierte Eigenleistungen', '€', '5000'], ['k', 'Kosten gesamt', '€', '460000']],
+      f: 'Leistungen = Umsatzerlöse ± Bestandsveränderung + aktivierte Eigenleistungen · Betriebsergebnis = Leistungen − Kosten',
+      note: 'Wirtschaftlichkeit über 1 heißt: Der Betrieb erwirtschaftet mehr, als er verbraucht. Neutrale Erträge und Aufwendungen (z. B. Zinsen, Spenden) gehören nicht hierher, sondern ins neutrale Ergebnis.',
+      out: v => {
+        const L = v.u + v.bv + v.ae, be = L - v.k, w = div(L, v.k);
+        return [
+          { l: 'Leistungen', v: eur(L), w: `${eur(v.u)} ${v.bv < 0 ? '−' : '+'} ${eur(Math.abs(v.bv))} + ${eur(v.ae)}` },
+          { l: 'Betriebsergebnis', v: eur(be), w: `${eur(L)} − ${eur(v.k)}`, main: true, t: be >= 0 ? 'ok' : 'err' },
+          { l: 'Wirtschaftlichkeit', v: nf(w, 3), w: `${eur(L)} ÷ ${eur(v.k)}`, t: w >= 1 ? 'ok' : 'err' },
+          { l: 'Umsatzrentabilität (betrieblich)', v: pct(div(be, v.u)), w: `${eur(be)} ÷ ${eur(v.u)}` },
+        ];
+      } },
     { id: 'share', topic: 'markt', icon: 'layers', title: 'Marktanteil & Marktpotenzial', sub: 'Wie groß ist unser Stück vom Kuchen?',
       in: [['own', 'Eigener Umsatz', 'Mio. €', '12'], ['top', 'Umsatz größter Wettbewerber', 'Mio. €', '20'], ['vol', 'Marktvolumen', 'Mio. €', '80'], ['pot', 'Marktpotenzial', 'Mio. €', '120']],
       f: 'Marktanteil = eigener Umsatz ÷ Marktvolumen · relativer Marktanteil = eigener Umsatz ÷ größter Wettbewerber',

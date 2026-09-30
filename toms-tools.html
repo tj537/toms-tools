@@ -3764,104 +3764,131 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Screenshotwerk
+  'Aufnahme hat nicht geklappt.': 'Capture didn’t work.', 'Das Bild ließ sich nicht öffnen.': 'Couldn’t open the image.',
+  'In der Zwischenablage ist kein Bild. Tipp: Win + Shift + S für einen Ausschnitt.': 'No image on the clipboard. Tip: Win + Shift + S for a snippet.', 'Abbrechen': 'Cancel',
+  'Wieder das ganze Bild': 'Back to the whole image', 'Ganzes Bild': 'Whole image', 'Kopieren geht hier nicht – nimm „Speichern“.': 'Copying doesn’t work here – use “Save”.', 'Gespeichert': 'Saved',
+  'Farbe': 'Color', 'Alle Markierungen entfernen': 'Remove all marks', 'Kopieren': 'Copy', 'Speichern': 'Save', 'Neuen Screenshot machen': 'Take a new screenshot', 'Neu': 'New',
+  'Screenshot machen, markieren, schick machen – und direkt weiterverwenden.': 'Take a screenshot, mark it up, polish it – and share it right away.', '1 · Aufnehmen': '1 · Capture',
+  'Bildschirm, Fenster oder Tab – auch mit Selbstauslöser': 'Screen, window or tab – with an optional timer', 'Bildschirm aufnehmen': 'Capture screen', '2 · Einfügen': '2 · Paste',
+  'Oder Bild öffnen': 'Or open an image', 'Der Browser fragt jedes Mal nach – das ist Absicht.': 'Your browser asks every time – that’s a built-in safety feature.', 'Schick machen': 'Beautify',
+  'Hintergrund': 'Background', 'Rand': 'Padding', 'Runde Ecken': 'Rounded corners', 'Schatten': 'Shadow',
+  'Tipp: Namen, E-Mails & Kundendaten vor dem Teilen verpixeln. Nichts wird gespeichert oder hochgeladen.': 'Tip: pixelate names, emails & customer data before sharing. Nothing is saved or uploaded.',
+  'Fenster': 'Window', 'Dein Browser kann den Bildschirm nicht aufnehmen – Win + Shift + S, dann hier {m} + V.': 'Your browser can’t capture the screen – press Win + Shift + S, then {m} + V here.',
+  'Aufnahme konnte nicht starten. Auf dem Mac: Systemeinstellungen → Datenschutz & Sicherheit → Bildschirmaufnahme → deinen Browser erlauben.': 'Capture couldn’t start. On a Mac: System Settings → Privacy & Security → Screen Recording → allow your browser.',
+  'Aufnahme konnte nicht starten. Alternative: Win + Shift + S, dann hier {m} + V.': 'Capture couldn’t start. Alternative: Win + Shift + S, then {m} + V here.', 'Lila': 'Purple', 'Sonne': 'Sun',
+  'Ozean': 'Ocean', 'Nacht': 'Night', 'Hellgrau': 'Light gray', 'Weiß': 'White', 'Zuschneiden': 'Crop', 'Pfeil': 'Arrow',  'Textmarker': 'Highlighter', 'Verpixeln': 'Pixelate',
+  // LUT-Werk
+  'Die 1D-LUT ist unvollständig.': 'The 1D LUT is incomplete.', 'Keine LUT_3D_SIZE gefunden – ist das eine .cube-Datei?': 'No LUT_3D_SIZE found – is this a .cube file?',
+  'WebGL2 nicht verfügbar': 'WebGL2 not available',
+  'LUT-Werk braucht die Grafikkarte (WebGL2). Bitte einen aktuellen Browser nutzen oder die Hardwarebeschleunigung aktivieren.': 'LUT-Werk needs the graphics card (WebGL2). Use a current browser or turn on hardware acceleration.',
+  'In dem Ordner sind keine Bilder.': 'There are no images in this folder.', 'Browser-Speicher ist voll.': 'Browser storage is full.',
+  'Beispielbild – zieh eigene Bilder hierher': 'Sample image – drop your own images here', 'Entfernen': 'Remove', 'Bilder hinzufügen': 'Add images', 'Alle entfernen': 'Remove all', 'Eigen': 'Custom',
+  'Vorlagen': 'Presets', 'Fertig': 'Done', 'Bearbeiten': 'Edit', 'Kopie bearbeiten': 'Edit a copy', 'Löschen': 'Delete', 'Doppelklick: zurück auf 0': 'Double-click to reset',
+  'Mein Look': 'My look', 'Look bearbeiten': 'Edit look', 'Alles zurücksetzen': 'Reset all', 'Belichtung': 'Exposure', 'Kontrast': 'Contrast', 'Sättigung': 'Saturation', 'Dynamik': 'Vibrance',
+  'Wärme': 'Warmth', 'Grün ↔ Magenta': 'Green ↔ Magenta', 'Farbton': 'Hue', 'Verblassen': 'Fade', 'Farbe in Tiefen & Lichtern': 'Split toning', 'Tiefen': 'Shadows',
+  'Lichter': 'Highlights', 'Qualität': 'Quality', 'Ordner': 'Folder', 'Erst Bilder hinzufügen': 'Add images first', 'Kein Bild konnte verarbeitet werden.': 'No image could be processed.',
+  'Ordner auswählen …': 'Choose a folder …', 'Bilder': 'Images', 'Neu': 'New', 'Stärke': 'Strength', 'Ausgabe': 'Output', 'Farb-Looks · 3D-LUT · .cube': 'Color looks · 3D LUT · .cube',
+  'Die Datei hat zu wenig Werte ({a} statt {b}).': 'The file has too few values ({a} instead of {b}).', '„{n}“ lässt sich nicht öffnen.': 'Can’t open “{n}”.', 'Noch keine Bilder': 'No images yet',
+  'Farbe': 'Color',
   // Bildwerk
   'Frei': 'Free', '1,91:1': '1.91:1', 'Weich': 'Soft', 'Hart': 'Hard', 'Lang': 'Long', 'Boden': 'Floor', 'S/W': 'B/W', 'Kühl': 'Cool', 'Kräftig': 'Vivid', 'Matt': 'Matte', 'Plakativ': 'Bold',
-  'Schreibschrift': 'Script', 'Ebene ziehen = verschieben · Ecke = Größe · Entf = löschen · Mausrad = Zoom': 'Drag layer = move · corner = size · Del = delete · wheel = zoom',
-  'Ziehen = verschieben · Mausrad = Zoom · Bilder hierher ziehen = neue Ebene': 'Drag = pan · wheel = zoom · drop images here = new layer',
-  'Rahmen ziehen · Enter = fertig · Esc = abbrechen': 'Drag the frame · Enter = done · Esc = cancel', 'Klick auf den Hintergrund = Farbe entfernen': 'Click the background = remove color',
-  'Klick = zusammenhängende Fläche entfernen · Alt+Klick = zurückholen · Strg+Z = rückgängig': 'Click = remove connected area · Alt+click = restore · Ctrl+Z = undo',
-  'Malen legt eine neue Ebene „Malen“ an · [ ] = Pinsel · Strg+Z = zurück': 'Painting creates a new layer “Paint” · [ ] = brush · Ctrl+Z = undo', 'Wegnehmen': 'Remove', 'Hinzufügen': 'Add',
+  'Schreibschrift': 'Script', 'Ebene ziehen = verschieben · Ecke = Größe · Entf = löschen · Mausrad = Zoom': 'Drag to move · drag a corner to resize · Del to delete · scroll to zoom',
+  'Ziehen = verschieben · Mausrad = Zoom · Bilder hierher ziehen = neue Ebene': 'Drag to pan · scroll to zoom · drop images to add layers',
+  'Rahmen ziehen · Enter = fertig · Esc = abbrechen': 'Drag to set the crop · Enter to apply · Esc to cancel', 'Klick auf den Hintergrund = Farbe entfernen': 'Click the background to remove its color',
+  'Klick = zusammenhängende Fläche entfernen · Alt+Klick = zurückholen · Strg+Z = rückgängig': 'Click to remove an area · Alt+click to restore · Ctrl+Z to undo',
+  'Malen legt eine neue Ebene „Malen“ an · [ ] = Pinsel · Strg+Z = zurück': 'Painting adds a new “Paint” layer · [ ] for brush size · Ctrl+Z to undo', 'Wegnehmen': 'Remove', 'Hinzufügen': 'Add',
   'Die gewählte Ebene ist ausgeblendet.': 'The selected layer is hidden.', 'Das ist keine Bilddatei.': 'That’s not an image file.', 'Bild': 'Image', 'Eingefügtes Bild': 'Pasted image',
   'Keine Bilder gefunden.': 'No images found.', 'Bild konnte nicht gelesen werden: ': 'Couldn’t read the image: ', 'Malen': 'Paint',
   'Ausgabe zu groß (max. ~120 MP).': 'Output too large (max. ~120 MP).', 'Export fehlgeschlagen.': 'Export failed.', 'Verschieben (V)': 'Move (V)', 'Zuschneiden (C)': 'Crop (C)',
-  'Pipette (I)': 'Eyedropper (I)', 'Zauberstab (W) · Alt = zurückholen': 'Magic wand (W) · Alt = restore', 'Maske (E) · X = umschalten · Alt = umkehren': 'Mask (E) · X = toggle · Alt = invert',
-  'Pinsel – malen auf eigener Ebene (B)': 'Brush – paint on its own layer (B)', '− Wegnehmen': '− Remove', '+ Hinzufügen': '+ Add', 'Pinselfarbe': 'Brush color', 'Größe': 'Size', 'Härte': 'Hardness',
-  'Toleranz': 'Tolerance', 'Rot zeigen': 'Show red', 'Vorher': 'Before', 'Transparenz-Raster': 'Transparency grid', 'Weiß': 'White', 'Schwarz': 'Black', 'Einpassen (F)': 'Fit (F)',
+  'Pipette (I)': 'Eyedropper (I)', 'Zauberstab (W) · Alt = zurückholen': 'Magic wand (W) · Alt to restore', 'Maske (E) · X = umschalten · Alt = umkehren': 'Mask brush (E) · X to switch · Alt to invert',
+  'Pinsel – malen auf eigener Ebene (B)': 'Brush – paints on its own layer (B)', '− Wegnehmen': '− Remove', '+ Hinzufügen': '+ Add', 'Pinselfarbe': 'Brush color', 'Größe': 'Size', 'Härte': 'Hardness',
+  'Toleranz': 'Tolerance', 'Rot zeigen': 'Red overlay', 'Vorher': 'Before', 'Transparenz-Raster': 'Transparency grid', 'Weiß': 'White', 'Schwarz': 'Black', 'Einpassen (F)': 'Fit (F)',
   'Vorheriges Bild (←)': 'Previous image (←)', 'Z. B. ein Logo als Wasserzeichen auf jedes Bild': 'E.g. a logo as a watermark on every image',
   'Ebenen ins nächste Bild mitnehmen': 'Carry layers over to the next image', 'Ordner': 'Folder', 'Schließen': 'Close', 'Fertig': 'Done', 'Rahmen': 'Frame', 'Zuschneiden': 'Crop', 'Spiegeln': 'Flip',
-  'Seitenverhältnis sperren': 'Lock aspect ratio', 'Ausgabe ': 'Output ', 'Pipette': 'Eyedropper', 'keine Farbe erkannt': 'no color detected', 'Automatisch zurücksetzen': 'Reset to automatic',
-  'Entfernen': 'Remove', 'Hintergrund entfernen an/aus': 'Background removal on/off', 'Vom Rand aus': 'From the edge', 'Überall': 'Everywhere', 'Hintergrund entfernen': 'Remove background',
-  'Hintergrundfarbe': 'Background color', 'Zauberstab': 'Magic wand', 'Maske nachbessern': 'Refine mask', 'wie ähnlich': 'how similar', 'Weichheit': 'Softness', 'Übergang': 'transition',
-  'Kante': 'Edge', '− enger · + weiter': '− tighter · + wider', 'Weichzeichnen': 'Blur', 'Farbsaum entfernen': 'Remove color fringe',
-  'Vom Rand aus – schützt helle Stellen im Motiv.': 'From the edge – protects light areas in the subject.',
-  'Überall – auch in Löchern (z. B. im Logo).': 'Everywhere – also in holes (e.g. inside a logo).', 'Doppelklick = Standard': 'Double-click = default', 'Schatten': 'Shadow', 'Kontur': 'Outline',
-  'Leuchten': 'Glow', 'Zuschnitt, Größe & Freistellen': 'Crop, size & cut-out', 'Malebene': 'Paint layer', 'Ebene': 'Layer', 'Ausblenden': 'Hide', 'Einblenden': 'Show', 'Entf': 'Del',
+  'Seitenverhältnis sperren': 'Lock aspect ratio', 'Ausgabe ': 'Output ', 'Pipette': 'Eyedropper', 'keine Farbe erkannt': 'no color detected', 'Automatisch zurücksetzen': 'Back to auto-detect',
+  'Entfernen': 'Remove', 'Hintergrund entfernen an/aus': 'Toggle background removal', 'Vom Rand aus': 'From the edge', 'Überall': 'Everywhere', 'Hintergrund entfernen': 'Remove background',
+  'Hintergrundfarbe': 'Background color', 'Zauberstab': 'Magic wand', 'Maske nachbessern': 'Refine mask', 'wie ähnlich': 'similarity', 'Weichheit': 'Softness', 'Übergang': 'transition',
+  'Kante': 'Edge', '− enger · + weiter': '− shrink · + expand', 'Weichzeichnen': 'Blur', 'Farbsaum entfernen': 'Remove color fringe',
+  'Vom Rand aus – schützt helle Stellen im Motiv.': 'Starts at the edges – keeps light areas in your subject.',
+  'Überall – auch in Löchern (z. B. im Logo).': 'Everywhere – including enclosed areas (e.g. inside a logo).', 'Doppelklick = Standard': 'Double-click = default', 'Schatten': 'Shadow', 'Kontur': 'Outline',
+  'Leuchten': 'Glow', 'Zuschnitt, Größe & Freistellen': 'Crop, resize & remove background', 'Malebene': 'Paint layer', 'Ebene': 'Layer', 'Ausblenden': 'Hide', 'Einblenden': 'Show', 'Entf': 'Del',
   'Textfarbe': 'Text color', 'Fett': 'Bold', 'Kursiv': 'Italic', 'Linksbündig': 'Align left', 'Zentriert': 'Centered', 'Rechtsbündig': 'Align right', 'Multiplizieren': 'Multiply',
   'Negativ multiplizieren': 'Screen', 'Ineinanderkopieren': 'Overlay', 'Weiches Licht': 'Soft light', 'Hartes Licht': 'Hard light', 'Abdunkeln': 'Darken', 'Aufhellen': 'Lighten',
   'Farbig abwedeln': 'Color dodge', 'Differenz': 'Difference', 'Luminanz': 'Luminosity', 'Deckkraft': 'Opacity', 'Mischmodus': 'Blend mode', 'der Bildbreite': 'of image width', 'Drehung': 'Rotation',
   'Nach oben': 'Move up', 'Nach unten': 'Move down', 'Zentrieren': 'Center', 'Duplizieren': 'Duplicate', 'Kopie': 'Copy', 'Ebenen': 'Layers', 'Oder aufs Bild ziehen': 'Or drop onto the image',
-  'Farbe': 'Color', 'Richtung': 'Direction', 'Abstand': 'Distance', 'Sichtbar erst bei Transparenz (z. B. freigestellt).': 'Only visible with transparency (e.g. cut out).', 'für: Bild': 'for: image',
-  'für: ': 'for: ', 'Effekte': 'Effects', 'Schlagschatten': 'Drop shadow', 'Breite': 'Width', 'Stärke': 'Strength', 'Anpassungen': 'Adjustments', 'Helligkeit': 'Brightness', 'Kontrast': 'Contrast',
+  'Farbe': 'Color', 'Richtung': 'Direction', 'Abstand': 'Distance', 'Sichtbar erst bei Transparenz (z. B. freigestellt).': 'Only visible on transparent areas (e.g. after removing the background).', 'für: Bild': 'on image',
+  'für: ': 'on ', 'Effekte': 'Effects', 'Schlagschatten': 'Drop shadow', 'Breite': 'Width', 'Stärke': 'Strength', 'Anpassungen': 'Adjustments', 'Helligkeit': 'Brightness', 'Kontrast': 'Contrast',
   'Sättigung': 'Saturation', 'Wärme': 'Warmth', '− kühl · + warm': '− cool · + warm', 'Farbton': 'Hue', 'dunkle Ecken': 'dark corners', 'Zurücksetzen': 'Reset', 'Qualität': 'Quality',
-  'Exportieren & weiter': 'Export & next', 'Füllfarbe': 'Fill color', 'z. B. Weiß für Produktfotos': 'e.g. white for product photos', 'Hintergrund füllen': 'Fill background',
+  'Exportieren & weiter': 'Export & open next', 'Füllfarbe': 'Fill color', 'z. B. Weiß für Produktfotos': 'e.g. white for product photos', 'Hintergrund füllen': 'Fill background',
   'Dateiname': 'File name', 'Exportieren': 'Export', 'Bild öffnen': 'Open image',
   'Zuschneiden, Größe ändern, Hintergrund entfernen – und als PNG oder WebP exportieren.': 'Crop, resize, remove the background – and export as PNG or WebP.', 'Bild auswählen': 'Choose image',
-  'Ordner öffnen': 'Open folder', 'oder hierher ziehen (mehrere = durchblättern) · Strg+V zum Einfügen': 'or drop here (several = browse) · Ctrl+V to paste',
-  'Loslassen = als neue Ebene aufs Bild legen': 'Release = add as a new layer', 'Bild loslassen': 'Drop image', 'Auswahl': 'Selection', 'Als Ebene eingefügt': 'Added as a layer',
-  'Stattdessen öffnen': 'Open instead', 'Ganzes Bild': 'Whole image', '{m} auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben': '{m} on “{n}” · Alt = invert · [ ] = brush · Space = pan',
-  'Malen auf „{n}“ · [ ] = Pinsel · Strg+Z = zurück': 'Painting on “{n}” · [ ] = brush · Ctrl+Z = undo', '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.',
+  'Ordner öffnen': 'Open folder', 'oder hierher ziehen – auch mehrere zum Durchblättern · Strg+V zum Einfügen': 'or drop images here – several at once to flip through · Ctrl+V to paste',
+  'Loslassen = als neue Ebene aufs Bild legen': 'Drop to add as a new layer', 'Bild loslassen': 'Drop image', 'Auswahl': 'Selection', 'Als Ebene eingefügt': 'Added as a layer',
+  'Stattdessen öffnen': 'Open instead', 'Meine LUTs': 'My LUTs', 'Kein Ordner ausgewählt.': 'No folder selected.', 'Ganzes Bild': 'Whole image', 'Wegnehmen auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben': 'Erasing on “{n}” · Alt to invert · [ ] for brush size · Space to pan', 'Hinzufügen auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben': 'Restoring on “{n}” · Alt to invert · [ ] for brush size · Space to pan',
+  'Malen auf „{n}“ · [ ] = Pinsel · Strg+Z = zurück': 'Painting on “{n}” · [ ] for brush size · Ctrl+Z to undo', '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.',
   '{a}: {p} % des Bildes': '{a}: {p} % of the image', 'Zurückgeholt': 'Restored', 'Entfernt': 'Removed', '„{n}“ als Ebene eingefügt': '“{n}” added as a layer',
   '{n} Ebenen eingefügt': '{n} layers added', 'B': 'W', 'F': 'B', 'K': 'I',
   // Settings, app settings, folder backup & diagnostics
-  'Einstellungen': 'Settings', 'Gelten für alle Tools · Version {v}': 'Apply to all tools · version {v}', 'Darstellung': 'Appearance', 'Theme': 'Theme', 'Akzentfarbe': 'Accent color',
+  'Einstellungen': 'Settings', 'Gelten für alle Tools · Version {v}': 'For all tools · version {v}', 'Darstellung': 'Appearance', 'Theme': 'Theme', 'Akzentfarbe': 'Accent color',
   'Animationen': 'Animations', 'Maskottchen': 'Mascot', 'Anzeigen': 'Show', 'Größe': 'Size', 'Startseite': 'Home page', 'Start': 'Startup', 'Name': 'Name',
   'Wird in der Begrüßung angezeigt': 'Shown in the greeting', 'Sprache · Language': 'Language · Sprache',
   'Englisch kommt App für App': 'English is coming app by app', 'Offene Apps wechseln die Sprache beim nächsten Öffnen.': 'Open apps switch language the next time you open them.', 'Beim Öffnen zeigen': 'Show on launch', 'Home': 'Home', 'Letzte Sitzung': 'Last session',
   'Apps': 'Apps', 'Legacy-App-Modus': 'Legacy app mode',
-  'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht': 'Image Naming is called “Bildbert Namuel Verwaldemar” again – with a face', 'App-Einstellungen': 'App settings',
+  'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht': 'Image Naming goes back to “Bildbert Namuel Verwaldemar” – face included', 'App-Einstellungen': 'App settings',
   'System & Diagnose': 'System & diagnostics', 'Hilft, wenn sich Ordner nicht öffnen lassen.': 'Helps when folders won’t open.', 'Ordnerzugriff testen': 'Test folder access',
   'Speicher & Sicherung': 'Storage & backup', 'Backup-Datei (manuell)': 'Backup file (manual)', 'Backup exportieren': 'Export backup', 'Backup importieren': 'Import backup', 'Zurücksetzen': 'Reset',
   'Gefällt dir Toms Tools? Spendier mir einen Kaffee': 'Enjoying Toms Tools? Buy me a coffee', '☕ Kaffee spendieren': '☕ Buy me a coffee',
   'Neue Versionen, Feedback & Quellcode': 'New versions, feedback & source code', '🐙 Toms Tools auf GitHub': '🐙 Toms Tools on GitHub', 'Dunkel': 'Dark', 'Graphit': 'Graphite',
   'Mitternacht': 'Midnight', 'Mokka': 'Mocha', 'Wald': 'Forest', 'Hell': 'Light', 'Violett': 'Violet', 'Blau': 'Blue', 'Türkis': 'Turquoise', 'Grün': 'Green', 'Rot': 'Red',
-  'Eigene Farbe': 'Custom color', 'Hintergrund der Startseite': 'Home page background', 'Tageszeit': 'Time of day', 'Weltall': 'Space', 'Eigenes Bild': 'Own image', 'Schlicht': 'Plain',
+  'Eigene Farbe': 'Custom color', 'Hintergrund der Startseite': 'Home page background', 'Tageszeit': 'Time of day', 'Weltall': 'Space', 'Eigenes Bild': 'Custom image', 'Schlicht': 'Plain',
   'Die Farben wandern im Tagesverlauf weich weiter': 'The colors drift softly through the day', 'Jetzt: {n}': 'Now: {n}', 'Nacht': 'Night', 'Morgengrauen': 'Dawn', 'Sonnenaufgang': 'Sunrise',
   'Vormittag': 'Morning', 'Mittag': 'Midday', 'Nachmittag': 'Afternoon', 'Abendrot': 'Sunset', 'Dämmerung': 'Dusk', 'Akzentfarbe folgt der Tageszeit': 'Accent color follows the time of day',
-  'Buttons & Hervorhebungen wechseln mit': 'Buttons & highlights change along', 'Anderes Bild': 'Other image', 'Entfernen': 'Remove', 'Abdunkeln': 'Darken', 'Unschärfe': 'Blur',
+  'Buttons & Hervorhebungen wechseln mit': 'Buttons and highlights change with it', 'Anderes Bild': 'Change image', 'Entfernen': 'Remove', 'Abdunkeln': 'Darken', 'Unschärfe': 'Blur',
   'Leuchtkraft': 'Glow', 'Partikel': 'Particles', 'Leuchtende Punkte, die langsam nach oben schweben': 'Glowing dots slowly drifting upwards', 'Kacheln': 'Tiles', 'Karten': 'Cards',
-  'Kompakt': 'Compact', 'Begrüßung': 'Greeting', 'Sprüche nach Tageszeit, Zufallsfakten oder beides': 'Time-of-day lines, random facts or both', 'Sprüche': 'Lines', 'Fakten': 'Facts',
+  'Kompakt': 'Compact', 'Begrüßung': 'Greeting', 'Sprüche nach Tageszeit, Zufallsfakten oder beides': 'Time-of-day greetings, random facts or both', 'Sprüche': 'Quips', 'Fakten': 'Facts',
   'Bild konnte nicht gespeichert werden.': 'Couldn’t save the image.', 'Bild konnte nicht geladen werden.': 'Couldn’t load the image.', 'Wirklich?': 'Sure?',
   'Nur die Einstellungen dieser App auf Standard – Inhalte bleiben': 'Reset only this app’s settings – content stays', '{app}: Einstellungen zurückgesetzt': '{app}: settings reset',
   'Gerade geöffnet – diese Werte direkt in der App ändern oder die App erst schließen.': 'Currently open – change these values in the app itself, or close the app first.',
   'Alle zurücksetzen': 'Reset all', 'App-Einstellungen zurückgesetzt': 'App settings reset', ' (offene Apps ausgenommen)': ' (open apps excluded)', 'Alle App-Einstellungen': 'All app settings',
   'Auf Standard zurück – Notizen, Paletten & andere Inhalte bleiben': 'Back to defaults – notes, palettes & other content stay', 'Export-Format': 'Export format',
   'Qualität (JPG/WebP)': 'Quality (JPG/WebP)', 'Ausgabe': 'Output', 'ZIP-Datei': 'ZIP file', 'In Ordner': 'To folder', 'Ordnernamen für Monate': 'Folder names for months', '03 März': '03 March',
-  'Begleitdateien (.xmp, .aae) mitnehmen': 'Take sidecar files (.xmp, .aae) along', 'Dateidatum, wenn kein Aufnahmedatum': 'Use the file date if there is no capture date',
+  'Begleitdateien (.xmp, .aae) mitnehmen': 'Move sidecar files (.xmp, .aae) too', 'Dateidatum, wenn kein Aufnahmedatum': 'Use the file date if there is no capture date',
   'Vor dem Umbenennen nachfragen': 'Ask before renaming', 'Versteckte & Systemdateien ignorieren': 'Ignore hidden & system files',
   '.dateien, Thumbs.db, desktop.ini': '.files, Thumbs.db, desktop.ini', 'Fallback: Kopieren + Löschen': 'Fallback: copy + delete',
-  'Wenn der Browser nicht direkt umbenennen kann. Änderungsdatum geht dabei verloren.': 'If the browser can’t rename directly. The modified date gets lost.', 'Qualität': 'Quality',
-  'Dateinamen kleinschreiben': 'Lowercase file names', 'Leerzeichen & _ → -': 'Spaces & _ → -', 'Sound beim Glücksrad': 'Sound for the wheel of fortune', 'WebP-Qualität': 'WebP quality',
+  'Wenn der Browser nicht direkt umbenennen kann. Änderungsdatum geht dabei verloren.': 'When the browser can’t rename directly. The modified date will be lost.', 'Qualität': 'Quality',
+  'Dateinamen kleinschreiben': 'Lowercase file names', 'Leerzeichen & _ → -': 'Spaces & _ → -', 'Sound beim Glücksrad': 'Wheel of fortune sound', 'WebP-Qualität': 'WebP quality',
   'Hintergrund der Vorschau': 'Preview background', 'Raster': 'Checkerboard', 'Weiß': 'White', 'Schwarz': 'Black', 'Entferntes rot zeigen': 'Show removed areas in red',
   'Beim Masken-Pinsel und Zauberstab': 'With the mask brush and magic wand', 'Ebenen ins nächste Bild mitnehmen': 'Carry layers over to the next image',
   'Im Ordner-Modus – z. B. für ein Wasserzeichen': 'In folder mode – e.g. for a watermark', 'Farbprofil (ICC) behalten': 'Keep color profile (ICC)',
-  'Sonst können Farben anders aussehen': 'Otherwise colors may look different', 'Drehung (Orientation) behalten': 'Keep rotation (orientation)',
+  'Sonst können Farben anders aussehen': 'Otherwise colors may look different', 'Drehung (Orientation) behalten': 'Keep orientation',
   'Sonst liegen Handyfotos evtl. quer': 'Otherwise phone photos may end up sideways', 'Qualität beim Neu-Speichern': 'Quality when re-saving', 'Vorlese-Tempo': 'Reading speed',
-  'Nur Offline-Stimmen': 'Offline voices only', 'Stimmen ohne Internet – nichts verlässt den PC': 'Voices without internet – nothing leaves your PC', 'Signalton': 'Signal tone',
+  'Nur Offline-Stimmen': 'Offline voices only', 'Stimmen ohne Internet – nichts verlässt den PC': 'Voices without internet – nothing leaves your PC', 'Signalton': 'Alert sound',
   'Nach Ablauf': 'When time is up', 'Weiterzählen': 'Keep counting', 'Stoppen': 'Stop', 'Fortschrittsbalken': 'Progress bar', 'Uhrzeit anzeigen': 'Show clock', 'Render-Qualität': 'Render quality',
-  'Niedrig schont Grafikkarte und Akku': 'Low spares the GPU and battery', 'Niedrig': 'Low', 'Rekorde zurücksetzen': 'Reset records',
-  'Bestwerte aller Spiele löschen (Neon-Arena, Ausweichen, Reaktion, Kreis, Tippen)': 'Delete the best scores of all games (Neon Arena, Dodge, Reaction, Circle, Typing)', 'Erledigt ✓': 'Done ✓',
-  'Eigene Akzentfarbe': 'Own accent color', 'Farbe unabhängig vom globalen Theme': 'Color independent of the global theme', 'Hintergrundbild': 'Background image', 'Offene Tabs': 'Open tabs',
+  'Niedrig schont Grafikkarte und Akku': 'Low is easier on GPU and battery', 'Niedrig': 'Low', 'Rekorde zurücksetzen': 'Reset records',
+  'Bestwerte aller Spiele löschen (Neon-Arena, Ausweichen, Reaktion, Kreis, Tippen)': 'Clear the high scores of all games (Neon Arena, Dodge, Reaction, Circle, Typing)', 'Erledigt ✓': 'Done ✓',
+  'Eigene Akzentfarbe': 'Custom accent color', 'Farbe unabhängig vom globalen Theme': 'Independent of the global theme', 'Hintergrundbild': 'Background image', 'Offene Tabs': 'Open tabs',
   'noch nie': 'never', 'gerade eben': 'just now', 'vor {n} Min.': '{n} min ago', 'vor {n} Std.': '{n} h ago', 'Ordner-Sicherung nicht verfügbar': 'Folder backup not available',
   'Geht nur in Chrome, Edge oder Brave. Nutze bis dahin „Backup exportieren".': 'Only works in Chrome, Edge or Brave. Until then, use “Export backup”.',
   'Daten liegen nur im Browser': 'Your data only lives in the browser',
-  'Wähle einen Ordner – dann wird alles automatisch als Datei gesichert.': 'Pick a folder – then everything is saved there automatically as a file.', 'Ordner wählen': 'Choose folder',
+  'Wähle einen Ordner – dann wird alles automatisch als Datei gesichert.': 'Pick a folder and everything is saved there automatically.', 'Ordner wählen': 'Choose folder',
   '„{name}" braucht deine Erlaubnis': '“{name}” needs your permission',
-  'Der Browser fragt nach einem Neustart einmal nach. Bis dahin wird nicht gesichert.': 'After a restart the browser asks once. Nothing is saved until then.', 'Erlauben': 'Allow',
+  'Der Browser fragt nach einem Neustart einmal nach. Bis dahin wird nicht gesichert.': 'After a restart, your browser asks once. Nothing is backed up until then.', 'Erlauben': 'Allow',
   'Anderer Ordner': 'Other folder', 'Sicherung gestoppt': 'Backup stopped', 'Ordner neu wählen': 'Choose folder again', 'Automatisch gesichert in „{name}"': 'Saved automatically to “{name}”',
   'Zuletzt {ago} · tägliche Kopien der letzten 14 Tage im Unterordner „sicherungen"': 'Last saved: {ago} · daily copies of the last 14 days in the “sicherungen” subfolder',
   'Jetzt sichern': 'Save now', 'Gesichert.': 'Saved.', 'Ordner ändern': 'Change folder', 'Aus Ordner laden': 'Load from folder', 'Ordner trennen?': 'Disconnect folder?',
   'Es wird nicht mehr automatisch gesichert. Die Dateien im Ordner bleiben erhalten.': 'Automatic saving stops. The files in the folder are kept.', 'Trennen': 'Disconnect',
   'Tipp: Ein Ordner in OneDrive sichert zusätzlich in die Cloud – und du kannst die Daten auf einem anderen PC laden.': 'Tip: a folder in OneDrive also backs up to the cloud – and you can load the data on another PC.',
   'Browser-Speicher': 'Browser storage', '{used} von ca. 5 MB': '{used} of approx. 5 MB',
-  'Liegt im größeren Browser-Speicher und zählt hier nicht mit': 'Kept in the larger browser storage and not counted here',
+  'Liegt im größeren Browser-Speicher und zählt hier nicht mit': 'Stored separately – not counted here',
   'Backup gespeichert · {n} Einträge · {size}': 'Backup saved · {n} entries · {size}', 'Import fehlgeschlagen: ': 'Import failed: ', 'Speicher voll.': 'Storage full.',
   'Die Datei ist kein gültiges Backup.': 'The file is not a valid backup.', 'Alles zurücksetzen?': 'Reset everything?',
   'Einstellungen, Notizen, Paletten und alle anderen App-Daten werden gelöscht.': 'Settings, notes, palettes and all other app data will be deleted.',
   ' Der letzte Stand bleibt im Ordner „{name}" unter „sicherungen" erhalten.': ' The last state is kept in the folder “{name}” under “sicherungen”.',
   'Das ist keine Toms-Tools-Sicherung.': 'This is not a Toms Tools backup.', 'Die Datei enthält keine Daten.': 'The file contains no data.', 'unbekanntem Datum': 'an unknown date',
   '{n} Einträge vom {d}': '{n} entries from {d}', 'Zusammenführen': 'Merge',
-  ' – übernimmt die Daten aus der Sicherung, alles andere bleibt erhalten.': ' – takes over the data from the backup, everything else stays.', 'Ersetzen': 'Replace',
-  ' – löscht zuerst alle aktuellen Daten und stellt genau diesen Stand wieder her.': ' – first deletes all current data and restores exactly this state.', 'Abbrechen': 'Cancel',
+  ' – übernimmt die Daten aus der Sicherung, alles andere bleibt erhalten.': ' – adds the data from the backup and keeps everything else.', 'Ersetzen': 'Replace',
+  ' – löscht zuerst alle aktuellen Daten und stellt genau diesen Stand wieder her.': ' – deletes all current data first and restores this backup exactly.', 'Abbrechen': 'Cancel',
   '{n} Einträge übernommen – lade neu …': '{n} entries imported – reloading …', 'Aus dem Ordner laden': 'Load from the folder',
   'Der Ordner wurde nicht gefunden (verschoben oder gelöscht?).': 'The folder wasn’t found (moved or deleted?).', 'Ordner-Sicherung gestoppt: ': 'Folder backup stopped: ',
   'Ordner-Sicherung braucht wieder deine Erlaubnis.': 'Folder backup needs your permission again.', 'Beheben': 'Fix',
@@ -3870,8 +3897,8 @@ const EN = {
   'Die Sicherung im Ordner wurde nach deiner letzten Sicherung von hier geändert – vielleicht auf einem anderen PC.': 'The backup in the folder was changed after your last backup from here – maybe on another PC.',
   'Was du nicht wählst, bleibt als Kopie im Unterordner „sicherungen" erhalten.': 'Whatever you don’t choose is kept as a copy in the “sicherungen” subfolder.',
   'Browser-Daten behalten': 'Keep browser data', 'Daten aus dem Ordner geladen – lade neu …': 'Data loaded from the folder – reloading …',
-  'Automatische Sicherung in „{name}" pausiert – der Browser braucht kurz deine Erlaubnis.': 'Automatic backup to “{name}” paused – the browser briefly needs your permission.',
-  'Ohne Erlaubnis kann nicht in den Ordner gesichert werden.': 'Without permission nothing can be saved to the folder.',
+  'Automatische Sicherung in „{name}" pausiert – der Browser braucht kurz deine Erlaubnis.': 'Automatic backup to “{name}” paused – your browser needs your permission.',
+  'Ohne Erlaubnis kann nicht in den Ordner gesichert werden.': 'Without permission, nothing can be saved to the folder.',
   'Sicherung aktiv – alles wird automatisch in „{name}" gespeichert.': 'Backup active – everything is saved to “{name}” automatically.',
   'Im Ordner wurde keine Sicherung gefunden.': 'No backup was found in the folder.', 'Geöffnet über': 'Opened via', 'Datei (file://)': 'File (file://)', 'Sicherer Kontext': 'Secure context',
   'ja': 'yes', 'nein': 'no', 'Eingebettet (iFrame)': 'Embedded (iframe)', 'Ordnerzugriff (File System API)': 'Folder access (File System API)', 'verfügbar': 'available', 'fehlt': 'missing',
@@ -3883,7 +3910,7 @@ const EN = {
   'Dieser Browser kennt die File System Access API nicht. Nutze Chrome oder Edge – oder den Nur-Lesen-Modus.': 'This browser doesn’t support the File System Access API. Use Chrome or Edge – or the read-only mode.',
   '✓ Zugriff auf „{name}“ mit Schreibrecht erteilt – alles bereit.': '✓ Write access to “{name}” granted – all set.', 'Abgebrochen.': 'Cancelled.',
   // Top bar & tabs
-  'Taschenrechner': 'Calculator', 'Formatierung entfernen – kopierten Text als reinen Text in die Zwischenablage legen': 'Remove formatting – put copied text back on the clipboard as plain text', 'Die Zwischenablage ist leer (oder enthält keinen Text).': 'The clipboard is empty (or holds no text).', 'Jetzt': 'Now', 'Strg': 'Ctrl', 'Das hat nicht geklappt – bitte noch einmal versuchen.': 'That didn’t work – please try again.', 'Einstellungen (Strg+,)': 'Settings (Ctrl+,)',
+  'Taschenrechner': 'Calculator', 'Formatierung entfernen – kopierten Text als reinen Text in die Zwischenablage legen': 'Remove formatting – turns copied text into plain text', 'Die Zwischenablage ist leer (oder enthält keinen Text).': 'The clipboard is empty (or holds no text).', 'Jetzt': 'Now', 'Strg': 'Ctrl', 'Das hat nicht geklappt – bitte noch einmal versuchen.': 'That didn’t work – please try again.', 'Einstellungen (Strg+,)': 'Settings (Ctrl+,)',
   'Schließen (Alt+W)': 'Close (Alt+W)', 'App öffnen': 'Open app', 'In Planung': 'Planned',
   // Home page
   'Funfact: ': 'Fun fact: ', 'Noch einer!': 'Another one!', 'Geöffnet': 'Running', 'Öffnen': 'Open',
@@ -3907,7 +3934,7 @@ const EN = {
   'Bilder nach WebP umwandeln': 'Convert images to WebP',
   'Bilder stapelweise ins platzsparende WebP‑Format umwandeln.': 'Batch convert images to the space-saving WebP format.',
   'Mindmaps erstellen und gestalten': 'Create and design mind maps',
-  'Mindmaps bauen, gestalten und als Bild oder Text exportieren.': 'Build and style mind maps, export them as image or text.',
+  'Mindmaps bauen, gestalten und als Bild oder Text exportieren.': 'Build and style mind maps, export them as an image or text.',
   'Glücksrad, Münze und Orakel': 'Wheel of fortune, coin & oracle',
   'Glücksrad, Münze oder Orakel – lass den Zufall entscheiden.': 'Wheel of fortune, coin or oracle – let chance decide.',
   'Beats bauen · Loops erstellen': 'Build beats · make loops',
@@ -3920,16 +3947,16 @@ const EN = {
   'Farbpaletten zusammenstellen und Farbcodes per Klick kopieren.': 'Put together color palettes and copy color codes with a click.',
   'Markdown präsentieren & pitchen': 'Present & pitch Markdown',
   'Markdown schreiben und als Präsentation im Vollbild zeigen.': 'Write Markdown and show it as a fullscreen presentation.',
-  'Text ablegen · Ideen festhalten': 'Jot down text · capture ideas',
+  'Text ablegen · Ideen festhalten': 'Jot down notes · capture ideas',
   'Bunte Notizkarten, um Gedanken und Ideen schnell festzuhalten.': 'Colorful note cards to quickly capture thoughts and ideas.',
-  'Namen klicken · Bilder umbenennen': 'Click names · rename images',
-  'Bildnamen aus Bausteinen zusammenklicken und direkt umbenennen.': 'Click image names together from building blocks and rename right away.',
+  'Namen klicken · Bilder umbenennen': 'Build names · rename images',
+  'Bildnamen aus Bausteinen zusammenklicken und direkt umbenennen.': 'Build image names from blocks with a few clicks and rename right away.',
   'Zuschneiden · Freistellen · Ebenen': 'Crop · cut out · layers',
   'Bilder zuschneiden, freistellen, mit Ebenen, Text und Effekten bearbeiten.': 'Crop images, remove backgrounds, edit with layers, text and effects.',
   'EXIF ansehen · bearbeiten · löschen': 'View · edit · remove EXIF',
   'Metadaten von Bildern ansehen, bearbeiten oder entfernen.': 'View, edit or remove image metadata.',
   'Text vorlesen lassen · offline': 'Read text aloud · offline',
-  'Texte mit den Stimmen deines Systems vorlesen lassen.': 'Have texts read aloud with your system’s voices.',
+  'Texte mit den Stimmen deines Systems vorlesen lassen.': 'Have text read aloud using your system’s voices.',
   'Großer Vollbild-Timer': 'Big fullscreen timer',
   'Großer Countdown im Vollbild mit Warnfarben und Signalton.': 'Big fullscreen countdown with warning colors and a signal tone.',
   'Helfer für Code & Daten': 'Helpers for code & data',
@@ -3941,26 +3968,26 @@ const EN = {
   'Professionelle Rechnungen für Deutschland': 'Professional invoices for Germany',
   'Saubere Rechnungen mit Logo und MwSt. erstellen – als PDF.': 'Create clean invoices with logo and VAT – as PDF.',
   'Zeichen, Snippets & Vorlagen zum Kopieren': 'Characters, snippets & templates to copy',
-  'Sonderzeichen, Snippets und Vorlagen – ein Klick kopiert.': 'Special characters, snippets and templates – one click copies.',
-  'Kleine Spiele für zwischendurch': 'Little games for in between',
+  'Sonderzeichen, Snippets und Vorlagen – ein Klick kopiert.': 'Special characters, snippets and templates – copy with one click.',
+  'Kleine Spiele für zwischendurch': 'Quick games for a short break',
   'Fotos automatisch in Ordner sortieren': 'Sort photos into folders automatically',
   'Fotoordner nach Aufnahmedatum, Kamera, Ausrichtung oder Dateityp in Unterordner sortieren.': 'Sort a photo folder into subfolders by capture date, camera, orientation or file type.',
-  'Kleine Spiele für zwischendurch – Tippen, Reaktion und mehr.': 'Little games for in between – typing, reaction and more.',
+  'Kleine Spiele für zwischendurch – Tippen, Reaktion und mehr.': 'Quick games for a short break – typing, reaction and more.',
   'SWOT, Pro & Contra, Canvas & Co.': 'SWOT, pros & cons, canvas & more',
   'Modelle und Denkwerkzeuge ausfüllen – von SWOT und Persona bis Pro & Contra und Eisenhower. Als Text, PNG oder PDF.': 'Fill in models and thinking tools – from SWOT and persona to pros & cons and Eisenhower. As text, PNG or PDF.',
   'Prozente, Zinsen, ROI & Co.': 'Percentages, interest, ROI & more',
-  'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und Nutzwertanalyse, mit Rechenweg.': 'Calculators for everyday life, studies and business – from percentages and VAT to break-even and weighted scoring, with working.',
+  'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und Nutzwertanalyse, mit Rechenweg.': 'Calculators for everyday life, studies and business – from percentages and VAT to break-even and weighted scoring, showing the working.',
   'Quellen sammeln · richtig zitieren': 'Collect sources · cite correctly',
   'Karteikarten mit Lernsystem': 'Flashcards with a learning system',
   'Diagramme & Zeitpläne': 'Charts & timelines',
   'Wasserzeichen & KI-Label': 'Watermarks & AI labels',
   'Screenshots markieren & teilen': 'Annotate & share screenshots',
-  'Bildschirm aufnehmen oder einfügen – mit Pfeilen, Schritten und Verpixeln markieren und schick gemacht kopieren.': 'Capture or paste your screen – mark it up with arrows, steps and blur, and copy it nicely framed.',
+  'Bildschirm aufnehmen oder einfügen – mit Pfeilen, Schritten und Verpixeln markieren und schick gemacht kopieren.': 'Capture or paste your screen – mark it up with arrows, steps and blur, and copy it with a nice frame.',
   'Text, Logo oder KI-Kennzeichnung auf Bilder setzen – einzeln oder ganz viele auf einmal.': 'Put text, a logo or an AI label on images – one at a time or many at once.',
   'Zwei Texte vergleichen': 'Compare two texts',
   'Zwei Textversionen nebeneinander – Änderungen Wort für Wort farbig markiert.': 'Two versions of a text side by side – changes highlighted word by word.',
   'Säulen-, Balken-, Linien- und Kreisdiagramme oder ein Zeitplan – aus Excel einfügen, als PNG oder SVG exportieren.': 'Column, bar, line and donut charts or a timeline – paste from Excel, export as PNG or SVG.',
-  'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.': 'Flashcards for any topic – the Leitner box system mainly asks what you don’t know yet.',
+  'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.': 'Flashcards for any topic – the Leitner system focuses on what you don’t know yet.',
   'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.': 'Save books, articles and links with notes and quotes – copy the citation with one click.',
 };
 
@@ -6220,18 +6247,18 @@ function mountLutwerk(view) {
   const BUILTIN = [
     ['Neutral', {}],
     ['Teal & Orange', { con: .15, sat: .08, sh: '#1f7a8c', shA: .5, hl: '#ffa45c', hlA: .4 }],
-    ['Film warm', { temp: .14, fade: .06, con: .1, sat: -.05, hl: '#ffd8a8', hlA: .25 }],
-    ['Kühl & klar', { temp: -.18, con: .12, sat: .05, vib: .15 }],
+    [T('Film warm'), { temp: .14, fade: .06, con: .1, sat: -.05, hl: '#ffd8a8', hlA: .25 }],
+    ['Cool & Clean', { temp: -.18, con: .12, sat: .05, vib: .15 }],
     ['Golden Hour', { temp: .28, sat: .12, exp: .05, hl: '#ffc16b', hlA: .4 }],
     ['Vintage', { fade: .12, sat: -.25, con: -.05, sh: '#3a5a40', shA: .3, hl: '#f2d49b', hlA: .35 }],
     ['Bleach Bypass', { sat: -.55, con: .35 }],
-    ['Matt Pastell', { fade: .16, con: -.2, sat: -.12, hl: '#ffe4f0', hlA: .2 }],
+    ['Pastel Matte', { fade: .16, con: -.2, sat: -.12, hl: '#ffe4f0', hlA: .2 }],
     ['Kodak-Look', { con: .22, sat: .22, sh: '#0b3d2e', shA: .22, hl: '#ffe1a8', hlA: .15 }],
-    ['Nacht', { exp: -.35, temp: -.28, sat: -.2, sh: '#1b2a6b', shA: .45 }],
+    ['Midnight', { exp: -.35, temp: -.28, sat: -.2, sh: '#1b2a6b', shA: .45 }],
     ['Cyberpunk', { con: .2, sat: .15, sh: '#3a0ca3', shA: .5, hl: '#f72585', hlA: .35 }],
-    ['Moos & Nebel', { fade: .08, sat: -.15, temp: -.05, tint: -.06, sh: '#2d4a3e', shA: .35 }],
-    ['S/W Kontrast', { sat: -1, con: .3 }],
-    ['S/W weich', { sat: -1, con: -.12, fade: .08 }],
+    ['Moss & Mist', { fade: .08, sat: -.15, temp: -.05, tint: -.06, sh: '#2d4a3e', shA: .35 }],
+    ['Noir', { sat: -1, con: .3 }],
+    ['Noir Soft', { sat: -1, con: -.12, fade: .08 }],
   ].map(([name, p], i) => ({ id: 'b:' + i, name, type: 'params', builtin: true, p: { ...DEF(), ...p } }));
 
   const saved = Store.get('lutwerk', {});
@@ -6304,14 +6331,14 @@ function mountLutwerk(view) {
     const norm = i => (vals[i] - min[i % 3]) / ((max[i % 3] - min[i % 3]) || 1);
     let src, sn;
     if (n >= 2) {
-      if (vals.length < n * n * n * 3) throw new Error(`Die Datei hat zu wenig Werte (${vals.length / 3} statt ${n ** 3}).`);
+      if (vals.length < n * n * n * 3) throw new Error(T('Die Datei hat zu wenig Werte ({a} statt {b}).', { a: vals.length / 3, b: n ** 3 }));
       src = new Float32Array(n * n * n * 3).map((_, i) => norm(i)); sn = n;
     } else if (n1 >= 2) {   // 1D LUT (one curve per channel) → convert into a cube
-      if (vals.length < n1 * 3) throw new Error('Die 1D-LUT ist unvollständig.');
+      if (vals.length < n1 * 3) throw new Error(T('Die 1D-LUT ist unvollständig.'));
       const curve = (c, x) => { const f = clamp01(x) * (n1 - 1), i = Math.min(n1 - 2, Math.floor(f)), t = f - i; return norm(i * 3 + c) * (1 - t) + norm((i + 1) * 3 + c) * t; };
       sn = N; src = new Float32Array(N ** 3 * 3); let o = 0; const s = 1 / (N - 1);
       for (let b = 0; b < N; b++) for (let g = 0; g < N; g++) for (let r = 0; r < N; r++) { src[o++] = curve(0, r * s); src[o++] = curve(1, g * s); src[o++] = curve(2, b * s); }
-    } else throw new Error('Keine LUT_3D_SIZE gefunden – ist das eine .cube-Datei?');
+    } else throw new Error(T('Keine LUT_3D_SIZE gefunden – ist das eine .cube-Datei?'));
     // Larger than 33 → shrink to 33 (saves storage, looks the same)
     if (sn > N) {
       const out = new Float32Array(N ** 3 * 3), s = 1 / (N - 1); let o = 0;
@@ -6400,8 +6427,8 @@ void main() {
   }
   const glPrev = makeGL(false, () => queue()), glOut = makeGL(true);
   if (!glPrev || !glOut) {
-    view.append(h('div', { class: 'empty' }, h('div', { class: 'drop' }, h('div', { class: 'big' }, icon('alert')), h('h2', null, 'WebGL2 nicht verfügbar'),
-      h('p', null, 'LUT-Werk braucht die Grafikkarte (WebGL2). Bitte einen aktuellen Browser nutzen oder die Hardwarebeschleunigung aktivieren.'))));
+    view.append(h('div', { class: 'empty' }, h('div', { class: 'drop' }, h('div', { class: 'big' }, icon('alert')), h('h2', null, T('WebGL2 nicht verfügbar')),
+      h('p', null, T('LUT-Werk braucht die Grafikkarte (WebGL2). Bitte einen aktuellen Browser nutzen oder die Hardwarebeschleunigung aktivieren.')))));
     return {};
   }
 
@@ -6457,7 +6484,7 @@ void main() {
     const list = [];
     for await (const [n, hd] of dir.entries()) if (hd.kind === 'file' && (IMG_RE.test(n) || /\.cube$/i.test(n))) list.push(await hd.getFile());
     list.sort((a, b) => a.name.localeCompare(b.name, 'de', { numeric: true }));
-    if (!list.length) toast('In dem Ordner sind keine Bilder.', 'warn');
+    if (!list.length) toast(T('In dem Ordner sind keine Bilder.'), 'warn');
     addFiles(list);
   }
   function pickImages() {
@@ -6472,15 +6499,15 @@ void main() {
       const u8 = new Uint8Array(data.length); for (let i = 0; i < data.length; i++) u8[i] = Math.round(clamp01(data[i]) * 255);
       const id = 'u:' + (uid0++);
       Store.set('lutwerk:cube:' + id, toB64(u8));
-      if (!localStorage.getItem('tt:lutwerk:cube:' + id)) throw new Error('Browser-Speicher ist voll.');
+      if (!localStorage.getItem('tt:lutwerk:cube:' + id)) throw new Error(T('Browser-Speicher ist voll.'));
       st.own.unshift({ id, name: (title || file.name.replace(/\.cube$/i, '')).slice(0, 40), type: 'cube', n });
       st.sel = id; persist(); renderLuts(); applyLut();
-      toast(`LUT „${st.own[0].name}“ importiert (${n}³)`, 'ok');
+      toast(`LUT „${st.own[0].name}“ ✓ (${n}³)`, 'ok');
     } catch (e) { toast(`„${file.name}“: ${e.message}`, 'err', { ms: 6000 }); }
   }
   function newLut(from) {
     const base = from && from.type === 'params' ? from.p : DEF();
-    const l = { id: 'u:' + (uid0++), name: from ? from.name + ' (Kopie)' : 'Mein Look', type: 'params', p: { ...DEF(), ...base } };
+    const l = { id: 'u:' + (uid0++), name: from ? from.name + ' (Kopie)' : T('Mein Look'), type: 'params', p: { ...DEF(), ...base } };
     st.own.unshift(l); st.sel = l.id; st.editing = l.id; persist(); renderLuts(); renderEditor(); applyLut();
   }
   function deleteLut(l) {
@@ -6499,7 +6526,7 @@ void main() {
   }
 
   /* ---------- Preview ---------- */
-  const splitEl = h('div', { class: 'lw-split' }, h('span', { class: 'lw-split-l' }, 'Vorher'), h('span', { class: 'lw-split-r' }, 'Nachher'), h('i'));
+  const splitEl = h('div', { class: 'lw-split' }, h('span', { class: 'lw-split-l' }, 'A'), h('span', { class: 'lw-split-r' }, 'B'), h('i'));
   const stage = h('div', { class: 'lw-stage' }, glPrev.cv, splitEl);
   const infoEl = h('div', { class: 'lw-info' });
   let curSrc = sample, raf = 0;
@@ -6516,8 +6543,8 @@ void main() {
   function applyLut() { glPrev.setLut(lutData(cur())); queue(); paintExport(); }
   async function showCurrent() {
     const it = st.items[st.cur];
-    if (!it) { curSrc = sample; glPrev.setImage(sample); infoEl.textContent = 'Beispielbild – zieh eigene Bilder hierher'; queue(); return; }
-    try { curSrc = await previewBitmap(it); } catch { toast(`„${it.name}“ lässt sich nicht öffnen.`, 'err'); return; }
+    if (!it) { curSrc = sample; glPrev.setImage(sample); infoEl.textContent = T('Beispielbild – zieh eigene Bilder hierher'); queue(); return; }
+    try { curSrc = await previewBitmap(it); } catch { toast(T('„{n}“ lässt sich nicht öffnen.', { n: it.name }), 'err'); return; }
     glPrev.setImage(curSrc); infoEl.textContent = `${it.name} · ${it.w}×${it.h}`; queue();
   }
   // drag the before/after line
@@ -6534,14 +6561,14 @@ void main() {
     stripEl.replaceChildren(
       ...st.items.map((it, i) => h('div', { class: 'lw-film' + (i === st.cur ? ' on' : '') + (it.bad ? ' bad' : ''), title: it.name, onclick: () => { st.cur = i; renderStrip(); showCurrent(); } },
         it.thumb ? h('img', { src: it.thumb, alt: '' }) : h('span', { class: 'lw-film-ph' }),
-        h('button', { class: 'lw-film-x', title: 'Entfernen', onclick: e => { e.stopPropagation(); prevCache.get(it.id)?.close?.(); prevCache.delete(it.id); st.items.splice(i, 1); st.cur = Math.min(st.cur, st.items.length - 1); renderStrip(); showCurrent(); paintExport(); } }, icon('x')))),
-      h('button', { class: 'lw-film lw-film-add', title: 'Bilder hinzufügen', onclick: pickImages }, icon('plus')));
-    countEl.textContent = st.items.length ? `${st.items.length} ${st.items.length === 1 ? 'Bild' : 'Bilder'}` : 'Noch keine Bilder';
+        h('button', { class: 'lw-film-x', title: T('Entfernen'), onclick: e => { e.stopPropagation(); prevCache.get(it.id)?.close?.(); prevCache.delete(it.id); st.items.splice(i, 1); st.cur = Math.min(st.cur, st.items.length - 1); renderStrip(); showCurrent(); paintExport(); } }, icon('x')))),
+      h('button', { class: 'lw-film lw-film-add', title: T('Bilder hinzufügen'), onclick: pickImages }, icon('plus')));
+    countEl.textContent = st.items.length ? `${st.items.length} × 🖼` : T('Noch keine Bilder');
     clearBtn.hidden = !st.items.length;
     paintExport();
   }
   const countEl = h('b');
-  const clearBtn = h('button', { class: 'btn sm ghost', onclick: () => { prevCache.forEach(b => b.close?.()); prevCache.clear(); st.items = []; st.cur = 0; renderStrip(); showCurrent(); } }, icon('trash'), 'Alle entfernen');
+  const clearBtn = h('button', { class: 'btn sm ghost', onclick: () => { prevCache.forEach(b => b.close?.()); prevCache.clear(); st.items = []; st.cur = 0; renderStrip(); showCurrent(); } }, icon('trash'), T('Alle entfernen'));
 
   /* ---------- LUT list with thumbnails ---------- */
   const thumbs = new Map();   // id → dataURL (on the sample image)
@@ -6557,16 +6584,16 @@ void main() {
   const lutGrid = h('div', { class: 'lw-luts' });
   function renderLuts() {
     const card = l => h('button', { class: 'lw-lut' + (l.id === st.sel ? ' on' : ''), title: l.name, onclick: () => { st.sel = l.id; if (st.editing && st.editing !== l.id) st.editing = null; persist(); renderLuts(); renderEditor(); applyLut(); } },
-      h('img', { src: thumbOf(l), alt: '' }), h('span', null, l.name, !l.builtin ? h('small', null, l.type === 'cube' ? 'Import' : 'Eigen') : null));
+      h('img', { src: thumbOf(l), alt: '' }), h('span', null, T(l.name), !l.builtin ? h('small', null, l.type === 'cube' ? T('Import') : T('Eigen')) : null));
     lutGrid.replaceChildren(
-      ...(st.own.length ? [h('div', { class: 'lw-luts-t' }, 'Meine LUTs'), ...st.own.map(card)] : []),
-      h('div', { class: 'lw-luts-t' }, 'Vorlagen'), ...BUILTIN.map(card));
+      ...(st.own.length ? [h('div', { class: 'lw-luts-t' }, T('Meine LUTs')), ...st.own.map(card)] : []),
+      h('div', { class: 'lw-luts-t' }, T('Vorlagen')), ...BUILTIN.map(card));
     const l = cur();
     selActs.replaceChildren(...[
-      !l.builtin && l.type === 'params' ? h('button', { class: 'btn sm' + (st.editing === l.id ? ' primary' : ''), onclick: () => { st.editing = st.editing === l.id ? null : l.id; renderLuts(); renderEditor(); } }, icon('sliders'), st.editing === l.id ? 'Fertig' : 'Bearbeiten') : null,
-      l.type === 'params' ? h('button', { class: 'btn sm ghost', onclick: () => newLut(l) }, icon('copy'), 'Kopie bearbeiten') : null,
+      !l.builtin && l.type === 'params' ? h('button', { class: 'btn sm' + (st.editing === l.id ? ' primary' : ''), onclick: () => { st.editing = st.editing === l.id ? null : l.id; renderLuts(); renderEditor(); } }, icon('sliders'), st.editing === l.id ? T('Fertig') : T('Bearbeiten')) : null,
+      l.type === 'params' ? h('button', { class: 'btn sm ghost', onclick: () => newLut(l) }, icon('copy'), T('Kopie bearbeiten')) : null,
       h('button', { class: 'btn sm ghost', onclick: () => exportCube(l) }, icon('download'), '.cube'),
-      !l.builtin ? h('button', { class: 'mini', title: 'Löschen', onclick: () => deleteLut(l) }, icon('trash')) : null].filter(Boolean));
+      !l.builtin ? h('button', { class: 'mini', title: T('Löschen'), onclick: () => deleteLut(l) }, icon('trash')) : null].filter(Boolean));
     selName.textContent = l.name;
   }
   const selName = h('b'), selActs = h('div', { class: 'lw-selacts' });
@@ -6584,22 +6611,22 @@ void main() {
       const r = h('input', { type: 'range', class: 'bw-range', min, max, step, value: p[key], style: { '--p': pct(p[key]) },
         oninput: () => { p[key] = +r.value; val.textContent = fmt(p[key]); r.style.setProperty('--p', pct(r.value)); update(); } });
       val.textContent = fmt(p[key]);
-      return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h', title: 'Doppelklick: zurück auf 0', ondblclick: () => { r.value = key === 'exp' || !DEF()[key] ? 0 : DEF()[key]; r.dispatchEvent(new Event('input')); } }, h('label', null, label), val), r);
+      return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h', title: T('Doppelklick: zurück auf 0'), ondblclick: () => { r.value = key === 'exp' || !DEF()[key] ? 0 : DEF()[key]; r.dispatchEvent(new Event('input')); } }, h('label', null, label), val), r);
     };
     const pm = v => (v > 0 ? '+' : '') + Math.round(v * 100);
     const tone = (ck, ak, label) => h('div', { class: 'lw-tone' },
-      h('input', { type: 'color', class: 'bw-color', value: p[ck], title: label + ' – Farbe', oninput: e => { p[ck] = e.target.value; update(); } }),
+      h('input', { type: 'color', class: 'bw-color', value: p[ck], title: label + ' · ' + T('Farbe'), oninput: e => { p[ck] = e.target.value; update(); } }),
       sl(ak, label, 0, 1, .01, v => Math.round(v * 100) + ' %'));
-    const nameIn = h('input', { class: 'inp', value: l.name, maxlength: 40, placeholder: 'Name', oninput: e => { l.name = e.target.value || 'Mein Look'; selName.textContent = l.name; persist(); updThumb(); } });
+    const nameIn = h('input', { class: 'inp', value: l.name, maxlength: 40, placeholder: 'Name', oninput: e => { l.name = e.target.value || T('Mein Look'); selName.textContent = l.name; persist(); updThumb(); } });
     edEl.replaceChildren(
-      h('div', { class: 'wp-lbl' }, 'Look bearbeiten', h('button', { class: 'mini', title: 'Alles zurücksetzen', onclick: () => { l.p = DEF(); renderEditor(); update(); } }, icon('undo'))),
+      h('div', { class: 'wp-lbl' }, T('Look bearbeiten'), h('button', { class: 'mini', title: T('Alles zurücksetzen'), onclick: () => { l.p = DEF(); renderEditor(); update(); } }, icon('undo'))),
       nameIn,
-      sl('exp', 'Belichtung', -2, 2, .05, v => (v > 0 ? '+' : '') + v.toFixed(2).replace('.', ',') + ' EV'),
-      sl('con', 'Kontrast', -.8, 1, .01, pm), sl('sat', 'Sättigung', -1, 1, .01, pm), sl('vib', 'Dynamik', -1, 1, .01, pm),
-      sl('temp', 'Wärme', -1, 1, .01, pm), sl('tint', 'Grün ↔ Magenta', -1, 1, .01, pm),
-      sl('hue', 'Farbton', -180, 180, 1, v => (v > 0 ? '+' : '') + v + '°'), sl('fade', 'Verblassen', 0, .5, .01, v => Math.round(v * 200)),
-      h('div', { class: 'wp-lbl', style: { marginTop: '4px' } }, 'Farbe in Schatten & Lichtern'),
-      tone('sh', 'shA', 'Schatten'), tone('hl', 'hlA', 'Lichter'), sl('bal', 'Balance', -1, 1, .01, pm));
+      sl('exp', T('Belichtung'), -2, 2, .05, v => (v > 0 ? '+' : '') + v.toFixed(2).replace('.', ',') + ' EV'),
+      sl('con', T('Kontrast'), -.8, 1, .01, pm), sl('sat', T('Sättigung'), -1, 1, .01, pm), sl('vib', T('Dynamik'), -1, 1, .01, pm),
+      sl('temp', T('Wärme'), -1, 1, .01, pm), sl('tint', T('Grün ↔ Magenta'), -1, 1, .01, pm),
+      sl('hue', T('Farbton'), -180, 180, 1, v => (v > 0 ? '+' : '') + v + '°'), sl('fade', T('Verblassen'), 0, .5, .01, v => Math.round(v * 200)),
+      h('div', { class: 'wp-lbl', style: { marginTop: '4px' } }, T('Farbe in Tiefen & Lichtern')),
+      tone('sh', 'shA', T('Tiefen')), tone('hl', 'hlA', T('Lichter')), sl('bal', 'Balance', -1, 1, .01, pm));
   }
 
   /* ---------- Export ---------- */
@@ -6611,9 +6638,9 @@ void main() {
   const qVal = h('b'), qIn = h('input', { type: 'range', class: 'bw-range', min: 50, max: 100, step: 1, value: st.q,
     oninput: () => { st.q = +qIn.value; qVal.textContent = st.q + ' %'; qIn.style.setProperty('--p', (st.q - 50) * 2 + '%'); persist(); } });
   qVal.textContent = st.q + ' %'; qIn.style.setProperty('--p', (st.q - 50) * 2 + '%');
-  const qSec = h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Qualität', qVal), qIn);
+  const qSec = h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, T('Qualität'), qVal), qIn);
   const sufIn = h('input', { class: 'inp', value: st.suffix, placeholder: '', spellcheck: false, oninput: () => { st.suffix = sufIn.value; persist(); paintExport(); } });
-  const outSeg = segEl([['zip', 'ZIP'], ['folder', 'Ordner']], st.out, v => { st.out = v; persist(); });
+  const outSeg = segEl([['zip', 'ZIP'], ['folder', T('Ordner')]], st.out, v => { st.out = v; persist(); });
   const namePrev = h('div', { class: 'wp-prev' });
   const goBtn = h('button', { class: 'btn primary block wp-go', onclick: () => runExport() });
   const progFill = h('div', { class: 'wp-prog-fill' }), progTxt = h('div', { class: 'wp-prog-txt' });
@@ -6624,10 +6651,10 @@ void main() {
   function paintExport() {
     qSec.hidden = st.fmt === 'png';
     sufIn.placeholder = '-' + slug(cur().name);
-    namePrev.replaceChildren('bild.jpg → ', h('b', null, outName('bild.jpg')));
+    namePrev.replaceChildren('IMG_0042.jpg → ', h('b', null, outName('IMG_0042.jpg')));
     const n = st.items.length;
     goBtn.disabled = !n || st.busy;
-    goBtn.replaceChildren(icon('zap'), n ? `${n} → ${ext().toUpperCase()}` : 'Erst Bilder hinzufügen');
+    goBtn.replaceChildren(icon('zap'), n ? `${n} → ${ext().toUpperCase()}` : T('Erst Bilder hinzufügen'));
   }
   async function runExport() {
     if (st.busy || !st.items.length) return;
@@ -6651,16 +6678,16 @@ void main() {
         } catch { failed++; }
       }
       progFill.style.width = '100%';
-      if (!files.length) throw new Error('Kein Bild konnte verarbeitet werden.');
+      if (!files.length) throw new Error(T('Kein Bild konnte verarbeitet werden.'));
       if (st.out === 'folder' && window.showDirectoryPicker) {
-        progTxt.textContent = 'Ordner auswählen …';
-        let dir; try { dir = await showDirectoryPicker({ id: 'lutwerk-out', mode: 'readwrite' }); } catch { throw new Error('Kein Ordner ausgewählt.'); }
-        for (const [i, f] of files.entries()) { progTxt.textContent = `Speichere ${i + 1}/${files.length} …`; const w = await (await dir.getFileHandle(f.path, { create: true })).createWritable(); await w.write(f.blob); await w.close(); }
+        progTxt.textContent = T('Ordner auswählen …');
+        let dir; try { dir = await showDirectoryPicker({ id: 'lutwerk-out', mode: 'readwrite' }); } catch { throw new Error(T('Kein Ordner ausgewählt.')); }
+        for (const [i, f] of files.entries()) { progTxt.textContent = `${i + 1}/${files.length} …`; const w = await (await dir.getFileHandle(f.path, { create: true })).createWritable(); await w.write(f.blob); await w.close(); }
       } else {
-        progTxt.textContent = 'Packe ZIP …';
+        progTxt.textContent = 'ZIP …';
         download(`lut-${slug(cur().name)}.zip`, await makeZip(files, (i, n) => { progTxt.textContent = `Packe ZIP … ${i}/${n}`; }));
       }
-      toast(`${files.length} ${files.length === 1 ? 'Bild' : 'Bilder'} mit „${cur().name}“ gespeichert` + (failed ? ` · ${failed} Fehler` : ''), failed ? 'warn' : 'ok');
+      toast(`${files.length} × „${cur().name}“ ✓` + (failed ? ` · ${failed} ✗` : ''), failed ? 'warn' : 'ok');
     } catch (e) { toast('Export: ' + e.message, 'err'); }
     st.busy = false; prog.hidden = true; paintExport();
   }
@@ -6673,27 +6700,27 @@ void main() {
   const main = h('div', { class: 'wp-card lw-main' },
     h('div', { class: 'wp-lhead' }, h('span', { class: 'wp-count' }, countEl), infoEl,
       h('div', { class: 'wp-lacts' },
-        h('button', { class: 'btn sm ghost' + (st.compare ? ' on' : ''), onclick: e => { st.compare = !st.compare; e.currentTarget.classList.toggle('on', st.compare); queue(); } }, icon('eye'), 'Vergleich'),
-        h('button', { class: 'btn sm ghost', onclick: pickImages }, icon('image'), 'Bilder'),
-        h('button', { class: 'btn sm ghost', onclick: openFolder }, icon('folder'), 'Ordner'),
+        h('button', { class: 'btn sm ghost' + (st.compare ? ' on' : ''), onclick: e => { st.compare = !st.compare; e.currentTarget.classList.toggle('on', st.compare); queue(); } }, icon('eye'), 'A | B'),
+        h('button', { class: 'btn sm ghost', onclick: pickImages }, icon('image'), T('Bilder')),
+        h('button', { class: 'btn sm ghost', onclick: openFolder }, icon('folder'), T('Ordner')),
         clearBtn)),
     stage, stripEl);
   const side = h('div', { class: 'wp-card wp-set lw-side' },
     h('div', { class: 'wp-sec' },
-      h('div', { class: 'wp-lbl' }, 'Look', h('span', { class: 'lw-hd-acts' }, importBtn, h('button', { class: 'btn sm', onclick: () => newLut(null) }, icon('plus'), 'Neu'))),
+      h('div', { class: 'wp-lbl' }, 'Look', h('span', { class: 'lw-hd-acts' }, importBtn, h('button', { class: 'btn sm', onclick: () => newLut(null) }, icon('plus'), T('Neu')))),
       lutGrid,
       h('div', { class: 'lw-sel' }, selName, selActs)),
     edEl,
-    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Stärke', amtVal), amtIn),
+    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, T('Stärke'), amtVal), amtIn),
     h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Format'), fmtSeg),
     qSec,
     h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Suffix'), sufIn, namePrev),
-    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Ausgabe'), outSeg),
+    h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, T('Ausgabe')), outSeg),
     goBtn, prog);
   const wrap = h('div', { class: 'wp lw' }, h('div', { class: 'wp-in lw-in' },
     h('div', { class: 'wp-hd' },
       h('div', { class: 'wp-logo' }, icon('lut')),
-      h('div', null, h('h2', null, 'LUT-Werk'), h('p', null, 'Farb-Looks · 3D-LUT · .cube')),
+      h('div', null, h('h2', null, 'LUT-Werk'), h('p', null, T('Farb-Looks · 3D-LUT · .cube'))),
       h('span', { class: 'wp-priv' }, icon('lock'), 'Offline')),
     h('div', { class: 'wp-grid lw-grid' }, main, side)));
   view.append(wrap);
@@ -8842,7 +8869,7 @@ function mountBildwerk(view) {
       crop: [T('Rahmen ziehen · Enter = fertig · Esc = abbrechen')],
       pick: [T('Klick auf den Hintergrund = Farbe entfernen')],
       wand: [T('Klick = zusammenhängende Fläche entfernen · Alt+Klick = zurückholen · Strg+Z = rückgängig')],
-      erase: [T('{m} auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben', { m: T(eraseMode() ? T('Wegnehmen') : T('Hinzufügen')), n: st.layers[st.sel]?.name })],
+      erase: [T(eraseMode() ? 'Wegnehmen auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben' : 'Hinzufügen auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben', { n: st.layers[st.sel]?.name })],
       paint: [st.layers[st.sel] && !st.layers[st.sel].base && !st.layers[st.sel].text ? T('Malen auf „{n}“ · [ ] = Pinsel · Strg+Z = zurück', { n: st.layers[st.sel].name }) : T('Malen legt eine neue Ebene „Malen“ an · [ ] = Pinsel · Strg+Z = zurück')],
     }[st.tool];
     hintEl.replaceChildren(h('b', null, `${W} × ${H}`), t[0]);
@@ -9740,7 +9767,7 @@ function mountBildwerk(view) {
     h('div', { class: 'drop-actions' },
       h('button', { class: 'btn primary', onclick: openFile }, icon('image'), T('Bild auswählen')),
       h('button', { class: 'btn', onclick: openFolder }, icon('folder'), T('Ordner öffnen'))),
-    h('p', { class: 'hint', style: { marginTop: '16px' } }, T('oder hierher ziehen (mehrere = durchblättern) · Strg+V zum Einfügen'))));
+    h('p', { class: 'hint', style: { marginTop: '16px' } }, T('oder hierher ziehen – auch mehrere zum Durchblättern · Strg+V zum Einfügen'))));
   const dropTxt = h('span');
   const dropOv = h('div', { class: 'drop-ov' }, h('div', null, icon('image'), dropTxt));
 
@@ -17255,7 +17282,7 @@ const SSW_BGS = {
   lila: ['linear', '#7c6cff', '#c26bff'], sonne: ['linear', '#f97316', '#ec4899'], ozean: ['linear', '#0ea5e9', '#6366f1'],
   mint: ['linear', '#34d399', '#0ea5e9'], nacht: ['linear', '#1e293b', '#0f172a'], hell: ['solid', '#eef1f6'], weiss: ['solid', '#ffffff'], none: ['none'],
 };
-const SSW_TOOLS = [['crop', 'Zuschneiden', 'C'], ['arrow', 'Pfeil', 'A'], ['rect', 'Rahmen', 'R'], ['marker', 'Textmarker', 'M'], ['text', 'Text', 'T'], ['step', 'Schritt 1, 2, 3', 'N'], ['blur', 'Verpixeln', 'B']];
+const SSW_TOOLS = [['crop', 'Zuschneiden', 'C'], ['arrow', 'Pfeil', 'A'], ['rect', 'Rahmen', 'R'], ['marker', 'Textmarker', 'M'], ['text', 'Text', 'T'], ['step', '1, 2, 3', 'N'], ['blur', 'Verpixeln', 'B']];
 const SSW_TOOL_ICON = {
   crop: '<path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/>',
   arrow: '<path d="M5 19 19 5"/><path d="M9 5h10v10"/>',
@@ -17268,7 +17295,7 @@ const SSW_TOOL_ICON = {
 function mountScreenshotwerk(view) {
   view.style.padding = '0';
   const FONT = 'Inter, "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif';
-  const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent), MOD = mac ? '⌘' : 'Strg';
+  const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent), MOD = mac ? '⌘' : T('Strg');
   const DEF = { tool: 'arrow', color: '#ef4444', size: 2, timer: 0, beauty: true, bg: 'lila', pad: 6, radius: 12, shadow: true, frame: 'browser', fmt: 'png' };
   const st = { ...DEF, ...Store.get('screenshotwerk', {}) };
   const persist = saveLater(() => Store.set('screenshotwerk', st), 300);
@@ -17295,12 +17322,12 @@ function mountScreenshotwerk(view) {
   let busy = false;
   async function capture() {
     if (busy) return;
-    if (!navigator.mediaDevices?.getDisplayMedia) { toast('Dein Browser kann den Bildschirm nicht aufnehmen – mach einen Ausschnitt (Win + Shift + S) und drück hier ' + MOD + ' + V.', 'err'); return; }
+    if (!navigator.mediaDevices?.getDisplayMedia) { toast(T('Dein Browser kann den Bildschirm nicht aufnehmen – Win + Shift + S, dann hier {m} + V.', { m: MOD }), 'err'); return; }
     let stream;
     try { stream = await navigator.mediaDevices.getDisplayMedia({ video: { cursor: 'never' }, audio: false, selfBrowserSurface: 'include', surfaceSwitching: 'exclude' }); }
     catch (e) {
       if (e.name === 'NotAllowedError' || e.name === 'AbortError') return;   // cancelled in the browser dialog
-      toast(mac ? 'Aufnahme konnte nicht starten. Auf dem Mac: Systemeinstellungen → Datenschutz & Sicherheit → Bildschirmaufnahme → deinen Browser erlauben.' : 'Aufnahme konnte nicht starten. Alternative: Win + Shift + S und hier ' + MOD + ' + V.', 'err', { ms: 8000 });
+      toast(mac ? T('Aufnahme konnte nicht starten. Auf dem Mac: Systemeinstellungen → Datenschutz & Sicherheit → Bildschirmaufnahme → deinen Browser erlauben.') : T('Aufnahme konnte nicht starten. Alternative: Win + Shift + S, dann hier {m} + V.', { m: MOD }), 'err', { ms: 8000 });
       return;
     }
     busy = true; render();
@@ -17313,17 +17340,17 @@ function mountScreenshotwerk(view) {
       if (v.requestVideoFrameCallback) for (let i = 0; i < 3; i++) await Promise.race([new Promise(r => v.requestVideoFrameCallback(r)), new Promise(r => setTimeout(r, 250))]);
       const c = h('canvas', { width: v.videoWidth, height: v.videoHeight }); c.getContext('2d').drawImage(v, 0, 0);
       setImage(c);
-    } catch { toast('Aufnahme hat nicht geklappt.', 'err'); }
+    } catch { toast(T('Aufnahme hat nicht geklappt.'), 'err'); }
     finally { stream.getTracks().forEach(t => t.stop()); busy = false; countEl.hidden = true; render(); }
   }
   async function fromBlob(blob) {
     try { const bmp = await createImageBitmap(blob); setImage(bmp); bmp.close?.(); }
-    catch { toast('Das Bild ließ sich nicht öffnen.', 'err'); }
+    catch { toast(T('Das Bild ließ sich nicht öffnen.'), 'err'); }
   }
   const onPaste = e => {
     if (TT.active !== 'screenshotwerk' || /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
     const item = [...(e.clipboardData?.items || [])].find(i => i.type.startsWith('image/'));
-    if (!item) { toast('In der Zwischenablage ist kein Bild. Tipp: Win + Shift + S für einen Ausschnitt.', 'info'); return; }
+    if (!item) { toast(T('In der Zwischenablage ist kein Bild. Tipp: Win + Shift + S für einen Ausschnitt.'), 'info'); return; }
     e.preventDefault(); fromBlob(item.getAsFile());
   };
   document.addEventListener('paste', onPaste);
@@ -17408,9 +17435,9 @@ function mountScreenshotwerk(view) {
   const cv = h('canvas', { class: 'ssw-cv' }), g = cv.getContext('2d');
   const cropBox = h('div', { class: 'ssw-crop', hidden: true });
   const cropBar = h('div', { class: 'ssw-cropbar', hidden: true },
-    h('button', { class: 'btn sm primary', onclick: () => applyCrop() }, icon('check'), 'Zuschneiden'),
-    h('button', { class: 'btn sm', onclick: () => { pending = null; render(); } }, 'Abbrechen'),
-    h('button', { class: 'btn sm ghost', title: 'Wieder das ganze Bild', onclick: () => { if (doc.crop) commit({ ...doc, crop: null }); } }, icon('undo'), 'Ganzes Bild'));
+    h('button', { class: 'btn sm primary', onclick: () => applyCrop() }, icon('check'), T('Zuschneiden')),
+    h('button', { class: 'btn sm', onclick: () => { pending = null; render(); } }, T('Abbrechen')),
+    h('button', { class: 'btn sm ghost', title: T('Wieder das ganze Bild'), onclick: () => { if (doc.crop) commit({ ...doc, crop: null }); } }, icon('undo'), T('Ganzes Bild')));
   const textIn = h('textarea', { class: 'ssw-textin', hidden: true, rows: 1, placeholder: 'Text …' });
   const countEl = h('div', { class: 'ssw-count', hidden: true });
   const stageIn = h('div', { class: 'ssw-stagein' }, cv, cropBox, textIn);
@@ -17496,50 +17523,50 @@ function mountScreenshotwerk(view) {
       const blob = await new Promise(r => finalCanvas().toBlob(r, 'image/png'));
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
       flash(copyBtn); toast('Kopiert ✓', 'ok');
-    } catch { toast('Kopieren geht hier nicht – nimm „Speichern“.', 'err'); }
+    } catch { toast(T('Kopieren geht hier nicht – nimm „Speichern“.'), 'err'); }
   }
   function save() {
     if (!base) return;
     const jpg = st.fmt === 'jpg';
-    finalCanvas().toBlob(b => { download(`screenshot_${stamp()}.${jpg ? 'jpg' : 'png'}`, b); toast('Gespeichert', 'ok'); }, jpg ? 'image/jpeg' : 'image/png', 0.92);
+    finalCanvas().toBlob(b => { download(`screenshot_${stamp()}.${jpg ? 'jpg' : 'png'}`, b); toast(T('Gespeichert'), 'ok'); }, jpg ? 'image/jpeg' : 'image/png', 0.92);
   }
   const flash = b => { b.classList.add('ok'); setTimeout(() => b.classList.remove('ok'), 1200); };
 
   /* ---------- UI ---------- */
   const set = () => { persist(); render(); };
-  const toolBtns = SSW_TOOLS.map(([k, l, key]) => h('button', { class: 'ssw-tool', title: `${l} (${key})`, onclick: () => { st.tool = k; pending = null; set(); }, html: `<svg viewBox="0 0 24 24" class="i">${SSW_TOOL_ICON[k]}</svg>` }));
-  const colorBtns = SSW_COLORS.map(c => h('button', { class: 'ssw-col', style: { '--c': c }, title: 'Farbe', onclick: () => { st.color = c; set(); } }));
-  const sizeSeg = h('div', { class: 'ssw-sizes' }, ...[1, 2, 3].map(n => h('button', { class: 'ssw-size', title: ['Dünn', 'Mittel', 'Dick'][n - 1], onclick: () => { st.size = n; set(); } }, h('i', { style: { width: (3 + n * 3) + 'px', height: (3 + n * 3) + 'px' } }))));
+  const toolBtns = SSW_TOOLS.map(([k, l, key]) => h('button', { class: 'ssw-tool', title: `${T(l)} (${key})`, onclick: () => { st.tool = k; pending = null; set(); }, html: `<svg viewBox="0 0 24 24" class="i">${SSW_TOOL_ICON[k]}</svg>` }));
+  const colorBtns = SSW_COLORS.map(c => h('button', { class: 'ssw-col', style: { '--c': c }, title: T('Farbe'), onclick: () => { st.color = c; set(); } }));
+  const sizeSeg = h('div', { class: 'ssw-sizes' }, ...[1, 2, 3].map(n => h('button', { class: 'ssw-size', title: ['S', 'M', 'L'][n - 1], onclick: () => { st.size = n; set(); } }, h('i', { style: { width: (3 + n * 3) + 'px', height: (3 + n * 3) + 'px' } }))));
   const undoBtn = h('button', { class: 'icon-btn', title: `${MOD}+Z`, onclick: undo }, icon('undo'));
   const redoBtn = h('button', { class: 'icon-btn ssw-redo', title: `${MOD}+Y`, onclick: redo }, icon('undo'));
-  const clearBtn = h('button', { class: 'icon-btn', title: 'Alle Markierungen entfernen', onclick: () => { if (doc.ann.length) commit({ ...doc, ann: [] }); } }, icon('eraser'));
-  const copyBtn = h('button', { class: 'btn sm primary', title: `${MOD}+C`, onclick: copyImg }, icon('copy'), 'Kopieren');
-  const saveBtn = h('button', { class: 'btn sm', onclick: save }, icon('download'), 'Speichern');
-  const newBtn = h('button', { class: 'btn sm ghost', title: 'Neuen Screenshot machen', onclick: capture }, icon('photo'), 'Neu');
+  const clearBtn = h('button', { class: 'icon-btn', title: T('Alle Markierungen entfernen'), onclick: () => { if (doc.ann.length) commit({ ...doc, ann: [] }); } }, icon('eraser'));
+  const copyBtn = h('button', { class: 'btn sm primary', title: `${MOD}+C`, onclick: copyImg }, icon('copy'), T('Kopieren'));
+  const saveBtn = h('button', { class: 'btn sm', onclick: save }, icon('download'), T('Speichern'));
+  const newBtn = h('button', { class: 'btn sm ghost', title: T('Neuen Screenshot machen'), onclick: capture }, icon('photo'), T('Neu'));
   const toolbar = h('div', { class: 'ssw-bar' },
     h('div', { class: 'ssw-grp' }, ...toolBtns), h('i', { class: 'ssw-sep' }),
     h('div', { class: 'ssw-grp' }, ...colorBtns), h('i', { class: 'ssw-sep' }), sizeSeg, h('i', { class: 'ssw-sep' }),
     undoBtn, redoBtn, clearBtn,
     h('div', { class: 'ssw-acts' }, newBtn, saveBtn, copyBtn));
 
-  const timerSeg = () => segEl([[0, 'Sofort'], [3, '3 s'], [5, '5 s'], [10, '10 s']], st.timer, v => { st.timer = v; persist(); });
+  const timerSeg = () => segEl([[0, '0 s'], [3, '3 s'], [5, '5 s'], [10, '10 s']], st.timer, v => { st.timer = v; persist(); });
   const empty = h('div', { class: 'ssw-empty' });
   function renderEmpty() {
     empty.replaceChildren(
       h('div', { class: 'ssw-logo big' }, icon('screenshotwerk')),
       h('h2', null, 'Screenshotwerk'),
-      h('p', null, 'Screenshot machen, markieren, schick machen – und direkt weiterverwenden.'),
+      h('p', null, T('Screenshot machen, markieren, schick machen – und direkt weiterverwenden.')),
       h('div', { class: 'ssw-ways' },
         h('div', { class: 'ssw-way' },
-          h('b', null, '1 · Aufnehmen'),
-          h('span', null, 'Bildschirm, Fenster oder Tab – auch mit Selbstauslöser'),
+          h('b', null, T('1 · Aufnehmen')),
+          h('span', null, T('Bildschirm, Fenster oder Tab – auch mit Selbstauslöser')),
           h('div', { class: 'ssw-row' }, timerSeg()),
-          h('button', { class: 'btn primary', onclick: capture }, icon('photo'), 'Bildschirm aufnehmen')),
+          h('button', { class: 'btn primary', onclick: capture }, icon('photo'), T('Bildschirm aufnehmen'))),
         h('div', { class: 'ssw-way' },
-          h('b', null, '2 · Einfügen'),
-          h('span', null, 'Mit ', ...(mac ? [h('kbd', null, 'Ctrl'), ' + ', h('kbd', null, 'Shift'), ' + ', h('kbd', null, '⌘'), ' + ', h('kbd', null, '4')] : [h('kbd', null, 'Win'), ' + ', h('kbd', null, 'Shift'), ' + ', h('kbd', null, 'S')]), ' einen Ausschnitt machen und hier ', h('kbd', null, MOD), ' + ', h('kbd', null, 'V'), ' drücken.'),
-          h('button', { class: 'btn', onclick: () => fileIn.click() }, icon('image'), 'Oder Bild öffnen'))),
-      h('small', null, 'Der Browser fragt jedes Mal nach – das ist Absicht.'));
+          h('b', null, T('2 · Einfügen')),
+          h('span', null, ...(mac ? [h('kbd', null, 'Ctrl'), ' + ', h('kbd', null, 'Shift'), ' + ', h('kbd', null, '⌘'), ' + ', h('kbd', null, '4')] : [h('kbd', null, 'Win'), ' + ', h('kbd', null, 'Shift'), ' + ', h('kbd', null, 'S')]), ' → ', h('kbd', null, MOD), ' + ', h('kbd', null, 'V')),
+          h('button', { class: 'btn', onclick: () => fileIn.click() }, icon('image'), T('Oder Bild öffnen')))),
+      h('small', null, T('Der Browser fragt jedes Mal nach – das ist Absicht.')));
   }
   renderEmpty();
 
@@ -17547,7 +17574,7 @@ function mountScreenshotwerk(view) {
   const side = h('aside', { class: 'ssw-side' });
   function renderSide() {
     const sw = Object.entries(SSW_BGS).map(([k, b]) => h('button', {
-      class: 'ssw-bg' + (st.bg === k ? ' on' : ''), title: { lila: 'Lila', sonne: 'Sonne', ozean: 'Ozean', mint: 'Mint', nacht: 'Nacht', hell: 'Hellgrau', weiss: 'Weiß', none: 'Transparent' }[k],
+      class: 'ssw-bg' + (st.bg === k ? ' on' : ''), title: T({ lila: 'Lila', sonne: 'Sonne', ozean: 'Ozean', mint: 'Mint', nacht: 'Nacht', hell: 'Hellgrau', weiss: 'Weiß', none: 'Transparent' }[k]),
       style: { background: b[0] === 'linear' ? `linear-gradient(135deg,${b[1]},${b[2]})` : b[0] === 'solid' ? b[1] : null },
       onclick: () => { st.bg = k; st.beauty = true; set(); } }));
     const slider = (label, key, min, max, fmt) => {
@@ -17557,16 +17584,16 @@ function mountScreenshotwerk(view) {
       return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, label), val), r);
     };
     side.replaceChildren(
-      h('div', { class: 'ssw-side-h' }, h('b', null, 'Schick machen'), switchEl(st.beauty, v => { st.beauty = v; set(); })),
+      h('div', { class: 'ssw-side-h' }, h('b', null, T('Schick machen')), switchEl(st.beauty, v => { st.beauty = v; set(); })),
       h('div', { class: 'ssw-side-b' + (st.beauty ? '' : ' off') },
-        h('div', { class: 'ssw-lbl' }, 'Hintergrund'), h('div', { class: 'ssw-bgs' }, ...sw),
-        slider('Abstand', 'pad', 0, 15, v => v + ' %'),
-        slider('Runde Ecken', 'radius', 0, 30, v => v + ' px'),
-        h('label', { class: 'cw-sw ssw-sw' }, 'Schatten', switchEl(st.shadow, v => { st.shadow = v; set(); })),
-        h('div', { class: 'ssw-lbl' }, 'Rahmen'), segEl([['none', 'Ohne'], ['browser', 'Browser'], ['window', 'Fenster']], st.frame, v => { st.frame = v; set(); })),
+        h('div', { class: 'ssw-lbl' }, T('Hintergrund')), h('div', { class: 'ssw-bgs' }, ...sw),
+        slider(T('Rand'), 'pad', 0, 15, v => v + ' %'),
+        slider(T('Runde Ecken'), 'radius', 0, 30, v => v + ' px'),
+        h('label', { class: 'cw-sw ssw-sw' }, T('Schatten'), switchEl(st.shadow, v => { st.shadow = v; set(); })),
+        h('div', { class: 'ssw-lbl' }, T('Rahmen')), segEl([['none', '—'], ['browser', 'Browser'], ['window', T('Fenster')]], st.frame, v => { st.frame = v; set(); })),
       h('div', { class: 'ssw-side-b' },
-        h('div', { class: 'ssw-lbl' }, 'Speichern als'), segEl([['png', 'PNG'], ['jpg', 'JPG']], st.fmt, v => { st.fmt = v; persist(); }),
-        h('p', { class: 'ssw-note' }, 'Tipp: Namen, E-Mails & Kundendaten vor dem Teilen verpixeln. Nichts wird gespeichert oder hochgeladen.')));
+        h('div', { class: 'ssw-lbl' }, 'Format'), segEl([['png', 'PNG'], ['jpg', 'JPG']], st.fmt, v => { st.fmt = v; persist(); }),
+        h('p', { class: 'ssw-note' }, T('Tipp: Namen, E-Mails & Kundendaten vor dem Teilen verpixeln. Nichts wird gespeichert oder hochgeladen.'))));
   }
 
   const stage = h('div', { class: 'ssw-stage' }, empty, stageIn, cropBar, countEl);

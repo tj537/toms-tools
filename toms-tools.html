@@ -3472,7 +3472,7 @@ const StorageGuard = (() => {
     catch (e) {
       if (this === localStorage && Date.now() - lastWarn > 60000) {
         lastWarn = Date.now();
-        toast('Browser-Speicher ist voll – die letzte Änderung wurde nicht gespeichert. Einstellungen → Speicher & Sicherung.', 'err', { ms: 9000 });
+        toast(T('Browser-Speicher ist voll – die letzte Änderung wurde nicht gespeichert. Einstellungen → Speicher & Sicherung.'), 'err', { ms: 9000 });
       }
       throw e;   // behavior unchanged for the apps (most of them catch the error themselves)
     }
@@ -3764,6 +3764,72 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Bulk Rename
+  'Endung': 'Extension', 'Name + Endung': 'Name + extension', 'Anwenden auf': 'Apply to', 'Kein Suchbegriff': 'No search term', 'Suchen': 'Find', 'Ersetzen durch': 'Replace with',
+  'leer = entfernen': 'empty = remove', 'Groß-/Kleinschreibung beachten': 'Match case', 'Alle Vorkommen ersetzen': 'Replace all occurrences', 'Kein Muster': 'No pattern', 'Muster': 'Pattern',
+  '$1, $2 … Gruppen · $<name> benannte Gruppe · $& ganzer Treffer': '$1, $2 … groups · $<name> named group · $& whole match', 'Modus': 'Mode', 'Nur verbotene Zeichen': 'Only forbidden characters',
+  'Leerzeichen': 'Spaces', 'Nur a–z 0–9 _ - .': 'Only a–z 0–9 _ - .', 'behalten': 'keep', 'Anfang': 'Start', 'Ende': 'End',
+  'Nach Zeichen Nr. (negativ = von hinten)': 'After character no. (negative = from the end)', 'Klammern': 'Brackets', 'Ziffern': 'Digits', 'Nichts gewählt': 'Nothing selected',
+  'Erste N Zeichen': 'First N characters', 'Letzte N Zeichen': 'Last N characters', 'Ab Position': 'From position', 'Anzahl': 'Count', 'Alle Leerzeichen': 'All spaces', 'Schritt': 'Step',
+  'Stellen': 'Digits', 'Pro Ordner neu zählen': 'Restart count per folder', 'Reihenfolge = Sortierung unter „Quelle“.': 'Order follows the sorting under “Source”.', 'Leerer Name': 'Empty name',
+  'Ungültiger Name': 'Invalid name', 'Verbotenes Zeichen': 'Forbidden character', 'Endet mit Punkt/Leerzeichen': 'Ends with a dot or space', 'Reservierter Name': 'Reserved name',
+  'Zu lang (> 255)': 'Too long (> 255)', 'Name leer (nur Endung)': 'Empty name (extension only)',
+  'Direktes Umbenennen wird nicht unterstützt (Fallback deaktiviert)': 'Direct renaming isn’t supported (fallback is off)', 'Name (natürlich)': 'Name (natural)', 'Änderungsdatum': 'Date modified',
+  'Größe': 'Size', 'Dateityp': 'File type', 'Reihenfolge umkehren': 'Reverse order', 'Quelle': 'Source', 'Ordner öffnen': 'Open folder',
+  'Nur-Lesen-Modus: Dateien einlesen, Umbenennen per Skript oder ZIP': 'Read-only mode: read files, rename via script or ZIP', 'Unterordner einbeziehen': 'Include subfolders',
+  'Nur Dateitypen': 'Only file types', 'Sortierung': 'Sorting', 'Regeln': 'Rules', 'Vorlagen': 'Presets', 'Regel': 'Rule',
+  'Regeln: oben → unten · Doppelklick auf einen Namen = manuell ändern': 'Rules run top to bottom · double-click a name to edit it by hand', 'Dateien filtern …': 'Filter files …', 'Vorher': 'Before',
+  'Nachher': 'After', 'Keine Einträge für diesen Filter.': 'Nothing matches this filter.', 'Ordner auswählen': 'Choose folder',
+  'Ordner hierher ziehen oder öffnen – alles bleibt lokal.': 'Drop a folder here or open one – everything stays on your computer.', 'Nur-Lesen-Modus': 'Read-only mode',
+  'Seite läuft eingebettet': 'Page is embedded', 'Direkter Ordnerzugriff nicht verfügbar': 'Direct folder access not available',
+  'Öffne die HTML-Datei direkt in Chrome/Edge, damit direktes Umbenennen klappt. Nur-Lesen + Skript geht trotzdem.': 'Open the HTML file directly in Chrome/Edge for direct renaming. Read-only mode with a script still works.',
+  'Nutze Chrome oder Edge – oder den Nur-Lesen-Modus mit .bat-Export.': 'Use Chrome or Edge – or read-only mode with a .bat export.', 'Ordner gesperrt?': 'Folder locked?',
+  'Nur-Lesen-Modus: Umbenennen per .bat-Skript (ohne Admin-Rechte) oder als ZIP.': 'Read-only mode: rename with a .bat script (no admin rights) or as a ZIP.', 'Ordner ablegen': 'Drop folder',
+  'Rückgängig': 'Undo', 'Skript, ZIP oder CSV': 'Script, ZIP or CSV', 'Vorschau': 'Preview', 'Über „+ Regel“ hinzufügen oder eine Vorlage laden.': 'Add one with “+ Rule” or load a preset.',
+  'An/aus': 'On/off', 'Ziehen zum Sortieren': 'Drag to reorder', 'Duplizieren': 'Duplicate', 'Entfernen': 'Remove', 'Aktuelle Regeln speichern …': 'Save current rules …',
+  'Eigene Vorlagen verwalten …': 'Manage custom presets …', 'Regeln exportieren (.json)': 'Export rules (.json)', 'Regeln importieren …': 'Import rules …',
+  'Alle Regeln entfernen': 'Remove all rules', 'Alle Regeln entfernt': 'All rules removed', 'Vorlage speichern': 'Save preset', 'Name der Vorlage': 'Preset name', 'Löschen': 'Delete',
+  'Keine eigenen Vorlagen.': 'No custom presets.', 'Eigene Vorlagen': 'Custom presets', 'Fertig': 'Done', 'Keine gültigen Regeln gefunden': 'No valid rules found',
+  'Import fehlgeschlagen: ': 'Import failed: ', 'Ordnerzugriff nicht möglich': 'Folder access not possible', 'Schließen': 'Close',
+  'Nur Lesezugriff – links „Schreibzugriff erteilen“ klicken.': 'Read-only access – click “Grant write access” on the left.', 'Schreibzugriff erteilt': 'Write access granted',
+  'Schreibzugriff abgelehnt': 'Write access denied', 'Auswahl': 'Selection', 'Ordner konnte nicht gelesen werden: ': 'Couldn’t read the folder: ',
+  'Bitte einen Ordner ablegen, keine einzelnen Dateien.': 'Please drop a folder, not individual files.', 'Fehler beim Einlesen: ': 'Error while reading: ', 'Schreiben': 'Write',
+  'Nur lesen': 'Read only', 'Neu einlesen': 'Reload', 'Schreibzugriff erteilen': 'Grant write access',
+  'Nur-Lesen-Modus: Umbenennen per Skript (.bat) oder ZIP über „Export“.': 'Read-only mode: rename via a script (.bat) or a ZIP under “Export”.', 'Doppelter Zielname': 'Duplicate target name',
+  'Existiert bereits': 'Already exists', 'Unverändert': 'Unchanged', 'Ausgelassen': 'Skipped', 'Manuell umbenennen': 'Rename manually', 'Neuer Name': 'New name', 'Doppelklick = manuell ändern': 'double-click to edit by hand', 'Browser-Speicher ist voll – die letzte Änderung wurde nicht gespeichert. Einstellungen → Speicher & Sicherung.': 'Browser storage is full – your last change wasn’t saved. See Settings → Storage & backup.',
+  'Auf Regeln zurücksetzen': 'Reset to rules', 'Abbrechen': 'Cancel', 'Übernehmen': 'Apply', 'Alle': 'All', 'Änderungen': 'Changes', 'Probleme': 'Problems', 'werden umbenannt': 'will be renamed',
+  'ausgelassen': 'skipped', 'Noch kein Ordner geladen': 'No folder loaded yet', 'Umbenennen starten?': 'Start renaming?', 'Rückgängig machen?': 'Undo?', 'Zurücksetzen': 'Reset',
+  'Häufige Ursachen: Datei ist in einem anderen Programm geöffnet, fehlende Rechte oder Sync-Tools (OneDrive) sperren die Datei.': 'Common causes: the file is open in another program, missing permissions, or a sync tool (OneDrive) is locking it.',
+  'Keine Änderungen zum Exportieren.': 'No changes to export.', 'ZIP mit umbenannten Kopien': 'ZIP with renamed copies', 'Originale bleiben unangetastet.': 'Originals stay untouched.',
+  'Zu groß für ein Browser-ZIP (> 1,8 GB). Nimm das Skript.': 'Too large for a browser ZIP (> 1.8 GB). Use the script instead.', 'Fehler: ': 'Error: ', 'Exportieren': 'Export',
+  'Alternative zum direkten Umbenennen': 'An alternative to renaming directly',
+  'Nur-Lesen-Modus – der Browser darf hier nicht direkt umbenennen.': 'Read-only mode – the browser isn’t allowed to rename here directly.', 'Windows-Skript (.bat)': 'Windows script (.bat)',
+  'Empfohlen': 'Recommended', 'PowerShell-Skript (.ps1)': 'PowerShell script (.ps1)', 'Wird manchmal von der IT blockiert.': 'Sometimes blocked by IT.', 'Shell-Skript (.sh)': 'Shell script (.sh)',
+  'ZIP-Inhalt': 'ZIP content', 'Nur geänderte': 'Changed only', 'Alle Dateien': 'All files', 'Alt → Neu · Excel': 'Old → new · Excel', 'Suchen & Ersetzen': 'Find & replace',
+  'Groß-/Kleinschreibung': 'Upper/lower case', 'Sonderzeichen bereinigen': 'Clean up special characters', 'Text einfügen': 'Insert text', 'Zeichen entfernen': 'Remove characters',
+  'Nummerierung': 'Numbering', 'Präfix · Suffix · Position': 'Prefix · suffix · position', 'Kürzen, Klammern, Ziffern, Leerzeichen': 'Trim, brackets, digits, spaces', 'Web-tauglich': 'Web-ready',
+  'Mein Foto.JPG → mein-foto.jpg': 'My Photo.JPG → my-photo.jpg', 'Unterstriche statt Leerzeichen': 'Underscores instead of spaces', 'Fotos nummerieren': 'Number photos',
+  'foto_001, foto_002 …': 'photo_001, photo_002 …', 'Datum voranstellen': 'Add date prefix', 'Kopie-Zusätze entfernen': 'Remove copy suffixes',
+  '„ - Kopie“, „(1)“, „copy“': '“ - Copy”, “(1)”, “copy”', 'Endungen klein': 'Lowercase extensions', '„{n}“ entfernt': '“{n}” removed',
+  'Diese Datei muss im Ordner „{n}“ liegen.': 'This file must be inside the folder "{n}".', 'Fertig – {n} Dateien bearbeitet.': 'Done – {n} files processed.',
+  'Bitte im Ordner „{n}“ ausführen.': 'Please run this inside the folder "{n}".', 'Fertig.': 'Done.', 'Enter zum Schließen': 'Press Enter to close',
+  'Bitte im richtigen Ordner ausführen.': 'Please run this inside the right folder.', 'Ordner;Alt;Neu': 'Folder;Old;New', 'Ziel „{n}“ existiert bereits': 'Target “{n}” already exists',
+  'Eigene': 'Custom', 'Lese Ordner …': 'Reading folder …', '{n} umbenennen': 'Rename {n}', 'Exportieren …': 'Export …',
+  '{n} Dateien in „{d}“ werden umbenannt.': '{n} files in “{d}” will be renamed.', '{n} problematische Einträge werden übersprungen.': '{n} problematic entries will be skipped.',
+  'Mit „Rückgängig“ lässt sich das danach wieder zurückdrehen.': 'You can revert it afterwards with “Undo”.', '{n} Umbenennungen werden zurückgesetzt.': '{n} renames will be reverted.',
+  'In „{n}“ legen & doppelklicken – ohne Admin-Rechte.': 'Put it in “{n}” and double-click – no admin rights needed.', 'Kein Text': 'No text', 'Ordner': 'Folder', 'Dateien': 'Files',
+  'Umbenennen': 'Rename',
+  // Bildbenamung
+  'Bitte Chrome, Edge oder Brave verwenden.': 'Please use Chrome, Edge or Brave.', 'Ohne Schreibrechte lässt sich nichts umbenennen.': 'Without write access, nothing can be renamed.',
+  'Keine Bilddateien in diesem Ordner.': 'No image files in this folder.', 'Bildnamen aus Bausteinen klicken · PSD, JPG, PNG, WebP …': 'Build image names from blocks · PSD, JPG, PNG, WebP …',
+  'Nur in Chrome, Edge oder Brave.': 'Only in Chrome, Edge or Brave.', 'Basis eingeben': 'Enter a base', 'Entfernen': 'Remove', 'Typ': 'Type',
+  'Name belegt – Nummer angehängt': 'Name taken – number added', 'Noch keine Bausteine — über ⚙ anlegen': 'No blocks yet – add some via ⚙', 'Letztes Bild erreicht.': 'That was the last image.',
+  'Nichts zum Rückgängigmachen.': 'Nothing to undo.', 'Rückgängig gemacht.': 'Undone.', 'Exportieren': 'Export', 'Importieren': 'Import', 'Fertig': 'Done', 'Bausteine geladen': 'Blocks loaded',
+  'Datei konnte nicht gelesen werden': 'Couldn’t read the file', 'Bausteine': 'Blocks', 'Vorschau': 'Preview', 'Basis': 'Base', 'z. B. Projekt, Artikel, Name …': 'e.g. project, product, name …',
+  'Dateiname': 'File name', 'Baustein anklicken zum Entfernen': 'Click a block to remove it', 'noch kein Name': 'no name yet', 'Übernehmen & weiter': 'Apply & next', 'Leeren': 'Clear',
+  'Überspringen': 'Skip', 'Bausteine bearbeiten': 'Edit blocks', 'Dateien': 'Files', 'Vorbereitung zurücksetzen': 'Reset prepared names', 'Alle umbenennen': 'Rename all',
+  'keine Vorschau': 'no preview', 'Baustein': 'Block', '{a} vorbereitet · {b} umbenannt': '{a} prepared · {b} renamed', 'Gruppe': 'Group', 'Neue Gruppe': 'New group', 'Namensregeln': 'Naming rules',
+  'Immer Nummer anhängen': 'Always add a number', 'Trennzeichen': 'Separator', 'Nummer-Stellen': 'Number digits', 'Ordner öffnen': 'Open folder',
   // PDF-Werk
   'Keine PDFs oder Bilder gefunden.': 'No PDFs or images found.', 'PDF-Werkzeuge konnten nicht geladen werden: ': 'Couldn’t load the PDF tools: ', 'Lade Dateien …': 'Loading files …',
   'Seite entfernen': 'Remove page', 'Bild': 'Image', 'Speichern fehlgeschlagen: ': 'Saving failed: ', 'PDFs oder Bilder hierher ziehen': 'Drop PDFs or images here', 'oder': 'or',
@@ -3910,7 +3976,7 @@ const EN = {
   'Stattdessen öffnen': 'Open instead', 'Meine LUTs': 'My LUTs', 'Kein Ordner ausgewählt.': 'No folder selected.', 'Ganzes Bild': 'Whole image', 'Wegnehmen auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben': 'Erasing on “{n}” · Alt to invert · [ ] for brush size · Space to pan', 'Hinzufügen auf „{n}“ · Alt = umkehren · [ ] = Pinsel · Leertaste = verschieben': 'Restoring on “{n}” · Alt to invert · [ ] for brush size · Space to pan',
   'Malen auf „{n}“ · [ ] = Pinsel · Strg+Z = zurück': 'Painting on “{n}” · [ ] for brush size · Ctrl+Z to undo', '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.',
   '{a}: {p} % des Bildes': '{a}: {p} % of the image', 'Zurückgeholt': 'Restored', 'Entfernt': 'Removed', '„{n}“ als Ebene eingefügt': '“{n}” added as a layer',
-  '{n} Ebenen eingefügt': '{n} layers added', 'B': 'W', 'F': 'B', 'K': 'I',
+  '{n} Ebenen eingefügt': '{n} layers added', 
   // Settings, app settings, folder backup & diagnostics
   'Einstellungen': 'Settings', 'Gelten für alle Tools · Version {v}': 'For all tools · version {v}', 'Darstellung': 'Appearance', 'Theme': 'Theme', 'Akzentfarbe': 'Accent color',
   'Animationen': 'Animations', 'Maskottchen': 'Mascot', 'Anzeigen': 'Show', 'Größe': 'Size', 'Startseite': 'Home page', 'Start': 'Startup', 'Name': 'Name',
@@ -4232,7 +4298,7 @@ function modal({ title, sub, body, actions = [], width, onClose }) {
     onclick: async () => { const r = await a.onClick?.(close); if (r !== false && a.close !== false) close(); },
   }, a.icon && icon(a.icon), a.label))) : null;
   const m = h('div', { class: 'modal', style: width ? { width: `min(${width}px, calc(100vw - 32px))` } : null },
-    h('header', null, h('div', null, h('h3', null, title), sub && h('p', null, sub)), h('button', { class: 'icon-btn', title: 'Schließen', onclick: close }, icon('x'))),
+    h('header', null, h('div', null, h('h3', null, title), sub && h('p', null, sub)), h('button', { class: 'icon-btn', title: T('Schließen'), onclick: close }, icon('x'))),
     h('div', { class: 'body' }, body), foot);
   bd.append(m);
   bd.addEventListener('mousedown', e => { if (e.target === bd) close(); });
@@ -5213,7 +5279,7 @@ function openSettings(keepScroll) {
 const splitName = n => { const i = n.lastIndexOf('.'); return i > 0 ? [n.slice(0, i), n.slice(i + 1)] : [n, '']; };
 const joinName = (b, x) => x ? b + '.' + x : b;
 const tokens = (s, ctx) => s.replace(/\{(date|time|folder)\}/g, (m, k) => ctx[k] ?? m);
-const scopeLabel = s => ({ name: 'Name', ext: 'Endung', all: 'Name + Endung' })[s] || 'Name';
+const scopeLabel = s => ({ name: 'Name', ext: T('Endung'), all: T('Name + Endung') })[s] || 'Name';
 const UML = { ä: 'ae', ö: 'oe', ü: 'ue', Ä: 'Ae', Ö: 'Oe', Ü: 'Ue', ß: 'ss' };
 
 const F = {
@@ -5226,7 +5292,7 @@ const F = {
     h('select', { class: 'inp', onchange: e => set(k, e.target.value) }, opts.map(([v, l]) => h('option', { value: v, selected: p[k] === v }, l)))),
   sw: (label, p, k, set) => h('label', { class: 'chk-row' }, h('span', null, label), switchEl(p[k], v => set(k, v))),
   seg: (label, p, k, set, opts) => h('div', { class: 'field' }, label && h('label', null, label), segEl(opts, p[k], v => set(k, v))),
-  scope: (p, set) => F.seg('Anwenden auf', p, 'scope', set, [['name', 'Name'], ['ext', 'Endung'], ['all', 'Name + Endung']]),
+  scope: (p, set) => F.seg(T('Anwenden auf'), p, 'scope', set, [['name', 'Name'], ['ext', T('Endung')], ['all', T('Name + Endung')]]),
   row: (...k) => h('div', { class: 'row2' }, k),
 };
 
@@ -5236,12 +5302,12 @@ const RULES = {
     defaults: () => ({ find: '', repl: '', cs: false, all: true, scope: 'name' }),
     compile: p => p.find ? new RegExp(escRe(p.find), (p.all ? 'g' : '') + (p.cs ? '' : 'i')) : null,
     apply: (s, p, re) => re ? s.replace(re, () => p.repl) : s,
-    summary: p => p.find ? `„${p.find}“ → „${p.repl}“` : 'Kein Suchbegriff',
+    summary: p => p.find ? `„${p.find}“ → „${p.repl}“` : T('Kein Suchbegriff'),
     form: (p, set) => [
-      F.text('Suchen', p, 'find', set, { ph: 'Text …' }),
-      F.text('Ersetzen durch', p, 'repl', set, { ph: 'leer = entfernen' }),
-      F.sw('Groß-/Kleinschreibung beachten', p, 'cs', set),
-      F.sw('Alle Vorkommen ersetzen', p, 'all', set),
+      F.text(T('Suchen'), p, 'find', set, { ph: T('Text …') }),
+      F.text(T('Ersetzen durch'), p, 'repl', set, { ph: T('leer = entfernen') }),
+      F.sw(T('Groß-/Kleinschreibung beachten'), p, 'cs', set),
+      F.sw(T('Alle Vorkommen ersetzen'), p, 'all', set),
       F.scope(p, set)],
   },
   regex: {
@@ -5249,12 +5315,12 @@ const RULES = {
     defaults: () => ({ pattern: '', repl: '', g: true, i: false, scope: 'name' }),
     compile: p => p.pattern ? new RegExp(p.pattern, (p.g ? 'g' : '') + (p.i ? 'i' : '')) : null,
     apply: (s, p, re) => re ? s.replace(re, p.repl) : s,
-    summary: p => p.pattern ? `/${p.pattern}/ → ${p.repl || '∅'}` : 'Kein Muster',
+    summary: p => p.pattern ? `/${p.pattern}/ → ${p.repl || '∅'}` : T('Kein Muster'),
     form: (p, set) => [
-      F.text('Muster', p, 'pattern', set, { mono: true, ph: 'z. B. ^(\\d+)[_ -](.+)$' }),
-      F.text('Ersetzen durch', p, 'repl', set, { mono: true, ph: 'z. B. $2_$1' }),
+      F.text(T('Muster'), p, 'pattern', set, { mono: true, ph: 'z. B. ^(\\d+)[_ -](.+)$' }),
+      F.text(T('Ersetzen durch'), p, 'repl', set, { mono: true, ph: 'z. B. $2_$1' }),
       F.row(F.sw('Global (g)', p, 'g', set), F.sw('Ignore case (i)', p, 'i', set)),
-      h('p', { class: 'hint' }, '$1, $2 … Gruppen · $<name> benannte Gruppe · $& ganzer Treffer'),
+      h('p', { class: 'hint' }, T('$1, $2 … Gruppen · $<name> benannte Gruppe · $& ganzer Treffer')),
       F.scope(p, set)],
   },
   case: {
@@ -5264,7 +5330,7 @@ const RULES = {
       : p.mode === 'title' ? s.toLowerCase().replace(/(^|[\s_\-.(\[])(\p{L})/gu, (m, a, b) => a + b.toUpperCase())
       : s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(),
     summary: p => ({ lower: 'abc', upper: 'ABC', title: 'Abc Def', sentence: 'Abc def' })[p.mode] + ' · ' + scopeLabel(p.scope),
-    form: (p, set) => [F.seg('Modus', p, 'mode', set, [['lower', 'abc'], ['upper', 'ABC'], ['title', 'Abc Def'], ['sentence', 'Abc def']]), F.scope(p, set)],
+    form: (p, set) => [F.seg(T('Modus'), p, 'mode', set, [['lower', 'abc'], ['upper', 'ABC'], ['title', 'Abc Def'], ['sentence', 'Abc def']]), F.scope(p, set)],
   },
   clean: {
     label: 'Sonderzeichen bereinigen', badge: '✦', color: '#fbbf24', desc: 'ä → ae · é → e · ␣ → _',
@@ -5280,13 +5346,13 @@ const RULES = {
       if (p.trim) t = t.replace(/^[ ._-]+|[ ._-]+$/g, '');
       return t;
     },
-    summary: p => [p.umlauts && 'ä → ae', p.accents && 'é → e', p.space !== 'keep' && `␣ → ${p.space || '∅'}`, p.utoD && '_ → -', p.strict && 'a–z 0–9'].filter(Boolean).join(' · ') || 'Nur verbotene Zeichen',
+    summary: p => [p.umlauts && 'ä → ae', p.accents && 'é → e', p.space !== 'keep' && `␣ → ${p.space || '∅'}`, p.utoD && '_ → -', p.strict && 'a–z 0–9'].filter(Boolean).join(' · ') || T('Nur verbotene Zeichen'),
     form: (p, set) => [
       F.sw('ä → ae, ß → ss', p, 'umlauts', set),
       F.sw('é → e', p, 'accents', set),
-      F.sel('Leerzeichen', p, 'space', set, [['_', '→ _'], ['-', '→ -'], ['.', '→ .'], ['', '→ ∅'], ['keep', 'behalten']]),
+      F.sel(T('Leerzeichen'), p, 'space', set, [['_', '→ _'], ['-', '→ -'], ['.', '→ .'], ['', '→ ∅'], ['keep', T('behalten')]]),
       F.sw('_ → -', p, 'utoD', set),
-      F.sw('Nur a–z 0–9 _ - .', p, 'strict', set),
+      F.sw(T('Nur a–z 0–9 _ - .'), p, 'strict', set),
       F.sw('__ → _', p, 'collapse', set),
       F.sw('_abc_ → abc', p, 'trim', set),
       F.scope(p, set)],
@@ -5301,11 +5367,11 @@ const RULES = {
       const a = [...s], i = Math.max(0, Math.min(a.length, p.at < 0 ? a.length + p.at : p.at));
       a.splice(i, 0, t); return a.join('');
     },
-    summary: p => p.text ? `„${p.text}“ ${p.pos === 'start' ? 'am Anfang' : p.pos === 'end' ? 'am Ende' : 'nach Zeichen ' + p.at}` : 'Kein Text',
+    summary: p => p.text ? `„${p.text}“ ${p.pos === 'start' ? '→ |' : p.pos === 'end' ? '| ←' : '→ #' + p.at}` : T('Kein Text'),
     form: (p, set) => [
       F.text('Text', p, 'text', set, { ph: '{date}_', hint: '{date} {time} {folder}' }),
-      F.seg('Position', p, 'pos', set, [['start', 'Anfang'], ['end', 'Ende'], ['at', 'Position …']]),
-      p.pos === 'at' && F.num('Nach Zeichen Nr. (negativ = von hinten)', p, 'at', set),
+      F.seg('Position', p, 'pos', set, [['start', T('Anfang')], ['end', T('Ende')], ['at', T('Position …')]]),
+      p.pos === 'at' && F.num(T('Nach Zeichen Nr. (negativ = von hinten)'), p, 'at', set),
       F.scope(p, set)],
   },
   remove: {
@@ -5322,13 +5388,13 @@ const RULES = {
       if (p.spaces) t = t.replace(/\s+/g, '');
       return t;
     },
-    summary: p => [p.first > 0 && `erste ${p.first}`, p.last > 0 && `letzte ${p.last}`, p.from > 0 && p.count > 0 && `${p.count} ab Pos. ${p.from}`, p.brackets && 'Klammern', p.digits && 'Ziffern', p.spaces && 'Leerzeichen'].filter(Boolean).join(' · ') || 'Nichts gewählt',
+    summary: p => [p.first > 0 && `|${p.first}…`, p.last > 0 && `…${p.last}|`, p.from > 0 && p.count > 0 && `${p.count} @ ${p.from}`, p.brackets && T('Klammern'), p.digits && T('Ziffern'), p.spaces && T('Leerzeichen')].filter(Boolean).join(' · ') || T('Nichts gewählt'),
     form: (p, set) => [
-      F.row(F.num('Erste N Zeichen', p, 'first', set, { min: 0 }), F.num('Letzte N Zeichen', p, 'last', set, { min: 0 })),
-      F.row(F.num('Ab Position', p, 'from', set, { min: 0 }), F.num('Anzahl', p, 'count', set, { min: 0 })),
+      F.row(F.num(T('Erste N Zeichen'), p, 'first', set, { min: 0 }), F.num(T('Letzte N Zeichen'), p, 'last', set, { min: 0 })),
+      F.row(F.num(T('Ab Position'), p, 'from', set, { min: 0 }), F.num(T('Anzahl'), p, 'count', set, { min: 0 })),
       F.sw('(1) [x] {y}', p, 'brackets', set),
       F.sw('0–9', p, 'digits', set),
-      F.sw('Alle Leerzeichen', p, 'spaces', set),
+      F.sw(T('Alle Leerzeichen'), p, 'spaces', set),
       F.scope(p, set)],
   },
   number: {
@@ -5341,10 +5407,10 @@ const RULES = {
     },
     summary: p => p.pattern.replace('{n}', String(p.start).padStart(p.pad, '0')),
     form: (p, set) => [
-      F.text('Muster', p, 'pattern', set, { mono: true, ph: '{name}_{n}', hint: '{name} {n} {date} {folder}' }),
-      h('div', { class: 'row3' }, F.num('Start', p, 'start', set), F.num('Schritt', p, 'step', set), F.num('Stellen', p, 'pad', set, { min: 0, max: 12 })),
-      F.sw('Pro Ordner neu zählen', p, 'perFolder', set),
-      h('p', { class: 'hint' }, 'Reihenfolge = Sortierung unter „Quelle“.')],
+      F.text(T('Muster'), p, 'pattern', set, { mono: true, ph: '{name}_{n}', hint: '{name} {n} {date} {folder}' }),
+      h('div', { class: 'row3' }, F.num('Start', p, 'start', set), F.num(T('Schritt'), p, 'step', set), F.num(T('Stellen'), p, 'pad', set, { min: 0, max: 12 })),
+      F.sw(T('Pro Ordner neu zählen'), p, 'perFolder', set),
+      h('p', { class: 'hint' }, T('Reihenfolge = Sortierung unter „Quelle“.'))],
   },
 };
 
@@ -5359,13 +5425,13 @@ const BR_PRESETS = [
 ];
 
 function checkName(n, orig) {
-  if (!n.trim()) return 'Leerer Name';
-  if (n === '.' || n === '..') return 'Ungültiger Name';
-  if (/[<>:"/\\|?*\x00-\x1f]/.test(n)) return 'Verbotenes Zeichen';
-  if (/[. ]$/.test(n)) return 'Endet mit Punkt/Leerzeichen';
-  if (/^(con|prn|aux|nul|com\d|lpt\d)$/i.test(n.split('.')[0])) return 'Reservierter Name';
-  if (n.length > 255) return 'Zu lang (> 255)';
-  if (n.startsWith('.') && !orig.startsWith('.')) return 'Name leer (nur Endung)';
+  if (!n.trim()) return T('Leerer Name');
+  if (n === '.' || n === '..') return T('Ungültiger Name');
+  if (/[<>:"/\\|?*\x00-\x1f]/.test(n)) return T('Verbotenes Zeichen');
+  if (/[. ]$/.test(n)) return T('Endet mit Punkt/Leerzeichen');
+  if (/^(con|prn|aux|nul|com\d|lpt\d)$/i.test(n.split('.')[0])) return T('Reservierter Name');
+  if (n.length > 255) return T('Zu lang (> 255)');
+  if (n.startsWith('.') && !orig.startsWith('.')) return T('Name leer (nur Endung)');
   return null;
 }
 
@@ -5414,38 +5480,38 @@ function scriptSteps(ops) {
 function makeBat(ops, root) {
   const steps = scriptSteps(ops), q = s => s.replace(/%/g, '%%'), ec = s => q(s).replace(/([&|<>^()])/g, '^$1');
   const p = (d, n) => (d ? d.replace(/\//g, '\\') + '\\' : '') + n, f = steps[0];
-  return ['@echo off', 'chcp 65001 >nul', `rem TT Bulk Rename – ${new Date().toLocaleString('de-DE')}`, `rem Ordner: ${ec(root)} – ${ops.length} Dateien`, 'cd /d "%~dp0"',
-    `if not exist "${q(p(f.dirPath, f.from))}" (`, `  echo Diese Datei muss im Ordner "${ec(root)}" liegen.`, '  pause', '  exit /b 1', ')',
+  return ['@echo off', 'chcp 65001 >nul', `rem TT Bulk Rename – ${new Date().toLocaleString(isEN() ? 'en-GB' : 'de-DE')}`, `rem ${T('Ordner')}: ${ec(root)} – ${ops.length} ${T('Dateien')}`, 'cd /d "%~dp0"',
+    `if not exist "${q(p(f.dirPath, f.from))}" (`, `  echo ${T('Diese Datei muss im Ordner „{n}“ liegen.', { n: ec(root) })}`, '  pause', '  exit /b 1', ')',
     ...steps.map(s => `ren "${q(p(s.dirPath, s.from))}" "${q(s.to)}"`),
-    'echo.', `echo Fertig – ${ops.length} Dateien bearbeitet.`, 'pause', ''].join('\r\n');
+    'echo.', `echo ${T('Fertig – {n} Dateien bearbeitet.', { n: ops.length })}`, 'pause', ''].join('\r\n');
 }
 function makePs1(ops, root) {
   const steps = scriptSteps(ops), q = s => "'" + s.replace(/['‘’‚‛]/g, m => m + m) + "'", p = (d, n) => (d ? d.replace(/\//g, '\\') + '\\' : '') + n, f = steps[0];
-  return '\ufeff' + [`# TT Bulk Rename – ${new Date().toLocaleString('de-DE')} – ${ops.length} Dateien`, 'Set-Location -LiteralPath $PSScriptRoot',
-    `if (-not (Test-Path -LiteralPath ${q(p(f.dirPath, f.from))})) { Write-Host ${q(`Bitte im Ordner "${root}" ausführen.`)}; Read-Host; exit 1 }`,
+  return '\ufeff' + [`# TT Bulk Rename – ${new Date().toLocaleString(isEN() ? 'en-GB' : 'de-DE')} – ${ops.length} ${T('Dateien')}`, 'Set-Location -LiteralPath $PSScriptRoot',
+    `if (-not (Test-Path -LiteralPath ${q(p(f.dirPath, f.from))})) { Write-Host ${q(T('Bitte im Ordner „{n}“ ausführen.', { n: root }))}; Read-Host; exit 1 }`,
     ...steps.map(s => `Rename-Item -LiteralPath ${q(p(s.dirPath, s.from))} -NewName ${q(s.to)}`),
-    "Write-Host 'Fertig.'", "Read-Host 'Enter zum Schließen'", ''].join('\r\n');
+    `Write-Host '${T('Fertig.')}'`, `Read-Host '${T('Enter zum Schließen')}'`, ''].join('\r\n');
 }
 function makeSh(ops) {
   const steps = scriptSteps(ops), q = s => "'" + s.replace(/'/g, "'\\''") + "'", p = (d, n) => (d ? d + '/' : '') + n, f = steps[0];
-  return ['#!/bin/sh', `# TT Bulk Rename – ${ops.length} Dateien`, 'cd "$(dirname "$0")" || exit 1',
-    `[ -e ${q(p(f.dirPath, f.from))} ] || { echo 'Bitte im richtigen Ordner ausführen.'; exit 1; }`,
-    ...steps.map(s => `mv -n -- ${q(p(s.dirPath, s.from))} ${q(p(s.dirPath, s.to))}`), "echo 'Fertig.'", ''].join('\n');
+  return ['#!/bin/sh', `# TT Bulk Rename – ${ops.length} ${T('Dateien')}`, 'cd "$(dirname "$0")" || exit 1',
+    `[ -e ${q(p(f.dirPath, f.from))} ] || { echo '${T('Bitte im richtigen Ordner ausführen.')}'; exit 1; }`,
+    ...steps.map(s => `mv -n -- ${q(p(s.dirPath, s.from))} ${q(p(s.dirPath, s.to))}`), `echo '${T('Fertig.')}'`, ''].join('\n');
 }
 function makeCsv(ops) {
   const q = s => '"' + String(s).replace(/"/g, '""') + '"';
-  return '\ufeff' + ['Ordner;Alt;Neu', ...ops.map(o => [o.dirPath || '.', o.from, o.to].map(q).join(';'))].join('\r\n');
+  return '\ufeff' + [T('Ordner;Alt;Neu'), ...ops.map(o => [o.dirPath || '.', o.from, o.to].map(q).join(';'))].join('\r\n');
 }
 
 async function fsExists(dir, name) {
   try { await dir.getFileHandle(name); return true; } catch (e) { return e.name === 'TypeMismatchError'; }
 }
 async function fsRename(dir, from, to, allowCopy) {
-  if (await fsExists(dir, to)) throw new Error(`Ziel „${to}“ existiert bereits`);
+  if (await fsExists(dir, to)) throw new Error(T('Ziel „{n}“ existiert bereits', { n: to }));
   const fh = await dir.getFileHandle(from);
   if (typeof fh.move === 'function') {
     try { await fh.move(to); return; } catch (e) { if (!allowCopy) throw e; }
-  } else if (!allowCopy) throw new Error('Direktes Umbenennen wird nicht unterstützt (Fallback deaktiviert)');
+  } else if (!allowCopy) throw new Error(T('Direktes Umbenennen wird nicht unterstützt (Fallback deaktiviert)'));
   const nh = await dir.getFileHandle(to, { create: true });
   try {
     const w = await nh.createWritable();
@@ -5510,59 +5576,59 @@ function mountBulkRename(view) {
   const srcBox = h('div', { class: 'stack' });
   const extInp = h('input', { class: 'inp', placeholder: 'jpg, png, pdf …', value: st.opts.exts, spellcheck: false, oninput: debounce(e => { st.opts.exts = e.target.value; saveOpts(); applyFilter(); }, 200) });
   const sortSel = h('select', { class: 'inp', onchange: e => { st.opts.sort = e.target.value; saveOpts(); schedule(); } },
-    [['name', 'Name (natürlich)'], ['mtime', 'Änderungsdatum'], ['size', 'Größe'], ['ext', 'Dateityp']].map(([v, l]) => h('option', { value: v, selected: st.opts.sort === v }, l)));
-  const dirBtn = h('button', { class: 'mini boxed', title: 'Reihenfolge umkehren', onclick: () => { st.opts.desc = !st.opts.desc; saveOpts(); dirBtn.replaceChildren(icon(st.opts.desc ? 'down' : 'up')); schedule(); } }, icon(st.opts.desc ? 'down' : 'up'));
+    [['name', T('Name (natürlich)')], ['mtime', T('Änderungsdatum')], ['size', T('Größe')], ['ext', T('Dateityp')]].map(([v, l]) => h('option', { value: v, selected: st.opts.sort === v }, l)));
+  const dirBtn = h('button', { class: 'mini boxed', title: T('Reihenfolge umkehren'), onclick: () => { st.opts.desc = !st.opts.desc; saveOpts(); dirBtn.replaceChildren(icon(st.opts.desc ? 'down' : 'up')); schedule(); } }, icon(st.opts.desc ? 'down' : 'up'));
 
   const srcPanel = h('div', { class: 'panel' },
-    h('div', { class: 'panel-h' }, h('h3', null, icon('folder'), 'Quelle')),
+    h('div', { class: 'panel-h' }, h('h3', null, icon('folder'), T('Quelle'))),
     h('div', { class: 'panel-b' },
       h('div', { class: 'src-btns' },
-        h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), 'Ordner öffnen'),
-        h('button', { class: 'btn', title: 'Nur-Lesen-Modus: Dateien einlesen, Umbenennen per Skript oder ZIP', onclick: () => fileInput.click() }, icon('lock'))),
+        h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), T('Ordner öffnen')),
+        h('button', { class: 'btn', title: T('Nur-Lesen-Modus: Dateien einlesen, Umbenennen per Skript oder ZIP'), onclick: () => fileInput.click() }, icon('lock'))),
       srcBox,
-      h('label', { class: 'chk-row' }, h('span', null, 'Unterordner einbeziehen'), switchEl(st.opts.recursive, v => { st.opts.recursive = v; saveOpts(); if (st.src) rescan(); })),
-      h('div', { class: 'field' }, h('label', null, 'Nur Dateitypen'), extInp),
-      h('div', { class: 'field' }, h('label', null, 'Sortierung'), h('div', { class: 'sortrow' }, sortSel, dirBtn))),
+      h('label', { class: 'chk-row' }, h('span', null, T('Unterordner einbeziehen')), switchEl(st.opts.recursive, v => { st.opts.recursive = v; saveOpts(); if (st.src) rescan(); })),
+      h('div', { class: 'field' }, h('label', null, T('Nur Dateitypen')), extInp),
+      h('div', { class: 'field' }, h('label', null, T('Sortierung')), h('div', { class: 'sortrow' }, sortSel, dirBtn))),
     fileInput);
 
   /* --- Rules --- */
   const rulesEl = h('div', { class: 'rules' });
   const rulesCount = h('span', { class: 'badge' }, '0');
   const rulesPanel = h('div', { class: 'panel' },
-    h('div', { class: 'panel-h' }, h('h3', null, icon('layers'), 'Regeln', rulesCount),
+    h('div', { class: 'panel-h' }, h('h3', null, icon('layers'), T('Regeln'), rulesCount),
       h('div', { class: 'panel-actions' },
-        h('button', { class: 'btn sm ghost', onclick: e => presetMenu(e.currentTarget) }, icon('save'), 'Vorlagen'),
-        h('button', { class: 'btn sm primary', onclick: e => popMenu(e.currentTarget, Object.entries(RULES).map(([t, d]) => ({ label: d.label, desc: d.desc, badge: d.badge, color: d.color, onClick: () => addRule(t) }))) }, icon('plus'), 'Regel'))),
-    h('div', { class: 'panel-b' }, rulesEl, h('p', { class: 'hint' }, 'Regeln: oben → unten · Doppelklick auf einen Namen = manuell ändern')));
+        h('button', { class: 'btn sm ghost', onclick: e => presetMenu(e.currentTarget) }, icon('save'), T('Vorlagen')),
+        h('button', { class: 'btn sm primary', onclick: e => popMenu(e.currentTarget, Object.entries(RULES).map(([t, d]) => ({ label: T(d.label), desc: T(d.desc), badge: d.badge, color: d.color, onClick: () => addRule(t) }))) }, icon('plus'), T('Regel')))),
+    h('div', { class: 'panel-b' }, rulesEl, h('p', { class: 'hint' }, T('Regeln: oben → unten · Doppelklick auf einen Namen = manuell ändern'))));
 
   /* --- List --- */
   const segFilter = h('div', { class: 'seg' });
-  const searchInp = h('input', { class: 'inp', placeholder: 'Dateien filtern …', spellcheck: false, oninput: e => { st.q = e.target.value.toLowerCase(); refreshRows(); } });
+  const searchInp = h('input', { class: 'inp', placeholder: T('Dateien filtern …'), spellcheck: false, oninput: e => { st.q = e.target.value.toLowerCase(); refreshRows(); } });
   const headCb = h('input', { type: 'checkbox', class: 'cb', title: 'Alle sichtbaren an/aus', onclick: e => { const v = e.target.checked; st.rows.forEach(r => r.checked = v); schedule(); } });
   const space = h('div', { class: 'vspace' });
   const list = h('div', { class: 'vlist', onscroll: () => { cancelAnimationFrame(sraf); sraf = requestAnimationFrame(renderRows); } }, space);
   const table = h('div', { class: 'table' },
-    h('div', { class: 'lhead' }, h('div', null, headCb), h('div', null, 'Vorher'), h('div'), h('div', null, 'Nachher'), h('div', null, 'Status'), h('div', { class: 'sz' }, 'Größe')),
-    list, h('div', { class: 'norows' }, 'Keine Einträge für diesen Filter.'));
+    h('div', { class: 'lhead' }, h('div', null, headCb), h('div', null, T('Vorher')), h('div'), h('div', null, T('Nachher')), h('div', null, 'Status'), h('div', { class: 'sz' }, T('Größe'))),
+    list, h('div', { class: 'norows' }, T('Keine Einträge für diesen Filter.')));
   const empty = h('div', { class: 'empty' }, h('div', { class: 'drop' },
     h('div', { class: 'big' }, icon('bracketR')),
-    h('h2', null, 'Ordner auswählen'),
-    h('p', null, 'Ordner hierher ziehen oder öffnen – alles bleibt lokal.'),
+    h('h2', null, T('Ordner auswählen')),
+    h('p', null, T('Ordner hierher ziehen oder öffnen – alles bleibt lokal.')),
     h('div', { class: 'drop-actions' },
-      h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), 'Ordner öffnen'),
-      h('button', { class: 'btn', onclick: () => fileInput.click() }, icon('lock'), 'Nur-Lesen-Modus')),
-    (!hasPicker || inFrame) ? h('div', { class: 'callout warn' }, icon('alert'), h('div', null, h('b', null, inFrame ? 'Seite läuft eingebettet' : 'Direkter Ordnerzugriff nicht verfügbar'),
-      h('p', null, inFrame ? 'Öffne die HTML-Datei direkt in Chrome/Edge, damit direktes Umbenennen klappt. Nur-Lesen + Skript geht trotzdem.' : 'Nutze Chrome oder Edge – oder den Nur-Lesen-Modus mit .bat-Export.')))
-      : h('div', { class: 'callout' }, icon('info'), h('div', null, h('b', null, 'Ordner gesperrt?'), h('p', null, 'Nur-Lesen-Modus: Umbenennen per .bat-Skript (ohne Admin-Rechte) oder als ZIP.')))));
+      h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), T('Ordner öffnen')),
+      h('button', { class: 'btn', onclick: () => fileInput.click() }, icon('lock'), T('Nur-Lesen-Modus'))),
+    (!hasPicker || inFrame) ? h('div', { class: 'callout warn' }, icon('alert'), h('div', null, h('b', null, inFrame ? T('Seite läuft eingebettet') : T('Direkter Ordnerzugriff nicht verfügbar')),
+      h('p', null, inFrame ? T('Öffne die HTML-Datei direkt in Chrome/Edge, damit direktes Umbenennen klappt. Nur-Lesen + Skript geht trotzdem.') : T('Nutze Chrome oder Edge – oder den Nur-Lesen-Modus mit .bat-Export.'))))
+      : h('div', { class: 'callout' }, icon('info'), h('div', null, h('b', null, T('Ordner gesperrt?')), h('p', null, T('Nur-Lesen-Modus: Umbenennen per .bat-Skript (ohne Admin-Rechte) oder als ZIP.'))))));
   const listwrap = h('div', { class: 'listwrap empty-mode' }, empty, table,
-    h('div', { class: 'drop-ov' }, h('div', null, icon('folder'), 'Ordner ablegen')));
+    h('div', { class: 'drop-ov' }, h('div', null, icon('folder'), T('Ordner ablegen'))));
 
   const statsEl = h('div', { class: 'stats' });
   const busyTxt = h('span');
   const busyEl = h('div', { class: 'busy' }, h('span', { class: 'spin' }), busyTxt);
-  const undoBtn = h('button', { class: 'btn ghost', onclick: undo, style: { display: 'none' } }, icon('undo'), 'Rückgängig');
-  const expBtn = h('button', { class: 'btn', onclick: () => openExport(), disabled: true, title: 'Skript, ZIP oder CSV' }, icon('download'), 'Export');
-  const goLbl = h('span', null, 'Umbenennen');
+  const undoBtn = h('button', { class: 'btn ghost', onclick: undo, style: { display: 'none' } }, icon('undo'), T('Rückgängig'));
+  const expBtn = h('button', { class: 'btn', onclick: () => openExport(), disabled: true, title: T('Skript, ZIP oder CSV') }, icon('download'), 'Export');
+  const goLbl = h('span', null, T('Umbenennen'));
   const goBtn = h('button', { class: 'btn primary go', onclick: go, disabled: true, title: 'Strg+Enter' }, icon('zap'), goLbl);
 
   const main = h('div', {
@@ -5571,7 +5637,7 @@ function mountBulkRename(view) {
     ondragleave: e => { if (!main.contains(e.relatedTarget)) main.classList.remove('dragging'); },
     ondrop: e => { if (!e.dataTransfer?.types.includes('Files')) return; main.classList.remove('dragging'); onDrop(e); },
   },
-    h('div', { class: 'br-toolbar' }, h('h2', null, 'Vorschau'), segFilter, h('div', { class: 'sp' }), h('div', { class: 'search' }, icon('search'), searchInp)),
+    h('div', { class: 'br-toolbar' }, h('h2', null, T('Vorschau')), segFilter, h('div', { class: 'sp' }), h('div', { class: 'search' }, icon('search'), searchInp)),
     listwrap,
     h('div', { class: 'br-foot' }, statsEl, busyEl, undoBtn, expBtn, goBtn));
 
@@ -5581,7 +5647,7 @@ function mountBulkRename(view) {
   function renderRules() {
     cards.clear();
     rulesEl.replaceChildren(...st.rules.map(ruleCard));
-    if (!st.rules.length) rulesEl.append(h('div', { class: 'rules-empty' }, icon('sparkle'), h('p', null, 'Noch keine Regeln'), h('small', null, 'Über „+ Regel“ hinzufügen oder eine Vorlage laden.')));
+    if (!st.rules.length) rulesEl.append(h('div', { class: 'rules-empty' }, icon('sparkle'), h('p', null, 'Noch keine Regeln'), h('small', null, T('Über „+ Regel“ hinzufügen oder eine Vorlage laden.'))));
     rulesCount.textContent = st.rules.filter(r => r.on).length;
     showRuleErrors();
   }
@@ -5596,15 +5662,15 @@ function mountBulkRename(view) {
     const set = (k, v) => { r.p[k] = v; sum.textContent = def.summary(r.p); if (!r.on) setOn(true); saveRules(); schedule(); if (def.rerender?.includes(k)) fill(); };
     const fill = () => body.replaceChildren(...def.form(r.p, set).filter(Boolean), err);
     fill();
-    const onSw = switchEl(r.on, setOn, 'An/aus');
+    const onSw = switchEl(r.on, setOn, T('An/aus'));
     const card = h('div', { class: 'rule' + (r.on ? '' : ' off') + (r.open ? '' : ' collapsed'), dataset: { id: r.id }, style: { '--c': def.color } },
       h('div', { class: 'rule-h', onclick: e => { if (e.target.closest('button,.sw,.grip')) return; r.open = !r.open; card.classList.toggle('collapsed', !r.open); saveRules(); } },
-        h('span', { class: 'grip', title: 'Ziehen zum Sortieren', onmousedown: () => { card.draggable = true; } }, icon('grip')),
+        h('span', { class: 'grip', title: T('Ziehen zum Sortieren'), onmousedown: () => { card.draggable = true; } }, icon('grip')),
         h('span', { class: 'rb' }, def.badge),
-        h('div', { class: 'rule-t' }, h('b', null, def.label), sum),
+        h('div', { class: 'rule-t' }, h('b', null, T(def.label)), sum),
         onSw,
-        h('button', { class: 'mini', title: 'Duplizieren', onclick: () => { const c = mkRule(r.type, structuredClone(r.p), r.on); st.rules.splice(st.rules.indexOf(r) + 1, 0, c); rulesChanged(); } }, icon('copy')),
-        h('button', { class: 'mini', title: 'Entfernen', onclick: () => removeRule(r) }, icon('trash')),
+        h('button', { class: 'mini', title: T('Duplizieren'), onclick: () => { const c = mkRule(r.type, structuredClone(r.p), r.on); st.rules.splice(st.rules.indexOf(r) + 1, 0, c); rulesChanged(); } }, icon('copy')),
+        h('button', { class: 'mini', title: T('Entfernen'), onclick: () => removeRule(r) }, icon('trash')),
         h('span', { class: 'chev' }, icon('chev'))),
       body);
     card._err = err;
@@ -5640,7 +5706,7 @@ function mountBulkRename(view) {
   function removeRule(r) {
     const i = st.rules.indexOf(r);
     st.rules.splice(i, 1); rulesChanged();
-    toast(`„${RULES[r.type].label}“ entfernt`, 'info', { action: { label: 'Rückgängig', fn: () => { st.rules.splice(i, 0, r); rulesChanged(); } } });
+    toast(T('„{n}“ entfernt', { n: T(RULES[r.type].label) }), 'info', { action: { label: T('Rückgängig'), fn: () => { st.rules.splice(i, 0, r); rulesChanged(); } } });
   }
   function showRuleErrors() {
     for (const r of st.rules) {
@@ -5655,35 +5721,35 @@ function mountBulkRename(view) {
   function presetMenu(anchor) {
     const user = Store.get('br:presets', []);
     popMenu(anchor, [
-      { head: 'Vorlagen' },
-      ...BR_PRESETS.map(pr => ({ label: pr.name, desc: pr.desc, icon: 'layers', onClick: () => loadPreset(pr.rules.map(([t, o]) => mkRule(t, o)), pr.name) })),
-      ...(user.length ? ['-', { head: 'Eigene' }, ...user.map(pr => ({ label: pr.name, desc: `${pr.rules.length} Regel${pr.rules.length === 1 ? '' : 'n'}`, icon: 'save', onClick: () => loadPreset(pr.rules.filter(x => RULES[x.type]).map(x => mkRule(x.type, x.p, x.on)), pr.name) }))] : []),
+      { head: T('Vorlagen') },
+      ...BR_PRESETS.map(pr => ({ label: T(pr.name), desc: T(pr.desc), icon: 'layers', onClick: () => loadPreset(pr.rules.map(([t, o]) => mkRule(t, isEN() && o.pattern === 'foto_{n}' ? { ...o, pattern: 'photo_{n}' } : o)), T(pr.name)) })),
+      ...(user.length ? ['-', { head: T('Eigene') }, ...user.map(pr => ({ label: pr.name, desc: `${pr.rules.length} × ⚙`, icon: 'save', onClick: () => loadPreset(pr.rules.filter(x => RULES[x.type]).map(x => mkRule(x.type, x.p, x.on)), pr.name) }))] : []),
       '-',
-      { label: 'Aktuelle Regeln speichern …', icon: 'save', onClick: savePreset, disabled: !st.rules.length },
-      user.length && { label: 'Eigene Vorlagen verwalten …', icon: 'settings', onClick: managePresets },
-      { label: 'Regeln exportieren (.json)', icon: 'download', onClick: exportRules, disabled: !st.rules.length },
-      { label: 'Regeln importieren …', icon: 'upload', onClick: importRules },
-      st.rules.length && { label: 'Alle Regeln entfernen', icon: 'trash', danger: true, onClick: () => { const old = st.rules; st.rules = []; rulesChanged(); toast('Alle Regeln entfernt', 'info', { action: { label: 'Rückgängig', fn: () => { st.rules = old; rulesChanged(); } } }); } },
+      { label: T('Aktuelle Regeln speichern …'), icon: 'save', onClick: savePreset, disabled: !st.rules.length },
+      user.length && { label: T('Eigene Vorlagen verwalten …'), icon: 'settings', onClick: managePresets },
+      { label: T('Regeln exportieren (.json)'), icon: 'download', onClick: exportRules, disabled: !st.rules.length },
+      { label: T('Regeln importieren …'), icon: 'upload', onClick: importRules },
+      st.rules.length && { label: T('Alle Regeln entfernen'), icon: 'trash', danger: true, onClick: () => { const old = st.rules; st.rules = []; rulesChanged(); toast(T('Alle Regeln entfernt'), 'info', { action: { label: T('Rückgängig'), fn: () => { st.rules = old; rulesChanged(); } } }); } },
     ]);
   }
-  function loadPreset(rules, name) { st.rules = rules; rulesChanged(); toast(`Vorlage „${name}“ geladen`, 'ok'); }
+  function loadPreset(rules, name) { st.rules = rules; rulesChanged(); toast(`„${name}“ ✓`, 'ok'); }
   async function savePreset() {
-    const name = await promptBox('Vorlage speichern', 'Name der Vorlage');
+    const name = await promptBox(T('Vorlage speichern'), T('Name der Vorlage'));
     if (!name) return;
     const user = Store.get('br:presets', []).filter(p => p.name !== name);
     user.push({ name, rules: st.rules.map(r => ({ type: r.type, on: r.on, p: r.p })) });
     Store.set('br:presets', user);
-    toast(`Vorlage „${name}“ gespeichert`, 'ok');
+    toast(`„${name}“ ✓`, 'ok');
   }
   function managePresets() {
     const box = h('div', { class: 'stack' });
     const render = () => {
       const user = Store.get('br:presets', []);
-      box.replaceChildren(...(user.length ? user.map(p => h('div', { class: 'preset-row' }, h('b', null, p.name), h('span', { class: 'hint' }, `${p.rules.length} Regeln`),
-        h('button', { class: 'mini', title: 'Löschen', onclick: () => { Store.set('br:presets', Store.get('br:presets', []).filter(x => x.name !== p.name)); render(); } }, icon('trash')))) : [h('p', { class: 'hint' }, 'Keine eigenen Vorlagen.')]));
+      box.replaceChildren(...(user.length ? user.map(p => h('div', { class: 'preset-row' }, h('b', null, p.name), h('span', { class: 'hint' }, `${p.rules.length} × ⚙`),
+        h('button', { class: 'mini', title: T('Löschen'), onclick: () => { Store.set('br:presets', Store.get('br:presets', []).filter(x => x.name !== p.name)); render(); } }, icon('trash')))) : [h('p', { class: 'hint' }, T('Keine eigenen Vorlagen.'))]));
     };
     render();
-    modal({ title: 'Eigene Vorlagen', body: box, actions: [{ label: 'Fertig', kind: 'primary' }] });
+    modal({ title: T('Eigene Vorlagen'), body: box, actions: [{ label: T('Fertig'), kind: 'primary' }] });
   }
   function exportRules() {
     download('tt-rename-regeln.json', JSON.stringify({ tt: 'bulk-rename', version: 1, rules: st.rules.map(r => ({ type: r.type, on: r.on, p: r.p })) }, null, 2), 'application/json');
@@ -5694,9 +5760,9 @@ function mountBulkRename(view) {
     try {
       const j = JSON.parse(await f.text());
       const arr = (j.rules || j).filter(x => RULES[x.type]);
-      if (!arr.length) throw new Error('Keine gültigen Regeln gefunden');
+      if (!arr.length) throw new Error(T('Keine gültigen Regeln gefunden'));
       loadPreset(arr.map(x => mkRule(x.type, x.p, x.on !== false)), f.name);
-    } catch (e) { toast('Import fehlgeschlagen: ' + e.message, 'err'); }
+    } catch (e) { toast(T('Import fehlgeschlagen: ') + e.message, 'err'); }
   }
 
   /* --- Loading --- */
@@ -5712,10 +5778,10 @@ function mountBulkRename(view) {
   }
   function showAccessError(e) {
     modal({
-      title: 'Ordnerzugriff nicht möglich', sub: `${e.name}: ${e.message}`,
+      title: T('Ordnerzugriff nicht möglich'), sub: `${e.name}: ${e.message}`,
       body: h('div', { class: 'stack' }, h('p', { class: 'muted' }, fsHint(e)),
-        h('div', { class: 'callout' }, icon('info'), h('div', null, h('b', null, 'Nur-Lesen-Modus'), h('p', null, 'Dateien werden nur eingelesen. Umbenannt wird danach per .bat-Skript (ohne Admin-Rechte) oder per ZIP-Download.')))),
-      actions: [{ label: 'Schließen', kind: 'ghost' }, { label: 'Nur-Lesen-Modus', kind: 'primary', icon: 'lock', onClick: () => fileInput.click() }],
+        h('div', { class: 'callout' }, icon('info'), h('div', null, h('b', null, T('Nur-Lesen-Modus')), h('p', null, 'Dateien werden nur eingelesen. Umbenannt wird danach per .bat-Skript (ohne Admin-Rechte) oder per ZIP-Download.')))),
+      actions: [{ label: T('Schließen'), kind: 'ghost' }, { label: T('Nur-Lesen-Modus'), kind: 'primary', icon: 'lock', onClick: () => fileInput.click() }],
     });
   }
   async function loadHandle(dh, tryWrite) {
@@ -5725,18 +5791,18 @@ function mountBulkRename(view) {
     st.src = { kind: 'fs', name: dh.name, root: dh, writable: w };
     st.undo = null;
     await rescan();
-    if (!w) toast('Nur Lesezugriff – links „Schreibzugriff erteilen“ klicken.', 'warn');
+    if (!w) toast(T('Nur Lesezugriff – links „Schreibzugriff erteilen“ klicken.'), 'warn');
   }
   async function grantWrite() {
     try {
       const r = await st.src.root.requestPermission({ mode: 'readwrite' });
       st.src.writable = r === 'granted';
       renderSource(); updateStats();
-      toast(st.src.writable ? 'Schreibzugriff erteilt' : 'Schreibzugriff abgelehnt', st.src.writable ? 'ok' : 'warn');
+      toast(st.src.writable ? T('Schreibzugriff erteilt') : T('Schreibzugriff abgelehnt'), st.src.writable ? 'ok' : 'warn');
     } catch (e) { showAccessError(e); }
   }
   function loadFileList(files) {
-    const root = (files[0].webkitRelativePath || '').split('/')[0] || 'Auswahl';
+    const root = (files[0].webkitRelativePath || '').split('/')[0] || T('Auswahl');
     st.src = {
       kind: 'files', name: root, writable: false,
       list: files.map(f => { const parts = (f.webkitRelativePath || f.name).split('/'); const name = parts.pop(); parts.shift(); return { file: f, name, dir: parts.join('/') }; }),
@@ -5773,10 +5839,10 @@ function mountBulkRename(view) {
         st.src = { kind: 'files', name: entry.name, writable: false, list: out };
         st.undo = null;
         await rescan();
-      } catch (err) { setBusy(null); toast('Ordner konnte nicht gelesen werden: ' + err.message, 'err'); }
+      } catch (err) { setBusy(null); toast(T('Ordner konnte nicht gelesen werden: ') + err.message, 'err'); }
       return;
     }
-    toast('Bitte einen Ordner ablegen, keine einzelnen Dateien.', 'warn');
+    toast(T('Bitte einen Ordner ablegen, keine einzelnen Dateien.'), 'warn');
   }
 
   const isSkip = n => S.app(APP, 'ignoreHidden') && (n.startsWith('.') || /^(thumbs\.db|desktop\.ini|\.ds_store)$/i.test(n) || n.startsWith('~tt'));
@@ -5796,7 +5862,7 @@ function mountBulkRename(view) {
             else if (!isSkip(n)) {
               const f = await hd.getFile();
               entries.push(mkEntry({ name: n, dir: path, size: f.size, mtime: f.lastModified, handle: hd }));
-              if (++count % 250 === 0) setBusy(`Lese Ordner … ${count}`);
+              if (++count % 250 === 0) setBusy(`${T('Lese Ordner …')} ${count}`);
             }
           }
         };
@@ -5815,7 +5881,7 @@ function mountBulkRename(view) {
       }
     } catch (e) {
       setBusy(null);
-      toast('Fehler beim Einlesen: ' + e.message, 'err');
+      toast(T('Fehler beim Einlesen: ') + e.message, 'err');
       return;
     }
     st.entries = entries; st.dirNames = dirNames; st.dirs = dirs;
@@ -5832,10 +5898,10 @@ function mountBulkRename(view) {
       h('div', { class: 'src-chip' },
         h('div', { class: 'fi' }, icon('folder')),
         h('div', { class: 'src-t' }, h('b', { title: st.src.name }, st.src.name), h('small', null, `${st.entries.length} Datei${st.entries.length === 1 ? '' : 'en'}` + (st.opts.recursive ? ' · mit Unterordnern' : ''))),
-        h('span', { class: 'tag ' + (rw ? 'rw' : 'ro') }, rw ? 'Schreiben' : 'Nur lesen'),
-        h('button', { class: 'mini', title: 'Neu einlesen', onclick: rescan }, icon('refresh'))),
-      st.src.kind === 'fs' && !rw ? h('button', { class: 'btn sm', onclick: grantWrite }, icon('unlock'), 'Schreibzugriff erteilen') : '',
-      st.src.kind === 'files' ? h('p', { class: 'hint' }, 'Nur-Lesen-Modus: Umbenennen per Skript (.bat) oder ZIP über „Export“.') : '');
+        h('span', { class: 'tag ' + (rw ? 'rw' : 'ro') }, rw ? T('Schreiben') : T('Nur lesen')),
+        h('button', { class: 'mini', title: T('Neu einlesen'), onclick: rescan }, icon('refresh'))),
+      st.src.kind === 'fs' && !rw ? h('button', { class: 'btn sm', onclick: grantWrite }, icon('unlock'), T('Schreibzugriff erteilen')) : '',
+      st.src.kind === 'files' ? h('p', { class: 'hint' }, T('Nur-Lesen-Modus: Umbenennen per Skript (.bat) oder ZIP über „Export“.')) : '');
   }
   function applyFilter() {
     const exts = st.opts.exts.split(/[,;\s]+/).map(s => s.replace(/^\*?\./, '').toLowerCase()).filter(Boolean);
@@ -5896,7 +5962,7 @@ function mountBulkRename(view) {
       let changed = false;
       for (const e of movers) {
         const k = e.dir + '\n' + e.out.toLowerCase();
-        if (occ.get(k) > 1) { e.status = 'conflict'; e.msg = tgt.get(k) > 1 ? 'Doppelter Zielname' : 'Existiert bereits'; changed = true; }
+        if (occ.get(k) > 1) { e.status = 'conflict'; e.msg = tgt.get(k) > 1 ? T('Doppelter Zielname') : T('Existiert bereits'); changed = true; }
       }
       if (!changed) break;
     }
@@ -5916,7 +5982,7 @@ function mountBulkRename(view) {
   }
   const rowH = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row')) || 36;
   function statusChip(e) {
-    const m = { ok: ['ok', 'Umbenennen'], same: ['same', 'Unverändert'], skip: ['same', 'Ausgelassen'], invalid: ['err', e.msg], conflict: ['warn', e.msg] }[e.status] || ['same', '–'];
+    const m = { ok: ['ok', T('Umbenennen')], same: ['same', T('Unverändert')], skip: ['same', T('Ausgelassen')], invalid: ['err', e.msg], conflict: ['warn', e.msg] }[e.status] || ['same', '–'];
     return h('span', { class: 'chip ' + m[0], title: m[1] }, m[1]);
   }
   function renderRows() {
@@ -5939,7 +6005,7 @@ function mountBulkRename(view) {
         })),
         h('div', { class: 'nm', title: (e.dir ? e.dir + '/' : '') + e.name, html: (e.dir ? `<span class="p">${esc(e.dir)}/</span>` : '') + (same ? esc(e.name) : e._d.a) }),
         h('div', { class: 'arr' }, icon('arrow')),
-        h('div', { class: 'nm out' + (same ? ' same' : ''), title: e.out + '  (Doppelklick = manuell ändern)', html: (same ? esc(e.out) : e._d.b) + (e.manual != null ? '<span class="man">✎ manuell</span>' : ''), ondblclick: () => editManual(e) }),
+        h('div', { class: 'nm out' + (same ? ' same' : ''), title: e.out + '  (' + T('Doppelklick = manuell ändern') + ')', html: (same ? esc(e.out) : e._d.b) + (e.manual != null ? '<span class="man">✎</span>' : ''), ondblclick: () => editManual(e) }),
         h('div', null, statusChip(e)),
         h('div', { class: 'sz' }, fmtSize(e.size))));
     }
@@ -5950,12 +6016,12 @@ function mountBulkRename(view) {
     const inp = h('input', { class: 'inp mono', value: e.out, spellcheck: false });
     let res;
     const close = modal({
-      title: 'Manuell umbenennen', sub: e.name,
-      body: h('div', { class: 'field' }, h('label', null, 'Neuer Name'), inp),
+      title: T('Manuell umbenennen'), sub: e.name,
+      body: h('div', { class: 'field' }, h('label', null, T('Neuer Name')), inp),
       actions: [
-        e.manual != null && { label: 'Auf Regeln zurücksetzen', kind: 'ghost', onClick: () => { res = null; } },
-        { label: 'Abbrechen', kind: 'ghost', onClick: () => { res = undefined; } },
-        { label: 'Übernehmen', kind: 'primary', onClick: () => { res = inp.value; } },
+        e.manual != null && { label: T('Auf Regeln zurücksetzen'), kind: 'ghost', onClick: () => { res = null; } },
+        { label: T('Abbrechen'), kind: 'ghost', onClick: () => { res = undefined; } },
+        { label: T('Übernehmen'), kind: 'primary', onClick: () => { res = inp.value; } },
       ].filter(Boolean),
       onClose: () => { if (res !== undefined) { e.manual = res === null || (res === e.out && e.manual == null) ? null : res; schedule(); } },
     });
@@ -5968,15 +6034,15 @@ function mountBulkRename(view) {
     for (const e of st.batch) { if (e.status === 'ok') s.ok++; else if (e.status === 'invalid' || e.status === 'conflict') s.prob++; else if (e.status === 'skip') s.skip++; }
     st.stats = s;
     if (st.view === 'problems' && !s.prob) { st.view = 'all'; refreshRows(); }
-    segFilter.replaceChildren(...[['all', 'Alle', s.total], ['changed', 'Änderungen', s.ok], ['problems', 'Probleme', s.prob]].map(([k, l, n]) =>
+    segFilter.replaceChildren(...[['all', T('Alle'), s.total], ['changed', T('Änderungen'), s.ok], ['problems', T('Probleme'), s.prob]].map(([k, l, n]) =>
       h('button', { class: (st.view === k ? 'on ' : '') + (k === 'problems' && n ? 'warn' : ''), onclick: () => { st.view = k; list.scrollTop = 0; updateStats(); refreshRows(); } }, l, h('span', { class: 'cnt' }, n))));
     const stat = (n, l, dot) => h('span', { class: 'stat' }, dot && h('span', { class: 'dot ' + dot }), h('b', null, n.toLocaleString('de-DE')), l);
     statsEl.replaceChildren(...(st.src ? [
-      stat(s.total, 'Dateien'), stat(s.ok, 'werden umbenannt', s.ok ? 'ok' : ''),
-      s.prob && stat(s.prob, s.prob === 1 ? 'Problem' : 'Probleme', 'warn'),
-      s.skip && stat(s.skip, 'ausgelassen')].filter(Boolean) : [h('span', { class: 'hint' }, 'Noch kein Ordner geladen')]));
+      stat(s.total, T('Dateien')), stat(s.ok, T('werden umbenannt'), s.ok ? 'ok' : ''),
+      s.prob && stat(s.prob, s.prob === 1 ? T('Problem') : T('Probleme'), 'warn'),
+      s.skip && stat(s.skip, T('ausgelassen'))].filter(Boolean) : [h('span', { class: 'hint' }, T('Noch kein Ordner geladen'))]));
     const rw = writable();
-    goLbl.textContent = rw ? (s.ok ? `${s.ok.toLocaleString('de-DE')} umbenennen` : 'Umbenennen') : 'Exportieren …';
+    goLbl.textContent = rw ? (s.ok ? T('{n} umbenennen', { n: s.ok.toLocaleString(isEN() ? 'en-US' : 'de-DE') }) : T('Umbenennen')) : T('Exportieren …');
     goBtn.disabled = !s.ok || st.busy;
     expBtn.disabled = !s.ok || st.busy;
     expBtn.style.display = rw ? '' : 'none';
@@ -6000,14 +6066,14 @@ function mountBulkRename(view) {
     if (!writable()) { openExport(); return; }
     if (S.app(APP, 'confirm')) {
       const p = st.stats.prob;
-      const ok = await confirmBox('Umbenennen starten?',
-        `${ops.length.toLocaleString('de-DE')} Datei${ops.length === 1 ? '' : 'en'} in „${st.src.name}“ werden umbenannt.${p ? ` ${p} problematische Einträge werden übersprungen.` : ''} Mit „Rückgängig“ lässt sich das danach wieder zurückdrehen.`,
-        `${ops.length.toLocaleString('de-DE')} umbenennen`);
+      const ok = await confirmBox(T('Umbenennen starten?'),
+        T('{n} Dateien in „{d}“ werden umbenannt.', { n: ops.length, d: st.src.name }) + (p ? ' ' + T('{n} problematische Einträge werden übersprungen.', { n: p }) : '') + ' ' + T('Mit „Rückgängig“ lässt sich das danach wieder zurückdrehen.'),
+        T('{n} umbenennen', { n: ops.length }));
       if (!ok) return;
     }
     const plan = ops.map(e => ({ dir: st.dirs.get(e.dir), dirPath: e.dir, from: e.name, to: e.out }));
-    setBusy('Benenne um …');
-    const res = await execPlan(plan, S.app(APP, 'copyFallback'), (i, n) => setBusy(`Benenne um … ${i}/${n}`));
+    setBusy('…');
+    const res = await execPlan(plan, S.app(APP, 'copyFallback'), (i, n) => setBusy(`${i}/${n} …`));
     setBusy(null);
     st.undo = res.done.length ? res.done.map(o => ({ dir: o.dir, dirPath: o.dirPath, from: o.to, to: o.from })) : null;
     report(res, false);
@@ -6016,9 +6082,9 @@ function mountBulkRename(view) {
   }
   async function undo() {
     if (!st.undo || st.busy) return;
-    if (!await confirmBox('Rückgängig machen?', `${st.undo.length} Umbenennung${st.undo.length === 1 ? '' : 'en'} werden zurückgesetzt.`, 'Zurücksetzen')) return;
-    setBusy('Setze zurück …');
-    const res = await execPlan(st.undo.map(o => ({ ...o })), S.app(APP, 'copyFallback'), (i, n) => setBusy(`Setze zurück … ${i}/${n}`));
+    if (!await confirmBox(T('Rückgängig machen?'), T('{n} Umbenennungen werden zurückgesetzt.', { n: st.undo.length }), T('Zurücksetzen'))) return;
+    setBusy('↶ …');
+    const res = await execPlan(st.undo.map(o => ({ ...o })), S.app(APP, 'copyFallback'), (i, n) => setBusy(`↶ ${i}/${n} …`));
     setBusy(null);
     st.undo = null;
     report(res, true);
@@ -6026,48 +6092,48 @@ function mountBulkRename(view) {
   }
   function report(res, isUndo) {
     const n = res.done.length;
-    if (!res.failed.length) { toast(isUndo ? `${n} Umbenennung${n === 1 ? '' : 'en'} zurückgesetzt` : `${n} Datei${n === 1 ? '' : 'en'} umbenannt`, 'ok'); return; }
+    if (!res.failed.length) { toast(isUndo ? `↶ ${n} ✓` : `${n} ✓`, 'ok'); return; }
     modal({
-      title: `${res.failed.length} Fehler`, sub: `${n} erfolgreich, ${res.failed.length} fehlgeschlagen`,
+      title: `${res.failed.length} ✗`, sub: `${n} ✓ · ${res.failed.length} ✗`,
       body: h('div', { class: 'stack' },
         h('div', { class: 'errlist' }, res.failed.map(f => h('div', null, (f.dirPath ? f.dirPath + '/' : '') + f.from, ' → ', f.to, h('br'), h('em', null, f.err?.message || String(f.err))))),
-        h('p', { class: 'hint' }, 'Häufige Ursachen: Datei ist in einem anderen Programm geöffnet, fehlende Rechte oder Sync-Tools (OneDrive) sperren die Datei.')),
+        h('p', { class: 'hint' }, T('Häufige Ursachen: Datei ist in einem anderen Programm geöffnet, fehlende Rechte oder Sync-Tools (OneDrive) sperren die Datei.'))),
       actions: [{ label: 'OK', kind: 'primary' }],
     });
   }
   function openExport() {
     const ops = st.batch.filter(e => e.status === 'ok').map(e => ({ dirPath: e.dir, from: e.name, to: e.out, e }));
-    if (!ops.length) { toast('Keine Änderungen zum Exportieren.', 'warn'); return; }
+    if (!ops.length) { toast(T('Keine Änderungen zum Exportieren.'), 'warn'); return; }
     const name = st.src.name, base = 'tt-rename-' + slug(name);
     let zipAll = false;
     const prog = h('div', { class: 'exp-prog' });
     const opt = (ic, title, desc, fn, badge) => h('button', { class: 'exp-opt', onclick: fn }, h('div', { class: 'exp-i' }, icon(ic)), h('div', null, h('b', null, title, badge && h('span', { class: 'badge acc' }, badge)), h('small', null, desc)));
-    const zipBtn = opt('archive', 'ZIP mit umbenannten Kopien', 'Originale bleiben unangetastet.', async () => {
+    const zipBtn = opt('archive', T('ZIP mit umbenannten Kopien'), T('Originale bleiben unangetastet.'), async () => {
       const src = zipAll ? st.batch.filter(e => e.checked && e.status !== 'invalid') : ops.map(o => o.e);
       const total = src.reduce((s, e) => s + e.size, 0);
-      if (total > 1.8e9) { toast('Zu groß für ein Browser-ZIP (> 1,8 GB). Nimm das Skript.', 'err'); return; }
+      if (total > 1.8e9) { toast(T('Zu groß für ein Browser-ZIP (> 1,8 GB). Nimm das Skript.'), 'err'); return; }
       zipBtn.disabled = true;
       try {
         const files = [];
         for (const e of src) files.push({ path: `${name}/${e.dir ? e.dir + '/' : ''}${e.status === 'ok' ? e.out : e.name}`, blob: e.handle ? await e.handle.getFile() : e.file, mtime: e.mtime });
-        const blob = await makeZip(files, (i, n) => { prog.textContent = `Packe ZIP … ${i}/${n}`; });
+        const blob = await makeZip(files, (i, n) => { prog.textContent = `ZIP … ${i}/${n}`; });
         download(`${slug(name)}-umbenannt.zip`, blob);
-        prog.textContent = `✓ ZIP erstellt (${fmtSize(blob.size)})`;
-      } catch (err) { prog.textContent = 'Fehler: ' + err.message; }
+        prog.textContent = `✓ ZIP · ${fmtSize(blob.size)}`;
+      } catch (err) { prog.textContent = T('Fehler: ') + err.message; }
       zipBtn.disabled = false;
     });
     modal({
-      title: 'Exportieren', width: 580,
-      sub: writable() ? 'Alternative zum direkten Umbenennen' : 'Nur-Lesen-Modus – der Browser darf hier nicht direkt umbenennen.',
+      title: T('Exportieren'), width: 580,
+      sub: writable() ? T('Alternative zum direkten Umbenennen') : T('Nur-Lesen-Modus – der Browser darf hier nicht direkt umbenennen.'),
       body: h('div', { class: 'exp' },
-        opt('terminal', 'Windows-Skript (.bat)', `In „${name}“ legen & doppelklicken – ohne Admin-Rechte.`, () => download(base + '.bat', makeBat(ops, name), 'text/plain'), 'Empfohlen'),
-        opt('terminal', 'PowerShell-Skript (.ps1)', 'Wird manchmal von der IT blockiert.', () => download(base + '.ps1', makePs1(ops, name), 'text/plain')),
-        opt('terminal', 'Shell-Skript (.sh)', 'macOS / Linux · mv -n', () => download(base + '.sh', makeSh(ops), 'text/plain')),
+        opt('terminal', T('Windows-Skript (.bat)'), T('In „{n}“ legen & doppelklicken – ohne Admin-Rechte.', { n: name }), () => download(base + '.bat', makeBat(ops, name), 'text/plain'), T('Empfohlen')),
+        opt('terminal', T('PowerShell-Skript (.ps1)'), T('Wird manchmal von der IT blockiert.'), () => download(base + '.ps1', makePs1(ops, name), 'text/plain')),
+        opt('terminal', T('Shell-Skript (.sh)'), 'macOS / Linux · mv -n', () => download(base + '.sh', makeSh(ops), 'text/plain')),
         zipBtn,
-        h('div', { class: 'exp-zip' }, h('span', { class: 'hint' }, 'ZIP-Inhalt'), segEl([['changed', 'Nur geänderte'], ['all', 'Alle Dateien']], 'changed', v => { zipAll = v === 'all'; })),
-        opt('table', 'CSV', 'Alt → Neu · Excel', () => download(base + '.csv', makeCsv(ops), 'text/csv')),
+        h('div', { class: 'exp-zip' }, h('span', { class: 'hint' }, T('ZIP-Inhalt')), segEl([['changed', T('Nur geänderte')], ['all', T('Alle Dateien')]], 'changed', v => { zipAll = v === 'all'; })),
+        opt('table', 'CSV', T('Alt → Neu · Excel'), () => download(base + '.csv', makeCsv(ops), 'text/csv')),
         prog),
-      actions: [{ label: 'Schließen', kind: 'ghost' }],
+      actions: [{ label: T('Schließen'), kind: 'ghost' }],
     });
   }
 
@@ -9565,7 +9631,7 @@ function mountBildwerk(view) {
     h('button', { class: 'mini', title: '+90°', onclick: () => rotate('r') }, icon('rotr')),
     h('button', { class: 'mini', title: T('Spiegeln'), onclick: () => rotate('flip') }, icon('flip'))),
     ratiosEl,
-    h('div', { class: 'bw-r4' }, cropInps.map((inp, i) => h('div', { class: 'bw-num' }, h('span', null, ['X', 'Y', T('B'), 'H'][i]), inp))),
+    h('div', { class: 'bw-r4' }, cropInps.map((inp, i) => h('div', { class: 'bw-num' }, h('span', null, ['X', 'Y', isEN() ? 'W' : 'B', 'H'][i]), inp))),
     h('div', { class: 'bw-row' },
       h('button', { class: 'btn sm ghost', onclick: () => { st.ratio = 'free'; setCrop(0, 0, st.src.width, st.src.height); sync(); st.tool === 'crop' ? draw() : (fit(), queue()); } }, icon('undo'), T('Ganzes Bild')),
       h('div', { class: 'sp' }), cropStart, cropDone));
@@ -9609,7 +9675,7 @@ function mountBildwerk(view) {
       },
     }, l)));
   const pSize = panel('scale', T('Größe'), null,
-    h('div', { class: 'bw-size' }, h('div', { class: 'bw-num' }, h('span', null, T('B')), wInp), lockBtn, h('div', { class: 'bw-num' }, h('span', null, 'H'), hInp)),
+    h('div', { class: 'bw-size' }, h('div', { class: 'bw-num' }, h('span', null, isEN() ? 'W' : 'B'), wInp), lockBtn, h('div', { class: 'bw-num' }, h('span', null, 'H'), hInp)),
     sizeChips, scaleInfo);
 
   const slider = (label, key, min, max, step, unit, desc) => {
@@ -9712,7 +9778,7 @@ function mountBildwerk(view) {
   const textCol = h('input', { type: 'color', class: 'bw-color', title: T('Textfarbe'), oninput: debounce(e => setText(cur(), { color: e.target.value }), 60) });
   const tBtn = (k, label, title, val) => h('button', { class: 'mini boxed', title, dataset: { k, v: val ?? '' }, onclick: () => { const T = cur().text; setText(cur(), val == null ? { [k]: !T[k] } : { [k]: val }); } }, label);
   const tBtns = h('div', { class: 'bw-row' }, fontSel, textCol,
-    tBtn('bold', h('b', null, T('F')), T('Fett')), tBtn('italic', h('i', null, T('K')), T('Kursiv')),
+    tBtn('bold', h('b', null, isEN() ? 'B' : 'F'), T('Fett')), tBtn('italic', h('i', null, isEN() ? 'I' : 'K'), T('Kursiv')),
     tBtn('align', '⇤', T('Linksbündig'), 'left'), tBtn('align', '≡', T('Zentriert'), 'center'), tBtn('align', '⇥', T('Rechtsbündig'), 'right'));
   const textProps = h('div', { class: 'bw-lprops' }, h('div', { class: 'field' }, h('label', null, 'Text'), textInp), tBtns);
   ups.push(() => {
@@ -12026,7 +12092,12 @@ function mountBildbenamung(view) {
   function lsGet(k, fb) { try { const r = localStorage.getItem(k); return r ? JSON.parse(r) : fb } catch { return fb } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} }
 
-  const DEFAULT_GROUPS = [
+  const DEFAULT_GROUPS = isEN() ? [
+    { id:gid(), name:'Variant', items:[ bnvIt('a'), bnvIt('b'), bnvIt('c') ] },
+    { id:gid(), name:'View',    items:[ bnvIt('front'), bnvIt('back'), bnvIt('left'), bnvIt('right'), bnvIt('top'), bnvIt('detail') ] },
+    { id:gid(), name:'Number',  items:[ bnvIt('01'), bnvIt('02'), bnvIt('03'), bnvIt('04'), bnvIt('05') ] },
+    { id:gid(), name:'Color',   items:[ bnvIt('black'), bnvIt('white'), bnvIt('grey'), bnvIt('red') ] },
+  ] : [
     { id:gid(), name:'Variante',  items:[ bnvIt('a'), bnvIt('b'), bnvIt('c') ] },
     { id:gid(), name:'Ansicht',   items:[ bnvIt('vorne'), bnvIt('hinten'), bnvIt('links'), bnvIt('rechts'), bnvIt('oben'), bnvIt('detail') ] },
     { id:gid(), name:'Nummer',    items:[ bnvIt('01'), bnvIt('02'), bnvIt('03'), bnvIt('04'), bnvIt('05') ] },
@@ -12136,12 +12207,12 @@ function mountBildbenamung(view) {
 
   // Folder picker
   async function pickFolder() {
-    if (!window.showDirectoryPicker) { showToast('Bitte Chrome, Edge oder Brave verwenden.', true); return }
+    if (!window.showDirectoryPicker) { showToast(T('Bitte Chrome, Edge oder Brave verwenden.'), true); return }
     let handle;
     try { handle = await window.showDirectoryPicker({ mode:'readwrite', id:'bnv' }) }
     catch { return }
     const perm = await handle.requestPermission({ mode:'readwrite' });
-    if (perm !== 'granted') { showToast('Ohne Schreibrechte lässt sich nichts umbenennen.', true); return }
+    if (perm !== 'granted') { showToast(T('Ohne Schreibrechte lässt sich nichts umbenennen.'), true); return }
     dir = handle; files = [];
     for await (const [name, fh] of handle.entries()) {
       if (fh.kind !== 'file') continue;
@@ -12150,7 +12221,7 @@ function mountBildbenamung(view) {
       files.push({ handle:fh, name, ext, status:'open', newName:'', tokens:[], product:'' });
     }
     files.sort((a,b) => natcmp(a.name, b.name));
-    if (!files.length) { showToast('Keine Bilddateien in diesem Ordner.', true); return }
+    if (!files.length) { showToast(T('Keine Bilddateien in diesem Ordner.'), true); return }
     idx = 0; tokens = [];
     renderMain();
   }
@@ -12162,12 +12233,12 @@ function mountBildbenamung(view) {
     const ico = h('div', { class:'bnv-zero-ico' + (me.face ? ' face' : '') }, icon(me.icon));
     const card = h('div', { class:'bnv-zero-card' },
       ico,
-      h('h2', null, me.name),
+      h('h2', null, appName(me)),
       h('p', null, supported
-        ? 'Bildnamen aus Bausteinen klicken · PSD, JPG, PNG, WebP …'
-        : 'Nur in Chrome, Edge oder Brave.'),
-      supported ? h('button', { class:'btn primary', onclick: pickFolder }, icon('folder'), ' Ordner öffnen') : null,
-      h('button', { class:'btn', style:'margin-top:6px', onclick: openEditor }, icon('settings'), ' Bausteine bearbeiten')
+        ? T('Bildnamen aus Bausteinen klicken · PSD, JPG, PNG, WebP …')
+        : T('Nur in Chrome, Edge oder Brave.')),
+      supported ? h('button', { class:'btn primary', onclick: pickFolder }, icon('folder'), ' ' + T('Ordner öffnen')) : null,
+      h('button', { class:'btn', style:'margin-top:6px', onclick: openEditor }, icon('settings'), ' ' + T('Bausteine bearbeiten'))
     );
     view.replaceChildren(
       h('div', { class:'bnv' },
@@ -12184,7 +12255,7 @@ function mountBildbenamung(view) {
 <div class="bnv">
   <div class="bnv-main">
     <aside class="bnv-aside">
-      <span class="bnv-lbl">Vorschau</span>
+      <span class="bnv-lbl">${T('Vorschau')}</span>
       <div class="bnv-frame" id="bnvFrame"><div class="bnv-none">–</div></div>
       <div class="bnv-nav">
         <button id="bnvPrev">‹</button>
@@ -12195,33 +12266,33 @@ function mountBildbenamung(view) {
     </aside>
     <div class="bnv-work">
       <div>
-        <span class="bnv-lbl">Basis</span>
-        <input type="text" class="bnv-prod" id="bnvProd" placeholder="z.B. Projekt, Artikel, Name…" autocomplete="off" spellcheck="false">
+        <span class="bnv-lbl">${T('Basis')}</span>
+        <input type="text" class="bnv-prod" id="bnvProd" placeholder="${T('z. B. Projekt, Artikel, Name …')}" autocomplete="off" spellcheck="false">
       </div>
       <div class="bnv-strip">
         <div class="bnv-strip-hd">
-          <span class="bnv-lbl" style="margin:0">Dateiname</span>
-          <span class="bnv-strip-hint">Baustein anklicken zum Entfernen</span>
+          <span class="bnv-lbl" style="margin:0">${T('Dateiname')}</span>
+          <span class="bnv-strip-hint">${T('Baustein anklicken zum Entfernen')}</span>
         </div>
         <div class="bnv-segs" id="bnvSegs"></div>
-        <div class="bnv-result" id="bnvResult"><span class="bnv-result-empty">noch kein Name</span></div>
+        <div class="bnv-result" id="bnvResult"><span class="bnv-result-empty">${T('noch kein Name')}</span></div>
         <div class="bnv-strip-ft">
           <span class="bnv-warn" id="bnvWarn"></span>
         </div>
       </div>
       <div id="bnvGroups"></div>
       <div class="bnv-actions">
-        <button class="btn primary" id="bnvApply" disabled>Übernehmen &amp; weiter</button>
-        <button class="btn" id="bnvClear">Leeren</button>
-        <button class="btn" id="bnvSkip">Überspringen</button>
-        <button class="btn" id="bnvUndo" title="Rückgängig (Strg+Z)"></button>
-        <button class="btn" id="bnvParts" title="Bausteine bearbeiten" style="margin-left:auto"></button>
+        <button class="btn primary" id="bnvApply" disabled>${T('Übernehmen & weiter')}</button>
+        <button class="btn" id="bnvClear">${T('Leeren')}</button>
+        <button class="btn" id="bnvSkip">${T('Überspringen')}</button>
+        <button class="btn" id="bnvUndo" title="${T('Strg')}+Z"></button>
+        <button class="btn" id="bnvParts" title="${T('Bausteine bearbeiten')}" style="margin-left:auto"></button>
       </div>
       <div class="bnv-q-wrap">
         <div class="bnv-q-head">
-          <span class="bnv-lbl" style="margin:0">Dateien</span>
+          <span class="bnv-lbl" style="margin:0">${T('Dateien')}</span>
           <span id="bnvStats" style="font-size:12px;color:var(--tx3)"></span>
-          <button class="btn sm" id="bnvReset" style="margin-left:auto">Vorbereitung zurücksetzen</button>
+          <button class="btn sm" id="bnvReset" style="margin-left:auto">${T('Vorbereitung zurücksetzen')}</button>
         </div>
         <div id="bnvQueue"></div>
       </div>
@@ -12230,7 +12301,7 @@ function mountBildbenamung(view) {
   <div class="bnv-bar">
     <div class="bnv-prog"><div class="bnv-prog-fill" id="bnvFill"></div></div>
     <span id="bnvBarStats" style="font-size:12px;color:var(--tx3)"></span>
-    <button class="btn primary" id="bnvRenameAll" disabled style="margin-left:auto">Alle umbenennen</button>
+    <button class="btn primary" id="bnvRenameAll" disabled style="margin-left:auto">${T('Alle umbenennen')}</button>
   </div>
 </div>
 <div class="bnv-modal" id="bnvModal" style="display:none"></div>
@@ -12277,7 +12348,7 @@ function mountBildbenamung(view) {
     q('#bnvNext').disabled = idx === files.length - 1;
     const frame = q('#bnvFrame');
     frame.className = 'bnv-frame';
-    frame.innerHTML = '<div class="bnv-none">lädt…</div>';
+    frame.innerHTML = '<div class="bnv-none">…</div>';
     const my = idx;
     const url = await previewFor(f);
     if (my !== idx || !q('#bnvFrame')) return;
@@ -12287,7 +12358,7 @@ function mountBildbenamung(view) {
       frame.append(img);
       frame.classList.add('zoomable');
     } else {
-      frame.innerHTML = '<div class="bnv-none">keine Vorschau</div>';
+      frame.innerHTML = `<div class="bnv-none">${T('keine Vorschau')}</div>`;
     }
   }
 
@@ -12303,23 +12374,23 @@ function mountBildbenamung(view) {
       d.append(k, v); return d;
     }
     const prod = bnvSlug(product);
-    if (prod) segs.append(seg('product','Basis', prod));
-    else segs.append(seg('empty','Basis','Basis eingeben'));
+    if (prod) segs.append(seg('product',T('Basis'), prod));
+    else segs.append(seg('empty',T('Basis'),T('Basis eingeben')));
     tokens.forEach((t, i) => {
-      const s = seg('tok', 'Baustein '+(i+1), bnvSlug(t));
-      s.title = 'Entfernen';
+      const s = seg('tok', T('Baustein') + ' ' + (i+1), bnvSlug(t));
+      s.title = T('Entfernen');
       s.onclick = () => { tokens.splice(i,1); if (files[idx]) files[idx].tokens = tokens.slice(); renderStrip(); renderChips() };
       segs.append(s);
     });
-    segs.append(seg('ext', 'Typ', '.' + files[idx].ext));
+    segs.append(seg('ext', T('Typ'), '.' + files[idx].ext));
     const name = finalName(idx);
     if (result) {
       if (name) { result.innerHTML = ''; const sp = document.createElement('span'); sp.className = 'bnv-result-name'; sp.textContent = '→ ' + name; result.append(sp) }
-      else { result.innerHTML = '<span class="bnv-result-empty">noch kein Name</span>' }
+      else { result.innerHTML = `<span class="bnv-result-empty">${T('noch kein Name')}</span>` }
     }
     const base = baseName();
     const clash = base && takenNames(idx).has((base+'.'+files[idx].ext).toLowerCase());
-    if (warn) warn.textContent = clash ? 'Name belegt – Nummer angehängt' : '';
+    if (warn) warn.textContent = clash ? T('Name belegt – Nummer angehängt') : '';
     const ab = q('#bnvApply'); if (ab) ab.disabled = !prod;
   }
 
@@ -12346,7 +12417,7 @@ function mountBildbenamung(view) {
     if (!n) {
       const hint = document.createElement('span');
       hint.style.cssText = 'font-size:13px;color:var(--tx3)';
-      hint.textContent = 'Noch keine Bausteine — über ⚙ anlegen'; box.append(hint);
+      hint.textContent = T('Noch keine Bausteine — über ⚙ anlegen'); box.append(hint);
     }
   }
 
@@ -12357,7 +12428,7 @@ function mountBildbenamung(view) {
       const r = document.createElement('button');
       const st = f.status;
       r.className = 'bnv-row' + (st==='staged'?' staged':st==='done'?' done':st==='error'?' error':'') + (i===idx?' active':'');
-      const label = {open:'offen',staged:'bereit',done:'fertig',error:'fehler',skip:'übersprungen'}[st]||'';
+      const label = {open:'',staged:'●',done:'✓',error:'✗',skip:'↷'}[st]||'';
       r.innerHTML = `<span class="ri">${String(i+1).padStart(2,'0')}</span><span class="rf"></span><span class="ra">→</span><span class="rn"></span><span class="rs">${label}</span>`;
       r.querySelector('.rf').textContent = f.name;
       r.querySelector('.rn').textContent = f.newName || '—';
@@ -12370,13 +12441,13 @@ function mountBildbenamung(view) {
     const staged = files.filter(f=>f.status==='staged').length;
     const done   = files.filter(f=>f.status==='done').length;
     const total  = files.length || 1;
-    const statsText = `${staged} vorbereitet · ${done} umbenannt`;
+    const statsText = T('{a} vorbereitet · {b} umbenannt', { a: staged, b: done });
     const s1 = q('#bnvStats'), s2 = q('#bnvBarStats');
     if (s1) s1.textContent = statsText;
     if (s2) s2.textContent = statsText;
     const fill = q('#bnvFill'); if (fill) fill.style.width = Math.round(done/total*100) + '%';
     const btn = q('#bnvRenameAll');
-    if (btn) { btn.disabled = staged===0; btn.textContent = staged ? `Alle umbenennen (${staged})` : 'Alle umbenennen' }
+    if (btn) { btn.disabled = staged===0; btn.textContent = staged ? `${T('Alle umbenennen')} (${staged})` : T('Alle umbenennen') }
   }
 
   function goTo(i) {
@@ -12401,7 +12472,7 @@ function mountBildbenamung(view) {
     lastAction = { idx, prevStatus:f.status, prevNewName:f.newName, prevTokens:f.tokens?f.tokens.slice():[], prevProduct:f.product };
     f.newName = name; f.tokens = tokens.slice(); f.product = product; f.status = 'staged';
     if (idx < files.length - 1) goTo(idx + 1);
-    else { tokens = []; renderAll(); showToast('Letztes Bild erreicht.') }
+    else { tokens = []; renderAll(); showToast(T('Letztes Bild erreicht.')) }
   }
 
   async function renameHandle(f, targetName) {
@@ -12421,7 +12492,7 @@ function mountBildbenamung(view) {
 
   async function doRename(f) {
     try { await renameHandle(f, f.newName); f.status = 'done' }
-    catch(e) { f.status = 'error'; f.newName = 'Fehler: '+(e?.message||e) }
+    catch(e) { f.status = 'error'; f.newName = '✗ '+(e?.message||e) }
   }
 
   async function renameAll() {
@@ -12432,17 +12503,17 @@ function mountBildbenamung(view) {
     let ok = 0, bad = 0;
     for (const f of list) { await doRename(f); f.status==='done'?ok++:bad++; renderQueue(); renderStats() }
     renderAll();
-    showToast(bad ? `${ok} umbenannt, ${bad} fehlgeschlagen` : `${ok} Dateien umbenannt`, !!bad);
+    showToast(bad ? `${ok} ✓ · ${bad} ✗` : `${ok} ✓`, !!bad);
   }
 
   function undoLast() {
-    if (!lastAction) { showToast('Nichts zum Rückgängigmachen.'); return }
+    if (!lastAction) { showToast(T('Nichts zum Rückgängigmachen.')); return }
     const a = lastAction; lastAction = null;
     const f = files[a.idx]; if (!f) return;
     f.status = a.prevStatus; f.newName = a.prevNewName;
     f.tokens = a.prevTokens; f.product = a.prevProduct;
     goTo(a.idx);
-    showToast('Rückgängig gemacht.');
+    showToast(T('Rückgängig gemacht.'));
   }
 
   // Building block editor
@@ -12475,9 +12546,9 @@ function mountBildbenamung(view) {
           xBtn.onclick = () => { gr.items.splice(ii,1); persist(); buildEditor() };
           gBody.append(h('div', { class:'bnv-echip' }, ci, xBtn));
         });
-        const addItem = document.createElement('button'); addItem.className = 'bnv-mini'; addItem.textContent = '+ Baustein';
+        const addItem = document.createElement('button'); addItem.className = 'bnv-mini'; addItem.textContent = '+ ' + T('Baustein');
         addItem.onclick = () => {
-          gr.items.push(bnvIt('neu')); persist(); buildEditor();
+          gr.items.push(bnvIt(isEN() ? 'new' : 'neu')); persist(); buildEditor();
           const inputs = modal.querySelectorAll('.bnv-sheet-body .bnv-echip input');
           const last = inputs[inputs.length-1]; if (last) { last.focus(); last.select() }
         };
@@ -12485,17 +12556,17 @@ function mountBildbenamung(view) {
         const card = h('div', { class:'bnv-gcard' }, gHead, gBody);
         eg.append(card);
       });
-      const addGrp = document.createElement('button'); addGrp.className = 'bnv-mini'; addGrp.textContent = '+ Gruppe';
-      addGrp.onclick = () => { groups.push({id:gid(),name:'Neue Gruppe',items:[]}); persist(); buildEditor() };
+      const addGrp = document.createElement('button'); addGrp.className = 'bnv-mini'; addGrp.textContent = '+ ' + T('Gruppe');
+      addGrp.onclick = () => { groups.push({id:gid(),name:T('Neue Gruppe'),items:[]}); persist(); buildEditor() };
 
       const optHtml = `
-<span class="bnv-lbl" style="display:block;margin-top:20px">Namensregeln</span>
+<span class="bnv-lbl" style="display:block;margin-top:20px">${T('Namensregeln')}</span>
 <div class="bnv-opts" style="margin-top:8px">
-  <label class="bnv-opt"><input type="checkbox" id="bnvOptLower" ${opts.lower?'checked':''}> Alles klein schreiben</label>
-  <label class="bnv-opt"><input type="checkbox" id="bnvOptUmlaut" ${opts.umlaut?'checked':''}> Umlaute umschreiben (ä→ae)</label>
-  <label class="bnv-opt"><input type="checkbox" id="bnvOptNum" ${opts.number?'checked':''}> Immer Nummer anhängen</label>
-  <label class="bnv-opt">Trennzeichen <input type="text" id="bnvOptSep" value="${opts.sep||'-'}" maxlength="3"></label>
-  <label class="bnv-opt">Nummer-Stellen <input type="text" id="bnvOptPad" value="${opts.pad||2}" maxlength="1"></label>
+  <label class="bnv-opt"><input type="checkbox" id="bnvOptLower" ${opts.lower?'checked':''}> Abc → abc</label>
+  <label class="bnv-opt"><input type="checkbox" id="bnvOptUmlaut" ${opts.umlaut?'checked':''}> ä → ae</label>
+  <label class="bnv-opt"><input type="checkbox" id="bnvOptNum" ${opts.number?'checked':''}> ${T('Immer Nummer anhängen')}</label>
+  <label class="bnv-opt">${T('Trennzeichen')} <input type="text" id="bnvOptSep" value="${opts.sep||'-'}" maxlength="3"></label>
+  <label class="bnv-opt">${T('Nummer-Stellen')} <input type="text" id="bnvOptPad" value="${opts.pad||2}" maxlength="1"></label>
 </div>`;
       const optDiv = document.createElement('div'); optDiv.innerHTML = optHtml;
 
@@ -12515,24 +12586,24 @@ function mountBildbenamung(view) {
     closeBtn.append(icon('x'));
     closeBtn.onclick = () => { modal.style.display = 'none' };
 
-    const expBtn = h('button', { class:'btn sm' }, 'Exportieren');
-    const impBtn = h('button', { class:'btn sm' }, 'Importieren');
-    const doneBtn = h('button', { class:'btn primary sm' }, 'Fertig');
-    expBtn.onclick = () => download('bnv-bausteine.json', JSON.stringify({groups,opts},null,2), 'application/json');
+    const expBtn = h('button', { class:'btn sm' }, T('Exportieren'));
+    const impBtn = h('button', { class:'btn sm' }, T('Importieren'));
+    const doneBtn = h('button', { class:'btn primary sm' }, T('Fertig'));
+    expBtn.onclick = () => download(isEN() ? 'bnv-blocks.json' : 'bnv-bausteine.json', JSON.stringify({groups,opts},null,2), 'application/json');
     impBtn.onclick = async () => {
       const f = await pickFile('application/json'); if (!f) return;
       try {
         const data = JSON.parse(await f.text());
         if (Array.isArray(data.groups)) groups = data.groups;
         if (data.opts) opts = Object.assign({}, DEFAULT_OPTS, data.opts);
-        persist(); buildEditor(); showToast('Bausteine geladen');
-      } catch { showToast('Datei konnte nicht gelesen werden', true) }
+        persist(); buildEditor(); showToast(T('Bausteine geladen'));
+      } catch { showToast(T('Datei konnte nicht gelesen werden'), true) }
     };
     doneBtn.onclick = () => { modal.style.display = 'none' };
 
     modal.innerHTML = '';
     const sheet = h('div', { class:'bnv-sheet' },
-      h('div', { class:'bnv-sheet-hd' }, h('h3', null, 'Bausteine'), closeBtn),
+      h('div', { class:'bnv-sheet-hd' }, h('h3', null, T('Bausteine')), closeBtn),
       h('div', { class:'bnv-sheet-body' }),
       h('div', { class:'bnv-sheet-ft' }, expBtn, impBtn, h('div', { style:{ marginLeft:'auto' } }, doneBtn))
     );

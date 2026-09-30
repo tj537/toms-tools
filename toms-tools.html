@@ -3764,6 +3764,21 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // PDF-Werk
+  'Keine PDFs oder Bilder gefunden.': 'No PDFs or images found.', 'PDF-Werkzeuge konnten nicht geladen werden: ': 'Couldn’t load the PDF tools: ', 'Lade Dateien …': 'Loading files …',
+  'Seite entfernen': 'Remove page', 'Bild': 'Image', 'Speichern fehlgeschlagen: ': 'Saving failed: ', 'PDFs oder Bilder hierher ziehen': 'Drop PDFs or images here', 'oder': 'or',
+  'Dateien auswählen': 'Choose files', 'Dateien': 'Files', 'Alle': 'All', 'Umkehren': 'Reverse', 'Leeren': 'Clear', 'Entfernen': 'Remove', 'Auswahl → PDF': 'Selection → PDF',
+  'Dateiname': 'File name', 'Teilen': 'Split', 'Auswahl': 'Selection', 'Speichern': 'Save', 'Datei entfernen': 'Remove file', 'Zusammenführen → PDF': 'Merge → PDF', '1 Seite': '1 page', '{p} ausgewählt': '{p} selected',
+  '{n} Seiten': '{n} pages', 'aus 1 Datei': 'from 1 file', 'aus {n} Dateien': 'from {n} files', 'Klick · ⇧ + Klick': 'Click · ⇧ + click',
+  '„{n}“ ist geschützt und kann nicht bearbeitet werden.': '“{n}” is protected and can’t be edited.', '„{n}“ ist mit Passwort geschützt.': '“{n}” is password-protected.',
+  '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.', '1 Seite = 1 PDF · ZIP': '1 page = 1 PDF · ZIP', 'Je': 'Every', 'Seiten': 'pages',
+  // WebP Converter
+  'Konvertierung fehlgeschlagen': 'Conversion failed', 'Bild nicht ladbar': 'Couldn’t load the image', 'Bilder hierher ziehen': 'Drop images here', 'oder': 'or', 'Bilder auswählen': 'Choose images',
+  'Ordner auswählen': 'Choose folder', 'Bilder': 'Images', 'Ordner': 'Folder', 'Leeren': 'Clear', 'Keine unterstützten Bilder gefunden.': 'No supported images found.', 'Entfernen': 'Remove',
+  'Mein Foto_01.PNG': 'My Photo_01.PNG', 'Ordner auswählen …': 'Choose a folder …', 'Kein Bild konnte konvertiert werden.': 'No image could be converted.',
+  'Dein Browser kann nicht direkt speichern. Bitte ZIP verwenden.': 'Your browser can’t save to a folder directly – use ZIP instead.', 'Kein Ordner ausgewählt.': 'No folder selected.',
+  'Qualität': 'Quality', 'Größe begrenzen': 'Limit size', 'Dateinamen': 'File names', 'Leerzeichen & _ → -': 'Spaces & _ → -', 'Ausgabe': 'Output',
+  'EXIF, GPS & XMP ✕ · Ausrichtung bleibt': 'EXIF, GPS & XMP ✕ · orientation kept', 'Ohne EXIF & GPS': 'No EXIF or GPS',
   // Wasserzeichenwerk
   'Keine Bilder dabei.': 'No images in there.', 'Über das ganze Bild kacheln': 'Tile across the whole image', 'KI-Label': 'AI label', '© Dein Name': '© Your name', 'Farbe': 'Color',
   'Aussehen': 'Appearance', 'Größe': 'Size', 'Deckkraft': 'Opacity', 'Fett': 'Bold', 'Schatten': 'Shadow', 'Noch kein Bild': 'No image yet',
@@ -6073,7 +6088,7 @@ function mountBulkRename(view) {
 /* ================= App: WebP Converter ================= */
 function mountWebP(view) {
   const IMG_EXT = /\.(png|jpe?g|gif|bmp|webp|avif)$/i;
-  const QUIPS = ['Pixel werden gequetscht …', 'Farbwerte schrumpfen tapfer …', 'Kurz noch ein Druck drauf …', 'Wird durch die Mangel gedreht …', 'Qualitätskomitee tagt …'];
+  const QUIPS = isEN() ? ['Squeezing pixels …', 'Colors shrinking bravely …', 'One more squeeze …', 'Going through the wringer …', 'Quality committee in session …'] : ['Pixel werden gequetscht …', 'Farbwerte schrumpfen tapfer …', 'Kurz noch ein Druck drauf …', 'Wird durch die Mangel gedreht …', 'Qualitätskomitee tagt …'];
   const opts = { quality: 82, scaleMode: 'w', scaleVal: 1920, lower: true, dash: true, suffix: '', outMode: 'zip', ...Store.get('webp', {}) };
   const saveOpts = saveLater(() => Store.set('webp', opts), 300);
   let items = [], zipBlob = null, idSeq = 0, running = false;
@@ -6100,9 +6115,9 @@ function mountWebP(view) {
         else if (opts.scaleMode === 'h' && hh > opts.scaleVal) { w = Math.round(w * opts.scaleVal / hh); hh = opts.scaleVal; }
         const cvs = Object.assign(document.createElement('canvas'), { width: w, height: hh });
         cvs.getContext('2d').drawImage(img, 0, 0, w, hh);
-        cvs.toBlob(b => b ? res(b) : rej(new Error('Konvertierung fehlgeschlagen')), 'image/webp', opts.quality / 100);
+        cvs.toBlob(b => b ? res(b) : rej(new Error(T('Konvertierung fehlgeschlagen'))), 'image/webp', opts.quality / 100);
       };
-      img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('Bild nicht ladbar')); };
+      img.onerror = () => { URL.revokeObjectURL(url); rej(new Error(T('Bild nicht ladbar'))); };
       img.src = url;
     });
   }
@@ -6126,17 +6141,17 @@ function mountWebP(view) {
   const result = h('div', { class: 'wp-res', hidden: true });   // result sits on top of the list
   const empty = h('div', { class: 'wp-empty' },
     h('div', { class: 'wp-empty-ico' }, icon('upload')),
-    h('b', null, 'Bilder hierher ziehen'),
-    h('span', null, 'oder'),
+    h('b', null, T('Bilder hierher ziehen')),
+    h('span', null, T('oder')),
     h('div', { class: 'wp-empty-btns' },
-      h('button', { class: 'btn primary', onclick: pickImgs }, icon('image'), 'Bilder auswählen'),
-      h('button', { class: 'btn', onclick: pickDir }, icon('folder'), 'Ordner auswählen')),
+      h('button', { class: 'btn primary', onclick: pickImgs }, icon('image'), T('Bilder auswählen')),
+      h('button', { class: 'btn', onclick: pickDir }, icon('folder'), T('Ordner auswählen'))),
     h('small', null, 'PNG · JPG · GIF · BMP · WebP · AVIF'));
   const listHead = h('div', { class: 'wp-lhead' }, countEl,
     h('div', { class: 'wp-lacts' },
-      h('button', { class: 'btn sm ghost', onclick: pickImgs }, icon('plus'), 'Bilder'),
-      h('button', { class: 'btn sm ghost', onclick: pickDir }, icon('folder'), 'Ordner'),
-      h('button', { class: 'btn sm ghost', onclick: () => { if (!running) { items = []; listEl.replaceChildren(); resetResult(); paint(); } } }, icon('trash'), 'Leeren')));
+      h('button', { class: 'btn sm ghost', onclick: pickImgs }, icon('plus'), T('Bilder')),
+      h('button', { class: 'btn sm ghost', onclick: pickDir }, icon('folder'), T('Ordner')),
+      h('button', { class: 'btn sm ghost', onclick: () => { if (!running) { items = []; listEl.replaceChildren(); resetResult(); paint(); } } }, icon('trash'), T('Leeren'))));
   const files = h('div', { class: 'wp-card wp-files',
     ondragover: e => { if ([...(e.dataTransfer?.items || [])].some(i => i.kind === 'file')) { e.preventDefault(); files.classList.add('over'); } },
     ondragleave: e => { if (!files.contains(e.relatedTarget)) files.classList.remove('over'); },
@@ -6144,7 +6159,7 @@ function mountWebP(view) {
     empty, listHead, result, listEl, fileInp, dirInp);
 
   function addBatch(batch) {
-    if (!batch.length) { toast('Keine unterstützten Bilder gefunden.', 'warn'); return; }
+    if (!batch.length) { toast(T('Keine unterstützten Bilder gefunden.'), 'warn'); return; }
     resetResult();
     for (const f of batch) {
       const it = { id: ++idSeq, file: f.file, name: f.name, relPath: f.relPath, out: 0, state: '' };
@@ -6155,9 +6170,9 @@ function mountWebP(view) {
       it.sizeEl = h('div', { class: 'wp-size' }, fmtSize(f.file.size));
       it.badge = h('span', { class: 'wp-badge' });
       it.el = h('div', { class: 'wp-row' }, thumb,
-        h('div', { class: 'wp-meta' }, h('div', { class: 'wp-name', title: f.name }, f.name), h('div', { class: 'wp-sub' }, f.relPath || 'Einzelbild')),
+        h('div', { class: 'wp-meta' }, h('div', { class: 'wp-name', title: f.name }, f.name), h('div', { class: 'wp-sub' }, f.relPath || '—')),
         it.sizeEl, it.badge,
-        h('button', { class: 'wp-rm', title: 'Entfernen', onclick: () => removeItem(it) }, icon('x')));
+        h('button', { class: 'wp-rm', title: T('Entfernen'), onclick: () => removeItem(it) }, icon('x')));
       items.push(it); listEl.append(it.el);
     }
     paint();
@@ -6205,11 +6220,11 @@ function mountWebP(view) {
   const scaleSeg = segEl([['off', 'Original'], ['w', 'max ↔'], ['h', 'max ↕']], opts.scaleMode, v => { opts.scaleMode = v; scaleInp.disabled = v === 'off'; saveOpts(); resetResult(); });
   scaleInp.disabled = opts.scaleMode === 'off';
   const nameEx = h('div', { class: 'wp-prev' });
-  const paintName = () => { const ex = items[0]?.name || 'Mein Foto_01.PNG'; nameEx.replaceChildren(ex, ' → ', h('b', null, outName(ex))); };
+  const paintName = () => { const ex = items[0]?.name || T('Mein Foto_01.PNG'); nameEx.replaceChildren(ex, ' → ', h('b', null, outName(ex))); };
   const suffixInp = h('input', { type: 'text', class: 'inp', placeholder: 'Suffix: -web', maxlength: 40, spellcheck: false, autocomplete: 'off', value: opts.suffix,
     oninput: () => { opts.suffix = suffixInp.value.trim(); saveOpts(); paintName(); } });
   const swRow = (label, key) => h('label', { class: 'wp-sw' }, h('span', null, label), switchEl(opts[key], v => { opts[key] = v; saveOpts(); paintName(); }));
-  const outSeg = segEl([['zip', 'ZIP'], ['folder', 'Ordner']], opts.outMode, v => { opts.outMode = v; saveOpts(); resetResult(); });
+  const outSeg = segEl([['zip', 'ZIP'], ['folder', T('Ordner')]], opts.outMode, v => { opts.outMode = v; saveOpts(); resetResult(); });
 
   /* ---------- Start & result ---------- */
   const goLbl = h('span', null, '→ WebP');
@@ -6223,7 +6238,7 @@ function mountWebP(view) {
   function paint() {
     const n = items.length, total = items.reduce((s, it) => s + it.file.size, 0);
     empty.hidden = !!n; listHead.hidden = listEl.hidden = !n;
-    countEl.replaceChildren(`${n} ${n === 1 ? 'Bild' : 'Bilder'}`, h('small', null, fmtSize(total)));
+    countEl.replaceChildren(`${n} × 🖼`, h('small', null, fmtSize(total)));
     goBtn.disabled = !n || running;
     goLbl.textContent = n ? `${n} → WebP` : '→ WebP';
     paintName();
@@ -6243,38 +6258,38 @@ function mountWebP(view) {
         const blob = await toWebP(it.file);
         it.out = blob.size; before += it.file.size; after += blob.size;
         const p = pct(it.file.size, blob.size);
-        it.sizeEl.replaceChildren(fmtSize(blob.size), h('small', null, 'vorher ' + fmtSize(it.file.size)));
+        it.sizeEl.replaceChildren(fmtSize(blob.size), h('small', null, fmtSize(it.file.size) + ' →'));
         it.badge.className = 'wp-badge ' + (p >= 0 ? 'good' : 'bad'); it.badge.textContent = (p >= 0 ? '−' : '+') + Math.abs(p) + ' %';
         files.push({ path: zipPath(it.relPath, it.name), blob, mtime: it.file.lastModified || Date.now() });
-      } catch { failed++; it.badge.className = 'wp-badge err'; it.badge.textContent = 'Fehler'; }
+      } catch { failed++; it.badge.className = 'wp-badge err'; it.badge.textContent = '✗'; }
       it.el.classList.remove('busy');
       progFill.style.width = ((i + 1) / total * 100) + '%';
       await new Promise(r => setTimeout(r, 0));
     }
     let ok = !!files.length;
-    if (ok && opts.outMode === 'folder') { progTxt.textContent = 'Ordner auswählen …'; ok = await saveToFolder(files); }
-    else if (ok) { progTxt.textContent = 'Packe ZIP …'; zipBlob = await makeZip(files, (i, n) => { progTxt.textContent = `Packe ZIP … ${i}/${n}`; }); }
+    if (ok && opts.outMode === 'folder') { progTxt.textContent = T('Ordner auswählen …'); ok = await saveToFolder(files); }
+    else if (ok) { progTxt.textContent = 'ZIP …'; zipBlob = await makeZip(files, (i, n) => { progTxt.textContent = `ZIP … ${i}/${n}`; }); }
     prog.hidden = true;
     if (ok) {
       const p = pct(before, after), n = files.length;
       result.replaceChildren(
         h('div', { class: 'wp-res-top' }, h('span', { class: 'wp-res-big' + (p < 0 ? ' bad' : '') }, (p >= 0 ? '−' : '+') + Math.abs(p) + ' %'),
-          h('div', null, h('b', null, `${fmtSize(before)} → ${fmtSize(after)}`), h('small', null, `${n} ${n === 1 ? 'Bild' : 'Bilder'} ${opts.outMode === 'folder' ? 'gespeichert' : 'konvertiert'}` + (failed ? ` · ${failed} Fehler` : '')))),
+          h('div', null, h('b', null, `${fmtSize(before)} → ${fmtSize(after)}`), h('small', null, `${n} × 🖼 ✓` + (failed ? ` · ${failed} ✗` : '')))),
         zipBlob ? h('button', { class: 'btn primary', onclick: () => download('webp-bilder.zip', zipBlob) }, icon('download'), `ZIP · ${fmtSize(zipBlob.size)}`) : null);
       result.hidden = false;
-      toast(`${n} ${n === 1 ? 'Bild' : 'Bilder'} ${opts.outMode === 'folder' ? 'gespeichert' : 'konvertiert'}`, 'ok');
-    } else if (!files.length) toast('Kein Bild konnte konvertiert werden.', 'err');
+      toast(`${n} × 🖼 ✓`, 'ok');
+    } else if (!files.length) toast(T('Kein Bild konnte konvertiert werden.'), 'err');
     running = false; paint();
   }
 
   async function saveToFolder(list) {
-    if (!window.showDirectoryPicker) { toast('Dein Browser kann nicht direkt speichern. Bitte ZIP verwenden.', 'warn'); return false; }
+    if (!window.showDirectoryPicker) { toast(T('Dein Browser kann nicht direkt speichern. Bitte ZIP verwenden.'), 'warn'); return false; }
     let dirHandle;
     try { dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' }); }
-    catch { toast('Kein Ordner ausgewählt.', 'warn'); return false; }
+    catch { toast(T('Kein Ordner ausgewählt.'), 'warn'); return false; }
     let idx = 0;
     for (const { path, blob } of list) {
-      progTxt.textContent = `Speichere ${++idx}/${list.length} …`;
+      progTxt.textContent = `${++idx}/${list.length} …`;
       const parts = path.split('/');
       let dh = dirHandle;
       for (let j = 0; j < parts.length - 1; j++) dh = await dh.getDirectoryHandle(parts[j], { create: true });
@@ -6291,14 +6306,14 @@ function mountWebP(view) {
     h('div', { class: 'wp-hd' },
       h('div', { class: 'wp-logo' }, icon('compress')),
       h('div', null, h('h2', null, 'WebP Converter'), h('p', null, 'JPG · PNG · GIF · AVIF → WebP')),
-      h('div', { class: 'wp-priv', title: 'EXIF, GPS & XMP ✕ · Ausrichtung bleibt' }, icon('lock'), 'Ohne EXIF & GPS')),
+      h('div', { class: 'wp-priv', title: T('EXIF, GPS & XMP ✕ · Ausrichtung bleibt') }, icon('lock'), T('Ohne EXIF & GPS'))),
     h('div', { class: 'wp-grid' },
       files,
       h('div', { class: 'wp-card wp-set' },
-        sec(['Qualität', qVal], qRange, presets),
-        sec('Größe begrenzen', h('div', { class: 'wp-row2' }, scaleSeg, scaleInp, h('span', { class: 'hint' }, 'px'))),
-        sec('Dateinamen', swRow('Abc → abc', 'lower'), swRow('Leerzeichen & _ → -', 'dash'), suffixInp, nameEx),
-        sec('Ausgabe', outSeg),
+        sec([T('Qualität'), qVal], qRange, presets),
+        sec(T('Größe begrenzen'), h('div', { class: 'wp-row2' }, scaleSeg, scaleInp, h('span', { class: 'hint' }, 'px'))),
+        sec(T('Dateinamen'), swRow('Abc → abc', 'lower'), swRow(T('Leerzeichen & _ → -'), 'dash'), suffixInp, nameEx),
+        sec(T('Ausgabe'), outSeg),
         h('div', { class: 'wp-sec' }, goBtn, prog))))));
   setQuality(opts.quality); resetResult(); paint();
   return {};
@@ -7566,10 +7581,11 @@ function loadPdfLibs() {
 }
 
 function mountPdfWerk(view) {
+  const pagesTxt = n => n === 1 ? T('1 Seite') : T('{n} Seiten', { n });
   const SRC_COLORS = ['#7c6cff', '#f97316', '#10b981', '#ec4899', '#06b6d4', '#eab308', '#ef4444', '#8b5cf6'];
   const A4 = [595.28, 841.89];
   let sources = [], pages = [], seq = 0, busy = false, lastClicked = null;
-  const opts = { name: 'dokument', every: 2, ...Store.get('pdfwerk', {}) };
+  const opts = { name: isEN() ? 'document' : 'dokument', every: 2, ...Store.get('pdfwerk', {}) };
   const saveOpts = saveLater(() => Store.set('pdfwerk', { name: opts.name, every: opts.every }), 300);
 
   /* ---------- Thumbnails: only visible pages, one after another ---------- */
@@ -7605,9 +7621,9 @@ function mountPdfWerk(view) {
   }
   async function addFiles(files) {
     const list = files.filter(f => f.type === 'application/pdf' || /\.pdf$/i.test(f.name) || f.type.startsWith('image/'));
-    if (!list.length) { toast('Keine PDFs oder Bilder gefunden.', 'warn'); return; }
-    try { await loadPdfLibs(); } catch (e) { toast('PDF-Werkzeuge konnten nicht geladen werden: ' + e.message, 'err', { ms: 7000 }); return; }
-    setBusy(true, 'Lade Dateien …');
+    if (!list.length) { toast(T('Keine PDFs oder Bilder gefunden.'), 'warn'); return; }
+    try { await loadPdfLibs(); } catch (e) { toast(T('PDF-Werkzeuge konnten nicht geladen werden: ') + e.message, 'err', { ms: 7000 }); return; }
+    setBusy(true, T('Lade Dateien …'));
     for (const f of list) {
       const src = { id: ++seq, name: f.name, size: f.size, color: SRC_COLORS[sources.length % SRC_COLORS.length] };
       try {
@@ -7619,12 +7635,12 @@ function mountPdfWerk(view) {
           src.doc = await pdfjsLib.getDocument({ data: src.bytes.slice(), isEvalSupported: false }).promise;   // no eval (security policy)
           // pdf-lib can't decrypt protected PDFs → detect them instead of producing broken files
           const probe = await PDFLib.PDFDocument.load(src.bytes, { ignoreEncryption: true, updateMetadata: false });
-          if (probe.isEncrypted) { src.doc.destroy(); toast(`„${f.name}" ist geschützt und kann nicht bearbeitet werden.`, 'err', { ms: 6000 }); continue; }
+          if (probe.isEncrypted) { src.doc.destroy(); toast(T('„{n}“ ist geschützt und kann nicht bearbeitet werden.', { n: f.name }), 'err', { ms: 6000 }); continue; }
           sources.push(src);
           for (let i = 0; i < src.doc.numPages; i++) addPage(src, i);
         }
       } catch (e) {
-        toast(e?.name === 'PasswordException' ? `„${f.name}" ist mit Passwort geschützt.` : `„${f.name}" konnte nicht gelesen werden.`, 'err', { ms: 6000 });
+        toast(T(e?.name === 'PasswordException' ? '„{n}“ ist mit Passwort geschützt.' : '„{n}“ konnte nicht gelesen werden.', { n: f.name }), 'err', { ms: 6000 });
       }
     }
     setBusy(false); paint();
@@ -7641,8 +7657,8 @@ function mountPdfWerk(view) {
       ondragover: e => { if (!dragging) return; e.preventDefault(); const r = p.el.getBoundingClientRect(); markDrop(p, e.clientX > r.left + r.width / 2); },
       ondrop: e => { if (!dragging) return; e.preventDefault(); e.stopPropagation(); const r = p.el.getBoundingClientRect(); moveTo(p, e.clientX > r.left + r.width / 2); } },
       h('div', { class: 'pfw-thumb-box' }, p.thumb, h('span', { class: 'pfw-check' }, icon('check')),
-        h('div', { class: 'pfw-acts' }, act('rotl', '−90°', () => rotate([p], -90)), act('rotr', '+90°', () => rotate([p], 90)), act('trash', 'Seite entfernen', () => remove([p])))),
-      h('div', { class: 'pfw-cap' }, p.no, h('span', { class: 'pfw-src', title: src.name }, src.kind === 'img' ? 'Bild' : `#${index + 1}`)));
+        h('div', { class: 'pfw-acts' }, act('rotl', '−90°', () => rotate([p], -90)), act('rotr', '+90°', () => rotate([p], 90)), act('trash', T('Seite entfernen'), () => remove([p])))),
+      h('div', { class: 'pfw-cap' }, p.no, h('span', { class: 'pfw-src', title: src.name }, src.kind === 'img' ? T('Bild') : `#${index + 1}`)));
     pages.push(p);
   }
 
@@ -7693,23 +7709,23 @@ function mountPdfWerk(view) {
     out.setProducer('Toms Tools · PDF-Werk'); out.setCreator('Toms Tools');
     return new Blob([await out.save()], { type: 'application/pdf' });
   }
-  const fileName = suffix => (opts.name.trim() || 'dokument').replace(/\.pdf$/i, '').replace(/[\\/:*?"<>|]+/g, '-') + (suffix || '') + '.pdf';
+  const fileName = suffix => (opts.name.trim() || (isEN() ? 'document' : 'dokument')).replace(/\.pdf$/i, '').replace(/[\\/:*?"<>|]+/g, '-') + (suffix || '') + '.pdf';
   async function run(label, fn) {
     if (busy || !pages.length) return;
     setBusy(true, label);
-    try { await fn(); } catch (e) { toast('Speichern fehlgeschlagen: ' + (e.message || e), 'err', { ms: 7000 }); }
+    try { await fn(); } catch (e) { toast(T('Speichern fehlgeschlagen: ') + (e.message || e), 'err', { ms: 7000 }); }
     setBusy(false);
   }
-  const saveAll = () => run('Erstelle PDF …', async () => { const b = await build(pages); download(fileName(), b, 'application/pdf'); toast(`${pages.length} Seiten gespeichert · ${fmtSize(b.size)}`, 'ok'); });
-  const saveSel = () => run('Erstelle PDF …', async () => { const l = selected(); if (!l.length) return; const b = await build(l); download(fileName('-auswahl'), b, 'application/pdf'); toast(`${l.length} ${l.length === 1 ? 'Seite' : 'Seiten'} gespeichert`, 'ok'); });
-  const saveSplit = n => run('Teile PDF …', async () => {
+  const saveAll = () => run('PDF …', async () => { const b = await build(pages); download(fileName(), b, 'application/pdf'); toast(`${pagesTxt(pages.length)} ✓ · ${fmtSize(b.size)}`, 'ok'); });
+  const saveSel = () => run('PDF …', async () => { const l = selected(); if (!l.length) return; const b = await build(l); download(fileName(isEN() ? '-selection' : '-auswahl'), b, 'application/pdf'); toast(`${pagesTxt(l.length)} ✓`, 'ok'); });
+  const saveSplit = n => run('PDF …', async () => {
     const files = [], base = fileName().replace(/\.pdf$/, ''), digits = String(Math.ceil(pages.length / n)).length;
     for (let i = 0, k = 1; i < pages.length; i += n, k++) {
-      busyTxt.textContent = `Teile PDF … ${k}/${Math.ceil(pages.length / n)}`;
+      busyTxt.textContent = `PDF … ${k}/${Math.ceil(pages.length / n)}`;
       files.push({ path: `${base}-${String(k).padStart(digits, '0')}.pdf`, blob: await build(pages.slice(i, i + n)), mtime: Date.now() });
     }
     download(base + '.zip', await makeZip(files), 'application/zip');
-    toast(`${files.length} PDFs als ZIP gespeichert`, 'ok');
+    toast(`${files.length} × PDF → ZIP ✓`, 'ok');
   });
 
   /* ---------- UI ---------- */
@@ -7721,16 +7737,16 @@ function mountPdfWerk(view) {
   const busyTxt = h('span'), busyEl = h('div', { class: 'pfw-busy', hidden: true }, h('span', { class: 'pfw-spin' }), busyTxt);
   const empty = h('div', { class: 'pfw-empty' },
     h('div', { class: 'pfw-empty-ico' }, icon('files')),
-    h('b', null, 'PDFs oder Bilder hierher ziehen'),
-    h('span', null, 'oder'),
-    h('button', { class: 'btn primary', onclick: pick }, icon('plus'), 'Dateien auswählen'),
+    h('b', null, T('PDFs oder Bilder hierher ziehen')),
+    h('span', null, T('oder')),
+    h('button', { class: 'btn primary', onclick: pick }, icon('plus'), T('Dateien auswählen')),
     h('small', null, 'PDF + PDF → 1 PDF · JPG/PNG → A4'));
   const head = h('div', { class: 'pfw-lhead' }, countEl,
     h('div', { class: 'pfw-lacts' },
-      h('button', { class: 'btn sm ghost', onclick: pick }, icon('plus'), 'Dateien'),
-      h('button', { class: 'btn sm ghost', onclick: () => { const all = pages.every(p => p.sel); pages.forEach(p => { p.sel = !all; }); paint(); } }, icon('check'), 'Alle'),
-      h('button', { class: 'btn sm ghost', onclick: () => { pages.reverse(); paint(); } }, icon('down'), 'Umkehren'),
-      h('button', { class: 'btn sm ghost', onclick: () => remove([...pages]) }, icon('trash'), 'Leeren')));
+      h('button', { class: 'btn sm ghost', onclick: pick }, icon('plus'), T('Dateien')),
+      h('button', { class: 'btn sm ghost', onclick: () => { const all = pages.every(p => p.sel); pages.forEach(p => { p.sel = !all; }); paint(); } }, icon('check'), T('Alle')),
+      h('button', { class: 'btn sm ghost', onclick: () => { pages.reverse(); paint(); } }, icon('down'), T('Umkehren')),
+      h('button', { class: 'btn sm ghost', onclick: () => remove([...pages]) }, icon('trash'), T('Leeren'))));
   const main = h('div', { class: 'pfw-card pfw-main',
     ondragover: e => { if (!dragging && [...(e.dataTransfer?.items || [])].some(i => i.kind === 'file')) { e.preventDefault(); main.classList.add('over'); } },
     ondragleave: e => { if (!main.contains(e.relatedTarget)) main.classList.remove('over'); },
@@ -7742,27 +7758,27 @@ function mountPdfWerk(view) {
   const selBtns = [
     h('button', { class: 'btn sm', onclick: () => rotate(selected(), -90) }, icon('rotl'), '−90°'),
     h('button', { class: 'btn sm', onclick: () => rotate(selected(), 90) }, icon('rotr'), '+90°'),
-    h('button', { class: 'btn sm', onclick: () => remove(selected()) }, icon('trash'), 'Entfernen')];
-  const selSave = h('button', { class: 'btn block', onclick: saveSel }, icon('download'), 'Auswahl → PDF');
-  const nameInp = h('input', { class: 'inp', value: opts.name, placeholder: 'Dateiname', spellcheck: false, autocomplete: 'off', oninput: () => { opts.name = nameInp.value; saveOpts(); } });
+    h('button', { class: 'btn sm', onclick: () => remove(selected()) }, icon('trash'), T('Entfernen'))];
+  const selSave = h('button', { class: 'btn block', onclick: saveSel }, icon('download'), T('Auswahl → PDF'));
+  const nameInp = h('input', { class: 'inp', value: opts.name, placeholder: T('Dateiname'), spellcheck: false, autocomplete: 'off', oninput: () => { opts.name = nameInp.value; saveOpts(); } });
   const everyInp = h('input', { class: 'inp pfw-every', type: 'number', min: 1, max: 999, value: opts.every, oninput: () => { opts.every = Math.max(1, Math.min(999, Math.round(+everyInp.value) || 1)); saveOpts(); paint(); } });
   const saveBtn = h('button', { class: 'btn primary block pfw-go', onclick: saveAll }, icon('download'), h('span'));
-  const splitOne = h('button', { class: 'btn block', onclick: () => saveSplit(1) }, icon('layers'), '1 Seite = 1 PDF · ZIP');
-  const splitN = h('button', { class: 'btn', onclick: () => saveSplit(opts.every) }, 'Teilen');
+  const splitOne = h('button', { class: 'btn block', onclick: () => saveSplit(1) }, icon('layers'), T('1 Seite = 1 PDF · ZIP'));
+  const splitN = h('button', { class: 'btn', onclick: () => saveSplit(opts.every) }, T('Teilen'));
   const side = h('div', { class: 'pfw-card pfw-side' },
-    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, 'Auswahl'), selInfo, h('div', { class: 'pfw-row' }, ...selBtns), selSave),
-    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, 'Speichern'), h('label', { class: 'pfw-field' }, h('span', null, 'Dateiname'), h('div', { class: 'pfw-name' }, nameInp, h('span', null, '.pdf'))), saveBtn),
-    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, 'Teilen'), splitOne, h('div', { class: 'pfw-row pfw-every-row' }, h('span', null, 'Alle'), everyInp, h('span', null, 'Seiten'), splitN)));
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Auswahl')), selInfo, h('div', { class: 'pfw-row' }, ...selBtns), selSave),
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Speichern')), h('label', { class: 'pfw-field' }, h('span', null, T('Dateiname')), h('div', { class: 'pfw-name' }, nameInp, h('span', null, '.pdf'))), saveBtn),
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Teilen')), splitOne, h('div', { class: 'pfw-row pfw-every-row' }, h('span', null, T('Je')), everyInp, h('span', null, T('Seiten')), splitN)));
 
   function setBusy(on, txt) { busy = on; busyEl.hidden = !on; busyTxt.textContent = txt || ''; paint(); }
   function paint() {
     const n = pages.length, sel = selected().length;
     empty.hidden = !!n; head.hidden = grid.hidden = chips.hidden = !n;
-    countEl.replaceChildren(`${n} ${n === 1 ? 'Seite' : 'Seiten'}`, h('small', null, `aus ${sources.length} ${sources.length === 1 ? 'Datei' : 'Dateien'}`));
+    countEl.replaceChildren(pagesTxt(n), h('small', null, T(sources.length === 1 ? 'aus 1 Datei' : 'aus {n} Dateien', { n: sources.length })));
     // File chips with color & remove
     chips.replaceChildren(...sources.map(s => h('span', { class: 'pfw-chip', style: { '--sc': s.color }, title: `${s.name} · ${fmtSize(s.size)}` },
       h('i'), h('span', { class: 'pfw-chip-n' }, s.name), h('small', null, pages.filter(p => p.src === s).length),
-      h('button', { title: 'Datei entfernen', onclick: () => remove(pages.filter(p => p.src === s)) }, icon('x')))));
+      h('button', { title: T('Datei entfernen'), onclick: () => remove(pages.filter(p => p.src === s)) }, icon('x')))));
     // Grid in current order (existing elements are only moved)
     pages.forEach((p, i) => {
       p.no.textContent = i + 1;
@@ -7771,9 +7787,9 @@ function mountPdfWerk(view) {
       if (grid.children[i] !== p.el) grid.insertBefore(p.el, grid.children[i] || null);
       if (!p.rendered && p.src.kind === 'pdf') io.observe(p.el);
     });
-    selInfo.textContent = sel ? `${sel} ${sel === 1 ? 'Seite' : 'Seiten'} ausgewählt` : 'Klick · ⇧ + Klick';
+    selInfo.textContent = sel ? T('{p} ausgewählt', { p: pagesTxt(sel) }) : T('Klick · ⇧ + Klick');
     selBtns.forEach(b => { b.disabled = !sel || busy; }); selSave.disabled = !sel || busy;
-    saveBtn.lastChild.textContent = n > 1 && sources.length > 1 ? 'Zusammenführen → PDF' : 'PDF';
+    saveBtn.lastChild.textContent = n > 1 && sources.length > 1 ? T('Zusammenführen → PDF') : 'PDF';
     saveBtn.disabled = splitOne.disabled = splitN.disabled = !n || busy;
     everyInp.disabled = !n || busy;
   }

@@ -40,7 +40,7 @@ Toms Tools ist mein erstes größeres Projekt – Feedback ist jederzeit willkom
 ## ✨ Das Besondere
 
 - **Eine Datei.** Keine Installation, keine Admin-Rechte, kein Konto. Die Datei kann auf einem USB-Stick liegen oder im OneDrive – perfekt für den Arbeits-PC.
-- **Wirklich lokal.** Eine Content-Security-Policy sperrt die Seite komplett vom Netz aus: Sie *kann* gar nichts hochladen oder nachladen. Kein Tracking, keine Werbung, keine Server.
+- **Wirklich lokal.** Eine Content-Security-Policy sperrt die Seite komplett vom Netz aus: Sie *kann* gar nichts hochladen oder nachladen. Kein Tracking, keine Werbung, keine Server. Zwei kleine Ausnahmen gibt es – beide unten in den Einstellungen und nur auf Klick: den freiwilligen Kaffee-Knopf (PayPal) und einen Link zu dieser GitHub-Seite.
 - **Schnell.** Alles läuft direkt im Browser, Grafik-Lastiges auf der Grafikkarte (WebGL2).
 - **Deine Daten gehören dir.** Gespeichert wird im Browser – mit Backup-Export und automatischer Sicherung in einen Ordner deiner Wahl.
 
@@ -131,7 +131,7 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 <img src="docs/codewerk.png" alt="Codewerk" width="720">
 
-**Spickzettel** – Sonderzeichen, Snippets und Vorlagen – ein Klick kopiert.
+**Spickzettel** – Sonderzeichen, Emojis, Snippets und Vorlagen, Git- und Terminal-Befehle, Shortcuts für Windows & Mac und ein Linux-Cheatsheet mit Erklärungen – ein Klick kopiert.
 
 <img src="docs/spickzettel.png" alt="Spickzettel" width="720">
 
@@ -264,7 +264,7 @@ Die Daten der beiden Varianten sind getrennt. Mit *Einstellungen → Speicher & 
 - Die Seite bringt eine strenge **Content-Security-Policy** mit (`default-src 'none'`, Verbindungen nur zu `data:`/`blob:`). Der Browser verhindert damit jede Verbindung ins Internet – auch versehentliche.
 - Es gibt **keine Analyse, keine Cookies von Dritten, keine externen Schriften oder Skripte**.
 - Passwörter, Hashes und JWTs aus Textwerk/Codewerk werden **nie gespeichert**.
-- Links nach draußen öffnen sich nur, wenn du sie anklickst – jeweils in einem neuen Tab: der freiwillige Kaffee-Knopf in den Einstellungen (PayPal) und die Links, die du selbst im Quellenwerk speicherst.
+- Links nach draußen öffnen sich nur, wenn du sie anklickst – jeweils in einem neuen Tab: der freiwillige Kaffee-Knopf (PayPal) und der Link zu dieser GitHub-Seite, beide in den Einstellungen, sowie die Links, die du selbst im Quellenwerk speicherst.
 
 ## 🛠️ Unter der Haube
 

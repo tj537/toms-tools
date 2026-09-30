@@ -409,6 +409,8 @@ button.apps-cnt:hover{color:var(--tx);background:var(--s3)}
 .test-out.err b{color:var(--err);font:12px var(--mono)}
 .about-foot{text-align:center;padding:20px 24px 24px;font-size:12px;color:var(--tx3);letter-spacing:.01em;display:flex;flex-direction:column;align-items:center;gap:8px}
 .about-coffee{color:var(--tx3);text-decoration:none;font-size:11.5px;padding:4px 10px;border-radius:12px;border:1px solid transparent;transition:.15s}
+.about-links{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.about-gh:hover{color:var(--acc-tx)!important;border-color:color-mix(in oklab,var(--acc) 40%,transparent)!important;background:var(--acc-soft)!important}
 .about-coffee:hover{color:#f5b544;border-color:color-mix(in oklab,#f5b544 40%,transparent);background:color-mix(in oklab,#f5b544 8%,transparent)}
 
 .menu{position:fixed;z-index:70;min-width:250px;max-width:340px;max-height:min(72vh,560px);overflow:auto;background:var(--s2);border:1px solid var(--line2);border-radius:14px;padding:6px;box-shadow:0 24px 60px -16px rgba(0,0,0,.8);animation:pop .14s ease}
@@ -1800,6 +1802,8 @@ button.apps-cnt:hover{color:var(--tx);background:var(--s3)}
 .cs-ok::after{content:"✓ Kopiert";position:absolute;inset:0;display:grid;place-items:center;border-radius:inherit;background:color-mix(in oklab,var(--ok) 88%,black);color:#fff;font:700 12.5px var(--font);animation:csOk .9s ease forwards;z-index:2;pointer-events:none}
 @keyframes csOk{0%{opacity:0;transform:scale(.92)}15%{opacity:1;transform:scale(1)}75%{opacity:1}100%{opacity:0}}
 .cs-sns{display:flex;flex-direction:column;gap:10px}
+.cs-sns-h{margin:14px 0 0}
+.cs-sns-h:first-child{margin-top:0}
 .cs-sn{border-radius:14px;background:var(--s1);border:1px solid var(--line);padding:12px 12px 12px 16px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s}
 .cs-sn:hover{border-color:var(--line2)}
 .cs-sn-h{display:flex;align-items:center;gap:8px}
@@ -4549,6 +4553,7 @@ function greeting(d, fresh) {
 }
 
 const COFFEE_URL = 'https://paypal.me/tf443';
+const GITHUB_URL = 'https://github.com/tj537/toms-tools';
 
 /* Particles for the home page: draw them once as tile images, then only move them.
    space = space mode: white (slightly bluish/yellowish) stars, denser, with glow */
@@ -4958,8 +4963,10 @@ function openSettings() {
           h('button', { class: 'btn sm', onclick: importAll }, icon('upload'), 'Backup importieren'),
           h('button', { class: 'btn sm danger', onclick: resetAll }, icon('trash'), 'Zurücksetzen'))),
       h('div', { class: 'about-foot' }, 'made with ♥ by Tom & Claude',
-        // opens PayPal in a new tab – the app itself stays offline
-        h('a', { class: 'about-coffee', href: COFFEE_URL, target: '_blank', rel: 'noopener noreferrer', title: 'Gefällt dir Toms Tools? Spendier mir einen Kaffee' }, '☕ Kaffee spendieren'))));
+        // the only two links out of the app – both open in a new tab, the app itself stays offline
+        h('div', { class: 'about-links' },
+          h('a', { class: 'about-coffee', href: COFFEE_URL, target: '_blank', rel: 'noopener noreferrer', title: 'Gefällt dir Toms Tools? Spendier mir einen Kaffee' }, '☕ Kaffee spendieren'),
+          h('a', { class: 'about-coffee about-gh', href: GITHUB_URL, target: '_blank', rel: 'noopener noreferrer', title: 'Neue Versionen, Feedback & Quellcode' }, '🐙 Toms Tools auf GitHub')))));
   bd.append(drawer);
   bd.addEventListener('mousedown', e => { if (e.target === bd) close(); });
   $('#layer').append(bd);
@@ -19584,6 +19591,59 @@ Full HD | 1920 × 1080 px
 4K UHD | 3840 × 2160 px
 Apple-Touch-Icon | 180 × 180 px
 Favicon | 32 × 32 px`) },
+    linux: { type: 'snips', items: [
+      { sec: 'Ordner & Dateien' },
+      { t: 'Wo bin ich gerade?', c: 'pwd', d: 'Zeigt den kompletten Pfad des aktuellen Ordners.' },
+      { t: 'Inhalt anzeigen – mit Details & versteckten Dateien', c: 'ls -lah', d: '-l = Liste mit Rechten & Datum, -a = auch versteckte Dateien, -h = Größen in KB/MB.' },
+      { t: 'In einen Ordner wechseln', c: 'cd ~/Dokumente', d: '~ ist dein Home-Ordner. cd .. = eine Ebene hoch, cd - = zurück zum vorherigen Ordner.' },
+      { t: 'Ordner anlegen (auch verschachtelt)', c: 'mkdir -p projekt/bilder', d: '-p legt fehlende Zwischenordner gleich mit an.' },
+      { t: 'Ordner samt Inhalt kopieren', c: 'cp -r quelle/ ziel/', d: 'Ohne -r lassen sich nur einzelne Dateien kopieren.' },
+      { t: 'Verschieben oder umbenennen', c: 'mv alt.txt neu.txt', d: 'Umbenennen ist unter Linux einfach Verschieben an einen neuen Namen.' },
+      { t: 'Löschen – mit Nachfrage', c: 'rm -ri ordner/', d: 'Vorsicht: Es gibt keinen Papierkorb! -i fragt vor jeder Datei nach, -r löscht Ordner mit Inhalt.' },
+      { t: 'Datei in Ruhe lesen', c: 'less datei.txt', d: 'Blättern mit Leertaste, suchen mit /, beenden mit q.' },
+      { t: 'Neue Zeilen live mitlesen', c: 'tail -f /var/log/syslog', d: 'Praktisch für Logdateien. Strg + C beendet.' },
+      { sec: 'Suchen' },
+      { t: 'Dateien nach Namen suchen', c: 'find . -iname "*rechnung*"', d: 'Sucht ab dem aktuellen Ordner, -iname ignoriert Groß-/Kleinschreibung.' },
+      { t: 'Text in Dateien suchen', c: 'grep -rin "suchbegriff" .', d: '-r = auch Unterordner, -i = Groß/klein egal, -n = Zeilennummer zeigen.' },
+      { t: 'Wo liegt ein Programm?', c: 'which python3', d: 'Zeigt den Pfad, unter dem ein Befehl gefunden wird.' },
+      { sec: 'Rechte & Benutzer' },
+      { t: 'Befehl mit Admin-Rechten ausführen', c: 'sudo befehl', d: 'Fragt nach deinem Passwort. Nur nutzen, wenn du weißt, was der Befehl tut.' },
+      { t: 'Letzten Befehl mit sudo wiederholen', c: 'sudo !!', d: 'Für den Klassiker „Permission denied“ – !! steht für den letzten Befehl.' },
+      { t: 'Skript ausführbar machen', c: 'chmod +x skript.sh', d: 'Danach startest du es mit ./skript.sh' },
+      { t: 'Ordner dir selbst zuweisen', c: 'sudo chown -R $USER:$USER ordner/', d: 'Hilft, wenn Dateien nach einem sudo-Befehl plötzlich root gehören.' },
+      { t: 'Wer bin ich eingeloggt?', c: 'whoami', d: 'Zeigt den aktuellen Benutzernamen.' },
+      { sec: 'Programme installieren (Ubuntu & Debian)' },
+      { t: 'System aktualisieren', c: 'sudo apt update && sudo apt upgrade', d: 'update holt die neuen Paketlisten, upgrade installiert die Updates.' },
+      { t: 'Programm installieren', c: 'sudo apt install htop', d: 'htop ist hier nur ein Beispiel – ersetze es durch den Paketnamen.' },
+      { t: 'Programm entfernen', c: 'sudo apt remove htop', d: 'purge statt remove löscht auch die Einstellungen.' },
+      { t: 'Paket suchen', c: 'apt search bildbearbeitung', d: 'Durchsucht Namen und Beschreibungen aller Pakete.' },
+      { t: 'Fedora: System aktualisieren', c: 'sudo dnf upgrade', d: 'Auf Fedora heißt der Paketmanager dnf: dnf install, dnf remove, dnf search.' },
+      { sec: 'System & Prozesse' },
+      { t: 'Laufende Programme übersichtlich', c: 'htop', d: 'Wie der Task-Manager. q beendet. Falls nicht installiert: top geht immer.' },
+      { t: 'Prozess finden', c: 'ps aux | grep firefox', d: 'Die zweite Spalte ist die Prozess-ID (PID).' },
+      { t: 'Prozess beenden', c: 'kill PID', d: 'PID durch die Nummer ersetzen. Reagiert er nicht: kill -9 PID erzwingt es.' },
+      { t: 'Freier Speicherplatz', c: 'df -h', d: 'Zeigt alle Laufwerke mit belegtem und freiem Platz.' },
+      { t: 'Größte Ordner hier', c: 'du -sh * | sort -h', d: 'Sortiert von klein nach groß – der Speicherfresser steht unten.' },
+      { t: 'Arbeitsspeicher', c: 'free -h', d: 'Zeigt belegten und freien RAM.' },
+      { t: 'Linux-Version anzeigen', c: 'cat /etc/os-release', d: 'Name und Version der Distribution, z. B. Ubuntu 24.04.' },
+      { t: 'Dienst neu starten', c: 'sudo systemctl restart nginx', d: 'Mit status statt restart siehst du, ob ein Dienst läuft. nginx ist nur ein Beispiel.' },
+      { sec: 'Netzwerk' },
+      { t: 'Eigene IP-Adressen', c: 'ip -br addr', d: '-br = kurze, übersichtliche Ausgabe.' },
+      { t: 'Ist ein Server erreichbar?', c: 'ping -c 4 google.com', d: '-c 4 schickt vier Pakete und hört dann auf.' },
+      { t: 'Welche Ports sind offen?', c: 'sudo ss -tulpn', d: 'Zeigt, welche Programme auf welchen Ports lauschen.' },
+      { t: 'Datei herunterladen', c: 'curl -LO https://example.com/datei.zip', d: '-L folgt Weiterleitungen, -O behält den Dateinamen.' },
+      { t: 'Per SSH auf einen Server', c: 'ssh benutzer@server', d: 'Benutzer und Server-Adresse ersetzen. exit beendet die Verbindung.' },
+      { t: 'Datei auf einen Server kopieren', c: 'scp datei.txt benutzer@server:~/', d: 'Landet im Home-Ordner auf dem Server.' },
+      { sec: 'Archive' },
+      { t: 'Ordner als .tar.gz packen', c: 'tar -czf archiv.tar.gz ordner/', d: 'c = erstellen, z = komprimieren, f = Dateiname.' },
+      { t: '.tar.gz entpacken', c: 'tar -xzf archiv.tar.gz', d: 'x = auspacken – landet im aktuellen Ordner.' },
+      { t: 'ZIP entpacken', c: 'unzip archiv.zip -d ziel/', d: '-d gibt den Zielordner an.' },
+      { sec: 'Terminal-Tricks' },
+      { t: 'Hilfe zu einem Befehl', c: 'man ls', d: 'Die ausführliche Anleitung. q beendet. Kürzer: ls --help' },
+      { t: 'Frühere Befehle durchsuchen', c: 'history | grep ssh', d: 'Noch schneller: Strg + R drücken und lostippen.' },
+      { t: 'Ausgabe in eine Datei schreiben', c: 'ls -lah > liste.txt', d: '> überschreibt die Datei, >> hängt unten an.' },
+      { t: 'Terminal aufräumen', c: 'clear', d: 'Oder Strg + L. Wichtige Kürzel: Strg + C bricht ab, Tab vervollständigt Namen.' },
+    ] },
     mac: { type: 'kv', copy: 'key', items: L(`
 ⌘ ⇧ 4 | Screenshot eines Bereichs
 ⌘ ⇧ 4, dann Leertaste | Screenshot eines Fensters
@@ -19673,7 +19733,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
     ['Werkzeuge', [['gen', '🅰️', 'Schrift-Stile'], ['dyn', '⚡', 'Live-Werte']]],
     ['Zeichen', [['zeichen', '✳️', 'Sonderzeichen'], ['emoji', '😀', 'Emoji-Sets'], ['kaomoji', '¯\\_(ツ)_/¯', 'Kaomoji'], ['leer', '⬜', 'Unsichtbare Zeichen']]],
     ['Code', [['md', '📝', 'Markdown'], ['git', '🌿', 'Git'], ['terminal', '⌨️', 'Terminal'], ['regex', '🔎', 'Regex'], ['http', '🌐', 'HTTP-Statuscodes']]],
-    ['Texte & Daten', [['dummy', '🧪', 'Testdaten'], ['formate', '📐', 'Formate & Größen'], ['mac', '🍏', 'Mac-Shortcuts'], ['win', '🪟', 'Windows-Shortcuts']]],
+    ['Texte & Daten', [['dummy', '🧪', 'Testdaten'], ['formate', '📐', 'Formate & Größen'], ['mac', '🍏', 'Mac-Shortcuts'], ['win', '🪟', 'Windows-Shortcuts'], ['linux', '🐧', 'Linux']]],
   ];
   const CAT = Object.fromEntries(CATS.flatMap(([, l]) => l.map(([id, ico, name]) => [id, { ico, name }])));
   const DESC = {
@@ -19685,6 +19745,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
     git: 'Die Befehle, die man immer wieder nachschlägt.', terminal: 'Nützliche Einzeiler – vor allem für den Mac.', regex: 'Suchmuster zum Prüfen und Ersetzen.',
     http: 'Klick kopiert den Code.', dummy: 'Platzhalter und offizielle Testdaten.',
     formate: 'Klick kopiert die Maße.', mac: 'Klick kopiert die Tastenfolge.', win: 'Klick kopiert die Tastenkombination.',
+    linux: 'Die wichtigsten Terminal-Befehle für Linux (Ubuntu, Debian & Co.) – mit Erklärung. Klick kopiert den Befehl.',
   };
 
   /* ---------- State ---------- */
@@ -19747,7 +19808,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
       h('div', { class: 'cs-sec-h' }, h('span', null, title),
         id === 'emoji' ? h('button', { class: 'cs-mini', title: 'Ganzes Set kopieren', onclick: e => copy(items.map(i => i[0]).join(' '), `${title}-Set`, e.currentTarget) }, 'Set kopieren') : null),
       h('div', { class: 'cs-chars' + (d.wide ? ' wide' : '') }, items.map(i => tile(id, i, d.wide)))));
-    if (d?.type === 'snips') return [h('div', { class: 'cs-sns' }, d.items.map(it => snip(id, it)))];
+    if (d?.type === 'snips') return [h('div', { class: 'cs-sns' }, d.items.map(it => it.sec ? h('div', { class: 'cs-sec-h cs-sns-h' }, h('span', null, it.sec)) : snip(id, it)))];
     if (d?.type === 'kv') return [h('div', { class: 'cs-kvs' }, d.items.map(it => kv(id, it, d.copy)))];
     if (id === 'dyn') return [h('div', { class: 'cs-kvs' }, DYN.map(([name, fn]) => {
       const val = h('span', { class: 'cs-val mono' }, fn());
@@ -19813,7 +19874,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
     for (const [id, d] of Object.entries(DATA)) {
       const hits = [];
       if (d.type === 'chars') d.sections.forEach(([title, items]) => items.forEach(it => { if (it[0] === q || norm(it[1]).includes(n) || norm(title).includes(n)) hits.push(tile(id, it, d.wide)); }));
-      if (d.type === 'snips') d.items.forEach(it => { if (norm(it.t).includes(n) || norm(it.d || '').includes(n) || norm(it.c).includes(n)) hits.push(snip(id, it)); });
+      if (d.type === 'snips') d.items.forEach(it => { if (!it.sec && (norm(it.t).includes(n) || norm(it.d || '').includes(n) || norm(it.c).includes(n))) hits.push(snip(id, it)); });
       if (d.type === 'kv') d.items.forEach(it => { if (norm(it[0]).includes(n) || norm(it[1]).includes(n)) hits.push(kv(id, it, d.copy)); });
       if (hits.length) res.push([id, hits.slice(0, 40)]);
     }
@@ -19824,7 +19885,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
 
   /* ---------- Layout ---------- */
   const navEl = h('nav', { class: 'cs-nav' });
-  const count = id => ({ fav: st.fav.length, mine: st.mine.length, gen: STYLES.length, dyn: DYN.length })[id] ?? (DATA[id].type === 'chars' ? DATA[id].sections.reduce((a, s) => a + s[1].length, 0) : DATA[id].items.length);
+  const count = id => ({ fav: st.fav.length, mine: st.mine.length, gen: STYLES.length, dyn: DYN.length })[id] ?? (DATA[id].type === 'chars' ? DATA[id].sections.reduce((a, s) => a + s[1].length, 0) : DATA[id].items.filter(i => !i.sec).length);
   function renderNav() {
     navEl.replaceChildren(...CATS.flatMap(([grp, list]) => [h('div', { class: 'cs-ng' }, grp), ...list.map(([id, ico, name]) => h('button', {
       class: 'cs-nb' + (st.cat === id && !query ? ' on' : ''), onclick: () => { st.cat = id; save(); searchIn.value = ''; query = ''; render(true); renderNav(); },

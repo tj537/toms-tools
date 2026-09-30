@@ -3764,6 +3764,73 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Wasserzeichenwerk
+  'Keine Bilder dabei.': 'No images in there.', 'Über das ganze Bild kacheln': 'Tile across the whole image', 'KI-Label': 'AI label', '© Dein Name': '© Your name', 'Farbe': 'Color',
+  'Aussehen': 'Appearance', 'Größe': 'Size', 'Deckkraft': 'Opacity', 'Fett': 'Bold', 'Schatten': 'Shadow', 'Noch kein Bild': 'No image yet',
+  'Großes Bild – wird nur für diese Sitzung gemerkt.': 'Large image – only kept for this session.', 'Anderes Bild': 'Change image', 'Bild wählen': 'Choose image', 'Logo oder Bild': 'Logo or image',
+  'Am besten PNG mit Transparenz': 'Ideally a PNG with transparency', 'Eigener Text': 'Custom text', 'Eigener Text …': 'Custom text …', 'Stil': 'Style', 'Dunkel': 'Dark', 'Hell': 'Light',
+  'Maschinenlesbar': 'Machine-readable', 'Kennzeichnung in die Bilddatei einbetten': 'Embed the label in the image file',
+  'Schreibt IPTC „Digital Source Type“ in JPG/PNG (lesen z. B. Google & Meta) – hilft bei der Kennzeichnung nach EU AI Act, Art. 50. Welche Pflichten gelten, hängt vom Einsatz ab. Keine Rechtsberatung.': 'Writes the IPTC “Digital Source Type” into JPG/PNG (read by Google & Meta, for example) – helps with labeling under the EU AI Act, Art. 50. Which obligations apply depends on how you use AI. Not legal advice.',
+  'Speichern': 'Save', 'Qualität': 'Quality', 'Abstand zum Rand': 'Margin', 'Originale bleiben unverändert · ohne Kamera- & GPS-Daten': 'Originals stay unchanged · no camera or GPS data',
+  'Bilder hierher ziehen': 'Drop images here', 'oder': 'or', 'Bilder auswählen': 'Choose images', 'JPG, PNG, WebP · einzeln oder viele': 'JPG, PNG, WebP · one or many', 'Entfernen': 'Remove',
+  'Weitere Bilder': 'More images', 'Alle entfernen': 'Remove all', 'Dieses Bild': 'This image', 'Alle direkt in einen Ordner speichern': 'Save all straight to a folder',
+  'Alle in Ordner': 'All to folder', 'Komplett mit KI erzeugt': 'Fully AI-generated', 'Mit KI bearbeitet / Teile KI': 'AI-edited / partly AI', 'Alle als ZIP': 'All as ZIP', 'der Breite': 'of width',
+  // Metawerk (Rest)
+  'Datei konnte nicht gelesen werden: ': 'Couldn’t read the file: ', 'Alle Änderungen verwerfen': 'Discard all changes', 'Datenschutz & Speichern': 'Privacy & saving',
+  'Weitere Metadaten': 'Other metadata', 'Eingebettetes Vorschaubild': 'Embedded thumbnail',
+  // Metawerk
+  'Bild & Kamera': 'Image & camera', 'Aufnahme': 'Capture', 'GPS-Standort': 'GPS location', 'Interoperabilität': 'Interoperability', 'Vorschaubild': 'Thumbnail',
+  'Kein gültiger TIFF-Header': 'Not a valid TIFF header', 'Bitte einen Wert eingeben.': 'Please enter a value.', 'Kein Blitz vorhanden': 'No flash function',
+  'Rote-Augen-Reduktion': 'red-eye reduction', 'Direkt fotografiert': 'Directly photographed', 'Unbekannt': 'Unknown',
+  'Datum bitte als „JJJJ:MM:TT HH:MM:SS“ oder „TT.MM.JJJJ HH:MM“ eingeben.': 'Enter the date as “YYYY:MM:DD HH:MM:SS” or “DD.MM.YYYY HH:MM”.', 'Ungültige JPEG-Struktur': 'Invalid JPEG structure',
+  'JPEG enthält keine Bilddaten': 'The JPEG contains no image data', 'Adobe-XMP-Paket (Bearbeitungsverlauf, Schlagwörter …)': 'Adobe XMP packet (edit history, keywords …)',
+  'ICC-Farbprofil': 'ICC color profile', 'MPF-Zusatzbilder': 'MPF extra images',
+  'Weitere eingebettete Bilder (z. B. HDR-Gain-Map, Tiefenkarte)': 'More embedded images (e.g. HDR gain map, depth map)', 'JPEG-Kommentar': 'JPEG comment', '(leer)': '(empty)',
+  'JFIF-Vorschaubild': 'JFIF thumbnail', 'Eingebettetes Mini-Bild': 'Embedded mini image', 'Herstellerspezifische Daten': 'Maker-specific data', 'Angehängte Daten': 'Appended data',
+  'Daten nach dem Bildende (z. B. Motion-Photo-Video)': 'Data after the end of the image (e.g. a motion photo video)', 'Ducky (Photoshop „Für Web speichern“)': 'Ducky (Photoshop “Save for Web”)',
+  '(nicht lesbar)': '(unreadable)', 'Änderungszeit (tIME)': 'Modified time (tIME)', 'Eingebettetes Profil': 'Embedded profile', 'WebP ohne Bilddaten': 'WebP without image data',
+  'EXIF-Block ist größer als 64 KB – bitte große Felder (z. B. Herstellerdaten) löschen.': 'The EXIF block is larger than 64 KB – delete large fields (e.g. maker notes).',
+  'Format nicht unterstützt – bitte JPG, PNG oder WebP öffnen.': 'Format not supported – open a JPG, PNG or WebP.',
+  'EXIF-Block ist beschädigt und wird beim Speichern verworfen.': 'The EXIF block is damaged and will be dropped when saving.', 'Alle Änderungen verwerfen?': 'Discard all changes?',
+  'Die Metadaten werden wieder so geladen, wie sie in der Originaldatei stehen.': 'The metadata is reloaded exactly as it is in the original file.', 'Verwerfen': 'Discard',
+  'Datei konnte nicht erzeugt werden.': 'Couldn’t create the file.', 'Alle Metadaten löschen?': 'Delete all metadata?', 'Alles löschen': 'Delete all',
+  'Alle Metadaten entfernt – jetzt speichern.': 'All metadata removed – now save.',
+  'Dieser Browser kann kein WebP erzeugen (Safari?). Bitte Chrome, Edge oder Firefox nutzen.': 'This browser can’t create WebP (Safari?). Please use Chrome, Edge or Firefox.', 'Geändert': 'Changed',
+  'Rückgängig': 'Undo', 'Zurücksetzen': 'Reset', 'Schließen': 'Close', 'Viele Bilder auf einmal bereinigen': 'Clean up many images at once', 'Stapel': 'Batch', 'Speichern': 'Save',
+  'Alle Metadaten entfernen': 'Remove all metadata', 'Alle Metadaten löschen': 'Delete all metadata', 'Farbprofil (ICC) behalten': 'Keep color profile (ICC)',
+  'Sonst können Farben anders aussehen': 'Otherwise colors may look different', 'Ausrichtung behalten': 'Keep orientation',
+  'Hochformat-Fotos bleiben richtig gedreht': 'Portrait photos stay the right way up', 'Beschreibung': 'Description', 'z. B. Sonnenuntergang am See': 'e.g. sunset at the lake', 'Urheber': 'Artist',
+  'Standort bitte als „Breite, Länge“ in Dezimalgrad eingeben.': 'Enter the location as “latitude, longitude” in decimal degrees.', 'In OpenStreetMap öffnen': 'Open in OpenStreetMap', 'Karte': 'Map',
+  'Alle GPS-Daten entfernen': 'Remove all GPS data', 'Schnellbearbeitung': 'Quick edit', 'Aufnahmedatum': 'Date taken', 'Standort (GPS)': 'Location (GPS)', 'Breite, Länge': 'lat, long',
+  'Felder durchsuchen …': 'Search fields …', 'Feld hinzufügen': 'Add field', 'Klicken zum Bearbeiten': 'Click to edit', 'Bearbeiten': 'Edit', 'Feld löschen': 'Delete field',
+  'Kann den ursprünglichen, unbeschnittenen Bildausschnitt zeigen.': 'May show the original, uncropped image.', 'Vorschaubild entfernen': 'Remove thumbnail',
+  'Kein Standort gespeichert.': 'No location saved.', 'Keine Einträge.': 'No entries.', 'Keine Treffer.': 'No matches.', 'Keine EXIF-Daten vorhanden.': 'No EXIF data.',
+  'Alle bekannten Felder sind bereits vorhanden.': 'All known fields already exist.', 'Zahl oder Bruch, z. B. 72 oder 1/3': 'Number or fraction, e.g. 72 or 1/3', 'Zahl': 'Number', 'Wert': 'Value',
+  'Neues EXIF-Feld mit Wert anlegen': 'Create a new EXIF field with a value', 'Feld': 'Field', 'Abbrechen': 'Cancel', 'Hinzufügen': 'Add',
+  'Keine XMP-, IPTC- oder sonstigen Blöcke gefunden.': 'No XMP, IPTC or other blocks found.', 'Wird beim Speichern entfernt': 'Removed when saving', 'Inhalt anzeigen': 'Show content',
+  'Kopieren': 'Copy', 'Kopiert': 'Copied', 'Wiederherstellen': 'Restore', 'Entfernen': 'Remove', 'Als WebP exportieren': 'Export as WebP', 'Qualität': 'Quality',
+  'Längste Kante (px)': 'Longest edge (px)', 'leer = Originalgröße': 'empty = original size', 'Metadaten übernehmen': 'Keep metadata',
+  'Sonst ist das WebP komplett metadatenfrei': 'Otherwise the WebP has no metadata at all', 'WebP exportieren': 'Export WebP', 'Seriennummer': 'Serial number', 'Personenname': 'Person’s name',
+  'Aufnahmezeit': 'Capture time', 'Kameramodell': 'Camera model', 'Herstellerdaten': 'Maker notes', 'Keine persönlichen Metadaten': 'No personal metadata',
+  'Format nicht unterstützt': 'Format not supported', 'Keine JPG-, PNG- oder WebP-Dateien gefunden.': 'No JPG, PNG or WebP files found.', 'Verarbeitet': 'Processed', 'Nicht lesbar': 'Unreadable',
+  'Fehler': 'Error', 'Läuft …': 'Running …', 'Bereit': 'Ready', 'Analysiere …': 'Analyzing …', 'Einzeln öffnen & bearbeiten': 'Open & edit individually',
+  'Aus der Liste entfernen': 'Remove from list', 'Bilder hierher ziehen oder hinzufügen': 'Drop or add images here',
+  'Bitte eine Aktion wählen – z. B. „Alle Metadaten entfernen“.': 'Choose an action first – e.g. “Remove all metadata”.', 'Speichern fehlgeschlagen: ': 'Saving failed: ',
+  'Noch keine Bilder': 'No images yet', 'JPG-, PNG- und WebP-Dateien hierher ziehen': 'Drop JPG, PNG and WebP files here', 'Verarbeiten': 'Process', 'Aktion für alle Bilder': 'Action for all images',
+  'EXIF, GPS, XMP, IPTC, Vorschaubild …': 'EXIF, GPS, XMP, IPTC, thumbnail …', 'Urheber eintragen': 'Set artist', 'Copyright eintragen': 'Set copyright',
+  'Verlustfrei – Pixel und Originale bleiben unangetastet.': 'Lossless – pixels and originals stay untouched.', 'Bilder hinzufügen': 'Add images', 'Liste leeren': 'Clear list', 'Leeren': 'Clear',
+  'Stapel schließen': 'Close batch', 'Bild öffnen': 'Open image', 'EXIF ansehen, bearbeiten, löschen – verlustfrei · Export als WebP': 'View, edit and delete EXIF – lossless · export as WebP',
+  'Bild auswählen': 'Choose image', 'Mehrere Bilder (Stapel)': 'Several images (batch)',
+  'oder hierher ziehen · JPG, PNG, WebP · mehrere = Stapel': 'or drop here · JPG, PNG, WebP · drop several for batch mode', 'Bild(er) loslassen': 'Drop image(s)',
+  'JJJJ:MM:TT HH:MM:SS': 'YYYY:MM:DD HH:MM:SS', 'z. B. 1/250': 'e.g. 1/250', 'z. B. 2.8': 'e.g. 2.8', 'z. B. 35': 'e.g. 35', 'z. B. -1/3': 'e.g. -1/3', 'z. B. 16 (kein Blitz)': 'e.g. 16 (no flash)',
+  '0 bis 5': '0 to 5', 'z. B. 24, 70, 2.8, 4': 'e.g. 24, 70, 2.8, 4', '„{n}“ liegt außerhalb des gültigen Bereichs.': '“{n}” is out of range.', '„{n}“ ist keine Zahl.': '“{n}” is not a number.',
+  '„{n}“ muss eine ganze Zahl sein.': '“{n}” must be a whole number.', 'Ausgelöst': 'Fired', 'Nicht ausgelöst': 'Did not fire', 'erzwungen': 'forced', 'unterdrückt': 'suppressed',
+  'automatisch': 'auto', 'Durchlichtscanner': 'Film scanner', 'Auflichtscanner': 'Reflection print scanner', 'Digitalkamera': 'Digital camera', 'herstellerspezifisch': 'maker-specific',
+  'Binärdaten': 'binary data',
+  'EXIF, GPS, XMP, IPTC, Kommentare und Vorschaubild werden entfernt{k}. Die Bildpixel bleiben unverändert – nichts wird neu komprimiert.': 'EXIF, GPS, XMP, IPTC, comments and the thumbnail will be removed{k}. The pixels stay untouched – nothing gets recompressed.',
+  ' (das Farbprofil bleibt erhalten)': ' (the color profile is kept)', 'weitere Blöcke': 'other blocks', 'Stapelverarbeitung': 'Batch processing',
+  '{n} mit persönlichen Metadaten': '{n} with personal metadata', 'Verarbeiten & speichern': 'Process & save', 'Zurück zum Stapel': 'Back to batch',
+  'Ungespeicherte Änderungen verwerfen?': 'Discard unsaved changes?', 'Adobe-XMP-Paket': 'Adobe XMP packet',
   // Screenshotwerk
   'Aufnahme hat nicht geklappt.': 'Capture didn’t work.', 'Das Bild ließ sich nicht öffnen.': 'Couldn’t open the image.',
   'In der Zwischenablage ist kein Bild. Tipp: Win + Shift + S für einen Ausschnitt.': 'No image on the clipboard. Tip: Win + Shift + S for a snippet.', 'Abbrechen': 'Cancel',
@@ -12515,15 +12582,37 @@ TT.register({
 function mountMetawerk(view) {
   const TS = [0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8];
   const MIME = { jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp' };
-  const SECTIONS = [['ifd0', 'Bild & Kamera', 'image'], ['exif', 'Aufnahme', 'zap'], ['gps', 'GPS-Standort', 'pin'], ['interop', 'Interoperabilität', 'layers'], ['ifd1', 'Vorschaubild', 'photo']];
+  const SECTIONS = [['ifd0', T('Bild & Kamera'), 'image'], ['exif', T('Aufnahme'), 'zap'], ['gps', T('GPS-Standort'), 'pin'], ['interop', T('Interoperabilität'), 'layers'], ['ifd1', T('Vorschaubild'), 'photo']];
   const PTRS = { ifd0: { 0x8769: 'exif', 0x8825: 'gps' }, exif: { 0xA005: 'interop' } };
   const DROP = new Set([0x0111, 0x0117, 0x0144, 0x0145, 0x014A]);
-  const EN = {
+  const ENUM_EN = {
+    orient: { 1: 'Normal', 2: 'Mirrored horizontally', 3: 'Rotated 180°', 4: 'Mirrored vertically', 5: 'Mirrored + 90° CCW', 6: 'Rotated 90° CW', 7: 'Mirrored + 90° CW', 8: 'Rotated 90° CCW' },
+    resUnit: { 1: 'None', 2: 'Inch', 3: 'Centimeter' },
+    expProg: { 0: 'Unknown', 1: 'Manual', 2: 'Program AE', 3: 'Aperture priority (A)', 4: 'Shutter priority (S)', 5: 'Creative', 6: 'Action', 7: 'Portrait', 8: 'Landscape' },
+    meter: { 0: 'Unknown', 1: 'Average', 2: 'Center-weighted', 3: 'Spot', 4: 'Multi-spot', 5: 'Matrix', 6: 'Partial', 255: 'Other' },
+    light: { 0: 'Unknown', 1: 'Daylight', 2: 'Fluorescent', 3: 'Tungsten', 4: 'Flash', 9: 'Fine weather', 10: 'Cloudy', 11: 'Shade', 17: 'Standard light A', 18: 'Standard light B', 19: 'Standard light C', 20: 'D55', 21: 'D65', 22: 'D75', 255: 'Other' },
+    cspace: { 1: 'sRGB', 2: 'Adobe RGB', 65535: 'Uncalibrated' },
+    wb: { 0: 'Auto', 1: 'Manual' },
+    expMode: { 0: 'Auto', 1: 'Manual', 2: 'Auto bracket' },
+    scene: { 0: 'Standard', 1: 'Landscape', 2: 'Portrait', 3: 'Night' },
+    sensing: { 1: 'Not defined', 2: 'One-chip color sensor', 3: 'Two-chip color sensor', 4: 'Three-chip color sensor', 5: 'Color sequential', 7: 'Trilinear', 8: 'Color sequential linear' },
+    cns: { 0: 'Normal', 1: 'Soft', 2: 'Hard' },
+    sat: { 0: 'Normal', 1: 'Low', 2: 'High' },
+    gain: { 0: 'None', 1: 'Low gain up', 2: 'High gain up', 3: 'Low gain down', 4: 'High gain down' },
+    custom: { 0: 'Normal', 1: 'Custom' },
+    altRef: { 0: 'Above sea level', 1: 'Below sea level' },
+    ycbcr: { 1: 'Centered', 2: 'Co-sited' },
+    compr: { 1: 'Uncompressed', 6: 'JPEG' },
+    dist: { 0: 'Unknown', 1: 'Macro', 2: 'Close', 3: 'Distant' },
+    comp: { 0: 'Unknown', 1: 'Not composite', 2: 'Composite', 3: 'Composite (burst)' },
+    diff: { 0: 'No correction', 1: 'Corrected' },
+  };
+  const ENUM_DE = {
     orient: { 1: 'Normal', 2: 'Horizontal gespiegelt', 3: 'Um 180° gedreht', 4: 'Vertikal gespiegelt', 5: 'Gespiegelt + 90° gegen UZS', 6: 'Um 90° im UZS', 7: 'Gespiegelt + 90° im UZS', 8: 'Um 90° gegen UZS' },
     resUnit: { 1: 'Keine', 2: 'Zoll', 3: 'Zentimeter' },
-    expProg: { 0: 'Unbekannt', 1: 'Manuell', 2: 'Programmautomatik', 3: 'Zeitautomatik (A)', 4: 'Blendenautomatik (S)', 5: 'Kreativprogramm', 6: 'Actionprogramm', 7: 'Porträt', 8: 'Landschaft' },
-    meter: { 0: 'Unbekannt', 1: 'Durchschnitt', 2: 'Mittenbetont', 3: 'Spot', 4: 'Multi-Spot', 5: 'Matrix', 6: 'Teilbereich', 255: 'Andere' },
-    light: { 0: 'Unbekannt', 1: 'Tageslicht', 2: 'Leuchtstofflampe', 3: 'Glühlampe', 4: 'Blitz', 9: 'Schönwetter', 10: 'Bewölkt', 11: 'Schatten', 17: 'Normlicht A', 18: 'Normlicht B', 19: 'Normlicht C', 20: 'D55', 21: 'D65', 22: 'D75', 255: 'Andere' },
+    expProg: { 0: T('Unbekannt'), 1: 'Manuell', 2: 'Programmautomatik', 3: 'Zeitautomatik (A)', 4: 'Blendenautomatik (S)', 5: 'Kreativprogramm', 6: 'Actionprogramm', 7: 'Porträt', 8: 'Landschaft' },
+    meter: { 0: T('Unbekannt'), 1: 'Durchschnitt', 2: 'Mittenbetont', 3: 'Spot', 4: 'Multi-Spot', 5: 'Matrix', 6: 'Teilbereich', 255: 'Andere' },
+    light: { 0: T('Unbekannt'), 1: 'Tageslicht', 2: 'Leuchtstofflampe', 3: 'Glühlampe', 4: 'Blitz', 9: 'Schönwetter', 10: 'Bewölkt', 11: 'Schatten', 17: 'Normlicht A', 18: 'Normlicht B', 19: 'Normlicht C', 20: 'D55', 21: 'D65', 22: 'D75', 255: 'Andere' },
     cspace: { 1: 'sRGB', 2: 'Adobe RGB', 65535: 'Nicht kalibriert' },
     wb: { 0: 'Automatisch', 1: 'Manuell' },
     expMode: { 0: 'Automatisch', 1: 'Manuell', 2: 'Belichtungsreihe' },
@@ -12536,19 +12625,20 @@ function mountMetawerk(view) {
     altRef: { 0: 'Über Meeresspiegel', 1: 'Unter Meeresspiegel' },
     ycbcr: { 1: 'Zentriert', 2: 'Co-sited' },
     compr: { 1: 'Unkomprimiert', 6: 'JPEG' },
-    dist: { 0: 'Unbekannt', 1: 'Makro', 2: 'Nah', 3: 'Fern' },
-    comp: { 0: 'Unbekannt', 1: 'Kein Komposit', 2: 'Komposit', 3: 'Komposit (Serienaufnahme)' },
+    dist: { 0: T('Unbekannt'), 1: 'Makro', 2: 'Nah', 3: 'Fern' },
+    comp: { 0: T('Unbekannt'), 1: 'Kein Komposit', 2: 'Komposit', 3: 'Komposit (Serienaufnahme)' },
     diff: { 0: 'Ohne Korrektur', 1: 'Korrigiert' },
   };
+  const ENUM = isEN() ? ENUM_EN : ENUM_DE;
   const TAGS = [
     ['ifd0', 0x0100, 'ImageWidth', 'Bildbreite', 4], ['ifd0', 0x0101, 'ImageLength', 'Bildhöhe', 4],
     ['ifd0', 0x0102, 'BitsPerSample', 'Bits pro Kanal', 3], ['ifd0', 0x0103, 'Compression', 'Kompression', 3, 'compr'],
-    ['ifd0', 0x0106, 'PhotometricInterpretation', 'Farbmodell', 3], ['ifd0', 0x010E, 'ImageDescription', 'Beschreibung', 2],
-    ['ifd0', 0x010F, 'Make', 'Kamerahersteller', 2], ['ifd0', 0x0110, 'Model', 'Kameramodell', 2],
+    ['ifd0', 0x0106, 'PhotometricInterpretation', 'Farbmodell', 3], ['ifd0', 0x010E, 'ImageDescription', T('Beschreibung'), 2],
+    ['ifd0', 0x010F, 'Make', 'Kamerahersteller', 2], ['ifd0', 0x0110, 'Model', T('Kameramodell'), 2],
     ['ifd0', 0x0112, 'Orientation', 'Ausrichtung', 3, 'orient'], ['ifd0', 0x0115, 'SamplesPerPixel', 'Kanäle', 3],
     ['ifd0', 0x011A, 'XResolution', 'Auflösung X', 5], ['ifd0', 0x011B, 'YResolution', 'Auflösung Y', 5],
     ['ifd0', 0x0128, 'ResolutionUnit', 'Auflösungseinheit', 3, 'resUnit'], ['ifd0', 0x0131, 'Software', 'Software', 2],
-    ['ifd0', 0x0132, 'DateTime', 'Änderungsdatum', 2, 'date'], ['ifd0', 0x013B, 'Artist', 'Urheber', 2],
+    ['ifd0', 0x0132, 'DateTime', 'Änderungsdatum', 2, 'date'], ['ifd0', 0x013B, 'Artist', T('Urheber'), 2],
     ['ifd0', 0x013C, 'HostComputer', 'Computer', 2], ['ifd0', 0x013E, 'WhitePoint', 'Weißpunkt', 5],
     ['ifd0', 0x013F, 'PrimaryChromaticities', 'Primärfarben', 5], ['ifd0', 0x0211, 'YCbCrCoefficients', 'YCbCr-Koeffizienten', 5],
     ['ifd0', 0x0213, 'YCbCrPositioning', 'YCbCr-Positionierung', 3, 'ycbcr'], ['ifd0', 0x0214, 'ReferenceBlackWhite', 'Schwarz-/Weißreferenz', 5],
@@ -12559,7 +12649,7 @@ function mountMetawerk(view) {
     ['exif', 0x829A, 'ExposureTime', 'Belichtungszeit', 5, 'exp'], ['exif', 0x829D, 'FNumber', 'Blende', 5, 'fnum'],
     ['exif', 0x8822, 'ExposureProgram', 'Belichtungsprogramm', 3, 'expProg'], ['exif', 0x8827, 'ISOSpeedRatings', 'ISO', 3],
     ['exif', 0x8830, 'SensitivityType', 'Empfindlichkeitstyp', 3], ['exif', 0x8832, 'RecommendedExposureIndex', 'Empf. Belichtungsindex', 4],
-    ['exif', 0x9000, 'ExifVersion', 'Exif-Version', 7, 'ver'], ['exif', 0x9003, 'DateTimeOriginal', 'Aufnahmedatum', 2, 'date'],
+    ['exif', 0x9000, 'ExifVersion', 'Exif-Version', 7, 'ver'], ['exif', 0x9003, 'DateTimeOriginal', T('Aufnahmedatum'), 2, 'date'],
     ['exif', 0x9004, 'DateTimeDigitized', 'Digitalisiert am', 2, 'date'], ['exif', 0x9010, 'OffsetTime', 'Zeitzone (Änderung)', 2],
     ['exif', 0x9011, 'OffsetTimeOriginal', 'Zeitzone (Aufnahme)', 2], ['exif', 0x9012, 'OffsetTimeDigitized', 'Zeitzone (Digitalisiert)', 2],
     ['exif', 0x9101, 'ComponentsConfiguration', 'Komponenten', 7], ['exif', 0x9102, 'CompressedBitsPerPixel', 'Komprimierte Bits/Pixel', 5],
@@ -12568,7 +12658,7 @@ function mountMetawerk(view) {
     ['exif', 0x9205, 'MaxApertureValue', 'Größte Blende', 5, 'apexF'], ['exif', 0x9206, 'SubjectDistance', 'Motiventfernung', 5, 'm'],
     ['exif', 0x9207, 'MeteringMode', 'Messmethode', 3, 'meter'], ['exif', 0x9208, 'LightSource', 'Lichtquelle', 3, 'light'],
     ['exif', 0x9209, 'Flash', 'Blitz', 3, 'flash'], ['exif', 0x920A, 'FocalLength', 'Brennweite', 5, 'mm'],
-    ['exif', 0x9214, 'SubjectArea', 'Motivbereich', 3], ['exif', 0x927C, 'MakerNote', 'Herstellerdaten', 7],
+    ['exif', 0x9214, 'SubjectArea', 'Motivbereich', 3], ['exif', 0x927C, 'MakerNote', T('Herstellerdaten'), 7],
     ['exif', 0x9286, 'UserComment', 'Benutzerkommentar', 7, 'ucom'], ['exif', 0x9290, 'SubSecTime', 'Sekundenbruchteil', 2],
     ['exif', 0x9291, 'SubSecTimeOriginal', 'Sekundenbruchteil (Aufnahme)', 2], ['exif', 0x9292, 'SubSecTimeDigitized', 'Sekundenbruchteil (Digit.)', 2],
     ['exif', 0xA000, 'FlashpixVersion', 'Flashpix-Version', 7, 'ver'], ['exif', 0xA001, 'ColorSpace', 'Farbraum', 3, 'cspace'],
@@ -12604,8 +12694,9 @@ function mountMetawerk(view) {
     ['interop', 0x01, 'InteroperabilityIndex', 'Interop-Index', 2], ['interop', 0x02, 'InteroperabilityVersion', 'Interop-Version', 7, 'ver'],
   ];
   const DEF = new Map(TAGS.map(([ifd, tag, key, label, type, fmt]) => [ifd + ':' + tag, { ifd, tag, key, label, type, fmt }]));
+  const tagName = k => k.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
   const defOf = (ifd, tag) => DEF.get(ifd + ':' + tag) || (ifd === 'ifd1' ? DEF.get('ifd0:' + tag) : null) || null;
-  const IPTC = { 5: 'Titel', 15: 'Kategorie', 25: 'Stichwort', 40: 'Anweisungen', 55: 'Erstellt am', 60: 'Uhrzeit', 80: 'Autor', 85: 'Autor-Titel', 90: 'Stadt', 92: 'Ortsteil', 95: 'Bundesland', 101: 'Land', 105: 'Überschrift', 110: 'Credit', 115: 'Quelle', 116: 'Copyright', 120: 'Beschreibung', 122: 'Verfasser der Beschreibung' };
+  const IPTC = isEN() ? { 5: 'Title', 15: 'Category', 25: 'Keywords', 40: 'Instructions', 55: 'Date created', 60: 'Time created', 80: 'By-line', 85: 'By-line title', 90: 'City', 92: 'Sublocation', 95: 'Province/State', 101: 'Country', 105: 'Headline', 110: 'Credit', 115: 'Source', 116: 'Copyright', 120: 'Caption', 122: 'Caption writer' } : { 5: 'Titel', 15: 'Kategorie', 25: 'Stichwort', 40: 'Anweisungen', 55: 'Erstellt am', 60: 'Uhrzeit', 80: 'Autor', 85: 'Autor-Titel', 90: 'Stadt', 92: 'Ortsteil', 95: 'Bundesland', 101: 'Land', 105: 'Überschrift', 110: 'Credit', 115: 'Quelle', 116: 'Copyright', 120: 'Beschreibung', 122: 'Verfasser der Beschreibung' };
 
   /* ---------- Bytes ---------- */
   const te = new TextEncoder();
@@ -12633,9 +12724,9 @@ function mountMetawerk(view) {
   function parseTiff(u8) {
     const dv = new DataView(u8.buffer, u8.byteOffset, u8.byteLength), len = u8.length;
     const bo = len >= 8 ? dv.getUint16(0) : 0;
-    if (bo !== 0x4949 && bo !== 0x4D4D) throw new Error('Kein gültiger TIFF-Header');
+    if (bo !== 0x4949 && bo !== 0x4D4D) throw new Error(T('Kein gültiger TIFF-Header'));
     const le = bo === 0x4949;
-    if (dv.getUint16(2, le) !== 42) throw new Error('Kein gültiger TIFF-Header');
+    if (dv.getUint16(2, le) !== 42) throw new Error(T('Kein gültiger TIFF-Header'));
     const ifds = { ifd0: [], exif: [], gps: [], interop: [], ifd1: [] }, seen = new Set();
     let thumb = null;
     const readIFD = (off, name) => {
@@ -12718,20 +12809,20 @@ function mountMetawerk(view) {
   const LIM = { 1: [0, 255], 3: [0, 65535], 4: [0, 4294967295], 5: [0, 4294967295], 6: [-128, 127], 8: [-32768, 32767], 9: [-2147483648, 2147483647], 10: [-2147483648, 2147483647] };
   function parseVals(type, s) {
     const toks = s.trim().split(/\s*;\s*|,\s+|\s+/).filter(Boolean);
-    if (!toks.length) throw new Error('Bitte einen Wert eingeben.');
+    if (!toks.length) throw new Error(T('Bitte einen Wert eingeben.'));
     const [lo, hi] = LIM[type] || [-Infinity, Infinity];
-    const chk = n => { if (!Number.isFinite(n) || n < lo || n > hi) throw new Error(`„${n}“ liegt außerhalb des gültigen Bereichs.`); return n; };
+    const chk = n => { if (!Number.isFinite(n) || n < lo || n > hi) throw new Error(T('„{n}“ liegt außerhalb des gültigen Bereichs.', { n })); return n; };
     return toks.map(t => {
       const m = t.match(/^(-?\d+)\/(\d+)$/);
       if (type === 5 || type === 10) {
         if (m) return [chk(+m[1]), chk(+m[2])];
         const x = Number(t.replace(',', '.'));
-        if (!Number.isFinite(x)) throw new Error(`„${t}“ ist keine Zahl.`);
+        if (!Number.isFinite(x)) throw new Error(T('„{n}“ ist keine Zahl.', { n: t }));
         const f = toFrac(x); chk(f[0]); chk(f[1]); return f;
       }
       const x = Number(t.replace(',', '.'));
-      if (!Number.isFinite(x)) throw new Error(`„${t}“ ist keine Zahl.`);
-      if (type !== 11 && type !== 12 && !Number.isInteger(x)) throw new Error(`„${t}“ muss eine ganze Zahl sein.`);
+      if (!Number.isFinite(x)) throw new Error(T('„{n}“ ist keine Zahl.', { n: t }));
+      if (type !== 11 && type !== 12 && !Number.isInteger(x)) throw new Error(T('„{n}“ muss eine ganze Zahl sein.', { n: t }));
       return chk(x);
     });
   }
@@ -12787,7 +12878,7 @@ function mountMetawerk(view) {
     if (f === 'ucom') return 'ucom';
     if (e.type === 2) return 'text';
     if (e.type === 7 || e.count > 64 || (e.type === 1 && e.count > 16)) return 'bin';
-    if (EN[f] && e.count === 1 && (e.type === 1 || e.type === 3)) return 'enum';
+    if (ENUM[f] && e.count === 1 && (e.type === 1 || e.type === 3)) return 'enum';
     return 'num';
   }
   function editStr(ifd, e) {
@@ -12802,14 +12893,14 @@ function mountMetawerk(view) {
     if (k === 'bin') return '';
     return nums(e).map(v => Array.isArray(v) ? (v[1] === 1 ? v[0] : `${v[0]}/${v[1]}`) : v).join(', ');
   }
-  const fmtNum = n => (+n).toLocaleString('de-DE', { maximumFractionDigits: 4 });
+  const fmtNum = n => (+n).toLocaleString(isEN() ? 'en-US' : 'de-DE', { maximumFractionDigits: 4 });
   const fmtExp = t => t >= 1 || t <= 0 ? `${fmtNum(+t.toFixed(1))} s` : `1/${Math.round(1 / t)} s`;
   const fmtDateStr = s => { const m = s.match(/^(\d{4}):(\d\d):(\d\d)[ T](\d\d):(\d\d):(\d\d)/); return m ? `${m[3]}.${m[2]}.${m[1]}, ${m[4]}:${m[5]}:${m[6]}` : s; };
   function flashStr(v) {
-    if (v & 0x20) return 'Kein Blitz vorhanden';
-    const p = [v & 1 ? 'Ausgelöst' : 'Nicht ausgelöst'], m = (v >> 3) & 3;
-    if (m) p.push(['', 'erzwungen', 'unterdrückt', 'automatisch'][m]);
-    if (v & 0x40) p.push('Rote-Augen-Reduktion');
+    if (v & 0x20) return T('Kein Blitz vorhanden');
+    const p = [T(v & 1 ? 'Ausgelöst' : 'Nicht ausgelöst')], m = (v >> 3) & 3;
+    if (m) p.push(T(['', 'erzwungen', 'unterdrückt', 'automatisch'][m]));
+    if (v & 0x40) p.push(T('Rote-Augen-Reduktion'));
     return p.join(', ');
   }
   function show(ifd, e) {
@@ -12820,20 +12911,20 @@ function mountMetawerk(view) {
       if (k === 'bin') {
         if (f === 'ver') { const s = ascii(e.data, 0, 4); return /^\d{4}$/.test(s) ? `${+s.slice(0, 2)}.${s.slice(2)}` : s; }
         if (e.tag === 0x9101 && ifd === 'exif') return [...e.data].map(b => ['', 'Y', 'Cb', 'Cr', 'R', 'G', 'B'][b] || '').join(' ').trim() || '—';
-        if (e.tag === 0xA300 && ifd === 'exif') return { 1: 'Durchlichtscanner', 2: 'Auflichtscanner', 3: 'Digitalkamera' }[e.data[0]] || String(e.data[0]);
-        if (e.tag === 0xA301 && ifd === 'exif') return e.data[0] === 1 ? 'Direkt fotografiert' : String(e.data[0]);
-        if (e.tag === 0x927C) return `${fmtSize(e.data.length)} herstellerspezifisch`;
+        if (e.tag === 0xA300 && ifd === 'exif') return T({ 1: 'Durchlichtscanner', 2: 'Auflichtscanner', 3: 'Digitalkamera' }[e.data[0]] || '') || String(e.data[0]);
+        if (e.tag === 0xA301 && ifd === 'exif') return e.data[0] === 1 ? T('Direkt fotografiert') : String(e.data[0]);
+        if (e.tag === 0x927C) return `${fmtSize(e.data.length)} · ${T('herstellerspezifisch')}`;
         const s = decStr(e.data);
         if (e.data.length <= 64 && s && /^[\x20-\x7e]+$/.test(s)) return s;
-        return `${fmtSize(e.data.length)} Binärdaten`;
+        return `${fmtSize(e.data.length)} · ${T('Binärdaten')}`;
       }
       const v = nums(e), x = v.map(rv);
-      if (k === 'enum') return EN[f][x[0]] ?? String(x[0]);
+      if (k === 'enum') return ENUM[f][x[0]] ?? String(x[0]);
       switch (f) {
         case 'exp': return fmtExp(x[0]);
         case 'apexT': return fmtExp(2 ** -x[0]);
-        case 'fnum': return x[0] ? `f/${fmtNum(+x[0].toFixed(1))}` : 'Unbekannt';
-        case 'apexF': return x[0] ? `f/${fmtNum(+(2 ** (x[0] / 2)).toFixed(1))}` : 'Unbekannt';
+        case 'fnum': return x[0] ? `f/${fmtNum(+x[0].toFixed(1))}` : T('Unbekannt');
+        case 'apexF': return x[0] ? `f/${fmtNum(+(2 ** (x[0] / 2)).toFixed(1))}` : T('Unbekannt');
         case 'ev': return `${x[0] > 0 ? '+' : ''}${fmtNum(+x[0].toFixed(2))} EV`;
         case 'mm': return `${fmtNum(x[0])} mm`;
         case 'm': return `${fmtNum(+x[0].toFixed(2))} m`;
@@ -12857,7 +12948,7 @@ function mountMetawerk(view) {
     if (m) return `${m[1]}:${m[2]}:${m[3]} ${m[4]}:${m[5]}:${m[6] || '00'}`;
     m = s.match(/^(\d\d)\.(\d\d)\.(\d{4}),?\s+(\d\d):(\d\d)(?::(\d\d))?$/);
     if (m) return `${m[3]}:${m[2]}:${m[1]} ${m[4]}:${m[5]}:${m[6] || '00'}`;
-    throw new Error('Datum bitte als „JJJJ:MM:TT HH:MM:SS“ oder „TT.MM.JJJJ HH:MM“ eingeben.');
+    throw new Error(T('Datum bitte als „JJJJ:MM:TT HH:MM:SS“ oder „TT.MM.JJJJ HH:MM“ eingeben.'));
   }
   function encodeVal(ifd, tag, type, s) {
     const f = defOf(ifd, tag)?.fmt;
@@ -12944,7 +13035,7 @@ function mountMetawerk(view) {
     const segs = [];
     let p = 2, tail = null;
     while (p + 4 <= u8.length) {
-      if (u8[p] !== 0xFF) throw new Error('Ungültige JPEG-Struktur');
+      if (u8[p] !== 0xFF) throw new Error(T('Ungültige JPEG-Struktur'));
       const m = u8[p + 1];
       if (m === 0xFF) { p++; continue; }
       if (m === 0xDA) { tail = u8.subarray(p); break; }
@@ -12954,7 +13045,7 @@ function mountMetawerk(view) {
       segs.push({ m, b: u8.subarray(p, p + 2 + len) });
       p += 2 + len;
     }
-    if (!tail) throw new Error('JPEG enthält keine Bilddaten');
+    if (!tail) throw new Error(T('JPEG enthält keine Bilddaten'));
     let tiff = null;
     const extras = [], groups = {};
     const group = (key, s, mk) => { if (!groups[key]) { groups[key] = mk(); groups[key].parts = []; extras.push(groups[key]); } groups[key].parts.push(s); groups[key].size += s.b.length; s.x = groups[key]; };
@@ -12963,34 +13054,34 @@ function mountMetawerk(view) {
       if (m === 0xE1 && starts(pl, 0, 'Exif\0')) { s.exif = true; if (!tiff) tiff = pl.subarray(6); }
       else if (m === 0xE1 && starts(pl, 0, 'http://ns.adobe.com/')) {
         const z = pl.indexOf(0);
-        group('xmp', s, () => mkExtra('xmp', 'XMP', 'Adobe-XMP-Paket (Bearbeitungsverlauf, Schlagwörter …)', 0, starts(pl, 0, 'http://ns.adobe.com/xap/') ? decStr(pl.subarray(z + 1)).trim() : ''));
+        group('xmp', s, () => mkExtra('xmp', 'XMP', T('Adobe-XMP-Paket (Bearbeitungsverlauf, Schlagwörter …)'), 0, starts(pl, 0, 'http://ns.adobe.com/xap/') ? decStr(pl.subarray(z + 1)).trim() : ''));
       }
-      else if (m === 0xE2 && starts(pl, 0, 'ICC_PROFILE\0')) group('icc', s, () => mkExtra('icc', 'ICC-Farbprofil', '', 0, '', true));
-      else if (m === 0xE2 && starts(pl, 0, 'MPF\0')) group('mpf', s, () => mkExtra('mpf', 'MPF-Zusatzbilder', 'Weitere eingebettete Bilder (z. B. HDR-Gain-Map, Tiefenkarte)', 0, ''));
+      else if (m === 0xE2 && starts(pl, 0, 'ICC_PROFILE\0')) group('icc', s, () => mkExtra('icc', T('ICC-Farbprofil'), '', 0, '', true));
+      else if (m === 0xE2 && starts(pl, 0, 'MPF\0')) group('mpf', s, () => mkExtra('mpf', T('MPF-Zusatzbilder'), T('Weitere eingebettete Bilder (z. B. HDR-Gain-Map, Tiefenkarte)'), 0, ''));
       else if (m === 0xED) {
         const lines = starts(pl, 0, 'Photoshop 3.0\0') ? parseIptc(pl.subarray(14)) : [];
         group('iptc', s, () => mkExtra('iptc', 'IPTC / Photoshop', '', 0, ''));
         groups.iptc.detail = [groups.iptc.detail, ...lines].filter(Boolean).join('\n');
         groups.iptc.sub = lines.length ? lines.slice(0, 2).join(' · ') : 'Photoshop-Ressourcen';
       }
-      else if (m === 0xFE) { const t = decStr(pl).trim(); group('com', s, () => mkExtra('com', 'JPEG-Kommentar', t || '(leer)', 0, t)); }
-      else if (m === 0xE0 && starts(pl, 0, 'JFXX')) group('jfxx', s, () => mkExtra('jfxx', 'JFIF-Vorschaubild', 'Eingebettetes Mini-Bild', 0, ''));
+      else if (m === 0xFE) { const t = decStr(pl).trim(); group('com', s, () => mkExtra('com', T('JPEG-Kommentar'), t || T('(leer)'), 0, t)); }
+      else if (m === 0xE0 && starts(pl, 0, 'JFXX')) group('jfxx', s, () => mkExtra('jfxx', T('JFIF-Vorschaubild'), T('Eingebettetes Mini-Bild'), 0, ''));
       else if (m >= 0xE1 && m <= 0xEF && m !== 0xEE) {
         const n = m - 0xE0, id = decStr(pl.subarray(0, 32)).replace(/[^\x20-\x7e]/g, '').trim();
-        const label = n === 11 ? 'JUMBF / C2PA (Content Credentials)' : n === 12 && id.startsWith('Ducky') ? 'Ducky (Photoshop „Für Web speichern“)' : `APP${n}-Segment`;
-        group('app' + n, s, () => mkExtra('app' + n, label, id || 'Herstellerspezifische Daten', 0, ''));
+        const label = n === 11 ? 'JUMBF / C2PA (Content Credentials)' : n === 12 && id.startsWith('Ducky') ? T('Ducky (Photoshop „Für Web speichern“)') : `APP${n}-Segment`;
+        group('app' + n, s, () => mkExtra('app' + n, label, id || T('Herstellerspezifische Daten'), 0, ''));
       }
     }
     if (groups.icc) {
       const d = concat(groups.icc.parts.map(s => s.b.subarray(18)));
-      groups.icc.sub = iccName(d) || 'Eingebettetes Profil';
+      groups.icc.sub = iccName(d) || T('Eingebettetes Profil');
     }
     // The main image ends at the first EOI; data appended after it (MPF images, motion photo video …)
     let eoi = -1;
     for (let i = 2; i + 1 < tail.length; i++) if (tail[i] === 0xFF && tail[i + 1] === 0xD9) { eoi = i + 2; break; }
     const trail = eoi > 0 ? tail.length - eoi : 0;
     if (trail > 0) {
-      const x = groups.mpf || mkExtra('trail', 'Angehängte Daten', 'Daten nach dem Bildende (z. B. Motion-Photo-Video)', 0, '');
+      const x = groups.mpf || mkExtra('trail', T('Angehängte Daten'), T('Daten nach dem Bildende (z. B. Motion-Photo-Video)'), 0, '');
       if (!groups.mpf) extras.push(x);
       x.size += trail; x.trail = true;
     }
@@ -13041,17 +13132,17 @@ function mountMetawerk(view) {
             const comp = d[z + 1], z2 = d.indexOf(0, z + 3), z3 = d.indexOf(0, z2 + 1), body = d.subarray(z3 + 1);
             text = new TextDecoder().decode(comp ? await inflate(body) : body);
           }
-        } catch { text = '(nicht lesbar)'; }
+        } catch { text = T('(nicht lesbar)'); }
         const isXmp = kw === 'XML:com.adobe.xmp';
-        c.x = mkExtra('txt', isXmp ? 'XMP' : `Text: ${kw}`, isXmp ? 'Adobe-XMP-Paket' : text.replace(/\s+/g, ' ').slice(0, 90), c.raw.length, text.trim());
+        c.x = mkExtra('txt', isXmp ? 'XMP' : `Text: ${kw}`, isXmp ? T('Adobe-XMP-Paket') : text.replace(/\s+/g, ' ').slice(0, 90), c.raw.length, text.trim());
         extras.push(c.x);
       }
       else if (c.type === 'tIME' && d.length >= 7) {
         const t = `${pad2(d[3])}.${pad2(d[2])}.${(d[0] << 8) | d[1]}, ${pad2(d[4])}:${pad2(d[5])}:${pad2(d[6])}`;
-        c.x = mkExtra('time', 'Änderungszeit (tIME)', t, c.raw.length, ''); extras.push(c.x);
+        c.x = mkExtra('time', T('Änderungszeit (tIME)'), t, c.raw.length, ''); extras.push(c.x);
       }
       else if (c.type === 'iCCP') {
-        c.x = mkExtra('icc', 'ICC-Farbprofil', latin1(d.subarray(0, d.indexOf(0))) || 'Eingebettetes Profil', c.raw.length, '', true); extras.push(c.x);
+        c.x = mkExtra('icc', T('ICC-Farbprofil'), latin1(d.subarray(0, d.indexOf(0))) || T('Eingebettetes Profil'), c.raw.length, '', true); extras.push(c.x);
       }
     }
     return { cont: { chunks }, tiff, extras };
@@ -13088,7 +13179,7 @@ function mountMetawerk(view) {
     for (const c of chunks) {
       if (c.type === 'EXIF') { if (!tiff) tiff = starts(c.data, 0, 'Exif\0') ? c.data.subarray(6) : c.data; }
       else if (c.type === 'XMP ') { c.x = mkExtra('xmp', 'XMP', 'Adobe-XMP-Paket', c.data.length + 8, decStr(c.data).trim()); extras.push(c.x); }
-      else if (c.type === 'ICCP') { c.x = mkExtra('icc', 'ICC-Farbprofil', iccName(c.data) || 'Eingebettetes Profil', c.data.length + 8, '', true); extras.push(c.x); }
+      else if (c.type === 'ICCP') { c.x = mkExtra('icc', T('ICC-Farbprofil'), iccName(c.data) || T('Eingebettetes Profil'), c.data.length + 8, '', true); extras.push(c.x); }
     }
     return { cont: { chunks }, tiff, extras };
   }
@@ -13099,7 +13190,7 @@ function mountMetawerk(view) {
     if (l) { const v = rd32le(l.data, 1); return { w: (v & 0x3FFF) + 1, h: ((v >>> 14) & 0x3FFF) + 1, alpha: !!((v >>> 28) & 1), anim: false }; }
     const k = chunks.find(c => c.type === 'VP8 ');
     if (k) { const d = k.data; return { w: (d[6] | d[7] << 8) & 0x3FFF, h: (d[8] | d[9] << 8) & 0x3FFF, alpha: false, anim: false }; }
-    throw new Error('WebP ohne Bilddaten');
+    throw new Error(T('WebP ohne Bilddaten'));
   }
   function buildWebp(chunks, tiff) {
     const rc = (type, data) => concat([te.encode(type), le32(data.length), data, data.length & 1 ? new Uint8Array(1) : new Uint8Array(0)]);
@@ -13125,7 +13216,7 @@ function mountMetawerk(view) {
     let tiff = buildTiff(true);
     if (st.type === 'jpeg') {
       if (tiff && tiff.length > 65527) tiff = buildTiff(false);
-      if (tiff && tiff.length > 65527) throw new Error('EXIF-Block ist größer als 64 KB – bitte große Felder (z. B. Herstellerdaten) löschen.');
+      if (tiff && tiff.length > 65527) throw new Error(T('EXIF-Block ist größer als 64 KB – bitte große Felder (z. B. Herstellerdaten) löschen.'));
       return buildJpeg(tiff);
     }
     if (st.type === 'png') return buildPng(tiff);
@@ -13144,14 +13235,14 @@ function mountMetawerk(view) {
   }
   async function load(file) {
     const u8 = new Uint8Array(await file.arrayBuffer()), type = sniff(u8);
-    if (!type) { toast('Format nicht unterstützt – bitte JPG, PNG oder WebP öffnen.', 'err'); return; }
+    if (!type) { toast(T('Format nicht unterstützt – bitte JPG, PNG oder WebP öffnen.'), 'err'); return; }
     let parsed;
     try { parsed = type === 'jpeg' ? parseJpeg(u8) : type === 'png' ? await parsePng(u8) : parseWebp(u8); }
-    catch (err) { toast('Datei konnte nicht gelesen werden: ' + err.message, 'err'); return; }
+    catch (err) { toast(T('Datei konnte nicht gelesen werden: ') + err.message, 'err'); return; }
     let exif = { le: false, ifds: { ifd0: [], exif: [], gps: [], interop: [], ifd1: [] }, thumb: null };
     if (parsed.tiff) {
       try { exif = parseTiff(parsed.tiff); }
-      catch { toast('EXIF-Block ist beschädigt und wird beim Speichern verworfen.', 'warn'); }
+      catch { toast(T('EXIF-Block ist beschädigt und wird beim Speichern verworfen.'), 'warn'); }
     }
     st = { name: file.name, type, orig: u8, cont: parsed.cont, extras: parsed.extras, ...exif, dirty: false, w: 0, h: 0 };
     hist = [];
@@ -13187,7 +13278,7 @@ function mountMetawerk(view) {
   }
   async function reset() {
     if (!st?.dirty) return;
-    if (!await confirmBox('Alle Änderungen verwerfen?', 'Die Metadaten werden wieder so geladen, wie sie in der Originaldatei stehen.', 'Verwerfen', 'danger')) return;
+    if (!await confirmBox(T('Alle Änderungen verwerfen?'), T('Die Metadaten werden wieder so geladen, wie sie in der Originaldatei stehen.'), T('Verwerfen'), 'danger')) return;
     const f = new File([st.orig], st.name);
     await load(f);
   }
@@ -13216,21 +13307,21 @@ function mountMetawerk(view) {
 
   function save() {
     if (!st) return;
-    if (!outBytes) { toast(errEl.textContent || 'Datei konnte nicht erzeugt werden.', 'err'); return; }
+    if (!outBytes) { toast(errEl.textContent || T('Datei konnte nicht erzeugt werden.'), 'err'); return; }
     download(st.name, new Blob([outBytes], { type: MIME[st.type] }));
     st.dirty = false;
     render();
-    toast(`Gespeichert: ${st.name} · ${fmtSize(outBytes.length)}`, 'ok');
+    toast(`✓ ${st.name} · ${fmtSize(outBytes.length)}`, 'ok');
   }
 
   async function stripAll() {
     if (!st) return;
-    const ok = await confirmBox('Alle Metadaten löschen?',
-      `EXIF, GPS, XMP, IPTC, Kommentare und Vorschaubild werden entfernt${opt.keepICC ? ' (das Farbprofil bleibt erhalten)' : ''}. Die Bildpixel bleiben unverändert – nichts wird neu komprimiert.`,
-      'Alles löschen', 'danger');
+    const ok = await confirmBox(T('Alle Metadaten löschen?'),
+      T('EXIF, GPS, XMP, IPTC, Kommentare und Vorschaubild werden entfernt{k}. Die Bildpixel bleiben unverändert – nichts wird neu komprimiert.', { k: opt.keepICC ? T(' (das Farbprofil bleibt erhalten)') : '' }),
+      T('Alles löschen'), 'danger');
     if (!ok) return;
     change(stripState);
-    toast('Alle Metadaten entfernt – jetzt speichern.', 'ok');
+    toast(T('Alle Metadaten entfernt – jetzt speichern.'), 'ok');
   }
   function stripState() {
     const o = find('ifd0', 0x0112), keepO = opt.keepOrient && o && nums(o)[0] !== 1;
@@ -13249,7 +13340,7 @@ function mountMetawerk(view) {
     cx.imageSmoothingQuality = 'high';
     cx.drawImage(img, 0, 0, w, hh);
     const blob = await new Promise(r => cv.toBlob(r, 'image/webp', opt.quality / 100));
-    if (!blob || blob.type !== 'image/webp') { toast('Dieser Browser kann kein WebP erzeugen (Safari?). Bitte Chrome, Edge oder Firefox nutzen.', 'err'); return; }
+    if (!blob || blob.type !== 'image/webp') { toast(T('Dieser Browser kann kein WebP erzeugen (Safari?). Bitte Chrome, Edge oder Firefox nutzen.'), 'err'); return; }
     let out = blob;
     if (opt.webpMeta) {
       const tiff = buildTiff(false, { w, h: hh });
@@ -13274,29 +13365,29 @@ function mountMetawerk(view) {
   const img = h('img', { alt: '', onload: () => { if (st) { st.w = img.naturalWidth; st.h = img.naturalHeight; renderFoot(); } } });
   const errEl = h('div', { class: 'callout warn mw-err', hidden: true });
   const fileT = h('div', { class: 'src-t' }, h('b'), h('small'));
-  const dirtyB = h('span', { class: 'badge acc' }, 'Geändert');
-  const undoBtn = h('button', { class: 'btn sm ghost', title: 'Strg+Z', onclick: undo }, icon('undo'), 'Rückgängig');
-  const resetBtn = h('button', { class: 'btn sm ghost', title: 'Alle Änderungen verwerfen', onclick: reset }, icon('refresh'), 'Zurücksetzen');
+  const dirtyB = h('span', { class: 'badge acc' }, T('Geändert'));
+  const undoBtn = h('button', { class: 'btn sm ghost', title: 'Strg+Z', onclick: undo }, icon('undo'), T('Rückgängig'));
+  const resetBtn = h('button', { class: 'btn sm ghost', title: T('Alle Änderungen verwerfen'), onclick: reset }, icon('refresh'), T('Zurücksetzen'));
   const bar = h('div', { class: 'mw-bar' },
     h('div', { class: 'src-chip' }, h('div', { class: 'fi' }, icon('image')), fileT,
       h('button', { class: 'mini', title: 'Strg+O', onclick: openFile }, icon('folder')),
-      h('button', { class: 'mini', title: 'Schließen', onclick: closeImg }, icon('x'))),
+      h('button', { class: 'mini', title: T('Schließen'), onclick: closeImg }, icon('x'))),
     dirtyB, h('div', { style: { flex: 1 } }), undoBtn, resetBtn,
-    h('button', { class: 'btn sm', title: 'Viele Bilder auf einmal bereinigen', onclick: () => openBatch() }, icon('layers'), 'Stapel'));
+    h('button', { class: 'btn sm', title: T('Viele Bilder auf einmal bereinigen'), onclick: () => openBatch() }, icon('layers'), T('Stapel')));
   const footEl = h('div', { class: 'mw-foot' });
   const stage = h('div', { class: 'mw-stage' }, h('div', { class: 'mw-canvas' }, img), errEl);
 
-  const saveBtn = h('button', { class: 'btn primary block mw-save', onclick: save }, icon('download'), 'Speichern');
+  const saveBtn = h('button', { class: 'btn primary block mw-save', onclick: save }, icon('download'), T('Speichern'));
   const privEl = h('div', { class: 'mw-chips' });
-  const pActions = panel('lock', 'Datenschutz & Speichern', null,
+  const pActions = panel('lock', T('Datenschutz & Speichern'), null,
     privEl,
     h('div', { class: 'mw-go' }, saveBtn,
-      h('button', { class: 'btn danger', title: 'Alle Metadaten entfernen', onclick: stripAll }, icon('trash'), 'Alle Metadaten löschen')),
-    h('label', { class: 'chk-row' }, h('span', null, 'Farbprofil (ICC) behalten', h('small', { class: 'hint', style: { display: 'block' } }, 'Sonst können Farben anders aussehen')), switchEl(opt.keepICC, v => { opt.keepICC = v; saveOpt(); })),
-    h('label', { class: 'chk-row' }, h('span', null, 'Ausrichtung behalten', h('small', { class: 'hint', style: { display: 'block' } }, 'Hochformat-Fotos bleiben richtig gedreht')), switchEl(opt.keepOrient, v => { opt.keepOrient = v; saveOpt(); })));
+      h('button', { class: 'btn danger', title: T('Alle Metadaten entfernen'), onclick: stripAll }, icon('trash'), T('Alle Metadaten löschen'))),
+    h('label', { class: 'chk-row' }, h('span', null, T('Farbprofil (ICC) behalten'), h('small', { class: 'hint', style: { display: 'block' } }, T('Sonst können Farben anders aussehen'))), switchEl(opt.keepICC, v => { opt.keepICC = v; saveOpt(); })),
+    h('label', { class: 'chk-row' }, h('span', null, T('Ausrichtung behalten'), h('small', { class: 'hint', style: { display: 'block' } }, T('Hochformat-Fotos bleiben richtig gedreht'))), switchEl(opt.keepOrient, v => { opt.keepOrient = v; saveOpt(); })));
 
   /* Quick edit */
-  const QF = [['ifd0', 0x010E, 'Beschreibung', 'z. B. Sonnenuntergang am See'], ['ifd0', 0x013B, 'Urheber', 'Name'], ['ifd0', 0x8298, 'Copyright', '© 2026 Name']];
+  const QF = [['ifd0', 0x010E, T('Beschreibung'), T('z. B. Sonnenuntergang am See')], ['ifd0', 0x013B, T('Urheber'), 'Name'], ['ifd0', 0x8298, 'Copyright', T('© 2026 Name')]];
   const qInputs = QF.map(([ifd, tag, label, ph]) => {
     const inp = h('input', { class: 'inp', placeholder: ph, spellcheck: false,
       onchange: () => { const v = inp.value.trim(); if (v !== (find(ifd, tag) ? decStr(find(ifd, tag).data) : '')) change(() => putText(ifd, tag, v)); },
@@ -13314,17 +13405,17 @@ function mountMetawerk(view) {
       if (!s) { if (find('gps', 2)) change(() => { st.ifds.gps = []; }); return; }
       const m = s.match(/-?\d+(?:[.,]\d+)?/g);
       const [lat, lon] = (m || []).map(x => +x.replace(',', '.'));
-      if (!m || m.length !== 2 || Math.abs(lat) > 90 || Math.abs(lon) > 180) { toast('Standort bitte als „Breite, Länge“ in Dezimalgrad eingeben.', 'err'); syncQuick(); return; }
+      if (!m || m.length !== 2 || Math.abs(lat) > 90 || Math.abs(lon) > 180) { toast(T('Standort bitte als „Breite, Länge“ in Dezimalgrad eingeben.'), 'err'); syncQuick(); return; }
       change(() => setGps(lat, lon));
     },
     onkeydown: e => { if (e.key === 'Enter') locInp.blur(); } });
-  const mapLink = h('a', { class: 'btn sm', target: '_blank', rel: 'noopener', title: 'In OpenStreetMap öffnen' }, icon('pin'), 'Karte');
-  const locDel = h('button', { class: 'btn sm ghost danger', title: 'Alle GPS-Daten entfernen', onclick: () => change(() => { st.ifds.gps = []; }) }, icon('trash'));
-  const pQuick = panel('rename', 'Schnellbearbeitung', null,
+  const mapLink = h('a', { class: 'btn sm', target: '_blank', rel: 'noopener', title: T('In OpenStreetMap öffnen') }, icon('pin'), T('Karte'));
+  const locDel = h('button', { class: 'btn sm ghost danger', title: T('Alle GPS-Daten entfernen'), onclick: () => change(() => { st.ifds.gps = []; }) }, icon('trash'));
+  const pQuick = panel('rename', T('Schnellbearbeitung'), null,
     h('div', { class: 'mw-q' },
       ...qInputs.map(q => h('div', { class: 'field' + (q.tag === 0x010E ? ' wide' : '') }, h('label', null, q.label), q.inp)),
-      h('div', { class: 'field wide' }, h('label', null, 'Aufnahmedatum'), dateInp),
-      h('div', { class: 'field wide' }, h('label', null, 'Standort (GPS)', h('span', { class: 'hint-i' }, 'Breite, Länge')), h('div', { class: 'mw-loc' }, locInp, mapLink, locDel))));
+      h('div', { class: 'field wide' }, h('label', null, T('Aufnahmedatum')), dateInp),
+      h('div', { class: 'field wide' }, h('label', null, T('Standort (GPS)'), h('span', { class: 'hint-i' }, T('Breite, Länge'))), h('div', { class: 'mw-loc' }, locInp, mapLink, locDel))));
   function syncQuick() {
     for (const q of qInputs) if (document.activeElement !== q.inp) { const e = find(q.ifd, q.tag); q.inp.value = e ? decStr(e.data) : ''; }
     if (document.activeElement !== dateInp) {
@@ -13341,9 +13432,9 @@ function mountMetawerk(view) {
   /* EXIF table */
   const cntB = h('span', { class: 'badge' });
   const listEl = h('div', { class: 'mw-secs' });
-  const searchInp = h('input', { class: 'inp', placeholder: 'Felder durchsuchen …', spellcheck: false, oninput: debounce(e => { query = e.target.value.trim().toLowerCase(); renderList(); }, 120) });
-  const pExif = panel('table', 'EXIF-Daten', h('div', { class: 'panel-actions' }, cntB,
-    h('button', { class: 'mini', title: 'Feld hinzufügen', onclick: () => addField('ifd0') }, icon('plus'))),
+  const searchInp = h('input', { class: 'inp', placeholder: T('Felder durchsuchen …'), spellcheck: false, oninput: debounce(e => { query = e.target.value.trim().toLowerCase(); renderList(); }, 120) });
+  const pExif = panel('table', 'EXIF', h('div', { class: 'panel-actions' }, cntB,
+    h('button', { class: 'mini', title: T('Feld hinzufügen'), onclick: () => addField('ifd0') }, icon('plus'))),
     h('div', { class: 'mw-srch' }, icon('search'), searchInp), listEl);
 
   function startEdit(row, vEl, ifd, e) {
@@ -13361,13 +13452,13 @@ function mountMetawerk(view) {
       if (!change(() => put(ifd, e.tag, encodeVal(ifd, e.tag, e.type, s)))) renderList();
     };
     if (k === 'enum') {
-      const cur = nums(e)[0], map = EN[f];
+      const cur = nums(e)[0], map = ENUM[f];
       ctl = h('select', { class: 'inp', onchange: () => finish(true), onblur: () => finish(true), onkeydown: ev => { if (ev.key === 'Escape') { ev.stopPropagation(); finish(false); } } },
         Object.entries(map).map(([v, l]) => h('option', { value: v, selected: +v === cur }, `${l}`)),
         map[cur] == null ? h('option', { value: cur, selected: true }, String(cur)) : null);
     } else {
       ctl = h('input', { class: 'inp' + (k === 'num' ? ' mono' : ''), value: editStr(ifd, e), spellcheck: false,
-        placeholder: f === 'date' ? 'JJJJ:MM:TT HH:MM:SS' : '',
+        placeholder: f === 'date' ? T('JJJJ:MM:TT HH:MM:SS') : '',
         onblur: () => finish(true),
         onkeydown: ev => { if (ev.key === 'Enter') { ev.preventDefault(); finish(true); } else if (ev.key === 'Escape') { ev.preventDefault(); ev.stopPropagation(); finish(false); } } });
     }
@@ -13378,17 +13469,17 @@ function mountMetawerk(view) {
 
   function row(ifd, e) {
     const d = defOf(ifd, e.tag), k = kind(ifd, e), txt = show(ifd, e);
-    const label = d?.label || `Tag 0x${e.tag.toString(16).toUpperCase().padStart(4, '0')}`;
-    const key = d?.key || 'Unbekannt';
+    const label = d ? (isEN() ? tagName(d.key) : d.label) : `Tag 0x${e.tag.toString(16).toUpperCase().padStart(4, '0')}`;
+    const key = d?.key || T('Unbekannt');
     if (query && ![label, key, txt].some(s => s.toLowerCase().includes(query))) return null;
     const editable = k !== 'bin';
-    const vEl = h('div', { class: 'mw-v' + (editable ? ' ed' : ' bin'), title: editable ? 'Klicken zum Bearbeiten' : txt }, txt || h('span', { class: 'hint' }, '(leer)'));
+    const vEl = h('div', { class: 'mw-v' + (editable ? ' ed' : ' bin'), title: editable ? T('Klicken zum Bearbeiten') : txt }, txt || h('span', { class: 'hint' }, T('(leer)')));
     const r = h('div', { class: 'mw-row' },
-      h('div', { class: 'mw-k', title: `${key} · 0x${e.tag.toString(16).toUpperCase().padStart(4, '0')}` }, h('span', null, label), h('small', null, key)),
+      h('div', { class: 'mw-k', title: `${key} · 0x${e.tag.toString(16).toUpperCase().padStart(4, '0')}` }, h('span', null, label), isEN() ? null : h('small', null, key)),
       vEl,
       h('div', { class: 'mw-act' },
-        editable && h('button', { class: 'mini', title: 'Bearbeiten', onclick: () => startEdit(r, vEl, ifd, e) }, icon('rename')),
-        h('button', { class: 'mini del', title: 'Feld löschen', onclick: () => change(() => drop(ifd, e.tag)) }, icon('trash'))));
+        editable && h('button', { class: 'mini', title: T('Bearbeiten'), onclick: () => startEdit(r, vEl, ifd, e) }, icon('rename')),
+        h('button', { class: 'mini del', title: T('Feld löschen'), onclick: () => change(() => drop(ifd, e.tag)) }, icon('trash'))));
     if (editable) vEl.addEventListener('click', () => startEdit(r, vEl, ifd, e));
     return r;
   }
@@ -13409,21 +13500,21 @@ function mountMetawerk(view) {
         thumbUrl = URL.createObjectURL(new Blob([st.thumb], { type: 'image/jpeg' }));
         body.append(h('div', { class: 'mw-thumb' }, h('img', { src: thumbUrl, alt: '' }),
           h('div', null,
-            h('b', null, `Eingebettetes Vorschaubild · ${fmtSize(st.thumb.length)}`),
-            h('p', { class: 'hint' }, 'Kann den ursprünglichen, unbeschnittenen Bildausschnitt zeigen.'),
-            h('button', { class: 'btn sm danger', style: { marginTop: '8px' }, onclick: () => change(() => { st.thumb = null; st.ifds.ifd1 = []; }) }, icon('trash'), 'Vorschaubild entfernen'))));
+            h('b', null, `${T('Eingebettetes Vorschaubild')} · ${fmtSize(st.thumb.length)}`),
+            h('p', { class: 'hint' }, T('Kann den ursprünglichen, unbeschnittenen Bildausschnitt zeigen.')),
+            h('button', { class: 'btn sm danger', style: { marginTop: '8px' }, onclick: () => change(() => { st.thumb = null; st.ifds.ifd1 = []; }) }, icon('trash'), T('Vorschaubild entfernen')))));
       }
       body.append(...rows);
-      if (!rows.length && !hasThumb) body.append(h('div', { class: 'mw-none' }, ifd === 'gps' ? 'Kein Standort gespeichert.' : 'Keine Einträge.'));
+      if (!rows.length && !hasThumb) body.append(h('div', { class: 'mw-none' }, ifd === 'gps' ? T('Kein Standort gespeichert.') : T('Keine Einträge.')));
       const canAdd = ifd !== 'ifd1' && ifd !== 'interop';
       secs.push(h('div', { class: 'mw-sec' + (open ? '' : ' closed') },
         h('div', { class: 'mw-sec-h', onclick: () => { closed.has(ifd) ? closed.delete(ifd) : closed.add(ifd); renderList(); } },
           icon('chev', 'mw-chev'), icon(ic), h('span', null, title), h('span', { class: 'badge' }, ents.length + (hasThumb ? 1 : 0)),
           h('div', { style: { flex: 1 } }),
-          canAdd && h('button', { class: 'mini', title: 'Feld hinzufügen', onclick: ev => { ev.stopPropagation(); addField(ifd); } }, icon('plus'))),
+          canAdd && h('button', { class: 'mini', title: T('Feld hinzufügen'), onclick: ev => { ev.stopPropagation(); addField(ifd); } }, icon('plus'))),
         body));
     }
-    if (!secs.length) secs.push(h('div', { class: 'mw-empty' }, query ? 'Keine Treffer.' : 'Keine EXIF-Daten vorhanden.'));
+    if (!secs.length) secs.push(h('div', { class: 'mw-empty' }, query ? T('Keine Treffer.') : T('Keine EXIF-Daten vorhanden.')));
     listEl.replaceChildren(...secs);
     cntB.textContent = metaCount();
   }
@@ -13431,52 +13522,52 @@ function mountMetawerk(view) {
   function addField(ifd) {
     if (!st) return;
     const cands = TAGS.filter(t => t[0] !== 'ifd1' && t[0] !== 'interop' && !find(t[0], t[1]) && (t[4] !== 7 || t[5] === 'ucom') && !['dms', 'ver'].includes(t[5]) && !(t[0] === 'gps' && t[1] <= 4));
-    if (!cands.length) { toast('Alle bekannten Felder sind bereits vorhanden.', 'info'); return; }
+    if (!cands.length) { toast(T('Alle bekannten Felder sind bereits vorhanden.'), 'info'); return; }
     const sel = h('select', { class: 'inp', onchange: () => syncCtl() },
       SECTIONS.filter(([k]) => cands.some(t => t[0] === k)).map(([k, title]) => h('optgroup', { label: title },
-        cands.filter(t => t[0] === k).map(t => h('option', { value: `${t[0]}:${t[1]}`, selected: false }, `${t[3]}  ·  ${t[2]}`)))));
+        cands.filter(t => t[0] === k).map(t => h('option', { value: `${t[0]}:${t[1]}`, selected: false }, isEN() ? tagName(t[2]) : `${t[3]}  ·  ${t[2]}`)))));
     const first = cands.find(t => t[0] === ifd) || cands[0];
     sel.value = `${first[0]}:${first[1]}`;
     const valWrap = h('div', { class: 'field' });
     let ctl;
     const cur = () => DEF.get(sel.value);
-    const HINT = { date: 'JJJJ:MM:TT HH:MM:SS', exp: 'z. B. 1/250', fnum: 'z. B. 2.8', mm: 'z. B. 35', ev: 'z. B. -1/3', flash: 'z. B. 16 (kein Blitz)', stars: '0 bis 5', lens: 'z. B. 24, 70, 2.8, 4' };
+    const HINT = { date: T('JJJJ:MM:TT HH:MM:SS'), exp: T('z. B. 1/250'), fnum: T('z. B. 2.8'), mm: T('z. B. 35'), ev: T('z. B. -1/3'), flash: T('z. B. 16 (kein Blitz)'), stars: T('0 bis 5'), lens: T('z. B. 24, 70, 2.8, 4') };
     function syncCtl() {
       const d = cur();
-      ctl = EN[d.fmt]
-        ? h('select', { class: 'inp' }, Object.entries(EN[d.fmt]).map(([v, l]) => h('option', { value: v }, l)))
+      ctl = ENUM[d.fmt]
+        ? h('select', { class: 'inp' }, Object.entries(ENUM[d.fmt]).map(([v, l]) => h('option', { value: v }, l)))
         : h('input', { class: 'inp' + (d.type === 2 || d.fmt === 'xp' || d.fmt === 'ucom' ? '' : ' mono'), spellcheck: false,
-            placeholder: HINT[d.fmt] || (d.type === 5 || d.type === 10 ? 'Zahl oder Bruch, z. B. 72 oder 1/3' : d.type === 2 || d.fmt ? 'Text' : 'Zahl'),
+            placeholder: HINT[d.fmt] || (d.type === 5 || d.type === 10 ? T('Zahl oder Bruch, z. B. 72 oder 1/3') : d.type === 2 || d.fmt ? 'Text' : T('Zahl')),
             onkeydown: e => { if (e.key === 'Enter') { e.preventDefault(); ok() && close(); } } });
       if (d.fmt === 'date') { const n = new Date(); ctl.value = `${n.getFullYear()}:${pad2(n.getMonth() + 1)}:${pad2(n.getDate())} ${pad2(n.getHours())}:${pad2(n.getMinutes())}:${pad2(n.getSeconds())}`; }
-      valWrap.replaceChildren(h('label', null, 'Wert'), ctl);
+      valWrap.replaceChildren(h('label', null, T('Wert')), ctl);
     }
     function ok() {
       const d = cur(), s = ctl.value.trim();
-      if (!s) { toast('Bitte einen Wert eingeben.', 'warn'); return false; }
-      return change(() => put(d.ifd, d.tag, EN[d.fmt] ? { type: d.type, count: 1, data: encNums(d.type, [+s]) } : encodeVal(d.ifd, d.tag, d.type, s)));
+      if (!s) { toast(T('Bitte einen Wert eingeben.'), 'warn'); return false; }
+      return change(() => put(d.ifd, d.tag, ENUM[d.fmt] ? { type: d.type, count: 1, data: encNums(d.type, [+s]) } : encodeVal(d.ifd, d.tag, d.type, s)));
     }
     syncCtl();
     const close = modal({
-      title: 'Feld hinzufügen', sub: 'Neues EXIF-Feld mit Wert anlegen', width: 460,
-      body: h('div', { class: 'mw-add' }, h('div', { class: 'field' }, h('label', null, 'Feld'), sel), valWrap),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: 'Hinzufügen', kind: 'primary', icon: 'plus', onClick: () => ok() }],
+      title: T('Feld hinzufügen'), sub: T('Neues EXIF-Feld mit Wert anlegen'), width: 460,
+      body: h('div', { class: 'mw-add' }, h('div', { class: 'field' }, h('label', null, T('Feld')), sel), valWrap),
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: T('Hinzufügen'), kind: 'primary', icon: 'plus', onClick: () => ok() }],
     });
     setTimeout(() => ctl.focus(), 40);
   }
 
   /* Other metadata */
   const xListEl = h('div', { class: 'mw-xs' });
-  const pExtra = panel('layers', 'Weitere Metadaten', null, xListEl);
+  const pExtra = panel('layers', T('Weitere Metadaten'), null, xListEl);
   function renderExtras() {
-    if (!st.extras.length) { xListEl.replaceChildren(h('div', { class: 'hint' }, 'Keine XMP-, IPTC- oder sonstigen Blöcke gefunden.')); return; }
+    if (!st.extras.length) { xListEl.replaceChildren(h('div', { class: 'hint' }, T('Keine XMP-, IPTC- oder sonstigen Blöcke gefunden.'))); return; }
     xListEl.replaceChildren(...st.extras.map(x => h('div', { class: 'mw-x' + (x.removed ? ' off' : '') },
-      h('div', { class: 'src-t' }, h('b', null, x.label), h('small', { title: x.sub }, x.removed ? 'Wird beim Speichern entfernt' : x.sub)),
+      h('div', { class: 'src-t' }, h('b', null, x.label), h('small', { title: x.sub }, x.removed ? T('Wird beim Speichern entfernt') : x.sub)),
       h('span', { class: 'mw-sz' }, fmtSize(x.size)),
-      x.detail && h('button', { class: 'mini', title: 'Inhalt anzeigen', onclick: () => modal({ title: x.label, sub: fmtSize(x.size), width: 760, body: h('pre', { class: 'mw-pre' }, x.detail), actions: [{ label: 'Kopieren', icon: 'copy', onClick: () => { navigator.clipboard?.writeText(x.detail); toast('Kopiert', 'ok'); } }, { label: 'Schließen', kind: 'primary' }] }) }, icon('search')),
+      x.detail && h('button', { class: 'mini', title: T('Inhalt anzeigen'), onclick: () => modal({ title: x.label, sub: fmtSize(x.size), width: 760, body: h('pre', { class: 'mw-pre' }, x.detail), actions: [{ label: T('Kopieren'), icon: 'copy', onClick: () => { navigator.clipboard?.writeText(x.detail); toast(T('Kopiert'), 'ok'); } }, { label: T('Schließen'), kind: 'primary' }] }) }, icon('search')),
       x.removed
-        ? h('button', { class: 'mini', title: 'Wiederherstellen', onclick: () => change(() => { x.removed = false; }) }, icon('undo'))
-        : h('button', { class: 'mini del', title: 'Entfernen', onclick: () => change(() => { x.removed = true; }) }, icon('trash')))));
+        ? h('button', { class: 'mini', title: T('Wiederherstellen'), onclick: () => change(() => { x.removed = false; }) }, icon('undo'))
+        : h('button', { class: 'mini del', title: T('Entfernen'), onclick: () => change(() => { x.removed = true; }) }, icon('trash')))));
   }
 
   /* WebP export */
@@ -13487,31 +13578,31 @@ function mountMetawerk(view) {
   const edgeInp = h('input', { class: 'inp mono', type: 'number', min: 0, max: 20000, placeholder: 'Original', value: opt.maxEdge || '',
     onchange: e => { opt.maxEdge = Math.max(0, Math.min(20000, Math.round(+e.target.value || 0))); e.target.value = opt.maxEdge || ''; saveOpt(); } });
   const webpInfoEl = h('div', { class: 'bw-info' });
-  const pWebp = panel('image', 'Als WebP exportieren', null,
-    h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, 'Qualität'), qVal), qRange),
-    h('div', { class: 'field' }, h('label', null, 'Längste Kante (px)', h('span', { class: 'hint-i' }, 'leer = Originalgröße')), edgeInp),
-    h('label', { class: 'chk-row' }, h('span', null, 'Metadaten übernehmen', h('small', { class: 'hint', style: { display: 'block' } }, 'Sonst ist das WebP komplett metadatenfrei')), switchEl(opt.webpMeta, v => { opt.webpMeta = v; saveOpt(); })),
-    h('button', { class: 'btn block', onclick: exportWebp }, icon('download'), 'WebP exportieren'),
+  const pWebp = panel('image', T('Als WebP exportieren'), null,
+    h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, T('Qualität')), qVal), qRange),
+    h('div', { class: 'field' }, h('label', null, T('Längste Kante (px)'), h('span', { class: 'hint-i' }, T('leer = Originalgröße'))), edgeInp),
+    h('label', { class: 'chk-row' }, h('span', null, T('Metadaten übernehmen'), h('small', { class: 'hint', style: { display: 'block' } }, T('Sonst ist das WebP komplett metadatenfrei'))), switchEl(opt.webpMeta, v => { opt.webpMeta = v; saveOpt(); })),
+    h('button', { class: 'btn block', onclick: exportWebp }, icon('download'), T('WebP exportieren')),
     webpInfoEl);
 
   function privacyFlags() {
     const g = st.ifds, has = (k, ...tags) => tags.some(t => find(k, t));
     return [
-      g.gps.length && ['pin', 'GPS-Standort'],
-      has('exif', 0xA431, 0xA435) && ['info', 'Seriennummer'],
-      (has('ifd0', 0x013B, 0x8298, 0x9C9D) || has('exif', 0xA430)) && ['info', 'Personenname'],
-      has('exif', 0x9003, 0x9004) || has('ifd0', 0x0132) ? ['info', 'Aufnahmezeit'] : null,
-      (has('ifd0', 0x010F, 0x0110)) && ['info', 'Kameramodell'],
-      st.thumb && ['photo', 'Vorschaubild'],
-      has('exif', 0x927C) && ['info', 'Herstellerdaten'],
-      st.extras.some(x => !x.removed && !x.isICC) && ['layers', 'XMP/IPTC & Co.'],
+      g.gps.length && ['pin', T('GPS-Standort')],
+      has('exif', 0xA431, 0xA435) && ['info', T('Seriennummer')],
+      (has('ifd0', 0x013B, 0x8298, 0x9C9D) || has('exif', 0xA430)) && ['info', T('Personenname')],
+      has('exif', 0x9003, 0x9004) || has('ifd0', 0x0132) ? ['info', T('Aufnahmezeit')] : null,
+      (has('ifd0', 0x010F, 0x0110)) && ['info', T('Kameramodell')],
+      st.thumb && ['photo', T('Vorschaubild')],
+      has('exif', 0x927C) && ['info', T('Herstellerdaten')],
+      st.extras.some(x => !x.removed && !x.isICC) && ['layers', 'XMP/IPTC …'],
     ].filter(Boolean);
   }
   function renderPrivacy() {
     const found = privacyFlags();
     privEl.replaceChildren(...(found.length
       ? found.map(([ic, t]) => h('span', { class: 'mw-chip' }, icon(ic), t))
-      : [h('span', { class: 'mw-chip ok' }, icon('check'), 'Keine persönlichen Metadaten')]));
+      : [h('span', { class: 'mw-chip ok' }, icon('check'), T('Keine persönlichen Metadaten'))]));
   }
 
   function renderFoot() {
@@ -13521,9 +13612,9 @@ function mountMetawerk(view) {
       h('span', null, h('b', null, st.type.toUpperCase())),
       st.w ? h('span', null, h('b', null, `${st.w} × ${st.h}`), ' px') : null,
       h('span', null, 'Original ', h('b', null, fmtSize(st.orig.length))),
-      outBytes && st.dirty ? h('span', null, 'Neu ', h('b', null, fmtSize(out)), diff ? ` (${diff > 0 ? '+' : '−'}${fmtSize(Math.abs(diff))})` : '') : null,
-      h('span', null, h('b', null, metaCount()), ' EXIF-Felder'),
-      h('span', null, h('b', null, extrasLeft()), ' weitere Blöcke')].filter(Boolean));
+      outBytes && st.dirty ? h('span', null, '→ ', h('b', null, fmtSize(out)), diff ? ` (${diff > 0 ? '+' : '−'}${fmtSize(Math.abs(diff))})` : '') : null,
+      h('span', null, h('b', null, metaCount()), ' EXIF'),
+      h('span', null, h('b', null, extrasLeft()), ' ', T('weitere Blöcke'))].filter(Boolean));
   }
 
   function render() {
@@ -13544,7 +13635,7 @@ function mountMetawerk(view) {
   const OK_EXT = /\.(jpe?g|png|webp)$/i;
   async function readState(file) {
     const u8 = new Uint8Array(await file.arrayBuffer()), type = sniff(u8);
-    if (!type) throw new Error('Format nicht unterstützt');
+    if (!type) throw new Error(T('Format nicht unterstützt'));
     const parsed = type === 'jpeg' ? parseJpeg(u8) : type === 'png' ? await parsePng(u8) : parseWebp(u8);
     let exif = { le: false, ifds: { ifd0: [], exif: [], gps: [], interop: [], ifd1: [] }, thumb: null };
     if (parsed.tiff) try { exif = parseTiff(parsed.tiff); } catch {}
@@ -13566,7 +13657,7 @@ function mountMetawerk(view) {
   function closeBatch() { wrap.classList.remove('batch'); paintBatchHead(); }
   async function addBatch(files) {
     files = files.filter(f => OK_EXT.test(f.name) || /^image\/(jpeg|png|webp)$/.test(f.type));
-    if (!files.length) { toast('Keine JPG-, PNG- oder WebP-Dateien gefunden.', 'warn'); return; }
+    if (!files.length) { toast(T('Keine JPG-, PNG- oder WebP-Dateien gefunden.'), 'warn'); return; }
     wrap.classList.add('batch');
     const items = files.map(f => ({ file: f, status: 'wait', info: null, type: '', url: URL.createObjectURL(f) }));
     batch.push(...items);
@@ -13596,46 +13687,46 @@ function mountMetawerk(view) {
   function rowEl(it) {
     const f = it.file, inf = it.info;
     const diff = it.outSize != null ? it.outSize - f.size : 0;
-    const stat = it.status === 'ok' ? h('span', { class: 'mw-bs ok', title: 'Verarbeitet' }, icon('check'), `${fmtSize(it.outSize)}${diff ? ` (${diff > 0 ? '+' : '−'}${fmtSize(Math.abs(diff))})` : ''}`)
-      : it.status === 'bad' ? h('span', { class: 'mw-bs err', title: it.msg }, icon('alert'), 'Nicht lesbar')
-      : it.status === 'err' ? h('span', { class: 'mw-bs err', title: it.msg }, icon('alert'), 'Fehler')
-      : it.status === 'run' ? h('span', { class: 'mw-bs' }, h('span', { class: 'spin' }), 'Läuft …')
-      : h('span', { class: 'mw-bs' }, inf ? 'Bereit' : 'Analysiere …');
+    const stat = it.status === 'ok' ? h('span', { class: 'mw-bs ok', title: T('Verarbeitet') }, icon('check'), `${fmtSize(it.outSize)}${diff ? ` (${diff > 0 ? '+' : '−'}${fmtSize(Math.abs(diff))})` : ''}`)
+      : it.status === 'bad' ? h('span', { class: 'mw-bs err', title: it.msg }, icon('alert'), T('Nicht lesbar'))
+      : it.status === 'err' ? h('span', { class: 'mw-bs err', title: it.msg }, icon('alert'), T('Fehler'))
+      : it.status === 'run' ? h('span', { class: 'mw-bs' }, h('span', { class: 'spin' }), T('Läuft …'))
+      : h('span', { class: 'mw-bs' }, inf ? T('Bereit') : T('Analysiere …'));
     return h('div', { class: 'mw-br' + (it.status === 'bad' ? ' bad' : '') },
       h('img', { class: 'mw-bthumb', src: it.url, loading: 'lazy', decoding: 'async', alt: '' }),
       h('div', { class: 'mw-bt' },
         h('b', { title: f.name }, f.name),
-        h('small', null, [(it.type || '').toUpperCase() || '…', fmtSize(f.size), inf && `${inf.fields} EXIF-Felder`, inf?.extras && `${inf.extras} weitere Blöcke`].filter(Boolean).join(' · ')),
+        h('small', null, [(it.type || '').toUpperCase() || '…', fmtSize(f.size), inf && `${inf.fields} EXIF`, inf?.extras && `${inf.extras} ${T('weitere Blöcke')}`].filter(Boolean).join(' · ')),
         inf && h('div', { class: 'mw-bflags' }, inf.flags.length
-          ? inf.flags.map(t => h('span', { class: 'mw-chip' + (t === 'GPS-Standort' ? ' gps' : '') }, t))
-          : h('span', { class: 'mw-chip ok' }, 'Keine persönlichen Metadaten'))),
+          ? inf.flags.map(t => h('span', { class: 'mw-chip' + (t === T('GPS-Standort') ? ' gps' : '') }, t))
+          : h('span', { class: 'mw-chip ok' }, T('Keine persönlichen Metadaten')))),
       stat,
       h('div', { class: 'mw-bacts' },
-        h('button', { class: 'mini', title: 'Einzeln öffnen & bearbeiten', onclick: () => load(it.file) }, icon('rename')),
-        h('button', { class: 'mini del', title: 'Aus der Liste entfernen', onclick: () => removeItem(it) }, icon('x'))));
+        h('button', { class: 'mini', title: T('Einzeln öffnen & bearbeiten'), onclick: () => load(it.file) }, icon('rename')),
+        h('button', { class: 'mini del', title: T('Aus der Liste entfernen'), onclick: () => removeItem(it) }, icon('x'))));
   }
   function updRow(it) { const n = rowEl(it); if (it.el?.isConnected) it.el.replaceWith(n); it.el = n; paintBatchHead(); }
   function paintBatchHead() {
     const n = batch.length, ready = batch.filter(x => x.info), gps = ready.filter(x => x.info.gps).length, pers = ready.filter(x => x.info.flags.length).length;
-    bTitle.textContent = n ? `${n} ${n === 1 ? 'Bild' : 'Bilder'}` : 'Stapelverarbeitung';
+    bTitle.textContent = n ? `${n} × 🖼` : T('Stapelverarbeitung');
     bSum.replaceChildren(...(n ? [
       h('span', null, fmtSize(batch.reduce((a, x) => a + x.file.size, 0))),
-      gps ? h('span', { class: 'gps' }, `${gps}× GPS-Standort`) : null,
-      h('span', null, `${pers} mit persönlichen Metadaten`),
-    ] : [h('span', null, 'Bilder hierher ziehen oder hinzufügen')]).filter(Boolean));
+      gps ? h('span', { class: 'gps' }, `${gps}× GPS`) : null,
+      h('span', null, T('{n} mit persönlichen Metadaten', { n: pers })),
+    ] : [h('span', null, T('Bilder hierher ziehen oder hinzufügen'))]).filter(Boolean));
     bEmpty.hidden = n > 0;
     const todo = batch.filter(x => x.status !== 'bad').length;
     bRunBtn.disabled = bRunning || !todo || ready.length + batch.filter(x => x.status === 'bad').length < n;
-    bRunBtn.lastChild.textContent = bRunning ? 'Verarbeite …' : todo > 1 ? `${todo} Bilder verarbeiten & als ZIP speichern` : 'Verarbeiten & speichern';
+    bRunBtn.lastChild.textContent = bRunning ? '…' : todo > 1 ? `${todo} × 🖼 → ZIP` : T('Verarbeiten & speichern');
     backBtn.hidden = !n || wrap.classList.contains('batch');
-    backBtn.lastChild.textContent = `Zurück zum Stapel (${n})`;
+    backBtn.lastChild.textContent = `${T('Zurück zum Stapel')} (${n})`;
   }
   async function runBatch() {
     if (bRunning) return;
     const todo = batch.filter(x => x.status !== 'bad');
     if (!todo.length) return;
     const artist = bopt.artist.trim(), copyright = bopt.copyright.trim();
-    if (!bopt.strip && !artist && !copyright) { toast('Bitte eine Aktion wählen – z. B. „Alle Metadaten entfernen“.', 'warn'); return; }
+    if (!bopt.strip && !artist && !copyright) { toast(T('Bitte eine Aktion wählen – z. B. „Alle Metadaten entfernen“.'), 'warn'); return; }
     bRunning = true; bResult.replaceChildren(); paintBatchHead();
     const out = [], used = new Map();
     let inSum = 0, outSum = 0, gps = 0, fail = 0;
@@ -13671,54 +13762,54 @@ function mountMetawerk(view) {
         const d = new Date();
         download(`metawerk-${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}.zip`, zip);
       }
-    } catch (err) { toast('Speichern fehlgeschlagen: ' + err.message, 'err'); }
+    } catch (err) { toast(T('Speichern fehlgeschlagen: ') + err.message, 'err'); }
     bRunning = false; bProgT.textContent = '';
     bResult.replaceChildren(...[
-      h('b', null, `${out.length} ${out.length === 1 ? 'Bild' : 'Bilder'} gespeichert`),
+      h('b', null, `${out.length} × 🖼 ✓`),
       h('span', null, `${fmtSize(inSum)} → ${fmtSize(outSum)}`),
-      gps ? h('span', null, `${gps}× GPS-Standort entfernt`) : null,
-      fail ? h('span', { class: 'err' }, `${fail} fehlgeschlagen`) : null].filter(Boolean));
+      gps ? h('span', null, `${gps}× GPS ✗`) : null,
+      fail ? h('span', { class: 'err' }, `${fail} ✗`) : null].filter(Boolean));
     paintBatchHead();
-    toast(fail ? `${out.length} gespeichert, ${fail} fehlgeschlagen.` : `${out.length} ${out.length === 1 ? 'Bild' : 'Bilder'} gespeichert.`, fail ? 'warn' : 'ok');
+    toast(fail ? `${out.length} ✓ · ${fail} ✗` : `${out.length} × 🖼 ✓`, fail ? 'warn' : 'ok');
   }
 
   const bTitle = h('b'), bSum = h('div', { class: 'mw-bsum' });
-  const bEmpty = h('div', { class: 'mw-bempty' }, icon('layers'), h('b', null, 'Noch keine Bilder'), h('span', null, 'JPG-, PNG- und WebP-Dateien hierher ziehen'));
+  const bEmpty = h('div', { class: 'mw-bempty' }, icon('layers'), h('b', null, T('Noch keine Bilder')), h('span', null, T('JPG-, PNG- und WebP-Dateien hierher ziehen')));
   const bList = h('div', { class: 'mw-blist' });
   const bFill = h('div', { class: 'mw-bprog-fill' }), bProgT = h('div', { class: 'mw-bprog-t' }), bResult = h('div', { class: 'mw-bres' });
-  const bRunBtn = h('button', { class: 'btn primary block', onclick: runBatch }, icon('download'), h('span', null, 'Verarbeiten'));
+  const bRunBtn = h('button', { class: 'btn primary block', onclick: runBatch }, icon('download'), h('span', null, T('Verarbeiten')));
   const bText = (key, label, ph) => h('div', { class: 'field' }, h('label', null, label, h('span', { class: 'hint-i' }, 'optional')),
     h('input', { class: 'inp', value: bopt[key], placeholder: ph, spellcheck: false, oninput: e => { bopt[key] = e.target.value; saveB(); } }));
-  const pBatch = panel('layers', 'Aktion für alle Bilder', null,
-    h('label', { class: 'chk-row' }, h('span', null, 'Alle Metadaten entfernen', h('small', { class: 'hint', style: { display: 'block' } }, 'EXIF, GPS, XMP, IPTC, Vorschaubild …')), switchEl(bopt.strip, v => { bopt.strip = v; saveB(); })),
-    h('label', { class: 'chk-row' }, h('span', null, 'Farbprofil (ICC) behalten'), switchEl(opt.keepICC, v => { opt.keepICC = v; saveOpt(); })),
-    h('label', { class: 'chk-row' }, h('span', null, 'Ausrichtung behalten'), switchEl(opt.keepOrient, v => { opt.keepOrient = v; saveOpt(); })),
+  const pBatch = panel('layers', T('Aktion für alle Bilder'), null,
+    h('label', { class: 'chk-row' }, h('span', null, T('Alle Metadaten entfernen'), h('small', { class: 'hint', style: { display: 'block' } }, T('EXIF, GPS, XMP, IPTC, Vorschaubild …'))), switchEl(bopt.strip, v => { bopt.strip = v; saveB(); })),
+    h('label', { class: 'chk-row' }, h('span', null, T('Farbprofil (ICC) behalten')), switchEl(opt.keepICC, v => { opt.keepICC = v; saveOpt(); })),
+    h('label', { class: 'chk-row' }, h('span', null, T('Ausrichtung behalten')), switchEl(opt.keepOrient, v => { opt.keepOrient = v; saveOpt(); })),
     h('div', { class: 'tp-sep' }),
-    bText('artist', 'Urheber eintragen', 'Name'),
-    bText('copyright', 'Copyright eintragen', '© 2026 Name'),
-    h('p', { class: 'hint' }, 'Verlustfrei – Pixel und Originale bleiben unangetastet.'),
+    bText('artist', T('Urheber eintragen'), 'Name'),
+    bText('copyright', T('Copyright eintragen'), T('© 2026 Name')),
+    h('p', { class: 'hint' }, T('Verlustfrei – Pixel und Originale bleiben unangetastet.')),
     bRunBtn,
     h('div', { class: 'mw-bprog' }, bFill), bProgT, bResult);
   const batchEl = h('div', { class: 'mw-batch' },
     h('div', { class: 'mw-bmain' },
       h('div', { class: 'mw-bar' },
         h('div', { class: 'mw-bhead' }, bTitle, bSum), h('div', { style: { flex: 1 } }),
-        h('button', { class: 'btn sm', onclick: async () => { const f = await pickFiles(); if (f.length) addBatch(f); } }, icon('plus'), 'Bilder hinzufügen'),
-        h('button', { class: 'btn sm ghost', title: 'Liste leeren', onclick: clearBatch }, icon('trash'), 'Leeren'),
-        h('button', { class: 'mini', title: 'Stapel schließen', onclick: closeBatch }, icon('x'))),
+        h('button', { class: 'btn sm', onclick: async () => { const f = await pickFiles(); if (f.length) addBatch(f); } }, icon('plus'), T('Bilder hinzufügen')),
+        h('button', { class: 'btn sm ghost', title: T('Liste leeren'), onclick: clearBatch }, icon('trash'), T('Leeren')),
+        h('button', { class: 'mini', title: T('Stapel schließen'), onclick: closeBatch }, icon('x'))),
       h('div', { class: 'mw-blist-wrap' }, bEmpty, bList)),
     h('aside', { class: 'mw-side' }, pBatch));
   const backBtn = h('button', { class: 'btn', hidden: true, onclick: () => openBatch() }, icon('layers'), h('span'));
 
   const empty = h('div', { class: 'empty' }, h('div', { class: 'drop' },
     h('div', { class: 'big' }, icon('tag')),
-    h('h2', null, 'Bild öffnen'),
-    h('p', null, 'EXIF ansehen, bearbeiten, löschen – verlustfrei · Export als WebP'),
-    h('div', { class: 'drop-actions' }, h('button', { class: 'btn primary', onclick: openFile }, icon('folder'), 'Bild auswählen'),
-      h('button', { class: 'btn', title: 'Viele Bilder auf einmal bereinigen', onclick: async () => { const f = await pickFiles(); if (f.length) addBatch(f); } }, icon('layers'), 'Mehrere Bilder (Stapel)'),
+    h('h2', null, T('Bild öffnen')),
+    h('p', null, T('EXIF ansehen, bearbeiten, löschen – verlustfrei · Export als WebP')),
+    h('div', { class: 'drop-actions' }, h('button', { class: 'btn primary', onclick: openFile }, icon('folder'), T('Bild auswählen')),
+      h('button', { class: 'btn', title: T('Viele Bilder auf einmal bereinigen'), onclick: async () => { const f = await pickFiles(); if (f.length) addBatch(f); } }, icon('layers'), T('Mehrere Bilder (Stapel)')),
       backBtn),
-    h('p', { class: 'hint', style: { marginTop: '16px' } }, 'oder hierher ziehen · JPG, PNG, WebP · mehrere = Stapel')));
-  const dropOv = h('div', { class: 'drop-ov' }, h('div', null, icon('tag'), 'Bild(er) loslassen'));
+    h('p', { class: 'hint', style: { marginTop: '16px' } }, T('oder hierher ziehen · JPG, PNG, WebP · mehrere = Stapel'))));
+  const dropOv = h('div', { class: 'drop-ov' }, h('div', null, icon('tag'), T('Bild(er) loslassen')));
   const wrap = h('div', { class: 'mw-wrap' }, empty, batchEl,
     h('div', { class: 'mw' },
       h('div', { class: 'mw-main' }, bar, stage, footEl),
@@ -13739,7 +13830,7 @@ function mountMetawerk(view) {
   paintBatchHead();
 
   return {
-    beforeClose: () => !st?.dirty || confirm('Ungespeicherte Änderungen verwerfen?'),
+    beforeClose: () => !st?.dirty || confirm(T('Ungespeicherte Änderungen verwerfen?')),
     onKey(e) {
       const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) && e.target.type !== 'range';
       const ctrl = e.ctrlKey || e.metaKey;
@@ -16800,6 +16891,7 @@ TT.register({
 
 /* ================= Wasserzeichenwerk (text / logo watermarks & AI labels, single or bulk) ================= */
 const WZW_KI_LABELS = ['KI-generiert', 'Mit KI erstellt', 'KI-bearbeitet', 'Enthält KI-Inhalte', 'AI-generated'];
+const WZW_KI_LABELS_EN = ['AI-generated', 'Made with AI', 'AI-edited', 'Contains AI content', 'KI-generiert'];
 // IPTC "Digital Source Type" – the machine-readable marker for AI content (read e.g. by Google & Meta)
 const WZW_DST = {
   ai: ['Komplett mit KI erzeugt', 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia'],
@@ -16812,7 +16904,7 @@ function mountWasserzeichenwerk(view) {
     mode: 'text', pos: 'br', margin: 3, fmt: 'orig', q: 92, suffix: '-wz',
     text: { txt: '© ' + (S.data.name?.trim() || 'Dein Name'), size: 4, color: '#ffffff', opacity: 70, bold: true, shadow: true, tile: false },
     logo: { data: '', size: 18, opacity: 85, tile: false },
-    ki: { label: 'KI-generiert', custom: '', dark: true, size: 3, meta: true, kind: 'ai' },
+    ki: { label: isEN() ? 'AI-generated' : 'KI-generiert', custom: '', dark: true, size: 3, meta: true, kind: 'ai' },
   };
   const saved = Store.get('wasserzeichenwerk', {});
   const st = { ...DEF, ...saved, text: { ...DEF.text, ...saved.text }, logo: { ...DEF.logo, ...saved.logo }, ki: { ...DEF.ki, ...saved.ki } };
@@ -16828,7 +16920,7 @@ function mountWasserzeichenwerk(view) {
   const IMG_RE = /\.(jpe?g|png|webp|gif|bmp|avif)$/i;
   async function addFiles(list) {
     const files = [...list].filter(f => f.type.startsWith('image/') || IMG_RE.test(f.name));
-    if (!files.length) { toast('Keine Bilder dabei.', 'info'); return; }
+    if (!files.length) { toast(T('Keine Bilder dabei.'), 'info'); return; }
     for (const f of files) imgs.push({ id: uid(), file: f, name: f.name, thumb: URL.createObjectURL(f) });
     if (sel < 0) sel = 0;
     render();
@@ -16962,7 +17054,7 @@ function mountWasserzeichenwerk(view) {
     const files = [], used = new Set(); let fail = 0;
     try {
       for (let i = 0; i < imgs.length; i++) {
-        prog.textContent = `Bild ${i + 1} von ${imgs.length} …`;
+        prog.textContent = `${i + 1}/${imgs.length} …`;
         let name = outName(imgs[i]);
         for (let n = 2; used.has(name.toLowerCase()); n++) name = outName(imgs[i]).replace(/(\.[^.]+)$/, `-${n}$1`);
         used.add(name.toLowerCase());
@@ -16972,8 +17064,8 @@ function mountWasserzeichenwerk(view) {
           else files.push({ path: name, blob });
         } catch { fail++; }
       }
-      if (!dir && files.length) { prog.textContent = 'Packe ZIP …'; download('wasserzeichen.zip', await makeZip(files)); }
-      toast(`${imgs.length - fail} ${imgs.length - fail === 1 ? 'Bild' : 'Bilder'} gespeichert${dir ? ` in „${dir.name}“` : ' als ZIP'}${fail ? ` · ${fail} fehlgeschlagen` : ''}`, fail ? 'err' : 'ok');
+      if (!dir && files.length) { prog.textContent = 'ZIP …'; download('wasserzeichen.zip', await makeZip(files)); }
+      toast(`${imgs.length - fail} × 🖼 ✓ → ${dir ? `„${dir.name}“` : 'ZIP'}${fail ? ` · ${fail} ✗` : ''}`, fail ? 'err' : 'ok');
     } finally { busy = false; prog.textContent = ''; render(); }
   }
 
@@ -16989,51 +17081,51 @@ function mountWasserzeichenwerk(view) {
 
   function posGrid(allowTile, tileObj) {
     const cells = ['tl', 'tc', 'tr', 'ml', 'mc', 'mr', 'bl', 'bc', 'br'];
-    const grid = h('div', { class: 'wzw-pos' + (tileObj?.tile ? ' off' : '') }, ...cells.map(c => h('button', { class: 'wzw-pc' + (st.pos === c ? ' on' : ''), title: 'Position', onclick: () => { st.pos = c; if (tileObj) tileObj.tile = false; set(); renderPanel(); } }, h('i'))));
-    return h('div', { class: 'wzw-posrow' }, grid, allowTile ? toggle('Über das ganze Bild kacheln', tileObj, 'tile', renderPanel) : null);
+    const grid = h('div', { class: 'wzw-pos' + (tileObj?.tile ? ' off' : '') }, ...cells.map(c => h('button', { class: 'wzw-pc' + (st.pos === c ? ' on' : ''), title: T('Position'), onclick: () => { st.pos = c; if (tileObj) tileObj.tile = false; set(); renderPanel(); } }, h('i'))));
+    return h('div', { class: 'wzw-posrow' }, grid, allowTile ? toggle(T('Über das ganze Bild kacheln'), tileObj, 'tile', renderPanel) : null);
   }
 
   const panel = h('div', { class: 'wzw-panel' });
   function renderPanel() {
-    const modeSeg = segEl([['text', 'Text'], ['logo', 'Logo'], ['ki', 'KI-Label']], st.mode, v => { st.mode = v; if (v === 'ki' && /^m/.test(st.pos)) st.pos = 'bl'; set(); renderPanel(); });
+    const modeSeg = segEl([['text', 'Text'], ['logo', 'Logo'], ['ki', T('KI-Label')]], st.mode, v => { st.mode = v; if (v === 'ki' && /^m/.test(st.pos)) st.pos = 'bl'; set(); renderPanel(); });
     const parts = [h('div', { class: 'wzw-modes' }, modeSeg)];
     if (st.mode === 'text') {
       const t = st.text;
-      const inp = h('input', { class: 'inp', value: t.txt, placeholder: '© Dein Name', spellcheck: false, oninput: () => { t.txt = inp.value; set(); } });
-      const col = h('input', { type: 'color', class: 'wzw-color', value: t.color, title: 'Farbe', oninput: () => { t.color = col.value; set(); } });
+      const inp = h('input', { class: 'inp', value: t.txt, placeholder: T('© Dein Name'), spellcheck: false, oninput: () => { t.txt = inp.value; set(); } });
+      const col = h('input', { type: 'color', class: 'wzw-color', value: t.color, title: T('Farbe'), oninput: () => { t.color = col.value; set(); } });
       parts.push(sec('Text', h('div', { class: 'wzw-row' }, inp, col)),
-        sec('Aussehen', slider('Größe', t, 'size', 1, 20, 0.5, v => nfmt(v) + ' %'), slider('Deckkraft', t, 'opacity', 5, 100, 1, v => v + ' %'),
-          h('div', { class: 'wzw-row wrap' }, toggle('Fett', t, 'bold'), toggle('Schatten', t, 'shadow'))),
-        sec('Position', posGrid(true, t)));
+        sec(T('Aussehen'), slider(T('Größe'), t, 'size', 1, 20, 0.5, v => nfmt(v) + ' %'), slider(T('Deckkraft'), t, 'opacity', 5, 100, 1, v => v + ' %'),
+          h('div', { class: 'wzw-row wrap' }, toggle(T('Fett'), t, 'bold'), toggle(T('Schatten'), t, 'shadow'))),
+        sec(T('Position'), posGrid(true, t)));
     } else if (st.mode === 'logo') {
       const L = st.logo;
-      const prev = h('div', { class: 'wzw-logo' }, L.data ? h('img', { src: L.data, alt: 'Logo' }) : h('span', null, 'Noch kein Bild'));
+      const prev = h('div', { class: 'wzw-logo' }, L.data ? h('img', { src: L.data, alt: 'Logo' }) : h('span', null, T('Noch kein Bild')));
       const pick = h('button', { class: 'btn sm', onclick: async () => {
         const f = await pickFile('image/*'); if (!f) return;
-        const r = new FileReader(); r.onload = async () => { L.data = r.result; await loadLogo(); if (L.data.length > 400000) toast('Großes Bild – wird nur für diese Sitzung gemerkt.', 'info'); set(); renderPanel(); }; r.readAsDataURL(f);
-      } }, icon('upload'), L.data ? 'Anderes Bild' : 'Bild wählen');
-      parts.push(sec('Logo oder Bild', h('div', { class: 'wzw-row' }, prev, h('div', { class: 'wzw-col' }, pick, h('span', { class: 'hint' }, 'Am besten PNG mit Transparenz')))),
-        sec('Aussehen', slider('Größe', L, 'size', 3, 80, 1, v => v + ' % der Breite'), slider('Deckkraft', L, 'opacity', 5, 100, 1, v => v + ' %')),
-        sec('Position', posGrid(true, L)));
+        const r = new FileReader(); r.onload = async () => { L.data = r.result; await loadLogo(); if (L.data.length > 400000) toast(T('Großes Bild – wird nur für diese Sitzung gemerkt.'), 'info'); set(); renderPanel(); }; r.readAsDataURL(f);
+      } }, icon('upload'), L.data ? T('Anderes Bild') : T('Bild wählen'));
+      parts.push(sec(T('Logo oder Bild'), h('div', { class: 'wzw-row' }, prev, h('div', { class: 'wzw-col' }, pick, h('span', { class: 'hint' }, T('Am besten PNG mit Transparenz'))))),
+        sec(T('Aussehen'), slider(T('Größe'), L, 'size', 3, 80, 1, v => v + ' % ' + T('der Breite')), slider(T('Deckkraft'), L, 'opacity', 5, 100, 1, v => v + ' %')),
+        sec(T('Position'), posGrid(true, L)));
     } else {
       const K = st.ki;
-      const own = h('input', { class: 'inp', value: K.custom, placeholder: 'Eigener Text', spellcheck: false, hidden: K.label !== '__own', oninput: () => { K.custom = own.value; set(); } });
+      const own = h('input', { class: 'inp', value: K.custom, placeholder: T('Eigener Text'), spellcheck: false, hidden: K.label !== '__own', oninput: () => { K.custom = own.value; set(); } });
       const pick = h('select', { class: 'inp', onchange: () => { K.label = pick.value; own.hidden = K.label !== '__own'; if (!own.hidden) own.focus(); set(); } },
-        ...WZW_KI_LABELS.map(l => h('option', { value: l, selected: K.label === l }, l)), h('option', { value: '__own', selected: K.label === '__own' }, 'Eigener Text …'));
+        ...(isEN() ? WZW_KI_LABELS_EN : WZW_KI_LABELS).map(l => h('option', { value: l, selected: K.label === l }, l)), h('option', { value: '__own', selected: K.label === '__own' }, T('Eigener Text …')));
       parts.push(
-        sec('Label', pick, own, h('div', { class: 'wzw-row wrap' }, h('span', { class: 'wzw-lbl' }, 'Stil'), segEl([[true, 'Dunkel'], [false, 'Hell']], K.dark, v => { K.dark = v; set(); }))),
-        sec('Aussehen', slider('Größe', K, 'size', 1.5, 8, 0.25, v => nfmt(v) + ' %')),
-        sec('Position', posGrid(false)),
-        sec('Maschinenlesbar', toggle('Kennzeichnung in die Bilddatei einbetten', K, 'meta', renderPanel),
-          K.meta ? segEl(Object.entries(WZW_DST).map(([k, [l]]) => [k, l]), K.kind, v => { K.kind = v; set(); }) : null,
-          h('p', { class: 'wzw-note' }, 'Schreibt IPTC „Digital Source Type“ in JPG/PNG (lesen z. B. Google & Meta) – hilft bei der Kennzeichnung nach EU AI Act, Art. 50. Welche Pflichten gelten, hängt vom Einsatz ab. Keine Rechtsberatung.')));
+        sec('Label', pick, own, h('div', { class: 'wzw-row wrap' }, h('span', { class: 'wzw-lbl' }, T('Stil')), segEl([[true, T('Dunkel')], [false, T('Hell')]], K.dark, v => { K.dark = v; set(); }))),
+        sec(T('Aussehen'), slider(T('Größe'), K, 'size', 1.5, 8, 0.25, v => nfmt(v) + ' %')),
+        sec(T('Position'), posGrid(false)),
+        sec(T('Maschinenlesbar'), toggle(T('Kennzeichnung in die Bilddatei einbetten'), K, 'meta', renderPanel),
+          K.meta ? segEl(Object.entries(WZW_DST).map(([k, [l]]) => [k, T(l)]), K.kind, v => { K.kind = v; set(); }) : null,
+          h('p', { class: 'wzw-note' }, T('Schreibt IPTC „Digital Source Type“ in JPG/PNG (lesen z. B. Google & Meta) – hilft bei der Kennzeichnung nach EU AI Act, Art. 50. Welche Pflichten gelten, hängt vom Einsatz ab. Keine Rechtsberatung.'))));
     }
-    parts.push(sec('Speichern',
-      h('div', { class: 'wzw-row wrap' }, h('span', { class: 'wzw-lbl' }, 'Format'), segEl([['orig', 'Wie Original'], ['jpg', 'JPG'], ['png', 'PNG'], ['webp', 'WebP']], st.fmt, v => { st.fmt = v; set(); renderPanel(); })),
-      st.fmt === 'png' ? null : slider('Qualität', st, 'q', 50, 100, 1, v => v + ' %'),
-      slider('Abstand zum Rand', st, 'margin', 0, 15, 0.5, v => nfmt(v) + ' %'),
-      h('label', { class: 'wzw-row' }, h('span', { class: 'wzw-lbl' }, 'Dateiname +'), (() => { const i = h('input', { class: 'inp', value: st.suffix, placeholder: 'z. B. -wz', spellcheck: false, oninput: () => { st.suffix = i.value.replace(/[\\/:*?"<>|]/g, ''); persist(); } }); return i; })()),
-      h('p', { class: 'wzw-note' }, 'Originale bleiben unverändert · ohne Kamera- & GPS-Daten')));
+    parts.push(sec(T('Speichern'),
+      h('div', { class: 'wzw-row wrap' }, h('span', { class: 'wzw-lbl' }, 'Format'), segEl([['orig', 'Original'], ['jpg', 'JPG'], ['png', 'PNG'], ['webp', 'WebP']], st.fmt, v => { st.fmt = v; set(); renderPanel(); })),
+      st.fmt === 'png' ? null : slider(T('Qualität'), st, 'q', 50, 100, 1, v => v + ' %'),
+      slider(T('Abstand zum Rand'), st, 'margin', 0, 15, 0.5, v => nfmt(v) + ' %'),
+      h('label', { class: 'wzw-row' }, h('span', { class: 'wzw-lbl' }, 'Suffix'), (() => { const i = h('input', { class: 'inp', value: st.suffix, placeholder: '-wz', spellcheck: false, oninput: () => { st.suffix = i.value.replace(/[\\/:*?"<>|]/g, ''); persist(); } }); return i; })()),
+      h('p', { class: 'wzw-note' }, T('Originale bleiben unverändert · ohne Kamera- & GPS-Daten'))));
     panel.replaceChildren(...parts);
   }
   const nfmt = v => String(v).replace('.', ',');
@@ -17042,9 +17134,9 @@ function mountWasserzeichenwerk(view) {
   const cv = h('canvas', { class: 'wzw-cv' }), g = cv.getContext('2d');
   const stageBox = h('div', { class: 'wzw-canvas' }, cv);
   const drop = h('div', { class: 'wzw-drop' },
-    h('div', { class: 'wzw-drop-ico' }, icon('image')), h('b', null, 'Bilder hierher ziehen'),
-    h('span', null, 'oder'), h('button', { class: 'btn primary', onclick: () => fileIn.click() }, icon('plus'), 'Bilder auswählen'),
-    h('small', null, 'JPG, PNG, WebP · einzeln oder viele'));
+    h('div', { class: 'wzw-drop-ico' }, icon('image')), h('b', null, T('Bilder hierher ziehen')),
+    h('span', null, T('oder')), h('button', { class: 'btn primary', onclick: () => fileIn.click() }, icon('plus'), T('Bilder auswählen')),
+    h('small', null, T('JPG, PNG, WebP · einzeln oder viele')));
   const fileIn = h('input', { type: 'file', accept: 'image/*', multiple: true, hidden: true, onchange: () => { addFiles(fileIn.files); fileIn.value = ''; } });
   const strip = h('div', { class: 'wzw-strip' }), prog = h('span', { class: 'wzw-prog' });
   const bar = h('div', { class: 'wzw-bar' });
@@ -17053,7 +17145,7 @@ function mountWasserzeichenwerk(view) {
     const im = imgs[sel]; if (!im) return;
     const my = ++drawSeq, bmp = await bitmapOf(im).catch(() => null);
     if (my !== drawSeq) return;
-    if (!bmp) { toast(`„${im.name}“ lässt sich nicht öffnen.`, 'err'); return; }
+    if (!bmp) { toast(T('„{n}“ lässt sich nicht öffnen.', { n: im.name }), 'err'); return; }
     const box = stageBox.getBoundingClientRect(), maxW = Math.max(200, box.width - 24), maxH = Math.max(200, box.height - 24);
     const sc = Math.min(maxW / bmp.width, maxH / bmp.height, 1), dpr = devicePixelRatio || 1;
     const W = Math.round(bmp.width * sc), H = Math.round(bmp.height * sc);
@@ -17066,15 +17158,15 @@ function mountWasserzeichenwerk(view) {
     drop.hidden = has; stageBox.hidden = !has;
     strip.replaceChildren(...imgs.map((im, i) => h('div', { class: 'wzw-th' + (i === sel ? ' on' : ''), title: im.name, onclick: () => { sel = i; render(); } },
       h('img', { src: im.thumb, alt: '' }),
-      h('button', { class: 'wzw-x', title: 'Entfernen', onclick: e => { e.stopPropagation(); removeImg(i); } }, icon('x')))),
-      has ? h('button', { class: 'wzw-add', title: 'Weitere Bilder', onclick: () => fileIn.click() }, icon('plus')) : '');
+      h('button', { class: 'wzw-x', title: T('Entfernen'), onclick: e => { e.stopPropagation(); removeImg(i); } }, icon('x')))),
+      has ? h('button', { class: 'wzw-add', title: T('Weitere Bilder'), onclick: () => fileIn.click() }, icon('plus')) : '');
     bar.replaceChildren(
-      h('span', { class: 'wzw-count' }, has ? `${imgs.length} ${imgs.length === 1 ? 'Bild' : 'Bilder'}` : ''), prog,
+      h('span', { class: 'wzw-count' }, has ? `${imgs.length} × 🖼` : ''), prog,
       h('div', { class: 'wzw-acts' },
-        has ? h('button', { class: 'btn sm ghost', disabled: busy, onclick: () => { imgs.forEach(im => URL.revokeObjectURL(im.thumb)); imgs = []; sel = -1; render(); } }, icon('trash'), 'Alle entfernen') : null,
-        h('button', { class: 'btn sm', disabled: !has || busy, onclick: saveOne }, icon('download'), 'Dieses Bild'),
-        imgs.length > 1 && window.showDirectoryPicker ? h('button', { class: 'btn sm', disabled: busy, onclick: () => saveAll(true), title: 'Alle direkt in einen Ordner speichern' }, icon('folder'), 'Alle in Ordner') : null,
-        imgs.length > 1 ? h('button', { class: 'btn sm primary', disabled: busy, onclick: () => saveAll(false) }, icon('archive'), `Alle als ZIP`) : null));
+        has ? h('button', { class: 'btn sm ghost', disabled: busy, onclick: () => { imgs.forEach(im => URL.revokeObjectURL(im.thumb)); imgs = []; sel = -1; render(); } }, icon('trash'), T('Alle entfernen')) : null,
+        h('button', { class: 'btn sm', disabled: !has || busy, onclick: saveOne }, icon('download'), T('Dieses Bild')),
+        imgs.length > 1 && window.showDirectoryPicker ? h('button', { class: 'btn sm', disabled: busy, onclick: () => saveAll(true), title: T('Alle direkt in einen Ordner speichern') }, icon('folder'), T('Alle in Ordner')) : null,
+        imgs.length > 1 ? h('button', { class: 'btn sm primary', disabled: busy, onclick: () => saveAll(false) }, icon('archive'), T('Alle als ZIP')) : null));
     strip.hidden = !has;
     drawSoon();
   }

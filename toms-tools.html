@@ -4584,6 +4584,8 @@ function particlesEl(space) {
 }
 
 /* Home page: apps grouped by topic (order = order here) */
+// App colours: one solid colour per app from 35 evenly spaced hues (OKLCH L 0.62, white icon stays readable); neighbours on the home grid are kept far apart.
+// Still free for new apps: #ac7d08, #0194bc, #7079e4
 const APP_GROUPS = [
   { id: 'bilder', name: 'Bilder & Dateien', icon: 'image', apps: ['bildwerk', 'screenshotwerk', 'lutwerk', 'metawerk', 'wasserzeichenwerk', 'webp', 'pdfwerk', 'bildbenamung', 'bulk-rename', 'sortierwerk'] },
   { id: 'design', name: 'Design & Grafik', icon: 'pipette', apps: ['farbwerk', 'qrwerk', 'shaderwerk'] },
@@ -6587,7 +6589,7 @@ void main() {
 }
 
 TT.register({
-  id: 'lutwerk', name: 'LUT-Werk', icon: 'lut', c: '#fb923c', c2: '#0d9488',   // Orange → teal (the classic teal & orange look)
+  id: 'lutwerk', name: 'LUT-Werk', icon: 'lut', c: '#d5565d', c2: '#d5565d',   // Orange → teal (the classic teal & orange look)
   tagline: 'Farb-Looks erstellen & anwenden',
   desc: 'Farb-Looks als 3D-LUT erstellen, .cube importieren und auf viele Bilder anwenden.',
   settings: [
@@ -7309,7 +7311,7 @@ function mountSortierwerk(view) {
 }
 
 TT.register({
-  id: 'sortierwerk', name: 'Sortierwerk', icon: 'sortierwerk', c: '#d6a266', c2: '#7a4a22',   // Cardboard → dark brown (archive boxes; no other app uses brown)
+  id: 'sortierwerk', name: 'Sortierwerk', icon: 'sortierwerk', c: '#cf5583', c2: '#cf5583',   // Cardboard → dark brown (archive boxes; no other app uses brown)
   full: true,
   tagline: 'Fotos automatisch in Ordner sortieren',
   desc: 'Fotoordner nach Aufnahmedatum, Kamera, Ausrichtung oder Dateityp in Unterordner sortieren.',
@@ -7579,7 +7581,7 @@ function mountPdfWerk(view) {
 }
 
 TT.register({
-  id: 'pdfwerk', name: 'PDF-Werk', icon: 'files', c: '#f43f5e', c2: '#9f1239',   // Rosé → wine red
+  id: 'pdfwerk', name: 'PDF-Werk', icon: 'files', c: '#888e07', c2: '#888e07',   // Rosé → wine red
   tagline: 'PDFs zusammenführen & teilen',
   desc: 'PDFs zusammenführen, teilen, Seiten drehen und sortieren.',
   mount: mountPdfWerk,
@@ -9703,7 +9705,7 @@ function mountBildwerk(view) {
 
 /* ================= Registry ================= */
 TT.register({
-  id: 'bulk-rename', name: 'Bulk Rename', icon: 'bracketR', c: '#3cc46f', c2: '#0c5424', full: true,   // Green around #15803d, strong gradient
+  id: 'bulk-rename', name: 'Bulk Rename', icon: 'bracketR', c: '#019e70', c2: '#019e70', full: true,   // Green around #15803d, strong gradient
   tagline: 'Dateien stapelweise umbenennen',
   desc: 'Viele Dateien auf einmal umbenennen – mit Regeln und Vorschau.',
   settings: [
@@ -9714,7 +9716,7 @@ TT.register({
   mount: mountBulkRename,
 });
 TT.register({
-  id: 'webp', name: 'WebP Converter', icon: 'compress', c: '#b8a2f2', c2: '#553599',   // Violet around #8365c8, strong gradient
+  id: 'webp', name: 'WebP Converter', icon: 'compress', c: '#3e85e4', c2: '#3e85e4',   // Violet around #8365c8, strong gradient
   tagline: 'Bilder nach WebP umwandeln',
   desc: 'Bilder stapelweise ins platzsparende WebP‑Format umwandeln.',
   settings: [
@@ -9727,7 +9729,7 @@ TT.register({
 });
 
 TT.register({
-  id: 'gedankenwerk', name: 'Gedankenwerk', icon: 'mindmap', c: '#9186ff', c2: '#4b3cfa',
+  id: 'gedankenwerk', name: 'Gedankenwerk', icon: 'mindmap', c: '#3e9e3f', c2: '#3e9e3f',
   full: true,
   tagline: 'Mindmaps erstellen und gestalten',
   desc: 'Mindmaps bauen, gestalten und als Bild oder Text exportieren.',
@@ -9735,7 +9737,7 @@ TT.register({
 });
 
 TT.register({
-  id: 'entscheidung', name: 'Entscheidungshilfe', icon: 'sparkle', c: '#ec4899', c2: '#a855f7',
+  id: 'entscheidung', name: 'Entscheidungshilfe', icon: 'sparkle', c: '#ad62c3', c2: '#ad62c3',
   tagline: 'Glücksrad, Münze und Orakel',
   desc: 'Glücksrad, Münze oder Orakel – lass den Zufall entscheiden.',
   settings: [
@@ -9745,7 +9747,7 @@ TT.register({
 });
 
 TT.register({
-  id: 'beatwerk', name: 'Beatwerk', icon: 'drum', c: '#f97316', c2: '#ef4444',
+  id: 'beatwerk', name: 'Beatwerk', icon: 'drum', c: '#c26e07', c2: '#c26e07',
   full: true,
   tagline: 'Beats bauen · Loops erstellen',
   desc: 'Drums, Bass und Melodie – Beats und Loops im Browser bauen.',
@@ -9753,7 +9755,7 @@ TT.register({
 });
 
 TT.register({
-  id: 'textwerk', name: 'Textwerk', icon: 'textwerk', c: '#8b5cf6', c2: '#06b6d4',
+  id: 'textwerk', name: 'Textwerk', icon: 'textwerk', c: '#06a058', c2: '#06a058',
   tagline: 'Text & Passwörter generieren',
   desc: 'Text-Infos, Teleprompter, Blindtext und sichere Passwörter.',
   mount: mountTextwerk,
@@ -10698,7 +10700,7 @@ function mountTodo(view) {
 }
 
 TT.register({
-  id: 'todo', name: 'Todo', icon: 'todo', c: '#b026ff', c2: '#4c1d95',   // "Ultraviolet": glowing UV → deep violet
+  id: 'todo', name: 'Todo', icon: 'todo', c: '#936dd9', c2: '#936dd9',   // "Ultraviolet": glowing UV → deep violet
   tagline: 'Aufgaben für Arbeit & Lernen',
   desc: 'Aufgaben mit Projekten, Prioritäten und Fristen im Blick.',
   mount: mountTodo,
@@ -11095,7 +11097,7 @@ function mountFarbwerk(view) {
 }
 
 TT.register({
-  id: 'farbwerk', name: 'Farbwerk', icon: 'farbwerk', c: '#eab308', c2: '#8b5cf6',
+  id: 'farbwerk', name: 'Farbwerk', icon: 'farbwerk', c: '#8373e0', c2: '#8373e0',
   tagline: 'Farbpaletten erstellen & kopieren',
   desc: 'Farbpaletten zusammenstellen und Farbcodes per Klick kopieren.',
   mount: mountFarbwerk,
@@ -11372,7 +11374,7 @@ function mountPitcher(view) {
 }
 
 TT.register({
-  id: 'pitcher', name: 'Pitcher', icon: 'pitcher', c: '#ec4899', c2: '#facc15',   // Pink → yellow (swapped with Spickzettel)
+  id: 'pitcher', name: 'Pitcher', icon: 'pitcher', c: '#5a7fe6', c2: '#5a7fe6',   // Pink → yellow (swapped with Spickzettel)
   tagline: 'Markdown präsentieren & pitchen',
   desc: 'Markdown schreiben und als Präsentation im Vollbild zeigen.',
   settings: [{ key: 'accCustom', label: 'Eigene Akzentfarbe', desc: 'Farbe unabhängig vom globalen Theme', type: 'switch-color', colorKey: 'acc' }],
@@ -11770,7 +11772,7 @@ function mountNotizen(view) {
 }
 
 TT.register({
-  id: 'notizen', name: 'Notizen', icon: 'bulb', c: '#fde047', c2: '#e0a70a',   // Yellow around #facc15
+  id: 'notizen', name: 'Notizen', icon: 'bulb', c: '#a18304', c2: '#a18304',   // Yellow around #facc15
   tagline: 'Text ablegen · Ideen festhalten',
   desc: 'Bunte Notizkarten, um Gedanken und Ideen schnell festzuhalten.',
   mount: mountNotizen,
@@ -12335,7 +12337,7 @@ function mountBildbenamung(view) {
 }
 
 TT.register({
-  id: 'bildbenamung', name: 'Bildbenamung', icon: 'phototag', c: '#1f7a8c', c2: '#134e5e',   // Teal, light gradient
+  id: 'bildbenamung', name: 'Bildbenamung', icon: 'phototag', c: '#a167cf', c2: '#a167cf',   // Teal, light gradient
   full: true,
   tagline: 'Namen klicken · Bilder umbenennen',
   desc: 'Bildnamen aus Bausteinen zusammenklicken und direkt umbenennen.',
@@ -12343,7 +12345,7 @@ TT.register({
 });
 
 TT.register({
-  id: 'bildwerk', name: 'Bildwerk', icon: 'cropimg', c: '#06345e', c2: '#011f39',   // Deep blue, subtle gradient
+  id: 'bildwerk', name: 'Bildwerk', icon: 'cropimg', c: '#c25aa6', c2: '#c25aa6',   // Deep blue, subtle gradient
   full: true,
   tagline: 'Zuschneiden · Freistellen · Ebenen',
   desc: 'Bilder zuschneiden, freistellen, mit Ebenen, Text und Effekten bearbeiten.',
@@ -13605,7 +13607,7 @@ function mountMetawerk(view) {
 }
 
 TT.register({
-  id: 'metawerk', name: 'Metawerk', icon: 'tag', c: '#f59e0b', c2: '#ef4444',
+  id: 'metawerk', name: 'Metawerk', icon: 'tag', c: '#0791ca', c2: '#0791ca',
   full: true,
   tagline: 'EXIF ansehen · bearbeiten · löschen',
   desc: 'Metadaten von Bildern ansehen, bearbeiten oder entfernen.',
@@ -14138,7 +14140,7 @@ function mountSprechwerk(view) {
 
 TT.register({
   id: 'sprechwerk', name: 'Laberwerk', icon: 'speaker',   // internally still 'sprechwerk' so saved settings are kept
-  c: '#eab308', c2: '#65a30d',   // Yellow → green
+  c: '#968800', c2: '#968800',   // Yellow → green
   full: true,
   tagline: 'Text vorlesen lassen · offline',
   desc: 'Texte mit den Stimmen deines Systems vorlesen lassen.',
@@ -14384,7 +14386,7 @@ function mountTimer(view) {
 }
 
 TT.register({
-  id: 'zeitwerk', name: 'Timer', icon: 'timerdigi', c: '#dc2626', c2: '#fb923c',   // Red → orange (deliberately different from Beatwerk)
+  id: 'zeitwerk', name: 'Timer', icon: 'timerdigi', c: '#d35570', c2: '#d35570',   // Red → orange (deliberately different from Beatwerk)
   full: true,
   tagline: 'Großer Vollbild-Timer',
   desc: 'Großer Countdown im Vollbild mit Warnfarben und Signalton.',
@@ -14702,7 +14704,7 @@ function mountCodewerk(view) {
 }
 
 TT.register({
-  id: 'codewerk', name: 'Codewerk', icon: 'terminal', c: '#3b4d68', c2: '#1e293b',   // Slate, light gradient
+  id: 'codewerk', name: 'Codewerk', icon: 'terminal', c: '#0d98a4', c2: '#0d98a4',   // Slate, light gradient
   tagline: 'Helfer für Code & Daten',
   desc: 'Kleine Helfer für Code, Daten und Formate – alles an einem Ort.',
   mount: mountCodewerk,
@@ -15166,7 +15168,7 @@ img{max-width:100%;max-height:${land ? 188 : 275}mm;object-fit:contain}</style><
 }
 
 TT.register({
-  id: 'modellwerk', name: 'Modellwerk', icon: 'modellwerk', c: '#0ea5e9', c2: '#6366f1',
+  id: 'modellwerk', name: 'Modellwerk', icon: 'modellwerk', c: '#028ce0', c2: '#028ce0',
   tagline: 'SWOT, Pro & Contra, Canvas & Co.',
   desc: 'Modelle und Denkwerkzeuge ausfüllen – von SWOT und Persona bis Pro & Contra und Eisenhower. Als Text, PNG oder PDF.',
   mount: mountModellwerk,
@@ -15596,7 +15598,7 @@ function mountKennzahlwerk(view) {
 }
 
 TT.register({
-  id: 'kennzahlwerk', name: 'Kennzahlwerk', icon: 'kennzahlwerk', c: '#84cc16', c2: '#15803d',   // lime → forest (no other app uses it)
+  id: 'kennzahlwerk', name: 'Kennzahlwerk', icon: 'kennzahlwerk', c: '#d35e2f', c2: '#d35e2f',   // lime → forest (no other app uses it)
   tagline: 'Prozente, Zinsen, ROI & Co.',
   desc: 'Rechner für Alltag, Studium und Business – von Prozent und MwSt. bis Break-even und Nutzwertanalyse, mit Rechenweg.',
   mount: mountKennzahlwerk,
@@ -15830,7 +15832,7 @@ function mountQuellenwerk(view) {
 }
 
 TT.register({
-  id: 'quellenwerk', name: 'Quellenwerk', icon: 'quellenwerk', c: '#c77d9b', c2: '#5b2150',   // dusty rose → plum (no other app uses it)
+  id: 'quellenwerk', name: 'Quellenwerk', icon: 'quellenwerk', c: '#b85eb5', c2: '#b85eb5',   // dusty rose → plum (no other app uses it)
   tagline: 'Quellen sammeln · richtig zitieren',
   desc: 'Bücher, Artikel und Links mit Notizen und Zitaten speichern – den Beleg mit „vgl.“ kopierst du per Klick.',
   mount: mountQuellenwerk,
@@ -15839,7 +15841,7 @@ TT.register({
 /* ================= Karteiwerk (flashcards with a Leitner box system) ================= */
 // Box 0 = new, boxes 1–5 = learned; after "Gewusst" a card comes back after KAW_DAYS[box] days
 const KAW_DAYS = [0, 1, 3, 7, 14, 30];
-const KAW_COLORS = ['#e11d48', '#7c6cff', '#f59e0b', '#2dd4bf', '#22c55e', '#0ea5e9', '#ec4899', '#64748b'];
+const KAW_COLORS = ['#769407', '#7c6cff', '#f59e0b', '#2dd4bf', '#22c55e', '#0ea5e9', '#ec4899', '#64748b'];
 function mountKarteiwerk(view) {
   view.style.padding = '0';
   const saved = Store.get('karteiwerk', {});
@@ -16131,7 +16133,7 @@ function mountKarteiwerk(view) {
 }
 
 TT.register({
-  id: 'karteiwerk', name: 'Karteiwerk', icon: 'karteiwerk', c: '#e11d48', c2: '#1e1b4b',   // cherry → midnight blue (no other app uses it)
+  id: 'karteiwerk', name: 'Karteiwerk', icon: 'karteiwerk', c: '#769407', c2: '#769407',   // cherry → midnight blue (no other app uses it)
   tagline: 'Karteikarten mit Lernsystem',
   desc: 'Karteikarten für jedes Thema – das Karteikasten-Prinzip fragt vor allem ab, was noch nicht sitzt.',
   mount: mountKarteiwerk,
@@ -16638,7 +16640,7 @@ function mountDiagrammwerk(view) {
 }
 
 TT.register({
-  id: 'diagrammwerk', name: 'Diagrammwerk', icon: 'diagrammwerk', c: '#d9a514', c2: '#566b12',   // mustard → olive (no other app uses it)
+  id: 'diagrammwerk', name: 'Diagrammwerk', icon: 'diagrammwerk', c: '#0c9999', c2: '#0c9999',   // mustard → olive (no other app uses it)
   tagline: 'Diagramme & Zeitpläne',
   desc: 'Säulen-, Balken-, Linien- und Kreisdiagramme oder ein Zeitplan – aus Excel einfügen, als PNG oder SVG exportieren.',
   mount: mountDiagrammwerk,
@@ -16945,7 +16947,7 @@ function mountWasserzeichenwerk(view) {
 }
 
 TT.register({
-  id: 'wasserzeichenwerk', name: 'Wasserzeichenwerk', icon: 'wasserzeichenwerk', c: '#8fae94', c2: '#56775f',   // sage (no other app uses it)
+  id: 'wasserzeichenwerk', name: 'Wasserzeichenwerk', icon: 'wasserzeichenwerk', c: '#b77605', c2: '#b77605',   // sage (no other app uses it)
   tagline: 'Wasserzeichen & KI-Label',
   desc: 'Text, Logo oder KI-Kennzeichnung auf Bilder setzen – einzeln oder ganz viele auf einmal.',
   mount: mountWasserzeichenwerk,
@@ -17116,7 +17118,7 @@ function mountVergleichswerk(view) {
 }
 
 TT.register({
-  id: 'vergleichswerk', name: 'Vergleichswerk', icon: 'vergleichswerk', c: '#e5484d', c2: '#30a46c',   // red → green: removed / added
+  id: 'vergleichswerk', name: 'Vergleichswerk', icon: 'vergleichswerk', c: '#c95795', c2: '#c95795',   // red → green: removed / added
   tagline: 'Zwei Texte vergleichen',
   desc: 'Zwei Textversionen nebeneinander – Änderungen Wort für Wort farbig markiert.',
   mount: mountVergleichswerk,
@@ -17486,7 +17488,7 @@ function mountScreenshotwerk(view) {
 }
 
 TT.register({
-  id: 'screenshotwerk', name: 'Screenshotwerk', icon: 'screenshotwerk', c: '#c4b5fd', c2: '#5eead4', fg: '#1e1b4b',   // lilac → mint, dark symbol
+  id: 'screenshotwerk', name: 'Screenshotwerk', icon: 'screenshotwerk', c: '#0a9c81', c2: '#0a9c81',   // lilac → mint, dark symbol
   tagline: 'Screenshots markieren & teilen',
   desc: 'Bildschirm aufnehmen oder einfügen – mit Pfeilen, Schritten und Verpixeln markieren und schick gemacht kopieren.',
   mount: mountScreenshotwerk,
@@ -18724,7 +18726,7 @@ void main() {
 }
 
 TT.register({
-  id: 'shaderwerk', name: 'Shaderwerk', icon: 'shader', c: '#1e3a8a', c2: '#fb923c',   // Night blue → orange (sunset, not used anywhere else)
+  id: 'shaderwerk', name: 'Shaderwerk', icon: 'shader', c: '#d55948', c2: '#d55948',   // Night blue → orange (sunset, not used anywhere else)
   full: true,
   tagline: 'Fraktale · generative Kunst · Hintergründe',
   desc: 'Fraktale und generative Kunst in Echtzeit auf der Grafikkarte.',
@@ -19212,7 +19214,7 @@ function mountQrwerk(view) {
 }
 
 TT.register({
-  id: 'qrwerk', name: 'QR-Werk', icon: 'qr', c: '#fffdf6', c2: '#cbbd98', fg: '#3b3526',   // Eggshell, dark icon, strong gradient
+  id: 'qrwerk', name: 'QR-Werk', icon: 'qr', c: '#5d9922', c2: '#5d9922',   // Eggshell, dark icon, strong gradient
   full: true,
   tagline: 'QR-Codes gestalten · offline',
   desc: 'QR-Codes für Links, WLAN und Kontakte erstellen und gestalten.',
@@ -19932,7 +19934,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
 }
 
 TT.register({
-  id: 'rechnungswerk', name: 'Rechnungswerk', icon: 'rechnungswerk', c: '#10b981', c2: '#3b82f6',
+  id: 'rechnungswerk', name: 'Rechnungswerk', icon: 'rechnungswerk', c: '#0c96af', c2: '#0c96af',
   tagline: 'Professionelle Rechnungen für Deutschland',
   desc: 'Saubere Rechnungen mit Logo und MwSt. erstellen – als PDF.',
   mount: mountRechnungswerk,
@@ -20426,7 +20428,7 @@ ${[st.sSteuernr,st.sUstId,st.sEmail,st.sWeb,st.footer].some(Boolean)?`<div class
 }
 
 TT.register({
-  id: 'spickzettel', name: 'Spickzettel', icon: 'clipboard', c: '#fb7185', c2: '#6d28d9',   // Coral → violet (swapped with Pitcher)
+  id: 'spickzettel', name: 'Spickzettel', icon: 'clipboard', c: '#cf6306', c2: '#cf6306',   // Coral → violet (swapped with Pitcher)
   full: true,
   tagline: 'Zeichen, Snippets & Vorlagen zum Kopieren',
   desc: 'Sonderzeichen, Snippets und Vorlagen – ein Klick kopiert.',
@@ -21391,7 +21393,7 @@ function tippen(root) {
 }
 
 TT.register({
-  id: 'spielwiese', name: 'Spielwiese', icon: 'gamepad', c: '#22c55e', c2: '#06b6d4',
+  id: 'spielwiese', name: 'Spielwiese', icon: 'gamepad', c: '#0a9b8e', c2: '#0a9b8e',
   full: true,
   tagline: 'Kleine Spiele für zwischendurch',
   desc: 'Kleine Spiele für zwischendurch – Tippen, Reaktion und mehr.',
@@ -21695,7 +21697,7 @@ document.getElementById('btnCalc').innerHTML='<svg viewBox="0 0 24 24" class="i"
   document.getElementById('btnPomo').addEventListener('click',openPomo);
 })();
 // "Bildbert" (Settings → Apps): Bildbenamung is then called Bildbert Namuel Verwaldemar and gets a face
-const BB_ALT = { name: 'Bildbert Namuel Verwaldemar', icon: 'bildbert', c: '#fbab26', c2: '#db850e', face: true };
+const BB_ALT = { name: 'Bildbert Namuel Verwaldemar', icon: 'bildbert', c: '#a167cf', c2: '#a167cf', face: true };
 let BB_ORIG = null;
 function applyBildbert(render) {
   const a = TT.apps.get('bildbenamung'); if (!a) return;

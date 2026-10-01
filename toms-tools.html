@@ -3764,6 +3764,41 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Sortierwerk
+  'Unbekannte Kamera': 'Unknown camera', 'Ordner konnte nicht gelesen werden: ': 'Couldn’t read the folder: ', 'Jetzt sortieren?': 'Sort now?',
+  'Dein Browser kann Dateien nicht direkt verschieben – sie werden kopiert und das Original danach gelöscht. Das dauert länger, und das Änderungsdatum der Dateien wird neu gesetzt.': 'Your browser can’t move files directly – they’re copied and the originals deleted afterwards. That takes longer, and the files get a new modified date.',
+  'Solange die App offen bleibt, kannst du das Sortieren mit einem Klick rückgängig machen.': 'As long as the app stays open, you can undo the sorting with one click.', 'Abbrechen': 'Cancel',
+  'Kopieren': 'Copy', 'Verschieben': 'Move', 'Als Skript ausführen': 'Run as a script', 'Skript herunterladen': 'Download the script',
+  'Vorhandene Dateien werden nie überschrieben.': 'Existing files are never overwritten.', 'Liste (CSV)': 'List (CSV)', 'Ordner neu einlesen': 'Rescan folder', 'Neu einlesen': 'Rescan',
+  'Anderer Ordner': 'Other folder', 'Nicht sortiert': 'Not sorted', 'Fehlerliste': 'Errors', 'Protokoll': 'Log', 'Rückgängig': 'Undo', 'Fotoordner wählen': 'Choose a photo folder',
+  'oder einen Ordner hierher ziehen': 'or drop a folder here', 'Ordner öffnen': 'Open folder',
+  'Ohne Schreibzugriff (z. B. Firmen-PC) – am Ende gibt’s ein Skript': 'Without write access (e.g. a work PC) – you get a script at the end', 'Nur lesen': 'Read only',
+  'Mit Vorschau – du siehst vorher, wohin jede Datei wandert.': 'With a preview – you see where every file goes first.',
+  'Kein Schreibzugriff in diesem Browser – am Ende gibt’s ein Skript. Direkt geht es in Chrome oder Edge.': 'No write access in this browser – you get a script at the end. Chrome or Edge can do it directly.',
+  'So ist es jetzt sortiert': 'This is how it’s sorted now', 'Vorschau – so wird sortiert': 'Preview – this is how it will be sorted', 'Alle auf/zu': 'Expand/collapse all',
+  'Nichts zu tun': 'Nothing to do', 'Keine Dateien gefunden': 'No files found', 'Alles liegt schon im richtigen Ordner.': 'Everything is already in the right folder.',
+  'Hier sind keine Fotos oder Videos – unter „Dateien“ auf „Alle“ stellen?': 'No photos or videos here – set “Files” to “All files”?', 'Der Ordner ist leer.': 'The folder is empty.',
+  'Direkt in diesem Ordner liegen keine Dateien – „Unterordner einbeziehen“ einschalten?': 'There are no files directly in this folder – turn on “Include subfolders”?',
+  'Ebene entfernen': 'Remove level', 'Sortieren nach': 'Sort by', 'Weitere Ordner-Ebene': 'Add folder level', 'Ordnernamen': 'Folder names', 'Fotos & Videos': 'Photos & videos',
+  'Alle Dateien': 'All files', 'Aktion': 'Action', 'Unterordner einbeziehen': 'Include subfolders', 'Dateidatum als Notlösung': 'Use file date as a fallback',
+  'Sonst landen Dateien ohne Aufnahmedatum in „Ohne Datum“': 'Otherwise files without a capture date go into “No date”', 'Begleitdateien mitnehmen': 'Move sidecar files too',
+  '.xmp, .aae, .thm wandern mit ihrem Foto': '.xmp, .aae, .thm move with their photo', 'Leere Ordner löschen': 'Delete empty folders', 'Skript erstellen': 'Create script',
+  'Neu einlesen & weiter sortieren': 'Rescan & keep sorting', 'Fotos sortieren nach Datum, Kamera, Format oder Dateityp': 'Sort photos by date, camera, orientation or file type',
+  'Bitte über „Ordner öffnen“ wählen – dein Browser kann gezogene Ordner nicht öffnen.': 'Please use “Open folder” – your browser can’t open dropped folders.',
+  'Bitte einen Ordner ziehen, keine einzelnen Dateien.': 'Please drop a folder, not individual files.',
+  'Ohne Schreibrecht kann nicht sortiert werden.': 'Without write access, nothing can be sorted.', 'Ordner konnte nicht geöffnet werden: ': 'Couldn’t open the folder: ',
+  'Bitte warten, bis das Sortieren fertig ist.': 'Please wait until sorting is done.', '{n} Dateien{s} werden in {f} Ordner kopiert.': '{n} files{s} will be copied into {f} folders.',
+  '{n} Dateien{s} werden in {f} Ordner verschoben.': '{n} files{s} will be moved into {f} folders.', '(+ {n} Begleitdateien)': '(+ {n} sidecar files)',
+  'Rückgängig: {n} Dateien sind wieder an ihrem Platz': 'Undone: {n} files are back where they were', 'Vorher;Nachher': 'Before;After', 'Dateien': 'Files', 'Fertig': 'Done', 'Fertig.': 'Done.',
+  'Ohne Schreibzugriff kann der Browser nichts verschieben. Das Skript erledigt die {n} Schritte für dich.': 'Without write access, the browser can’t move anything. The script does the {n} steps for you.',
+  'In den Ordner legen:': 'Put it in the folder:', 'Windows: Doppelklick · Mac/Linux:': 'Windows: double-click · Mac/Linux:', 'Lese Aufnahmedaten …': 'Reading capture dates …',
+  'Suche Dateien …': 'Looking for files …', 'Kein Aufnahmedatum gefunden – landen im Ordner „{n}“': 'No capture date found – these go into the “{n}” folder',
+  'liegen schon richtig': 'already in the right place', 'nicht lesbar': 'unreadable', '{n} leere Ordner aufgeräumt': '{n} empty folders removed', 'Alles an seinem Platz.': 'Everything’s in place.',
+  'Dateien kopiert': 'Files copied', 'Dateien sortiert': 'Files sorted', '{n} Dateien kopieren': 'Copy {n} files', '{n} Dateien sortieren': 'Sort {n} files', 'Sortieren': 'Sort',
+  'Ordner konnte nicht geöffnet werden.': 'Couldn’t open the folder.', 'Hochformat': 'Portrait', 'Kein Schreibzugriff – am Ende gibt es ein Skript, das die Dateien verschiebt': 'No write access – you get a script at the end that moves the files', 'nur lesen': 'read only', '1 andere Datei bleibt': '1 other file stays', '{n} andere Dateien bleiben': '{n} other files stay', 'Keine Fotos oder Videos – unter „Dateien“ auf „Alle“ stellen, um sie mitzusortieren': 'Not photos or videos – set “Files” to “All files” to sort them too', 'Ohne Endung': 'No extension', 'Querformat': 'Landscape', 'Quadratisch': 'Square', 'Jahr': 'Year', 'Monat': 'Month', 'Tag': 'Day',
+  'Jahr-Monat': 'Year-month', 'Datum': 'Date', 'Kamera': 'Camera', 'Ausrichtung': 'Orientation', 'Dateityp': 'File type', 'Datei': 'File',
+  'Aufnahmedatum aus den Kameradaten': 'Capture date from the camera data', 'Aufnahmedatum aus dem Video': 'Capture date from the video', 'Datum aus dem Dateinamen': 'Date from the file name',
+  'Änderungsdatum der Datei (Notlösung)': 'File’s modified date (fallback)',
   // Bulk Rename
   'Endung': 'Extension', 'Name + Endung': 'Name + extension', 'Anwenden auf': 'Apply to', 'Kein Suchbegriff': 'No search term', 'Suchen': 'Find', 'Ersetzen durch': 'Replace with',
   'leer = entfernen': 'empty = remove', 'Groß-/Kleinschreibung beachten': 'Match case', 'Alle Vorkommen ersetzen': 'Replace all occurrences', 'Kein Muster': 'No pattern', 'Muster': 'Pattern',
@@ -3794,7 +3829,7 @@ const EN = {
   'Nur Lesezugriff – links „Schreibzugriff erteilen“ klicken.': 'Read-only access – click “Grant write access” on the left.', 'Schreibzugriff erteilt': 'Write access granted',
   'Schreibzugriff abgelehnt': 'Write access denied', 'Auswahl': 'Selection', 'Ordner konnte nicht gelesen werden: ': 'Couldn’t read the folder: ',
   'Bitte einen Ordner ablegen, keine einzelnen Dateien.': 'Please drop a folder, not individual files.', 'Fehler beim Einlesen: ': 'Error while reading: ', 'Schreiben': 'Write',
-  'Nur lesen': 'Read only', 'Neu einlesen': 'Reload', 'Schreibzugriff erteilen': 'Grant write access',
+  'Nur lesen': 'Read only', 'Neu einlesen': 'Rescan', 'Schreibzugriff erteilen': 'Grant write access',
   'Nur-Lesen-Modus: Umbenennen per Skript (.bat) oder ZIP über „Export“.': 'Read-only mode: rename via a script (.bat) or a ZIP under “Export”.', 'Doppelter Zielname': 'Duplicate target name',
   'Existiert bereits': 'Already exists', 'Unverändert': 'Unchanged', 'Ausgelassen': 'Skipped', 'Manuell umbenennen': 'Rename manually', 'Neuer Name': 'New name', 'Doppelklick = manuell ändern': 'double-click to edit by hand', 'Browser-Speicher ist voll – die letzte Änderung wurde nicht gespeichert. Einstellungen → Speicher & Sicherung.': 'Browser storage is full – your last change wasn’t saved. See Settings → Storage & backup.',
   'Auf Regeln zurücksetzen': 'Reset to rules', 'Abbrechen': 'Cancel', 'Übernehmen': 'Apply', 'Alle': 'All', 'Änderungen': 'Changes', 'Probleme': 'Problems', 'werden umbenannt': 'will be renamed',
@@ -7104,19 +7139,21 @@ async function soReadMeta(file, ext) {
   return m;
 }
 const soType = ext => SO_RAW.has(ext) ? 'RAW' : SO_VID.has(ext) ? 'Videos' : ['jpg', 'jpeg', 'jpe', 'jfif'].includes(ext) ? 'JPG'
-  : ['tif', 'tiff'].includes(ext) ? 'TIFF' : ['heic', 'heif'].includes(ext) ? 'HEIC' : ext ? ext.toUpperCase() : 'Ohne Endung';
+  : ['tif', 'tiff'].includes(ext) ? 'TIFF' : ['heic', 'heif'].includes(ext) ? 'HEIC' : ext ? ext.toUpperCase() : T('Ohne Endung');
 
 function mountSortierwerk(view) {
   const DEF = { levels: ['year', 'month'], names: 'name', scope: 'media', action: 'move', recursive: false, sidecar: true, prune: true, fileDate: true };
   const opt = { ...DEF, ...Store.get('sortierwerk', {}) };
   const save = () => Store.set('sortierwerk', opt);
-  const LEVELS = [['year', 'Jahr'], ['month', 'Monat'], ['day', 'Tag'], ['ym', 'Jahr-Monat'], ['date', 'Datum'], ['camera', 'Kamera'], ['orient', 'Ausrichtung'], ['type', 'Dateityp']];
+  const LEVELS = [['year', 'Jahr'], ['month', 'Monat'], ['day', 'Tag'], ['ym', 'Jahr-Monat'], ['date', 'Datum'], ['camera', 'Kamera'], ['orient', 'Ausrichtung'], ['type', 'Dateityp']].map(([k, l]) => [k, T(l)]);
   const PRESETS = [
     ['2024 / 03', ['year', 'month']], ['2024 / 03 / 15', ['year', 'month', 'day']], ['2024-03-15', ['date']],
-    ['Kamera', ['camera']], ['Kamera / 2024', ['camera', 'year']], ['▯ / ▭', ['orient']], ['.jpg / .mp4', ['type']],
+    [T('Kamera'), ['camera']], [T('Kamera') + ' / 2024', ['camera', 'year']], ['▯ / ▭', ['orient']], ['.jpg / .mp4', ['type']],
   ];
   const SRC = { exif: ['EXIF', 'Aufnahmedatum aus den Kameradaten'], video: ['Video', 'Aufnahmedatum aus dem Video'], name: ['Name', 'Datum aus dem Dateinamen'], file: ['Datei', 'Änderungsdatum der Datei (Notlösung)'] };
-  const ORIENT = { port: 'Hochformat', land: 'Querformat', square: 'Quadratisch', '': 'Unbekannt' };
+  const ORIENT = { port: T('Hochformat'), land: T('Querformat'), square: T('Quadratisch'), '': T('Unbekannt') };
+  const NODATE = isEN() ? 'No date' : SO_NODATE;
+  const MONTHS = isEN() ? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] : SO_MONTHS;
 
   const st = { root: null, rootName: '', readOnly: false, items: [], dirs: new Map(), phase: 'empty', scanN: 0, scanT: 0, token: 0, plan: null, open: new Set(), result: null, busy: false };
 
@@ -7125,7 +7162,7 @@ function mountSortierwerk(view) {
     if (!hasPicker) { pickReadOnly(); return; }
     let dh;
     try { dh = await window.showDirectoryPicker({ id: 'sortierwerk', mode: 'readwrite', startIn: 'pictures' }); }
-    catch (e) { if (e.name !== 'AbortError') toast('Ordner konnte nicht geöffnet werden. ' + fsHint(e), 'err', { ms: 9000 }); return; }
+    catch (e) { if (e.name !== 'AbortError') toast(T('Ordner konnte nicht geöffnet werden.') + ' ' + fsHint(e), 'err', { ms: 9000 }); return; }
     openRoot(dh);
   }
   function pickReadOnly() {
@@ -7136,7 +7173,7 @@ function mountSortierwerk(view) {
   function openRoot(dh) { reset(); st.root = dh; st.rootName = dh.name; st.readOnly = false; st.dirs.set('', dh); scan(); }
   function openReadOnly(files) {
     reset(); st.root = null; st.readOnly = true;
-    st.rootName = files[0].webkitRelativePath.split('/')[0] || 'Ordner';
+    st.rootName = files[0].webkitRelativePath.split('/')[0] || T('Ordner');
     st.roFiles = files; scan();
   }
 
@@ -7166,7 +7203,7 @@ function mountSortierwerk(view) {
         };
         await walk(st.root, '', 0);
       }
-    } catch (e) { if (token === st.token) { st.phase = 'empty'; render(); toast('Ordner konnte nicht gelesen werden: ' + e.message, 'err'); } return; }
+    } catch (e) { if (token === st.token) { st.phase = 'empty'; render(); toast(T('Ordner konnte nicht gelesen werden: ') + e.message, 'err'); } return; }
     if (token !== st.token) return;
     st.scanT = list.length; paintScan();
     let next = 0;
@@ -7211,12 +7248,12 @@ function mountSortierwerk(view) {
   function segFor(level, it, d) {
     const y = d?.getFullYear(), mo = d && pad(d.getMonth() + 1), dd = d && pad(d.getDate());
     switch (level) {
-      case 'year': return d ? String(y) : SO_NODATE;
-      case 'month': return !d ? SO_NODATE : opt.names === 'full' ? `${y}-${mo}` : opt.names === 'name' ? `${mo} ${SO_MONTHS[d.getMonth()]}` : mo;
-      case 'day': return !d ? SO_NODATE : opt.names === 'full' ? `${y}-${mo}-${dd}` : dd;
-      case 'ym': return d ? `${y}-${mo}` : SO_NODATE;
-      case 'date': return d ? `${y}-${mo}-${dd}` : SO_NODATE;
-      case 'camera': return it.m.camera || 'Unbekannte Kamera';
+      case 'year': return d ? String(y) : NODATE;
+      case 'month': return !d ? NODATE : opt.names === 'full' ? `${y}-${mo}` : opt.names === 'name' ? `${mo} ${MONTHS[d.getMonth()]}` : mo;
+      case 'day': return !d ? NODATE : opt.names === 'full' ? `${y}-${mo}-${dd}` : dd;
+      case 'ym': return d ? `${y}-${mo}` : NODATE;
+      case 'date': return d ? `${y}-${mo}-${dd}` : NODATE;
+      case 'camera': return it.m.camera || T('Unbekannte Kamera');
       case 'orient': return ORIENT[it.m.orient || ''];
       case 'type': return soType(it.ext);
     }
@@ -7245,7 +7282,7 @@ function mountSortierwerk(view) {
       const [d, src] = dateOf(it);
       if (media) cnt[src || 'none']++;
       const segs = [];
-      for (const l of opt.levels) { const s = soSafe(segFor(l, it, d)); if (!(s === SO_NODATE && segs.includes(SO_NODATE))) segs.push(s); }
+      for (const l of opt.levels) { const s = soSafe(segFor(l, it, d)); if (!(s === NODATE && segs.includes(NODATE))) segs.push(s); }
       const dir = segs.join('/');
       if (dir.toLowerCase() === it.dir.toLowerCase()) { stay++; continue; }
       const name = unique(dir, it.name);
@@ -7312,17 +7349,17 @@ function mountSortierwerk(view) {
     return n;
   }
   function confirmRun() {
-    const p = st.plan, verb = opt.action === 'copy' ? 'kopiert' : 'verschoben';
+    const p = st.plan;
     if (!p?.ops.length) return;
     if (st.readOnly) { scriptModal(); return; }
     const close = modal({
-      title: 'Jetzt sortieren?', width: 460,
-      sub: `${fmtN(p.main)} Dateien${p.sides ? ` (+ ${fmtN(p.sides)} Begleitdateien)` : ''} werden in ${fmtN(p.folders)} Ordner ${verb}.`,
+      title: T('Jetzt sortieren?'), width: 460,
+      sub: T(opt.action === 'copy' ? '{n} Dateien{s} werden in {f} Ordner kopiert.' : '{n} Dateien{s} werden in {f} Ordner verschoben.', { n: fmtN(p.main), s: p.sides ? ' ' + T('(+ {n} Begleitdateien)', { n: fmtN(p.sides) }) : '', f: fmtN(p.folders) }),
       body: h('div', { class: 'so-confirm' },
         h('p', null, 'Ordner: ', h('b', null, st.rootName)),
-        opt.action === 'move' && !hasMove ? h('p', { class: 'so-warn' }, icon('alert'), 'Dein Browser kann Dateien nicht direkt verschieben – sie werden kopiert und das Original danach gelöscht. Das dauert länger, und das Änderungsdatum der Dateien wird neu gesetzt.') : null,
-        h('p', { class: 'hint' }, 'Solange die App offen bleibt, kannst du das Sortieren mit einem Klick rückgängig machen.')),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: opt.action === 'copy' ? 'Kopieren' : 'Verschieben', kind: 'primary', onClick: () => { close(); run(); } }],
+        opt.action === 'move' && !hasMove ? h('p', { class: 'so-warn' }, icon('alert'), T('Dein Browser kann Dateien nicht direkt verschieben – sie werden kopiert und das Original danach gelöscht. Das dauert länger, und das Änderungsdatum der Dateien wird neu gesetzt.')) : null,
+        h('p', { class: 'hint' }, T('Solange die App offen bleibt, kannst du das Sortieren mit einem Klick rückgängig machen.'))),
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: opt.action === 'copy' ? T('Kopieren') : T('Verschieben'), kind: 'primary', onClick: () => { close(); run(); } }],
     });
   }
   async function run() {
@@ -7345,7 +7382,7 @@ function mountSortierwerk(view) {
     st.busy = false;
     st.result = { log, failed, created, pruned, copy: opt.action === 'copy', folders: new Set(log.map(l => l.to.toLowerCase())).size };
     setProg(-1); render();
-    toast(`${fmtN(log.length)} Dateien ${opt.action === 'copy' ? 'kopiert' : 'sortiert'}` + (failed.length ? ` · ${failed.length} Fehler` : ''), failed.length ? 'warn' : 'ok');
+    toast(`${fmtN(log.length)} ✓` + (failed.length ? ` · ${failed.length} ✗` : ''), failed.length ? 'warn' : 'ok');
   }
   async function undo() {
     const r = st.result; if (!r) return;
@@ -7367,44 +7404,44 @@ function mountSortierwerk(view) {
     }
     await prune([...r.created]);
     st.busy = false; st.result = null; setProg(-1);
-    toast(fail ? `${back} zurückgeholt, ${fail} ging nicht` : `Rückgängig: ${fmtN(back)} Dateien sind wieder an ihrem Platz`, fail ? 'warn' : 'ok');
+    toast(fail ? `↶ ${back} ✓ · ${fail} ✗` : T('Rückgängig: {n} Dateien sind wieder an ihrem Platz', { n: fmtN(back) }), fail ? 'warn' : 'ok');
     st.dirs.clear(); st.dirs.set('', st.root); scan();
   }
   function logCsv() {
     const q = s => '"' + String(s).replace(/"/g, '""') + '"';
     const r = st.result, rows = r ? r.log.map(l => [soJoin(l.it.dir, l.it.name), soJoin(l.to, l.toName)]) : st.plan.ops.map(o => [soJoin(o.it.dir, o.it.name), soJoin(o.dir, o.name)]);
-    download(`sortierwerk-${st.rootName}.csv`, '﻿' + ['Vorher;Nachher', ...rows.map(r => r.map(q).join(';'))].join('\r\n'), 'text/csv');
+    download(`sortierwerk-${st.rootName}.csv`, '﻿' + [T('Vorher;Nachher'), ...rows.map(r => r.map(q).join(';'))].join('\r\n'), 'text/csv');
   }
 
   /* ---------- Read-only mode: the moves as a script ---------- */
   function makeBat() {
     const q = s => s.replace(/%/g, '%%'), p = s => s.replace(/\//g, '\\'), ops = st.plan.ops, cmd = opt.action === 'copy' ? 'copy' : 'move';
     const dirs = [...new Set(ops.map(o => o.dir))];
-    return ['@echo off', 'chcp 65001 >nul', `rem Sortierwerk – ${ops.length} Dateien – ${new Date().toLocaleString('de-DE')}`, 'cd /d "%~dp0"',
+    return ['@echo off', 'chcp 65001 >nul', `rem Sortierwerk – ${ops.length} ${T('Dateien')} – ${new Date().toLocaleString(isEN() ? 'en-GB' : 'de-DE')}`, 'cd /d "%~dp0"',
       ...dirs.map(d => `if not exist "${q(p(d))}\\" mkdir "${q(p(d))}"`),
       ...ops.map(o => `if not exist "${q(p(soJoin(o.dir, o.name)))}" ${cmd} "${q(p(soJoin(o.it.dir, o.it.name)))}" "${q(p(soJoin(o.dir, o.name)))}" >nul`),
-      'echo.', `echo Fertig – ${ops.length} Dateien.`, 'pause', ''].join('\r\n');
+      'echo.', `echo ${T('Fertig')} – ${ops.length} ${T('Dateien')}.`, 'pause', ''].join('\r\n');
   }
   function makeSh() {
     const q = s => "'" + s.replace(/'/g, "'\\''") + "'", ops = st.plan.ops, cmd = opt.action === 'copy' ? 'cp -p' : 'mv';
-    return ['#!/bin/sh', `# Sortierwerk – ${ops.length} Dateien`, 'cd "$(dirname "$0")" || exit 1',
+    return ['#!/bin/sh', `# Sortierwerk – ${ops.length} ${T('Dateien')}`, 'cd "$(dirname "$0")" || exit 1',
       ...[...new Set(ops.map(o => o.dir))].map(d => `mkdir -p ${q(d)}`),
       ...ops.map(o => `[ -e ${q(soJoin(o.dir, o.name))} ] || ${cmd} -- ${q(soJoin(o.it.dir, o.it.name))} ${q(soJoin(o.dir, o.name))}`),
-      `echo 'Fertig.'`, ''].join('\n');
+      `echo '${T('Fertig.')}'`, ''].join('\n');
   }
   function scriptModal() {
     const n = st.plan.ops.length;
     modal({
-      title: 'Als Skript ausführen', width: 480,
-      sub: `Ohne Schreibzugriff kann der Browser nichts verschieben. Das Skript erledigt die ${fmtN(n)} Schritte für dich.`,
+      title: T('Als Skript ausführen'), width: 480,
+      sub: T('Ohne Schreibzugriff kann der Browser nichts verschieben. Das Skript erledigt die {n} Schritte für dich.', { n: fmtN(n) }),
       body: h('div', { class: 'so-confirm' },
         h('ol', { class: 'so-steps' },
-          h('li', null, 'Skript herunterladen'),
-          h('li', null, 'In den Ordner ', h('b', null, st.rootName), ' legen'),
-          h('li', null, 'Doppelklick (Windows) bzw. im Terminal mit ', h('code', null, 'sh sortierwerk.sh'), ' starten')),
-        h('p', { class: 'hint' }, 'Vorhandene Dateien werden nie überschrieben.')),
+          h('li', null, T('Skript herunterladen')),
+          h('li', null, T('In den Ordner legen:') + ' ', h('b', null, st.rootName)),
+          h('li', null, T('Windows: Doppelklick · Mac/Linux:') + ' ', h('code', null, 'sh sortierwerk.sh'))),
+        h('p', { class: 'hint' }, T('Vorhandene Dateien werden nie überschrieben.'))),
       actions: [
-        { label: 'Liste (CSV)', kind: 'ghost', onClick: () => { logCsv(); return false; } },
+        { label: T('Liste (CSV)'), kind: 'ghost', onClick: () => { logCsv(); return false; } },
         { label: 'Mac/Linux (.sh)', kind: 'ghost', onClick: () => { download('sortierwerk.sh', makeSh(), 'text/x-sh'); return false; } },
         { label: 'Windows (.bat)', kind: 'primary', onClick: () => { download('sortierwerk.bat', makeBat(), 'application/x-bat'); return false; } },
       ],
@@ -7436,8 +7473,8 @@ function mountSortierwerk(view) {
   }
 
   /* ---------- UI ---------- */
-  const fmtN = n => n.toLocaleString('de-DE');
-  const fmtD = d => d ? `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()}` : '–';
+  const fmtN = n => n.toLocaleString(isEN() ? 'en-US' : 'de-DE');
+  const fmtD = d => !d ? '–' : isEN() ? `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` : `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()}`;
   const main = h('div', { class: 'wp-card so-main' });
   const side = h('div', { class: 'wp-card wp-set so-side' });
   const progFill = h('div', { class: 'wp-prog-fill' }), progTxt = h('div', { class: 'wp-prog-txt' });
@@ -7450,28 +7487,28 @@ function mountSortierwerk(view) {
   let scanTxt = null, scanFill = null;
   function paintScan() {
     if (!scanTxt) return;
-    scanTxt.textContent = st.scanN ? `Lese Aufnahmedaten … ${fmtN(st.scanN)} / ${fmtN(st.scanT)}` : `Suche Dateien … ${fmtN(st.scanT)}`;
+    scanTxt.textContent = st.scanN ? `${T('Lese Aufnahmedaten …')} ${fmtN(st.scanN)} / ${fmtN(st.scanT)}` : `${T('Suche Dateien …')} ${fmtN(st.scanT)}`;
     scanFill.style.width = (st.scanT ? st.scanN / st.scanT * 100 : 3) + '%';
   }
 
   function head() {
     return h('div', { class: 'wp-lhead so-head' },
-      h('span', { class: 'so-root' }, icon('folder'), h('b', null, st.rootName), st.readOnly ? h('span', { class: 'so-ro', title: 'Kein Schreibzugriff – am Ende gibt es ein Skript, das die Dateien verschiebt' }, 'nur lesen') : null),
+      h('span', { class: 'so-root' }, icon('folder'), h('b', null, st.rootName), st.readOnly ? h('span', { class: 'so-ro', title: T('Kein Schreibzugriff – am Ende gibt es ein Skript, das die Dateien verschiebt') }, T('nur lesen')) : null),
       h('div', { class: 'wp-lacts' },
-        h('button', { class: 'btn sm ghost', title: 'Ordner neu einlesen', disabled: st.busy, onclick: () => { if (st.readOnly) pickReadOnly(); else { st.dirs.clear(); st.dirs.set('', st.root); reset(); scan(); } } }, icon('refresh'), 'Neu einlesen'),
-        h('button', { class: 'btn sm ghost', disabled: st.busy, onclick: pickFolder }, icon('folder'), 'Anderer Ordner')));
+        h('button', { class: 'btn sm ghost', title: T('Ordner neu einlesen'), disabled: st.busy, onclick: () => { if (st.readOnly) pickReadOnly(); else { st.dirs.clear(); st.dirs.set('', st.root); reset(); scan(); } } }, icon('refresh'), T('Neu einlesen')),
+        h('button', { class: 'btn sm ghost', disabled: st.busy, onclick: pickFolder }, icon('folder'), T('Anderer Ordner'))));
   }
   function statsEl() {
     const p = st.plan, c = p.cnt, chip = (cls, txt, title) => h('span', { class: 'so-stat ' + cls, title }, txt);
     const dated = [['exif', c.exif], ['video', c.video], ['name', c.name], ['file', c.file]].filter(x => x[1]);
     return h('div', { class: 'so-stats' },
-      chip('big', `${fmtN(p.main)} ${opt.action === 'copy' ? 'zu kopieren' : 'zu sortieren'}`),
-      ...dated.map(([k, n]) => chip('src-' + k, `${SRC[k][0]} ${fmtN(n)}`, SRC[k][1])),
-      c.none ? chip('warn', `ohne Datum ${fmtN(c.none)}`, 'Kein Aufnahmedatum gefunden – landen im Ordner „Ohne Datum“') : null,
+      chip('big', `${fmtN(p.main)} → 📁`),
+      ...dated.map(([k, n]) => chip('src-' + k, `${T(SRC[k][0])} ${fmtN(n)}`, T(SRC[k][1]))),
+      c.none ? chip('warn', `${NODATE} ${fmtN(c.none)}`, T('Kein Aufnahmedatum gefunden – landen im Ordner „{n}“', { n: NODATE })) : null,
       p.sides ? chip('', `+ ${fmtN(p.sides)} Begleitdateien`, '.xmp / .aae / .thm wandern mit ihrem Foto mit') : null,
-      p.stay ? chip('ok', `✓ ${fmtN(p.stay)} liegen schon richtig`) : null,
-      p.other ? chip('', `${fmtN(p.other)} andere Dateien bleiben`, 'Keine Fotos oder Videos – unter „Dateien“ auf „Alle“ stellen, um sie mitzusortieren') : null,
-      p.errs ? chip('err', `${p.errs} nicht lesbar`) : null);
+      p.stay ? chip('ok', `✓ ${fmtN(p.stay)} ${T('liegen schon richtig')}`) : null,
+      p.other ? chip('', p.other === 1 ? T('1 andere Datei bleibt') : T('{n} andere Dateien bleiben', { n: fmtN(p.other) }), T('Keine Fotos oder Videos – unter „Dateien“ auf „Alle“ stellen, um sie mitzusortieren')) : null,
+      p.errs ? chip('err', `${p.errs} ${T('nicht lesbar')}`) : null);
   }
   function nodeEl(node, name, path, depth, max) {
     const leaf = !node.kids.size, open = st.open.has(path);
@@ -7491,7 +7528,7 @@ function mountSortierwerk(view) {
           h('span', { class: 'so-thb' }, cv, h('b', null, soType(op.it.ext).slice(0, 4))),
           h('span', { class: 'so-fn' }, op.name, op.it.dir ? h('small', null, 'aus ', op.it.dir) : op.name !== op.it.name ? h('small', null, 'umbenannt – Name war schon vergeben') : null),
           h('span', { class: 'so-fd' }, fmtD(op.date), op.src ? h('i', { class: 'src-' + op.src, title: SRC[op.src][1] }, SRC[op.src][0]) : null));
-      }), files.length > shown.length ? h('div', { class: 'so-more' }, `+ ${fmtN(files.length - shown.length)} weitere`) : null));
+      }), files.length > shown.length ? h('div', { class: 'so-more' }, `+ ${fmtN(files.length - shown.length)} …`) : null));
     }
     return out;
   }
@@ -7506,25 +7543,25 @@ function mountSortierwerk(view) {
     const r = st.result;
     return h('div', { class: 'wp-res so-res' + (r.failed.length ? ' bad' : '') },
       h('div', { class: 'wp-res-top' }, h('span', { class: 'wp-res-big' + (r.failed.length ? ' bad' : '') }, fmtN(r.log.length)),
-        h('div', null, h('b', null, `Dateien ${r.copy ? 'kopiert' : 'sortiert'} · ${fmtN(r.folders)} Ordner`),
-          h('small', null, [r.pruned ? `${r.pruned} leere Ordner aufgeräumt` : '', r.failed.length ? `${r.failed.length} Fehler` : ''].filter(Boolean).join(' · ') || 'Alles an seinem Platz.'))),
+        h('div', null, h('b', null, `${T(r.copy ? 'Dateien kopiert' : 'Dateien sortiert')} · ${fmtN(r.folders)} 📁`),
+          h('small', null, [r.pruned ? T('{n} leere Ordner aufgeräumt', { n: r.pruned }) : '', r.failed.length ? `${r.failed.length} ✗` : ''].filter(Boolean).join(' · ') || T('Alles an seinem Platz.')))),
       h('div', { class: 'so-res-acts' },
-        r.failed.length ? h('button', { class: 'btn sm ghost', onclick: () => modal({ title: 'Nicht sortiert', width: 520, body: h('div', { class: 'so-errs' }, r.failed.map(f => h('div', null, h('b', null, f.name), h('small', null, f.msg)))), actions: [{ label: 'OK', kind: 'primary' }] }) }, icon('alert'), 'Fehler') : null,
-        h('button', { class: 'btn sm ghost', onclick: logCsv }, icon('download'), 'Protokoll'),
-        h('button', { class: 'btn sm', disabled: st.busy, onclick: undo }, icon('undo'), 'Rückgängig')));
+        r.failed.length ? h('button', { class: 'btn sm ghost', onclick: () => modal({ title: T('Nicht sortiert'), width: 520, body: h('div', { class: 'so-errs' }, r.failed.map(f => h('div', null, h('b', null, f.name), h('small', null, f.msg)))), actions: [{ label: 'OK', kind: 'primary' }] }) }, icon('alert'), T('Fehlerliste')) : null,
+        h('button', { class: 'btn sm ghost', onclick: logCsv }, icon('download'), T('Protokoll')),
+        h('button', { class: 'btn sm', disabled: st.busy, onclick: undo }, icon('undo'), T('Rückgängig'))));
   }
   function render() {
     treeEl = scanTxt = scanFill = null;
     if (st.phase === 'empty') {
       main.replaceChildren(h('div', { class: 'wp-empty so-empty' },
         h('div', { class: 'wp-empty-ico' }, icon('sortierwerk')),
-        h('b', null, 'Fotoordner wählen'),
-        h('span', null, 'oder einen Ordner hierher ziehen'),
+        h('b', null, T('Fotoordner wählen')),
+        h('span', null, T('oder einen Ordner hierher ziehen')),
         h('div', { class: 'wp-empty-btns' },
-          h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), 'Ordner öffnen'),
-          hasPicker ? h('button', { class: 'btn ghost', title: 'Ohne Schreibzugriff (z. B. Firmen-PC) – am Ende gibt’s ein Skript', onclick: pickReadOnly }, 'Nur lesen') : null),
-        h('small', null, 'Mit Vorschau – du siehst vorher, wohin jede Datei wandert.'),
-        !hasPicker ? h('small', { class: 'so-warn' }, 'Kein Schreibzugriff in diesem Browser – am Ende gibt’s ein Skript. Direkt geht es in Chrome oder Edge.') : null));
+          h('button', { class: 'btn primary', onclick: pickFolder }, icon('folder'), T('Ordner öffnen')),
+          hasPicker ? h('button', { class: 'btn ghost', title: T('Ohne Schreibzugriff (z. B. Firmen-PC) – am Ende gibt’s ein Skript'), onclick: pickReadOnly }, T('Nur lesen')) : null),
+        h('small', null, T('Mit Vorschau – du siehst vorher, wohin jede Datei wandert.')),
+        !hasPicker ? h('small', { class: 'so-warn' }, T('Kein Schreibzugriff in diesem Browser – am Ende gibt’s ein Skript. Direkt geht es in Chrome oder Edge.')) : null));
     } else if (st.phase === 'scan') {
       scanTxt = h('div', { class: 'so-scan-t' }); scanFill = h('div', { class: 'wp-prog-fill' });
       main.replaceChildren(head(), h('div', { class: 'so-scan' }, h('div', { class: 'pfw-spin' }), scanTxt, h('div', { class: 'wp-prog-track so-scan-bar' }, scanFill)));
@@ -7533,10 +7570,10 @@ function mountSortierwerk(view) {
       const p = st.plan;
       treeEl = h('div', { class: 'so-tree' });
       main.replaceChildren(...[head(), st.result && resultEl(), statsEl(),
-        p.ops.length ? h('div', { class: 'so-tree-wrap' }, h('div', { class: 'so-tree-h' }, h('span', null, st.result ? 'So ist es jetzt sortiert' : 'Vorschau – so wird sortiert'),
-          h('button', { class: 'btn sm ghost', onclick: () => { const all = []; const walk = (n, p) => { for (const [k, c] of n.kids) { all.push(p ? p + '/' + k : k); walk(c, p ? p + '/' + k : k); } }; walk(p.tree, ''); const any = st.open.size; st.open = new Set(any ? [] : all.filter(x => !x.includes('/') || p.tree.kids.size < 30)); paintTree(); } }, 'Alle auf/zu')), treeEl)
-          : h('div', { class: 'so-none' }, icon('check'), h('b', null, st.items.length ? 'Nichts zu tun' : 'Keine Dateien gefunden'),
-            h('span', null, st.items.length ? (p.stay ? 'Alles liegt schon im richtigen Ordner.' : 'Hier sind keine Fotos oder Videos – unter „Dateien“ auf „Alle“ stellen?') : opt.recursive ? 'Der Ordner ist leer.' : 'Direkt in diesem Ordner liegen keine Dateien – „Unterordner einbeziehen“ einschalten?'))].filter(Boolean));
+        p.ops.length ? h('div', { class: 'so-tree-wrap' }, h('div', { class: 'so-tree-h' }, h('span', null, st.result ? T('So ist es jetzt sortiert') : T('Vorschau – so wird sortiert')),
+          h('button', { class: 'btn sm ghost', onclick: () => { const all = []; const walk = (n, p) => { for (const [k, c] of n.kids) { all.push(p ? p + '/' + k : k); walk(c, p ? p + '/' + k : k); } }; walk(p.tree, ''); const any = st.open.size; st.open = new Set(any ? [] : all.filter(x => !x.includes('/') || p.tree.kids.size < 30)); paintTree(); } }, T('Alle auf/zu'))), treeEl)
+          : h('div', { class: 'so-none' }, icon('check'), h('b', null, st.items.length ? T('Nichts zu tun') : T('Keine Dateien gefunden')),
+            h('span', null, st.items.length ? (p.stay ? T('Alles liegt schon im richtigen Ordner.') : T('Hier sind keine Fotos oder Videos – unter „Dateien“ auf „Alle“ stellen?')) : opt.recursive ? T('Der Ordner ist leer.') : T('Direkt in diesem Ordner liegen keine Dateien – „Unterordner einbeziehen“ einschalten?')))].filter(Boolean));
       if (p.ops.length) paintTree();
     }
     paintSide();
@@ -7546,7 +7583,7 @@ function mountSortierwerk(view) {
     const lock = st.busy || !!st.result;
     const levelSel = (l, i) => h('span', { class: 'so-lvl' },
       h('select', { class: 'inp', disabled: lock, onchange: e => { opt.levels[i] = e.target.value; save(); paintSide(); replan(); } }, LEVELS.map(([v, n]) => h('option', { value: v, selected: v === l }, n))),
-      opt.levels.length > 1 ? h('button', { class: 'so-lvl-x', title: 'Ebene entfernen', disabled: lock, onclick: () => { opt.levels.splice(i, 1); save(); paintSide(); replan(); } }, icon('x')) : null);
+      opt.levels.length > 1 ? h('button', { class: 'so-lvl-x', title: T('Ebene entfernen'), disabled: lock, onclick: () => { opt.levels.splice(i, 1); save(); paintSide(); replan(); } }, icon('x')) : null);
     const sw = (label, key, desc, dis) => h('label', { class: 'wp-sw so-sw' + (dis ? ' dis' : '') }, h('span', null, label, desc ? h('small', null, desc) : null),
       switchEl(opt[key], v => { opt[key] = v; save(); if (key === 'recursive') { if (st.root || st.readOnly) scan(); } else replan(); paintSide(); }));
     const usesDate = opt.levels.some(l => ['year', 'month', 'day', 'ym', 'date'].includes(l)), usesNames = opt.levels.some(l => l === 'month' || l === 'day');
@@ -7554,32 +7591,32 @@ function mountSortierwerk(view) {
     const ex = (() => { const d = new Date(2024, 2, 15); return opt.levels.map(l => soSafe(segFor(l, { m: { camera: 'Canon EOS R6', orient: 'land' }, ext: 'jpg' }, d))).join(' / '); })();
     const presetOn = pr => pr[1].join() === opt.levels.join();
     side.replaceChildren(...[
-      h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Sortieren nach'),
+      h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, T('Sortieren nach')),
         h('div', { class: 'so-presets' }, PRESETS.map(pr => h('button', { class: presetOn(pr) ? 'on' : '', disabled: lock, onclick: () => { opt.levels = [...pr[1]]; save(); paintSide(); replan(); } }, pr[0]))),
-        h('div', { class: 'so-lvls' }, opt.levels.map(levelSel), opt.levels.length < 4 ? h('button', { class: 'so-lvl-add', title: 'Weitere Ordner-Ebene', disabled: lock, onclick: () => { opt.levels.push(opt.levels.includes('camera') ? 'type' : 'camera'); save(); paintSide(); replan(); } }, icon('plus')) : null),
+        h('div', { class: 'so-lvls' }, opt.levels.map(levelSel), opt.levels.length < 4 ? h('button', { class: 'so-lvl-add', title: T('Weitere Ordner-Ebene'), disabled: lock, onclick: () => { opt.levels.push(opt.levels.includes('camera') ? 'type' : 'camera'); save(); paintSide(); replan(); } }, icon('plus')) : null),
         h('div', { class: 'wp-prev so-ex' }, icon('folder'), ' ', h('b', null, ex), ' / IMG_0042.jpg')),
-      usesNames ? h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Ordnernamen'),
-        segEl([['short', '03'], ['name', '03 März'], ['full', '2024-03']], opt.names, v => { opt.names = v; save(); paintSide(); replan(); })) : null,
-      h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Dateien'),
-        segEl([['media', 'Fotos & Videos'], ['all', 'Alle Dateien']], opt.scope, v => { opt.scope = v; save(); replan(); })),
-      h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, 'Aktion'),
-        segEl([['move', 'Verschieben'], ['copy', 'Kopieren']], opt.action, v => { opt.action = v; save(); paintSide(); replan(); })),
+      usesNames ? h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, T('Ordnernamen')),
+        segEl([['short', '03'], ['name', T('03 März')], ['full', '2024-03']], opt.names, v => { opt.names = v; save(); paintSide(); replan(); })) : null,
+      h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, T('Dateien')),
+        segEl([['media', T('Fotos & Videos')], ['all', T('Alle Dateien')]], opt.scope, v => { opt.scope = v; save(); replan(); })),
+      h('div', { class: 'wp-sec' }, h('div', { class: 'wp-lbl' }, T('Aktion')),
+        segEl([['move', T('Verschieben')], ['copy', T('Kopieren')]], opt.action, v => { opt.action = v; save(); paintSide(); replan(); })),
       h('div', { class: 'wp-sec so-sws' },
-        sw('Unterordner einbeziehen', 'recursive'),
-        usesDate ? sw('Dateidatum als Notlösung', 'fileDate', 'Sonst landen Dateien ohne Aufnahmedatum in „Ohne Datum“') : null,
-        sw('Begleitdateien mitnehmen', 'sidecar', '.xmp, .aae, .thm wandern mit ihrem Foto'),
-        opt.recursive && opt.action === 'move' ? sw('Leere Ordner löschen', 'prune') : null),
+        sw(T('Unterordner einbeziehen'), 'recursive'),
+        usesDate ? sw(T('Dateidatum als Notlösung'), 'fileDate', T('Sonst landen Dateien ohne Aufnahmedatum in „Ohne Datum“')) : null,
+        sw(T('Begleitdateien mitnehmen'), 'sidecar', T('.xmp, .aae, .thm wandern mit ihrem Foto')),
+        opt.recursive && opt.action === 'move' ? sw(T('Leere Ordner löschen'), 'prune') : null),
       h('div', { class: 'wp-sec' },
         h('button', { class: 'btn primary wp-go', disabled: !n || lock, onclick: confirmRun },
-          icon(st.readOnly ? 'download' : 'sortierwerk'), st.readOnly ? 'Skript erstellen' : n ? `${fmtN(p.main)} Dateien ${opt.action === 'copy' ? 'kopieren' : 'sortieren'}` : 'Sortieren'),
+          icon(st.readOnly ? 'download' : 'sortierwerk'), st.readOnly ? T('Skript erstellen') : n ? T(opt.action === 'copy' ? '{n} Dateien kopieren' : '{n} Dateien sortieren', { n: fmtN(p.main) }) : T('Sortieren')),
         prog,
-        st.result ? h('button', { class: 'btn ghost', onclick: () => { st.result = null; st.dirs.clear(); st.dirs.set('', st.root); scan(); } }, icon('refresh'), 'Neu einlesen & weiter sortieren') : null)].filter(Boolean));
+        st.result ? h('button', { class: 'btn ghost', onclick: () => { st.result = null; st.dirs.clear(); st.dirs.set('', st.root); scan(); } }, icon('refresh'), T('Neu einlesen & weiter sortieren')) : null)].filter(Boolean));
   }
 
   const wrap = h('div', { class: 'wp so' }, h('div', { class: 'wp-in so-in' },
     h('div', { class: 'wp-hd' },
       h('div', { class: 'wp-logo' }, icon('sortierwerk')),
-      h('div', null, h('h2', null, 'Sortierwerk'), h('p', null, 'Fotos sortieren nach Datum, Kamera, Format oder Dateityp')),
+      h('div', null, h('h2', null, 'Sortierwerk'), h('p', null, T('Fotos sortieren nach Datum, Kamera, Format oder Dateityp'))),
       h('span', { class: 'wp-priv' }, icon('lock'), 'Offline')),
     h('div', { class: 'wp-grid so-grid' }, main, side)));
   view.append(wrap);
@@ -7594,18 +7631,18 @@ function mountSortierwerk(view) {
     if (st.busy) return;
     const item = [...e.dataTransfer.items].find(i => i.kind === 'file');
     const p = item?.getAsFileSystemHandle?.();   // must be requested synchronously inside the drop event
-    if (!p) { toast('Bitte über „Ordner öffnen“ wählen – dein Browser kann gezogene Ordner nicht öffnen.', 'info'); return; }
+    if (!p) { toast(T('Bitte über „Ordner öffnen“ wählen – dein Browser kann gezogene Ordner nicht öffnen.'), 'info'); return; }
     p.then(async hnd => {
-      if (hnd?.kind !== 'directory') { toast('Bitte einen Ordner ziehen, keine einzelnen Dateien.', 'info'); return; }
-      if (await hnd.requestPermission({ mode: 'readwrite' }) !== 'granted') { toast('Ohne Schreibrecht kann nicht sortiert werden.', 'warn'); return; }
+      if (hnd?.kind !== 'directory') { toast(T('Bitte einen Ordner ziehen, keine einzelnen Dateien.'), 'info'); return; }
+      if (await hnd.requestPermission({ mode: 'readwrite' }) !== 'granted') { toast(T('Ohne Schreibrecht kann nicht sortiert werden.'), 'warn'); return; }
       openRoot(hnd);
-    }).catch(err => toast('Ordner konnte nicht geöffnet werden: ' + err.message, 'err'));
+    }).catch(err => toast(T('Ordner konnte nicht geöffnet werden: ') + err.message, 'err'));
   });
 
   render();
   return {
     onSettings() { Object.assign(opt, { ...DEF, ...Store.get('sortierwerk', {}) }); replan(); paintSide(); },
-    beforeClose() { if (st.busy) { toast('Bitte warten, bis das Sortieren fertig ist.', 'warn'); return false; } },
+    beforeClose() { if (st.busy) { toast(T('Bitte warten, bis das Sortieren fertig ist.'), 'warn'); return false; } },
     destroy() { st.token++; thumbQ.length = 0; },
   };
 }

@@ -20860,7 +20860,7 @@ function neonArena(root, isVisible) {
   const DASH_SPD = 760, DASH_T = .16, DASH_CD = 1.1;
 
   // Multi-shot from a certain score, bombs (space bar) clear the surroundings
-  const SHOT_LEVELS = [[2000, 4], [1000, 3], [200, 2], [0, 1]];
+  const SHOT_LEVELS = [[6000, 4], [2500, 3], [600, 2], [0, 1]];
   const BOMB_R = 230, BOMB_MAX = 3, BOSS_EVERY = 5;
   let W, H, raf, state='idle', score, wave, waveTimer, spawnTimer, spawnInt, iframes;
   let px, py, pvx=0, pvy=0, hp, shots=1, bombs=0, flash=0, msg=null, banner=null, boss=null;
@@ -20868,11 +20868,13 @@ function neonArena(root, isVisible) {
   const keys={}, bullets=[], enemies=[], particles=[], pickups=[], waves=[], ebullets=[], floats=[];
   const mult = () => Math.min(5, 1 + Math.floor(combo / 6));
   let bulletCd=0, best=Store.get('arena-best',Store.get('brotato-best',0)), lastTime=0;
+  let mouseX=null, mouseY=null, mouseDown=false;   // mouse: aim at the cursor, hold the left button to shoot
   const pauseBtn = h('button', { class: 'bt-pause', title: 'Pause (P)', tabindex: '-1', onmousedown: e => e.preventDefault(), onclick: () => togglePause() }, icon('pause'));
   root.appendChild(pauseBtn);
   let btnState = '';
   function syncBtn() {
     if (btnState === state) return; btnState = state;
+    cv.style.cursor = state === 'playing' ? 'none' : '';   // the crosshair replaces the cursor
     pauseBtn.style.display = state === 'playing' || state === 'paused' ? '' : 'none';
     pauseBtn.replaceChildren(icon(state === 'paused' ? 'play' : 'pause'));
     pauseBtn.title = state === 'paused' ? 'Weiter (P)' : 'Pause (P)';
@@ -20909,9 +20911,9 @@ function neonArena(root, isVisible) {
   function dropPickup(x, y, kind) {
     if (!kind) {
       const r = Math.random();
-      kind = r < .4 ? 'bomb' : r < .7 ? (hp < PLAYER_HP ? 'heart' : 'rapid') : 'rapid';
+      kind = r < .25 ? 'bomb' : r < .55 ? (hp < PLAYER_HP ? 'heart' : 'rapid') : 'rapid';
     }
-    pickups.push({ x, y, t: 11, kind });
+    pickups.push({ x, y, t: 7, kind });
   }
   function kill(e, i) {
     enemies.splice(i,1);
@@ -20919,20 +20921,20 @@ function neonArena(root, isVisible) {
     if(e.boss){
       addScore(wave*50, e.x, e.y, '#ff3366'); boss=null; flash=.3; shake=.7; say('Boss besiegt!');
       burst(e.x,e.y,'#ffb347',60); burst(e.x,e.y,'#ff3366',40);
-      dropPickup(e.x-22,e.y,'bomb'); dropPickup(e.x+22,e.y,'bomb'); dropPickup(e.x,e.y+22,'heart');
+      dropPickup(e.x-18,e.y,'bomb'); dropPickup(e.x+18,e.y,'heart');
       return;
     }
     addScore(wave*ETYPES[e.type].pts, e.x, e.y, e.color); burst(e.x,e.y,e.color,12);
     if(e.shape==='split') for(const s of [-1,1]){   // Splitter breaks into two fast small ones
       spawnEnemy(4); const m=enemies[enemies.length-1]; m.x=e.x+s*10; m.y=e.y; m.vx=-e.vy*s*.8; m.vy=e.vx*s*.8;
     }
-    // a power-up every now and then (more often from big enemies)
-    if(Math.random()<(e.type===1||e.type===3?.12:.055)) dropPickup(e.x,e.y);
+    // a power-up every now and then (more often from big enemies) – rarer in later waves
+    if(Math.random()<(e.type===1||e.type===3?.08:.03)/(1+wave*.12)) dropPickup(e.x,e.y);
   }
   function collect(p) {
     if(p.kind==='bomb'){ if(bombs<BOMB_MAX){ bombs++; say('+1 Bombe  (Leertaste)'); } else addScore(wave*5,p.x,p.y); }
     else if(p.kind==='heart'){ if(hp<PLAYER_HP){ hp++; say('+1 Leben'); } else addScore(wave*5,p.x,p.y); }
-    else if(p.kind==='rapid'){ rapidT=7; say('Dauerfeuer!'); }
+    else if(p.kind==='rapid'){ rapidT=5; say('Dauerfeuer!'); }
     burst(p.x,p.y,PU[p.kind].c,10);
   }
   function dash() {
@@ -20971,9 +20973,10 @@ function neonArena(root, isVisible) {
   function spawnEnemy(type) {
     type=type??(wave>=4&&Math.random()<.18?3:Math.floor(Math.random()*3));
     const t=ETYPES[type], a=Math.random()*Math.PI*2, d=Math.max(W,H)*0.62;
+    const hp0=(typeof t.hp==='function'?t.hp(wave):t.hp)+(type!==4?Math.floor(wave/6):0);   // tougher from wave 6 on
     enemies.push({type,x:px+Math.cos(a)*d,y:py+Math.sin(a)*d,vx:0,vy:0,
-      r:t.r,color:t.color,hp:typeof t.hp==='function'?t.hp(wave):t.hp,
-      maxhp:typeof t.hp==='function'?t.hp(wave):t.hp,spd:t.spd(wave),shape:t.shape,angle:a});
+      r:t.r,color:t.color,hp:hp0,maxhp:hp0,spd:t.spd(wave),shape:t.shape,angle:a,
+      fire:type===2&&wave>=3?1.5+Math.random()*2:0});   // green rings shoot back from wave 3 on
   }
 
   function burst(x,y,color,n) {
@@ -21005,6 +21008,10 @@ function neonArena(root, isVisible) {
     let sx=0,sy=0;
     if(keys['arrowleft'])sx-=1; if(keys['arrowright'])sx+=1;
     if(keys['arrowup'])sy-=1;   if(keys['arrowdown'])sy+=1;
+    if(!sx&&!sy&&mouseX!==null){   // no arrow keys → aim at the cursor, fire while the button is held
+      const mx=mouseX-px, my=mouseY-py, ml=Math.hypot(mx,my);
+      if(ml>1){ aimX=mx/ml; aimY=my/ml; if(mouseDown){ sx=aimX; sy=aimY; } }
+    }
     if(sx||sy){ const l=Math.hypot(sx,sy); aimX=sx/l; aimY=sy/l; }
     if((sx||sy)&&bulletCd<=0){
       const a0=Math.atan2(sy,sx);
@@ -21040,6 +21047,11 @@ function neonArena(root, isVisible) {
         const ddx=px-e.x,ddy=py-e.y;
         if(ddx*ddx+ddy*ddy<(PLAYER_R+e.r-2)*(PLAYER_R+e.r-2)) hurt();
       }
+      // Rings: an aimed shot every few seconds, but only when on screen
+      if(!dead&&e.fire>0&&!e.boss&&(e.fire-=dt)<=0){
+        e.fire=Math.max(1.6,3.6-wave*.08)+Math.random();
+        if(e.x>0&&e.x<W&&e.y>0&&e.y<H){ const s=130+wave*4; ebullets.push({x:e.x,y:e.y,vx:tdx/tl*s,vy:tdy/tl*s}); }
+      }
       // Boss: rotates and regularly fires a ring
       if(!dead&&e.boss){
         e.spin+=dt*.8; e.fire-=dt;
@@ -21063,7 +21075,7 @@ function neonArena(root, isVisible) {
       const p=pickups[i]; p.t-=dt;
       if(p.t<=0){ pickups.splice(i,1); continue; }
       const d=Math.hypot(px-p.x,py-p.y);
-      if(d<130&&d>1){ const s=Math.min(d,(1-d/130)*420*dt+60*dt); p.x+=(px-p.x)/d*s; p.y+=(py-p.y)/d*s; }   // Magnet
+      if(d<90&&d>1){ const s=Math.min(d,(1-d/90)*420*dt+60*dt); p.x+=(px-p.x)/d*s; p.y+=(py-p.y)/d*s; }   // Magnet
       if(d<PLAYER_R+14){ pickups.splice(i,1); collect(p); }
     }
     if(comboT>0&&(comboT-=dt)<=0) combo=0;
@@ -21127,6 +21139,29 @@ function neonArena(root, isVisible) {
     cx.restore();
   }
 
+  // Player: small fighter ship that points where you aim, with engine flame while moving
+  function drawShip() {
+    const t=Date.now(), main=rapidT>0?'#ffe066':'#4fa3ff', moving=Math.hypot(pvx,pvy)>25||dashT>0;
+    cx.save(); cx.translate(px,py); cx.rotate(Math.atan2(aimY,aimX));
+    if(moving){   // flame
+      const fl=(dashT>0?16:9)+Math.sin(t*.05)*3;
+      const g=cx.createLinearGradient(-8,0,-8-fl,0); g.addColorStop(0,'#fff'); g.addColorStop(.35,'#7fd4ff'); g.addColorStop(1,'rgba(68,136,255,0)');
+      cx.fillStyle=g; cx.beginPath(); cx.moveTo(-7,-4.5); cx.lineTo(-8-fl,0); cx.lineTo(-7,4.5); cx.closePath(); cx.fill();
+    }
+    cx.shadowColor=main; cx.shadowBlur=18+Math.sin(t*.006)*4;
+    const hull=cx.createLinearGradient(-10,-12,14,12); hull.addColorStop(0,'#1c3d7a'); hull.addColorStop(1,main);
+    cx.fillStyle=hull; cx.strokeStyle=main; cx.lineWidth=1.6; cx.lineJoin='round';
+    cx.beginPath(); cx.moveTo(16,0); cx.lineTo(-2,-6); cx.lineTo(-10,-13); cx.lineTo(-7,-3.5); cx.lineTo(-9,0); cx.lineTo(-7,3.5); cx.lineTo(-10,13); cx.lineTo(-2,6); cx.closePath();
+    cx.fill(); cx.stroke();
+    cx.shadowBlur=6; cx.shadowColor='#bfe6ff'; cx.fillStyle='#d9f1ff';   // cockpit
+    cx.beginPath(); cx.ellipse(4,0,4.5,2.4,0,0,Math.PI*2); cx.fill();
+    cx.restore();
+    if(iframes>0&&hp>0){   // shield bubble while invulnerable
+      cx.save(); cx.globalAlpha=Math.min(.5,iframes); cx.strokeStyle='#7fd4ff'; cx.lineWidth=1.5; cx.shadowColor='#7fd4ff'; cx.shadowBlur=10;
+      cx.beginPath(); cx.arc(px,py,PLAYER_R+9,0,Math.PI*2); cx.stroke(); cx.restore();
+    }
+  }
+
   function drawText(txt,x,y,size,color,align='left') {
     cx.fillStyle=color; cx.font='bold '+size+'px Inter, "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif'; cx.textAlign=align; cx.fillText(txt,x,y);   // Canvas doesn't know CSS variables
   }
@@ -21142,7 +21177,9 @@ function neonArena(root, isVisible) {
   }
   function drawScene() {
     cx.clearRect(-20,-20,W+40,H+40);
-    cx.save(); cx.strokeStyle='rgba(255,255,255,0.04)'; cx.lineWidth=1;
+    const bg=cx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.7);   // soft glow in the middle, darker edges
+    bg.addColorStop(0,'#141b2d'); bg.addColorStop(1,'#07090f'); cx.fillStyle=bg; cx.fillRect(-20,-20,W+40,H+40);
+    cx.save(); cx.strokeStyle='rgba(120,160,255,0.05)'; cx.lineWidth=1;
     for(let x=0;x<W;x+=40){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke();}
     for(let y=0;y<H;y+=40){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke();}
     cx.restore();
@@ -21150,9 +21187,9 @@ function neonArena(root, isVisible) {
     if(state==='idle'){
       cx.textAlign='center';
       drawText('NEON-ARENA',W/2,H/2-48,32,'rgba(255,255,255,0.9)','center');
-      drawText('WASD: Bewegen  ·  Pfeiltasten: Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause',W/2,H/2-12,15,'rgba(255,255,255,0.5)','center');
+      drawText('WASD: Bewegen  ·  Pfeiltasten oder Maus: Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause',W/2,H/2-12,15,'rgba(255,255,255,0.5)','center');
       drawText('Power-ups:  ♥ Leben   ⚡ Dauerfeuer   ● Bombe  ·  schnelle Kills = Combo bis ×5',W/2,H/2+96,13,'rgba(255,255,255,0.32)','center');
-      drawText('LEERTASTE oder ENTER zum Starten',W/2,H/2+24,18,'#44ffaa','center');
+      drawText('LEERTASTE, ENTER oder Klick zum Starten',W/2,H/2+24,18,'#44ffaa','center');
       if(best>0) drawText('Bester Score: '+best,W/2,H/2+58,14,'rgba(255,255,255,0.3)','center');
       cx.textAlign='left'; return;
     }
@@ -21163,8 +21200,10 @@ function neonArena(root, isVisible) {
       cx.beginPath(); cx.arc(p.x,p.y,p.r*(1-p.age/p.life*0.5),0,Math.PI*2); cx.fill(); cx.restore();
     }
 
-    cx.save(); cx.fillStyle='#ffe066'; cx.shadowColor='#ffe066'; cx.shadowBlur=12;
-    for(const b of bullets){cx.beginPath();cx.arc(b.x,b.y,b.r,0,Math.PI*2);cx.fill();}
+    cx.save(); cx.strokeStyle='#ffe066'; cx.shadowColor='#ffb347'; cx.shadowBlur=12; cx.lineCap='round'; cx.lineWidth=BULLET_R*1.4;   // bullets as short laser streaks
+    cx.beginPath(); for(const b of bullets){ cx.moveTo(b.x,b.y); cx.lineTo(b.x-b.vx*.028,b.y-b.vy*.028); } cx.stroke();
+    cx.strokeStyle='#fff'; cx.shadowBlur=0; cx.lineWidth=1.6;
+    cx.beginPath(); for(const b of bullets){ cx.moveTo(b.x,b.y); cx.lineTo(b.x-b.vx*.014,b.y-b.vy*.014); } cx.stroke();
     cx.restore();
 
     for(const e of enemies) drawEnemy(e);
@@ -21200,9 +21239,12 @@ function neonArena(root, isVisible) {
 
     if(state==='playing'||state==='paused'){
       const flicker=iframes>0&&Math.floor(iframes*10)%2===0;
-      if(!flicker){
-        cx.save(); cx.shadowColor='#4488ff'; cx.shadowBlur=18+Math.sin(Date.now()*0.006)*4;
-        cx.fillStyle=rapidT>0?'#7aa8ff':'#4488ff'; cx.fillRect(px-PLAYER_R,py-PLAYER_R,PLAYER_R*2,PLAYER_R*2); cx.restore();
+      if(!flicker) drawShip();
+      if(mouseX!==null&&state==='playing'){   // crosshair
+        cx.save(); cx.strokeStyle=mouseDown?'#ffe066':'rgba(255,255,255,0.75)'; cx.lineWidth=2; cx.shadowColor=cx.strokeStyle; cx.shadowBlur=8;
+        cx.beginPath(); cx.arc(mouseX,mouseY,9,0,Math.PI*2);
+        for(const [a,b] of [[1,0],[-1,0],[0,1],[0,-1]]){ cx.moveTo(mouseX+a*5,mouseY+b*5); cx.lineTo(mouseX+a*14,mouseY+b*14); }
+        cx.stroke(); cx.restore();
       }
     }
     // floating points
@@ -21291,7 +21333,19 @@ function neonArena(root, isVisible) {
     else if(e.key==='Shift'&&e.type==='keydown'&&!e.repeat&&state==='playing'){ e.preventDefault(); dash(); }
   }
 
-  function clearKeys() { for (const k in keys) keys[k] = false; }
+  function clearKeys() { for (const k in keys) keys[k] = false; mouseDown = false; }
+  const setMouse = e => { const r = cv.getBoundingClientRect(); mouseX = e.clientX - r.left; mouseY = e.clientY - r.top; };
+  cv.addEventListener('pointermove', setMouse);
+  cv.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    e.preventDefault(); setMouse(e); cv.setPointerCapture(e.pointerId);   // keeps firing when you drag past the edge
+    if (state === 'idle' || state === 'dead') { resize(); startGame(); }
+    else if (state === 'paused') togglePause();
+    mouseDown = true;
+  });
+  cv.addEventListener('pointerup', () => { mouseDown = false; });
+  cv.addEventListener('pointercancel', () => { mouseDown = false; });
+  cv.addEventListener('pointerleave', () => { if (!mouseDown) mouseX = mouseY = null; });
   const onBlur = () => { clearKeys(); if (state === 'playing') togglePause(); };   // leaving the window = pause
   document.addEventListener('keyup', onKey);
   window.addEventListener('blur', onBlur);

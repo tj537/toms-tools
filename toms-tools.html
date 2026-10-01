@@ -20869,12 +20869,23 @@ function neonArena(root, isVisible) {
   const mult = () => Math.min(5, 1 + Math.floor(combo / 6));
   let bulletCd=0, best=Store.get('arena-best',Store.get('brotato-best',0)), lastTime=0;
   let mouseX=null, mouseY=null, mouseDown=false;   // mouse: aim at the cursor, hold the left button to shoot
+  let useMouse=S.app('spielwiese','arenaAim')!=='keys';   // setting: shoot with the mouse or the arrow keys
+  // Glow sprites instead of shadowBlur – shadowBlur on every enemy/particle is what made it lag
+  const glows={};
+  function glow(c) {
+    if(glows[c]) return glows[c];
+    const c6=c.length===4?'#'+[...c.slice(1)].map(x=>x+x).join(''):c;   // '#fff' → '#ffffff' so alpha can be appended
+    const g=document.createElement('canvas'); g.width=g.height=64; const gx=g.getContext('2d');
+    const rg=gx.createRadialGradient(32,32,0,32,32,32); rg.addColorStop(0,c6); rg.addColorStop(.35,c6+'66'); rg.addColorStop(1,c6+'00');
+    gx.fillStyle=rg; gx.fillRect(0,0,64,64); return glows[c]=g;
+  }
+  let bgCv=null;   // background (gradient + grid) is drawn once per size
   const pauseBtn = h('button', { class: 'bt-pause', title: 'Pause (P)', tabindex: '-1', onmousedown: e => e.preventDefault(), onclick: () => togglePause() }, icon('pause'));
   root.appendChild(pauseBtn);
   let btnState = '';
   function syncBtn() {
     if (btnState === state) return; btnState = state;
-    cv.style.cursor = state === 'playing' ? 'none' : '';   // the crosshair replaces the cursor
+    cv.style.cursor = state === 'playing' && useMouse ? 'none' : '';   // the crosshair replaces the cursor
     pauseBtn.style.display = state === 'playing' || state === 'paused' ? '' : 'none';
     pauseBtn.replaceChildren(icon(state === 'paused' ? 'play' : 'pause'));
     pauseBtn.title = state === 'paused' ? 'Weiter (P)' : 'Pause (P)';
@@ -20887,7 +20898,8 @@ function neonArena(root, isVisible) {
   const say = text => { msg = { text, t: 1.8 }; };
 
   function resize() {   // draw in real screen pixels → sharp on high-resolution displays
-    const r=root.getBoundingClientRect(), dpr=window.devicePixelRatio||1;
+    const r=root.getBoundingClientRect(), dpr=Math.min(1.5,window.devicePixelRatio||1);   // capped: 4× the pixels on Retina isn't worth the lag
+    bgCv=null;
     W=r.width||600; H=r.height||400;
     cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
     cx.setTransform(dpr,0,0,dpr,0,0);
@@ -21006,9 +21018,10 @@ function neonArena(root, isVisible) {
 
     bulletCd-=dt;
     let sx=0,sy=0;
-    if(keys['arrowleft'])sx-=1; if(keys['arrowright'])sx+=1;
-    if(keys['arrowup'])sy-=1;   if(keys['arrowdown'])sy+=1;
-    if(!sx&&!sy&&mouseX!==null){   // no arrow keys → aim at the cursor, fire while the button is held
+    if(!useMouse){
+      if(keys['arrowleft'])sx-=1; if(keys['arrowright'])sx+=1;
+      if(keys['arrowup'])sy-=1;   if(keys['arrowdown'])sy+=1;
+    } else if(mouseX!==null){   // no arrow keys → aim at the cursor, fire while the button is held
       const mx=mouseX-px, my=mouseY-py, ml=Math.hypot(mx,my);
       if(ml>1){ aimX=mx/ml; aimY=my/ml; if(mouseDown){ sx=aimX; sy=aimY; } }
     }
@@ -21105,22 +21118,25 @@ function neonArena(root, isVisible) {
 
   function drawEnemy(e) {
     cx.save(); cx.translate(e.x,e.y);
-    cx.shadowColor=e.color; cx.shadowBlur=14; cx.fillStyle=e.color; cx.strokeStyle=e.color; cx.lineWidth=2.5;
+    const gs=e.r*(e.boss?3:2.4);   // glow sprite underneath instead of shadowBlur
+    cx.globalCompositeOperation='lighter'; cx.globalAlpha=.55; cx.drawImage(glow(e.color),-gs,-gs,gs*2,gs*2);
+    cx.globalCompositeOperation='source-over'; cx.globalAlpha=1;
+    cx.fillStyle=e.color; cx.strokeStyle=e.color; cx.lineWidth=2.5;
     if(e.shape==='boss'){
       // Hexagon with a pulsing core, rotates slowly
       const pulse=1+Math.sin(Date.now()*.008)*.06;
-      cx.shadowBlur=30; cx.rotate(e.spin);
+      cx.rotate(e.spin);
       cx.beginPath(); for(let k=0;k<6;k++){ const a=k/6*Math.PI*2; cx.lineTo(Math.cos(a)*e.r*pulse,Math.sin(a)*e.r*pulse); } cx.closePath();
       cx.fillStyle='rgba(255,51,102,.18)'; cx.fill(); cx.lineWidth=4; cx.stroke();
       cx.beginPath(); for(let k=0;k<6;k++){ const a=k/6*Math.PI*2+Math.PI/6; cx.lineTo(Math.cos(a)*e.r*.55,Math.sin(a)*e.r*.55); } cx.closePath(); cx.stroke();
-      cx.fillStyle='#ffb347'; cx.shadowColor='#ffb347'; cx.beginPath(); cx.arc(0,0,e.r*.22*pulse,0,Math.PI*2); cx.fill();
+      cx.fillStyle='#ffb347'; cx.beginPath(); cx.arc(0,0,e.r*.22*pulse,0,Math.PI*2); cx.fill();
       cx.restore(); return;
     }
     if(e.shape==='split'){   // Splitter: two connected halves that "twitch"
       const o=e.r*.38+Math.sin(Date.now()*.012)*1.5;
       cx.rotate(e.angle);
       for(const s of [-1,1]){ cx.beginPath(); cx.arc(0,s*o,e.r*.55,0,Math.PI*2); cx.fill(); }
-      cx.shadowBlur=0; cx.fillStyle='#0d1117'; cx.fillRect(-e.r*.6,-1.5,e.r*1.2,3);
+      cx.fillStyle='#0d1117'; cx.fillRect(-e.r*.6,-1.5,e.r*1.2,3);
       if(e.maxhp>1){ cx.rotate(-e.angle); const frac=e.hp/e.maxhp; cx.fillStyle='#333'; cx.fillRect(-e.r,-e.r-10,e.r*2,4); cx.fillStyle=e.color; cx.fillRect(-e.r,-e.r-10,e.r*2*frac,4); }
     } else if(e.shape==='tri'){
       cx.rotate(e.angle+Math.PI/2);
@@ -21129,7 +21145,7 @@ function neonArena(root, isVisible) {
       cx.beginPath(); cx.moveTo(0,-e.r); cx.lineTo(e.r*0.6,0); cx.lineTo(0,e.r); cx.lineTo(-e.r*0.6,0); cx.closePath(); cx.fill();
       if(e.maxhp>1){
         const frac=e.hp/e.maxhp;
-        cx.shadowBlur=0; cx.fillStyle='#333'; cx.fillRect(-e.r,-e.r-8,e.r*2,4);
+        cx.fillStyle='#333'; cx.fillRect(-e.r,-e.r-8,e.r*2,4);
         cx.fillStyle=e.color; cx.fillRect(-e.r,-e.r-8,e.r*2*frac,4);
       }
     } else {
@@ -21176,29 +21192,33 @@ function neonArena(root, isVisible) {
     cx.restore();
   }
   function drawScene() {
-    cx.clearRect(-20,-20,W+40,H+40);
-    const bg=cx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.7);   // soft glow in the middle, darker edges
-    bg.addColorStop(0,'#141b2d'); bg.addColorStop(1,'#07090f'); cx.fillStyle=bg; cx.fillRect(-20,-20,W+40,H+40);
-    cx.save(); cx.strokeStyle='rgba(120,160,255,0.05)'; cx.lineWidth=1;
-    for(let x=0;x<W;x+=40){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke();}
-    for(let y=0;y<H;y+=40){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke();}
-    cx.restore();
+    if(!bgCv){   // soft glow in the middle, darker edges, grid – rendered once per size
+      bgCv=document.createElement('canvas'); bgCv.width=W+40; bgCv.height=H+40; const b=bgCv.getContext('2d'); b.translate(20,20);
+      const bg=b.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.7);
+      bg.addColorStop(0,'#141b2d'); bg.addColorStop(1,'#07090f'); b.fillStyle=bg; b.fillRect(-20,-20,W+40,H+40);
+      b.strokeStyle='rgba(120,160,255,0.05)'; b.lineWidth=1; b.beginPath();
+      for(let x=0;x<W;x+=40){b.moveTo(x+.5,0);b.lineTo(x+.5,H);}
+      for(let y=0;y<H;y+=40){b.moveTo(0,y+.5);b.lineTo(W,y+.5);}
+      b.stroke();
+    }
+    cx.drawImage(bgCv,-20,-20);
 
     if(state==='idle'){
       cx.textAlign='center';
       drawText('NEON-ARENA',W/2,H/2-48,32,'rgba(255,255,255,0.9)','center');
-      drawText('WASD: Bewegen  ·  Pfeiltasten oder Maus: Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause',W/2,H/2-12,15,'rgba(255,255,255,0.5)','center');
+      drawText('WASD: Bewegen  ·  '+(useMouse?'Maus':'Pfeiltasten')+': Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause',W/2,H/2-12,15,'rgba(255,255,255,0.5)','center');
       drawText('Power-ups:  ♥ Leben   ⚡ Dauerfeuer   ● Bombe  ·  schnelle Kills = Combo bis ×5',W/2,H/2+96,13,'rgba(255,255,255,0.32)','center');
       drawText('LEERTASTE, ENTER oder Klick zum Starten',W/2,H/2+24,18,'#44ffaa','center');
       if(best>0) drawText('Bester Score: '+best,W/2,H/2+58,14,'rgba(255,255,255,0.3)','center');
       cx.textAlign='left'; return;
     }
 
+    cx.save(); cx.globalCompositeOperation='lighter';   // particles: glow sprite, additive – no shadowBlur
     for(const p of particles){
-      const alpha=1-p.age/p.life;
-      cx.save(); cx.globalAlpha=alpha; cx.fillStyle=p.color; cx.shadowColor=p.color; cx.shadowBlur=8;
-      cx.beginPath(); cx.arc(p.x,p.y,p.r*(1-p.age/p.life*0.5),0,Math.PI*2); cx.fill(); cx.restore();
+      const k=1-p.age/p.life, s=p.r*(1-(1-k)*0.5)*3.2;
+      cx.globalAlpha=k; cx.drawImage(glow(p.color),p.x-s,p.y-s,s*2,s*2);
     }
+    cx.restore();
 
     cx.save(); cx.strokeStyle='#ffe066'; cx.shadowColor='#ffb347'; cx.shadowBlur=12; cx.lineCap='round'; cx.lineWidth=BULLET_R*1.4;   // bullets as short laser streaks
     cx.beginPath(); for(const b of bullets){ cx.moveTo(b.x,b.y); cx.lineTo(b.x-b.vx*.028,b.y-b.vy*.028); } cx.stroke();
@@ -21240,7 +21260,7 @@ function neonArena(root, isVisible) {
     if(state==='playing'||state==='paused'){
       const flicker=iframes>0&&Math.floor(iframes*10)%2===0;
       if(!flicker) drawShip();
-      if(mouseX!==null&&state==='playing'){   // crosshair
+      if(useMouse&&mouseX!==null&&state==='playing'){   // crosshair
         cx.save(); cx.strokeStyle=mouseDown?'#ffe066':'rgba(255,255,255,0.75)'; cx.lineWidth=2; cx.shadowColor=cx.strokeStyle; cx.shadowBlur=8;
         cx.beginPath(); cx.arc(mouseX,mouseY,9,0,Math.PI*2);
         for(const [a,b] of [[1,0],[-1,0],[0,1],[0,-1]]){ cx.moveTo(mouseX+a*5,mouseY+b*5); cx.lineTo(mouseX+a*14,mouseY+b*14); }
@@ -21314,6 +21334,8 @@ function neonArena(root, isVisible) {
     if(isVisible && !isVisible()){ raf=0; return; }   // stop completely in the background – resume() restarts when coming back
     raf=requestAnimationFrame(loop);
     const dt=Math.min((ts-lastTime)/1000,0.05); lastTime=ts;
+    const um=S.app('spielwiese','arenaAim')!=='keys';   // setting can change while the game is open
+    if(um!==useMouse){ useMouse=um; btnState=''; }
     update(dt); draw();
   }
 
@@ -21820,6 +21842,7 @@ TT.register({
   tagline: 'Kleine Spiele für zwischendurch',
   desc: 'Kleine Spiele für zwischendurch – Tippen, Reaktion und mehr.',
   settings: [
+    { key: 'arenaAim', label: 'Neon-Arena: Schießen', type: 'seg', opts: [['mouse', '🖱 Maus'], ['keys', '← ↑ ↓ →']], default: 'mouse' },
     { key: 'reset', label: 'Rekorde zurücksetzen', desc: 'Bestwerte aller Spiele löschen (Neon-Arena, Ausweichen, Reaktion, Kreis, Tippen)', type: 'action', button: 'Zurücksetzen', done: 'Erledigt ✓', confirm: true,
       run: () => {
         localStorage.removeItem('tt:arena-best'); localStorage.removeItem('tt:brotato-best');

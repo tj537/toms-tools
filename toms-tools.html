@@ -3791,6 +3791,88 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Karteiwerk
+  'Rückgängig': 'Undo', 'Abbrechen': 'Cancel', 'Importieren': 'Import', 'Keine Karten erkannt.': 'No cards found.', 'Karten kopiert · Anki, Quizlet …': 'Cards copied · Anki, Quizlet …',
+  'Karten kopiert.': 'Cards copied.', 'Kopieren hat nicht geklappt.': 'Copying didn’t work.', 'Ohne Namen': 'Untitled', 'Heute fällig': 'Due today', 'Für heute alles gelernt': 'All done for today',
+  'Noch keine Stapel.': 'No decks yet.', 'Name des Stapels': 'Deck name', 'Farbe': 'Color', 'Mehr': 'More', 'Karten importieren': 'Import cards', 'Als Text kopieren': 'Copy as text',
+  'Tab-getrennt, für Anki & Quizlet': 'Tab-separated, for Anki & Quizlet', 'Als Datei speichern': 'Save as file', 'Lernstand zurücksetzen': 'Reset progress', 'Stapel löschen': 'Delete deck',
+  'Lernstand zurücksetzen?': 'Reset progress?',
+  'Alle Karten dieses Stapels kommen wieder ins Fach „Neu“. Die Karten selbst bleiben erhalten.': 'All cards in this deck go back to “New”. The cards themselves are kept.', 'Vorderseite': 'Front',
+  'Rückseite': 'Back', 'Bitte Vorder- und Rückseite ausfüllen.': 'Please fill in the front and back.', 'Karten durchsuchen …': 'Search cards …', 'Karte löschen': 'Delete card',
+  'Karte gelöscht': 'Card deleted', 'Keine Treffer.': 'No matches.', 'Noch keine Karten – oben die erste anlegen oder über ⋮ importieren.': 'No cards yet – add the first one above or import via ⋮.',
+  'Karten': 'Cards', 'heute fällig': 'due today', 'sitzen sicher': 'mastered', 'Zufällig – Fächer bleiben': 'Random order – boxes stay as they are', 'Alle üben': 'Practice all',
+  'Rückseite zuerst': 'Back first', 'Neue Karte': 'New card', 'Strg + Enter': 'Ctrl + Enter', 'Karte hinzufügen': 'Add card', 'Viele auf einmal importieren': 'Import many at once',
+  'So funktioniert’s: Neue Karten starten im Fach „Neu“. Gewusst → ein Fach weiter und erst später wieder dran (1, 3, 7, 14, 30 Tage). Nicht gewusst → zurück in Fach 1. So übst du genau das, was noch nicht sitzt.': 'How it works: new cards start in “New”. Got it → one box up and back later (1, 3, 7, 14, 30 days). Didn’t know → back to box 1. That way you practice exactly what you don’t know yet.',
+  'Klicken oder Leertaste zum Umdrehen': 'Click or press Space to flip', 'Antwort zeigen': 'Show answer', 'Leertaste': 'Space', 'Beenden': 'Stop', 'Runde geschafft!': 'Round complete!',
+  'gewusst': 'knew it', 'schwer': 'hard', 'nochmal': 'again', 'Zurück zum Kartenstapel': 'Back to the deck', 
+  'Karteikarten für jedes Thema – du übst vor allem, was noch nicht sitzt.': 'Flashcards for any topic – you mainly practice what you don’t know yet.', 'Neuer Stapel': 'New deck',
+  'Beispiel-Stapel': 'Sample deck', 'heute': 'today', 'morgen': 'tomorrow', 'in {n} Tagen': 'in {n} days', '1 Karte': '1 card', '{n} Karten': '{n} cards',
+  'Stapel „{n}“ gelöscht': 'Deleted deck “{n}”', '{c} erkannt': '{c} found', '1 Zeile ohne Trennzeichen übersprungen': '1 line without a separator skipped',
+  '{n} Zeilen ohne Trennzeichen übersprungen': '{n} lines without a separator skipped',
+  'Eine Karte pro Zeile. Vorder- und Rückseite mit Semikolon ; oder Tab trennen (Export aus Excel, Anki und Quizlet passt direkt).': 'One card per line. Separate front and back with a semicolon ; or a tab (exports from Excel, Anki and Quizlet work as is).',
+  'in „{n}“': 'into “{n}”', '{c} importiert': '{c} imported', '{n} doppelte übersprungen': '{n} duplicates skipped', '1 Tag in Folge': '1 day in a row', '{n} Tage in Folge': '{n} days in a row',
+  'Heute schon gelernt?': 'Studied today?', 'Heute {c} gelernt': 'Studied {c} today', 'Jede Karte zählt': 'Every card counts', 'Karteikarten': 'Flashcards', 'Zurücksetzen': 'Reset', 'Neu': 'New',
+  'Fach {n}': 'Box {n}', 'Wieder dran: {d}': 'Next up: {d}', 'Noch nicht gelernt': 'Not learned yet', 'Lernen · {n} fällig': 'Study · {n} due', 'weiter {d}': 'next {d}',
+  'Leg ein paar Karten an, dann kann’s losgehen.': 'Add a few cards and you’re ready to go.', 'Alle Karten ({n})': 'All cards ({n})', 'Lernen': 'Study', 'Üben': 'Practice', 'neue Karte': 'new card',
+  '{c} durchgearbeitet.': 'Worked through {c}.', 'Schwierige nochmal üben ({n})': 'Practice the hard ones again ({n})', 'Marketing-Grundbegriffe': 'Marketing basics', 'Nochmal': 'Again',
+  'gleich noch mal': 'right away', 'Schwer': 'Hard', 'Gewusst': 'Got it', 'Nicht gewusst': 'Didn’t know', 'kommt gleich wieder': 'comes back soon', 'weiter': 'next',
+  // Diagrammwerk
+  'PNG gespeichert': 'PNG saved', 'PNG-Export hat nicht geklappt.': 'PNG export didn’t work.', 'SVG gespeichert': 'SVG saved', 'Bild kopiert ✓': 'Image copied ✓',
+  'Kopieren geht in diesem Browser nicht – nimm „PNG“.': 'Copying doesn’t work in this browser – use “PNG”.', 'Aus Excel einfügen': 'Paste from Excel',
+  'Ersetzt die aktuellen Daten': 'Replaces the current data', 'Abbrechen': 'Cancel', 'Übernehmen': 'Apply', 'Keine Tabelle erkannt.': 'No table found.', 'Ohne Titel': 'Untitled',
+  'Diagramm löschen': 'Delete chart', 'Noch keine Diagramme.': 'No charts yet.', 'Rückgängig': 'Undo', 'Beschriftung': 'Label', 'Datenreihe entfernen': 'Remove series',
+  'Zeile entfernen': 'Remove row', 'Daten': 'Data', 'Zeile': 'Row', 'Maximal 8 Datenreihen.': 'At most 8 series.', 'Datenreihe': 'Series',
+  'Das Kreisdiagramm zeigt nur die erste Datenreihe.': 'The donut chart only shows the first series.', 'z. B. Konzept': 'e.g. Concept', 'Aufgabe entfernen': 'Remove task', 'Aufgaben': 'Tasks',
+  'Heute-Linie': 'Today line', 'Aufgabe': 'Task',
+  'Gleiche Gruppe = gleiche Farbe. Eine Aufgabe über einen Tag: Start und Ende gleich. Wochenenden sind grau hinterlegt.': 'Same group = same color. For a one-day task, use the same start and end. Weekends are shaded grey.',
+  'Titel des Diagramms': 'Chart title', 'Untertitel (optional)': 'Subtitle (optional)', 'z. B. €, %': 'e.g. $, %', 'Kopieren': 'Copy', 'Vektor': 'Vector', 'Einheit': 'Unit',
+  'Dunkler Hintergrund': 'Dark background',
+  'Diagrammart wählen, Beispieldaten überschreiben oder aus Excel einfügen · PNG, SVG, 📋': 'Pick a chart type, overwrite the sample data or paste from Excel · PNG, SVG, 📋',
+  'Neues Diagramm': 'New chart', 'Säulen': 'Columns', 'Balken': 'Bars', 'Gestapelt': 'Stacked', 'Linie': 'Line', 'Ring': 'Donut', 'Zeitplan': 'Timeline', 'Diagramm': 'Chart',
+  'Umsatz nach Quartal': 'Sales by quarter', 'in Tausend Euro': 'in thousand euros', 'T€': 'k€', 'Wo erreichen wir unsere Zielgruppe?': 'Where do we reach our audience?',
+  'Anteil der Befragten in %': 'Share of respondents in %', 'E-Mail-Newsletter': 'Email newsletter', 'Anteil': 'Share', 'Website-Besuche nach Quelle': 'Website visits by source',
+  'in Tausend': 'in thousands', 'T (Tausend)': 'k', 'Organisch': 'Organic', 'Bezahlt': 'Paid', 'Follower-Entwicklung': 'Follower growth', 'Januar bis Juni': 'January to June',
+  'Aufteilung Marketing-Budget': 'Marketing budget split', 'Suchmaschine': 'Search', 'Projektplan': 'Project plan', 'Wer macht was wann?': 'Who does what, when?', 'Recherche': 'Research',
+  'Vorbereitung': 'Preparation', 'Konzept': 'Concept', 'Umsetzung': 'Execution', 'Feedback-Runde': 'Feedback round', 'Präsentation': 'Presentation', 'Abschluss': 'Wrap-up', 'Reihe {n}': 'Series {n}',
+  'Trag unten Daten ein, dann erscheint hier das Diagramm.': 'Enter data below and the chart appears here.', 'Noch keine Zahlen eingetragen.': 'No numbers entered yet.',
+  'Noch keine positiven Zahlen eingetragen.': 'No positive numbers entered yet.', 'gesamt': 'total', 'Trag unten Aufgaben mit Start und Ende ein.': 'Enter tasks with a start and end below.',
+  'Ohne Gruppe': 'No group', 'Tage': 'days', 'Heute': 'Today', '{r} Zeilen · 1 Datenreihe ({n})': '{r} rows · 1 series ({n})',
+  '{r} Zeilen · {s} Datenreihen ({n})': '{r} rows · {s} series ({n})',
+  'Zellen in Excel markieren, kopieren und hier einfügen. Erste Spalte = Beschriftung, erste Zeile = Namen der Datenreihen.': 'Select cells in Excel, copy them and paste here. First column = labels, first row = series names.',
+  '„{n}“ gelöscht': 'Deleted “{n}”', 'Gruppe / Phase': 'Group / phase', 'Ende': 'End', 'Endwerte zeigen': 'Show end values', 'Werte in der Legende': 'Values in legend', 'Werte zeigen': 'Show values',
+  'Willkommen im Diagrammwerk': 'Welcome to Diagrammwerk', 'Werte vergleichen, z. B. Umsatz pro Quartal.': 'Compare values, e.g. sales per quarter.',
+  'Ranglisten und lange Beschriftungen.': 'Rankings and long labels.', 'Zusammensetzung pro Kategorie.': 'Composition per category.', 'Entwicklung über die Zeit.': 'Change over time.',
+  'Anteile an einem Ganzen – am besten bis 6 Teile.': 'Parts of a whole – best with up to 6 parts.', 'Zeitplan: Mo–Di Recherche, Di–Do Konzept …': 'Timeline: Mon–Tue research, Tue–Thu concept …',
+  // Codewerk
+  'Kopieren hat nicht geklappt.': 'Copying didn’t work.', 'Kopieren': 'Copy', 'JSON hier einfügen …': 'Paste JSON here …', 'Ergebnis': 'Result',
+  'Einfügen – das Ergebnis erscheint rechts. Fehler werden mit Zeile und Spalte angezeigt.': 'Paste something – the result appears on the right. Errors show line and column.',
+  'JSON formatieren & prüfen': 'Format & validate JSON', 'Formatiert': 'Pretty', 'Minimiert': 'Minified', 'Sortiert': 'Sorted', 'Eingabe leeren': 'Clear input', 'Testtext …': 'Test text …',
+  'Abgebrochen – der Ausdruck ist zu aufwendig (oft durch verschachtelte Wiederholungen wie (a+)+).': 'Stopped – the expression is too expensive (often due to nested repetition like (a+)+).',
+  'Muster eingeben – Treffer werden im Text markiert.': 'Enter a pattern – matches get highlighted in the text.',
+  'Ohne Flag g wird nur der erste Treffer gesucht und ersetzt.': 'Without the g flag only the first match is found and replaced.', 'Position im Text': 'Position in the text', '(leer)': '(empty)',
+  'Keine Treffer.': 'No matches.', 'Regex testen': 'Test regex', 'Schnellmuster einsetzen': 'Insert a quick pattern', 'Schnellmuster …': 'Quick patterns …', 'Testtext': 'Test text',
+  'Treffer': 'Matches', 'Ersetzen': 'Replace', 'Gültiges Base64': 'Valid Base64',
+  'Kein gültiges Base64 – oder es steckt kein Text drin, sondern Binärdaten.': 'Not valid Base64 – or it contains binary data rather than text.', 'URL-sicher': 'URL-safe',
+  'Normaler Text oder ganze URL …': 'Plain text or a full URL …', 'Kodiert, z. B. Hallo%20Welt …': 'Encoded, e.g. Hello%20World …', 'Kodiert für URLs & Formulare': 'Encoded for URLs & forms',
+  'Oben Klartext oder unten kodierten Text eingeben.': 'Enter plain text above or encoded text below.', 'Dekodiert': 'Decoded',
+  'Ungültige Kodierung (z. B. ein einzelnes „%" ohne zwei Hex-Ziffern dahinter).': 'Invalid encoding (e.g. a lone “%” without two hex digits after it).', 'URL kodieren': 'URL encoding',
+  'Klartext': 'Plain text', 'Kodiert': 'Encoded', 'Text zum Hashen …': 'Text to hash …', 'Wird nicht gespeichert – Passwörter bleiben hier.': 'Not saved – passwords stay here.',
+  'UUIDs erzeugen': 'Generate UUIDs', 'Neu': 'New', 'GROSS': 'UPPER', 'Bindestriche': 'Hyphens', 'Das habe ich nicht als Zeit erkannt.': 'That doesn’t look like a time.',
+  'Zahlen ab 12 Stellen werden als Millisekunden gelesen, kürzere als Sekunden.': 'Numbers with 12+ digits are read as milliseconds, shorter ones as seconds.', 'Zeitstempel': 'Timestamp',
+  'Jetzt': 'Now', 'Zahlensysteme': 'Number systems', 'eyJhbGciOi… (Token einfügen)': 'eyJhbGciOi… (paste token)',
+  'Die Signatur wird nicht geprüft – nur gelesen. Wird nicht gespeichert.': 'The signature isn’t verified – only read. Not saved.', 'Kein Ablaufdatum (exp) enthalten': 'No expiry (exp) included',
+  'Kein gültiges JWT – erwartet werden drei Teile, getrennt durch Punkte.': 'Not a valid JWT – expected three parts separated by dots.', 'JWT lesen': 'Read JWT',
+  'Liste mit {n} Einträgen': 'List with {n} entries', 'Objekt mit {n} Schlüsseln': 'Object with {n} keys', 'Einzelwert ({t})': 'Single value ({t})', 'Gültiges JSON': 'Valid JSON',
+  'Zeile {l}, Spalte {c}: {m} – klicken zum Hinspringen': 'Line {l}, column {c}: {m} – click to jump there', 'Ungültiger Ausdruck: ': 'Invalid expression: ', '1 Treffer': '1 match',
+  '{n} Treffer': '{n} matches', 'Datum': 'Date', 'PLZ': 'ZIP code', 'Zahl': 'Number', 'Hex-Farbe': 'Hex color', 'Doppelte Wörter': 'Repeated words',
+  '{a} Zeichen → {b} Zeichen Base64': '{a} characters → {b} characters of Base64',
+  'Oben Text oder unten Base64 eingeben – die andere Seite füllt sich.': 'Enter text above or Base64 below – the other side fills in.', 'Pfad': 'Path', 'Lokal': 'Local', 'Relativ': 'Relative',
+  'Dezimal': 'Decimal', 'Binär': 'Binary', 'Oktal': 'Octal', 'Ungültige Ziffer für {b}.': 'Invalid digit for {b}.', 'Algorithmus {a}': 'Algorithm {a}', 'ausgestellt {t}': 'issued {t}',
+  'abgelaufen {t}': 'expired {t}', 'läuft ab {t}': 'expires {t}', 'Ziffer': 'digit', 'Buchstabe, Ziffer, _': 'letter, digit, _', 'Leerraum': 'whitespace', 'beliebiges Zeichen': 'any character',
+  'eins davon': 'one of these', 'keins davon': 'none of these', '0 oder mehr': '0 or more', '1 oder mehr': '1 or more', '0 oder 1': '0 or 1', '2 bis 4 mal': '2 to 4 times',
+  'Anfang / Ende': 'start / end', 'Wortgrenze': 'word boundary', 'Gruppe → $1': 'group → $1', 'benannte Gruppe': 'named group', 'a oder b': 'a or b', 'echter Punkt': 'literal dot',
+  'Alle Treffer (global)': 'All matches (global)', 'Groß-/Kleinschreibung egal': 'Ignore case', '^ und $ gelten pro Zeile': '^ and $ match per line',
+  'Punkt passt auch auf Zeilenumbrüche': 'Dot also matches line breaks', 'Unicode (z. B. Emojis, \\p{L})': 'Unicode (e.g. emojis, \\p{L})',
   // Laberwerk (2)
   'Text hier eingeben oder einfügen …': 'Type or paste text here …', 'Doppelklick: zurücksetzen': 'Double-click to reset',
   // Laberwerk
@@ -4284,7 +4366,7 @@ const EN = {
   'Bilder & Dateien': 'Images & Files', 'Design & Grafik': 'Design & Graphics', 'Text, Präsentation & Sprache': 'Text, Presentation & Speech',
   '{n} ausgeblendet – in den Einstellungen unter „Apps“ einblenden': '{n} hidden – show them again in Settings under “Apps”', '{n} Apps': '{n} apps', 'Organisation & Planung': 'Organization & Planning', 'Spaß & Musik': 'Fun & Music', 'Business & Lernen': 'Business & Learning', 'Weitere': 'More',
   // Welcome dialog
-  'Willkommen bei Toms Tools 👋': 'Welcome to Toms Tools 👋', 'Wie dürfen wir dich nennen?': 'What should we call you?',
+  'Willkommen bei Toms Tools 👋': 'Welcome to Toms Tools 👋', 'Wie dürfen wir dich nennen?': 'What should we call you?', 'Deine Farbe': 'Your color',
   'Dein Name erscheint in der Begrüßung auf der Startseite.': 'Your name shows up in the greeting on the home page.',
   'Dein Name': 'Your name', 'Überspringen': 'Skip', 'Los geht’s': 'Let’s go',
   // App names (the "-werk" names are brand names and stay)
@@ -15145,7 +15227,8 @@ TT.register({
 /* ================= Codewerk (developer helpers, all on one page) ================= */
 function mountCodewerk(view) {
   // Hash and JWT inputs are deliberately NOT saved (often passwords/tokens – they must not end up in the backup)
-  const RX_DEFAULT = { src: '(\\w+)@(\\w+)\\.de', flags: 'g', text: 'Schreib an tom@beispiel.de oder info@firma.de – der Termin ist am 26.09.2026.', repl: '$1 bei $2' };
+  const RX_DEFAULT = isEN() ? { src: '(\\w+)@(\\w+)\\.com', flags: 'g', text: 'Write to tom@example.com or info@company.com – the meeting is on 09/26/2026.', repl: '$1 at $2' }
+    : { src: '(\\w+)@(\\w+)\\.de', flags: 'g', text: 'Schreib an tom@beispiel.de oder info@firma.de – der Termin ist am 26.09.2026.', repl: '$1 bei $2' };
   const st = { json: '', b64: '', url: '', ts: '', num: '255', ...Store.get('codewerk', {}) };
   st.rx = { ...RX_DEFAULT, ...(st.rx || {}) };
   const persist = saveLater(() => Store.set('codewerk', { json: st.json.length < 200000 ? st.json : '', b64: st.b64, url: st.url, ts: st.ts, num: st.num,
@@ -15160,9 +15243,9 @@ function mountCodewerk(view) {
     let ok = false; try { ok = document.execCommand('copy'); } catch {}
     t.remove();
     const done = () => { if (!btn) return; btn.classList.add('done'); btn.replaceChildren(icon('check')); setTimeout(() => { btn.classList.remove('done'); btn.replaceChildren(icon('copy')); }, 1200); };
-    if (ok) done(); else navigator.clipboard?.writeText(txt).then(done, () => toast('Kopieren hat nicht geklappt.', 'err'));
+    if (ok) done(); else navigator.clipboard?.writeText(txt).then(done, () => toast(T('Kopieren hat nicht geklappt.'), 'err'));
   }
-  const copyBtn = get => { const b = h('button', { class: 'cw-copy', title: 'Kopieren', onclick: () => copy(get(), b) }, icon('copy')); return b; };
+  const copyBtn = get => { const b = h('button', { class: 'cw-copy', title: T('Kopieren'), onclick: () => copy(get(), b) }, icon('copy')); return b; };
   const card = (ico, title, acts, ...body) => h('section', { class: 'cw-card' },
     h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon(ico)), h('h3', null, title), acts ? h('div', { class: 'cw-acts' }, acts) : null), ...body);
   const area = (ph, val, oninput, rows = 3) => { const t = h('textarea', { class: 'cw-ta', placeholder: ph, rows, spellcheck: false, autocomplete: 'off', oninput }); t.value = val; return t; };
@@ -15174,37 +15257,37 @@ function mountCodewerk(view) {
   };
   const status = () => h('div', { class: 'cw-status' });
   const say = (el, kind, text) => { el.className = 'cw-status' + (kind ? ' ' + kind : ''); el.replaceChildren(...(text ? [...(kind === 'ok' ? [icon('check')] : kind === 'err' ? [icon('alert')] : []), text] : [])); };
-  const fmtN = n => n.toLocaleString('de-DE');
+  const fmtN = n => n.toLocaleString(isEN() ? 'en-US' : 'de-DE');
 
   /* ---------- 1. JSON ---------- */
   let jMode = 'pretty', jErrPos = -1;
-  const jIn = area('JSON hier einfügen …', st.json, () => { st.json = jIn.value; persist(); jRun(); }, 14);
-  const jOut = h('textarea', { class: 'cw-ta', readOnly: true, rows: 14, spellcheck: false, placeholder: 'Ergebnis' });
+  const jIn = area(T('JSON hier einfügen …'), st.json, () => { st.json = jIn.value; persist(); jRun(); }, 14);
+  const jOut = h('textarea', { class: 'cw-ta', readOnly: true, rows: 14, spellcheck: false, placeholder: T('Ergebnis') });
   const jStat = h('div', { class: 'cw-status', onclick: () => { if (jErrPos >= 0) { jIn.focus(); jIn.setSelectionRange(jErrPos, jErrPos + 1); } } });
   const sortKeys = v => Array.isArray(v) ? v.map(sortKeys) : v && typeof v === 'object' ? Object.fromEntries(Object.keys(v).sort((a, b) => a.localeCompare(b)).map(k => [k, sortKeys(v[k])])) : v;
-  const describe = v => Array.isArray(v) ? `Liste mit ${fmtN(v.length)} Einträgen` : v && typeof v === 'object' ? `Objekt mit ${fmtN(Object.keys(v).length)} Schlüsseln` : `Einzelwert (${v === null ? 'null' : typeof v})`;
+  const describe = v => Array.isArray(v) ? T('Liste mit {n} Einträgen', { n: fmtN(v.length) }) : v && typeof v === 'object' ? T('Objekt mit {n} Schlüsseln', { n: fmtN(Object.keys(v).length) }) : T('Einzelwert ({t})', { t: v === null ? 'null' : typeof v });
   function jRun() {
     const raw = jIn.value; jErrPos = -1; jStat.classList.remove('link');
-    if (!raw.trim()) { jOut.value = ''; say(jStat, '', 'Einfügen – das Ergebnis erscheint rechts. Fehler werden mit Zeile und Spalte angezeigt.'); return; }
+    if (!raw.trim()) { jOut.value = ''; say(jStat, '', T('Einfügen – das Ergebnis erscheint rechts. Fehler werden mit Zeile und Spalte angezeigt.')); return; }
     try {
       const v = JSON.parse(raw);
       jOut.value = jMode === 'min' ? JSON.stringify(v) : JSON.stringify(jMode === 'sort' ? sortKeys(v) : v, null, 2);
-      say(jStat, 'ok', `Gültiges JSON · ${describe(v)} · ${fmtSize(new Blob([jOut.value]).size)}`);
+      say(jStat, 'ok', `${T('Gültiges JSON')} · ${describe(v)} · ${fmtSize(new Blob([jOut.value]).size)}`);
     } catch (e) {
       jOut.value = '';
       let line = 0, col = 0, m = e.message.match(/line (\d+) column (\d+)/);
       if (m) { line = +m[1]; col = +m[2]; jErrPos = raw.split('\n').slice(0, line - 1).reduce((n, l) => n + l.length + 1, 0) + col - 1; }
       else if ((m = e.message.match(/position (\d+)/))) { jErrPos = +m[1]; line = raw.slice(0, jErrPos).split('\n').length; col = jErrPos - raw.lastIndexOf('\n', jErrPos - 1); }
       const msg = e.message.replace(/^JSON\.parse:\s*/, '').replace(/\s*\(line \d+ column \d+\)/, '').replace(/ in JSON at position \d+.*$/, '').replace(/, "[\s\S]*$/, '');
-      say(jStat, 'err', line ? `Zeile ${line}, Spalte ${col}: ${msg} – klicken zum Hinspringen` : msg);
+      say(jStat, 'err', line ? T('Zeile {l}, Spalte {c}: {m} – klicken zum Hinspringen', { l: line, c: col, m: msg }) : msg);
       if (line) jStat.classList.add('link');
     }
   }
   const jCard = h('section', { class: 'cw-card cw-wide' },
-    h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('braces')), h('h3', null, 'JSON formatieren & prüfen'),
+    h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('braces')), h('h3', null, T('JSON formatieren & prüfen')),
       h('div', { class: 'cw-acts' },
-        segEl([['pretty', 'Formatiert'], ['min', 'Minimiert'], ['sort', 'Sortiert']], jMode, v => { jMode = v; jRun(); }),
-        h('button', { class: 'btn sm ghost', title: 'Eingabe leeren', onclick: () => { jIn.value = ''; st.json = ''; persist(); jRun(); } }, icon('trash')),
+        segEl([['pretty', T('Formatiert')], ['min', T('Minimiert')], ['sort', T('Sortiert')]], jMode, v => { jMode = v; jRun(); }),
+        h('button', { class: 'btn sm ghost', title: T('Eingabe leeren'), onclick: () => { jIn.value = ''; st.json = ''; persist(); jRun(); } }, icon('trash')),
         copyBtn(() => jOut.value))),
     h('div', { class: 'cw-json' }, jIn, jOut), jStat);
 
@@ -15234,12 +15317,12 @@ function mountCodewerk(view) {
   let rxFlags = st.rx.flags;
   const rxSrc = h('input', { class: 'cw-rx-in', spellcheck: false, autocomplete: 'off', placeholder: '\\d{5}', value: st.rx.src, oninput: () => { st.rx.src = rxSrc.value; persist(); rxQueue(); } });
   const rxHl = h('div', { class: 'cw-rx-hl', 'aria-hidden': 'true' });
-  const rxText = h('textarea', { class: 'cw-ta', spellcheck: false, placeholder: 'Testtext …', oninput: () => { st.rx.text = rxText.value; persist(); rxQueue(); }, onscroll: () => { rxHl.scrollTop = rxText.scrollTop; } });
+  const rxText = h('textarea', { class: 'cw-ta', spellcheck: false, placeholder: T('Testtext …'), oninput: () => { st.rx.text = rxText.value; persist(); rxQueue(); }, onscroll: () => { rxHl.scrollTop = rxText.scrollTop; } });
   rxText.value = st.rx.text;
   const rxRepl = h('input', { class: 'inp mono', spellcheck: false, autocomplete: 'off', placeholder: '→ $1, $2, $<name> …', value: st.rx.repl, oninput: () => { st.rx.repl = rxRepl.value; persist(); rxQueue(); } });
-  const rxOut = h('textarea', { class: 'cw-ta', readOnly: true, rows: 3, spellcheck: false, placeholder: 'Ergebnis' });
+  const rxOut = h('textarea', { class: 'cw-ta', readOnly: true, rows: 3, spellcheck: false, placeholder: T('Ergebnis') });
   const rxStat = status(), rxCount = h('span', { class: 'cw-rx-count' }), rxList = h('div', { class: 'cw-rx-list' });
-  const FLAGS = [['g', 'Alle Treffer (global)'], ['i', 'Groß-/Kleinschreibung egal'], ['m', '^ und $ gelten pro Zeile'], ['s', 'Punkt passt auch auf Zeilenumbrüche'], ['u', 'Unicode (z. B. Emojis, \\p{L})']];
+  const FLAGS = [['g', T('Alle Treffer (global)')], ['i', T('Groß-/Kleinschreibung egal')], ['m', T('^ und $ gelten pro Zeile')], ['s', T('Punkt passt auch auf Zeilenumbrüche')], ['u', T('Unicode (z. B. Emojis, \\p{L})')]];
   const rxFlagEl = h('div', { class: 'cw-flags' });
   const paintFlags = () => rxFlagEl.replaceChildren(...FLAGS.map(([f, t]) => h('button', { class: 'cw-flag' + (rxFlags.includes(f) ? ' on' : ''), title: t,
     onclick: () => { rxFlags = rxFlags.includes(f) ? rxFlags.replace(f, '') : [...'gimsuy'].filter(x => x === f || rxFlags.includes(x)).join(''); st.rx.flags = rxFlags; persist(); paintFlags(); rxQueue(); } }, f)));
@@ -15261,7 +15344,7 @@ function mountCodewerk(view) {
     const text = rxText.value;
     if (r.err || r.timeout) {
       rxHl.replaceChildren(text + '\n'); rxList.replaceChildren(); rxOut.value = ''; rxCount.textContent = '';
-      say(rxStat, 'err', r.timeout ? 'Abgebrochen – der Ausdruck ist zu aufwendig (oft durch verschachtelte Wiederholungen wie (a+)+).' : 'Ungültiger Ausdruck: ' + r.err.replace(/^Invalid regular expression: \/.*\/[a-z]*: /, ''));
+      say(rxStat, 'err', r.timeout ? T('Abgebrochen – der Ausdruck ist zu aufwendig (oft durch verschachtelte Wiederholungen wie (a+)+).') : T('Ungültiger Ausdruck: ') + r.err.replace(/^Invalid regular expression: \/.*\/[a-z]*: /, ''));
       return;
     }
     // highlights behind the text field
@@ -15270,31 +15353,31 @@ function mountCodewerk(view) {
     parts.push(text.slice(p) + '\n');
     rxHl.replaceChildren(...parts); rxHl.scrollTop = rxText.scrollTop;
     const n = r.matches.length;
-    rxCount.textContent = r.empty ? '' : n === 1 ? '1 Treffer' : `${fmtN(n)}${r.capped ? '+' : ''} Treffer`;
+    rxCount.textContent = r.empty ? '' : n === 1 ? T('1 Treffer') : T('{n} Treffer', { n: fmtN(n) + (r.capped ? '+' : '') });
     rxCount.classList.toggle('zero', !r.empty && !n);
-    say(rxStat, '', r.empty ? 'Muster eingeben – Treffer werden im Text markiert.' : n && !rxFlags.includes('g') ? 'Ohne Flag g wird nur der erste Treffer gesucht und ersetzt.' : '');
+    say(rxStat, '', r.empty ? T('Muster eingeben – Treffer werden im Text markiert.') : n && !rxFlags.includes('g') ? T('Ohne Flag g wird nur der erste Treffer gesucht und ersetzt.') : '');
     rxList.replaceChildren(...r.matches.slice(0, 200).map((m, k) => h('div', { class: 'cw-rx-item' },
-      h('span', { class: 'cw-rx-no' }, '#' + (k + 1)), h('span', { class: 'cw-rx-pos', title: 'Position im Text' }, 'Pos. ' + m.i),
-      h('code', { class: 'cw-rx-val' }, m.v === '' ? '(leer)' : m.v),
+      h('span', { class: 'cw-rx-no' }, '#' + (k + 1)), h('span', { class: 'cw-rx-pos', title: T('Position im Text') }, T('Pos.') + ' ' + m.i),
+      h('code', { class: 'cw-rx-val' }, m.v === '' ? T('(leer)') : m.v),
       ...m.g.map((g, gi) => h('span', { class: 'cw-rx-grp' }, h('b', null, '$' + (gi + 1)), g ?? '–')),
       ...Object.entries(m.ng || {}).map(([k2, v]) => h('span', { class: 'cw-rx-grp' }, h('b', null, k2), v ?? '–')))));
-    if (!r.empty && !n) rxList.replaceChildren(h('div', { class: 'cw-note' }, 'Keine Treffer.'));
+    if (!r.empty && !n) rxList.replaceChildren(h('div', { class: 'cw-note' }, T('Keine Treffer.')));
     rxOut.value = r.replaced;
   }
   const rxCard = h('section', { class: 'cw-card cw-wide' },
-    h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('search')), h('h3', null, 'Regex testen'), rxCount,
-      h('div', { class: 'cw-acts' }, h('select', { class: 'inp cw-rx-pre', title: 'Schnellmuster einsetzen', onchange: e => { const pr = RX_PRESETS.find(x => x[0] === e.target.value); e.target.value = ''; if (!pr) return; rxSrc.value = pr[1]; st.rx.src = pr[1]; persist(); rxRun(); rxSrc.focus(); } },
-        h('option', { value: '' }, 'Schnellmuster …'), ...RX_PRESETS.map(([l]) => h('option', { value: l }, l))), copyBtn(() => '/' + rxSrc.value + '/' + rxFlags))),
+    h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('search')), h('h3', null, T('Regex testen')), rxCount,
+      h('div', { class: 'cw-acts' }, h('select', { class: 'inp cw-rx-pre', title: T('Schnellmuster einsetzen'), onchange: e => { const pr = RX_PRESETS.find(x => x[0] === e.target.value); e.target.value = ''; if (!pr) return; rxSrc.value = pr[1]; st.rx.src = pr[1]; persist(); rxRun(); rxSrc.focus(); } },
+        h('option', { value: '' }, T('Schnellmuster …')), ...RX_PRESETS.map(([l]) => h('option', { value: l }, T(l)))), copyBtn(() => '/' + rxSrc.value + '/' + rxFlags))),
     h('div', { class: 'cw-rx-top' }, h('div', { class: 'cw-rx-pat' }, h('span', null, '/'), rxSrc, h('span', null, '/' )), rxFlagEl),
     rxStat,
     h('div', { class: 'cw-rx-body' },
-      field('Testtext', h('div', { class: 'cw-rx-edit' }, rxHl, rxText)),
-      field('Treffer', rxList)),
-    h('div', { class: 'cw-rx-repl' }, field('Ersetzen', rxRepl), field('Ergebnis', h('div', { class: 'cw-num' }, rxOut, copyBtn(() => rxOut.value)))),
-    h('details', { class: 'cw-cheat' }, h('summary', null, 'Spickzettel'),
-      h('div', { class: 'cw-cheat-grid' }, ...[['\\d', 'Ziffer'], ['\\w', 'Buchstabe, Ziffer, _'], ['\\s', 'Leerraum'], ['.', 'beliebiges Zeichen'], ['[abc]', 'eins davon'], ['[^abc]', 'keins davon'],
-        ['*', '0 oder mehr'], ['+', '1 oder mehr'], ['?', '0 oder 1'], ['{2,4}', '2 bis 4 mal'], ['^ $', 'Anfang / Ende'], ['\\b', 'Wortgrenze'],
-        ['(…)', 'Gruppe → $1'], ['(?<name>…)', 'benannte Gruppe'], ['a|b', 'a oder b'], ['\\.', 'echter Punkt']].map(([c, d]) => h('div', null, h('code', null, c), h('span', null, d))))));
+      field(T('Testtext'), h('div', { class: 'cw-rx-edit' }, rxHl, rxText)),
+      field(T('Treffer'), rxList)),
+    h('div', { class: 'cw-rx-repl' }, field(T('Ersetzen'), rxRepl), field(T('Ergebnis'), h('div', { class: 'cw-num' }, rxOut, copyBtn(() => rxOut.value)))),
+    h('details', { class: 'cw-cheat' }, h('summary', null, T('Spickzettel')),
+      h('div', { class: 'cw-cheat-grid' }, ...[['\\d', T('Ziffer')], ['\\w', T('Buchstabe, Ziffer, _')], ['\\s', T('Leerraum')], ['.', T('beliebiges Zeichen')], ['[abc]', T('eins davon')], ['[^abc]', T('keins davon')],
+        ['*', T('0 oder mehr')], ['+', T('1 oder mehr')], ['?', T('0 oder 1')], ['{2,4}', T('2 bis 4 mal')], ['^ $', T('Anfang / Ende')], ['\\b', T('Wortgrenze')],
+        ['(…)', T('Gruppe → $1')], ['(?<name>…)', T('benannte Gruppe')], ['a|b', T('a oder b')], ['\\.', T('echter Punkt')]].map(([c, d]) => h('div', null, h('code', null, c), h('span', null, d))))));
 
   /* ---------- 2. Base64 ---------- */
   let b64Url = false;
@@ -15305,41 +15388,41 @@ function mountCodewerk(view) {
     return new TextDecoder('utf-8', { fatal: true }).decode(Uint8Array.from(atob(x), c => c.charCodeAt(0)));
   };
   const bStat = status();
-  const bText = area('Text …', st.b64, () => { st.b64 = bText.value; persist(); bEnc(); });
+  const bText = area(T('Text …'), st.b64, () => { st.b64 = bText.value; persist(); bEnc(); });
   const bCode = area('Base64 …', '', () => bDec());
-  function bEnc() { bCode.value = bText.value ? toB64(bText.value) : ''; say(bStat, '', bText.value ? `${fmtN(bText.value.length)} Zeichen → ${fmtN(bCode.value.length)} Zeichen Base64` : 'Oben Text oder unten Base64 eingeben – die andere Seite füllt sich.'); }
+  function bEnc() { bCode.value = bText.value ? toB64(bText.value) : ''; say(bStat, '', bText.value ? T('{a} Zeichen → {b} Zeichen Base64', { a: fmtN(bText.value.length), b: fmtN(bCode.value.length) }) : T('Oben Text oder unten Base64 eingeben – die andere Seite füllt sich.')); }
   function bDec() {
     if (!bCode.value.trim()) { bText.value = ''; st.b64 = ''; persist(); bEnc(); return; }
-    try { bText.value = fromB64(bCode.value); st.b64 = bText.value; persist(); say(bStat, 'ok', 'Gültiges Base64'); }
-    catch { say(bStat, 'err', 'Kein gültiges Base64 – oder es steckt kein Text drin, sondern Binärdaten.'); }
+    try { bText.value = fromB64(bCode.value); st.b64 = bText.value; persist(); say(bStat, 'ok', T('Gültiges Base64')); }
+    catch { say(bStat, 'err', T('Kein gültiges Base64 – oder es steckt kein Text drin, sondern Binärdaten.')); }
   }
-  const bCard = card('box', 'Base64', [h('label', { class: 'cw-sw' }, 'URL-sicher', switchEl(false, v => { b64Url = v; bEnc(); })), copyBtn(() => bCode.value)],
+  const bCard = card('box', 'Base64', [h('label', { class: 'cw-sw' }, T('URL-sicher'), switchEl(false, v => { b64Url = v; bEnc(); })), copyBtn(() => bCode.value)],
     field('Text', bText), field('Base64', bCode), bStat);
 
   /* ---------- 3. URL ---------- */
   const uStat = status(), uParts = h('div', { class: 'cw-parts' });
-  const uText = area('Normaler Text oder ganze URL …', st.url, () => { st.url = uText.value; persist(); uEnc(); });
-  const uCode = area('Kodiert, z. B. Hallo%20Welt …', '', () => uDec());
+  const uText = area(T('Normaler Text oder ganze URL …'), st.url, () => { st.url = uText.value; persist(); uEnc(); });
+  const uCode = area(T('Kodiert, z. B. Hallo%20Welt …'), '', () => uDec());
   function uParse() {
     uParts.replaceChildren();
     const s = uText.value.trim();
     if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(s)) return;
     try {
-      const u = new URL(s), rows = [['Host', u.host], ['Pfad', decodeURIComponent(u.pathname)], ...[...u.searchParams].map(([k, v]) => ['?' + k, v])];
+      const u = new URL(s), rows = [['Host', u.host], [T('Pfad'), decodeURIComponent(u.pathname)], ...[...u.searchParams].map(([k, v]) => ['?' + k, v])];
       if (u.hash) rows.push(['#', decodeURIComponent(u.hash.slice(1))]);
       uParts.replaceChildren(...rows.map(([k, v]) => h('div', { class: 'cw-part' }, h('span', null, k), h('code', null, v || '–'))));
     } catch {}
   }
-  function uEnc() { uCode.value = uText.value ? encodeURIComponent(uText.value) : ''; say(uStat, '', uText.value ? 'Kodiert für URLs & Formulare' : 'Oben Klartext oder unten kodierten Text eingeben.'); uParse(); }
+  function uEnc() { uCode.value = uText.value ? encodeURIComponent(uText.value) : ''; say(uStat, '', uText.value ? T('Kodiert für URLs & Formulare') : T('Oben Klartext oder unten kodierten Text eingeben.')); uParse(); }
   function uDec() {
     if (!uCode.value.trim()) { uText.value = ''; st.url = ''; persist(); uEnc(); return; }
-    try { uText.value = decodeURIComponent(uCode.value.replace(/\+/g, ' ')); st.url = uText.value; persist(); say(uStat, 'ok', 'Dekodiert'); uParse(); }
-    catch { say(uStat, 'err', 'Ungültige Kodierung (z. B. ein einzelnes „%" ohne zwei Hex-Ziffern dahinter).'); }
+    try { uText.value = decodeURIComponent(uCode.value.replace(/\+/g, ' ')); st.url = uText.value; persist(); say(uStat, 'ok', T('Dekodiert')); uParse(); }
+    catch { say(uStat, 'err', T('Ungültige Kodierung (z. B. ein einzelnes „%" ohne zwei Hex-Ziffern dahinter).')); }
   }
-  const uCard = card('arrow', 'URL kodieren', copyBtn(() => uCode.value), field('Klartext', uText), field('Kodiert', uCode), uStat, uParts);
+  const uCard = card('arrow', T('URL kodieren'), copyBtn(() => uCode.value), field(T('Klartext'), uText), field(T('Kodiert'), uCode), uStat, uParts);
 
   /* ---------- 4. Hash ---------- */
-  const hIn = area('Text zum Hashen …', '', () => hRun());
+  const hIn = area(T('Text zum Hashen …'), '', () => hRun());
   const hOuts = [['SHA-1', 'SHA-1'], ['SHA-256', 'SHA-256'], ['SHA-512', 'SHA-512']].map(([l, alg]) => ({ alg, ...out(l) }));
   let hSeq = 0;
   async function hRun() {
@@ -15351,7 +15434,7 @@ function mountCodewerk(view) {
       o.set([...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join(''));
     }
   }
-  const hCard = card('lock', 'Hash', null, hIn, ...hOuts.map(o => o.row), h('div', { class: 'cw-note' }, 'Wird nicht gespeichert – Passwörter bleiben hier.'));
+  const hCard = card('lock', 'Hash', null, hIn, ...hOuts.map(o => o.row), h('div', { class: 'cw-note' }, T('Wird nicht gespeichert – Passwörter bleiben hier.')));
 
   /* ---------- 5. UUID ---------- */
   let uuN = 5, uuUpper = false, uuDash = true;
@@ -15362,17 +15445,17 @@ function mountCodewerk(view) {
     uuVals = Array.from({ length: uuN }, () => { let v = uuid(); if (!uuDash) v = v.replace(/-/g, ''); return uuUpper ? v.toUpperCase() : v; });
     uuList.replaceChildren(...uuVals.map(v => { const o = out(''); o.set(v); return o.row; }));
   }
-  const uuCard = card('sparkle', 'UUIDs erzeugen', [h('button', { class: 'btn sm', onclick: uuGen }, icon('refresh'), 'Neu'), copyBtn(() => uuVals.join('\n'))],
+  const uuCard = card('sparkle', T('UUIDs erzeugen'), [h('button', { class: 'btn sm', onclick: uuGen }, icon('refresh'), T('Neu')), copyBtn(() => uuVals.join('\n'))],
     h('div', { class: 'cw-row' }, segEl([[1, '1'], [5, '5'], [10, '10']], uuN, v => { uuN = v; uuGen(); }),
-      h('label', { class: 'cw-sw' }, 'GROSS', switchEl(false, v => { uuUpper = v; uuGen(); })),
-      h('label', { class: 'cw-sw' }, 'Bindestriche', switchEl(true, v => { uuDash = v; uuGen(); }))),
+      h('label', { class: 'cw-sw' }, T('GROSS'), switchEl(false, v => { uuUpper = v; uuGen(); })),
+      h('label', { class: 'cw-sw' }, T('Bindestriche'), switchEl(true, v => { uuDash = v; uuGen(); }))),
     uuList);
 
   /* ---------- 6. Timestamp ---------- */
   const tIn = h('input', { class: 'inp mono', placeholder: '1700000000 · 26.09.2026 14:30', value: st.ts, spellcheck: false, autocomplete: 'off', oninput: () => { st.ts = tIn.value; persist(); tRun(); } });
   const tStat = status();
-  const tOuts = { lokal: out('Lokal'), iso: out('ISO / UTC'), s: out('Unix s'), ms: out('Unix ms'), rel: out('Relativ') };
-  const rtf = new Intl.RelativeTimeFormat('de', { numeric: 'auto' });
+  const tOuts = { lokal: out(T('Lokal')), iso: out('ISO / UTC'), s: out('Unix s'), ms: out('Unix ms'), rel: out(T('Relativ')) };
+  const rtf = new Intl.RelativeTimeFormat(isEN() ? 'en' : 'de', { numeric: 'auto' });
   function relTime(d) {
     const sec = (d - Date.now()) / 1000, a = Math.abs(sec);
     const [n, u] = a < 60 ? [sec, 'second'] : a < 3600 ? [sec / 60, 'minute'] : a < 86400 ? [sec / 3600, 'hour'] : a < 86400 * 30 ? [sec / 86400, 'day'] : a < 86400 * 365 ? [sec / 86400 / 30.44, 'month'] : [sec / 86400 / 365.25, 'year'];
@@ -15387,16 +15470,16 @@ function mountCodewerk(view) {
   }
   function tRun() {
     const d = parseTs(tIn.value);
-    if (!d) { Object.values(tOuts).forEach(o => o.set('')); say(tStat, d === undefined ? 'err' : '', d === undefined ? 'Das habe ich nicht als Zeit erkannt.' : 'Zahlen ab 12 Stellen werden als Millisekunden gelesen, kürzere als Sekunden.'); return; }
-    tOuts.lokal.set(d.toLocaleString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+    if (!d) { Object.values(tOuts).forEach(o => o.set('')); say(tStat, d === undefined ? 'err' : '', d === undefined ? T('Das habe ich nicht als Zeit erkannt.') : T('Zahlen ab 12 Stellen werden als Millisekunden gelesen, kürzere als Sekunden.')); return; }
+    tOuts.lokal.set(d.toLocaleString(isEN() ? 'en-US' : 'de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }));
     tOuts.iso.set(d.toISOString()); tOuts.s.set(String(Math.floor(d / 1000))); tOuts.ms.set(String(+d)); tOuts.rel.set(relTime(d));
     say(tStat, '', '');
   }
-  const tCard = card('timer', 'Zeitstempel', h('button', { class: 'btn sm', onclick: () => { tIn.value = String(Math.floor(Date.now() / 1000)); st.ts = tIn.value; persist(); tRun(); } }, 'Jetzt'),
+  const tCard = card('timer', T('Zeitstempel'), h('button', { class: 'btn sm', onclick: () => { tIn.value = String(Math.floor(Date.now() / 1000)); st.ts = tIn.value; persist(); tRun(); } }, T('Jetzt')),
     tIn, ...Object.values(tOuts).map(o => o.row), tStat);
 
   /* ---------- 7. Number systems ---------- */
-  const BASES = [['Dezimal', 10, /^\d+$/, ''], ['Hex', 16, /^[0-9a-f]+$/i, '0x'], ['Binär', 2, /^[01]+$/, '0b'], ['Oktal', 8, /^[0-7]+$/, '0o']];
+  const BASES = [[T('Dezimal'), 10, /^\d+$/, ''], ['Hex', 16, /^[0-9a-f]+$/i, '0x'], [T('Binär'), 2, /^[01]+$/, '0b'], [T('Oktal'), 8, /^[0-7]+$/, '0o']];
   const nStat = status();
   const nIns = BASES.map(([label, base, re, pfx]) => {
     const inp = h('input', { class: 'inp mono', spellcheck: false, autocomplete: 'off', oninput: () => nFrom(base, inp.value) });
@@ -15406,33 +15489,33 @@ function mountCodewerk(view) {
     const s = raw.trim().replace(/[\s_]/g, '').replace(/^0[xbo]/i, '');
     const me = nIns.find(n => n.base === base);
     if (!s) { nIns.forEach(n => { if (n !== me) n.inp.value = ''; }); say(nStat, '', ''); return; }
-    if (!me.re.test(s)) { say(nStat, 'err', `Ungültige Ziffer für ${BASES.find(b => b[1] === base)[0]}.`); return; }
+    if (!me.re.test(s)) { say(nStat, 'err', T('Ungültige Ziffer für {b}.', { b: BASES.find(b => b[1] === base)[0] })); return; }
     const v = BigInt(me.pfx + s || s);
     nIns.forEach(n => { if (n !== me) n.inp.value = v.toString(n.base).toUpperCase(); });
     st.num = v.toString(); persist();
     const bits = v.toString(2).length;
     say(nStat, '', `${bits} Bit · ${Math.ceil(bits / 8)} Byte`);
   }
-  const nCard = card('table', 'Zahlensysteme', null, h('div', { class: 'cw-grid2' }, ...nIns.map(n => n.el)), nStat);
+  const nCard = card('table', T('Zahlensysteme'), null, h('div', { class: 'cw-grid2' }, ...nIns.map(n => n.el)), nStat);
 
   /* ---------- 8. JWT ---------- */
-  const wIn = area('eyJhbGciOi… (Token einfügen)', '', () => wRun(), 3);
+  const wIn = area(T('eyJhbGciOi… (Token einfügen)'), '', () => wRun(), 3);
   const wStat = status(), wHead = h('pre', { class: 'cw-pre' }), wBody = h('pre', { class: 'cw-pre' });
   const wParts = h('div', { class: 'cw-jwt', hidden: true }, field('Header', wHead), field('Payload', wBody));
   function wRun() {
     const s = wIn.value.trim().replace(/^Bearer\s+/i, '');
-    if (!s) { wParts.hidden = true; say(wStat, '', 'Die Signatur wird nicht geprüft – nur gelesen. Wird nicht gespeichert.'); return; }
+    if (!s) { wParts.hidden = true; say(wStat, '', T('Die Signatur wird nicht geprüft – nur gelesen. Wird nicht gespeichert.')); return; }
     try {
       const [hd, pl] = s.split('.'); if (!pl) throw 0;
       const head = JSON.parse(fromB64(hd)), body = JSON.parse(fromB64(pl));
       wHead.textContent = JSON.stringify(head, null, 2); wBody.textContent = JSON.stringify(body, null, 2); wParts.hidden = false;
       const when = k => body[k] ? new Date(body[k] * 1000) : null, exp = when('exp');
-      const bits = [head.alg && `Algorithmus ${head.alg}`, when('iat') && `ausgestellt ${relTime(when('iat'))}`];
-      if (exp) say(wStat, exp < Date.now() ? 'err' : 'ok', [...bits, (exp < Date.now() ? 'abgelaufen ' : 'läuft ab ') + relTime(exp)].filter(Boolean).join(' · '));
-      else say(wStat, '', bits.filter(Boolean).join(' · ') || 'Kein Ablaufdatum (exp) enthalten');
-    } catch { wParts.hidden = true; say(wStat, 'err', 'Kein gültiges JWT – erwartet werden drei Teile, getrennt durch Punkte.'); }
+      const bits = [head.alg && T('Algorithmus {a}', { a: head.alg }), when('iat') && T('ausgestellt {t}', { t: relTime(when('iat')) })];
+      if (exp) say(wStat, exp < Date.now() ? 'err' : 'ok', [...bits, (exp < Date.now() ? T('abgelaufen {t}', { t: relTime(exp) }) : T('läuft ab {t}', { t: relTime(exp) }))].filter(Boolean).join(' · '));
+      else say(wStat, '', bits.filter(Boolean).join(' · ') || T('Kein Ablaufdatum (exp) enthalten'));
+    } catch { wParts.hidden = true; say(wStat, 'err', T('Kein gültiges JWT – erwartet werden drei Teile, getrennt durch Punkte.')); }
   }
-  const wCard = card('unlock', 'JWT lesen', null, wIn, wStat, wParts);
+  const wCard = card('unlock', T('JWT lesen'), null, wIn, wStat, wParts);
 
   /* ---------- Layout ---------- */
   view.append(h('div', { class: 'cw' }, h('div', { class: 'cw-in' },
@@ -16598,15 +16681,15 @@ function mountKarteiwerk(view) {
   const ymd = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
   const today = () => ymd(appNow());
   const addDays = n => { const d = appNow(); d.setDate(d.getDate() + n); return ymd(d); };
-  const inDays = n => n <= 0 ? 'heute' : n === 1 ? 'morgen' : `in ${n} Tagen`;
-  const fmtD = s => { const [y, m, d] = s.split('-'); return `${d}.${m}.`; };
+  const inDays = n => n <= 0 ? T('heute') : n === 1 ? T('morgen') : T('in {n} Tagen', { n });
+  const fmtD = s => { const [y, m, d] = s.split('-'); return isEN() ? `${+m}/${+d}` : `${d}.${m}.`; };
 
   /* ---------- Helpers ---------- */
   const deck = () => st.decks.find(d => d.id === st.active);
   const isDue = c => !c.box || !c.due || c.due <= today();
   const dueCards = d => d.cards.filter(isDue);
   const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-  const cardsWord = n => n === 1 ? '1 Karte' : `${n} Karten`;
+  const cardsWord = n => n === 1 ? T('1 Karte') : T('{n} Karten', { n });
   const logToday = () => { const t = today(); st.log[t] = (st.log[t] || 0) + 1; };
   function streak() {
     let n = 0; const d = appNow();
@@ -16621,7 +16704,7 @@ function mountKarteiwerk(view) {
   const grow = ta => { ta.style.height = '0'; ta.style.height = ta.scrollHeight + 'px'; };
 
   /* ---------- Decks & cards ---------- */
-  function newDeck(name = 'Neuer Stapel', cards = []) {
+  function newDeck(name = T('Neuer Stapel'), cards = []) {
     const d = { id: uid(), name, color: KAW_COLORS[st.decks.length % KAW_COLORS.length], created: Date.now(), cards };
     st.decks.push(d); st.active = d.id; save(); render();
     return d;
@@ -16630,9 +16713,18 @@ function mountKarteiwerk(view) {
   function removeDeck(d) {
     const i = st.decks.indexOf(d);
     st.decks.splice(i, 1); if (st.active === d.id) st.active = null; save(); render();
-    toast(`Stapel „${d.name}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.decks.splice(i, 0, d); st.active = d.id; save(); render(); } } });
+    toast(T('Stapel „{n}“ gelöscht', { n: d.name }), 'info', { action: { label: T('Rückgängig'), fn: () => { st.decks.splice(i, 0, d); st.active = d.id; save(); render(); } } });
   }
-  const EXAMPLE = [
+  const EXAMPLE = isEN() ? [
+    ['What does STP stand for?', 'Segmentation, targeting, positioning – split the market, choose target groups and anchor the offer in customers’ minds.'],
+    ['The 4 Ps of the marketing mix', 'Product, Price, Place, Promotion'],
+    ['What is a USP?', 'Unique selling proposition – the feature that sets an offer apart from the competition.'],
+    ['AIDA model', 'Attention, Interest, Desire, Action – the stages advertising should trigger in customers.'],
+    ['How do you calculate CTR?', 'Clicks ÷ impressions'],
+    ['What is a touchpoint?', 'Any point of contact between customer and brand – e.g. ads, website, store or customer service.'],
+    ['B2B vs. B2C', 'B2B: a business sells to businesses.\nB2C: a business sells to consumers.'],
+    ['What does the Net Promoter Score measure?', 'Willingness to recommend: % promoters (9–10) minus % detractors (0–6).'],
+  ] : [
     ['Wofür steht STP?', 'Segmentierung, Targeting, Positionierung – den Markt aufteilen, Zielgruppen auswählen und das Angebot im Kopf der Kunden verankern.'],
     ['Die 4P des Marketing-Mix', 'Product, Price, Place, Promotion'],
     ['Was ist ein USP?', 'Unique Selling Proposition – das Alleinstellungsmerkmal, das ein Angebot von der Konkurrenz abhebt.'],
@@ -16658,19 +16750,19 @@ function mountKarteiwerk(view) {
     return { cards: out, skipped };
   }
   function openImport(d) {
-    const ta = h('textarea', { class: 'kaw-ta kaw-imp', placeholder: 'Begriff ; Erklärung\nHaus ; house\nHauptstadt von Spanien ; Madrid', spellcheck: false });
+    const ta = h('textarea', { class: 'kaw-ta kaw-imp', placeholder: isEN() ? 'Term ; Explanation\nhouse ; Haus\nCapital of Spain ; Madrid' : 'Begriff ; Erklärung\nHaus ; house\nHauptstadt von Spanien ; Madrid', spellcheck: false });
     const info = h('div', { class: 'hint' });
-    const upd = () => { const r = parseImport(ta.value); info.textContent = r.cards.length || r.skipped ? `${cardsWord(r.cards.length)} erkannt${r.skipped ? ` · ${r.skipped} Zeile${r.skipped === 1 ? '' : 'n'} ohne Trennzeichen übersprungen` : ''}` : 'Eine Karte pro Zeile. Vorder- und Rückseite mit Semikolon ; oder Tab trennen (Export aus Excel, Anki und Quizlet passt direkt).'; };
+    const upd = () => { const r = parseImport(ta.value); info.textContent = r.cards.length || r.skipped ? T('{c} erkannt', { c: cardsWord(r.cards.length) }) + (r.skipped ? ' · ' + T(r.skipped === 1 ? '1 Zeile ohne Trennzeichen übersprungen' : '{n} Zeilen ohne Trennzeichen übersprungen', { n: r.skipped }) : '') : T('Eine Karte pro Zeile. Vorder- und Rückseite mit Semikolon ; oder Tab trennen (Export aus Excel, Anki und Quizlet passt direkt).'); };
     ta.addEventListener('input', upd); upd();
     modal({
-      title: 'Karten importieren', sub: `in „${d.name}“`, width: 620, body: h('div', { class: 'kaw-col' }, ta, info),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: 'Importieren', kind: 'primary', onClick: () => {
+      title: T('Karten importieren'), sub: T('in „{n}“', { n: d.name }), width: 620, body: h('div', { class: 'kaw-col' }, ta, info),
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: T('Importieren'), kind: 'primary', onClick: () => {
         const r = parseImport(ta.value);
-        if (!r.cards.length) { toast('Keine Karten erkannt.', 'err'); return false; }
+        if (!r.cards.length) { toast(T('Keine Karten erkannt.'), 'err'); return false; }
         const have = new Set(d.cards.map(c => c.f.trim().toLowerCase()));
         const fresh = r.cards.filter(([f]) => !have.has(f.toLowerCase()));
         d.cards.push(...fresh.map(([f, b]) => mkCard(f, b))); save(); render();
-        toast(`${cardsWord(fresh.length)} importiert${r.cards.length > fresh.length ? ` · ${r.cards.length - fresh.length} doppelte übersprungen` : ''}`, 'ok');
+        toast(T('{c} importiert', { c: cardsWord(fresh.length) }) + (r.cards.length > fresh.length ? ' · ' + T('{n} doppelte übersprungen', { n: r.cards.length - fresh.length }) : ''), 'ok');
       } }],
     });
   }
@@ -16679,8 +16771,8 @@ function mountKarteiwerk(view) {
     let ok = false;
     const onCopy = e => { e.preventDefault(); e.clipboardData.setData('text/plain', txt); ok = true; };
     document.addEventListener('copy', onCopy); try { document.execCommand('copy'); } catch {} document.removeEventListener('copy', onCopy);
-    if (ok) toast('Karten kopiert · Anki, Quizlet …', 'ok');
-    else navigator.clipboard?.writeText(txt).then(() => toast('Karten kopiert.', 'ok'), () => toast('Kopieren hat nicht geklappt.', 'err'));
+    if (ok) toast(T('Karten kopiert · Anki, Quizlet …'), 'ok');
+    else navigator.clipboard?.writeText(txt).then(() => toast(T('Karten kopiert.'), 'ok'), () => toast(T('Kopieren hat nicht geklappt.'), 'err'));
   }
 
   /* ---------- Sidebar ---------- */
@@ -16690,45 +16782,45 @@ function mountKarteiwerk(view) {
       const due = dueCards(d).length;
       return h('div', { class: 'kaw-it' + (d.id === st.active ? ' on' : ''), onclick: () => { session = null; st.active = d.id; persist(); render(); } },
         h('i', { class: 'kaw-dot', style: { background: d.color } }),
-        h('div', { class: 'kaw-it-tx' }, h('div', { class: 'kaw-it-n' }, d.name || 'Ohne Namen'), h('div', { class: 'kaw-it-s' }, cardsWord(d.cards.length))),
-        due ? h('span', { class: 'kaw-due', title: 'Heute fällig' }, due) : h('span', { class: 'kaw-ok', title: 'Für heute alles gelernt' }, icon('check')));
+        h('div', { class: 'kaw-it-tx' }, h('div', { class: 'kaw-it-n' }, d.name || T('Ohne Namen')), h('div', { class: 'kaw-it-s' }, cardsWord(d.cards.length))),
+        due ? h('span', { class: 'kaw-due', title: T('Heute fällig') }, due) : h('span', { class: 'kaw-ok', title: T('Für heute alles gelernt') }, icon('check')));
     }));
-    if (!st.decks.length) list.append(h('div', { class: 'kaw-empty' }, 'Noch keine Stapel.'));
+    if (!st.decks.length) list.append(h('div', { class: 'kaw-empty' }, T('Noch keine Stapel.')));
     const s = streak(), n = st.log[today()] || 0;
-    footEl.replaceChildren(h('div', null, s ? `🔥 ${s} ${s === 1 ? 'Tag' : 'Tage'} in Folge` : 'Heute schon gelernt?'), h('small', null, n ? `Heute ${cardsWord(n)} gelernt` : 'Jede Karte zählt'));
+    footEl.replaceChildren(h('div', null, s ? '🔥 ' + T(s === 1 ? '1 Tag in Folge' : '{n} Tage in Folge', { n: s }) : T('Heute schon gelernt?')), h('small', null, n ? T('Heute {c} gelernt', { c: cardsWord(n) }) : T('Jede Karte zählt')));
   }
 
   /* ---------- Deck view ---------- */
   function deckView(d) {
     const due = dueCards(d), boxes = [0, 1, 2, 3, 4, 5].map(b => d.cards.filter(c => (c.box || 0) === b).length);
     const next = d.cards.filter(c => c.box && c.due > today()).map(c => c.due).sort()[0];
-    const name = h('input', { class: 'kaw-name', value: d.name, placeholder: 'Name des Stapels', spellcheck: false, oninput: () => { d.name = name.value; persist(); renderSide(); } });
-    const swatches = h('div', { class: 'kaw-sw' }, ...KAW_COLORS.map(c => h('button', { class: 'kaw-swb' + (c === d.color ? ' on' : ''), style: { background: c }, title: 'Farbe', onclick: () => { d.color = c; save(); render(); } })));
-    const more = h('button', { class: 'btn sm ghost', title: 'Mehr', onclick: e => popMenu(e.currentTarget, [
-      { label: 'Karten importieren', icon: 'upload', onClick: () => openImport(d) },
-      { label: 'Als Text kopieren', icon: 'copy', desc: 'Tab-getrennt, für Anki & Quizlet', disabled: !d.cards.length, onClick: () => copyText(exportText(d)) },
-      { label: 'Als Datei speichern', icon: 'download', disabled: !d.cards.length, onClick: () => download((d.name || 'Karteikarten').replace(/[\\/:*?"<>|]+/g, '') + '.txt', exportText(d), 'text/plain;charset=utf-8') },
+    const name = h('input', { class: 'kaw-name', value: d.name, placeholder: T('Name des Stapels'), spellcheck: false, oninput: () => { d.name = name.value; persist(); renderSide(); } });
+    const swatches = h('div', { class: 'kaw-sw' }, ...KAW_COLORS.map(c => h('button', { class: 'kaw-swb' + (c === d.color ? ' on' : ''), style: { background: c }, title: T('Farbe'), onclick: () => { d.color = c; save(); render(); } })));
+    const more = h('button', { class: 'btn sm ghost', title: T('Mehr'), onclick: e => popMenu(e.currentTarget, [
+      { label: T('Karten importieren'), icon: 'upload', onClick: () => openImport(d) },
+      { label: T('Als Text kopieren'), icon: 'copy', desc: T('Tab-getrennt, für Anki & Quizlet'), disabled: !d.cards.length, onClick: () => copyText(exportText(d)) },
+      { label: T('Als Datei speichern'), icon: 'download', disabled: !d.cards.length, onClick: () => download((d.name || T('Karteikarten')).replace(/[\\/:*?"<>|]+/g, '') + '.txt', exportText(d), 'text/plain;charset=utf-8') },
       '-',
-      { label: 'Lernstand zurücksetzen', icon: 'undo', disabled: !d.cards.length, onClick: async () => { if (!await confirmBox('Lernstand zurücksetzen?', 'Alle Karten dieses Stapels kommen wieder ins Fach „Neu“. Die Karten selbst bleiben erhalten.', 'Zurücksetzen', 'danger')) return; d.cards.forEach(c => { c.box = 0; c.due = null; }); save(); render(); } },
-      { label: 'Stapel löschen', icon: 'trash', danger: true, onClick: () => removeDeck(d) }]) }, icon('grip'));
+      { label: T('Lernstand zurücksetzen'), icon: 'undo', disabled: !d.cards.length, onClick: async () => { if (!await confirmBox(T('Lernstand zurücksetzen?'), T('Alle Karten dieses Stapels kommen wieder ins Fach „Neu“. Die Karten selbst bleiben erhalten.'), T('Zurücksetzen'), 'danger')) return; d.cards.forEach(c => { c.box = 0; c.due = null; }); save(); render(); } },
+      { label: T('Stapel löschen'), icon: 'trash', danger: true, onClick: () => removeDeck(d) }]) }, icon('grip'));
 
     // Box distribution
-    const LBL = ['Neu', 'Fach 1', 'Fach 2', 'Fach 3', 'Fach 4', 'Fach 5'];
+    const LBL = [T('Neu'), ...[1, 2, 3, 4, 5].map(n => T('Fach {n}', { n }))];
     const bar = h('div', { class: 'kaw-bar' }, ...boxes.map((n, b) => n ? h('i', { class: 'kaw-b' + b, style: { flex: n }, title: `${LBL[b]}: ${cardsWord(n)}` }) : null));
     const legend = h('div', { class: 'kaw-leg' }, ...boxes.map((n, b) => h('span', null, h('i', { class: 'kaw-b' + b }), `${LBL[b]} `, h('b', null, n))));
 
     // New card
-    const fIn = h('textarea', { class: 'kaw-ta', placeholder: 'Vorderseite', rows: 2 });
-    const bIn = h('textarea', { class: 'kaw-ta', placeholder: 'Rückseite', rows: 2 });
+    const fIn = h('textarea', { class: 'kaw-ta', placeholder: T('Vorderseite'), rows: 2 });
+    const bIn = h('textarea', { class: 'kaw-ta', placeholder: T('Rückseite'), rows: 2 });
     const add = () => {
       const f = fIn.value.trim(), b = bIn.value.trim();
-      if (!f || !b) { toast('Bitte Vorder- und Rückseite ausfüllen.', 'info'); (f ? bIn : fIn).focus(); return; }
+      if (!f || !b) { toast(T('Bitte Vorder- und Rückseite ausfüllen.'), 'info'); (f ? bIn : fIn).focus(); return; }
       d.cards.push(mkCard(f, b)); save(); fIn.value = ''; bIn.value = ''; render(); setTimeout(() => main.querySelector('.kaw-add textarea')?.focus(), 20);
     };
     for (const t of [fIn, bIn]) t.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); add(); } });
 
     // Card list
-    const q = h('input', { class: 'inp kaw-q', placeholder: 'Karten durchsuchen …', spellcheck: false, oninput: () => drawCards() });
+    const q = h('input', { class: 'inp kaw-q', placeholder: T('Karten durchsuchen …'), spellcheck: false, oninput: () => drawCards() });
     const cardsEl = h('div', { class: 'kaw-cards' });
     function drawCards() {
       const s = q.value.trim().toLowerCase();
@@ -16736,41 +16828,41 @@ function mountKarteiwerk(view) {
       cardsEl.replaceChildren(...cs.map(c => {
         const ta = (k, ph) => { const t = h('textarea', { class: 'kaw-ce', placeholder: ph, rows: 1, oninput: () => { c[k] = t.value; grow(t); persist(); } }); t.value = c[k]; return t; };
         const box = c.box || 0;
-        return h('div', { class: 'kaw-row' }, ta('f', 'Vorderseite'), ta('b', 'Rückseite'),
-          h('span', { class: 'kaw-chip kaw-b' + box, title: box ? `Wieder dran: ${c.due <= today() ? 'heute' : fmtD(c.due)}` : 'Noch nicht gelernt' }, box ? 'Fach ' + box : 'Neu'),
-          h('button', { class: 'cw-copy', title: 'Karte löschen', onclick: () => {
+        return h('div', { class: 'kaw-row' }, ta('f', T('Vorderseite')), ta('b', T('Rückseite')),
+          h('span', { class: 'kaw-chip kaw-b' + box, title: box ? T('Wieder dran: {d}', { d: c.due <= today() ? T('heute') : fmtD(c.due) }) : T('Noch nicht gelernt') }, box ? T('Fach {n}', { n: box }) : T('Neu')),
+          h('button', { class: 'cw-copy', title: T('Karte löschen'), onclick: () => {
             const i = d.cards.indexOf(c); d.cards.splice(i, 1); save(); render();
-            toast('Karte gelöscht', 'info', { action: { label: 'Rückgängig', fn: () => { d.cards.splice(i, 0, c); save(); render(); } } });
+            toast(T('Karte gelöscht'), 'info', { action: { label: T('Rückgängig'), fn: () => { d.cards.splice(i, 0, c); save(); render(); } } });
           } }, icon('trash')));
       }));
-      if (!cs.length) cardsEl.append(h('div', { class: 'kaw-empty' }, d.cards.length ? 'Keine Treffer.' : 'Noch keine Karten – oben die erste anlegen oder über ⋮ importieren.'));
+      if (!cs.length) cardsEl.append(h('div', { class: 'kaw-empty' }, d.cards.length ? T('Keine Treffer.') : T('Noch keine Karten – oben die erste anlegen oder über ⋮ importieren.')));
       requestAnimationFrame(() => cardsEl.querySelectorAll('textarea').forEach(grow));
     }
     drawCards();
 
     const learnBtn = due.length
-      ? h('button', { class: 'btn primary kaw-go', onclick: () => start(d, 'learn') }, icon('play'), `Lernen · ${due.length} fällig`)
-      : h('div', { class: 'kaw-done' }, icon('check'), d.cards.length ? `Für heute alles gelernt${next ? ` · weiter ${inDays(Math.round((new Date(next) - new Date(today())) / 864e5))}` : ''}` : 'Leg ein paar Karten an, dann kann’s losgehen.');
+      ? h('button', { class: 'btn primary kaw-go', onclick: () => start(d, 'learn') }, icon('play'), T('Lernen · {n} fällig', { n: due.length }))
+      : h('div', { class: 'kaw-done' }, icon('check'), d.cards.length ? T('Für heute alles gelernt') + (next ? ' · ' + T('weiter {d}', { d: inDays(Math.round((new Date(next) - new Date(today())) / 864e5)) }) : '') : T('Leg ein paar Karten an, dann kann’s losgehen.'));
     return h('div', { class: 'kaw-in' },
       h('div', { class: 'kaw-top' }, h('i', { class: 'kaw-dot big', style: { background: d.color } }), name, swatches, more),
       h('section', { class: 'cw-card kaw-learn' },
         h('div', { class: 'kaw-stats' },
-          h('div', null, h('b', null, d.cards.length), h('span', null, 'Karten')),
-          h('div', { class: due.length ? 'hot' : '' }, h('b', null, due.length), h('span', null, 'heute fällig')),
-          h('div', null, h('b', null, boxes[0]), h('span', null, 'neu')),
-          h('div', null, h('b', null, boxes[5]), h('span', null, 'sitzen sicher'))),
+          h('div', null, h('b', null, d.cards.length), h('span', null, T('Karten'))),
+          h('div', { class: due.length ? 'hot' : '' }, h('b', null, due.length), h('span', null, T('heute fällig'))),
+          h('div', null, h('b', null, boxes[0]), h('span', null, isEN() ? 'new' : 'neu')),
+          h('div', null, h('b', null, boxes[5]), h('span', null, T('sitzen sicher')))),
         d.cards.length ? bar : null, d.cards.length ? legend : null,
         h('div', { class: 'kaw-acts' }, learnBtn,
-          d.cards.length ? h('button', { class: 'btn', onclick: () => start(d, 'practice'), title: 'Zufällig – Fächer bleiben' }, icon('refresh'), 'Alle üben') : null,
-          d.cards.length ? h('label', { class: 'cw-sw kaw-rev' }, 'Rückseite zuerst', switchEl(st.reverse, v => { st.reverse = v; persist(); })) : null)),
+          d.cards.length ? h('button', { class: 'btn', onclick: () => start(d, 'practice'), title: T('Zufällig – Fächer bleiben') }, icon('refresh'), T('Alle üben')) : null,
+          d.cards.length ? h('label', { class: 'cw-sw kaw-rev' }, T('Rückseite zuerst'), switchEl(st.reverse, v => { st.reverse = v; persist(); })) : null)),
       h('section', { class: 'cw-card kaw-add' },
-        h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('plus')), h('h3', null, 'Neue Karte'), h('div', { class: 'cw-acts' }, h('span', { class: 'hint' }, 'Strg + Enter'))),
+        h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('plus')), h('h3', null, T('Neue Karte')), h('div', { class: 'cw-acts' }, h('span', { class: 'hint' }, T('Strg + Enter')))),
         h('div', { class: 'kaw-two' }, fIn, bIn),
-        h('div', { class: 'kaw-row-acts' }, h('button', { class: 'btn primary sm', onclick: add }, icon('plus'), 'Karte hinzufügen'), h('button', { class: 'btn sm ghost', onclick: () => openImport(d) }, icon('upload'), 'Viele auf einmal importieren'))),
+        h('div', { class: 'kaw-row-acts' }, h('button', { class: 'btn primary sm', onclick: add }, icon('plus'), T('Karte hinzufügen')), h('button', { class: 'btn sm ghost', onclick: () => openImport(d) }, icon('upload'), T('Viele auf einmal importieren')))),
       h('section', { class: 'cw-card' },
-        h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('layers')), h('h3', null, `Alle Karten (${d.cards.length})`), h('div', { class: 'cw-acts' }, q)),
+        h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('layers')), h('h3', null, T('Alle Karten ({n})', { n: d.cards.length })), h('div', { class: 'cw-acts' }, q)),
         cardsEl),
-      h('div', { class: 'cw-note kaw-how' }, 'So funktioniert’s: Neue Karten starten im Fach „Neu“. Gewusst → ein Fach weiter und erst später wieder dran (1, 3, 7, 14, 30 Tage). Nicht gewusst → zurück in Fach 1. So übst du genau das, was noch nicht sitzt.'));
+      h('div', { class: 'cw-note kaw-how' }, T('So funktioniert’s: Neue Karten starten im Fach „Neu“. Gewusst → ein Fach weiter und erst später wieder dran (1, 3, 7, 14, 30 Tage). Nicht gewusst → zurück in Fach 1. So übst du genau das, was noch nicht sitzt.')));
   }
 
   /* ---------- Learning session ---------- */
@@ -16804,45 +16896,45 @@ function mountKarteiwerk(view) {
     const goodIn = s.wrong.has(c.id) ? 1 : KAW_DAYS[Math.min(5, (c.box || 0) + 1)];
     const btn = (k, cls, label, sub, key) => h('button', { class: 'kaw-rb ' + cls, onclick: () => rate(k) }, h('b', null, label), h('small', null, sub), h('kbd', null, key));
     const card = h('div', { class: 'kaw-card' + (s.shown ? ' shown' : ''), style: { '--dc': d.color }, onclick: () => { if (!s.shown) { s.shown = true; render(); } } },
-      h('div', { class: 'kaw-side' }, st.reverse ? 'Rückseite' : 'Vorderseite'),
+      h('div', { class: 'kaw-side' }, st.reverse ? T('Rückseite') : T('Vorderseite')),
       h('div', { class: 'kaw-q-tx' }, q),
-      s.shown ? h('div', { class: 'kaw-a' }, h('div', { class: 'kaw-side' }, st.reverse ? 'Vorderseite' : 'Rückseite'), h('div', { class: 'kaw-a-tx' }, a)) : h('div', { class: 'kaw-tap' }, 'Klicken oder Leertaste zum Umdrehen'));
+      s.shown ? h('div', { class: 'kaw-a' }, h('div', { class: 'kaw-side' }, st.reverse ? T('Vorderseite') : T('Rückseite')), h('div', { class: 'kaw-a-tx' }, a)) : h('div', { class: 'kaw-tap' }, T('Klicken oder Leertaste zum Umdrehen')));
     const acts = !s.shown
-      ? h('div', { class: 'kaw-rate' }, h('button', { class: 'btn primary kaw-show', onclick: () => { s.shown = true; render(); } }, 'Antwort zeigen', h('kbd', null, 'Leertaste')))
+      ? h('div', { class: 'kaw-rate' }, h('button', { class: 'btn primary kaw-show', onclick: () => { s.shown = true; render(); } }, T('Antwort zeigen'), h('kbd', null, T('Leertaste'))))
       : s.mode === 'learn'
-        ? h('div', { class: 'kaw-rate' }, btn('again', 'r', 'Nochmal', 'gleich noch mal', '1'), btn('hard', 'y', 'Schwer', 'morgen', '2'), btn('good', 'g', 'Gewusst', inDays(goodIn), '3'))
-        : h('div', { class: 'kaw-rate' }, btn('again', 'r', 'Nicht gewusst', 'kommt gleich wieder', '1'), btn('good', 'g', 'Gewusst', 'weiter', '2'));
+        ? h('div', { class: 'kaw-rate' }, btn('again', 'r', T('Nochmal'), T('gleich noch mal'), '1'), btn('hard', 'y', T('Schwer'), T('morgen'), '2'), btn('good', 'g', T('Gewusst'), inDays(goodIn), '3'))
+        : h('div', { class: 'kaw-rate' }, btn('again', 'r', T('Nicht gewusst'), T('kommt gleich wieder'), '1'), btn('good', 'g', T('Gewusst'), T('weiter'), '2'));
     return h('div', { class: 'kaw-study' },
       h('div', { class: 'kaw-sbar' },
-        h('button', { class: 'btn sm ghost', onclick: () => { session = null; render(); } }, icon('chevl'), 'Beenden'),
+        h('button', { class: 'btn sm ghost', onclick: () => { session = null; render(); } }, icon('chevl'), T('Beenden')),
         h('div', { class: 'kaw-prog' }, h('i', { style: { width: (s.done / s.total * 100) + '%', background: d.color } })),
         h('span', { class: 'kaw-count' }, `${s.done} / ${s.total}`)),
-      h('div', { class: 'kaw-meta' }, h('i', { class: 'kaw-dot', style: { background: d.color } }), d.name, ' · ', s.mode === 'learn' ? 'Lernen' : 'Üben', c.box ? ` · Fach ${c.box}` : ' · neue Karte'),
+      h('div', { class: 'kaw-meta' }, h('i', { class: 'kaw-dot', style: { background: d.color } }), d.name, ' · ', s.mode === 'learn' ? T('Lernen') : T('Üben'), ' · ' + (c.box ? T('Fach {n}', { n: c.box }) : T('neue Karte'))),
       card, acts);
   }
   function endView() {
     const s = session, d = s.d, r = s.res, wrong = [...s.wrong];
     return h('div', { class: 'kaw-study' }, h('div', { class: 'kaw-end' },
       h('div', { class: 'kaw-party' }, '🎉'),
-      h('h2', null, 'Runde geschafft!'),
-      h('p', null, `${cardsWord(s.total)} durchgearbeitet.`),
+      h('h2', null, T('Runde geschafft!')),
+      h('p', null, T('{c} durchgearbeitet.', { c: cardsWord(s.total) })),
       h('div', { class: 'kaw-endstats' },
-        h('div', { class: 'g' }, h('b', null, r.good), h('span', null, 'gewusst')),
-        s.mode === 'learn' ? h('div', { class: 'y' }, h('b', null, r.hard), h('span', null, 'schwer')) : null,
-        h('div', { class: 'r' }, h('b', null, r.again), h('span', null, 'nochmal'))),
+        h('div', { class: 'g' }, h('b', null, r.good), h('span', null, T('gewusst'))),
+        s.mode === 'learn' ? h('div', { class: 'y' }, h('b', null, r.hard), h('span', null, T('schwer'))) : null,
+        h('div', { class: 'r' }, h('b', null, r.again), h('span', null, T('nochmal')))),
       h('div', { class: 'kaw-row-acts center' },
-        wrong.length ? h('button', { class: 'btn primary', onclick: () => start(d, 'practice', wrong) }, icon('refresh'), `Schwierige nochmal üben (${wrong.length})`) : null,
-        h('button', { class: 'btn', onclick: () => { session = null; render(); } }, 'Zurück zum Stapel'))));
+        wrong.length ? h('button', { class: 'btn primary', onclick: () => start(d, 'practice', wrong) }, icon('refresh'), T('Schwierige nochmal üben ({n})', { n: wrong.length })) : null,
+        h('button', { class: 'btn', onclick: () => { session = null; render(); } }, T('Zurück zum Kartenstapel')))));
   }
 
   function welcome() {
     return h('div', { class: 'kaw-welcome' },
       h('div', { class: 'kaw-logo big' }, icon('karteiwerk')),
       h('h2', null, 'Karteiwerk'),
-      h('p', null, 'Karteikarten für jedes Thema – du übst vor allem, was noch nicht sitzt.'),
+      h('p', null, T('Karteikarten für jedes Thema – du übst vor allem, was noch nicht sitzt.')),
       h('div', { class: 'kaw-row-acts center' },
-        h('button', { class: 'btn primary', onclick: () => { newDeck(); setTimeout(() => main.querySelector('.kaw-name')?.select(), 30); } }, icon('plus'), 'Neuer Stapel'),
-        !st.decks.length && h('button', { class: 'btn', onclick: () => newDeck('Marketing-Grundbegriffe', EXAMPLE.map(([f, b]) => mkCard(f, b))) }, icon('sparkle'), 'Beispiel-Stapel')));
+        h('button', { class: 'btn primary', onclick: () => { newDeck(); setTimeout(() => main.querySelector('.kaw-name')?.select(), 30); } }, icon('plus'), T('Neuer Stapel')),
+        !st.decks.length && h('button', { class: 'btn', onclick: () => newDeck(T('Marketing-Grundbegriffe'), EXAMPLE.map(([f, b]) => mkCard(f, b))) }, icon('sparkle'), T('Beispiel-Stapel'))));
   }
 
   /* ---------- Layout ---------- */
@@ -16856,7 +16948,7 @@ function mountKarteiwerk(view) {
   view.append(h('div', { class: 'kaw' },
     h('aside', { class: 'kaw-sidebar' },
       h('div', { class: 'kaw-hd' }, h('div', { class: 'kaw-logo' }, icon('karteiwerk')), h('b', null, 'Karteiwerk')),
-      h('div', { class: 'kaw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => { session = null; newDeck(); setTimeout(() => main.querySelector('.kaw-name')?.select(), 30); } }, icon('plus'), 'Neuer Stapel')),
+      h('div', { class: 'kaw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => { session = null; newDeck(); setTimeout(() => main.querySelector('.kaw-name')?.select(), 30); } }, icon('plus'), T('Neuer Stapel'))),
       list, footEl),
     main));
   render();
@@ -16892,7 +16984,7 @@ const DGW_INK = {
   light: { bg: '#fcfcfb', t1: '#0b0b0b', t2: '#52514e', mu: '#898781', grid: '#e1e0d9', base: '#c3c2b7', wk: '#f3f2ee' },
   dark: { bg: '#1a1a19', t1: '#ffffff', t2: '#c3c2b7', mu: '#898781', grid: '#2c2c2a', base: '#383835', wk: '#232321' },
 };
-const DGW_TYPES = [['col', 'Säulen'], ['bar', 'Balken'], ['stack', 'Gestapelt'], ['line', 'Linie'], ['donut', 'Kreis'], ['gantt', 'Zeitplan']];
+const DGW_TYPES = [['col', 'Säulen'], ['bar', 'Balken'], ['stack', 'Gestapelt'], ['line', 'Linie'], ['donut', 'Ring'], ['gantt', 'Zeitplan']];
 const DGW_FMT = { '16:9': [960, 540], '4:3': [960, 720], '1:1': [800, 800] };
 const DGW_ICON = {
   col: '<path d="M4 20h16"/><rect x="5" y="11" width="3" height="9" rx="1"/><rect x="10.5" y="6" width="3" height="14" rx="1"/><rect x="16" y="9" width="3" height="11" rx="1"/>',
@@ -16904,6 +16996,7 @@ const DGW_ICON = {
 };
 function mountDiagrammwerk(view) {
   view.style.padding = '0';
+  const tr = T;   // build() has its own T() for SVG text – translations inside it go through tr()
   const saved = Store.get('diagrammwerk', {});
   const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null };
   const persist = saveLater(() => Store.set('diagrammwerk', st), 300);
@@ -16920,7 +17013,7 @@ function mountDiagrammwerk(view) {
     else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, '');
     return Number(s);
   };
-  const nf = (n, d = 2) => n.toLocaleString('de-DE', { maximumFractionDigits: d });
+  const nf = (n, d = 2) => n.toLocaleString(isEN() ? 'en-US' : 'de-DE', { maximumFractionDigits: d });
   const X = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   const mctx = document.createElement('canvas').getContext('2d');
   const tw = (s, size, w = 400) => { mctx.font = `${w} ${size}px ${FONT}`; return mctx.measureText(String(s)).width; };
@@ -16931,11 +17024,11 @@ function mountDiagrammwerk(view) {
     if (!l1) return [fit(words.join(' '), max, size, w)];
     return words.length ? [l1, fit(words.join(' '), max, size, w)] : [l1];
   }
-  const WD = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+  const WD = isEN() ? ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'] : ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
   const dayN = s => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? Math.round(Date.UTC(+m[1], m[2] - 1, +m[3]) / 864e5) : NaN; };
   const dayD = n => new Date(n * 864e5);
   const dayS = n => dayD(n).toISOString().slice(0, 10);
-  const dLabel = n => { const d = dayD(n); return `${WD[d.getUTCDay()]} ${String(d.getUTCDate()).padStart(2, '0')}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.`; };
+  const dLabel = n => { const d = dayD(n); return isEN() ? `${WD[d.getUTCDay()]} ${d.getUTCMonth() + 1}/${d.getUTCDate()}` : `${WD[d.getUTCDay()]} ${String(d.getUTCDate()).padStart(2, '0')}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.`; };
   const todayN = () => { const d = appNow(); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); };
   function niceTicks(lo, hi, n = 5) {
     if (lo === hi) { hi = lo + 1; }
@@ -16948,16 +17041,17 @@ function mountDiagrammwerk(view) {
 
   /* ---------- Examples ---------- */
   function example(type) {
+    const MONTHS6 = isEN() ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'] : ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun'];
     const mon = (() => { const t = todayN(); return t - ((dayD(t).getUTCDay() + 6) % 7); })();
     const E = {
-      col: { title: 'Umsatz nach Quartal', sub: 'in Tausend Euro', unit: 'T€', labels: ['Q1', 'Q2', 'Q3', 'Q4'], series: [{ name: '2025', v: ['120', '150', '170', '210'] }, { name: '2026', v: ['140', '165', '190', '240'] }] },
-      bar: { title: 'Wo erreichen wir unsere Zielgruppe?', sub: 'Anteil der Befragten in %', unit: '%', labels: ['Instagram', 'E-Mail-Newsletter', 'Website', 'TikTok', 'LinkedIn'], series: [{ name: 'Anteil', v: ['42', '35', '28', '21', '12'] }] },
-      stack: { title: 'Website-Besuche nach Quelle', sub: 'in Tausend', unit: 'T', labels: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun'], series: [{ name: 'Organisch', v: ['12', '13', '15', '14', '17', '19'] }, { name: 'Bezahlt', v: ['6', '8', '7', '9', '10', '12'] }, { name: 'Social', v: ['4', '5', '7', '8', '8', '10'] }] },
-      line: { title: 'Follower-Entwicklung', sub: 'Januar bis Juni', unit: '', labels: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun'], series: [{ name: 'Instagram', v: ['1200', '1350', '1600', '1720', '2050', '2400'] }, { name: 'LinkedIn', v: ['400', '460', '530', '640', '720', '850'] }] },
-      donut: { title: 'Aufteilung Marketing-Budget', sub: '', unit: '%', labels: ['Social Ads', 'Suchmaschine', 'Content', 'Events'], series: [{ name: 'Anteil', v: ['40', '25', '20', '15'] }] },
-      gantt: { title: 'Projektplan', sub: 'Wer macht was wann?', unit: '', labels: [], series: [], tasks: [
+      col: { title: T('Umsatz nach Quartal'), sub: T('in Tausend Euro'), unit: T('T€'), labels: ['Q1', 'Q2', 'Q3', 'Q4'], series: [{ name: '2025', v: ['120', '150', '170', '210'] }, { name: '2026', v: ['140', '165', '190', '240'] }] },
+      bar: { title: T('Wo erreichen wir unsere Zielgruppe?'), sub: T('Anteil der Befragten in %'), unit: '%', labels: ['Instagram', T('E-Mail-Newsletter'), 'Website', 'TikTok', 'LinkedIn'], series: [{ name: T('Anteil'), v: ['42', '35', '28', '21', '12'] }] },
+      stack: { title: T('Website-Besuche nach Quelle'), sub: T('in Tausend'), unit: T('T (Tausend)'), labels: MONTHS6, series: [{ name: T('Organisch'), v: ['12', '13', '15', '14', '17', '19'] }, { name: T('Bezahlt'), v: ['6', '8', '7', '9', '10', '12'] }, { name: 'Social', v: ['4', '5', '7', '8', '8', '10'] }] },
+      line: { title: T('Follower-Entwicklung'), sub: T('Januar bis Juni'), unit: '', labels: MONTHS6, series: [{ name: 'Instagram', v: ['1200', '1350', '1600', '1720', '2050', '2400'] }, { name: 'LinkedIn', v: ['400', '460', '530', '640', '720', '850'] }] },
+      donut: { title: T('Aufteilung Marketing-Budget'), sub: '', unit: '%', labels: ['Social Ads', T('Suchmaschine'), 'Content', 'Events'], series: [{ name: T('Anteil'), v: ['40', '25', '20', '15'] }] },
+      gantt: { title: T('Projektplan'), sub: T('Wer macht was wann?'), unit: '', labels: [], series: [], tasks: [
         ['Recherche', 'Vorbereitung', 0, 1], ['Konzept', 'Vorbereitung', 1, 3], ['Umsetzung', 'Umsetzung', 3, 8], ['Feedback-Runde', 'Umsetzung', 7, 8], ['Präsentation', 'Abschluss', 9, 9],
-      ].map(([n, g, a, b]) => ({ id: uid(), n, g, s: dayS(mon + a), e: dayS(mon + b) })) },
+      ].map(([n, g, a, b]) => ({ id: uid(), n: T(n), g: T(g), s: dayS(mon + a), e: dayS(mon + b) })) },
     }[type];
     return { tasks: [], today: true, ...E };
   }
@@ -16992,8 +17086,8 @@ function mountDiagrammwerk(view) {
     if (it.type === 'gantt') return { svg: gantt(), W, H };
     const labels = it.labels || [];
     const series = (it.type === 'donut' ? (it.series || []).slice(0, 1) : (it.series || [])).slice(0, 8)
-      .map((s, i) => ({ name: s.name || `Reihe ${i + 1}`, c: PAL[i], v: labels.map((_, r) => num(s.v?.[r])) }));
-    if (!labels.length || !series.length) { empty('Trag unten Daten ein, dann erscheint hier das Diagramm.'); return { svg: done(), W, H }; }
+      .map((s, i) => ({ name: s.name || tr('Reihe {n}', { n: i + 1 }), c: PAL[i], v: labels.map((_, r) => num(s.v?.[r])) }));
+    if (!labels.length || !series.length) { empty(tr('Trag unten Daten ein, dann erscheint hier das Diagramm.')); return { svg: done(), W, H }; }
 
     if (it.type === 'donut') return { svg: donut(), W, H };
     legend(series.map(s => [s.name, s.c]));
@@ -17002,7 +17096,7 @@ function mountDiagrammwerk(view) {
     let vals = [];
     if (stack) vals = labels.map((_, r) => series.reduce((a, s) => a + (s.v[r] > 0 ? s.v[r] : 0), 0));
     else series.forEach(s => s.v.forEach(v => Number.isFinite(v) && vals.push(v)));
-    if (!vals.length) { empty('Noch keine Zahlen eingetragen.'); return { svg: done(), W, H }; }
+    if (!vals.length) { empty(tr('Noch keine Zahlen eingetragen.')); return { svg: done(), W, H }; }
     let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals);
     if (line && lo === 0 && hi === 0) hi = 1;
     const ticks = niceTicks(lo, hi); lo = ticks[0]; hi = ticks[ticks.length - 1];
@@ -17089,7 +17183,7 @@ function mountDiagrammwerk(view) {
     function donut() {
       const s = series[0], parts = labels.map((l, r) => ({ l, v: s.v[r] > 0 ? s.v[r] : 0, c: PAL[r % 8] })).filter(p => p.v > 0);
       const sum = parts.reduce((a, p) => a + p.v, 0), pctOnly = (it.unit || '').trim() === '%';
-      if (!sum) { empty('Noch keine positiven Zahlen eingetragen.'); return done(); }
+      if (!sum) { empty(tr('Noch keine positiven Zahlen eingetragen.')); return done(); }
       const legW = Math.min(W * 0.42, Math.max(...parts.map(p => tw(p.l, 13) + tw(`${fmtV(p.v)} · ${nf(p.v / sum * 100, 1)} %`, 12))) + 40);
       const aw = W - 2 * P - legW - 24, ah = H - P - top, R = Math.max(40, Math.min(aw, ah) / 2 - 6), r0 = R * 0.62;
       const cx = P + aw / 2, cy = top + ah / 2;
@@ -17104,7 +17198,7 @@ function mountDiagrammwerk(view) {
         a = b;
       }
       T(cx, cy + 6, nf(sum) + unitSfx, { size: Math.min(28, r0 / 2.2), w: 700, fill: K.t1, anchor: 'middle' });
-      T(cx, cy + 26, 'gesamt', { size: 12, fill: K.mu, anchor: 'middle' });
+      T(cx, cy + 26, tr('gesamt'), { size: 12, fill: K.mu, anchor: 'middle' });
       let ly = cy - parts.length * (it.values ? 40 : 26) / 2 + 13; const lx = Math.min(W - P - legW, cx + R + 56);
       for (const p of parts) {
         out.push(`<rect x="${lx}" y="${ly - 10}" width="12" height="12" rx="3" fill="${p.c}"/>`);
@@ -17117,12 +17211,12 @@ function mountDiagrammwerk(view) {
 
     function gantt() {
       const tasks = (it.tasks || []).map(t => ({ ...t, a: dayN(t.s), b: dayN(t.e || t.s) })).filter(t => Number.isFinite(t.a) && Number.isFinite(t.b)).map(t => t.b < t.a ? { ...t, a: t.b, b: t.a } : t);
-      if (!tasks.length) { empty('Trag unten Aufgaben mit Start und Ende ein.'); return done(); }
+      if (!tasks.length) { empty(tr('Trag unten Aufgaben mit Start und Ende ein.')); return done(); }
       const groups = [...new Set(tasks.map(t => (t.g || '').trim()))];
       const gc = g => PAL[groups.indexOf((g || '').trim()) % 8];
-      if (groups.length > 1) legend(groups.map(g => [g || 'Ohne Gruppe', gc(g)]));
+      if (groups.length > 1) legend(groups.map(g => [g || tr('Ohne Gruppe'), gc(g)]));
       const min = Math.min(...tasks.map(t => t.a)), max = Math.max(...tasks.map(t => t.b)), days = max - min + 1;
-      const labW = Math.min(W * 0.3, Math.max(...tasks.map(t => tw(t.n || 'Aufgabe', 13))) + 4);
+      const labW = Math.min(W * 0.3, Math.max(...tasks.map(t => tw(t.n || tr(T('Aufgabe')), 13))) + 4);
       const x0 = P + labW + 14, x1 = W - P, axisH = days <= 31 ? 36 : 22, yA = top + 4, y0 = yA + axisH;
       const rowH = 40, bh = 22, y1 = y0 + tasks.length * rowH + 6;
       H = Math.max(320, y1 + P + (it.today ? 18 : 0));
@@ -17142,29 +17236,29 @@ function mountDiagrammwerk(view) {
           const d = dayD(n), wd = WD[d.getUTCDay()];
           if (dw >= 26 || (dw >= 14 && monday)) {
             T(dx(n) + dw / 2, yA + 12, dw >= 26 ? wd : wd[0], { size: 11, w: 600, fill: K.t2, anchor: 'middle' });
-            T(dx(n) + dw / 2, yA + 27, `${d.getUTCDate()}.${dw >= 34 ? (d.getUTCMonth() + 1) + '.' : ''}`, { size: 11, fill: K.mu, anchor: 'middle' });
+            T(dx(n) + dw / 2, yA + 27, isEN() ? (dw >= 34 ? `${d.getUTCMonth() + 1}/${d.getUTCDate()}` : `${d.getUTCDate()}`) : `${d.getUTCDate()}.${dw >= 34 ? (d.getUTCMonth() + 1) + '.' : ''}`, { size: 11, fill: K.mu, anchor: 'middle' });
           }
         } else if (monday) T(dx(n) + 3, yA + 14, dLabel(n).slice(3), { size: 11, fill: K.mu });
       }
       out.push(`<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="${K.base}" stroke-width="1"/>`);
       tasks.forEach((t, i) => {
         const yc = y0 + rowH * i + rowH / 2, dur = t.b - t.a + 1;
-        T(P + labW, yc + 4.5, fit(t.n || 'Aufgabe', labW, 13), { size: 13, fill: K.t1, anchor: 'end' });
+        T(P + labW, yc + 4.5, fit(t.n || tr(T('Aufgabe')), labW, 13), { size: 13, fill: K.t1, anchor: 'end' });
         const x = dx(t.a) + 1.5, w = Math.max(4, dur * dw - 3), rr = Math.min(4, bh / 2);
-        out.push(`<rect x="${x.toFixed(1)}" y="${(yc - bh / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${bh}" rx="${rr}" fill="${gc(t.g)}" data-t="${X(`${t.n || 'Aufgabe'}${t.g ? ' (' + t.g + ')' : ''}: ${dLabel(t.a)}${dur > 1 ? ' – ' + dLabel(t.b) : ''} · ${dur} ${dur === 1 ? 'Tag' : 'Tage'}`)}"/>`);
+        out.push(`<rect x="${x.toFixed(1)}" y="${(yc - bh / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${bh}" rx="${rr}" fill="${gc(t.g)}" data-t="${X(`${t.n || tr(T('Aufgabe'))}${t.g ? ' (' + t.g + ')' : ''}: ${dLabel(t.a)}${dur > 1 ? ' – ' + dLabel(t.b) : ''} · ${dur} ${dur === 1 ? lc(tr('Tag')) : tr('Tage')}`)}"/>`);
       });
       const tn = todayN();
       if (it.today && tn >= min && tn <= max) {
         const x = dx(tn) + dw / 2;
         out.push(`<line x1="${x.toFixed(1)}" y1="${y0 - 2}" x2="${x.toFixed(1)}" y2="${y1}" stroke="${K.t1}" stroke-opacity=".55" stroke-width="1.5"/>`);
-        T(x, y1 + 14, 'Heute', { size: 11, w: 600, fill: K.t2, anchor: 'middle' });
+        T(x, y1 + 14, tr('Heute'), { size: 11, w: 600, fill: K.t2, anchor: 'middle' });
       }
       return done();
     }
   }
 
   /* ---------- Export ---------- */
-  const fileName = it => (it.title || 'Diagramm').replace(/[\\/:*?"<>|]+/g, '').trim().slice(0, 80) || 'Diagramm';
+  const fileName = it => (it.title || T('Diagramm')).replace(/[\\/:*?"<>|]+/g, '').trim().slice(0, 80) || T('Diagramm');
   function toCanvas(it) {
     return new Promise((res, rej) => {
       const { svg, W, H } = build(it), url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' })), img = new Image();
@@ -17174,16 +17268,16 @@ function mountDiagrammwerk(view) {
     });
   }
   async function exportPng(it) {
-    try { const cv = await toCanvas(it); cv.toBlob(b => { download(fileName(it) + '.png', b); toast('PNG gespeichert', 'ok'); }, 'image/png'); }
-    catch { toast('PNG-Export hat nicht geklappt.', 'err'); }
+    try { const cv = await toCanvas(it); cv.toBlob(b => { download(fileName(it) + '.png', b); toast(T('PNG gespeichert'), 'ok'); }, 'image/png'); }
+    catch { toast(T('PNG-Export hat nicht geklappt.'), 'err'); }
   }
-  function exportSvg(it) { download(fileName(it) + '.svg', build(it).svg, 'image/svg+xml'); toast('SVG gespeichert', 'ok'); }
+  function exportSvg(it) { download(fileName(it) + '.svg', build(it).svg, 'image/svg+xml'); toast(T('SVG gespeichert'), 'ok'); }
   async function copyPng(it) {
     try {
       const cv = await toCanvas(it), blob = await new Promise(r => cv.toBlob(r, 'image/png'));
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-      toast('Bild kopiert ✓', 'ok');
-    } catch { toast('Kopieren geht in diesem Browser nicht – nimm „PNG“.', 'err'); }
+      toast(T('Bild kopiert ✓'), 'ok');
+    } catch { toast(T('Kopieren geht in diesem Browser nicht – nimm „PNG“.'), 'err'); }
   }
 
   /* ---------- Paste from Excel ---------- */
@@ -17196,17 +17290,17 @@ function mountDiagrammwerk(view) {
     const n = Math.min(8, cols - 1);
     return {
       labels: rows.map(r => r[0] || ''),
-      series: Array.from({ length: n }, (_, j) => ({ name: header?.[j + 1] || `Reihe ${j + 1}`, v: rows.map(r => r[j + 1] ?? '') })),
+      series: Array.from({ length: n }, (_, j) => ({ name: header?.[j + 1] || T('Reihe {n}', { n: j + 1 }), v: rows.map(r => r[j + 1] ?? '') })),
     };
   }
   function openPaste(it) {
-    const ta = h('textarea', { class: 'dgw-paste', placeholder: 'Monat\tUmsatz\tKosten\nJan\t120\t80\nFeb\t150\t90', spellcheck: false });
+    const ta = h('textarea', { class: 'dgw-paste', placeholder: isEN() ? 'Month\tSales\tCosts\nJan\t120\t80\nFeb\t150\t90' : 'Monat\tUmsatz\tKosten\nJan\t120\t80\nFeb\t150\t90', spellcheck: false });
     const info = h('div', { class: 'hint' });
-    const upd = () => { const r = parseTable(ta.value); info.textContent = r ? `${r.labels.length} Zeilen · ${r.series.length} Datenreihe${r.series.length === 1 ? '' : 'n'} (${r.series.map(s => s.name).join(', ')})` : 'Zellen in Excel markieren, kopieren und hier einfügen. Erste Spalte = Beschriftung, erste Zeile = Namen der Datenreihen.'; };
+    const upd = () => { const r = parseTable(ta.value); info.textContent = r ? T(r.series.length === 1 ? '{r} Zeilen · 1 Datenreihe ({n})' : '{r} Zeilen · {s} Datenreihen ({n})', { r: r.labels.length, s: r.series.length, n: r.series.map(s => s.name).join(', ') }) : T('Zellen in Excel markieren, kopieren und hier einfügen. Erste Spalte = Beschriftung, erste Zeile = Namen der Datenreihen.'); };
     ta.addEventListener('input', upd); upd();
-    modal({ title: 'Aus Excel einfügen', sub: 'Ersetzt die aktuellen Daten', width: 620, body: h('div', { class: 'dgw-col' }, ta, info),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: 'Übernehmen', kind: 'primary', onClick: () => {
-        const r = parseTable(ta.value); if (!r) { toast('Keine Tabelle erkannt.', 'err'); return false; }
+    modal({ title: T('Aus Excel einfügen'), sub: T('Ersetzt die aktuellen Daten'), width: 620, body: h('div', { class: 'dgw-col' }, ta, info),
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: T('Übernehmen'), kind: 'primary', onClick: () => {
+        const r = parseTable(ta.value); if (!r) { toast(T('Keine Tabelle erkannt.'), 'err'); return false; }
         it.labels = r.labels; it.series = r.series; touch(); render();
       } }] });
   }
@@ -17217,9 +17311,9 @@ function mountDiagrammwerk(view) {
     const items = [...st.items].sort((a, b) => b.updated - a.updated);
     list.replaceChildren(...items.map(it => h('div', { class: 'dgw-it' + (it.id === st.active ? ' on' : ''), onclick: () => { st.active = it.id; persist(); render(); } },
       h('span', { class: 'dgw-ti', html: `<svg viewBox="0 0 24 24" class="i">${DGW_ICON[it.type] || DGW_ICON.col}</svg>` }),
-      h('div', { class: 'dgw-it-tx' }, h('div', { class: 'dgw-it-t' }, it.title || 'Ohne Titel'), h('div', { class: 'dgw-it-d' }, (DGW_TYPES.find(t => t[0] === it.type) || [, ''])[1])),
-      h('button', { class: 'cw-copy dgw-del', title: 'Diagramm löschen', onclick: e => { e.stopPropagation(); remove(it); } }, icon('trash')))));
-    if (!items.length) list.append(h('div', { class: 'dgw-empty' }, 'Noch keine Diagramme.'));
+      h('div', { class: 'dgw-it-tx' }, h('div', { class: 'dgw-it-t' }, it.title || T('Ohne Titel')), h('div', { class: 'dgw-it-d' }, T((DGW_TYPES.find(t => t[0] === it.type) || [, ''])[1]))),
+      h('button', { class: 'cw-copy dgw-del', title: T('Diagramm löschen'), onclick: e => { e.stopPropagation(); remove(it); } }, icon('trash')))));
+    if (!items.length) list.append(h('div', { class: 'dgw-empty' }, T('Noch keine Diagramme.')));
   }
   const listSoon = debounce(renderList, 250);
   function create(type) {
@@ -17229,7 +17323,7 @@ function mountDiagrammwerk(view) {
   function remove(it) {
     const i = st.items.indexOf(it);
     st.items.splice(i, 1); if (st.active === it.id) st.active = null; save(); render();
-    toast(`„${it.title || 'Diagramm'}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.items.splice(i, 0, it); st.active = it.id; save(); render(); } } });
+    toast(T('„{n}“ gelöscht', { n: it.title || T('Diagramm') }), 'info', { action: { label: T('Rückgängig'), fn: () => { st.items.splice(i, 0, it); st.active = it.id; save(); render(); } } });
   }
 
   /* ---------- Editor ---------- */
@@ -17247,34 +17341,34 @@ function mountDiagrammwerk(view) {
     function paint() {
       const PAL = DGW_PAL.light, m = it.series.length;
       const cols = `minmax(140px,1.4fr) repeat(${m},minmax(96px,1fr)) 30px`;
-      const cells = [h('span', { class: 'dgw-h' }, 'Beschriftung')];
+      const cells = [h('span', { class: 'dgw-h' }, T('Beschriftung'))];
       it.series.forEach((s, j) => {
-        const inp = h('input', { class: 'inp dgw-sn', value: s.name, placeholder: `Reihe ${j + 1}`, spellcheck: false, oninput: () => { s.name = inp.value; touch(); } });
+        const inp = h('input', { class: 'inp dgw-sn', value: s.name, placeholder: T('Reihe {n}', { n: j + 1 }), spellcheck: false, oninput: () => { s.name = inp.value; touch(); } });
         cells.push(h('div', { class: 'dgw-shd' + (one && j ? ' off' : '') }, h('i', { class: 'dgw-sw', style: { background: one ? 'var(--tx3)' : PAL[j] } }), inp,
-          m > 1 ? h('button', { class: 'cw-copy', title: 'Datenreihe entfernen', onclick: () => { it.series.splice(j, 1); touch(); paint(); } }, icon('x')) : null));
+          m > 1 ? h('button', { class: 'cw-copy', title: T('Datenreihe entfernen'), onclick: () => { it.series.splice(j, 1); touch(); paint(); } }, icon('x')) : null));
       });
       cells.push(h('span'));
       it.labels.forEach((l, r) => {
-        const li = h('input', { class: 'inp', value: l, placeholder: 'Beschriftung', spellcheck: false, oninput: () => { it.labels[r] = li.value; touch(); } });
+        const li = h('input', { class: 'inp', value: l, placeholder: T('Beschriftung'), spellcheck: false, oninput: () => { it.labels[r] = li.value; touch(); } });
         cells.push(li);
         it.series.forEach((s, j) => {
           const vi = h('input', { class: 'inp dgw-v' + (one && j ? ' off' : ''), value: s.v[r] ?? '', inputMode: 'decimal', placeholder: '–', spellcheck: false,
             oninput: () => { s.v[r] = vi.value; vi.classList.toggle('err', vi.value.trim() !== '' && Number.isNaN(num(vi.value))); touch(); } });
           cells.push(vi);
         });
-        cells.push(h('button', { class: 'cw-copy', title: 'Zeile entfernen', onclick: () => { it.labels.splice(r, 1); it.series.forEach(s => s.v.splice(r, 1)); touch(); paint(); } }, icon('x')));
+        cells.push(h('button', { class: 'cw-copy', title: T('Zeile entfernen'), onclick: () => { it.labels.splice(r, 1); it.series.forEach(s => s.v.splice(r, 1)); touch(); paint(); } }, icon('x')));
       });
       wrap.replaceChildren(h('div', { class: 'dgw-t', style: { gridTemplateColumns: cols } }, ...cells));
     }
     paint();
     return h('section', { class: 'cw-card' },
-      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('table')), h('h3', null, 'Daten'),
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('table')), h('h3', null, T('Daten')),
         h('div', { class: 'cw-acts' },
-          h('button', { class: 'btn sm', onclick: () => { if (it.labels.length >= 60) return; it.labels.push(''); it.series.forEach(s => s.v.push('')); touch(); paint(); wrap.querySelectorAll('.dgw-t > .inp:not(.dgw-v)')[it.labels.length - 1]?.focus(); } }, icon('plus'), 'Zeile'),
-          !one && h('button', { class: 'btn sm', onclick: () => { if (it.series.length >= 8) return toast('Maximal 8 Datenreihen.', 'info'); it.series.push({ name: '', v: it.labels.map(() => '') }); touch(); paint(); } }, icon('plus'), 'Datenreihe'),
-          h('button', { class: 'btn sm ghost', onclick: () => openPaste(it) }, icon('upload'), 'Aus Excel einfügen'))),
+          h('button', { class: 'btn sm', onclick: () => { if (it.labels.length >= 60) return; it.labels.push(''); it.series.forEach(s => s.v.push('')); touch(); paint(); wrap.querySelectorAll('.dgw-t > .inp:not(.dgw-v)')[it.labels.length - 1]?.focus(); } }, icon('plus'), T('Zeile')),
+          !one && h('button', { class: 'btn sm', onclick: () => { if (it.series.length >= 8) return toast(T('Maximal 8 Datenreihen.'), 'info'); it.series.push({ name: '', v: it.labels.map(() => '') }); touch(); paint(); } }, icon('plus'), T('Datenreihe')),
+          h('button', { class: 'btn sm ghost', onclick: () => openPaste(it) }, icon('upload'), T('Aus Excel einfügen')))),
       wrap,
-      one && it.series.length > 1 ? h('div', { class: 'cw-note' }, 'Das Kreisdiagramm zeigt nur die erste Datenreihe.') : null);
+      one && it.series.length > 1 ? h('div', { class: 'cw-note' }, T('Das Kreisdiagramm zeigt nur die erste Datenreihe.')) : null);
   }
 
   function taskTable(it) {
@@ -17283,35 +17377,35 @@ function mountDiagrammwerk(view) {
     function paint() {
       const groups = [...new Set(it.tasks.map(t => (t.g || '').trim()))];
       dl.replaceChildren(...groups.filter(Boolean).map(g => h('option', { value: g })));
-      const cells = ['Aufgabe', 'Gruppe / Phase', 'Start', 'Ende', ''].map(t => h('span', { class: 'dgw-h' }, t));
+      const cells = [T('Aufgabe'), T('Gruppe / Phase'), 'Start', T('Ende'), ''].map(t => h('span', { class: 'dgw-h' }, t));
       it.tasks.forEach((t, i) => {
         const inp = (k, o = {}) => { const e = h('input', { class: 'inp', value: t[k] || '', spellcheck: false, ...o, oninput: () => { t[k] = e.value; if (k === 's' && t.s && (!t.e || t.e < t.s)) { t.e = t.s; eIn.value = t.e; } touch(); if (k === 'g') { clearTimeout(e._p); e._p = setTimeout(sw, 300); } } }); return e; };
-        const gi = inp('g', { placeholder: 'z. B. Konzept', list: 'dgw-groups' });
+        const gi = inp('g', { placeholder: T('z. B. Konzept'), list: 'dgw-groups' });
         const sw = () => { const gs = [...new Set(it.tasks.map(x => (x.g || '').trim()))]; dot.style.background = DGW_PAL.light[gs.indexOf((t.g || '').trim()) % 8]; };
         const dot = h('i', { class: 'dgw-sw' }); sw();
         const eIn = inp('e', { type: 'date' });
-        cells.push(inp('n', { placeholder: 'Aufgabe' }), h('div', { class: 'dgw-shd' }, dot, gi), inp('s', { type: 'date' }), eIn,
-          h('button', { class: 'cw-copy', title: 'Aufgabe entfernen', onclick: () => { it.tasks.splice(i, 1); touch(); paint(); } }, icon('x')));
+        cells.push(inp('n', { placeholder: T('Aufgabe') }), h('div', { class: 'dgw-shd' }, dot, gi), inp('s', { type: 'date' }), eIn,
+          h('button', { class: 'cw-copy', title: T('Aufgabe entfernen'), onclick: () => { it.tasks.splice(i, 1); touch(); paint(); } }, icon('x')));
       });
       wrap.replaceChildren(h('div', { class: 'dgw-t', style: { gridTemplateColumns: 'minmax(150px,1.5fr) minmax(140px,1fr) 150px 150px 30px' } }, ...cells), dl);
     }
     paint();
     return h('section', { class: 'cw-card' },
-      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('timer')), h('h3', null, 'Aufgaben'),
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('timer')), h('h3', null, T('Aufgaben')),
         h('div', { class: 'cw-acts' },
-          h('label', { class: 'cw-sw' }, 'Heute-Linie', switchEl(it.today, v => { it.today = v; touch(); })),
+          h('label', { class: 'cw-sw' }, T('Heute-Linie'), switchEl(it.today, v => { it.today = v; touch(); })),
           h('button', { class: 'btn sm', onclick: () => {
             const last = it.tasks[it.tasks.length - 1], s = last ? dayS(dayN(last.e || last.s) + 1) : dayS(todayN());
             it.tasks.push({ id: uid(), n: '', g: last?.g || '', s, e: s }); touch(); paint(); wrap.querySelectorAll('.dgw-t > .inp')[(it.tasks.length - 1) * 3]?.focus();
-          } }, icon('plus'), 'Aufgabe'))),
+          } }, icon('plus'), T('Aufgabe')))),
       wrap,
-      h('div', { class: 'cw-note' }, 'Gleiche Gruppe = gleiche Farbe. Eine Aufgabe über einen Tag: Start und Ende gleich. Wochenenden sind grau hinterlegt.'));
+      h('div', { class: 'cw-note' }, T('Gleiche Gruppe = gleiche Farbe. Eine Aufgabe über einen Tag: Start und Ende gleich. Wochenenden sind grau hinterlegt.')));
   }
 
   function editor(it) {
-    const title = h('input', { class: 'dgw-title', value: it.title || '', placeholder: 'Titel des Diagramms', spellcheck: false, oninput: () => { it.title = title.value; touch(); } });
-    const sub = h('input', { class: 'dgw-sub', value: it.sub || '', placeholder: 'Untertitel (optional)', spellcheck: false, oninput: () => { it.sub = sub.value; touch(); } });
-    const unit = h('input', { class: 'inp dgw-unit', value: it.unit || '', placeholder: 'z. B. €, %', spellcheck: false, oninput: () => { it.unit = unit.value; touch(); } });
+    const title = h('input', { class: 'dgw-title', value: it.title || '', placeholder: T('Titel des Diagramms'), spellcheck: false, oninput: () => { it.title = title.value; touch(); } });
+    const sub = h('input', { class: 'dgw-sub', value: it.sub || '', placeholder: T('Untertitel (optional)'), spellcheck: false, oninput: () => { it.sub = sub.value; touch(); } });
+    const unit = h('input', { class: 'inp dgw-unit', value: it.unit || '', placeholder: T('z. B. €, %'), spellcheck: false, oninput: () => { it.unit = unit.value; touch(); } });
     preview = h('div', { class: 'dgw-prev' });
     tip = h('div', { class: 'dgw-tip', hidden: true });
     preview.addEventListener('mousemove', e => {
@@ -17323,7 +17417,7 @@ function mountDiagrammwerk(view) {
       tip.style.left = Math.max(6, x) + 'px'; tip.style.top = (e.clientY - r.top + 16) + 'px';
     });
     preview.addEventListener('mouseleave', () => { tip.hidden = true; });
-    const typeSeg = segEl(DGW_TYPES.map(([k, l]) => [k, h('span', { class: 'dgw-segi' }, h('span', { html: `<svg viewBox="0 0 24 24" class="i">${DGW_ICON[k]}</svg>` }), l)]), it.type, v => {
+    const typeSeg = segEl(DGW_TYPES.map(([k, l]) => [k, h('span', { class: 'dgw-segi' }, h('span', { html: `<svg viewBox="0 0 24 24" class="i">${DGW_ICON[k]}</svg>` }), T(l))]), it.type, v => {
       const wasGantt = it.type === 'gantt'; it.type = v;
       if (v === 'gantt' && !it.tasks?.length) it.tasks = example('gantt').tasks;
       if (wasGantt && v !== 'gantt' && !it.labels?.length) { const e = example(v); it.labels = e.labels; it.series = e.series; it.unit = e.unit; }
@@ -17334,23 +17428,23 @@ function mountDiagrammwerk(view) {
       h('div', { class: 'dgw-top' },
         h('div', { class: 'dgw-top-t' }, title, sub),
         h('div', { class: 'dgw-acts' },
-          h('button', { class: 'btn sm', title: 'PNG → 📋 · Word, PowerPoint …', onclick: () => copyPng(it) }, icon('copy'), 'Kopieren'),
+          h('button', { class: 'btn sm', title: T('PNG → 📋 · Word, PowerPoint …'), onclick: () => copyPng(it) }, icon('copy'), T('Kopieren')),
           h('button', { class: 'btn sm', title: '2×', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
-          h('button', { class: 'btn sm', title: 'Vektor', onclick: () => exportSvg(it) }, icon('download'), 'SVG'))),
+          h('button', { class: 'btn sm', title: T('Vektor'), onclick: () => exportSvg(it) }, icon('download'), 'SVG'))),
       h('div', { class: 'dgw-bar' }, typeSeg),
       h('div', { class: 'dgw-opts' },
-        nonGantt && h('label', { class: 'dgw-opt' }, 'Einheit', unit),
-        nonGantt && h('label', { class: 'cw-sw' }, it.type === 'line' ? 'Endwerte zeigen' : it.type === 'donut' ? 'Werte in der Legende' : 'Werte zeigen', switchEl(it.values, v => { it.values = v; touch(); })),
-        h('label', { class: 'cw-sw' }, 'Dunkler Hintergrund', switchEl(it.dark, v => { it.dark = v; touch(); })),
-        nonGantt && h('div', { class: 'dgw-opt' }, 'Format', segEl(Object.keys(DGW_FMT).map(k => [k, k]), it.fmt || '16:9', v => { it.fmt = v; touch(); }))),
+        nonGantt && h('label', { class: 'dgw-opt' }, T('Einheit'), unit),
+        nonGantt && h('label', { class: 'cw-sw' }, T(it.type === 'line' ? 'Endwerte zeigen' : it.type === 'donut' ? 'Werte in der Legende' : 'Werte zeigen'), switchEl(it.values, v => { it.values = v; touch(); })),
+        h('label', { class: 'cw-sw' }, T('Dunkler Hintergrund'), switchEl(it.dark, v => { it.dark = v; touch(); })),
+        nonGantt && h('div', { class: 'dgw-opt' }, T('Format'), segEl(Object.keys(DGW_FMT).map(k => [k, k]), it.fmt || '16:9', v => { it.fmt = v; touch(); }))),
       h('div', { class: 'dgw-stage' + (it.dark ? ' dark' : '') }, preview, tip),
       nonGantt ? dataTable(it) : taskTable(it));
   }
 
   function gallery() {
     return h('div', { class: 'dgw-in' },
-      h('div', null, h('h2', { class: 'dgw-h2' }, st.items.length ? 'Neues Diagramm' : 'Willkommen im Diagrammwerk'),
-        h('p', { class: 'dgw-meta' }, 'Diagrammart wählen, Beispieldaten überschreiben oder aus Excel einfügen · PNG, SVG, 📋')),
+      h('div', null, h('h2', { class: 'dgw-h2' }, T(st.items.length ? T('Neues Diagramm') : 'Willkommen im Diagrammwerk')),
+        h('p', { class: 'dgw-meta' }, T('Diagrammart wählen, Beispieldaten überschreiben oder aus Excel einfügen · PNG, SVG, 📋'))),
       h('div', { class: 'dgw-gal' }, ...[
         ['col', 'Werte vergleichen, z. B. Umsatz pro Quartal.'],
         ['bar', 'Ranglisten und lange Beschriftungen.'],
@@ -17358,9 +17452,9 @@ function mountDiagrammwerk(view) {
         ['line', 'Entwicklung über die Zeit.'],
         ['donut', 'Anteile an einem Ganzen – am besten bis 6 Teile.'],
         ['gantt', 'Zeitplan: Mo–Di Recherche, Di–Do Konzept …'],
-      ].map(([k, d]) => h('button', { class: 'dgw-g', onclick: () => create(k) },
+      ].map(([k, d]) => h('button', { class: 'dgw-g', onclick: () => create(k) }, // d translated below
         h('span', { class: 'dgw-gi', html: `<svg viewBox="0 0 24 24" class="i">${DGW_ICON[k]}</svg>` }),
-        h('b', null, DGW_TYPES.find(t => t[0] === k)[1]), h('span', null, d)))));
+        h('b', null, T(DGW_TYPES.find(t => t[0] === k)[1])), h('span', null, T(d))))));
   }
 
   /* ---------- Layout ---------- */
@@ -17375,7 +17469,7 @@ function mountDiagrammwerk(view) {
   view.append(h('div', { class: 'dgw' },
     h('aside', { class: 'dgw-side' },
       h('div', { class: 'dgw-hd' }, h('div', { class: 'dgw-logo' }, icon('diagrammwerk')), h('b', null, 'Diagrammwerk')),
-      h('div', { class: 'dgw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => { st.active = null; persist(); render(); } }, icon('plus'), 'Neues Diagramm')),
+      h('div', { class: 'dgw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => { st.active = null; persist(); render(); } }, icon('plus'), T('Neues Diagramm'))),
       list),
     main));
   render();
@@ -22559,18 +22653,24 @@ applyMascot();
 // First start: language (German by default) and name in one window – switching the language translates the window right away
 if (FIRST_RUN) setTimeout(() => {
   const inp = h('input', { class: 'inp', maxlength: 40, autocomplete: 'off', spellcheck: false });
-  const titleEl = h('span'), askEl = h('b', { class: 'welcome-ask' }), hintEl = h('p', { class: 'muted' });
+  const titleEl = h('span'), askEl = h('b', { class: 'welcome-ask' }), hintEl = h('p', { class: 'muted' }), colorEl = h('b', { class: 'welcome-ask' });
+  // Accent color right away – same choices as in the settings, applied live
+  const sw = h('div', { class: 'swatches' });
+  const paintSw = () => sw.replaceChildren(...ACCENTS.map(([n, a, b]) => h('button', { type: 'button', class: 'swatch' + (S.data.acc === a ? ' on' : ''), title: T(n), style: { background: `linear-gradient(135deg,${a},${b})` },
+    onclick: () => { S.data.acc2 = b; S.data.accTime = false; S.set('acc', a); paintSw(); if (TT.active === 'home') renderHome(); } })));
+  paintSw();
   const save = () => { const v = inp.value.trim(); if (!v) return; S.set('name', v); if (TT.active === 'home') renderHome(); };
   const close = modal({
     title: titleEl, width: 420,
     body: h('div', { class: 'welcome' },
       h('div', { class: 'welcome-lang' }, segEl([['de', 'Deutsch'], ['en', 'English']], isEN() ? 'en' : 'de', v => { setLang(v); paint(); inp.focus(); })),
+      h('div', { class: 'welcome-name' }, colorEl, sw),
       h('div', { class: 'welcome-name' }, askEl, inp, hintEl)),
     actions: [{ label: '', kind: 'ghost' }, { label: '', kind: 'primary', onClick: save }],
   });
   const [skipBtn, goBtn] = $$('footer .btn', $('#layer').lastElementChild);
   function paint() {
-    titleEl.textContent = T('Willkommen bei Toms Tools 👋'); askEl.textContent = T('Wie dürfen wir dich nennen?');
+    titleEl.textContent = T('Willkommen bei Toms Tools 👋'); askEl.textContent = T('Wie dürfen wir dich nennen?'); colorEl.textContent = T('Deine Farbe');
     hintEl.textContent = T('Dein Name erscheint in der Begrüßung auf der Startseite.'); inp.placeholder = T('Dein Name');
     skipBtn.textContent = T('Überspringen'); goBtn.textContent = T('Los geht’s');
   }

@@ -3791,6 +3791,66 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Spielwiese
+  '⌨️ Tipptrainer': '⌨️ Typing trainer', '☄️ Ausweichen': '☄️ Dodge', '⚡ Reaktion': '⚡ Reaction', '⭕ Perfekter Kreis': '⭕ Perfect circle', 'Weitere Spiele folgen …': 'More games coming …',
+  'Weiter (P)': 'Resume (P)', 'Boss besiegt!': 'Boss defeated!', '+1 Bombe  (Leertaste)': '+1 bomb  (Space)', '+1 Leben': '+1 life', 'Dauerfeuer!': 'Rapid fire!', 'Keine Bombe': 'No bombs left',
+  'Power-ups:  ♥ Leben   ⚡ Dauerfeuer   ● Bombe  ·  schnelle Kills = Combo bis ×5': 'Power-ups:  ♥ life   ⚡ rapid fire   ● bomb  ·  quick kills = combo up to ×5',
+  'LEERTASTE, ENTER oder Klick zum Starten': 'SPACE, ENTER or click to start', 'P, Esc oder Leertaste zum Weiterspielen': 'P, Esc or Space to resume', 'Neuer Rekord!': 'New record!',
+  'LEERTASTE oder ENTER - neues Spiel': 'SPACE or ENTER – new game', 'Zeichne einen Kreis': 'Draw a circle',
+  'Mit Maus, Stift oder Finger – so rund wie möglich. Esc löscht.': 'With mouse, pen or finger – as round as you can. Esc clears.',
+  'Das war eher ein Strich. Zeichne einen ganzen Kreis!': 'That was more of a line. Draw a full circle!', 'Zu klein – trau dich, größer!': 'Too small – go bigger!',
+  'Nicht geschlossen – einmal ganz rundherum!': 'Not closed – go all the way around!', 'Bester Schnitt': 'Best average', 'Schnellste Reaktion': 'Fastest reaction', 'Letzte Durchgänge': 'Recent runs',
+  'Noch keine Durchgänge.': 'No runs yet.', 'Ø ≈ 250–300 ms · Klick, Tippen oder Leertaste': 'Avg. ≈ 250–300 ms · click, tap or Space', 'Reaktionstest': 'Reaction test', 'Warte …': 'Wait …',
+  'auf Grün': 'for green', 'JETZT!': 'NOW!', 'Zu früh!': 'Too early!', 'Klick zum Wiederholen dieser Runde': 'Click to repeat this round', 'Klick für die nächste Runde': 'Click for the next round',
+  'Klick · Leertaste → neue Runde': 'Click · Space → new round', 'Sekunden': 'seconds', 'Ausweichen': 'Dodge',
+  'Weich den fallenden Brocken aus – je länger du überlebst, desto besser. Es wird immer schneller!': 'Dodge the falling rocks – the longer you survive, the better. It keeps getting faster!',
+  'Nochmal': 'Again', 'Los geht’s': 'Let’s go', 'Maus oder ← → · Start: Leertaste': 'Mouse or ← → · Start: Space', '🎉 Neuer Bestwert!': '🎉 New best!', 'Anschläge / Min': 'Chars / min',
+  'Wörter / Min': 'Words / min', 'Genauigkeit': 'Accuracy', 'Zeit': 'Time', 'Hier klicken und lostippen': 'Click here and start typing',
+  'Einfügen gilt nicht – schön selbst tippen! 😉': 'No pasting – type it yourself! 😉', 'Tipptrainer': 'Typing trainer',
+  'Tipp die Sätze so schnell und genau wie möglich ab.': 'Type the sentences as fast and accurately as you can.', 'Schwierigkeit': 'Difficulty', 'Leicht': 'Easy', 'Mittel': 'Medium',
+  'Schwer': 'Hard', 'Sätze': 'Sentences', 'Neue Sätze (Esc)': 'New sentences (Esc)', 'Neue Sätze': 'New sentences', 'Noch kein Bestwert auf dieser Stufe': 'No best score at this level yet',
+  'Dein Rang': 'Your rank', 'Anschläge pro Minute': 'Characters per minute', 'Tippfehler': 'Typos', 'Zeichen': 'Characters', 'Tempo pro Satz': 'Speed per sentence',
+  'Deine Stolpersteine': 'Your stumbling blocks', '✨ Kein einziger Fehler – perfekt!': '✨ Not a single mistake – perfect!',
+  'Nach der nächsten Runde siehst du hier deine Entwicklung.': 'After your next round you’ll see your progress here.', 'Welle {n}': 'Wave {n}', '{n}-fach-Schuss!': '{n}-way shot!',
+  'WASD: Bewegen  ·  {aim}: Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause': 'WASD: move  ·  {aim}: shoot  ·  Shift: dash  ·  Space: bomb  ·  P: pause', 'Maus': 'Mouse',
+  'Pfeiltasten': 'Arrow keys', 'Bester Score: {n}': 'Best score: {n}', '{n}× Schuss': '{n}× shot', 'Leertaste = Bombe': 'Space = bomb', '⚡ Dauerfeuer': '⚡ Rapid fire', 'Bestwert': 'Best',
+  'Versuche': 'Attempts', '{n} Runden · Klick oder Leertaste zum Start': '{n} rounds · click or Space to start', '{n} Fehlstarts': '{n} false starts', '1 Fehlstart': '1 false start',
+  '{n} Sekunden': '{n} seconds', 'Bestwert: {n} s': 'Best: {n} s', 'Bestwert {n} s': 'Best {n} s', 'Fehler korrigieren': 'fix mistakes',
+  'neu starten · Ein Satz ist geschafft, sobald er fehlerfrei dasteht.': 'restart · A sentence is done once it’s typed without mistakes.', 'Anschl./Min': 'chars/min', 'Danach:': 'Next:',
+  'Satz {i} von {n}': 'Sentence {i} of {n}', '🎉 Erster Bestwert!': '🎉 First best score!', 'Bestwert: {n}': 'Best: {n}', 'Satz {i}: {n} Anschl./Min': 'Sentence {i}: {n} chars/min',
+  'Verlauf ({d})': 'History ({d})', '{n} Runden · {a}–{b} Anschl./Min': '{n} rounds · {a}–{b} chars/min', 'oder': 'or', 'Neon-Arena: Schießen': 'Neon Arena: aiming', '🖱 Maus': '🖱 Mouse',
+  'Spielwiese einmal schließen und neu öffnen, dann sind die Rekorde weg.': 'Close and reopen Playground once to clear the records.',
+  // Textwerk
+  'Text eingeben, um die Lesbarkeit zu messen.': 'Type some text to measure readability.', 'Text hier einfügen…': 'Paste text here…', 'Lang ab mehr als': 'Long if more than', 'Wörtern': 'words',
+  'lang': 'long', 'Suchen…': 'Search…', 'Ersetzen…': 'Replace…', 'Regulärer Ausdruck': 'Regular expression', 'Groß-/Kleinschreibung': 'Upper/lower case', 'Ungültig': 'Invalid', 'Finden': 'Find',
+  'E-Mail': 'Email', 'Telefon (DE)': 'Phone (DE)', 'Doppelwörter': 'Repeated words', 'HTML-Tags': 'HTML tags', 'Bereinigen': 'Clean up', '2× Leerzeichen': 'Double spaces',
+  'Zeilenend-Spaces': 'Trailing spaces', 'Leerzeichen/Tabs vor Zeilenumbrüchen entfernen': 'Remove spaces and tabs before line breaks', 'Leerzeilen': 'Blank lines',
+  'Mehrfache Leerzeilen auf eine reduzieren': 'Reduce multiple blank lines to one', 'Sonderzeichen': 'Special characters', 'Ersetzen': 'Replace',
+  'Erst Text oder HTML einfügen.': 'Paste some text or HTML first.', 'Im HTML wurde kein Text gefunden.': 'No text found in the HTML.',
+  'Kopieren hat nicht geklappt – der Klartext steht im Editor.': 'Copying didn’t work – the plain text is in the editor.', 'HTML → Text · Strg+Z = rückgängig': 'HTML → text · Ctrl+Z = undo',
+  'Klartext kopieren': 'Copy plain text', 'Suchen & Ersetzen': 'Find & replace', 'Alle ersetzen': 'Replace all', 'Alle': 'All', 'Statistik': 'Stats', 'Wörter': 'Words', 'Zeichen': 'Characters',
+  'Zeilen': 'Lines', 'Sätze': 'Sentences', 'Lesezeit': 'Reading time', '≈ 130 Wörter/min': '≈ 130 words/min', 'Sprechzeit': 'Speaking time', 'Lesbarkeit': 'Readability',
+  'Ø Wörter / Satz': 'Avg. words / sentence', 'Ø Silben / Wort': 'Avg. syllables / word', 'Lange Sätze markieren': 'Highlight long sentences',
+  'Deinen Text für den Teleprompter hier eingeben oder einfügen …': 'Type or paste your teleprompter text here …', 'Noch kein Text': 'No text yet', 'Tempo': 'Speed', 'Schriftgröße': 'Font size',
+  'Textbreite': 'Text width', 'Zeilenabstand': 'Line spacing', 'Einstellungen': 'Settings', 'Spiegeln ↔': 'Mirror ↔', 'Für Teleprompter-Glas': 'For teleprompter glass', 'Spiegeln ↕': 'Mirror ↕',
+  'Kopfüber': 'Upside down', 'Leselinie': 'Reading line', 'Vor dem Start vom Anfang': 'From the top before starting', 'Im Vollbild starten': 'Start in fullscreen', 'Leertaste': 'Space',
+  'Absätze': 'Paragraphs', 'Kopiert!': 'Copied!', 'Kopieren': 'Copy', 'Passwort': 'Password',
+  'wenig Text, Wert nur grob': 'short text, rough value only', 'Nächster': 'Next', '{a} von {b} Sätzen zu lang': '{a} of {b} sentences too long', 'Keine zu langen Sätze': 'No overly long sentences',
+  '{n} Wörter': '{n} words', 'sehr lang': 'very long', 'Klartext kopiert · {n} Zeichen': 'Plain text copied · {n} characters', 'HTML entfernt': 'HTML removed', 'Dauer': 'Duration',
+  'Wörter/Min.': 'words/min', 'Springen': 'Skip', 'Beenden': 'Stop', 'Neu': 'New',
+  // Entscheidungshilfe
+  'Bitte mindestens eine Option eintragen.': 'Please add at least one option.', 'Keine Optionen mehr in der Maschine.': 'No options left in the machine.',
+  'Die Maschine hat entschieden': 'The machine has decided', 'Nochmal!': 'Again!', 'Hebel ziehen!': 'Pull the lever!', 'Option eintragen …': 'Add an option …', 'Rein damit': 'Add',
+  'Die Maschine läuft gerade …': 'The machine is running …', 'Maximal 10 Optionen passen in die Maschine.': 'The machine holds up to 10 options.', 'Die Maschine ist voll': 'The machine is full',
+  'Entfernen': 'Remove', 'Noch leer – trag bis zu 10 Optionen ein.': 'Still empty – add up to 10 options.', 'Optionen': 'Options', 'Alle entfernen': 'Remove all',
+  'Gezogene Option danach entfernen': 'Remove the drawn option afterwards', 'Für Ausscheide-Runden': 'For knockout rounds', 'Geräusche': 'Sounds', 'Zuletzt entschieden': 'Recent decisions',
+  'Klick · Leertaste': 'Click · Space', '🎰 Maschine': '🎰 Machine', '🎱 Orakel': '🎱 Oracle', 'Werfen!': 'Flip!', 'Statistik zurücksetzen': 'Reset stats',
+  'Frag das Orakel … (oder einfach senden)': 'Ask the oracle … (or just hit send)', 'Orakel‑3 Ultra': 'Oracle‑3 Ultra', 'Wie kann ich dir heute weissagen?': 'What shall I foretell for you today?',
+  'Stell mir eine Ja/Nein-Frage – ich kenne jede Antwort. Fast.': 'Ask me a yes/no question – I know every answer. Almost.', '🔮 (ohne Frage)': '🔮 (no question)',
+  'Du hast mir nichts verraten – aber ich weiß es trotzdem.': 'You didn’t tell me anything – but I know anyway.', 'Orakel': 'Oracle', 'KI · allwissend (ungefähr)': 'AI · all-knowing (roughly)',
+  'Neuer Chat': 'New chat',
+  'Das Orakel kann sich irren. Auch absichtlich. Wichtige Entscheidungen bitte trotzdem selbst treffen.': 'The oracle can be wrong. Sometimes on purpose. Please still make important decisions yourself.',
+  'Kopf': 'Heads', 'Kopf!': 'Heads!', '🪙 Münzwurf': '🪙 Coin flip', '{n}× {s} in Folge': '{n}× {s} in a row', 'Gewissheit {n} %': 'Certainty {n}%',
   // Karteiwerk
   'Rückgängig': 'Undo', 'Abbrechen': 'Cancel', 'Importieren': 'Import', 'Keine Karten erkannt.': 'No cards found.', 'Karten kopiert · Anki, Quizlet …': 'Cards copied · Anki, Quizlet …',
   'Karten kopiert.': 'Cards copied.', 'Kopieren hat nicht geklappt.': 'Copying didn’t work.', 'Ohne Namen': 'Untitled', 'Heute fällig': 'Due today', 'Für heute alles gelernt': 'All done for today',
@@ -8385,6 +8445,7 @@ TT.register({
 
 /* ── Decision helper ──────────────────────────── */
 function mountEntscheidung(view) {
+  const tr = T;   // renderMachine uses T as its clock
   const W_COLORS = ['#7c6cff','#f97316','#10b981','#f59e0b','#ef4444','#06b6d4','#ec4899','#8b5cf6','#22d3ee','#84cc16'];
 
   let mode = 'maschine';
@@ -8397,7 +8458,7 @@ function mountEntscheidung(view) {
   view.append(ezRoot);
 
   const tabBtns = [];
-  [['maschine','🎰 Maschine'],['muenze','🪙 M\xfcnzwurf'],['orakel','🎱 Orakel']].forEach(([m, lbl]) => {
+  [['maschine',tr('🎰 Maschine')],['muenze',tr('🪙 Münzwurf')],['orakel',tr('🎱 Orakel')]].forEach(([m, lbl]) => {
     const btn = h('button', { class: m === mode ? 'on' : '', onclick: () => {
       mode = m;
       tabBtns.forEach(b => b.classList.toggle('on', b === btn));
@@ -8419,7 +8480,7 @@ function mountEntscheidung(view) {
   /* ──── Decision machine ──── */
   const mstSaved = Store.get('entscheidung', {});
   const mst = { remove: false, sound: true, hist: [], ...mstSaved };
-  mst.items = (mstSaved.items || ['Pizza', 'Sushi', 'Burger', 'Salat']).map((it, i) => typeof it === 'string' ? { t: it, c: i % 10 } : it).slice(0, 10);
+  mst.items = (mstSaved.items || ['Pizza', 'Sushi', 'Burger', isEN() ? 'Salad' : 'Salat']).map((it, i) => typeof it === 'string' ? { t: it, c: i % 10 } : it).slice(0, 10);
   const saveM = () => Store.set('entscheidung', { items: mst.items, remove: mst.remove, sound: mst.sound, hist: mst.hist.slice(0, 8) });
   let mcStop = null, mcKey = null, mcResume = null;
 
@@ -8505,9 +8566,9 @@ function mountEntscheidung(view) {
     /* ── Flow ── */
     function start() {
       if (!['idle', 'done'].includes(phase)) return;
-      if (!mst.items.length) { toast('Bitte mindestens eine Option eintragen.', 'warn'); inp.focus(); return; }
+      if (!mst.items.length) { toast(tr('Bitte mindestens eine Option eintragen.'), 'warn'); inp.focus(); return; }
       if (phase === 'done') finishRound();
-      if (!balls.length) { phase = 'idle'; card.classList.remove('on'); paintBtn(); toast('Keine Optionen mehr in der Maschine.', 'info'); return; }
+      if (!balls.length) { phase = 'idle'; card.classList.remove('on'); paintBtn(); toast(tr('Keine Optionen mehr in der Maschine.'), 'info'); return; }
       card.classList.remove('on');
       pick = balls[rnd(balls.length)];
       phase = 'pull'; pt = 0; halves = null; cap = null; corner = 0;
@@ -8611,7 +8672,7 @@ function mountEntscheidung(view) {
       rrect(62, 2, 296, 60, 16);
       const sg = ctx.createLinearGradient(0, 2, 0, 62); sg.addColorStop(0, '#2a2438'); sg.addColorStop(1, '#15121d'); ctx.fillStyle = sg; ctx.fill();
       ctx.lineWidth = 3; ctx.strokeStyle = A; ctx.stroke();
-      const label = 'ENTSCHEIDUNGS·MASCHINE';
+      const label = isEN() ? 'DECISION·MACHINE' : 'ENTSCHEIDUNGS·MASCHINE';
       ctx.font = '900 16px Inter,system-ui,sans-serif';
       const fs = Math.min(16, 16 * 236 / ctx.measureText(label).width);   // Text always fits into the sign
       ctx.font = `900 ${fs.toFixed(2)}px Inter,system-ui,sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
@@ -8712,19 +8773,19 @@ function mountEntscheidung(view) {
 
     /* ── UI ── */
     const card = h('div', { class: 'mc-card' }), cardTxt = h('div', { class: 'mc-card-t' });
-    card.append(h('div', { class: 'mc-card-l' }, 'Die Maschine hat entschieden'), cardTxt);
+    card.append(h('div', { class: 'mc-card-l' }, tr('Die Maschine hat entschieden')), cardTxt);
     const cvWrap = h('div', { class: 'mc-cvw' }, cv, card);
     const goBtn = h('button', { class: 'btn pri mc-go', onclick: () => start() }, icon('zap'), h('span'));
-    function paintBtn() { goBtn.disabled = !['idle', 'done'].includes(phase); goBtn.lastChild.textContent = phase === 'done' ? 'Nochmal!' : 'Hebel ziehen!'; }
+    function paintBtn() { goBtn.disabled = !['idle', 'done'].includes(phase); goBtn.lastChild.textContent = phase === 'done' ? tr('Nochmal!') : tr('Hebel ziehen!'); }
     const listEl = h('div', { class: 'mc-list' });
     const cnt = h('span', { class: 'badge' });
-    const inp = h('input', { class: 'ez-addinp', placeholder: 'Option eintragen …', maxLength: 40, onkeydown: e => { if (e.key === 'Enter') add(); } });
-    const addBtn = h('button', { class: 'btn sm', onclick: () => add() }, icon('plus'), 'Rein damit');
+    const inp = h('input', { class: 'ez-addinp', placeholder: tr('Option eintragen …'), maxLength: 40, onkeydown: e => { if (e.key === 'Enter') add(); } });
+    const addBtn = h('button', { class: 'btn sm', onclick: () => add() }, icon('plus'), tr('Rein damit'));
     const busy = () => !['idle', 'done'].includes(phase);
     function add() {
       const v = inp.value.trim(); if (!v) return;
-      if (busy()) { toast('Die Maschine läuft gerade …', 'info'); return; }
-      if (mst.items.length >= 10) { toast('Maximal 10 Optionen passen in die Maschine.', 'warn'); return; }
+      if (busy()) { toast(tr('Die Maschine läuft gerade …'), 'info'); return; }
+      if (mst.items.length >= 10) { toast(tr('Maximal 10 Optionen passen in die Maschine.'), 'warn'); return; }
       if (phase === 'done') { finishRound(); card.classList.remove('on'); paintBtn(); }
       const used = new Set(mst.items.map(x => x.c)), c = [...Array(10).keys()].find(i => !used.has(i)) ?? 0;
       mst.items.push({ t: v, c }); inp.value = ''; saveM(); syncBalls(); renderList(); inp.focus();
@@ -8732,27 +8793,27 @@ function mountEntscheidung(view) {
     function renderList() {
       cnt.textContent = `${mst.items.length}/10`;
       addBtn.disabled = mst.items.length >= 10; inp.disabled = mst.items.length >= 10;
-      inp.placeholder = mst.items.length >= 10 ? 'Die Maschine ist voll' : 'Option eintragen …';
+      inp.placeholder = mst.items.length >= 10 ? tr('Die Maschine ist voll') : tr('Option eintragen …');
       listEl.replaceChildren(...(mst.items.length ? mst.items.map((it, i) => h('div', { class: 'mc-row' },
         h('span', { class: 'mc-num', style: { background: COLS[it.c] } }, i + 1),
         h('input', { class: 'mc-inp', value: it.t, maxLength: 40, onchange: e => { const v = e.target.value.trim(); if (v) { it.t = v; saveM(); } else e.target.value = it.t; } }),
-        h('button', { class: 'ez-rm', title: 'Entfernen', onclick: () => {
+        h('button', { class: 'ez-rm', title: tr('Entfernen'), onclick: () => {
           if (busy()) return;
           if (phase === 'done') { finishRound(); card.classList.remove('on'); paintBtn(); }
           mst.items = mst.items.filter(x => x !== it); saveM(); syncBalls(); renderList();
-        } }, '×'))) : [h('div', { class: 'mc-none' }, 'Noch leer – trag bis zu 10 Optionen ein.')]));
+        } }, '×'))) : [h('div', { class: 'mc-none' }, tr('Noch leer – trag bis zu 10 Optionen ein.'))]));
     }
     const histEl = h('div', { class: 'mc-hist' });
     function renderHist() { histEl.replaceChildren(...mst.hist.map(t => h('span', { class: 'mc-hchip' }, t))); histEl.parentNode && (histEl.parentNode.hidden = !mst.hist.length); }
     const side = h('div', { class: 'mc-side' },
-      h('div', { class: 'mc-sh' }, h('b', null, 'Optionen'), cnt,
-        h('button', { class: 'mini', title: 'Alle entfernen', style: { marginLeft: 'auto' }, onclick: () => { if (busy() || !mst.items.length) return; if (phase === 'done') { finishRound(); card.classList.remove('on'); paintBtn(); } mst.items = []; saveM(); syncBalls(); renderList(); } }, icon('trash'))),
+      h('div', { class: 'mc-sh' }, h('b', null, tr('Optionen')), cnt,
+        h('button', { class: 'mini', title: tr('Alle entfernen'), style: { marginLeft: 'auto' }, onclick: () => { if (busy() || !mst.items.length) return; if (phase === 'done') { finishRound(); card.classList.remove('on'); paintBtn(); } mst.items = []; saveM(); syncBalls(); renderList(); } }, icon('trash'))),
       listEl,
       h('div', { class: 'mc-add' }, inp, addBtn),
-      h('label', { class: 'chk-row' }, h('span', null, 'Gezogene Option danach entfernen', h('small', { class: 'hint', style: { display: 'block' } }, 'Für Ausscheide-Runden')), switchEl(mst.remove, v => { mst.remove = v; saveM(); })),
-      h('label', { class: 'chk-row' }, 'Geräusche', switchEl(mst.sound, v => { mst.sound = v; saveM(); })),
-      h('div', { class: 'mc-hwrap' }, h('div', { class: 'ez-reslbl' }, 'Zuletzt entschieden'), histEl));
-    const wrap = h('div', { class: 'mc' }, h('div', { class: 'mc-stage' }, cvWrap, goBtn, h('p', { class: 'hint' }, 'Klick · Leertaste')), side);
+      h('label', { class: 'chk-row' }, h('span', null, tr('Gezogene Option danach entfernen'), h('small', { class: 'hint', style: { display: 'block' } }, tr('Für Ausscheide-Runden'))), switchEl(mst.remove, v => { mst.remove = v; saveM(); })),
+      h('label', { class: 'chk-row' }, tr('Geräusche'), switchEl(mst.sound, v => { mst.sound = v; saveM(); })),
+      h('div', { class: 'mc-hwrap' }, h('div', { class: 'ez-reslbl' }, tr('Zuletzt entschieden')), histEl));
+    const wrap = h('div', { class: 'mc' }, h('div', { class: 'mc-stage' }, cvWrap, goBtn, h('p', { class: 'hint' }, tr('Klick · Leertaste'))), side);
     panel.append(wrap);
     syncBalls(); renderList(); renderHist(); paintBtn();
     for (let i = 0; i < 240; i++) physics(1 / 120, false);   // let the capsules settle beforehand
@@ -8783,19 +8844,20 @@ function mountEntscheidung(view) {
   }
   function renderCoin() {
     const crown = '<svg viewBox="0 0 96 96"><path d="M20 66 27 36l13 18 8-26 8 26 13-18 7 30z" fill="rgba(90,55,0,.55)" stroke="rgba(255,240,180,.55)" stroke-width="2" stroke-linejoin="round"/><rect x="20" y="69" width="56" height="7" rx="2" fill="rgba(90,55,0,.55)"/><circle cx="48" cy="26" r="4" fill="rgba(90,55,0,.55)"/><circle cx="27" cy="34" r="3.2" fill="rgba(90,55,0,.55)"/><circle cx="69" cy="34" r="3.2" fill="rgba(90,55,0,.55)"/></svg>';
+    const TAILS = isEN() ? 'Tails' : 'Zahl';
     const face = (cls, ico, label) => h('div', { class: 'cn-face ' + cls },
       h('div', { class: 'cn-rim' }), h('div', { class: 'cn-ring' }),
       ico ? h('span', { class: 'cn-ico', html: ico }) : h('span', { class: 'cn-one' }, '1'),
       h('span', { class: 'cn-lbl' }, label));
     const layers = Array.from({ length: 9 }, (_, i) => h('div', { class: 'cn-edge', style: { transform: `translateZ(${4 - i}px)` } }));
-    const coin = h('div', { class: 'cn-coin' }, face('cn-heads', crown, 'Kopf'), ...layers, face('cn-tails', null, 'Zahl'));
+    const coin = h('div', { class: 'cn-coin' }, face('cn-heads', crown, tr('Kopf')), ...layers, face('cn-tails', null, TAILS));
     const toss = h('div', { class: 'cn-toss' }, coin);
     const shadow = h('div', { class: 'cn-shadow' });
     const scene = h('div', { class: 'cn-scene', onclick: () => flip() }, toss, shadow);
     const big = h('div', { class: 'cn-big' });
     const statK = h('b'), statZ = h('b'), statS = h('span', { class: 'cn-streak' }), bar = h('div', { class: 'cn-bar-k' });
     const histEl = h('div', { class: 'cn-hist' });
-    const btn = h('button', { class: 'btn pri cn-go', onclick: () => flip() }, icon('refresh'), h('span', null, 'Werfen!'));
+    const btn = h('button', { class: 'btn pri cn-go', onclick: () => flip() }, icon('refresh'), h('span', null, tr('Werfen!')));
     let rot = coinRot, busy = false;
     coin.style.transform = `rotateX(${rot}deg)`;
     function paintStats() {
@@ -8803,8 +8865,8 @@ function mountEntscheidung(view) {
       statK.textContent = cst.k; statZ.textContent = cst.z;
       bar.style.width = (n ? cst.k / n * 100 : 50) + '%';
       let s = 0; for (const x of cst.hist) { if (x === cst.hist[0]) s++; else break; }
-      statS.textContent = s >= 2 ? `${s}× ${cst.hist[0] === 'k' ? 'Kopf' : 'Zahl'} in Folge` : '';
-      histEl.replaceChildren(...cst.hist.slice(0, 20).map(x => h('span', { class: 'cn-dot ' + (x === 'k' ? 'k' : 'z'), title: x === 'k' ? 'Kopf' : 'Zahl' }, x === 'k' ? 'K' : 'Z')));
+      statS.textContent = s >= 2 ? tr('{n}× {s} in Folge', { n: s, s: cst.hist[0] === 'k' ? tr('Kopf') : TAILS }) : '';
+      histEl.replaceChildren(...cst.hist.slice(0, 20).map(x => h('span', { class: 'cn-dot ' + (x === 'k' ? 'k' : 'z'), title: x === 'k' ? tr('Kopf') : TAILS }, x === 'k' ? (isEN() ? 'H' : 'K') : (isEN() ? 'T' : 'Z'))));
     }
     function flip() {
       if (busy) return;
@@ -8838,7 +8900,7 @@ function mountEntscheidung(view) {
           toss.style.transform = ''; coin.style.transform = `rotateX(${rot}deg)`; coinRot = rot;
           heads ? cst.k++ : cst.z++;
           cst.hist.unshift(heads ? 'k' : 'z'); saveC(); paintStats();
-          big.textContent = heads ? 'Kopf!' : 'Zahl!';
+          big.textContent = heads ? tr('Kopf!') : TAILS + '!';
           big.className = 'cn-big on ' + (heads ? 'k' : 'z');
           busy = false; btn.disabled = false;
         };
@@ -8847,33 +8909,37 @@ function mountEntscheidung(view) {
       requestAnimationFrame(tick);
     }
     const stats = h('div', { class: 'cn-stats' },
-      h('div', { class: 'cn-srow' }, h('span', null, '👑 Kopf ', statK), statS, h('span', null, 'Zahl ', statZ, ' ⭐')),
+      h('div', { class: 'cn-srow' }, h('span', null, '👑 ' + tr('Kopf') + ' ', statK), statS, h('span', null, TAILS + ' ', statZ, ' ⭐')),
       h('div', { class: 'cn-bar' }, bar),
       histEl,
-      h('button', { class: 'btn sm ghost', onclick: () => { cst.k = cst.z = 0; cst.hist = []; saveC(); paintStats(); big.classList.remove('on'); } }, icon('undo'), 'Statistik zurücksetzen'));
-    panel.append(h('div', { class: 'cn' }, scene, big, btn, h('p', { class: 'hint' }, 'Klick · Leertaste'), stats));
+      h('button', { class: 'btn sm ghost', onclick: () => { cst.k = cst.z = 0; cst.hist = []; saveC(); paintStats(); big.classList.remove('on'); } }, icon('undo'), tr('Statistik zurücksetzen')));
+    panel.append(h('div', { class: 'cn' }, scene, big, btn, h('p', { class: 'hint' }, tr('Klick · Leertaste')), stats));
     paintStats();
     coinKey = e => { if (/^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(e.target.tagName) || e.ctrlKey || e.metaKey) return; if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); } };
   }
   let coinKey = null;
 
   /* ──── Oracle (fake AI chat) ──── */
-  const ORA = {
+  const ORA = isEN() ? {
+    yes: ['Yes. Definitely yes.', 'Absolutely. The data is crystal clear.', 'Yes – and better today than tomorrow.', 'All signs point to go.', 'With 97 percent certainty: yes.', 'Yes. I ran it through 14,000,605 possible futures.', 'Absolutely. You won’t regret it.', 'Yes. And I don’t say that to everyone.'],
+    maybe: ['Depends on how brave you’re feeling today.', 'The stars can’t agree. Ask again in an hour.', 'Maybe. But only if someone makes coffee first.', 'The answer is closer than you think. Really close.', 'My crystal ball is a bit foggy right now.', 'Possible. Odds: somewhere between “sure” and “never”.', 'Ask your gut – it has better data than I do.'],
+    no: ['No. And that’s a good thing.', 'Probably not. Better leave it.', 'My sources say no. Quite firmly, actually.', 'No – but there’s a better option you haven’t spotted yet.', 'No way. Trust me.', 'The universe is gently shaking its head.', 'No. I checked. Twice.'],
+  } : {
     yes: ['Ja. Eindeutig ja.', 'Absolut. Die Daten sind da ganz klar.', 'Ja – und zwar lieber heute als morgen.', 'Alle Zeichen stehen auf Grün.', 'Mit 97-prozentiger Sicherheit: ja.', 'Ja. Ich habe es in 14.000.605 Zukünften durchgerechnet.', 'Unbedingt. Du wirst es nicht bereuen.', 'Ja. Und das sage ich nicht zu jedem.'],
     maybe: ['Das hängt davon ab, wie mutig du heute bist.', 'Die Sterne sind sich uneinig. Frag in einer Stunde nochmal.', 'Vielleicht. Aber nur, wenn vorher jemand Kaffee kocht.', 'Die Antwort liegt näher, als du denkst. Wirklich nah.', 'Meine Kristallkugel ist gerade beschlagen.', 'Möglich. Wahrscheinlichkeit: irgendwo zwischen „klar“ und „niemals“.', 'Frag dein Bauchgefühl – es hat bessere Daten als ich.'],
     no: ['Nein. Und das ist auch gut so.', 'Eher nicht. Lass es lieber.', 'Meine Quellen sagen nein. Sehr deutlich sogar.', 'Nein – aber es gibt eine bessere Option, die du noch nicht siehst.', 'Auf keinen Fall. Glaub mir.', 'Das Universum schüttelt gerade sanft den Kopf.', 'Nein. Ich habe nachgesehen. Zweimal.'],
   };
-  const ORA_INTRO = ['Nach sorgfältiger Analyse aller verfügbaren Paralleluniversen:', 'Die Sterne sind in dieser Sache erstaunlich klar.', 'Hmm. Lass mich ehrlich sein:', 'Ich habe die Tarotkarten, das Kaffeesatzorakel und Wikipedia befragt.', 'Kurze Antwort:', 'Gute Frage. Wirklich.'];
-  const ORA_OUTRO = ['Aber das hast du nicht von mir. 🤫', 'Vertrau mir. Ich bin ein Orakel.', 'Das kostet dich übrigens nichts. Diesmal.', '✨', 'Sonst noch etwas, Sterblicher?'];
-  const ORA_THINK = ['Befrage die Sterne …', 'Durchsuche 12 Paralleluniversen …', 'Mische die Tarotkarten …', 'Lese im Kaffeesatz …', 'Konsultiere die Kristallkugel …', 'Berechne Wahrscheinlichkeiten …', 'Frage meine Katze …', 'Lade kosmisches Wissen herunter …'];
-  const ORA_SUGGEST = ['Soll ich heute Pizza bestellen?', 'Wird das Projekt ein Erfolg?', 'Soll ich es einfach wagen?', 'Ist heute mein Glückstag?'];
+  const ORA_INTRO = isEN() ? ['After careful analysis of every available parallel universe:', 'The stars are remarkably clear on this one.', 'Hmm. Let me be honest:', 'I asked the tarot cards, the coffee grounds and Wikipedia.', 'Short answer:', 'Good question. Really.'] : ['Nach sorgfältiger Analyse aller verfügbaren Paralleluniversen:', 'Die Sterne sind in dieser Sache erstaunlich klar.', 'Hmm. Lass mich ehrlich sein:', 'Ich habe die Tarotkarten, das Kaffeesatzorakel und Wikipedia befragt.', 'Kurze Antwort:', 'Gute Frage. Wirklich.'];
+  const ORA_OUTRO = isEN() ? ['But you didn’t hear it from me. 🤫', 'Trust me. I’m an oracle.', 'This one’s on the house, by the way.', '✨', 'Anything else, mortal?'] : ['Aber das hast du nicht von mir. 🤫', 'Vertrau mir. Ich bin ein Orakel.', 'Das kostet dich übrigens nichts. Diesmal.', '✨', 'Sonst noch etwas, Sterblicher?'];
+  const ORA_THINK = isEN() ? ['Asking the stars …', 'Searching 12 parallel universes …', 'Shuffling the tarot cards …', 'Reading the coffee grounds …', 'Consulting the crystal ball …', 'Calculating probabilities …', 'Asking my cat …', 'Downloading cosmic knowledge …'] : ['Befrage die Sterne …', 'Durchsuche 12 Paralleluniversen …', 'Mische die Tarotkarten …', 'Lese im Kaffeesatz …', 'Konsultiere die Kristallkugel …', 'Berechne Wahrscheinlichkeiten …', 'Frage meine Katze …', 'Lade kosmisches Wissen herunter …'];
+  const ORA_SUGGEST = isEN() ? ['Should I order pizza tonight?', 'Will the project be a success?', 'Should I just go for it?', 'Is today my lucky day?'] : ['Soll ich heute Pizza bestellen?', 'Wird das Projekt ein Erfolg?', 'Soll ich es einfach wagen?', 'Ist heute mein Glückstag?'];
   const pickOne = arr => arr[Math.floor(Math.random() * arr.length)];
   let oChat = Store.get('orakel-chat', []);
   const saveO = () => Store.set('orakel-chat', oChat.slice(-40));
 
   function renderOrakel() {
     const list = h('div', { class: 'oc-msgs' });
-    const ta = h('textarea', { class: 'oc-in', rows: 1, placeholder: 'Frag das Orakel … (oder einfach senden)', maxLength: 300,
+    const ta = h('textarea', { class: 'oc-in', rows: 1, placeholder: tr('Frag das Orakel … (oder einfach senden)'), maxLength: 300,
       oninput: () => { ta.style.height = 'auto'; ta.style.height = Math.min(140, ta.scrollHeight) + 'px'; },
       onkeydown: e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } } });
     const sendBtn = h('button', { class: 'oc-send', title: 'Enter', onclick: () => send() }, icon('up'));
@@ -8883,14 +8949,14 @@ function mountEntscheidung(view) {
       if (m.role === 'user') return h('div', { class: 'oc-row u' }, h('div', { class: 'oc-b u' + (m.empty ? ' empty' : '') }, m.text));
       return h('div', { class: 'oc-row a' }, orb(), h('div', { class: 'oc-bw' },
         h('div', { class: 'oc-b a' }, m.text),
-        m.sure != null ? h('div', { class: 'oc-meta' }, h('span', { class: 'oc-sure ' + m.cat }, `Gewissheit ${m.sure} %`), h('span', null, 'Orakel‑3 Ultra')) : null));
+        m.sure != null ? h('div', { class: 'oc-meta' }, h('span', { class: 'oc-sure ' + m.cat }, tr('Gewissheit {n} %', { n: m.sure })), h('span', null, tr('Orakel‑3 Ultra'))) : null));
     }
     function renderAll() {
       if (!oChat.length) {
         list.replaceChildren(h('div', { class: 'oc-empty' },
           h('span', { class: 'oc-orb big' }),
-          h('h3', null, 'Wie kann ich dir heute weissagen?'),
-          h('p', null, 'Stell mir eine Ja/Nein-Frage – ich kenne jede Antwort. Fast.'),
+          h('h3', null, tr('Wie kann ich dir heute weissagen?')),
+          h('p', null, tr('Stell mir eine Ja/Nein-Frage – ich kenne jede Antwort. Fast.')),
           h('div', { class: 'oc-sugs' }, ORA_SUGGEST.map(s => h('button', { class: 'oc-sug', onclick: () => { ta.value = s; send(); } }, s)))));
         return;
       }
@@ -8903,7 +8969,7 @@ function mountEntscheidung(view) {
       const q = ta.value.trim();
       ta.value = ''; ta.style.height = 'auto';
       if (!oChat.length) list.replaceChildren();
-      const um = { role: 'user', text: q || '🔮 (ohne Frage)', empty: !q };
+      const um = { role: 'user', text: q || tr('🔮 (ohne Frage)'), empty: !q };
       oChat.push(um); list.append(bubble(um));
       // "Thinking …"
       const status = h('span', { class: 'oc-status' }, pickOne(ORA_THINK));
@@ -8918,7 +8984,7 @@ function mountEntscheidung(view) {
       let core; do { core = pickOne(ORA[cat]); } while (core === oLastIdx && ORA[cat].length > 1);
       oLastIdx = core;
       const parts = [];
-      if (!q) parts.push('Du hast mir nichts verraten – aber ich weiß es trotzdem.');
+      if (!q) parts.push(tr('Du hast mir nichts verraten – aber ich weiß es trotzdem.'));
       else if (Math.random() < 0.55) parts.push(pickOne(ORA_INTRO));
       parts.push(core);
       if (Math.random() < 0.35) parts.push(pickOne(ORA_OUTRO));
@@ -8942,11 +9008,11 @@ function mountEntscheidung(view) {
     }
     const card = h('div', { class: 'oc' },
       h('div', { class: 'oc-hd' }, h('span', { class: 'oc-orb' }),
-        h('div', { class: 'oc-hd-t' }, h('b', null, 'Orakel'), h('small', null, h('i', { class: 'oc-live' }), 'KI · allwissend (ungefähr)')),
-        h('button', { class: 'btn sm ghost', title: 'Neuer Chat', onclick: () => { if (busy) return; oChat = []; saveO(); renderAll(); ta.focus(); } }, icon('plus'), 'Neuer Chat')),
+        h('div', { class: 'oc-hd-t' }, h('b', null, tr('Orakel')), h('small', null, h('i', { class: 'oc-live' }), tr('KI · allwissend (ungefähr)'))),
+        h('button', { class: 'btn sm ghost', title: tr('Neuer Chat'), onclick: () => { if (busy) return; oChat = []; saveO(); renderAll(); ta.focus(); } }, icon('plus'), tr('Neuer Chat'))),
       list,
       h('div', { class: 'oc-comp' }, ta, sendBtn),
-      h('div', { class: 'oc-disc' }, 'Das Orakel kann sich irren. Auch absichtlich. Wichtige Entscheidungen bitte trotzdem selbst treffen.'));
+      h('div', { class: 'oc-disc' }, tr('Das Orakel kann sich irren. Auch absichtlich. Wichtige Entscheidungen bitte trotzdem selbst treffen.')));
     panel.append(card);
     renderAll();
     setTimeout(() => ta.focus(), 50);
@@ -10582,7 +10648,7 @@ function mountTextwerk(view) {
   // ── password helpers ──
   let pwLen=20;
   const pwOpts={upper:true,lower:true,dig:true,sp:true};
-  const PW_LEVELS=['','Sehr schwach','Schwach','Mittel','Gut','Stark'];
+  const PW_LEVELS=isEN()?['','Very weak','Weak','Medium','Good','Strong']:['','Sehr schwach','Schwach','Mittel','Gut','Stark'];
   const PW_COLORS=['','#ef4444','#f97316','#eab308','#22c55e','#10b981'];
   function pwScore(){
     let s=0;
@@ -10612,6 +10678,7 @@ function mountTextwerk(view) {
   const countWords=t=>(t.match(WORD_RE)||[]).length;
   function syllables(w){
     w=w.toLowerCase().replace(/qu/g,'q');
+    if(isEN()){const g=(w.match(/[aeiouy]+/g)||[]).length;return Math.max(1,g-(g>1&&/[^aeiouyl]e$/.test(w)?1:0));}   // English: vowel groups, silent final e
     let n=0;
     for(const g of w.match(/[aeiouyäöüéèêàâôûî]+/g)||[]){for(let i=0;i<g.length;n++)i+=DIPH.has(g.slice(i,i+2))?2:1;}
     return Math.max(1,n);
@@ -10640,8 +10707,9 @@ function mountTextwerk(view) {
     push(start,t.length);
     return out;
   }
-  const FL=[[90,'Sehr leicht','Für alle mühelos verständlich','#10b981'],[80,'Leicht','Einfache Alltagssprache','#22c55e'],[70,'Mittelleicht','Gut lesbar','#84cc16'],[60,'Mittel','Etwa Zeitungsniveau','#eab308'],[50,'Mittelschwer','Anspruchsvoll','#f97316'],[30,'Schwer','Fachtext-Niveau','#ef4444'],[-Infinity,'Sehr schwer','Wissenschaftlich / Behördensprache','#dc2626']];
-  const fmtDur=(words,wpm)=>{const sec=Math.round(words*60/wpm);return !words?'–':sec<60?`${Math.max(1,sec)} Sek.`:`${Math.floor(sec/60)}:${pad2(sec%60)} Min.`;};
+  const FL=isEN()?[[90,'Very easy','Effortless for everyone','#10b981'],[80,'Easy','Plain everyday language','#22c55e'],[70,'Fairly easy','Easy to read','#84cc16'],[60,'Standard','Roughly newspaper level','#eab308'],[50,'Fairly difficult','Demanding','#f97316'],[30,'Difficult','Specialist level','#ef4444'],[-Infinity,'Very difficult','Academic / legalese','#dc2626']]:[[90,'Sehr leicht','Für alle mühelos verständlich','#10b981'],[80,'Leicht','Einfache Alltagssprache','#22c55e'],[70,'Mittelleicht','Gut lesbar','#84cc16'],[60,'Mittel','Etwa Zeitungsniveau','#eab308'],[50,'Mittelschwer','Anspruchsvoll','#f97316'],[30,'Schwer','Fachtext-Niveau','#ef4444'],[-Infinity,'Sehr schwer','Wissenschaftlich / Behördensprache','#dc2626']];
+  const fmtDur=(words,wpm)=>{const sec=Math.round(words*60/wpm);return !words?'–':sec<60?`${Math.max(1,sec)} ${isEN()?'s':'Sek.'}`:`${Math.floor(sec/60)}:${pad2(sec%60)} ${isEN()?'min':'Min.'}`;};
+  const dec=s=>isEN()?String(s):String(s).replace('.',',');
 
   // ── Plain text from HTML ──
   // Via the browser's (inert) HTML parser: scripts don't run, images don't load.
@@ -10689,12 +10757,12 @@ function mountTextwerk(view) {
   function buildEditor(){
     const sv=()=>h('span',{class:'ed-sv'},'0');
     const wV=sv(),cV=sv(),lV=sv(),sV=sv(),rtV=sv(),stV=sv(),aslV=sv(),aswV=sv();
-    const flV=h('span',{class:'ed-fl-v'},'–'),flL=h('span',{class:'ed-fl-l'}),flD=h('div',{class:'ed-fl-d'},'Text eingeben, um die Lesbarkeit zu messen.');
+    const flV=h('span',{class:'ed-fl-v'},'–'),flL=h('span',{class:'ed-fl-l'}),flD=h('div',{class:'ed-fl-d'},T('Text eingeben, um die Lesbarkeit zu messen.'));
     const flFill=h('div',{class:'ed-fl-fill'});
     const longCnt=h('span',{class:'ed-long-cnt'});
     const hl=h('div',{class:'ed-hl','aria-hidden':'true'});
     let longs=[],jumpIdx=-1;
-    const ta=h('textarea',{class:'ed-ta',placeholder:'Text hier einfügen…',spellcheck:false,
+    const ta=h('textarea',{class:'ed-ta',placeholder:T('Text hier einfügen…'),spellcheck:false,
       oninput:()=>{edText=ta.value;upd();},
       onscroll:()=>{hl.scrollTop=ta.scrollTop;}});
     ta.value=edText;
@@ -10707,21 +10775,21 @@ function mountTextwerk(view) {
       rtV.textContent=fmtDur(nW,200);
       stV.textContent=fmtDur(nW,130);
       const asl=nS?nW/nS:0,asw=lw.length?syl/lw.length:0;
-      aslV.textContent=nS?asl.toFixed(1).replace('.',','):'–';
-      aswV.textContent=lw.length?asw.toFixed(2).replace('.',','):'–';
+      aslV.textContent=nS?dec(asl.toFixed(1)):'–';
+      aswV.textContent=lw.length?dec(asw.toFixed(2)):'–';
       if(lw.length){
-        const fre=180-asl-58.5*asw,c=Math.max(0,Math.min(100,fre)),[,lbl,desc,col]=FL.find(f=>fre>=f[0]);
+        const fre=isEN()?206.835-1.015*asl-84.6*asw:180-asl-58.5*asw,c=Math.max(0,Math.min(100,fre)),[,lbl,desc,col]=FL.find(f=>fre>=f[0]);
         flV.textContent=Math.round(c);flV.style.color=col;
         flL.textContent=lbl;flL.style.color=col;
-        flD.textContent=nW<50?desc+' · wenig Text, Wert nur grob':desc;
+        flD.textContent=nW<50?desc+' · '+T('wenig Text, Wert nur grob'):desc;
         flFill.style.cssText='width:'+c+'%;background:'+col;
       }else{
         flV.textContent='–';flV.style.color='';flL.textContent='';flFill.style.cssText='';
-        flD.textContent='Text eingeben, um die Lesbarkeit zu messen.';
+        flD.textContent=T('Text eingeben, um die Lesbarkeit zu messen.');
       }
       longs=sents.filter(x=>x.words>twOpt.longMax);
-      jumpIdx=-1;jumpBtn.lastChild.textContent=' Nächster';
-      longCnt.textContent=!nS?'':longs.length?`${longs.length} von ${nS} Sätzen zu lang`:'Keine zu langen Sätze';
+      jumpIdx=-1;jumpBtn.lastChild.textContent=' '+T('Nächster');
+      longCnt.textContent=!nS?'':longs.length?T('{a} von {b} Sätzen zu lang',{a:longs.length,b:nS}):T('Keine zu langen Sätze');
       longCnt.classList.toggle('warn',longs.length>0);
       jumpBtn.disabled=!longs.length||!twOpt.markLong;
       renderHl();
@@ -10730,7 +10798,7 @@ function mountTextwerk(view) {
       if(!twOpt.markLong){hl.replaceChildren();return;}
       const v=ta.value,parts=[];let p=0;
       for(const r of longs){
-        parts.push(v.slice(p,r.s),h('mark',{class:'ed-mk'+(r.words>twOpt.longMax*1.5?' x':''),title:r.words+' Wörter'},v.slice(r.s,r.e)));
+        parts.push(v.slice(p,r.s),h('mark',{class:'ed-mk'+(r.words>twOpt.longMax*1.5?' x':''),title:T('{n} Wörter',{n:r.words})},v.slice(r.s,r.e)));
         p=r.e;
       }
       parts.push(v.slice(p)+'\n');
@@ -10752,24 +10820,24 @@ function mountTextwerk(view) {
       ta.focus();ta.setSelectionRange(r.s,r.e);
       if(mk)ta.scrollTop=Math.max(0,mk.offsetTop-ta.clientHeight/3);
       hl.scrollTop=ta.scrollTop;
-      jumpBtn.lastChild.textContent=` Nächster (${jumpIdx+1}/${longs.length})`;
+      jumpBtn.lastChild.textContent=' '+T('Nächster')+` (${jumpIdx+1}/${longs.length})`;
     }
-    const jumpBtn=h('button',{class:'btn sm',onclick:jump},icon('arrow'),' Nächster');
+    const jumpBtn=h('button',{class:'btn sm',onclick:jump},icon('arrow'),' '+T('Nächster'));
     const maxIn=h('input',{type:'number',class:'ed-in ed-num',min:8,max:80,value:twOpt.longMax,
       onchange:e=>{twOpt.longMax=Math.max(8,Math.min(80,Math.round(+e.target.value)||20));e.target.value=twOpt.longMax;saveTwOpt();analyze();}});
     const markOpts=h('div',{class:'ed-mark-opts'},
-      h('div',{class:'ed-row'},h('span',{class:'ed-small'},'Lang ab mehr als'),maxIn,h('span',{class:'ed-small'},'Wörtern')),
+      h('div',{class:'ed-row'},h('span',{class:'ed-small'},T('Lang ab mehr als')),maxIn,h('span',{class:'ed-small'},T('Wörtern'))),
       h('div',{class:'ed-row'},jumpBtn),
-      h('div',{class:'ed-legend'},h('i',{class:'ed-mk'}),'lang',h('i',{class:'ed-mk x'}),`sehr lang`));
+      h('div',{class:'ed-legend'},h('i',{class:'ed-mk'}),T('lang'),h('i',{class:'ed-mk x'}),T('sehr lang')));
     markOpts.hidden=!twOpt.markLong;
-    const setMark=on=>{twOpt.markLong=on;saveTwOpt();markOpts.hidden=!on;jumpBtn.lastChild.textContent=' Nächster';analyze();};
+    const setMark=on=>{twOpt.markLong=on;saveTwOpt();markOpts.hidden=!on;jumpBtn.lastChild.textContent=' '+T('Nächster');analyze();};
 
     let useRx=false,useCase=false;
-    const findIn=h('input',{type:'text',class:'ed-in',placeholder:'Suchen…'});
-    const replIn=h('input',{type:'text',class:'ed-in',placeholder:'Ersetzen…'});
-    const rxBtn=h('button',{class:'ed-tog',title:'Regulärer Ausdruck',
+    const findIn=h('input',{type:'text',class:'ed-in',placeholder:T('Suchen…')});
+    const replIn=h('input',{type:'text',class:'ed-in',placeholder:T('Ersetzen…')});
+    const rxBtn=h('button',{class:'ed-tog',title:T('Regulärer Ausdruck'),
       onclick:()=>{useRx=!useRx;rxBtn.classList.toggle('on',useRx);}},'.*');
-    const caseBtn=h('button',{class:'ed-tog',title:'Groß-/Kleinschreibung',
+    const caseBtn=h('button',{class:'ed-tog',title:T('Groß-/Kleinschreibung'),
       onclick:()=>{useCase=!useCase;caseBtn.classList.toggle('on',useCase);}},'Aa');
     const errLbl=h('span',{class:'ed-err'});
     function getPat(g){
@@ -10780,34 +10848,34 @@ function mountTextwerk(view) {
     }
     function doRepl(){
       const p=getPat(false);errLbl.textContent='';
-      if(!p){if(findIn.value)errLbl.textContent='Ungültig';return;}
+      if(!p){if(findIn.value)errLbl.textContent=T('Ungültig');return;}
       ta.value=ta.value.replace(p,replIn.value);edText=ta.value;upd();
     }
     function doReplAll(){
       const p=getPat(true);errLbl.textContent='';
-      if(!p){if(findIn.value)errLbl.textContent='Ungültig';return;}
+      if(!p){if(findIn.value)errLbl.textContent=T('Ungültig');return;}
       ta.value=ta.value.replace(p,replIn.value);edText=ta.value;upd();
     }
     const PRESETS=[
-      {g:'Finden',items:[
-        {l:'E-Mail',     p:String.raw`[^\s@]+@[^\s@]+\.[^\s@]+`, r:''},
+      {g:T('Finden'),items:[
+        {l:T('E-Mail'),     p:String.raw`[^\s@]+@[^\s@]+\.[^\s@]+`, r:''},
         {l:'URL',        p:String.raw`https?://\S+`,              r:''},
-        {l:'Telefon (DE)',p:String.raw`(\+49|0)[1-9][\d \-/]{6,}`,r:''},
-        {l:'Datum TT.MM.JJ', p:String.raw`\b(0?[1-9]|[12]\d|3[01])\.(0?[1-9]|1[0-2])\.\d{2,4}\b`, r:''},
-        {l:'Doppelwörter',p:String.raw`\b(\w+)\s+\1\b`,          r:'$1'},
-        {l:'HTML-Tags',  p:String.raw`<[^>]*>`,                   r:''},
+        {l:T('Telefon (DE)'),p:String.raw`(\+49|0)[1-9][\d \-/]{6,}`,r:''},
+        {l:isEN()?'Date DD.MM.YY':'Datum TT.MM.JJ', p:String.raw`\b(0?[1-9]|[12]\d|3[01])\.(0?[1-9]|1[0-2])\.\d{2,4}\b`, r:''},
+        {l:T('Doppelwörter'),p:String.raw`\b(\w+)\s+\1\b`,          r:'$1'},
+        {l:T('HTML-Tags'),  p:String.raw`<[^>]*>`,                   r:''},
       ]},
-      {g:'Bereinigen',items:[
-        {l:'2× Leerzeichen',p:String.raw`\s{2,}`,                 r:' '},
-        {l:'Zeilenend-Spaces',p:String.raw`[ \t]+(\n|$)`,            r:'$1',d:'Leerzeichen/Tabs vor Zeilenumbrüchen entfernen'},
-        {l:'Leerzeilen',  p:String.raw`\n([ \t]*\n)+`,             r:'\n',d:'Mehrfache Leerzeilen auf eine reduzieren'},
-        {l:'Sonderzeichen',p:String.raw`[^\w\sÀ-ž.,!?;:()\-"]`, r:''},
+      {g:T('Bereinigen'),items:[
+        {l:T('2× Leerzeichen'),p:String.raw`\s{2,}`,                 r:' '},
+        {l:T('Zeilenend-Spaces'),p:String.raw`[ \t]+(\n|$)`,            r:'$1',d:T('Leerzeichen/Tabs vor Zeilenumbrüchen entfernen')},
+        {l:T('Leerzeilen'),  p:String.raw`\n([ \t]*\n)+`,             r:'\n',d:T('Mehrfache Leerzeilen auf eine reduzieren')},
+        {l:T('Sonderzeichen'),p:String.raw`[^\w\sÀ-ž.,!?;:()\-"]`, r:''},
       ]},
-      {g:'Ersetzen',items:[
-        {l:'"…" → „…"',  p:'"([^"]+)"',                          r:'„$1"'},
+      {g:T('Ersetzen'),items:[
+        isEN()?{l:'"…" → “…”', p:'"([^"]+)"', r:'“$1”'}:{l:'"…" → „…"',  p:'"([^"]+)"',                          r:'„$1"'},
         {l:'- → –',      p:String.raw` - `,                       r:' – '},
         {l:'... → …',    p:String.raw`\.\.\.`,                    r:'…'},
-        {l:'\\n → Leerzeichen', p:String.raw`\n+`,                  r:' '},
+        {l:isEN()?'\\n → space':'\\n → Leerzeichen', p:String.raw`\n+`,                  r:' '},
       ]},
     ];
     function applyPreset(p){
@@ -10826,41 +10894,41 @@ function mountTextwerk(view) {
     // Plain text: visibly convert the editor content into plain text (Ctrl+Z undoes it) and copy it right away.
     // Copying happens synchronously via the selection in the editor itself (execCommand) – that works reliably under file:// too.
     function copyPlain(){
-      if(!ta.value.trim()){toast('Erst Text oder HTML einfügen.','info');return;}
+      if(!ta.value.trim()){toast(T('Erst Text oder HTML einfügen.'),'info');return;}
       const txt=toPlain(ta.value),html=looksHtml(ta.value);
-      if(!txt){toast('Im HTML wurde kein Text gefunden.','info');return;}
+      if(!txt){toast(T('Im HTML wurde kein Text gefunden.'),'info');return;}
       ta.focus();ta.select();
       if(txt!==ta.value&&!document.execCommand('insertText',false,txt))ta.value=txt;
       edText=ta.value;upd();
       ta.select();
       let ok=false;try{ok=document.execCommand('copy');}catch{}
       ta.setSelectionRange(ta.value.length,ta.value.length);
-      const done=()=>toast(`Klartext kopiert · ${txt.length.toLocaleString('de-DE')} Zeichen`+(html?' · HTML entfernt':''),'ok',{ms:2400});
-      if(ok)done();else copyText(txt).then(r=>r?done():toast('Kopieren hat nicht geklappt – der Klartext steht im Editor.','err'));
+      const done=()=>toast(T('Klartext kopiert · {n} Zeichen',{n:txt.length.toLocaleString(isEN()?'en-US':'de-DE')})+(html?' · '+T('HTML entfernt'):''),'ok',{ms:2400});
+      if(ok)done();else copyText(txt).then(r=>r?done():toast(T('Kopieren hat nicht geklappt – der Klartext steht im Editor.'),'err'));
     }
     const side=h('div',{class:'ed-side'},
       h('div',{class:'ed-sec'},
-        h('button',{class:'btn ed-plain',title:'HTML → Text · Strg+Z = rückgängig',onclick:copyPlain},icon('copy'),'Klartext kopieren')),
+        h('button',{class:'btn ed-plain',title:T('HTML → Text · Strg+Z = rückgängig'),onclick:copyPlain},icon('copy'),T('Klartext kopieren'))),
       h('div',{class:'ed-sec'},
-        h('div',{class:'ed-lbl'},'Suchen & Ersetzen'),
+        h('div',{class:'ed-lbl'},T('Suchen & Ersetzen')),
         h('div',{class:'ed-row'},findIn,rxBtn,caseBtn),
         h('div',{class:'ed-row'},replIn),
         h('div',{class:'ed-row'},
-          h('button',{class:'btn sm',onclick:doRepl},'Ersetzen'),
-          h('button',{class:'btn sm',onclick:doReplAll,title:'Alle ersetzen'},'Alle'),
+          h('button',{class:'btn sm',onclick:doRepl},T('Ersetzen')),
+          h('button',{class:'btn sm',onclick:doReplAll,title:T('Alle ersetzen')},T('Alle')),
           errLbl),
         presetEl),
       h('div',{class:'ed-sec'},
-        h('div',{class:'ed-lbl'},'Statistik'),
-        stat('Wörter',wV),stat('Zeichen',cV),stat('Zeilen',lV),stat('Sätze',sV),
-        stat('Lesezeit',rtV),h('div',{class:'ed-stat',title:'≈ 130 Wörter/min'},h('span',{},'Sprechzeit'),stV)),
+        h('div',{class:'ed-lbl'},T('Statistik')),
+        stat(T('Wörter'),wV),stat(T('Zeichen'),cV),stat(T('Zeilen'),lV),stat(T('Sätze'),sV),
+        stat(T('Lesezeit'),rtV),h('div',{class:'ed-stat',title:T('≈ 130 Wörter/min')},h('span',{},T('Sprechzeit')),stV)),
       h('div',{class:'ed-sec'},
-        h('div',{class:'ed-lbl'},'Lesbarkeit'),
-        h('div',{class:'ed-fl',title:'180 − Ø Satzlänge − 58,5 × Ø Silben/Wort'},
-          h('div',{class:'ed-fl-top'},flV,h('div',null,h('small',null,'Flesch (Amstad)'),flL)),
+        h('div',{class:'ed-lbl'},T('Lesbarkeit')),
+        h('div',{class:'ed-fl',title:isEN()?'206.835 − 1.015 × avg. sentence length − 84.6 × avg. syllables/word':'180 − Ø Satzlänge − 58,5 × Ø Silben/Wort'},
+          h('div',{class:'ed-fl-top'},flV,h('div',null,h('small',null,isEN()?'Flesch Reading Ease':'Flesch (Amstad)'),flL)),
           h('div',{class:'ed-fl-track'},flFill),flD),
-        stat('Ø Wörter / Satz',aslV),stat('Ø Silben / Wort',aswV),
-        h('label',{class:'ed-sw-row'},h('span',null,'Lange Sätze markieren'),switchEl(twOpt.markLong,setMark)),
+        stat(T('Ø Wörter / Satz'),aslV),stat(T('Ø Silben / Wort'),aswV),
+        h('label',{class:'ed-sw-row'},h('span',null,T('Lange Sätze markieren')),switchEl(twOpt.markLong,setMark)),
         longCnt,markOpts));
     upd();
     return h('div',{class:'ed-wrap'},side,h('div',{class:'ed-main'},h('div',{class:'ed-edit'},hl,ta)));
@@ -10873,22 +10941,22 @@ function mountTextwerk(view) {
   function buildPrompter(){
     const pxPerSec=()=>tpOpt.speed*tpOpt.size*0.3;
     const fmtS=s=>{s=Math.max(0,Math.round(s));return `${Math.floor(s/60)}:${pad2(s%60)}`;};
-    const num=v=>String(v).replace('.',',');
+    const num=v=>isEN()?String(v):String(v).replace('.',',');
 
     /* ---------- Setup ---------- */
-    const ta=h('textarea',{class:'tp-ta',spellcheck:false,placeholder:'Deinen Text für den Teleprompter hier eingeben oder einfügen …',
+    const ta=h('textarea',{class:'tp-ta',spellcheck:false,placeholder:T('Deinen Text für den Teleprompter hier eingeben oder einfügen …'),
       oninput:()=>{tpOpt.text=ta.value;saveTp();estimate();}});
     ta.value=tpOpt.text;
     const infoEl=h('div',{class:'tp-info'});
     const measure=h('div',{class:'tp-measure','aria-hidden':'true'});
     function estimate(){
       const t=ta.value,words=(t.match(/[\p{L}\p{N}]+/gu)||[]).length;
-      if(!words){infoEl.textContent='Noch kein Text';startBtn.disabled=true;return;}
+      if(!words){infoEl.textContent=T('Noch kein Text');startBtn.disabled=true;return;}
       startBtn.disabled=false;
       measure.style.cssText=`width:${Math.round(window.innerWidth*tpOpt.width/100)}px;font-size:${tpOpt.size}px;line-height:${tpOpt.lh}`;
       measure.textContent=t;
       const dur=measure.offsetHeight/pxPerSec();
-      infoEl.replaceChildren(h('span',null,h('b',null,words),' Wörter'),h('span',null,'Dauer ',h('b',null,'~'+fmtS(dur))),h('span',null,h('b',null,Math.round(words/(dur/60)||0)),' Wörter/Min.'));
+      infoEl.replaceChildren(h('span',null,h('b',null,words),' '+lc(T('Wörter'))),h('span',null,T('Dauer')+' ',h('b',null,'~'+fmtS(dur))),h('span',null,h('b',null,Math.round(words/(dur/60)||0)),' '+T('Wörter/Min.')));
     }
     const sl=(key,label,min,max,step,fmt)=>{
       const val=h('span',{class:'bw-val'},fmt(tpOpt[key]));
@@ -10898,10 +10966,10 @@ function mountTextwerk(view) {
       const sync=()=>{r.value=tpOpt[key];val.textContent=fmt(tpOpt[key]);r.style.setProperty('--p',pct(tpOpt[key]));};
       return {el:h('div',{class:'bw-sl'},h('div',{class:'bw-sl-h'},h('label',null,label),val),r),sync};
     };
-    const sSpeed=sl('speed','Tempo',0.5,10,0.5,v=>num(v));
-    const sSize=sl('size','Schriftgröße',24,140,2,v=>v+' px');
-    const sWidth=sl('width','Textbreite',40,100,5,v=>v+' %');
-    const sLh=sl('lh','Zeilenabstand',1.1,2.2,0.1,v=>num(v.toFixed(1)));
+    const sSpeed=sl('speed',T('Tempo'),0.5,10,0.5,v=>num(v));
+    const sSize=sl('size',T('Schriftgröße'),24,140,2,v=>v+' px');
+    const sWidth=sl('width',T('Textbreite'),40,100,5,v=>v+' %');
+    const sLh=sl('lh',T('Zeilenabstand'),1.1,2.2,0.1,v=>num(v.toFixed(1)));
     const sw=(key,label,hint)=>h('label',{class:'chk-row'},h('span',null,label,hint&&h('small',{class:'hint',style:{display:'block'}},hint)),
       switchEl(tpOpt[key],v=>{tpOpt[key]=v;saveTp();applyLook();}));
     const startBtn=h('button',{class:'btn primary block tp-start',onclick:()=>startRun()},icon('play'),'Start');
@@ -10911,19 +10979,19 @@ function mountTextwerk(view) {
           h('button',{class:'btn sm ghost',onclick:()=>{ta.value='';tpOpt.text='';saveTp();estimate();ta.focus();}},icon('trash'))),
         ta,infoEl),
       h('aside',{class:'tp-set'},
-        h('div',{class:'ed-lbl'},'Einstellungen'),
+        h('div',{class:'ed-lbl'},T('Einstellungen')),
         sSpeed.el,sSize.el,sWidth.el,sLh.el,
         h('div',{class:'tp-sep'}),
-        sw('mirrorX','Spiegeln ↔','Für Teleprompter-Glas'),
-        sw('mirrorY','Spiegeln ↕','Kopfüber'),
-        sw('guide','Leselinie'),
-        sw('countdown','Countdown 3 · 2 · 1','Vor dem Start vom Anfang'),
-        sw('fullscreen','Im Vollbild starten'),
+        sw('mirrorX',T('Spiegeln ↔'),T('Für Teleprompter-Glas')),
+        sw('mirrorY',T('Spiegeln ↕'),T('Kopfüber')),
+        sw('guide',T('Leselinie')),
+        sw('countdown','Countdown 3 · 2 · 1',T('Vor dem Start vom Anfang')),
+        sw('fullscreen',T('Im Vollbild starten')),
         h('div',{style:{flex:1}}),
         startBtn,
         h('div',{class:'tp-keys'},
-          h('span',null,h('kbd',null,'Leertaste'),' Start/Pause'),h('span',null,h('kbd',null,'↑'),h('kbd',null,'↓'),' Tempo'),
-          h('span',null,h('kbd',null,'←'),h('kbd',null,'→'),' Springen'),h('span',null,h('kbd',null,'Esc'),' Beenden'))),
+          h('span',null,h('kbd',null,T('Leertaste')),' Start/Pause'),h('span',null,h('kbd',null,'↑'),h('kbd',null,'↓'),' '+T('Tempo')),
+          h('span',null,h('kbd',null,'←'),h('kbd',null,'→'),' '+T('Springen')),h('span',null,h('kbd',null,'Esc'),' '+T('Beenden')))),
       measure);
 
     /* ---------- Running view ---------- */
@@ -10933,7 +11001,7 @@ function mountTextwerk(view) {
     const guide=h('div',{class:'tp-guide'},h('i'),h('i'));
     const cdEl=h('div',{class:'tp-cd'});
     const progFill=h('div',{class:'tp-prog-fill'});
-    const playBtn=h('button',{class:'tp-play',title:'Leertaste',onclick:e=>{e.stopPropagation();toggle();}});
+    const playBtn=h('button',{class:'tp-play',title:T('Leertaste'),onclick:e=>{e.stopPropagation();toggle();}});
     const spdVal=h('span',{class:'tp-val'});
     const timeEl=h('span',{class:'tp-time'});
     const fsBtn=h('button',{class:'tp-hb',title:'F',onclick:()=>toggleFs()});
@@ -10941,9 +11009,9 @@ function mountTextwerk(view) {
     const hb=(ic,title,fn,txtLbl)=>h('button',{class:'tp-hb',title,onclick:e=>{e.stopPropagation();fn();}},ic&&icon(ic),txtLbl);
     const hud=h('div',{class:'tp-hud',onclick:e=>e.stopPropagation(),onmousedown:e=>e.preventDefault()},
       hb('x','Esc',()=>endRun()),
-      hb('skipb','Pos1',()=>jump(-Infinity)),
+      hb('skipb',isEN()?'Home':'Pos1',()=>jump(-Infinity)),
       playBtn,
-      h('div',{class:'tp-grp'},hb(null,'↓',()=>setSpeed(-0.5),'−'),h('div',{class:'tp-grp-l'},h('small',null,'Tempo'),spdVal),hb(null,'↑',()=>setSpeed(0.5),'+')),
+      h('div',{class:'tp-grp'},hb(null,'↓',()=>setSpeed(-0.5),'−'),h('div',{class:'tp-grp-l'},h('small',null,T('Tempo')),spdVal),hb(null,'↑',()=>setSpeed(0.5),'+')),
       h('div',{class:'tp-grp'},hb(null,'−',()=>setSize(-4),'A−'),hb(null,'+',()=>setSize(4),'A+')),
       mxBtn,fsBtn,timeEl);
     const stage=h('div',{class:'tp-stage',onclick:()=>toggle()},scroller,h('div',{class:'tp-fade tp-fade-t'}),h('div',{class:'tp-fade tp-fade-b'}),guide,cdEl,h('div',{class:'tp-prog'},progFill));
@@ -11017,7 +11085,7 @@ function mountTextwerk(view) {
       try{
         if(document.fullscreenElement)await document.exitFullscreen();
         else await run.requestFullscreen();
-      }catch{toast('Vollbild wird hier nicht unterstützt.','warn');}
+      }catch{toast(T('Vollbild wird hier nicht unterstützt.'),'warn');}
     }
     const onFs=()=>{paintPlay();requestAnimationFrame(paintTime);};
     document.addEventListener('fullscreenchange',onFs);
@@ -11065,7 +11133,7 @@ function mountTextwerk(view) {
     const[rMin,rMax]=RANGES[lMode];
     const mBtns=['words','sentences','paragraphs'].map((m,i)=>
       h('button',{class:'li-seg-btn'+(m===lMode?' on':''),'data-m':m,onclick:()=>applyM(m)},
-        ['Wörter','Sätze','Absätze'][i]));
+        [T('Wörter'),T('Sätze'),T('Absätze')][i]));
     const sl=h('input',{type:'range',class:'li-slider',min:rMin,max:rMax,value:lCount,
       oninput:e=>{lCount=+e.target.value;ni.value=lCount;rf();}});
     const ni=h('input',{type:'number',class:'li-num',min:rMin,max:rMax,value:lCount,
@@ -11074,15 +11142,15 @@ function mountTextwerk(view) {
     const statsEl=h('span',{class:'li-stats'});
     const cb=h('button',{class:'btn primary li-copy',
       onclick:()=>navigator.clipboard.writeText(ta.value).then(()=>{
-        cb.classList.add('copied');cb.textContent='Kopiert!';
-        setTimeout(()=>{cb.classList.remove('copied');cb.textContent='Kopieren';},2000);
-      })},icon('copy'),' Kopieren');
+        cb.classList.add('copied');cb.textContent=T('Kopiert!');
+        setTimeout(()=>{cb.classList.remove('copied');cb.textContent=T('Kopieren');},2000);
+      })},icon('copy'),' '+T('Kopieren'));
     function rf(){
       ta.value=genLorem();
-      cb.classList.remove('copied');cb.textContent='Kopieren';
+      cb.classList.remove('copied');cb.textContent=T('Kopieren');
       const v=ta.value;
       const wc=v.trim()?v.trim().split(/\s+/).length:0;
-      statsEl.textContent=wc+' Wörter · '+v.length+' Zeichen';
+      statsEl.textContent=wc+' '+lc(T('Wörter'))+' · '+v.length+' '+lc(T('Zeichen'));
     }
     function applyM(m){
       lMode=m;const[mn,mx,df]=RANGES[m];
@@ -11093,7 +11161,7 @@ function mountTextwerk(view) {
     rf();
     return h('div',{class:'li-wrap'},
       h('div',{class:'li-top'},
-        h('div',{class:'li-row'},h('div',{class:'li-seg'},...mBtns),h('button',{class:'btn sm',onclick:rf},icon('refresh'),' Neu')),
+        h('div',{class:'li-row'},h('div',{class:'li-seg'},...mBtns),h('button',{class:'btn sm',onclick:rf},icon('refresh'),' '+T('Neu'))),
         h('div',{class:'li-row li-slider-row'},sl,ni)),
       h('div',{class:'li-out'},
         ta,
@@ -11109,12 +11177,12 @@ function mountTextwerk(view) {
     const barLbl=h('span',{class:'pw-sc-lbl'});
     const cb=h('button',{class:'btn primary li-copy',
       onclick:()=>navigator.clipboard.writeText(pd.textContent).then(()=>{
-        cb.classList.add('copied');cb.textContent='Kopiert!';
-        setTimeout(()=>{cb.classList.remove('copied');cb.textContent='Kopieren';},2000);
-      })},icon('copy'),' Kopieren');
+        cb.classList.add('copied');cb.textContent=T('Kopiert!');
+        setTimeout(()=>{cb.classList.remove('copied');cb.textContent=T('Kopieren');},2000);
+      })},icon('copy'),' '+T('Kopieren'));
     function rf(){
       pd.textContent=genPw();
-      cb.classList.remove('copied');cb.textContent='Kopieren';
+      cb.classList.remove('copied');cb.textContent=T('Kopieren');
       const sc=pwScore();
       barFill.style.cssText='width:'+(sc/5*100)+'%;background:'+PW_COLORS[sc];
       barLbl.textContent=PW_LEVELS[sc];
@@ -11132,7 +11200,7 @@ function mountTextwerk(view) {
     rf();
     return h('div',{class:'li-wrap'},
       h('div',{class:'li-top'},
-        h('div',{class:'li-row'},h('div',{class:'li-seg'},...oBtns),h('button',{class:'btn sm',onclick:rf},icon('refresh'),' Neu')),
+        h('div',{class:'li-row'},h('div',{class:'li-seg'},...oBtns),h('button',{class:'btn sm',onclick:rf},icon('refresh'),' '+T('Neu'))),
         h('div',{class:'li-row li-slider-row'},sl,ni)),
       h('div',{class:'li-out'},
         h('div',{class:'pw-card'},pd),
@@ -11150,7 +11218,7 @@ function mountTextwerk(view) {
   }
   const tabBtns=['editor','prompter','lorem','passwort'].map((t,i)=>
     h('button',{class:'tw-tab'+(t===tab?' tw-tab-on':''),'data-t':t,onclick:()=>setTab(t)},
-      ['Editor','Teleprompter','Lorem Ipsum','Passwort'][i]));
+      ['Editor','Teleprompter','Lorem Ipsum',T('Passwort')][i]));
   const content=h('div',{class:'tw-content'});
   const root=h('div',{class:'tw-root'},h('div',{class:'tw-tabbar'},...tabBtns),content); view.append(root);
   content.replaceChildren(buildEditor());
@@ -21277,7 +21345,7 @@ TT.register({
 /* ================= Spielwiese (games with their own tabs) ================= */
 function mountSpielwiese(view) {
   view.style.padding = '0';
-  const GAMES = [['tippen', '⌨️ Tipptrainer', mountTippen], ['ausweichen', '☄️ Ausweichen', mountDodge], ['reaktion', '⚡ Reaktion', mountReact], ['kreis', '⭕ Perfekter Kreis', mountKreis], ['arena', '🔫 Neon-Arena', mountArena]];
+  const GAMES = [['tippen', T('⌨️ Tipptrainer'), mountTippen], ['ausweichen', T('☄️ Ausweichen'), mountDodge], ['reaktion', T('⚡ Reaktion'), mountReact], ['kreis', T('⭕ Perfekter Kreis'), mountKreis], ['arena', isEN() ? '🔫 Neon Arena' : '🔫 Neon-Arena', mountArena]];
   let keyHandler = null;
   let cleanup = null, active = Store.get('spiele-tab', 'tippen');
   if (active === 'brotato') active = 'arena';   // renamed game (old tab id)
@@ -21293,7 +21361,7 @@ function mountSpielwiese(view) {
     cleanup = GAMES.find(g => g[0] === active)[2](content);
   }
   view.append(h('div', { class: 'tw-root' },
-    h('div', { class: 'tw-tabbar' }, ...tabs, h('span', { class: 'gm-soon' }, 'Weitere Spiele folgen …')),
+    h('div', { class: 'tw-tabbar' }, ...tabs, h('span', { class: 'gm-soon' }, T('Weitere Spiele folgen …'))),
     content));
   show(active);
   function mountTippen(root) { const r = tippen(root); keyHandler = r.onKey; return r.destroy; }
@@ -21359,7 +21427,7 @@ function neonArena(root, isVisible) {
     cv.style.cursor = state === 'playing' && useMouse ? 'none' : '';   // the crosshair replaces the cursor
     pauseBtn.style.display = state === 'playing' || state === 'paused' ? '' : 'none';
     pauseBtn.replaceChildren(icon(state === 'paused' ? 'play' : 'pause'));
-    pauseBtn.title = state === 'paused' ? 'Weiter (P)' : 'Pause (P)';
+    pauseBtn.title = state === 'paused' ? T('Weiter (P)') : 'Pause (P)';
   }
   function togglePause() {
     if (state === 'playing') { state = 'paused'; clearKeys(); }
@@ -21382,7 +21450,7 @@ function neonArena(root, isVisible) {
     spawnInt=1.25; iframes=0; bulletCd=0; pvx=0; pvy=0;
     px=W/2; py=H/2; hp=PLAYER_HP;
     bullets.length=0; enemies.length=0; particles.length=0; pickups.length=0; waves.length=0; ebullets.length=0; floats.length=0;
-    shots=1; bombs=1; flash=0; msg=null; boss=null; banner={text:'Welle 1',t:2};
+    shots=1; bombs=1; flash=0; msg=null; boss=null; banner={text:T('Welle {n}',{n:1}),t:2};
     combo=0; comboT=0; shake=0; rapidT=0; dashT=0; dashCd=0; aimX=1; aimY=0;
     syncBtn();
   }
@@ -21402,7 +21470,7 @@ function neonArena(root, isVisible) {
     enemies.splice(i,1);
     combo++; comboT=2.2;
     if(e.boss){
-      addScore(wave*50, e.x, e.y, '#ff3366'); boss=null; flash=.3; shake=.7; say('Boss besiegt!');
+      addScore(wave*50, e.x, e.y, '#ff3366'); boss=null; flash=.3; shake=.7; say(T('Boss besiegt!'));
       burst(e.x,e.y,'#ffb347',60); burst(e.x,e.y,'#ff3366',40);
       dropPickup(e.x-18,e.y,'bomb'); dropPickup(e.x+18,e.y,'heart');
       return;
@@ -21415,9 +21483,9 @@ function neonArena(root, isVisible) {
     if(Math.random()<(e.type===1||e.type===3?.08:.03)/(1+wave*.12)) dropPickup(e.x,e.y);
   }
   function collect(p) {
-    if(p.kind==='bomb'){ if(bombs<BOMB_MAX){ bombs++; say('+1 Bombe  (Leertaste)'); } else addScore(wave*5,p.x,p.y); }
-    else if(p.kind==='heart'){ if(hp<PLAYER_HP){ hp++; say('+1 Leben'); } else addScore(wave*5,p.x,p.y); }
-    else if(p.kind==='rapid'){ rapidT=5; say('Dauerfeuer!'); }
+    if(p.kind==='bomb'){ if(bombs<BOMB_MAX){ bombs++; say(T('+1 Bombe  (Leertaste)')); } else addScore(wave*5,p.x,p.y); }
+    else if(p.kind==='heart'){ if(hp<PLAYER_HP){ hp++; say(T('+1 Leben')); } else addScore(wave*5,p.x,p.y); }
+    else if(p.kind==='rapid'){ rapidT=5; say(T('Dauerfeuer!')); }
     burst(p.x,p.y,PU[p.kind].c,10);
   }
   function dash() {
@@ -21427,7 +21495,7 @@ function neonArena(root, isVisible) {
     dashT=DASH_T; dashCd=DASH_CD; iframes=Math.max(iframes,DASH_T+.12);
   }
   function dropBomb() {
-    if(bombs<=0){ say('Keine Bombe'); return; }
+    if(bombs<=0){ say(T('Keine Bombe')); return; }
     bombs--; flash=.22; shake=.45; waves.push({x:px,y:py,r:0});
     for(let i=enemies.length-1;i>=0;i--){
       const e=enemies[i]; if((e.x-px)**2+(e.y-py)**2>=(BOMB_R+e.r)**2) continue;
@@ -21554,7 +21622,7 @@ function neonArena(root, isVisible) {
     if(iframes>0)iframes-=dt;
 
     const lvl=SHOT_LEVELS.find(([s])=>score>=s)[1];
-    if(lvl>shots){ shots=lvl; say(lvl+'-fach-Schuss!'); }
+    if(lvl>shots){ shots=lvl; say(T('{n}-fach-Schuss!',{n:lvl})); }
     for(let i=pickups.length-1;i>=0;i--){
       const p=pickups[i]; p.t-=dt;
       if(p.t<=0){ pickups.splice(i,1); continue; }
@@ -21579,7 +21647,7 @@ function neonArena(root, isVisible) {
     if(waveTimer<=0){
       wave++; waveTimer=WAVE_DUR; spawnInt=Math.max(0.22,spawnInt-0.13);
       if(wave%BOSS_EVERY===0&&!boss) spawnBoss();
-      else banner={text:'Welle '+wave,t:2};
+      else banner={text:T('Welle {n}',{n:wave}),t:2};
       swarm(3+wave*2);   // more enemies: every wave starts with a swarm
     }
     spawnTimer-=dt;
@@ -21676,11 +21744,11 @@ function neonArena(root, isVisible) {
 
     if(state==='idle'){
       cx.textAlign='center';
-      drawText('NEON-ARENA',W/2,H/2-48,32,'rgba(255,255,255,0.9)','center');
-      drawText('WASD: Bewegen  ·  '+(useMouse?'Maus':'Pfeiltasten')+': Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause',W/2,H/2-12,15,'rgba(255,255,255,0.5)','center');
-      drawText('Power-ups:  ♥ Leben   ⚡ Dauerfeuer   ● Bombe  ·  schnelle Kills = Combo bis ×5',W/2,H/2+96,13,'rgba(255,255,255,0.32)','center');
-      drawText('LEERTASTE, ENTER oder Klick zum Starten',W/2,H/2+24,18,'#44ffaa','center');
-      if(best>0) drawText('Bester Score: '+best,W/2,H/2+58,14,'rgba(255,255,255,0.3)','center');
+      drawText(isEN()?'NEON ARENA':'NEON-ARENA',W/2,H/2-48,32,'rgba(255,255,255,0.9)','center');
+      drawText(T('WASD: Bewegen  ·  {aim}: Schießen  ·  Shift: Dash  ·  Leertaste: Bombe  ·  P: Pause',{aim:useMouse?T('Maus'):T('Pfeiltasten')}),W/2,H/2-12,15,'rgba(255,255,255,0.5)','center');
+      drawText(T('Power-ups:  ♥ Leben   ⚡ Dauerfeuer   ● Bombe  ·  schnelle Kills = Combo bis ×5'),W/2,H/2+96,13,'rgba(255,255,255,0.32)','center');
+      drawText(T('LEERTASTE, ENTER oder Klick zum Starten'),W/2,H/2+24,18,'#44ffaa','center');
+      if(best>0) drawText(T('Bester Score: {n}',{n:best}),W/2,H/2+58,14,'rgba(255,255,255,0.3)','center');
       cx.textAlign='left'; return;
     }
 
@@ -21746,7 +21814,7 @@ function neonArena(root, isVisible) {
 
     cx.save(); cx.shadowBlur=0;
     drawText('Score: '+score,14,34,20,'rgba(255,255,255,0.85)');
-    drawText('Welle '+wave+'  '+Math.ceil(waveTimer)+'s',W-14,34,20,'rgba(255,255,255,0.85)','right');
+    drawText(T('Welle {n}',{n:wave})+'  '+Math.ceil(waveTimer)+'s',W-14,34,20,'rgba(255,255,255,0.85)','right');
     const bw=120,bh=10,bx=W/2-60,by=H-26;
     cx.fillStyle='#1a1f2a'; cx.fillRect(bx-1,by-1,bw+2,bh+2);
     const hpF=Math.max(0,hp/PLAYER_HP);
@@ -21759,7 +21827,7 @@ function neonArena(root, isVisible) {
       cx.beginPath(); cx.arc(22+i*20,54,6,0,Math.PI*2); cx.fill();
     }
     cx.globalAlpha=1;
-    drawText(shots>1?shots+'× Schuss':'Leertaste = Bombe',22+BOMB_MAX*20,59,12,shots>1?'#ffe066':'rgba(255,255,255,0.35)');
+    drawText(shots>1?T('{n}× Schuss',{n:shots}):T('Leertaste = Bombe'),22+BOMB_MAX*20,59,12,shots>1?'#ffe066':'rgba(255,255,255,0.35)');
     // Combo, dash readiness & active power-ups
     if(mult()>1) drawText('Combo ×'+mult(),14,84,16,'#ffe066');
     const dashReady=dashCd<=0;
@@ -21767,7 +21835,7 @@ function neonArena(root, isVisible) {
     cx.fillStyle=dashReady?'#4488ff':'#2c4a80'; cx.fillRect(W/2+70,H-25,46*(dashReady?1:1-dashCd/DASH_CD),8);
     drawText('Dash ⇧',W/2+93,H-30,10,dashReady?'rgba(255,255,255,0.55)':'rgba(255,255,255,0.25)','center');
     let puX=W-14;
-    for(const [t,c,l] of [[rapidT,'#ffe066','⚡ Dauerfeuer']]) if(t>0){ drawText(l+' '+Math.ceil(t)+'s',puX,58,13,c,'right'); puX-=130; }
+    for(const [t,c,l] of [[rapidT,'#ffe066',T('⚡ Dauerfeuer')]]) if(t>0){ drawText(l+' '+Math.ceil(t)+'s',puX,58,13,c,'right'); puX-=130; }
     // Boss health bar at the top
     if(boss){
       const bw2=Math.min(420,W*.5), bx2=W/2-bw2/2, by2=64;
@@ -21787,16 +21855,16 @@ function neonArena(root, isVisible) {
     if(state==='paused'){
       cx.fillStyle='rgba(0,0,0,0.55)'; cx.fillRect(0,0,W,H);
       drawText('PAUSE',W/2,H/2-10,36,'rgba(255,255,255,0.92)','center');
-      drawText('P, Esc oder Leertaste zum Weiterspielen',W/2,H/2+26,16,'#44ffaa','center');
+      drawText(T('P, Esc oder Leertaste zum Weiterspielen'),W/2,H/2+26,16,'#44ffaa','center');
     }
 
     if(state==='dead'){
       cx.fillStyle='rgba(0,0,0,0.6)'; cx.fillRect(0,0,W,H);
       drawText('GAME OVER',W/2,H/2-42,36,'#ff4455','center');
       drawText('Score: '+score,W/2,H/2+2,24,'rgba(255,255,255,0.85)','center');
-      if(score>=best) drawText('Neuer Rekord!',W/2,H/2+28,15,'#ffe066','center');
-      drawText('LEERTASTE oder ENTER - neues Spiel',W/2,H/2+62,17,'#44ffaa','center');
-      if(best>0&&score<best) drawText('Bester Score: '+best,W/2,H/2+88,14,'rgba(255,255,255,0.3)','center');
+      if(score>=best) drawText(T('Neuer Rekord!'),W/2,H/2+28,15,'#ffe066','center');
+      drawText(T('LEERTASTE oder ENTER - neues Spiel'),W/2,H/2+62,17,'#44ffaa','center');
+      if(best>0&&score<best) drawText(T('Bester Score: {n}',{n:best}),W/2,H/2+88,14,'rgba(255,255,255,0.3)','center');
     }
     cx.textAlign='left'; cx.restore();
   }
@@ -21863,7 +21931,7 @@ function kreis(root) {
   root.append(wrap);
   const ctx = cv.getContext('2d');
   let W = 0, H = 0, dpr = 1, pts = [], drawing = false, res = null, raf = 0;
-  const fmt = v => v.toFixed(1).replace('.', ',') + ' %';
+  const fmt = v => isEN() ? v.toFixed(1) + '%' : v.toFixed(1).replace('.', isEN() ? '.' : ',') + ' %';
   const scoreOf = dev => Math.max(0, 100 - dev * 300);
   const hueOf = d => 130 * (1 - Math.min(1, d * 6));
   function size() { const r = wrap.getBoundingClientRect(); dpr = devicePixelRatio || 1; W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; draw(); }
@@ -21873,9 +21941,9 @@ function kreis(root) {
     const rs = p.map(q => Math.hypot(q.x - cx, q.y - cy)), r = rs.reduce((a, b) => a + b, 0) / rs.length;
     return { cx, cy, r, rs, dev: rs.reduce((a, b) => a + Math.abs(b - r), 0) / rs.length / r };
   }
-  function paintChips() { chips.replaceChildren(h('span', null, '🏆 Bestwert ', h('b', null, S.best ? fmt(S.best) : '–')), h('span', null, '✏️ Versuche ', h('b', null, S.runs))); }
+  function paintChips() { chips.replaceChildren(h('span', null, '🏆 ' + T('Bestwert') + ' ', h('b', null, S.best ? fmt(S.best) : '–')), h('span', null, '✏️ ' + T('Versuche') + ' ', h('b', null, S.runs))); }
   function hudSet(b, m, cls = '', color = '') { big.textContent = b; msg.textContent = m; hud.className = 'kr-hud ' + cls; big.style.color = color; }
-  function idle() { pts = []; res = null; hudSet('Zeichne einen Kreis', 'Mit Maus, Stift oder Finger – so rund wie möglich. Esc löscht.', 'idle'); draw(); }
+  function idle() { pts = []; res = null; hudSet(T('Zeichne einen Kreis'), T('Mit Maus, Stift oder Finger – so rund wie möglich. Esc löscht.'), 'idle'); draw(); }
   function draw() {
     raf = 0; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = 'rgba(128,128,160,.16)';
@@ -21908,18 +21976,18 @@ function kreis(root) {
   cv.onpointerup = cv.onpointercancel = () => { if (drawing) { drawing = false; finish(); } };
   function finish() {
     const fail = m => { res = { ok: false }; hudSet('Hmm …', m, 'fail'); req(); };
-    if (pts.length < 20) return fail('Das war eher ein Strich. Zeichne einen ganzen Kreis!');
+    if (pts.length < 20) return fail(T('Das war eher ein Strich. Zeichne einen ganzen Kreis!'));
     const st = stats(pts);
-    if (st.r < 40) return fail('Zu klein – trau dich, größer!');
+    if (st.r < 40) return fail(T('Zu klein – trau dich, größer!'));
     let tot = 0, prev = Math.atan2(pts[0].y - st.cy, pts[0].x - st.cx);
     for (const q of pts) { const a = Math.atan2(q.y - st.cy, q.x - st.cx); let d = a - prev; if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; tot += d; prev = a; }
-    if (Math.abs(tot) < 1.75 * Math.PI) return fail('Nicht geschlossen – einmal ganz rundherum!');
+    if (Math.abs(tot) < 1.75 * Math.PI) return fail(T('Nicht geschlossen – einmal ganz rundherum!'));
     const gap = Math.hypot(pts[0].x - pts.at(-1).x, pts[0].y - pts.at(-1).y) / st.r;
     const sc = Math.max(0, scoreOf(st.dev) - Math.max(0, gap - 0.2) * 25);
     const newBest = sc > S.best; S.runs++; if (newBest) S.best = +sc.toFixed(1);
     Store.set('spiele-kreis', S); paintChips();
-    const rate = [[97, 'Zirkel-Niveau. Bist du ein Roboter? 🤖'], [93, 'Wahnsinnig rund 🤯'], [88, 'Richtig stark 👌'], [80, 'Ziemlich rund 🙂'], [70, 'Solide, aber da geht mehr'], [50, 'Eher ein Ei 🥚'], [0, 'Eine stolze Kartoffel 🥔']].find(r => sc >= r[0])[1];
-    res = { ok: true }; hudSet(fmt(sc), (newBest ? '🎉 Neuer Bestwert! · ' : '') + rate, 'done', `hsl(${sc * 1.3} 90% 62%)`); req();
+    const rate = (isEN() ? [[97, 'Drawn with a compass? Are you a robot? 🤖'], [93, 'Insanely round 🤯'], [88, 'Really impressive 👌'], [80, 'Pretty round 🙂'], [70, 'Solid, but you can do better'], [50, 'More of an egg 🥚'], [0, 'A proud potato 🥔']] : [[97, 'Zirkel-Niveau. Bist du ein Roboter? 🤖'], [93, 'Wahnsinnig rund 🤯'], [88, 'Richtig stark 👌'], [80, 'Ziemlich rund 🙂'], [70, 'Solide, aber da geht mehr'], [50, 'Eher ein Ei 🥚'], [0, 'Eine stolze Kartoffel 🥔']]).find(r => sc >= r[0])[1];
+    res = { ok: true }; hudSet(fmt(sc), (newBest ? T('🎉 Neuer Bestwert!') + ' · ' : '') + rate, 'done', `hsl(${sc * 1.3} 90% 62%)`); req();
   }
   paintChips(); idle();
   return { onKey(e) { if (e.key === 'Escape') idle(); }, destroy() { ro.disconnect(); cancelAnimationFrame(raf); } };
@@ -21929,7 +21997,8 @@ function kreis(root) {
 function reaction(root) {
   const ROUNDS = 5;
   const S = { best: 0, bestSingle: 0, hist: [], ...Store.get('spiele-reaktion', {}) };
-  const RANKS = [[200, '⚡', 'Blitz', 'Übermenschlich schnell!'], [250, '🐆', 'Gepard', 'Top-Reflexe – schneller als die meisten.'],
+  const RANKS = isEN() ? [[200, '⚡', 'Lightning', 'Superhumanly fast!'], [250, '🐆', 'Cheetah', 'Top reflexes – faster than most.'],
+    [300, '🥊', 'Boxer', 'Really good. A solid score.'], [350, '🐈', 'Cat', 'Nicely average.'], [450, '🐢', 'Turtle', 'Still half asleep? Coffee helps.'], [Infinity, '🦥', 'Sloth', 'Very relaxed … one more try?']] : [[200, '⚡', 'Blitz', 'Übermenschlich schnell!'], [250, '🐆', 'Gepard', 'Top-Reflexe – schneller als die meisten.'],
     [300, '🥊', 'Boxer', 'Richtig gut. Ein solider Wert.'], [350, '🐈', 'Katze', 'Guter Durchschnitt.'], [450, '🐢', 'Schildkröte', 'Noch etwas verschlafen? Kaffee hilft.'], [Infinity, '🦥', 'Faultier', 'Ganz entspannt … vielleicht nochmal?']];
   let state = 'idle', times = [], timer = 0, goAt = 0, fouls = 0;
   const pad = h('div', { class: 'rx-pad', onpointerdown: e => { e.preventDefault(); hit(); } });
@@ -21945,27 +22014,27 @@ function reaction(root) {
   function paintSide() {
     const avgs = S.hist.slice(-10), max = Math.max(...avgs, 1);
     side.replaceChildren(
-      h('div', { class: 'rx-card' }, h('small', null, 'Bester Schnitt'), h('b', null, S.best ? ms(S.best) : '–')),
-      h('div', { class: 'rx-card' }, h('small', null, 'Schnellste Reaktion'), h('b', null, S.bestSingle ? ms(S.bestSingle) : '–')),
-      h('div', { class: 'rx-card' }, h('small', null, 'Letzte Durchgänge'),
-        avgs.length ? h('div', { class: 'rx-hist' }, avgs.map(v => h('div', { class: 'rx-hb', title: ms(v), style: { height: Math.max(8, v / max * 100) + '%' } }))) : h('p', { class: 'hint' }, 'Noch keine Durchgänge.')),
-      h('p', { class: 'rx-tip' }, 'Ø ≈ 250–300 ms · Klick, Tippen oder Leertaste'));
+      h('div', { class: 'rx-card' }, h('small', null, T('Bester Schnitt')), h('b', null, S.best ? ms(S.best) : '–')),
+      h('div', { class: 'rx-card' }, h('small', null, T('Schnellste Reaktion')), h('b', null, S.bestSingle ? ms(S.bestSingle) : '–')),
+      h('div', { class: 'rx-card' }, h('small', null, T('Letzte Durchgänge')),
+        avgs.length ? h('div', { class: 'rx-hist' }, avgs.map(v => h('div', { class: 'rx-hb', title: ms(v), style: { height: Math.max(8, v / max * 100) + '%' } }))) : h('p', { class: 'hint' }, T('Noch keine Durchgänge.'))),
+      h('p', { class: 'rx-tip' }, T('Ø ≈ 250–300 ms · Klick, Tippen oder Leertaste')));
   }
-  function idle() { state = 'idle'; times = []; fouls = 0; setPad('idle', 'Reaktionstest', `${ROUNDS} Runden · Klick oder Leertaste zum Start`, '⚡'); paintDots(); }
+  function idle() { state = 'idle'; times = []; fouls = 0; setPad('idle', T('Reaktionstest'), T('{n} Runden · Klick oder Leertaste zum Start', { n: ROUNDS }), '⚡'); paintDots(); }
   function arm() {
     state = 'wait'; clearTimeout(timer);
-    setPad('wait', 'Warte …', 'auf Grün', null);
-    timer = setTimeout(() => { state = 'go'; goAt = performance.now(); setPad('go', 'JETZT!', null, null); }, 1200 + Math.random() * 3300);
+    setPad('wait', T('Warte …'), T('auf Grün'), null);
+    timer = setTimeout(() => { state = 'go'; goAt = performance.now(); setPad('go', T('JETZT!'), null, null); }, 1200 + Math.random() * 3300);
     paintDots();
   }
   function hit() {
     if (state === 'idle' || state === 'result') { times = []; fouls = 0; arm(); return; }
-    if (state === 'wait') { clearTimeout(timer); fouls++; state = 'foul'; setPad('foul', 'Zu früh!', 'Klick zum Wiederholen dieser Runde', '🙈'); return; }
+    if (state === 'wait') { clearTimeout(timer); fouls++; state = 'foul'; setPad('foul', T('Zu früh!'), T('Klick zum Wiederholen dieser Runde'), '🙈'); return; }
     if (state === 'foul') { arm(); return; }
     if (state === 'go') {
       const t = performance.now() - goAt; times.push(t); paintDots();
       if (times.length >= ROUNDS) return finish();
-      state = 'shown'; setPad('shown', ms(t), 'Klick für die nächste Runde', t < 250 ? '🔥' : t < 350 ? '👍' : '🙂');
+      state = 'shown'; setPad('shown', ms(t), T('Klick für die nächste Runde'), t < 250 ? '🔥' : t < 350 ? '👍' : '🙂');
       return;
     }
     if (state === 'shown') arm();
@@ -21979,8 +22048,8 @@ function reaction(root) {
     S.hist.push(Math.round(avg)); S.hist = S.hist.slice(-30);
     Store.set('spiele-reaktion', S);
     const r = RANKS.find(x => avg < x[0]);
-    setPad('result', ms(avg), `${r[2]} – ${r[3]}${fouls ? ` · ${fouls} Fehlstart${fouls > 1 ? 's' : ''}` : ''}${newBest ? ' · 🎉 Neuer Bestwert!' : ''}`, r[1]);
-    pad.querySelector('.rx-in').append(h('span', { class: 'rx-again' }, 'Klick · Leertaste → neue Runde'));
+    setPad('result', ms(avg), `${r[2]} – ${r[3]}${fouls ? ' · ' + T(fouls > 1 ? '{n} Fehlstarts' : '1 Fehlstart', { n: fouls }) : ''}${newBest ? ' · ' + T('🎉 Neuer Bestwert!') : ''}`, r[1]);
+    pad.querySelector('.rx-in').append(h('span', { class: 'rx-again' }, T('Klick · Leertaste → neue Runde')));
     paintSide(); paintDots();
   }
   idle(); paintSide();
@@ -21997,7 +22066,7 @@ function dodge(root, visible) {
   const scoreEl = h('b'), bestEl = h('span');
   const overlay = h('div', { class: 'dg-ov' });
   root.append(h('div', { class: 'dg' },
-    h('div', { class: 'dg-hud' }, h('div', { class: 'dg-score' }, scoreEl, h('small', null, 'Sekunden')), bestEl),
+    h('div', { class: 'dg-hud' }, h('div', { class: 'dg-score' }, scoreEl, h('small', null, T('Sekunden'))), bestEl),
     h('div', { class: 'dg-stage' }, cv, overlay)));
   let W = 0, H = 0, dpr = 1, raf = 0, last = 0;
   let state = 'ready', t = 0, player, rocks, parts, spawnAcc, keys = { l: false, r: false }, mouseX = null, shake = 0;
@@ -22014,11 +22083,11 @@ function dodge(root, visible) {
     const newBest = state === 'over' && t >= S.best && t > 0;
     overlay.replaceChildren(h('div', { class: 'dg-card' },
       state === 'over'
-        ? [h('div', { class: 'dg-emoji' }, t > 60 ? '🏆' : t > 30 ? '🚀' : t > 15 ? '😎' : '💥'), h('h3', null, `${t.toFixed(1).replace('.', ',')} Sekunden`),
-           h('p', null, newBest ? '🎉 Neuer Bestwert!' : `Bestwert: ${S.best.toFixed(1).replace('.', ',')} s`)]
-        : [h('div', { class: 'dg-emoji' }, '☄️'), h('h3', null, 'Ausweichen'), h('p', null, 'Weich den fallenden Brocken aus – je länger du überlebst, desto besser. Es wird immer schneller!')],
-      h('button', { class: 'btn primary', onclick: () => start() }, icon('play'), state === 'over' ? 'Nochmal' : 'Los geht’s'),
-      h('small', null, 'Maus oder ← → · Start: Leertaste')));
+        ? [h('div', { class: 'dg-emoji' }, t > 60 ? '🏆' : t > 30 ? '🚀' : t > 15 ? '😎' : '💥'), h('h3', null, T('{n} Sekunden', { n: t.toFixed(1).replace('.', isEN() ? '.' : ',') })),
+           h('p', null, newBest ? T('🎉 Neuer Bestwert!') : T('Bestwert: {n} s', { n: S.best.toFixed(1).replace('.', isEN() ? '.' : ',') }))]
+        : [h('div', { class: 'dg-emoji' }, '☄️'), h('h3', null, T('Ausweichen')), h('p', null, T('Weich den fallenden Brocken aus – je länger du überlebst, desto besser. Es wird immer schneller!'))],
+      h('button', { class: 'btn primary', onclick: () => start() }, icon('play'), state === 'over' ? T('Nochmal') : T('Los geht’s')),
+      h('small', null, T('Maus oder ← → · Start: Leertaste'))));
   }
   function spawn() {
     const lvl = 1 + t / 20, r = 8 + Math.random() * (10 + Math.min(18, t * 0.4));
@@ -22050,8 +22119,8 @@ function dodge(root, visible) {
     for (const q of parts) { q.x += q.vx * dt; q.y += q.vy * dt; q.vy += 300 * dt; q.life -= dt; }
     parts = parts.filter(q => q.life > 0);
     shake *= Math.pow(0.02, dt);
-    scoreEl.textContent = t.toFixed(1).replace('.', ',');
-    bestEl.textContent = `🏅 Bestwert ${S.best.toFixed(1).replace('.', ',')} s`;
+    scoreEl.textContent = t.toFixed(1).replace('.', isEN() ? '.' : ',');
+    bestEl.textContent = '🏅 ' + T('Bestwert {n} s', { n: S.best.toFixed(1).replace('.', isEN() ? '.' : ',') });
   }
   const stars = Array.from({ length: 70 }, () => [Math.random(), Math.random(), Math.random() * 1.4 + 0.3]);
   function draw() {
@@ -22106,7 +22175,11 @@ function dodge(root, visible) {
 
 /* ---------- Typing trainer ---------- */
 function tippen(root) {
-  const SENTENCES = {
+  const SENTENCES = isEN() ? {
+    leicht: ["The sun shines brightly over the sea.", "We are having pasta with tomato sauce.", "The dog barks loudly in the garden.", "I like a cup of warm tea in the evening.", "The book is lying on the small table.", "Tomorrow we will ride our bikes to the lake.", "The cat sleeps all day long.", "It often snows a lot in winter.", "My coffee has gone cold again.", "The train is right on time today.", "Small steps still get you there.", "The flowers bloom red and yellow.", "On weekends we like to sleep in.", "The weather is really nice today.", "An apple a day keeps you fit.", "The kids are playing outside in the park.", "I like listening to music while I cook.", "The moon is high in the sky."],
+    mittel: ["Fast typists have more time for the things that really matter.", "Octopuses have three hearts and taste with their suckers.", "A good plan today is better than a perfect plan tomorrow.", "A Venus flytrap only snaps shut after being touched twice.", "After the rain, the air always smells a little fresher.", "Botanically speaking, bananas are berries, but strawberries are not.", "Coffee is liquid good mood, and cake is the solid version.", "The early bird gets the worm, but the second mouse gets the cheese.", "Sea otters hold hands while they sleep so they do not drift apart.", "On Mars, the sunsets are actually blue.", "Practice makes perfect, but breaks make you happy.", "Crows remember faces and tell their friends about them.", "Today is a great day to try something new.", "Wombats are the only animals with cube-shaped poop.", "The best time to plant a tree was twenty years ago.", "A Rubik's Cube has more positions than there are grains of sand."],
+    schwer: ["The quick brown fox jumps over the lazy dog by the riverbank.", "Pack my box with five dozen liquor jugs, then mail it today.", "\"Just five more minutes,\" he said - at 3:47 in the morning.", "Feb 29, 2028 is the next leap day; write that down!", "The bristlecone pine \"Methuselah\" is over 4,800 years old.", "Sphinx of black quartz, judge my vow (and do it quickly)!", "Price: $19.99 (incl. 8% sales tax) - payable by 12/31.", "Use #hashtags, @mentions & 100% effort: symbols matter!", "Email info@example.com or call +1 (555) 123-4567.", "Is 1 + 1 = 2? Usually - except in binary (10).", "The email arrived at 08:15; subject: \"Urgent!!! Please read\".", "Size isn't strength: ants carry 50 times their own weight.", "A journey of 1,000 miles begins with a single step.", "Pi starts with 3.14159 - and then simply never stops."],
+  } : {
     leicht: [
       'Die Sonne scheint hell über dem Meer.', 'Heute gibt es Nudeln mit Tomatensoße.', 'Der Hund bellt laut im Garten.',
       'Ich trinke gern warmen Tee am Abend.', 'Das Buch liegt auf dem kleinen Tisch.', 'Wir fahren morgen mit dem Rad zum See.',
@@ -22135,7 +22208,9 @@ function tippen(root) {
       'Quäle nie ein Tier zum Scherz, denn es fühlt wie du den Schmerz.', 'Pi beginnt mit 3,14159 – und hört danach einfach nie auf.',
     ],
   };
-  const RANKS = [[120, '🐌', 'Schnecke', 'Gemütlich unterwegs – jeder Profi hat mal so angefangen.'], [180, '🐢', 'Schildkröte', 'Stetig und sicher. Da geht noch was!'],
+  const RANKS = isEN() ? [[120, '🐌', 'Snail', 'Taking it easy – every pro started out like this.'], [180, '🐢', 'Turtle', 'Slow and steady. There’s more in you!'],
+    [240, '🚲', 'Cyclist', 'Solid! You’re right around average.'], [300, '🐇', 'Hare', 'Quick! Faster than most.'],
+    [360, '🏎️', 'Race car', 'Seriously fast – respect.'], [450, '🚀', 'Rocket', 'Pro level. Your keyboard is glowing.'], [Infinity, '🏆', 'Legend', 'Unbelievable. Are you a robot?']] : [[120, '🐌', 'Schnecke', 'Gemütlich unterwegs – jeder Profi hat mal so angefangen.'], [180, '🐢', 'Schildkröte', 'Stetig und sicher. Da geht noch was!'],
     [240, '🚲', 'Radfahrer', 'Solide! Du bist im guten Durchschnitt.'], [300, '🐇', 'Hase', 'Flott! Schneller als die meisten.'],
     [360, '🏎️', 'Rennwagen', 'Richtig schnell – Respekt.'], [450, '🚀', 'Rakete', 'Profi-Niveau. Deine Tastatur glüht.'], [Infinity, '🏆', 'Legende', 'Unfassbar. Bist du ein Roboter?']];
   const S = { diff: 'mittel', count: 3, best: {}, hist: [], ...Store.get('spiele-tippen', {}) };
@@ -22143,7 +22218,7 @@ function tippen(root) {
 
   let run = null, tick = 0;
   const fmtT = sec => `${Math.floor(sec / 60)}:${pad2(Math.floor(sec % 60))}`;
-  const nf = n => Math.round(n).toLocaleString('de-DE');
+  const nf = n => Math.round(n).toLocaleString(isEN() ? 'en-US' : 'de-DE');
 
   function pickSentences() {
     const pool = [...SENTENCES[S.diff]], out = [];
@@ -22161,13 +22236,13 @@ function tippen(root) {
   const seg = (opts, val, fn) => segEl(opts, val, v => { fn(v); save(); newRun(); });
   const bestEl = h('div', { class: 'gm-best' });
   const stat = (label) => { const v = h('b', null, '–'); return [h('div', { class: 'gm-stat' }, v, h('small', null, label)), v]; };
-  const [sAsp, vAsp] = stat('Anschläge / Min'), [sWpm, vWpm] = stat('Wörter / Min'), [sAcc, vAcc] = stat('Genauigkeit'), [sTime, vTime] = stat('Zeit');
+  const [sAsp, vAsp] = stat(T('Anschläge / Min')), [sWpm, vWpm] = stat(T('Wörter / Min')), [sAcc, vAcc] = stat(T('Genauigkeit')), [sTime, vTime] = stat(T('Zeit'));
   const progLbl = h('span'), progFill = h('div', { class: 'gm-prog-fill' });
   const textEl = h('div', { class: 'gm-text' });
   const nextEl = h('div', { class: 'gm-next' });
-  const focusHint = h('div', { class: 'gm-focus' }, icon('zap'), 'Hier klicken und lostippen');
+  const focusHint = h('div', { class: 'gm-focus' }, icon('zap'), T('Hier klicken und lostippen'));
   const input = h('textarea', { class: 'gm-input', spellcheck: false, autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off',
-    oninput: onInput, onpaste: e => { e.preventDefault(); toast('Einfügen gilt nicht – schön selbst tippen! 😉', 'info'); },
+    oninput: onInput, onpaste: e => { e.preventDefault(); toast(T('Einfügen gilt nicht – schön selbst tippen! 😉'), 'info'); },
     onfocus: () => box.classList.add('focused'), onblur: () => box.classList.remove('focused') });
   const box = h('div', { class: 'gm-box', onclick: () => focus() }, textEl, nextEl, focusHint, input);
   const focus = () => input.focus({ preventScroll: true });
@@ -22175,28 +22250,28 @@ function tippen(root) {
     h('div', { class: 'gm-stats' }, sAsp, sWpm, sAcc, sTime),
     h('div', { class: 'gm-prog' }, h('div', { class: 'gm-prog-bar' }, progFill), progLbl),
     box,
-    h('p', { class: 'gm-keys' }, h('kbd', null, '⌫'), ' Fehler korrigieren · ', h('kbd', null, 'Esc'), ' neu starten · Ein Satz ist geschafft, sobald er fehlerfrei dasteht.'));
+    h('p', { class: 'gm-keys' }, h('kbd', null, '⌫'), ' ' + T('Fehler korrigieren') + ' · ', h('kbd', null, 'Esc'), ' ' + T('neu starten · Ein Satz ist geschafft, sobald er fehlerfrei dasteht.')));
   const resultEl = h('div', { class: 'gm-result', hidden: true });
   const wrap = h('div', { class: 'gm' },
     h('div', { class: 'gm-head' },
-      h('div', { class: 'gm-title' }, h('h2', null, 'Tipptrainer'), h('p', null, 'Tipp die Sätze so schnell und genau wie möglich ab.')),
+      h('div', { class: 'gm-title' }, h('h2', null, T('Tipptrainer')), h('p', null, T('Tipp die Sätze so schnell und genau wie möglich ab.'))),
       bestEl),
     h('div', { class: 'gm-opts' },
-      h('div', { class: 'gm-opt' }, h('small', null, 'Schwierigkeit'), seg([['leicht', 'Leicht'], ['mittel', 'Mittel'], ['schwer', 'Schwer']], S.diff, v => S.diff = v)),
-      h('div', { class: 'gm-opt' }, h('small', null, 'Sätze'), seg([[1, '1'], [3, '3'], [5, '5'], [10, '10']], S.count, v => S.count = v)),
-      h('button', { class: 'btn sm ghost', title: 'Neue Sätze (Esc)', onclick: () => newRun() }, icon('refresh'), 'Neue Sätze')),
+      h('div', { class: 'gm-opt' }, h('small', null, T('Schwierigkeit')), seg([['leicht', T('Leicht')], ['mittel', T('Mittel')], ['schwer', T('Schwer')]], S.diff, v => S.diff = v)),
+      h('div', { class: 'gm-opt' }, h('small', null, T('Sätze')), seg([[1, '1'], [3, '3'], [5, '5'], [10, '10']], S.count, v => S.count = v)),
+      h('button', { class: 'btn sm ghost', title: T('Neue Sätze (Esc)'), onclick: () => newRun() }, icon('refresh'), T('Neue Sätze'))),
     playEl, resultEl);
   root.append(wrap);
 
   function paintBest() {
     const b = S.best[S.diff];
-    bestEl.replaceChildren(b ? h('span', null, '🏅 Bestwert ', h('b', null, nf(b.asp)), ' Anschl./Min · ', `${b.acc} %`) : h('span', { class: 'dim' }, 'Noch kein Bestwert auf dieser Stufe'));
+    bestEl.replaceChildren(b ? h('span', null, '🏅 ' + T('Bestwert') + ' ', h('b', null, nf(b.asp)), ' ' + T('Anschl./Min') + ' · ', `${b.acc} %`) : h('span', { class: 'dim' }, T('Noch kein Bestwert auf dieser Stufe')));
   }
   function renderSentence() {
     const target = run.list[run.i];
     textEl.replaceChildren(...[...target].map(c => h('span', { class: c === ' ' ? 'sp' : null }, c)));
-    nextEl.textContent = run.list[run.i + 1] ? 'Danach: ' + run.list[run.i + 1] : '';
-    progLbl.textContent = `Satz ${run.i + 1} von ${run.list.length}`;
+    nextEl.textContent = run.list[run.i + 1] ? T('Danach:') + ' ' + run.list[run.i + 1] : '';
+    progLbl.textContent = T('Satz {i} von {n}', { i: run.i + 1, n: run.list.length });
     progFill.style.width = (run.i / run.list.length * 100) + '%';
     paintChars();
   }
@@ -22269,28 +22344,28 @@ function tippen(root) {
     const pts = hist.map((x, i) => `${hist.length > 1 ? i / (hist.length - 1) * W : W / 2},${H - 6 - (x.asp - minH) / Math.max(1, maxH - minH) * (H - 12)}`).join(' ');
     resultEl.replaceChildren(
       h('div', { class: 'gm-res-top' },
-        h('div', { class: 'gm-rank' }, h('span', { class: 'gm-rank-ico' }, rank[1]), h('div', null, h('small', null, 'Dein Rang'), h('b', null, rank[2]), h('p', null, rank[3]))),
-        h('div', { class: 'gm-big' }, h('b', null, nf(asp)), h('small', null, 'Anschläge pro Minute'), isBest ? h('span', { class: 'gm-newbest' }, prevBest ? `🎉 Neuer Bestwert! (+${nf(asp - prevBest.asp)})` : '🎉 Erster Bestwert!') : prevBest ? h('span', { class: 'gm-diff' }, `Bestwert: ${nf(prevBest.asp)}`) : null)),
+        h('div', { class: 'gm-rank' }, h('span', { class: 'gm-rank-ico' }, rank[1]), h('div', null, h('small', null, T('Dein Rang')), h('b', null, rank[2]), h('p', null, rank[3]))),
+        h('div', { class: 'gm-big' }, h('b', null, nf(asp)), h('small', null, T('Anschläge pro Minute')), isBest ? h('span', { class: 'gm-newbest' }, prevBest ? T('🎉 Neuer Bestwert!') + ` (+${nf(asp - prevBest.asp)})` : T('🎉 Erster Bestwert!')) : prevBest ? h('span', { class: 'gm-diff' }, T('Bestwert: {n}', { n: nf(prevBest.asp) })) : null)),
       h('div', { class: 'gm-res-grid' },
-        h('div', { class: 'gm-stat' }, h('b', null, nf(asp / 5)), h('small', null, 'Wörter / Min')),
-        h('div', { class: 'gm-stat' }, h('b', null, `${String(accR).replace('.', ',')} %`), h('small', null, 'Genauigkeit')),
-        h('div', { class: 'gm-stat' }, h('b', null, fmtT(min * 60)), h('small', null, 'Zeit')),
-        h('div', { class: 'gm-stat' }, h('b', null, run.errors), h('small', null, 'Tippfehler')),
-        h('div', { class: 'gm-stat' }, h('b', null, nf(run.typedChars)), h('small', null, 'Zeichen'))),
+        h('div', { class: 'gm-stat' }, h('b', null, nf(asp / 5)), h('small', null, T('Wörter / Min'))),
+        h('div', { class: 'gm-stat' }, h('b', null, isEN() ? `${accR}%` : `${String(accR).replace('.', ',')} %`), h('small', null, T('Genauigkeit'))),
+        h('div', { class: 'gm-stat' }, h('b', null, fmtT(min * 60)), h('small', null, T('Zeit'))),
+        h('div', { class: 'gm-stat' }, h('b', null, run.errors), h('small', null, T('Tippfehler'))),
+        h('div', { class: 'gm-stat' }, h('b', null, nf(run.typedChars)), h('small', null, T('Zeichen')))),
       h('div', { class: 'gm-res-cols' },
-        h('div', { class: 'gm-card' }, h('div', { class: 'gm-card-h' }, 'Tempo pro Satz'),
-          h('div', { class: 'gm-bars' }, perSent.map((v, i) => h('div', { class: 'gm-barw', title: `Satz ${i + 1}: ${nf(v)} Anschl./Min` },
+        h('div', { class: 'gm-card' }, h('div', { class: 'gm-card-h' }, T('Tempo pro Satz')),
+          h('div', { class: 'gm-bars' }, perSent.map((v, i) => h('div', { class: 'gm-barw', title: T('Satz {i}: {n} Anschl./Min', { i: i + 1, n: nf(v) }) },
             h('div', { class: 'gm-bar', style: { height: Math.max(6, v / maxS * 100) + '%', animationDelay: i * 60 + 'ms' } }), h('small', null, i + 1))))),
-        h('div', { class: 'gm-card' }, h('div', { class: 'gm-card-h' }, 'Deine Stolpersteine'),
+        h('div', { class: 'gm-card' }, h('div', { class: 'gm-card-h' }, T('Deine Stolpersteine')),
           trouble.length ? h('div', { class: 'gm-trouble' }, trouble.map(([c, n]) => h('span', { class: 'gm-tc' }, h('b', null, c === ' ' ? '␣' : c), h('small', null, n + '×'))))
-            : h('p', { class: 'gm-perfect' }, '✨ Kein einziger Fehler – perfekt!')),
-        h('div', { class: 'gm-card' }, h('div', { class: 'gm-card-h' }, `Verlauf (${S.diff})`),
+            : h('p', { class: 'gm-perfect' }, T('✨ Kein einziger Fehler – perfekt!'))),
+        h('div', { class: 'gm-card' }, h('div', { class: 'gm-card-h' }, T('Verlauf ({d})', { d: isEN() ? T(S.diff[0].toUpperCase() + S.diff.slice(1)).toLowerCase() : S.diff })),
           hist.length > 1 ? h('div', { class: 'gm-spark', html: `<svg viewBox="-4 0 ${W + 8} ${H}" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>` },)
-            : h('p', { class: 'hint' }, 'Nach der nächsten Runde siehst du hier deine Entwicklung.'),
-          hist.length > 1 ? h('small', { class: 'hint' }, `${hist.length} Runden · ${nf(minH)}–${nf(maxH)} Anschl./Min`) : null)),
+            : h('p', { class: 'hint' }, T('Nach der nächsten Runde siehst du hier deine Entwicklung.')),
+          hist.length > 1 ? h('small', { class: 'hint' }, T('{n} Runden · {a}–{b} Anschl./Min', { n: hist.length, a: nf(minH), b: nf(maxH) })) : null)),
       h('div', { class: 'gm-res-actions' },
-        h('button', { class: 'btn primary', onclick: () => newRun() }, icon('refresh'), 'Nochmal'),
-        h('span', { class: 'hint' }, 'oder ', h('kbd', null, 'Enter'))));
+        h('button', { class: 'btn primary', onclick: () => newRun() }, icon('refresh'), T('Nochmal')),
+        h('span', { class: 'hint' }, T('oder') + ' ', h('kbd', null, 'Enter'))));
     playEl.hidden = true; resultEl.hidden = false;
     paintStats();
   }
@@ -22319,7 +22394,7 @@ TT.register({
         localStorage.removeItem('tt:arena-best'); localStorage.removeItem('tt:brotato-best');
         for (const k of ['spiele-dodge', 'spiele-kreis', 'spiele-reaktion']) localStorage.removeItem('tt:' + k);
         const t = Store.get('spiele-tippen', null); if (t) Store.set('spiele-tippen', { diff: t.diff, count: t.count, best: {}, hist: [] });   // keep the difficulty
-        if (TT.inst.has('spielwiese')) toast('Spielwiese einmal schließen und neu öffnen, dann sind die Rekorde weg.', 'info', { ms: 4500 });
+        if (TT.inst.has('spielwiese')) toast(T('Spielwiese einmal schließen und neu öffnen, dann sind die Rekorde weg.'), 'info', { ms: 4500 });
       } },
   ],
   mount: mountSpielwiese,

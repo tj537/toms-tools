@@ -316,6 +316,11 @@ button.apps-cnt:hover{color:var(--tx);background:var(--s3)}
 .modal .body{padding:12px 22px 18px;overflow:auto}
 .welcome{display:flex;flex-direction:column;gap:14px}
 .welcome .muted{font-size:13px;line-height:1.55}
+.welcome-lang .seg{display:flex}
+.welcome-name{display:flex;flex-direction:column;gap:8px}
+.welcome-ask{font-size:13.5px;font-weight:600}
+.welcome-name .muted{font-size:12px}
+.welcome-lang .seg button{flex:1;justify-content:center;height:32px;font-size:13px}
 .welcome .inp{height:42px;font-size:15px}
 .modal>footer{padding:14px 18px;display:flex;justify-content:flex-end;gap:8px;border-top:1px solid var(--line);background:color-mix(in oklab,var(--bg2) 50%,transparent);border-radius:0 0 18px 18px}
 .stack{display:flex;flex-direction:column;gap:12px}
@@ -3775,7 +3780,6 @@ S.data.apps ||= {};
    German is the source language: texts stay German in the code and get wrapped in T('…').
    In English mode T() looks the German text up in EN – anything not translated yet simply stays German.
    Placeholders: T('{n} Apps', { n: 5 }). Translated so far: top bar, home page, welcome dialog, settings (incl. app settings, folder backup & diagnostics). */
-if (FIRST_RUN && !/^de\b/i.test(navigator.language || 'de')) { S.data.lang = 'en'; S.save(); }   // very first start: follow the browser language
 const isEN = () => S.data.lang === 'en';
 const T = (s, vars) => {
   let r = isEN() ? EN[s] ?? s : s;
@@ -3784,6 +3788,82 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Shaderwerk (4)
+  'Präzisionsgrenze erreicht': 'Precision limit reached',
+  // Shaderwerk (3)
+  'WebGL2 nicht verfügbar': 'WebGL2 not available',
+  'Kein WebGL2 – aktuellen Browser nutzen oder Hardwarebeschleunigung einschalten.': 'Shaderwerk needs the graphics card (WebGL2). Use a current browser or turn on hardware acceleration.',
+  // Shaderwerk (2)
+  'Vollbild (F)': 'Fullscreen (F)', '4K · 3840×2160 (langsam)': '4K · 3840×2160 (slow)', 'Leertaste': 'Space', 'Diashow · 12 s (D)': 'Slideshow · 12 s (D)',
+  // Shaderwerk
+  'Mikrofon': 'Microphone', 'Mikrofon an – spiel Musik ab, Shaderwerk tanzt mit.': 'Mic on – play some music and Shaderwerk dances along.',
+  'Kein Zugriff aufs Mikrofon: ': 'No access to the microphone: ', 'nicht erlaubt.': 'not allowed.', 'Das ist keine Audiodatei.': 'That’s not an audio file.',
+  'Abspielen fehlgeschlagen: ': 'Playback failed: ', 'Diashow ▶ · alle 12 s · D = Stopp': 'Slideshow ▶ · every 12 s · D to stop', 'Ansicht zurücksetzen (R)': 'Reset view (R)',
+  'Schnell-PNG in Bildschirmgröße (P)': 'Quick PNG at screen size (P)', 'Seitenleiste ein/aus (H)': 'Toggle sidebar (H)', 'Vollbild wird hier nicht unterstützt.': 'Fullscreen isn’t supported here.',
+  'Reihenfolge umkehren': 'Reverse order', 'Weichzeichnen': 'Blur', 'Körnung': 'Grain', 'Globales Tempo': 'Global speed', 'Render-Auflösung': 'Render resolution',
+  'weniger = schneller': 'lower = faster', 'Niedrig': 'Low', 'Shader-Code (GLSL)': 'Shader code (GLSL)', 'Beispielcode wiederherstellen': 'Restore example code', 'Beispiel': 'Example',
+  'Bildschirm': 'Screen', 'Hochformat · 1080×1920': 'Portrait · 1080×1920', 'Quadrat · 2048×2048': 'Square · 2048×2048', 'PNG-Export fehlgeschlagen: ': 'PNG export failed: ',
+  'Aufnahme abbrechen': 'Cancel recording', 'Video aufnehmen': 'Record video', 'Videoaufnahme wird von diesem Browser nicht unterstützt.': 'This browser can’t record video.',
+  'Video mit Musik wird aufgenommen …': 'Recording video with music …', 'Aufnahme abgebrochen.': 'Recording cancelled.', 'nicht unterstützt': 'not supported', 'Bild (PNG)': 'Image (PNG)',
+  'PNG speichern': 'Save PNG', 'Länge': 'Length', 'Bilder/s': 'Frame rate',
+  'Aufnahme in Echtzeit – bei hoher Auflösung können Bilder fehlen.': 'Records in real time – at high resolutions some frames may drop.', 'Mitten': 'Mids', 'Höhen': 'Highs', 'Pegel': 'Level',
+  'Reaktivität': 'Reactivity', 'wie stark alles mitgeht': 'how strongly everything reacts', 'Mikro aus': 'Mic off', 'Audiodatei': 'Audio file', 'Pause / Weiter': 'Pause / resume',
+  'Musik-Modus aus': 'Turn off music mode',
+  'Mikrofon hört z. B. die Musik aus deinen Boxen – oder zieh eine Audiodatei aufs Bild. Nichts wird gespeichert oder gesendet.': 'The mic picks up e.g. music from your speakers – or drop an audio file onto the image. Nothing is saved or sent.',
+  'Musik-Modus': 'Music mode', 'Zufall (Z)': 'Random (Z)', 'Zufall': 'Random', 'Alles zurücksetzen': 'Reset all', 'Vorlagen': 'Presets', 'Farben': 'Colors', 'Bild & Animation': 'Image & animation',
+  'Diashow': 'Slideshow', 'Zeile {n}:': 'Line {n}:', 'Grafikkarte erlaubt max. {m}px – verkleinert auf {s}.': 'Your graphics card allows max. {m}px – scaled down to {s}.',
+  'Auflösung zu groß für die Grafikkarte (max. {m}px).': 'Resolution too large for your graphics card (max. {m}px).', 'Video gespeichert · {s}': 'Video saved · {s}', 'Aufnahme läuft': 'Recording',
+  'Tipp: „Klangkreis“ unter Musik ist ein Equalizer – alle anderen Vorlagen tanzen auch mit.': 'Tip: “Sound Circle” under Music is an equalizer – all other presets dance along too.',
+  'Fraktal': 'Fractal', 'Wasser': 'Water', 'Mosaik': 'Mosaic', 'Kunst': 'Art', 'Musik': 'Music', 'Marmor': 'Marble', 'Farbverlauf': 'Gradient', 'Zellen': 'Cells', 'Kaleidoskop': 'Kaleidoscope',
+  'Linien': 'Lines', 'Meer': 'Sea', 'Buntglas': 'Stained Glass', 'Hex-Mosaik': 'Hex Mosaic', 'Lavalampe': 'Lava Lamp', 'Tunnelflug': 'Tunnel Flight', 'Wolken': 'Clouds', 'Galaxie': 'Galaxy',
+  'Höhenlinien': 'Contour Lines', 'Halbton': 'Halftone', 'Ringe': 'Rings', 'Punktwelle': 'Dot Wave', 'Kugel': 'Sphere', 'Klangkreis': 'Sound Circle', 'Eigener Code': 'Custom Code', 'Feuer': 'Fire',
+  'Klassik': 'Classic', 'Iterationen': 'Iterations', 'Farbdichte': 'Color density', 'Farbversatz': 'Color offset', 'Farbanimation': 'Color animation', 'c · Realteil': 'c · real part',
+  'c · Imaginärteil': 'c · imaginary part', 'Animation (c kreist)': 'Animation (c orbits)', 'Skalierung': 'Scale', 'Verwirbelung': 'Swirl', 'Tempo': 'Speed', 'Bänder': 'Bands',
+  'Schärfe': 'Sharpness', 'Sterne': 'Stars', 'Flächengröße': 'Area size', 'Wellen': 'Waves', 'Dichte': 'Density', 'Kantenbreite': 'Edge width', 'Farbwandel': 'Color shift', 'Segmente': 'Segments',
+  'Lichtnetz': 'Caustics', 'Tiefe': 'Depth', 'Fliesen': 'Tiles', 'Horizont': 'Horizon', 'Sonnenhöhe': 'Sun height', 'Glitzern': 'Sparkle', 'Bleistärke': 'Lead width', 'Fugen': 'Grout',
+  'Linienbreite': 'Line width', 'Farbfluss': 'Color flow', 'Blasen': 'Bubbles', 'Glühen': 'Glow', 'Strukturdichte': 'Structure density', 'Fluggeschwindigkeit': 'Flight speed', 'Rauschen': 'Noise',
+  'Farbstreifen': 'Color bleed', 'Hintergrund (0 Weiß · 1 Schwarz)': 'Background (0 white · 1 black)', 'Bedeckung': 'Coverage', 'Tiefe & Schatten': 'Depth & shadows', 'Spiralarme': 'Spiral arms',
+  'Windung': 'Twist', 'Staub': 'Dust', 'Maßstab': 'Scale', 'Frequenz X': 'Frequency X', 'Frequenz Y': 'Frequency Y', 'Linie': 'Line', 'Rastergröße': 'Grid size', 'Linienstärke': 'Line width',
+  'Verblassen': 'Fade', 'Wellenlänge': 'Wavelength', 'Punktgröße': 'Dot size', 'Planeten': 'Planets', 'Glanz': 'Shine', 'Welle': 'Wave', 'Ausschlag': 'Amplitude', 'Farbspreizung': 'Color spread',
+  'Nebel': 'Haze',
+  // QR-Werk
+  'WLAN': 'Wi-Fi', 'Kontakt': 'Contact', 'E-Mail': 'Email', 'Telefon': 'Phone', 'Ort': 'Location', 'Adresse (URL)': 'Address (URL)', 'https://beispiel.de': 'https://example.com',
+  'https:// wird ergänzt': 'https:// is added automatically', 'Beliebiger Text …': 'Any text …', 'Netzwerkname (SSID)': 'Network name (SSID)', 'Mein WLAN': 'My Wi-Fi', 'Passwort': 'Password',
+  'Verschlüsselung': 'Encryption', 'Verstecktes Netzwerk': 'Hidden network', 'Vorname': 'First name', 'Max': 'John', 'Nachname': 'Last name', 'Mustermann': 'Doe', 'Firma': 'Company',
+  'Firma GmbH': 'Company Inc.', 'Position': 'Job title', 'max@beispiel.de': 'john@example.com', 'Webseite': 'Website', 'Adresse': 'Address',
+  'Musterstraße 1, 12345 Musterstadt': '1 Main Street, Springfield', 'Empfänger': 'To', 'name@beispiel.de': 'name@example.com', 'Betreff': 'Subject', 'Hallo!': 'Hello!', 'Nachricht': 'Message',
+  'Text der E-Mail …': 'Email text …', 'Telefonnummer': 'Phone number', 'Text der SMS …': 'Text message …', 'Breitengrad': 'Latitude', 'Längengrad': 'Longitude',
+  'Tipp: in Karten-Apps Rechtsklick auf einen Ort → Koordinaten kopieren': 'Tip: right-click a place in a maps app → copy the coordinates', 'Noch kein Inhalt': 'Nothing here yet',
+  'Links etwas eingeben – der Code erscheint sofort.': 'Type something on the left – the code appears instantly.', 'Zu viel Inhalt': 'Too much content',
+  'Max. ≈ 2.900 Zeichen – bitte kürzen.': 'Max. ≈ 2,900 characters – please shorten it.',
+  'Helle Module auf dunklem Grund: Nicht jeder Scanner liest invertierte Codes.': 'Light modules on a dark background – not every scanner reads inverted codes.',
+  'Das Logo ist sehr groß – bitte den Code vor dem Druck testen.': 'The logo is very large – test the code before printing.',
+  'Mit Logo wird automatisch die höchste Fehlerkorrektur (H) verwendet.': 'With a logo, the highest error correction (H) is used automatically.',
+  'Ein Rand von mindestens 2 Modulen verbessert die Erkennung.': 'A quiet zone of at least 2 modules makes the code easier to scan.', 'QR-Code kopiert ✓': 'QR code copied ✓',
+  'Kopieren geht hier nicht – nimm „PNG“.': 'Copying doesn’t work here – use “PNG”.', 'Kopieren': 'Copy', 'Klassisch': 'Classic', 'Punkte': 'Dots', 'Verlauf': 'Gradient', 'Blatt': 'Leaf',
+  'Sonne': 'Sun', 'Eckig': 'Square', 'Fließend': 'Fluid', 'Kacheln': 'Tiles', 'Rauten': 'Diamonds', 'Rund': 'Rounded', 'Kreis': 'Circle', 'Muster': 'Pattern', 'Ecken („Augen“)': 'Corners (“eyes”)',
+  'Farbe': 'Color', 'Einfarbig': 'Solid', 'Vordergrund': 'Foreground', 'Farbe 1': 'Color 1', 'Farbe 2': 'Color 2', 'Hintergrund': 'Background', 'Richtung': 'Direction',
+  'Ecken in eigener Farbe': 'Corners in their own color', 'Ecken': 'Corners', 'Hintergrund-Rundung': 'Background rounding', 'Logo in der Mitte': 'Logo in the middle', 'Bild ändern': 'Change image',
+  'Bild wählen': 'Choose image', '… oder Emoji': '… or an emoji', 'Logo entfernen': 'Remove logo', 'Logogröße': 'Logo size',
+  'Fläche hinter dem Logo freilassen': 'Keep the area behind the logo clear', 'Technik': 'Technical', 'höher = robuster, dichter': 'higher = sturdier but denser', 'Inhalt': 'Content',
+  'Stil': 'Style', 'Gestaltung': 'Design', 'PNG-Größe': 'PNG size', 'Ohne Passwort': 'No password',
+  'Wenig Kontrast ({r}:1) – manche Handys erkennen den Code dann nicht.': 'Low contrast ({r}:1) – some phones won’t recognize the code.', 'PNG gespeichert · {s}': 'PNG saved · {s}',
+  'Module': 'modules', 'Fehlerkorrektur': 'Error correction', 'Zeichen': 'characters', 'Rand (Ruhezone)': 'Quiet zone',
+  // Farbwerk
+  'Noch keine eigenen Paletten.\n„Neue Palette“ oder unten eine Vorlage nehmen.': 'No palettes of your own yet.\nCreate a “New palette” or pick a preset below.',
+  'Pipette: nur Chrome, Edge, Brave, Opera': 'Eyedropper: Chrome, Edge, Brave and Opera only', 'Farbe vom Bildschirm aufnehmen': 'Pick a color from the screen', 'Kopieren': 'Copy',
+  'Letzte 5 Farben → Palette': 'Last 5 colors → palette', 'Verlauf leeren': 'Clear history', 'Heller': 'Lighter', 'Dunkler': 'Darker', 'Aktuell': 'Current', 'Komplementär': 'Complementary',
+  'Analog': 'Analogous', 'Triade': 'Triad', 'Heller ↔ Dunkler': 'Lighter ↔ Darker', 'Abstufungen → Palette': 'Shades → palette', 'Meine Paletten': 'My palettes', 'Vorlagen': 'Presets',
+  'Farbwähler': 'Color picker', '✓ Kopiert': '✓ Copied', 'Schon in deinen Paletten': 'Already in your palettes', 'Zu meinen Paletten hinzufügen': 'Add to my palettes', 'Bearbeiten': 'Edit',
+  'Löschen': 'Delete', 'Palettenname…': 'Palette name…', 'Entfernen': 'Remove', 'Unbenannt': 'Untitled', '#hex eingeben…': 'Enter #hex…', 'Abstufungen': 'Shades',
+  'Palette bearbeiten': 'Edit palette', 'Neue Palette': 'New palette', 'Abstufungen generieren': 'Generate shades', 'Farben': 'Colors', 'Vorschau': 'Preview', 'Abbrechen': 'Cancel',
+  'Speichern': 'Save', '{t} kopiert': 'Copied {t}', 'Als Palette': 'Make palette', ' – klicken zum Auswählen': ' – click to select', 'Merken': 'Keep', 'Pipette': 'Eyedropper',
+  'Importieren': 'Import', 'Exportieren': 'Export', 'Alle': 'All', '„{n}“ zu deinen Paletten hinzugefügt': 'Added “{n}” to your palettes', 'Farbe hinzufügen': 'Add color', 'Ozean': 'Ocean',
+  'Sonnenuntergang': 'Sunset', 'Wald': 'Forest', 'Startup Blau': 'Startup Blue', 'Violett Verlauf': 'Violet Gradient', 'Dashboard Dunkel': 'Dark Dashboard', 'Mitternacht': 'Midnight',
+  'Natur': 'Nature', 'Salbei & Sand': 'Sage & Sand', 'Erde': 'Earth', 'Lagune': 'Lagoon', 'Minze': 'Mint', 'Terrakotta': 'Terracotta', 'Koralle': 'Coral', 'Honig': 'Honey', 'Glut': 'Embers',
+  'Kühl': 'Cool', 'Gletscher': 'Glacier', 'Lavendel': 'Lavender', 'Nordlicht': 'Northern Lights', 'Nordisch': 'Nordic', 'Pastell': 'Pastel', 'Pastell Mix': 'Pastel Mix', 'Bonbon': 'Candy',
+  'Pfirsich & Salbei': 'Peach & Sage', 'Himmel': 'Sky', 'Graustufen': 'Grayscale', 'Schiefer': 'Slate', 'Warmes Grau': 'Warm Gray', 'Papier & Tinte': 'Paper & Ink', 'Kaffee': 'Coffee',
+  'Retro 80er': 'Retro 80s', 'Siebziger': 'Seventies',
   // Sortierwerk
   'Unbekannte Kamera': 'Unknown camera', 'Ordner konnte nicht gelesen werden: ': 'Couldn’t read the folder: ', 'Jetzt sortieren?': 'Sort now?',
   'Dein Browser kann Dateien nicht direkt verschieben – sie werden kopiert und das Original danach gelöscht. Das dauert länger, und das Änderungsdatum der Dateien wird neu gesetzt.': 'Your browser can’t move files directly – they’re copied and the originals deleted afterwards. That takes longer, and the files get a new modified date.',
@@ -11271,9 +11351,9 @@ function mountFarbwerk(view) {
   view.style.padding = '0';
 
   const DFLT = [
-    {id:1, name:'Ozean',        colors:['#0c4a6e','#0284c7','#0ea5e9','#7dd3fc','#e0f2fe']},
-    {id:2, name:'Sonnenuntergang', colors:['#7c2d12','#c2410c','#f97316','#fdba74','#fff7ed']},
-    {id:3, name:'Wald',         colors:['#14532d','#15803d','#22c55e','#86efac','#f0fdf4']},
+    {id:1, name:T('Ozean'),        colors:['#0c4a6e','#0284c7','#0ea5e9','#7dd3fc','#e0f2fe']},
+    {id:2, name:T('Sonnenuntergang'), colors:['#7c2d12','#c2410c','#f97316','#fdba74','#fff7ed']},
+    {id:3, name:T('Wald'),         colors:['#14532d','#15803d','#22c55e','#86efac','#f0fdf4']},
   ];
 
   // Presets: built in (not saved), always 5 colors – mostly from dark to light, good for the web
@@ -11355,7 +11435,7 @@ function mountFarbwerk(view) {
 
   /* ── Pipette (EyeDropper-API: Chrome, Edge, Brave, Opera) ── */
   const hasED = 'EyeDropper' in window;
-  const ED_HINT = 'Pipette: nur Chrome, Edge, Brave, Opera';
+  const ED_HINT = T('Pipette: nur Chrome, Edge, Brave, Opera');
   const toRgb = hex => [1,3,5].map(i=>parseInt(hex.slice(i,i+2),16));
   function toHsl(hex) {
     const [r,g,b]=toRgb(hex).map(v=>v/255), mx=Math.max(r,g,b), mn=Math.min(r,g,b), l=(mx+mn)/2;
@@ -11374,24 +11454,24 @@ function mountFarbwerk(view) {
   }
   const loadPicks = () => S.app('farbwerk','picks') || [];
   function addPick(hex) { S.setApp('farbwerk','picks',[hex,...loadPicks().filter(x=>x!==hex)].slice(0,16)); }
-  function copyHex(txt) { navigator.clipboard.writeText(txt).then(()=>toast(`${txt} kopiert`,'ok',{ms:1800})).catch(()=>{}); }
+  function copyHex(txt) { navigator.clipboard.writeText(txt).then(()=>toast(T('{t} kopiert',{t:txt}),'ok',{ms:1800})).catch(()=>{}); }
   async function pickToHistory() { const hex=await eyedrop(); if(!hex) return; addPick(hex); copyHex(hex); render(); }
   function eyeBtn(onPick) {
-    return h('div',{class:'fw-clr-eye'+(hasED?'':' fw-off'),title:hasED?'Farbe vom Bildschirm aufnehmen':ED_HINT,
+    return h('div',{class:'fw-clr-eye'+(hasED?'':' fw-off'),title:hasED?T('Farbe vom Bildschirm aufnehmen'):ED_HINT,
       onclick:async()=>{ const v=await eyedrop(); if(!v) return; addPick(v); onPick(v); }},icon('pipette'));
   }
   function buildPicks() {
     const picks=loadPicks(); if(!picks.length) return null;
     const cur=picks[0], [r,g,b]=toRgb(cur), [hh,sat,l]=toHsl(cur);
-    const fmt=(lbl,val)=>h('button',{class:'fw-fmt',title:'Kopieren',onclick:()=>copyHex(val)},h('small',null,lbl),h('span',null,val));
+    const fmt=(lbl,val)=>h('button',{class:'fw-fmt',title:T('Kopieren'),onclick:()=>copyHex(val)},h('small',null,lbl),h('span',null,val));
     return h('div',{class:'fw-picks'},
-      h('div',{class:'fw-pk-big',style:{background:cur},title:'Kopieren',onclick:()=>copyHex(cur)}),
+      h('div',{class:'fw-pk-big',style:{background:cur},title:T('Kopieren'),onclick:()=>copyHex(cur)}),
       h('div',{class:'fw-pk-fmts'},fmt('HEX',cur),fmt('RGB',`rgb(${r}, ${g}, ${b})`),fmt('HSL',`hsl(${hh}, ${sat}%, ${l}%)`)),
       h('div',{class:'fw-pk-hist'},...picks.slice(1).map(c=>h('button',{class:'fw-pk-chip',style:{background:c},title:c,
         onclick:()=>{addPick(c);copyHex(c);render();}}))),
       h('div',{class:'fw-pk-acts'},
-        h('div',{class:'fw-hd-btn',title:'Letzte 5 Farben → Palette',onclick:()=>{modalData={id:null,name:'',colors:picks.slice(0,5),genVal:''};render();}},'+ Als Palette'),
-        h('div',{class:'fw-card-act',title:'Verlauf leeren',onclick:()=>{S.setApp('farbwerk','picks',[]);render();}},icon('trash'))));
+        h('div',{class:'fw-hd-btn',title:T('Letzte 5 Farben → Palette'),onclick:()=>{modalData={id:null,name:'',colors:picks.slice(0,5),genVal:''};render();}},'+ '+T('Als Palette')),
+        h('div',{class:'fw-card-act',title:T('Verlauf leeren'),onclick:()=>{S.setApp('farbwerk','picks',[]);render();}},icon('trash'))));
   }
 
   /* ── Color picker: large saturation/brightness field + hue bar, just for looking & mixing ── */
@@ -11411,13 +11491,13 @@ function mountFarbwerk(view) {
   const savePk = saveLater(() => S.setApp('farbwerk', 'mixer', { hh: pk.hh, s: pk.s, v: pk.v }), 400);
   const svEl = h('div', { class: 'fw-mx-sv' }), svDot = h('i'), hueEl = h('div', { class: 'fw-mx-hue' }), hueDot = h('i');
   svEl.append(svDot); hueEl.append(hueDot);
-  const bigEl = h('div', { class: 'fw-mx-big', title: 'Kopieren' }), bigLbl = h('span');
+  const bigEl = h('div', { class: 'fw-mx-big', title: T('Kopieren') }), bigLbl = h('span');
   bigEl.append(bigLbl);
   const fmtsEl = h('div', { class: 'fw-mx-fmts' }), hexIn = h('input', { class: 'fw-clr-hex fw-mx-hexin', maxlength: 7, spellcheck: false });
   const shadesEl = h('div', { class: 'fw-mx-row' }), harmEl = h('div', { class: 'fw-mx-harm' });
   const curHex = () => hsvToHex(pk.hh, pk.s, pk.v);
   const setHex = hex => { if (!validHex(hex)) return; [pk.hh, pk.s, pk.v] = hexToHsv(hex); paintMx(); savePk(); };
-  const chip = (c, title) => h('button', { class: 'fw-mx-chip', style: { background: c }, title: (title ? title + ' · ' : '') + c + ' – klicken zum Auswählen', onclick: () => setHex(c) });
+  const chip = (c, title) => h('button', { class: 'fw-mx-chip', style: { background: c }, title: (title ? title + ' · ' : '') + c + T(' – klicken zum Auswählen'), onclick: () => setHex(c) });
   function paintMx() {
     const hex = curHex(), [r, g, b] = toRgb(hex), [H, Sl, L] = toHsl(hex);
     svEl.style.background = `linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,hsl(${pk.hh},100%,50%))`;
@@ -11425,13 +11505,13 @@ function mountFarbwerk(view) {
     hueDot.style.left = pk.hh / 360 * 100 + '%'; hueDot.style.background = `hsl(${pk.hh},100%,50%)`;
     bigEl.style.background = hex; bigLbl.textContent = hex; bigLbl.style.color = luma(hex) > 140 ? 'rgba(0,0,0,.75)' : 'rgba(255,255,255,.92)';
     if (document.activeElement !== hexIn) hexIn.value = hex;
-    const fmt = (lbl, val) => h('button', { class: 'fw-fmt', title: 'Kopieren', onclick: () => copyHex(val) }, h('small', null, lbl), h('span', null, val));
+    const fmt = (lbl, val) => h('button', { class: 'fw-fmt', title: T('Kopieren'), onclick: () => copyHex(val) }, h('small', null, lbl), h('span', null, val));
     fmtsEl.replaceChildren(fmt('HEX', hex), fmt('RGB', `rgb(${r}, ${g}, ${b})`), fmt('HSL', `hsl(${H}, ${Sl}%, ${L}%)`));
     // Shades: from almost white to almost black
-    shadesEl.replaceChildren(...[.85, .65, .42, .2, 0, -.25, -.45, -.62, -.78].map(t => chip(t > 0 ? mixHex(hex, '#ffffff', t) : t < 0 ? mixHex(hex, '#000000', -t) : hex, t > 0 ? 'Heller' : t < 0 ? 'Dunkler' : 'Aktuell')));
+    shadesEl.replaceChildren(...[.85, .65, .42, .2, 0, -.25, -.45, -.62, -.78].map(t => chip(t > 0 ? mixHex(hex, '#ffffff', t) : t < 0 ? mixHex(hex, '#000000', -t) : hex, t > 0 ? T('Heller') : t < 0 ? T('Dunkler') : T('Aktuell'))));
     const rot = d => hslHex((H + d + 360) % 360, Sl, L);
     const grp = (name, cols) => h('div', { class: 'fw-mx-grp' }, h('small', null, name), h('div', { class: 'fw-mx-row' }, ...cols.map(c => chip(c, name))));
-    harmEl.replaceChildren(grp('Komplementär', [hex, rot(180)]), grp('Analog', [rot(-30), hex, rot(30)]), grp('Triade', [hex, rot(120), rot(240)]), grp('Split', [hex, rot(150), rot(210)]));
+    harmEl.replaceChildren(grp(T('Komplementär'), [hex, rot(180)]), grp(T('Analog'), [rot(-30), hex, rot(30)]), grp(T('Triade'), [hex, rot(120), rot(240)]), grp('Split', [hex, rot(150), rot(210)]));
   }
   const drag = (el, fn) => el.addEventListener('pointerdown', e => {
     el.setPointerCapture(e.pointerId);
@@ -11449,11 +11529,11 @@ function mountFarbwerk(view) {
       bigEl,
       h('div', { class: 'fw-mx-in' }, hexIn, eyeBtn(v => setHex(v))),
       fmtsEl,
-      h('div', { class: 'fw-mx-grp' }, h('small', null, 'Heller ↔ Dunkler'), shadesEl),
+      h('div', { class: 'fw-mx-grp' }, h('small', null, T('Heller ↔ Dunkler')), shadesEl),
       harmEl,
       h('div', { class: 'fw-mx-acts' },
-        h('div', { class: 'fw-hd-btn', onclick: () => { addPick(curHex()); copyHex(curHex()); render(); } }, icon('plus'), ' Merken'),
-        h('div', { class: 'fw-hd-btn', title: 'Abstufungen → Palette', onclick: () => { const hx = curHex(); modalData = { id: null, name: '', colors: [.65, .3, 0, -.35, -.65].map(t => t > 0 ? mixHex(hx, '#ffffff', t) : t < 0 ? mixHex(hx, '#000000', -t) : hx), genVal: '' }; render(); } }, icon('layers'), ' Als Palette'))));
+        h('div', { class: 'fw-hd-btn', onclick: () => { addPick(curHex()); copyHex(curHex()); render(); } }, icon('plus'), ' '+T('Merken')),
+        h('div', { class: 'fw-hd-btn', title: T('Abstufungen → Palette'), onclick: () => { const hx = curHex(); modalData = { id: null, name: '', colors: [.65, .3, 0, -.35, -.65].map(t => t > 0 ? mixHex(hx, '#ffffff', t) : t < 0 ? mixHex(hx, '#000000', -t) : hx), genVal: '' }; render(); } }, icon('layers'), ' '+T('Als Palette')))));
   paintMx();
 
   /* ── root DOM ── */
@@ -11474,10 +11554,10 @@ function mountFarbwerk(view) {
     const hd = h('div',{class:'fw-hd'},
       h('span',{class:'fw-title'},'Farbwerk'),
       fileIn,
-      h('div',{class:'fw-hd-btn fw-eye'+(hasED?'':' fw-off'),title:hasED?'HEX → 📋':ED_HINT,onclick:pickToHistory},icon('pipette'),' Pipette'),
-      h('div',{class:'fw-hd-btn',onclick:()=>fileIn.click()},icon('upload'),' Importieren'),
-      h('div',{class:'fw-hd-btn',onclick:exportAll},icon('download'),' Exportieren'),
-      h('div',{class:'fw-hd-btn fw-prim',onclick:()=>openModal(null)},'+  Neue Palette')
+      h('div',{class:'fw-hd-btn fw-eye'+(hasED?'':' fw-off'),title:hasED?'HEX → 📋':ED_HINT,onclick:pickToHistory},icon('pipette'),' '+T('Pipette')),
+      h('div',{class:'fw-hd-btn',onclick:()=>fileIn.click()},icon('upload'),' '+T('Importieren')),
+      h('div',{class:'fw-hd-btn',onclick:exportAll},icon('download'),' '+T('Exportieren')),
+      h('div',{class:'fw-hd-btn fw-prim',onclick:()=>openModal(null)},'+  '+T('Neue Palette'))
     );
 
     /* My palettes */
@@ -11485,7 +11565,7 @@ function mountFarbwerk(view) {
       ? D.palettes.map(p => buildCard(p))
       : [h('div',{class:'fw-empty'},
           h('div',{class:'fw-empty-ico'},'🎨'),
-          h('div',{class:'fw-empty-txt'},'Noch keine eigenen Paletten.\n„Neue Palette“ oder unten eine Vorlage nehmen.'))];
+          h('div',{class:'fw-empty-txt'},T('Noch keine eigenen Paletten.\n„Neue Palette“ oder unten eine Vorlage nehmen.')))];
     const grid = h('div',{class:'fw-grid'},...cards);
 
     /* Presets with filter */
@@ -11493,16 +11573,16 @@ function mountFarbwerk(view) {
     const own = new Set(D.palettes.map(p => p.colors.join().toLowerCase()));
     const libList = LIB.filter(p => libCat === 'Alle' || p.cat === libCat);
     const chips = h('div',{class:'fw-chips'}, ['Alle', ...LIB_CATS].map(c =>
-      h('button',{class:'fw-chip'+(c===libCat?' on':''), onclick:()=>{ S.setApp('farbwerk','libCat',c); render(); }}, c)));
+      h('button',{class:'fw-chip'+(c===libCat?' on':''), onclick:()=>{ S.setApp('farbwerk','libCat',c); render(); }}, T(c))));
     const libGrid = h('div',{class:'fw-grid'}, ...libList.map(p => buildCard(p, own.has(p.colors.join().toLowerCase()) ? 'added' : 'lib')));
 
     const prevScroll = root.querySelector('.fw-body')?.scrollTop || 0;   // don't jump to the top when rebuilding (filter, add)
     const body = h('div',{class:'fw-body'},
-      h('div',{class:'fw-sec'}, h('span',{class:'fw-sec-t'},'Meine Paletten'), h('span',{class:'fw-sec-n'}, D.palettes.length)),
+      h('div',{class:'fw-sec'}, h('span',{class:'fw-sec-t'},T('Meine Paletten')), h('span',{class:'fw-sec-n'}, D.palettes.length)),
       grid,
-      h('div',{class:'fw-sec fw-sec-lib'}, h('span',{class:'fw-sec-t'},'Vorlagen'), h('span',{class:'fw-sec-n'}, libList.length), chips),
+      h('div',{class:'fw-sec fw-sec-lib'}, h('span',{class:'fw-sec-t'},T('Vorlagen')), h('span',{class:'fw-sec-n'}, libList.length), chips),
       libGrid,
-      h('div',{class:'fw-sec'}, h('span',{class:'fw-sec-t'},'Farbwähler')),
+      h('div',{class:'fw-sec'}, h('span',{class:'fw-sec-t'},T('Farbwähler'))),
       mixerEl);
 
     root.replaceChildren(...[hd, buildPicks(), body].filter(Boolean));
@@ -11511,8 +11591,8 @@ function mountFarbwerk(view) {
   }
 
   function addFromLib(p) {
-    D.palettes.push({id:D.nid++, name:p.name, colors:[...p.colors]}); sv(D);
-    toast(`„${p.name}" zu deinen Paletten hinzugefügt`,'ok',{ms:2200});
+    D.palettes.push({id:D.nid++, name:T(p.name), colors:[...p.colors]}); sv(D);
+    toast(T('„{n}“ zu deinen Paletten hinzugefügt',{n:T(p.name)}),'ok',{ms:2200});
     render();
   }
 
@@ -11521,7 +11601,7 @@ function mountFarbwerk(view) {
     const swatches = p.colors.map(c => {
       const sw = h('div',{class:'fw-sw',style:{background:c}});
       const code = h('div',{class:'fw-sw-code',style:{color:luma(c)>128?'rgba(0,0,0,.7)':'rgba(255,255,255,.9)'}},c);
-      const ck   = h('div',{class:'fw-sw-cp'},'✓ Kopiert');
+      const ck   = h('div',{class:'fw-sw-cp'},T('✓ Kopiert'));
       sw.append(code,ck);
       sw.onclick = () => {
         navigator.clipboard.writeText(c).catch(()=>{});
@@ -11530,15 +11610,15 @@ function mountFarbwerk(view) {
       };
       return sw;
     });
-    const acts = mode === 'added' ? [h('div',{class:'fw-card-act fw-added',title:'Schon in deinen Paletten'},icon('check'))]
-      : mode === 'lib' ? [h('div',{class:'fw-card-act',title:'Zu meinen Paletten hinzufügen',onclick:()=>addFromLib(p)},icon('plus'))]
-      : [h('div',{class:'fw-card-act',title:'Bearbeiten',onclick:()=>openModal(p)},icon('rename')),
-         h('div',{class:'fw-card-act fw-del',title:'Löschen',onclick:()=>deletePal(p.id)},icon('trash'))];
+    const acts = mode === 'added' ? [h('div',{class:'fw-card-act fw-added',title:T('Schon in deinen Paletten')},icon('check'))]
+      : mode === 'lib' ? [h('div',{class:'fw-card-act',title:T('Zu meinen Paletten hinzufügen'),onclick:()=>addFromLib(p)},icon('plus'))]
+      : [h('div',{class:'fw-card-act',title:T('Bearbeiten'),onclick:()=>openModal(p)},icon('rename')),
+         h('div',{class:'fw-card-act fw-del',title:T('Löschen'),onclick:()=>deletePal(p.id)},icon('trash'))];
     return h('div',{class:'fw-card'},
       h('div',{class:'fw-swatches'},...swatches),
       h('div',{class:'fw-card-ft'},
-        h('span',{class:'fw-card-name'},p.name),
-        mode ? h('span',{class:'fw-card-cat'},p.cat) : null,
+        h('span',{class:'fw-card-name'},mode?T(p.name):p.name),
+        mode ? h('span',{class:'fw-card-cat'},T(p.cat)) : null,
         ...acts));
   }
 
@@ -11555,7 +11635,7 @@ function mountFarbwerk(view) {
     const md = modalData;
 
     /* name input */
-    const nameInp = h('input',{class:'fw-name-inp',placeholder:'Palettenname…',value:md.name,
+    const nameInp = h('input',{class:'fw-name-inp',placeholder:T('Palettenname…'),value:md.name,
       oninput:e=>{md.name=e.target.value;}});
 
     /* color rows */
@@ -11570,7 +11650,7 @@ function mountFarbwerk(view) {
           updatePreview();
         }});
       const delBtn = md.colors.length>1
-        ? h('div',{class:'fw-clr-del',onclick:()=>{md.colors.splice(i,1);rebuildModal();},'title':'Entfernen'},'×')
+        ? h('div',{class:'fw-clr-del',onclick:()=>{md.colors.splice(i,1);rebuildModal();},'title':T('Entfernen')},'×')
         : h('div',{class:'fw-clr-del',style:{opacity:.2}},'×');
       const eye = eyeBtn(v=>{md.colors[i]=v; pick.value=v; hexInp.value=v; updatePreview();});
       return h('div',{class:'fw-clr-row'},pick,hexInp,eye,delBtn);
@@ -11578,7 +11658,7 @@ function mountFarbwerk(view) {
 
     const clrsEl = h('div',{class:'fw-clrs'},...md.colors.map(buildClrRow));
     const addClrBtn = md.colors.length<5
-      ? h('div',{class:'fw-add-clr',onclick:()=>{md.colors.push('#a0aec0');rebuildModal();}},'+','  Farbe hinzufügen')
+      ? h('div',{class:'fw-add-clr',onclick:()=>{md.colors.push('#a0aec0');rebuildModal();}},'+','  '+T('Farbe hinzufügen'))
       : null;
 
     /* preview */
@@ -11590,7 +11670,7 @@ function mountFarbwerk(view) {
 
     /* save */
     function save() {
-      const name = md.name.trim() || 'Unbenannt';
+      const name = md.name.trim() || T('Unbenannt');
       const cols  = md.colors.filter(validHex);
       if(!cols.length) return;
       if(md.id!==null) {
@@ -11610,26 +11690,26 @@ function mountFarbwerk(view) {
     let genVal=md.genVal||'';
     const genPick=h('input',{type:'color',class:'fw-clr-pick',value:genVal||'#6366f1',
       oninput:e=>{genVal=e.target.value;md.genVal=genVal;genHexInp.value=genVal;}});
-    const genHexInp=h('input',{class:'fw-gen-hex',placeholder:'#hex eingeben…',value:genVal,maxlength:7,
+    const genHexInp=h('input',{class:'fw-gen-hex',placeholder:T('#hex eingeben…'),value:genVal,maxlength:7,
       oninput:e=>{const v=normHex(e.target.value);if(validHex(v)){genVal=v;md.genVal=v;genPick.value=v;}}});
     const genBtn=h('div',{class:'fw-gen-btn',onclick:()=>{if(!validHex(genVal))return;md.colors=genShades(genVal);md.genVal='';rebuildModal();}},
-      'Abstufungen');
+      T('Abstufungen'));
 
     const bg = h('div',{class:'fw-modal-bg',onclick:e=>{if(e.target===bg)closeModal();}});
     const modal = h('div',{class:'fw-modal'},
-      h('div',{class:'fw-modal-title'}, md.id!==null ? 'Palette bearbeiten' : 'Neue Palette'),
+      h('div',{class:'fw-modal-title'}, md.id!==null ? T('Palette bearbeiten') : T('Neue Palette')),
       h('div',{class:'fw-ml'},'Name'),
       nameInp,
-      h('div',{class:'fw-ml'},'Abstufungen generieren'),
+      h('div',{class:'fw-ml'},T('Abstufungen generieren')),
       h('div',{class:'fw-gen-row'},genPick,genHexInp,eyeBtn(v=>{genVal=v;md.genVal=v;genPick.value=v;genHexInp.value=v;}),genBtn),
-      h('div',{class:'fw-ml'},'Farben'),
+      h('div',{class:'fw-ml'},T('Farben')),
       clrsEl,
       addClrBtn,
-      h('div',{class:'fw-ml'},'Vorschau'),
+      h('div',{class:'fw-ml'},T('Vorschau')),
       previewEl,
       h('div',{class:'fw-modal-foot'},
-        h('div',{class:'fw-btn',onclick:closeModal},'Abbrechen'),
-        h('div',{class:'fw-btn fw-btn-ok',onclick:save},'Speichern')));
+        h('div',{class:'fw-btn',onclick:closeModal},T('Abbrechen')),
+        h('div',{class:'fw-btn fw-btn-ok',onclick:save},T('Speichern'))));
 
     bg.append(modal);
     setTimeout(()=>nameInp.focus(),30);
@@ -18554,7 +18634,7 @@ vec3 shade(vec2 uv, vec2 f) {
 }` },
     // ── Minimal: few shapes, clean lines, calm motion ──
     { id: 'rings', name: 'Ringe', cat: 'Minimal', center: [0, 0], zoom: 1, pal: 3, grain: 0.02, vig: 0.3,
-      params: [P('Anzahl', 3, 40, 1, 12), P('Linienstärke', 0, 1, 0.01, 0.2), P('Ausblenden', 0, 1, 0.01, 0.7), P('Tempo', 0, 3, 0.05, 0.6)],
+      params: [P('Anzahl', 3, 40, 1, 12), P('Linienstärke', 0, 1, 0.01, 0.2), P('Verblassen', 0, 1, 0.01, 0.7), P('Tempo', 0, 3, 0.05, 0.6)],
       code: `vec3 shade(vec2 uv, vec2 f) {
   float t = u_time * 0.2 * u_p[3], r = length(uv), x = r * u_p[0] - t;
   float d = abs(fract(x) - 0.5), w = 0.02 + u_p[1] * 0.2, aa = fwidth(x) * 1.2;
@@ -18662,6 +18742,7 @@ vec3 shade(vec2 uv, vec2 f) {
   ];
   const CATS = ['Minimal', 'Natur', 'Retro', 'Fraktal', 'Wasser', 'Mosaik', 'Muster', 'Kunst', 'Hintergrund', 'Musik', 'Code'];
   PRESETS.sort((x, y) => CATS.indexOf(x.cat) - CATS.indexOf(y.cat));
+  for (const pr of PRESETS) { pr.name = T(pr.name); pr.params.forEach(x => { x.label = T(x.label); }); }   // translated once at mount – ids, categories & saved values stay the same
   const DEFAULT_CODE = `// uv = coordinate (with zoom & pan), f = pixel
 // Available: u_time, u_res, u_mouse, u_p[0..3] (sliders),
 //            u_pal[0..3], pal(t), noise(p), fbm(p), hash(p)
@@ -18843,13 +18924,13 @@ void main() {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
       const ctx = await audCtx();
       aud.src = ctx.createMediaStreamSource(stream); aud.src.connect(aud.an);   // not to the speakers – otherwise feedback
-      Object.assign(aud, { on: true, kind: 'mic', name: 'Mikrofon', stream });
-      toast('Mikrofon an – spiel Musik ab, Shaderwerk tanzt mit.', 'ok');
-    } catch (e) { toast('Kein Zugriff aufs Mikrofon: ' + (e.name === 'NotAllowedError' ? 'nicht erlaubt.' : e.message), 'err'); }
+      Object.assign(aud, { on: true, kind: 'mic', name: T('Mikrofon'), stream });
+      toast(T('Mikrofon an – spiel Musik ab, Shaderwerk tanzt mit.'), 'ok');
+    } catch (e) { toast(T('Kein Zugriff aufs Mikrofon: ') + (e.name === 'NotAllowedError' ? T('nicht erlaubt.') : e.message), 'err'); }
     renderMusic();
   }
   async function audFile(file) {
-    if (!file || !/^audio\//.test(file.type) && !/\.(mp3|wav|ogg|m4a|aac|flac|opus|webm)$/i.test(file.name)) { toast('Das ist keine Audiodatei.', 'warn'); return; }
+    if (!file || !/^audio\//.test(file.type) && !/\.(mp3|wav|ogg|m4a|aac|flac|opus|webm)$/i.test(file.name)) { toast(T('Das ist keine Audiodatei.'), 'warn'); return; }
     audStop();
     const ctx = await audCtx();
     const url = URL.createObjectURL(file), el = new Audio(url);
@@ -18857,7 +18938,7 @@ void main() {
     aud.src = ctx.createMediaElementSource(el); aud.src.connect(aud.an); aud.an.connect(ctx.destination);
     aud.dest = ctx.createMediaStreamDestination(); aud.src.connect(aud.dest);   // for video recording with sound
     Object.assign(aud, { on: true, kind: 'file', name: file.name.replace(/\.[^.]+$/, ''), el, url });
-    try { await el.play(); } catch (e) { toast('Abspielen fehlgeschlagen: ' + e.message, 'err'); }
+    try { await el.play(); } catch (e) { toast(T('Abspielen fehlgeschlagen: ') + e.message, 'err'); }
     el.onplay = el.onpause = () => renderMusic();
     renderMusic();
   }
@@ -18961,31 +19042,31 @@ void main() {
   function resetView() { const pr = preset(), c = cfg(); c.center = [...pr.center]; c.zoom = pr.zoom; persist(); paintHud(); }
 
   /* ---------- HUD ---------- */
-  const hudName = h('b'), hudInfo = h('span'), precEl = h('span', { class: 'sh-prec', hidden: true }, 'Präzisionsgrenze erreicht');
+  const hudName = h('b'), hudInfo = h('span'), precEl = h('span', { class: 'sh-prec', hidden: true }, T('Präzisionsgrenze erreicht'));
   const hud = h('div', { class: 'sh-hud' }, hudName, hudInfo, precEl);
   function paintHud() {
     const pr = preset(), c = cfg();
     hudName.textContent = pr.name;
     const z = pr.zoom / c.zoom;
-    hudInfo.textContent = (show ? 'Diashow · ' : '') + `${z >= 10 ? Math.round(z).toLocaleString('de-DE') : z.toFixed(z < 1 ? 2 : 1).replace('.', ',')}× · ${canvas.width}×${canvas.height} · ${fps} fps`;
+    hudInfo.textContent = (show ? T('Diashow') + ' · ' : '') + `${z >= 10 ? Math.round(z).toLocaleString(isEN() ? 'en-US' : 'de-DE') : z.toFixed(z < 1 ? 2 : 1).replace('.', isEN() ? '.' : ',')}× · ${canvas.width}×${canvas.height} · ${fps} fps`;
     precEl.hidden = !(pr.fractal && c.zoom < 4e-5);
   }
   const errEl = h('pre', { class: 'sh-err', hidden: true });
   function showErr(msg) {
     codeErr = msg || '';
     errEl.hidden = !codeErr;
-    errEl.textContent = codeErr.replace(/ERROR: 0:(\d+):/g, (_, n) => `Zeile ${Math.max(1, n - HEAD_LINES)}:`).trim();
+    errEl.textContent = codeErr.replace(/ERROR: 0:(\d+):/g, (_, n) => T('Zeile {n}:', { n: Math.max(1, n - HEAD_LINES) })).trim();
   }
 
-  const playBtn = h('button', { class: 'sh-ib', title: 'Leertaste', onclick: () => togglePlay() });
-  const showBtn = h('button', { class: 'sh-ib', title: 'Diashow · 12 s (D)', onclick: () => toggleShow() }, icon('slideshow'));
+  const playBtn = h('button', { class: 'sh-ib', title: T('Leertaste'), onclick: () => togglePlay() });
+  const showBtn = h('button', { class: 'sh-ib', title: T('Diashow · 12 s (D)'), onclick: () => toggleShow() }, icon('slideshow'));
   function toggleShow(force) {
     const on = force ?? !show;
     clearInterval(show); show = null;
     showBtn.classList.toggle('on', on);
     canvas.style.opacity = '';
     if (on) {
-      toast('Diashow ▶ · alle 12 s · D = Stopp', 'info');
+      toast(T('Diashow ▶ · alle 12 s · D = Stopp'), 'info');
       show = setInterval(() => {
         canvas.style.opacity = '0';
         setTimeout(() => {
@@ -19004,16 +19085,16 @@ void main() {
   const barBtn = (ic, title, fn) => h('button', { class: 'sh-ib', title, onclick: fn }, icon(ic));
   const tools = h('div', { class: 'sh-tools' },
     playBtn,
-    barBtn('refresh', 'Ansicht zurücksetzen (R)', resetView),
-    barBtn('download', 'Schnell-PNG in Bildschirmgröße (P)', () => savePng(true)),
+    barBtn('refresh', T('Ansicht zurücksetzen (R)'), resetView),
+    barBtn('download', T('Schnell-PNG in Bildschirmgröße (P)'), () => savePng(true)),
     showBtn,
-    barBtn('layers', 'Seitenleiste ein/aus (H)', () => wrap.classList.toggle('sh-bare')),
-    barBtn('expand', 'Vollbild (F)', () => toggleFs()));
+    barBtn('layers', T('Seitenleiste ein/aus (H)'), () => wrap.classList.toggle('sh-bare')),
+    barBtn('expand', T('Vollbild (F)'), () => toggleFs()));
   const recEl = h('div', { class: 'sh-rec' });
   const stageEl = h('div', { class: 'sh-stage' }, canvas, hud, tools, errEl, recEl);
   async function toggleFs() {
     try { if (document.fullscreenElement) await document.exitFullscreen(); else await stageEl.requestFullscreen(); }
-    catch { toast('Vollbild wird hier nicht unterstützt.', 'warn'); }
+    catch { toast(T('Vollbild wird hier nicht unterstützt.'), 'warn'); }
   }
 
   /* ---------- Sidebar ---------- */
@@ -19027,7 +19108,7 @@ void main() {
       h('span', { class: 'sh-card-t' }, h('b', null, pr.name)));
     gridEl.replaceChildren(...CATS.flatMap(cat => {
       const list = PRESETS.filter(pr => pr.cat === cat);
-      return list.length ? [h('div', { class: 'sh-cat' }, cat, h('span', null, list.length)), h('div', { class: 'sh-grid' }, list.map(card))] : [];
+      return list.length ? [h('div', { class: 'sh-cat' }, T(cat), h('span', null, list.length)), h('div', { class: 'sh-grid' }, list.map(card))] : [];
     }));
   }
   const paramsEl = h('div', { class: 'sh-params' });
@@ -19035,7 +19116,7 @@ void main() {
     const pr = preset(), c = cfg();
     paramsEl.replaceChildren(...pr.params.map((d, i) => {
       const dec = d.step >= 1 ? 0 : d.step >= 0.1 ? 1 : d.step >= 0.01 ? 2 : 3;
-      const fmtV = v => (+v).toFixed(dec).replace('.', ',');
+      const fmtV = v => (+v).toFixed(dec).replace('.', isEN() ? '.' : ',');
       const val = h('span', { class: 'bw-val' }, fmtV(c.p[i]));
       const pct = v => ((v - d.min) / (d.max - d.min) * 100) + '%';
       const r = h('input', { type: 'range', class: 'bw-range', min: d.min, max: d.max, step: d.step, value: c.p[i], style: { '--p': pct(c.p[i]) },
@@ -19048,11 +19129,11 @@ void main() {
   const grad = cols => `linear-gradient(90deg,${cols.join(',')})`;
   function renderPal() {
     const c = cfg();
-    palChips.replaceChildren(...PALETTES.map(([n, cols]) => h('button', { class: 'sh-pal' + (cols.join() === c.pal.join() ? ' on' : ''), title: n, style: { background: grad(cols) },
+    palChips.replaceChildren(...PALETTES.map(([n, cols]) => h('button', { class: 'sh-pal' + (cols.join() === c.pal.join() ? ' on' : ''), title: T(n), style: { background: grad(cols) },
       onclick: () => { c.pal = [...cols]; persist(); renderPal(); } })));
-    palInputs.replaceChildren(...c.pal.map((col, i) => h('label', { class: 'sh-col', title: 'Farbe ' + (i + 1), style: { background: col } },
+    palInputs.replaceChildren(...c.pal.map((col, i) => h('label', { class: 'sh-col', title: T('Farbe') + ' ' + (i + 1), style: { background: col } },
       h('input', { type: 'color', value: col, oninput: e => { c.pal[i] = e.target.value; e.target.parentNode.style.background = e.target.value; persist(); $$('.sh-pal', palChips).forEach(b => b.classList.remove('on')); } }))),
-      h('button', { class: 'mini', title: 'Reihenfolge umkehren', onclick: () => { c.pal.reverse(); persist(); renderPal(); } }, icon('refresh')));
+      h('button', { class: 'mini', title: T('Reihenfolge umkehren'), onclick: () => { c.pal.reverse(); persist(); renderPal(); } }, icon('refresh')));
   }
   const lookEl = h('div', { class: 'sh-look' });
   function renderLook() {
@@ -19063,14 +19144,14 @@ void main() {
         oninput: () => { c[key] = +r.value; val.textContent = Math.round(c[key] * 100) + ' %'; r.style.setProperty('--p', c[key] * 100 + '%'); persist(); } });
       return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, label), val), r);
     };
-    const spd = h('span', { class: 'bw-val' }, S0.speed.toFixed(2).replace('.', ',') + '×');
+    const spd = h('span', { class: 'bw-val' }, S0.speed.toFixed(2).replace('.', isEN() ? '.' : ',') + '×');
     const sr = h('input', { type: 'range', class: 'bw-range', min: 0, max: 3, step: 0.05, value: S0.speed, style: { '--p': S0.speed / 3 * 100 + '%' },
-      oninput: () => { S0.speed = +sr.value; spd.textContent = S0.speed.toFixed(2).replace('.', ',') + '×'; sr.style.setProperty('--p', S0.speed / 3 * 100 + '%'); persist(); } });
+      oninput: () => { S0.speed = +sr.value; spd.textContent = S0.speed.toFixed(2).replace('.', isEN() ? '.' : ',') + '×'; sr.style.setProperty('--p', S0.speed / 3 * 100 + '%'); persist(); } });
     c.blur ??= 0;
-    lookEl.replaceChildren(mk('blur', 'Weichzeichnen'), mk('grain', 'Körnung'), mk('vig', 'Vignette'),
-      h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, 'Globales Tempo'), spd), sr),
-      h('div', { class: 'field' }, h('label', null, 'Render-Auflösung', h('span', { class: 'hint-i' }, 'weniger = schneller')),
-        segEl([[0.5, 'Niedrig'], [1, 'Normal'], [2, 'Retina']], S0.quality, v => { S0.quality = v; persist(); })));
+    lookEl.replaceChildren(mk('blur', T('Weichzeichnen')), mk('grain', T('Körnung')), mk('vig', 'Vignette'),
+      h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, T('Globales Tempo')), spd), sr),
+      h('div', { class: 'field' }, h('label', null, T('Render-Auflösung'), h('span', { class: 'hint-i' }, T('weniger = schneller'))),
+        segEl([[0.5, T('Niedrig')], [1, 'Normal'], [2, 'Retina']], S0.quality, v => { S0.quality = v; persist(); })));
   }
   const codeTa = h('textarea', { class: 'sh-code', spellcheck: false, value: '' });
   codeTa.value = S0.code;
@@ -19081,11 +19162,11 @@ void main() {
   codeTa.addEventListener('keydown', e => {
     if (e.key === 'Tab') { e.preventDefault(); document.execCommand('insertText', false, '  '); }
   });
-  const pCode = panel('terminal', 'Shader-Code (GLSL)', h('button', { class: 'btn sm ghost', title: 'Beispielcode wiederherstellen', onclick: () => { codeTa.value = DEFAULT_CODE; codeTa.dispatchEvent(new Event('input')); } }, icon('undo'), 'Beispiel'), codeTa);
+  const pCode = panel('terminal', T('Shader-Code (GLSL)'), h('button', { class: 'btn sm ghost', title: T('Beispielcode wiederherstellen'), onclick: () => { codeTa.value = DEFAULT_CODE; codeTa.dispatchEvent(new Event('input')); } }, icon('undo'), T('Beispiel')), codeTa);
 
   /* ---------- Export ---------- */
-  const RES = [['screen', 'Bildschirm'], ['1920x1080', 'Full HD · 1920×1080'], ['2560x1440', 'QHD · 2560×1440'], ['3840x2160', '4K · 3840×2160'], ['1080x1920', 'Hochformat · 1080×1920'], ['2048x2048', 'Quadrat · 2048×2048']];
-  const VRES = [['1280x720', '720p · 1280×720'], ['1920x1080', '1080p · 1920×1080'], ['1080x1920', 'Hochformat · 1080×1920'], ['3840x2160', '4K · 3840×2160 (langsam)']];
+  const RES = [['screen', T('Bildschirm')], ['1920x1080', 'Full HD · 1920×1080'], ['2560x1440', 'QHD · 2560×1440'], ['3840x2160', '4K · 3840×2160'], ['1080x1920', T('Hochformat · 1080×1920')], ['2048x2048', T('Quadrat · 2048×2048')]];
+  const VRES = [['1280x720', '720p · 1280×720'], ['1920x1080', '1080p · 1920×1080'], ['1080x1920', T('Hochformat · 1080×1920')], ['3840x2160', T('4K · 3840×2160 (langsam)')]];
   const sel = (opts, val, fn) => { const s = h('select', { class: 'inp', onchange: () => fn(s.value) }, opts.map(([v, l]) => h('option', { value: v, selected: String(v) === String(val) }, l))); return s; };
   function resOf(key) {
     if (key === 'screen') { const r = canvas.getBoundingClientRect(), d = window.devicePixelRatio || 1; return [Math.round(r.width * d), Math.round(r.height * d)]; }
@@ -19096,7 +19177,7 @@ void main() {
   async function savePng(quick) {
     let [w, hh] = resOf(quick ? 'screen' : S0.png);
     const m = maxDim();
-    if (w > m || hh > m) { const s = m / Math.max(w, hh); w = Math.floor(w * s); hh = Math.floor(hh * s); toast(`Grafikkarte erlaubt max. ${m}px – verkleinert auf ${w}×${hh}.`, 'warn'); }
+    if (w > m || hh > m) { const s = m / Math.max(w, hh); w = Math.floor(w * s); hh = Math.floor(hh * s); toast(T('Grafikkarte erlaubt max. {m}px – verkleinert auf {s}.', { m, s: `${w}×${hh}` }), 'warn'); }
     busy = true;
     const ow = canvas.width, oh = canvas.height;
     try {
@@ -19106,25 +19187,25 @@ void main() {
       if (!blob) throw new Error('leer');
       download(fname('png', w, hh), blob);
       toast(`PNG gespeichert · ${w}×${hh} · ${fmtSize(blob.size)}`, 'ok');
-    } catch (err) { toast('PNG-Export fehlgeschlagen: ' + err.message, 'err'); }
+    } catch (err) { toast(T('PNG-Export fehlgeschlagen: ') + err.message, 'err'); }
     finally { canvas.width = ow; canvas.height = oh; busy = false; }
   }
   const pickMime = () => ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'].find(m => window.MediaRecorder && MediaRecorder.isTypeSupported(m));
   const vidBtn = h('button', { class: 'btn block', onclick: () => rec ? stopRec(true) : startRec() });
-  const paintVidBtn = () => vidBtn.replaceChildren(icon(rec ? 'stop' : 'video'), rec ? 'Aufnahme abbrechen' : 'Video aufnehmen');
+  const paintVidBtn = () => vidBtn.replaceChildren(icon(rec ? 'stop' : 'video'), rec ? T('Aufnahme abbrechen') : T('Video aufnehmen'));
   function startRec() {
     const mime = pickMime();
-    if (!mime || !canvas.captureStream) { toast('Videoaufnahme wird von diesem Browser nicht unterstützt.', 'err'); return; }
+    if (!mime || !canvas.captureStream) { toast(T('Videoaufnahme wird von diesem Browser nicht unterstützt.'), 'err'); return; }
     let [w, hh] = resOf(S0.vres);
     const m = maxDim();
-    if (w > m || hh > m) { toast(`Auflösung zu groß für die Grafikkarte (max. ${m}px).`, 'err'); return; }
+    if (w > m || hh > m) { toast(T('Auflösung zu groß für die Grafikkarte (max. {m}px).', { m }), 'err'); return; }
     rec = { w, h: hh, t0: performance.now(), secs: S0.vsec, chunks: [], mime, cancelled: false };
     resize();
     const stream = canvas.captureStream(S0.vfps);
     // If an audio file is playing in music mode, the music is included in the video
     if (aud.kind === 'file' && aud.dest && !aud.el.paused) {
       const am = ['video/mp4;codecs=avc1.640028,mp4a.40.2', 'video/mp4;codecs=avc1,mp4a.40.2', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus'].find(m => MediaRecorder.isTypeSupported(m));
-      if (am) { rec.mime = am; stream.addTrack(aud.dest.stream.getAudioTracks()[0]); toast('Video mit Musik wird aufgenommen …', 'info', { ms: 2200 }); }
+      if (am) { rec.mime = am; stream.addTrack(aud.dest.stream.getAudioTracks()[0]); toast(T('Video mit Musik wird aufgenommen …'), 'info', { ms: 2200 }); }
     }
     const mr = new MediaRecorder(stream, { mimeType: rec.mime, videoBitsPerSecond: Math.min(60e6, Math.round(w * hh * S0.vfps * 0.2)) });
     rec.mr = mr;
@@ -19132,10 +19213,10 @@ void main() {
     mr.onstop = () => {
       const r = rec; rec = null; paintVidBtn(); recEl.classList.remove('on'); wrap.classList.remove('sh-recording');
       stream.getVideoTracks().forEach(t => t.stop());   // the audio track belongs to music mode and keeps playing
-      if (r.cancelled || !r.chunks.length) { toast('Aufnahme abgebrochen.', 'info'); return; }
+      if (r.cancelled || !r.chunks.length) { toast(T('Aufnahme abgebrochen.'), 'info'); return; }
       const type = r.mime.split(';')[0], blob = new Blob(r.chunks, { type });
       download(fname(type.includes('mp4') ? 'mp4' : 'webm', r.w, r.h), blob);
-      toast(`Video gespeichert · ${fmtSize(blob.size)}`, 'ok');
+      toast(T('Video gespeichert · {s}', { s: fmtSize(blob.size) }), 'ok');
     };
     mr.start(500);
     paintVidBtn(); recEl.classList.add('on'); wrap.classList.add('sh-recording');
@@ -19149,25 +19230,25 @@ void main() {
   }
   function paintRec() {
     const el = (performance.now() - rec.t0) / 1000;
-    recEl.replaceChildren(h('i'), `Aufnahme ${Math.min(rec.secs, el).toFixed(1).replace('.', ',')} / ${rec.secs} s · ${rec.w}×${rec.h}`,
+    recEl.replaceChildren(h('i'), T('Aufnahme läuft') + ` ${Math.min(rec.secs, el).toFixed(1).replace('.', isEN() ? '.' : ',')} / ${rec.secs} s · ${rec.w}×${rec.h}`,
       h('span', { class: 'sh-rec-bar' }, h('span', { style: { width: Math.min(100, el / rec.secs * 100) + '%' } })));
   }
   paintVidBtn();
-  const vfmt = (() => { const m = pickMime(); return m ? (m.includes('mp4') ? 'MP4 (H.264)' : 'WebM') : 'nicht unterstützt'; })();
+  const vfmt = (() => { const m = pickMime(); return m ? (m.includes('mp4') ? 'MP4 (H.264)' : 'WebM') : T('nicht unterstützt'); })();
   const pExport = panel('download', 'Export', null,
-    h('div', { class: 'field' }, h('label', null, 'Bild (PNG)'), sel(RES, S0.png, v => { S0.png = v; persist(); })),
-    h('button', { class: 'btn primary block', onclick: () => savePng(false) }, icon('download'), 'PNG speichern'),
+    h('div', { class: 'field' }, h('label', null, T('Bild (PNG)')), sel(RES, S0.png, v => { S0.png = v; persist(); })),
+    h('button', { class: 'btn primary block', onclick: () => savePng(false) }, icon('download'), T('PNG speichern')),
     h('div', { class: 'tp-sep' }),
     h('div', { class: 'field' }, h('label', null, 'Video', h('span', { class: 'hint-i' }, vfmt)), sel(VRES, S0.vres, v => { S0.vres = v; persist(); })),
     h('div', { class: 'sh-2' },
-      h('div', { class: 'field' }, h('label', null, 'Länge'), sel([[5, '5 s'], [10, '10 s'], [15, '15 s'], [30, '30 s'], [60, '60 s']], S0.vsec, v => { S0.vsec = +v; persist(); })),
-      h('div', { class: 'field' }, h('label', null, 'Bilder/s'), sel([[30, '30 fps'], [60, '60 fps']], S0.vfps, v => { S0.vfps = +v; persist(); }))),
+      h('div', { class: 'field' }, h('label', null, T('Länge')), sel([[5, '5 s'], [10, '10 s'], [15, '15 s'], [30, '30 s'], [60, '60 s']], S0.vsec, v => { S0.vsec = +v; persist(); })),
+      h('div', { class: 'field' }, h('label', null, T('Bilder/s')), sel([[30, '30 fps'], [60, '60 fps']], S0.vfps, v => { S0.vfps = +v; persist(); }))),
     vidBtn,
-    h('p', { class: 'hint' }, 'Aufnahme in Echtzeit – bei hoher Auflösung können Bilder fehlen.'));
+    h('p', { class: 'hint' }, T('Aufnahme in Echtzeit – bei hoher Auflösung können Bilder fehlen.')));
 
   /* ---------- Music panel ---------- */
   const musicEl = h('div', { class: 'sh-music' });
-  const meterBars = ['Bass', 'Mitten', 'Höhen', 'Pegel'].map(l => { const i = h('i'); return { i, el: h('div', { class: 'sh-mt' }, h('span', null, l), h('b', null, i)) }; });
+  const meterBars = ['Bass', T('Mitten'), T('Höhen'), T('Pegel')].map(l => { const i = h('i'); return { i, el: h('div', { class: 'sh-mt' }, h('span', null, l), h('b', null, i)) }; });
   const beatDot = h('span', { class: 'sh-beat', title: 'Beat' });
   function paintMeter() {
     meterBars.forEach((m, k) => { m.i.style.transform = `scaleX(${aud.bands[k].toFixed(3)})`; });
@@ -19180,19 +19261,19 @@ void main() {
       const val = h('span', { class: 'bw-val' }, Math.round(S0.react * 100) + ' %');
       const r = h('input', { type: 'range', class: 'bw-range', min: 0, max: 2, step: 0.05, value: S0.react, style: { '--p': S0.react / 2 * 100 + '%' },
         oninput: () => { S0.react = +r.value; val.textContent = Math.round(S0.react * 100) + ' %'; r.style.setProperty('--p', S0.react / 2 * 100 + '%'); persist(); } });
-      return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, 'Reaktivität', h('small', null, 'wie stark alles mitgeht')), val), r);
+      return h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h' }, h('label', null, T('Reaktivität'), h('small', null, T('wie stark alles mitgeht'))), val), r);
     })();
     const src = h('div', { class: 'sh-2' },
-      h('button', { class: 'btn sm' + (aud.kind === 'mic' ? ' primary' : ''), onclick: () => aud.kind === 'mic' ? audStop() : audMic() }, icon('mic'), aud.kind === 'mic' ? 'Mikro aus' : 'Mikrofon'),
-      h('button', { class: 'btn sm' + (aud.kind === 'file' ? ' primary' : ''), onclick: pickAudio }, icon('upload'), 'Audiodatei'));
+      h('button', { class: 'btn sm' + (aud.kind === 'mic' ? ' primary' : ''), onclick: () => aud.kind === 'mic' ? audStop() : audMic() }, icon('mic'), aud.kind === 'mic' ? T('Mikro aus') : T('Mikrofon')),
+      h('button', { class: 'btn sm' + (aud.kind === 'file' ? ' primary' : ''), onclick: pickAudio }, icon('upload'), T('Audiodatei')));
     const now = aud.on ? h('div', { class: 'sh-now' }, beatDot, h('b', null, aud.name),
-      aud.kind === 'file' ? h('button', { class: 'mini', title: 'Pause / Weiter', onclick: () => aud.el.paused ? aud.el.play() : aud.el.pause() }, icon(aud.el?.paused ? 'play' : 'pause')) : null,
-      h('button', { class: 'mini', title: 'Musik-Modus aus', onclick: audStop }, icon('x'))) : null;
+      aud.kind === 'file' ? h('button', { class: 'mini', title: T('Pause / Weiter'), onclick: () => aud.el.paused ? aud.el.play() : aud.el.pause() }, icon(aud.el?.paused ? 'play' : 'pause')) : null,
+      h('button', { class: 'mini', title: T('Musik-Modus aus'), onclick: audStop }, icon('x'))) : null;
     musicEl.replaceChildren(...[src, now, aud.on ? h('div', { class: 'sh-meter' }, meterBars.map(m => m.el)) : null, reactSl,
-      h('p', { class: 'hint' }, aud.on ? 'Tipp: „Klangkreis" unter Musik ist ein Equalizer – alle anderen Vorlagen tanzen auch mit.'
-        : 'Mikrofon hört z. B. die Musik aus deinen Boxen – oder zieh eine Audiodatei aufs Bild. Nichts wird gespeichert oder gesendet.')].filter(Boolean));
+      h('p', { class: 'hint' }, aud.on ? T('Tipp: „Klangkreis“ unter Musik ist ein Equalizer – alle anderen Vorlagen tanzen auch mit.')
+        : T('Mikrofon hört z. B. die Musik aus deinen Boxen – oder zieh eine Audiodatei aufs Bild. Nichts wird gespeichert oder gesendet.'))].filter(Boolean));
   }
-  const pMusic = panel('speaker', 'Musik-Modus', null, musicEl);
+  const pMusic = panel('speaker', T('Musik-Modus'), null, musicEl);
   // drop an audio file directly onto the image
   stageEl.addEventListener('dragover', e => { if (e.dataTransfer?.types.includes('Files')) e.preventDefault(); });
   stageEl.addEventListener('drop', e => { const f = [...(e.dataTransfer?.files || [])][0]; if (!f) return; e.preventDefault(); audFile(f); });
@@ -19219,14 +19300,14 @@ void main() {
     return '#' + [f(0), f(8), f(4)].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
   }
   const pParams = panel('settings', 'Parameter', h('div', { class: 'panel-actions' },
-      h('button', { class: 'btn sm ghost', title: 'Zufall (Z)', onclick: randomize }, icon('sparkle'), 'Zufall'),
-      h('button', { class: 'mini', title: 'Alles zurücksetzen', onclick: () => { S0.per[preset().id] = fresh(preset()); persist(); renderSide(); } }, icon('undo'))),
+      h('button', { class: 'btn sm ghost', title: T('Zufall (Z)'), onclick: randomize }, icon('sparkle'), T('Zufall')),
+      h('button', { class: 'mini', title: T('Alles zurücksetzen'), onclick: () => { S0.per[preset().id] = fresh(preset()); persist(); renderSide(); } }, icon('undo'))),
     paramsEl);
   const side = h('aside', { class: 'sh-side' },
-    panel('grid', 'Vorlagen', null, gridEl),
+    panel('grid', T('Vorlagen'), null, gridEl),
     pMusic, pCode, pParams,
-    panel('pipette', 'Farben', null, palChips, palInputs),
-    panel('image', 'Bild & Animation', null, lookEl),
+    panel('pipette', T('Farben'), null, palChips, palInputs),
+    panel('image', T('Bild & Animation'), null, lookEl),
     pExport);
   function renderSide() {
     renderGrid(); renderParams(); renderPal(); renderLook();
@@ -19244,7 +19325,7 @@ void main() {
 
   if (!gl) {
     view.append(h('div', { class: 'empty' }, h('div', { class: 'drop' }, h('div', { class: 'big' }, icon('alert')),
-      h('h2', null, 'WebGL2 nicht verfügbar'), h('p', null, 'Kein WebGL2 – aktuellen Browser nutzen oder Hardwarebeschleunigung einschalten.'))));
+      h('h2', null, T('WebGL2 nicht verfügbar')), h('p', null, T('Kein WebGL2 – aktuellen Browser nutzen oder Hardwarebeschleunigung einschalten.')))));
     return {};
   }
   const initGL = () => {
@@ -19499,8 +19580,8 @@ const QRCode = (() => {
 /* ================= QR-Werk ================= */
 function mountQrwerk(view) {
   const TYPES = [
-    ['link', 'Link', 'arrow'], ['text', 'Text', 'note'], ['wifi', 'WLAN', 'wifi'], ['vcard', 'Kontakt', 'user'],
-    ['email', 'E-Mail', 'mail'], ['sms', 'SMS', 'msg'], ['tel', 'Telefon', 'phone'], ['geo', 'Ort', 'pin'],
+    ['link', 'Link', 'arrow'], ['text', 'Text', 'note'], ['wifi', T('WLAN'), 'wifi'], ['vcard', T('Kontakt'), 'user'],
+    ['email', T('E-Mail'), 'mail'], ['sms', 'SMS', 'msg'], ['tel', T('Telefon'), 'phone'], ['geo', T('Ort'), 'pin'],
   ];
   const DESIGN = { shape: 'fluid', eye: 'rounded', fill: 'solid', c1: '#111827', c2: '#7c3aed', angle: 45, eyeOwn: false, eyeColor: '#7c3aed', bg: '#ffffff', bgOn: true, bgRound: 0.06, margin: 3, ecl: 'M', logo: '', logoText: '', logoSize: 0.22, logoPad: true, png: 1024 };
   const saved = Store.get('qrwerk', {});
@@ -19615,22 +19696,22 @@ function mountQrwerk(view) {
     return h('div', { class: 'field' + (o.wide ? ' wide' : '') }, h('label', null, label, o.hint && h('span', { class: 'hint-i' }, o.hint)), inp);
   };
   const FORMS = {
-    link: () => [fld('link.url', 'Adresse (URL)', 'https://beispiel.de', { wide: true, type: 'url', hint: 'https:// wird ergänzt' })],
-    text: () => [fld('text.text', 'Text', 'Beliebiger Text …', { wide: true, area: true })],
+    link: () => [fld('link.url', T('Adresse (URL)'), T('https://beispiel.de'), { wide: true, type: 'url', hint: T('https:// wird ergänzt') })],
+    text: () => [fld('text.text', 'Text', T('Beliebiger Text …'), { wide: true, area: true })],
     wifi: () => [
-      fld('wifi.ssid', 'Netzwerkname (SSID)', 'Mein WLAN', { wide: true }),
-      fld('wifi.pass', 'Passwort', '••••••••', { wide: true }),
-      h('div', { class: 'field wide' }, h('label', null, 'Verschlüsselung'), segEl([['WPA', 'WPA/WPA2/WPA3'], ['WEP', 'WEP'], ['nopass', 'Offen']], F('wifi.enc', 'WPA'), v => { S1.f['wifi.enc'] = v; persist(); update(); })),
-      h('label', { class: 'chk-row wide' }, 'Verstecktes Netzwerk', switchEl(F('wifi.hidden', false), v => { S1.f['wifi.hidden'] = v; persist(); update(); })),
+      fld('wifi.ssid', T('Netzwerkname (SSID)'), T('Mein WLAN'), { wide: true }),
+      fld('wifi.pass', T('Passwort'), '••••••••', { wide: true }),
+      h('div', { class: 'field wide' }, h('label', null, T('Verschlüsselung')), segEl([['WPA', 'WPA/WPA2/WPA3'], ['WEP', 'WEP'], ['nopass', T('Ohne Passwort')]], F('wifi.enc', 'WPA'), v => { S1.f['wifi.enc'] = v; persist(); update(); })),
+      h('label', { class: 'chk-row wide' }, T('Verstecktes Netzwerk'), switchEl(F('wifi.hidden', false), v => { S1.f['wifi.hidden'] = v; persist(); update(); })),
     ],
-    vcard: () => [fld('vcard.first', 'Vorname', 'Max'), fld('vcard.last', 'Nachname', 'Mustermann'), fld('vcard.org', 'Firma', 'Firma GmbH'), fld('vcard.title', 'Position', 'Designer'),
-      fld('vcard.tel', 'Telefon', '+49 170 1234567', { type: 'tel' }), fld('vcard.email', 'E-Mail', 'max@beispiel.de', { type: 'email' }),
-      fld('vcard.url', 'Webseite', 'https://beispiel.de', { wide: true }), fld('vcard.adr', 'Adresse', 'Musterstraße 1, 12345 Musterstadt', { wide: true })],
-    email: () => [fld('email.to', 'Empfänger', 'name@beispiel.de', { wide: true, type: 'email' }), fld('email.subject', 'Betreff', 'Hallo!', { wide: true }), fld('email.body', 'Nachricht', 'Text der E-Mail …', { wide: true, area: true })],
-    sms: () => [fld('sms.num', 'Telefonnummer', '+49 170 1234567', { wide: true, type: 'tel' }), fld('sms.msg', 'Nachricht', 'Text der SMS …', { wide: true, area: true })],
-    tel: () => [fld('tel.num', 'Telefonnummer', '+49 170 1234567', { wide: true, type: 'tel' })],
-    geo: () => [fld('geo.lat', 'Breitengrad', '52.520008', { mode: 'decimal' }), fld('geo.lon', 'Längengrad', '13.404954', { mode: 'decimal' }),
-      h('p', { class: 'hint wide' }, 'Tipp: in Karten-Apps Rechtsklick auf einen Ort → Koordinaten kopieren')],
+    vcard: () => [fld('vcard.first', T('Vorname'), T('Max')), fld('vcard.last', T('Nachname'), T('Mustermann')), fld('vcard.org', T('Firma'), T('Firma GmbH')), fld('vcard.title', T('Position'), 'Designer'),
+      fld('vcard.tel', T('Telefon'), '+49 170 1234567', { type: 'tel' }), fld('vcard.email', T('E-Mail'), T('max@beispiel.de'), { type: 'email' }),
+      fld('vcard.url', T('Webseite'), T('https://beispiel.de'), { wide: true }), fld('vcard.adr', T('Adresse'), T('Musterstraße 1, 12345 Musterstadt'), { wide: true })],
+    email: () => [fld('email.to', T('Empfänger'), T('name@beispiel.de'), { wide: true, type: 'email' }), fld('email.subject', T('Betreff'), T('Hallo!'), { wide: true }), fld('email.body', T('Nachricht'), T('Text der E-Mail …'), { wide: true, area: true })],
+    sms: () => [fld('sms.num', T('Telefonnummer'), '+49 170 1234567', { wide: true, type: 'tel' }), fld('sms.msg', T('Nachricht'), T('Text der SMS …'), { wide: true, area: true })],
+    tel: () => [fld('tel.num', T('Telefonnummer'), '+49 170 1234567', { wide: true, type: 'tel' })],
+    geo: () => [fld('geo.lat', T('Breitengrad'), '52.520008', { mode: 'decimal' }), fld('geo.lon', T('Längengrad'), '13.404954', { mode: 'decimal' }),
+      h('p', { class: 'hint wide' }, T('Tipp: in Karten-Apps Rechtsklick auf einen Ort → Koordinaten kopieren'))],
   };
   const typeGrid = h('div', { class: 'qr-types' });
   const formEl = h('div', { class: 'qr-form' });
@@ -19649,7 +19730,7 @@ function mountQrwerk(view) {
     warnEl.replaceChildren();
     if (!text) {
       current = null;
-      prevEl.replaceChildren(h('div', { class: 'qr-empty' }, icon('qr'), h('b', null, 'Noch kein Inhalt'), h('span', null, 'Links etwas eingeben – der Code erscheint sofort.')));
+      prevEl.replaceChildren(h('div', { class: 'qr-empty' }, icon('qr'), h('b', null, T('Noch kein Inhalt')), h('span', null, T('Links etwas eingeben – der Code erscheint sofort.'))));
       infoEl.textContent = '';
       paintExport();
       return;
@@ -19659,7 +19740,7 @@ function mountQrwerk(view) {
     try { qr = QRCode.encode(text, hasLogo && d.ecl !== 'H' ? 'H' : d.ecl, true); }
     catch (err) {
       current = null;
-      prevEl.replaceChildren(h('div', { class: 'qr-empty err' }, icon('alert'), h('b', null, 'Zu viel Inhalt'), h('span', null, 'Max. ≈ 2.900 Zeichen – bitte kürzen.')));
+      prevEl.replaceChildren(h('div', { class: 'qr-empty err' }, icon('alert'), h('b', null, T('Zu viel Inhalt')), h('span', null, T('Max. ≈ 2.900 Zeichen – bitte kürzen.'))));
       infoEl.textContent = ''; paintExport(); return;
     }
     const svg = svgFor(qr, d);
@@ -19667,17 +19748,17 @@ function mountQrwerk(view) {
     prevEl.innerHTML = svg;
     prevEl.classList.toggle('checker', !d.bgOn);
     infoEl.replaceChildren(
-      h('span', null, 'Version ', h('b', null, qr.version)), h('span', null, h('b', null, `${qr.size}×${qr.size}`), ' Module'),
-      h('span', null, 'Fehlerkorrektur ', h('b', null, qr.ecl)), h('span', null, h('b', null, [...text].length), ' Zeichen'));
+      h('span', null, 'Version ', h('b', null, qr.version)), h('span', null, h('b', null, `${qr.size}×${qr.size}`), ' ' + T('Module')),
+      h('span', null, T('Fehlerkorrektur') + ' ', h('b', null, qr.ecl)), h('span', null, h('b', null, [...text].length), ' ' + T('Zeichen')));
     const warns = [];
     const bgC = d.bgOn ? d.bg : '#ffffff', fgs = d.fill === 'solid' ? [d.c1] : [d.c1, d.c2];
     if (d.eyeOwn) fgs.push(d.eyeColor);
     const worst = Math.min(...fgs.map(c => ratio(c, bgC)));
-    if (worst < 3) warns.push(['alert', `Wenig Kontrast (${worst.toFixed(1).replace('.', ',')}:1) – manche Handys erkennen den Code dann nicht.`]);
-    if (fgs.some(c => lum(c) > lum(bgC))) warns.push(['info', 'Helle Module auf dunklem Grund: Nicht jeder Scanner liest invertierte Codes.']);
-    if (hasLogo && d.logoSize > 0.26) warns.push(['alert', 'Das Logo ist sehr groß – bitte den Code vor dem Druck testen.']);
-    if (hasLogo && d.ecl !== 'H') warns.push(['info', 'Mit Logo wird automatisch die höchste Fehlerkorrektur (H) verwendet.']);
-    if (d.margin < 2) warns.push(['info', 'Ein Rand von mindestens 2 Modulen verbessert die Erkennung.']);
+    if (worst < 3) warns.push(['alert', T('Wenig Kontrast ({r}:1) – manche Handys erkennen den Code dann nicht.', { r: worst.toFixed(1).replace('.', isEN() ? '.' : ',') })]);
+    if (fgs.some(c => lum(c) > lum(bgC))) warns.push(['info', T('Helle Module auf dunklem Grund: Nicht jeder Scanner liest invertierte Codes.')]);
+    if (hasLogo && d.logoSize > 0.26) warns.push(['alert', T('Das Logo ist sehr groß – bitte den Code vor dem Druck testen.')]);
+    if (hasLogo && d.ecl !== 'H') warns.push(['info', T('Mit Logo wird automatisch die höchste Fehlerkorrektur (H) verwendet.')]);
+    if (d.margin < 2) warns.push(['info', T('Ein Rand von mindestens 2 Modulen verbessert die Erkennung.')]);
     warnEl.replaceChildren(...warns.map(([ic, t]) => h('div', { class: 'qr-warn' + (ic === 'alert' ? ' hot' : '') }, icon(ic), h('span', null, t))));
     paintExport();
   }
@@ -19695,25 +19776,25 @@ function mountQrwerk(view) {
       return await new Promise(r => cv.toBlob(r, 'image/png'));
     } finally { URL.revokeObjectURL(url); }
   }
-  const pngBtn = h('button', { class: 'btn primary', onclick: async () => { if (!current) return; const b = await toPng(S1.d.png); download(`${fileBase()}-${S1.d.png}px.png`, b); toast(`PNG gespeichert · ${S1.d.png}×${S1.d.png}`, 'ok'); } }, icon('download'), 'PNG');
+  const pngBtn = h('button', { class: 'btn primary', onclick: async () => { if (!current) return; const b = await toPng(S1.d.png); download(`${fileBase()}-${S1.d.png}px.png`, b); toast(T('PNG gespeichert · {s}', { s: `${S1.d.png}×${S1.d.png}` }), 'ok'); } }, icon('download'), 'PNG');
   const svgBtn = h('button', { class: 'btn', onclick: () => { if (!current) return; download(`${fileBase()}.svg`, current.svg, 'image/svg+xml'); toast('SVG ✓', 'ok'); } }, icon('download'), 'SVG');
   const copyBtn = h('button', { class: 'btn', title: 'PNG → 📋', onclick: async () => {
     if (!current) return;
-    try { const b = await toPng(1024); await navigator.clipboard.write([new ClipboardItem({ 'image/png': b })]); toast('QR-Code kopiert ✓', 'ok'); }
-    catch { toast('Kopieren geht hier nicht – nimm „PNG“.', 'warn'); }
-  } }, icon('copy'), 'Kopieren');
+    try { const b = await toPng(1024); await navigator.clipboard.write([new ClipboardItem({ 'image/png': b })]); toast(T('QR-Code kopiert ✓'), 'ok'); }
+    catch { toast(T('Kopieren geht hier nicht – nimm „PNG“.'), 'warn'); }
+  } }, icon('copy'), T('Kopieren'));
   const pngSize = segEl([[512, '512'], [1024, '1024'], [2048, '2048'], [4096, '4096']], S1.d.png, v => { S1.d.png = v; persist(); });
   function paintExport() { [pngBtn, svgBtn, copyBtn].forEach(b => b.disabled = !current); }
 
   /* ---------- Design ---------- */
   const setD = (k, v, re = true) => { S1.d[k] = v; persist(); update(); if (re) renderDesign(); };
   const PRESETS = [
-    ['Klassisch', { shape: 'square', eye: 'square', fill: 'solid', c1: '#000000', bg: '#ffffff', bgOn: true, eyeOwn: false, bgRound: 0 }],
+    [T('Klassisch'), { shape: 'square', eye: 'square', fill: 'solid', c1: '#000000', bg: '#ffffff', bgOn: true, eyeOwn: false, bgRound: 0 }],
     ['Modern', { shape: 'fluid', eye: 'rounded', fill: 'solid', c1: '#111827', bg: '#ffffff', bgOn: true, eyeOwn: true, eyeColor: '#7c3aed', bgRound: 0.06 }],
-    ['Punkte', { shape: 'dots', eye: 'circle', fill: 'solid', c1: '#1e3a8a', bg: '#ffffff', bgOn: true, eyeOwn: false, bgRound: 0.06 }],
-    ['Verlauf', { shape: 'fluid', eye: 'rounded', fill: 'linear', c1: '#7c3aed', c2: '#06b6d4', angle: 45, bg: '#ffffff', bgOn: true, eyeOwn: false, bgRound: 0.06 }],
-    ['Blatt', { shape: 'tiles', eye: 'leaf', fill: 'linear', c1: '#065f46', c2: '#16a34a', angle: 90, bg: '#f0fdf4', bgOn: true, eyeOwn: false, bgRound: 0.08 }],
-    ['Sonne', { shape: 'dots', eye: 'rounded', fill: 'radial', c1: '#c2410c', c2: '#7c2d12', bg: '#fff7ed', bgOn: true, eyeOwn: true, eyeColor: '#ea580c', bgRound: 0.08 }],
+    [T('Punkte'), { shape: 'dots', eye: 'circle', fill: 'solid', c1: '#1e3a8a', bg: '#ffffff', bgOn: true, eyeOwn: false, bgRound: 0.06 }],
+    [T('Verlauf'), { shape: 'fluid', eye: 'rounded', fill: 'linear', c1: '#7c3aed', c2: '#06b6d4', angle: 45, bg: '#ffffff', bgOn: true, eyeOwn: false, bgRound: 0.06 }],
+    [T('Blatt'), { shape: 'tiles', eye: 'leaf', fill: 'linear', c1: '#065f46', c2: '#16a34a', angle: 90, bg: '#f0fdf4', bgOn: true, eyeOwn: false, bgRound: 0.08 }],
+    [T('Sonne'), { shape: 'dots', eye: 'rounded', fill: 'radial', c1: '#c2410c', c2: '#7c2d12', bg: '#fff7ed', bgOn: true, eyeOwn: true, eyeColor: '#ea580c', bgRound: 0.08 }],
   ];
   const presetEl = h('div', { class: 'qr-presets' });
   const designEl = h('div', { class: 'qr-design' });
@@ -19727,17 +19808,17 @@ function mountQrwerk(view) {
   };
   const I = s => `<svg viewBox="0 0 24 24">${s}</svg>`;
   const SHAPES = [
-    ['square', 'Eckig', I('<path d="M3 3h6v6H3zM9 9h6v6H9zM15 3h6v6h-6zM3 15h6v6H3zM15 15h6v6h-6z"/>')],
-    ['fluid', 'Fließend', I('<path d="M3 6a3 3 0 0 1 3-3h3v6h6v6H9V9H3zM15 3h3a3 3 0 0 1 3 3v3h-6zM3 15h6v6H6a3 3 0 0 1-3-3zM15 15h6v3a3 3 0 0 1-3 3h-3z"/>')],
-    ['tiles', 'Kacheln', I('<rect x="3.5" y="3.5" width="5" height="5" rx="1.6"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.6"/><rect x="15.5" y="3.5" width="5" height="5" rx="1.6"/><rect x="3.5" y="15.5" width="5" height="5" rx="1.6"/><rect x="15.5" y="15.5" width="5" height="5" rx="1.6"/>')],
-    ['dots', 'Punkte', I('<circle cx="6" cy="6" r="2.6"/><circle cx="12" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><circle cx="18" cy="18" r="2.6"/>')],
-    ['diamond', 'Rauten', I('<path d="M6 2.5 9.5 6 6 9.5 2.5 6zM12 8.5l3.5 3.5-3.5 3.5L8.5 12zM18 2.5 21.5 6 18 9.5 14.5 6zM6 14.5 9.5 18 6 21.5 2.5 18zM18 14.5l3.5 3.5-3.5 3.5-3.5-3.5z"/>')],
+    ['square', T('Eckig'), I('<path d="M3 3h6v6H3zM9 9h6v6H9zM15 3h6v6h-6zM3 15h6v6H3zM15 15h6v6h-6z"/>')],
+    ['fluid', T('Fließend'), I('<path d="M3 6a3 3 0 0 1 3-3h3v6h6v6H9V9H3zM15 3h3a3 3 0 0 1 3 3v3h-6zM3 15h6v6H6a3 3 0 0 1-3-3zM15 15h6v3a3 3 0 0 1-3 3h-3z"/>')],
+    ['tiles', T('Kacheln'), I('<rect x="3.5" y="3.5" width="5" height="5" rx="1.6"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.6"/><rect x="15.5" y="3.5" width="5" height="5" rx="1.6"/><rect x="3.5" y="15.5" width="5" height="5" rx="1.6"/><rect x="15.5" y="15.5" width="5" height="5" rx="1.6"/>')],
+    ['dots', T('Punkte'), I('<circle cx="6" cy="6" r="2.6"/><circle cx="12" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><circle cx="18" cy="18" r="2.6"/>')],
+    ['diamond', T('Rauten'), I('<path d="M6 2.5 9.5 6 6 9.5 2.5 6zM12 8.5l3.5 3.5-3.5 3.5L8.5 12zM18 2.5 21.5 6 18 9.5 14.5 6zM6 14.5 9.5 18 6 21.5 2.5 18zM18 14.5l3.5 3.5-3.5 3.5-3.5-3.5z"/>')],
   ];
   const EYE_OPTS = [
-    ['square', 'Eckig', I('<path fill-rule="evenodd" d="M3 3h18v18H3zM6 6v12h12V6z"/><rect x="9" y="9" width="6" height="6"/>')],
-    ['rounded', 'Rund', I('<path fill-rule="evenodd" d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zm0 3a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/><rect x="9" y="9" width="6" height="6" rx="2"/>')],
-    ['circle', 'Kreis', I('<path fill-rule="evenodd" d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 3a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/><circle cx="12" cy="12" r="3.2"/>')],
-    ['leaf', 'Blatt', I('<path fill-rule="evenodd" d="M11 3h10v10a8 8 0 0 1-8 8H3V11a8 8 0 0 1 8-8zm0 3a5 5 0 0 0-5 5v7h7a5 5 0 0 0 5-5V6z"/><path d="M11 9h4v4a2 2 0 0 1-2 2H9v-4a2 2 0 0 1 2-2z"/>')],
+    ['square', T('Eckig'), I('<path fill-rule="evenodd" d="M3 3h18v18H3zM6 6v12h12V6z"/><rect x="9" y="9" width="6" height="6"/>')],
+    ['rounded', T('Rund'), I('<path fill-rule="evenodd" d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zm0 3a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/><rect x="9" y="9" width="6" height="6" rx="2"/>')],
+    ['circle', T('Kreis'), I('<path fill-rule="evenodd" d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 3a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/><circle cx="12" cy="12" r="3.2"/>')],
+    ['leaf', T('Blatt'), I('<path fill-rule="evenodd" d="M11 3h10v10a8 8 0 0 1-8 8H3V11a8 8 0 0 1 8-8zm0 3a5 5 0 0 0-5 5v7h7a5 5 0 0 0 5-5V6z"/><path d="M11 9h4v4a2 2 0 0 1-2 2H9v-4a2 2 0 0 1 2-2z"/>')],
   ];
   const logoIn = h('input', { type: 'file', accept: 'image/*', style: { display: 'none' }, onchange: async e => {
     const f = e.target.files[0]; e.target.value = '';
@@ -19761,28 +19842,28 @@ function mountQrwerk(view) {
         h('span', { class: 'qr-preset-i', html: svgFor(mini, tmp) }), h('small', null, name));
     }));
     designEl.replaceChildren(
-      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, 'Muster'), optBtns('shape', SHAPES)),
-      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, 'Ecken („Augen“)'), optBtns('eye', EYE_OPTS)),
-      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, 'Farbe'),
-        segEl([['solid', 'Einfarbig'], ['linear', 'Verlauf'], ['radial', 'Radial']], d.fill, v => setD('fill', v)),
-        h('div', { class: 'qr-cols' }, col('c1', d.fill === 'solid' ? 'Vordergrund' : 'Farbe 1'), d.fill !== 'solid' ? col('c2', 'Farbe 2') : null,
-          d.bgOn ? col('bg', 'Hintergrund') : null),
-        d.fill === 'linear' ? slider('angle', 'Richtung', 0, 360, 5, v => v + '°') : null,
-        h('label', { class: 'chk-row' }, 'Ecken in eigener Farbe', switchEl(d.eyeOwn, v => setD('eyeOwn', v))),
-        d.eyeOwn ? h('div', { class: 'qr-cols' }, col('eyeColor', 'Ecken')) : null,
-        h('label', { class: 'chk-row' }, 'Hintergrund', switchEl(d.bgOn, v => setD('bgOn', v))),
-        d.bgOn ? slider('bgRound', 'Hintergrund-Rundung', 0, 0.2, 0.01, v => Math.round(v / 0.2 * 100) + ' %') : null),
-      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, 'Logo in der Mitte'),
+      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, T('Muster')), optBtns('shape', SHAPES)),
+      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, T('Ecken („Augen“)')), optBtns('eye', EYE_OPTS)),
+      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, T('Farbe')),
+        segEl([['solid', T('Einfarbig')], ['linear', T('Verlauf')], ['radial', 'Radial']], d.fill, v => setD('fill', v)),
+        h('div', { class: 'qr-cols' }, col('c1', d.fill === 'solid' ? T('Vordergrund') : T('Farbe 1')), d.fill !== 'solid' ? col('c2', T('Farbe 2')) : null,
+          d.bgOn ? col('bg', T('Hintergrund')) : null),
+        d.fill === 'linear' ? slider('angle', T('Richtung'), 0, 360, 5, v => v + '°') : null,
+        h('label', { class: 'chk-row' }, T('Ecken in eigener Farbe'), switchEl(d.eyeOwn, v => setD('eyeOwn', v))),
+        d.eyeOwn ? h('div', { class: 'qr-cols' }, col('eyeColor', T('Ecken'))) : null,
+        h('label', { class: 'chk-row' }, T('Hintergrund'), switchEl(d.bgOn, v => setD('bgOn', v))),
+        d.bgOn ? slider('bgRound', T('Hintergrund-Rundung'), 0, 0.2, 0.01, v => Math.round(v / 0.2 * 100) + ' %') : null),
+      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, T('Logo in der Mitte')),
         h('div', { class: 'qr-logo-row' },
-          h('button', { class: 'btn sm', onclick: () => logoIn.click() }, icon('image'), d.logo ? 'Bild ändern' : 'Bild wählen'),
-          h('input', { class: 'inp qr-emoji', maxlength: 4, placeholder: '… oder Emoji', value: d.logoText, oninput: e => { S1.d.logo = ''; setD('logoText', e.target.value.trim(), false); } }),
-          (d.logo || d.logoText) ? h('button', { class: 'mini', title: 'Logo entfernen', onclick: () => { S1.d.logoText = ''; setD('logo', ''); } }, icon('trash')) : null,
+          h('button', { class: 'btn sm', onclick: () => logoIn.click() }, icon('image'), d.logo ? T('Bild ändern') : T('Bild wählen')),
+          h('input', { class: 'inp qr-emoji', maxlength: 4, placeholder: T('… oder Emoji'), value: d.logoText, oninput: e => { S1.d.logo = ''; setD('logoText', e.target.value.trim(), false); } }),
+          (d.logo || d.logoText) ? h('button', { class: 'mini', title: T('Logo entfernen'), onclick: () => { S1.d.logoText = ''; setD('logo', ''); } }, icon('trash')) : null,
           logoIn),
-        (d.logo || d.logoText) ? slider('logoSize', 'Logogröße', 0.1, 0.32, 0.01, v => Math.round(v * 100) + ' %') : null,
-        (d.logo || d.logoText) ? h('label', { class: 'chk-row' }, 'Fläche hinter dem Logo freilassen', switchEl(d.logoPad, v => setD('logoPad', v, false))) : null),
-      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, 'Technik'),
-        slider('margin', 'Rand', 0, 8, 1, v => v + ' Module'),
-        h('div', { class: 'field' }, h('label', null, 'Fehlerkorrektur', h('span', { class: 'hint-i' }, 'höher = robuster, dichter')),
+        (d.logo || d.logoText) ? slider('logoSize', T('Logogröße'), 0.1, 0.32, 0.01, v => Math.round(v * 100) + ' %') : null,
+        (d.logo || d.logoText) ? h('label', { class: 'chk-row' }, T('Fläche hinter dem Logo freilassen'), switchEl(d.logoPad, v => setD('logoPad', v, false))) : null),
+      h('div', { class: 'qr-sec' }, h('div', { class: 'ed-lbl' }, T('Technik')),
+        slider('margin', T('Rand (Ruhezone)'), 0, 8, 1, v => v + ' ' + T('Module')),
+        h('div', { class: 'field' }, h('label', null, T('Fehlerkorrektur'), h('span', { class: 'hint-i' }, T('höher = robuster, dichter'))),
           segEl([['L', 'L · 7 %'], ['M', 'M · 15 %'], ['Q', 'Q · 25 %'], ['H', 'H · 30 %']], d.ecl, v => setD('ecl', v, false)))));
   }
 
@@ -19790,14 +19871,14 @@ function mountQrwerk(view) {
   const panel = (ic, title, right, ...body) => h('section', { class: 'panel' },
     h('div', { class: 'panel-h' }, h('h3', null, icon(ic), title), right), h('div', { class: 'panel-b' }, body));
   const wrap = h('div', { class: 'qr' },
-    h('aside', { class: 'qr-left' }, panel('qr', 'Inhalt', null, typeGrid, formEl)),
+    h('aside', { class: 'qr-left' }, panel('qr', T('Inhalt'), null, typeGrid, formEl)),
     h('div', { class: 'qr-center' },
       h('div', { class: 'qr-stage' }, prevEl),
       infoEl, warnEl,
       h('div', { class: 'qr-export' },
         h('div', { class: 'qr-export-row' }, pngBtn, svgBtn, copyBtn),
-        h('div', { class: 'qr-export-row' }, h('span', { class: 'hint' }, 'PNG-Größe'), pngSize))),
-    h('aside', { class: 'qr-right' }, panel('sparkle', 'Stil', null, presetEl), panel('pipette', 'Gestaltung', null, designEl)));
+        h('div', { class: 'qr-export-row' }, h('span', { class: 'hint' }, T('PNG-Größe')), pngSize))),
+    h('aside', { class: 'qr-right' }, panel('sparkle', T('Stil'), null, presetEl), panel('pipette', T('Gestaltung'), null, designEl)));
   view.append(wrap);
   renderTypes(); renderForm(); renderDesign(); update();
   return {};
@@ -22401,14 +22482,25 @@ if (S.data.start === 'restore') {
   TT.activate(sess.active || 'home');
 } else TT.activate('home');
 applyMascot();
+// First start: language (German by default) and name in one window – switching the language translates the window right away
 if (FIRST_RUN) setTimeout(() => {
-  const inp = h('input', { class: 'inp', placeholder: T('Dein Name'), maxlength: 40, autocomplete: 'off', spellcheck: false });
+  const inp = h('input', { class: 'inp', maxlength: 40, autocomplete: 'off', spellcheck: false });
+  const titleEl = h('span'), askEl = h('b', { class: 'welcome-ask' }), hintEl = h('p', { class: 'muted' });
   const save = () => { const v = inp.value.trim(); if (!v) return; S.set('name', v); if (TT.active === 'home') renderHome(); };
   const close = modal({
-    title: T('Willkommen bei Toms Tools 👋'), sub: T('Wie dürfen wir dich nennen?'), width: 420,
-    body: h('div', { class: 'welcome' }, h('p', { class: 'muted' }, T('Dein Name erscheint in der Begrüßung auf der Startseite.')), inp),
-    actions: [{ label: T('Überspringen'), kind: 'ghost' }, { label: T('Los geht’s'), kind: 'primary', onClick: save }],
+    title: titleEl, width: 420,
+    body: h('div', { class: 'welcome' },
+      h('div', { class: 'welcome-lang' }, segEl([['de', 'Deutsch'], ['en', 'English']], isEN() ? 'en' : 'de', v => { setLang(v); paint(); inp.focus(); })),
+      h('div', { class: 'welcome-name' }, askEl, inp, hintEl)),
+    actions: [{ label: '', kind: 'ghost' }, { label: '', kind: 'primary', onClick: save }],
   });
+  const [skipBtn, goBtn] = $$('footer .btn', $('#layer').lastElementChild);
+  function paint() {
+    titleEl.textContent = T('Willkommen bei Toms Tools 👋'); askEl.textContent = T('Wie dürfen wir dich nennen?');
+    hintEl.textContent = T('Dein Name erscheint in der Begrüßung auf der Startseite.'); inp.placeholder = T('Dein Name');
+    skipBtn.textContent = T('Überspringen'); goBtn.textContent = T('Los geht’s');
+  }
+  paint();
   inp.addEventListener('keydown', e => { if (e.key === 'Enter') { save(); close(); } });
 }, 700);
 // Load the background image from IDB, then start the folder sync (compares browser and folder state); save pending changes on leaving

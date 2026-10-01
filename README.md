@@ -9,6 +9,8 @@
   <sub>Download lädt immer die neueste Version · Live ist zum Reinschnuppern – für den Alltag lieber herunterladen</sub>
 </p>
 
+<p align="center">🆕 <b>Neu in 1.7:</b> Screenshotwerk · PDF-Werk mit Seitenzahlen, Stempel &amp; Verkleinern · erste Apps auf Englisch · Neon-Arena mit Maus – <a href="https://github.com/tj537/toms-tools/releases/tag/v1.7.0">alle Neuerungen</a></p>
+
 Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[👉 Alle 32 Apps ansehen](#apps)**
 
 ![100 % offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
@@ -16,13 +18,13 @@ Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[�
 ![Ohne Admin-Rechte](https://img.shields.io/badge/ohne-Admin--Rechte-22c55e)
 ![Für Desktop](https://img.shields.io/badge/f%C3%BCr-Desktop-0891b2)
 ![Kein Tracking](https://img.shields.io/badge/kein-Tracking-64748b)
-![Deutsch · English kommt](https://img.shields.io/badge/Deutsch-English%20kommt-8b5cf6)
+![Deutsch · teils English](https://img.shields.io/badge/Deutsch-teils%20English-8b5cf6)
 ![Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-eab308)
 ![Gebaut mit Claude Opus 5.5](https://img.shields.io/badge/gebaut%20mit-Claude%20Opus%205.5-d97757)
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** 32 offline tools in one single HTML file – image editing, screenshots, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is German for now – more English is coming step by step (already in English: home page, top bar, settings, Bildwerk, Screenshotwerk, LUT-Werk, Metawerk, Wasserzeichenwerk, WebP Converter, PDF-Werk, Bildbenamung, Bulk Rename and Sortierwerk – switch at the top of the settings). Feedback welcome!
+> 🇬🇧 **English:** 32 offline tools in one single HTML file – image editing, screenshots, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is mostly German – English is coming app by app (already in English: home page, top bar, settings, Bildwerk, Screenshotwerk, LUT-Werk, Metawerk, Wasserzeichenwerk, WebP Converter, PDF-Werk, Bildbenamung, Bulk Rename and Sortierwerk – switch at the top of the settings). Feedback welcome!
 
 ---
 
@@ -205,7 +207,7 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 <img src="docs/entscheidung.png" alt="Entscheidungshilfe" width="720">
 
-**Spielwiese** – Kleine Spiele: Twin-Stick-Shooter, Tipptrainer, Reaktionstest und mehr.
+**Spielwiese** – Kleine Spiele: Neon-Arena (Twin-Stick-Shooter mit Maus oder Pfeiltasten, Bossen und Power-ups), Tipptrainer, Reaktionstest und mehr.
 
 <img src="docs/spielwiese.png" alt="Spielwiese" width="720">
 

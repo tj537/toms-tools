@@ -31,7 +31,9 @@
 [data-theme=forest]{--bg:#0a110e;--bg2:#0d1612;--s1:#121c17;--s2:#17231d;--s3:#213229;--line:rgba(200,255,220,.07);--line2:rgba(200,255,220,.13);--tx:#e5f1ea;--tx2:#a0b5a9;--tx3:#6d8579}
 [data-theme=light]{color-scheme:light;--bg:#f4f5f8;--bg2:#eceef3;--s1:#ffffff;--s2:#f1f3f7;--s3:#e2e5ec;--line:rgba(15,20,35,.09);--line2:rgba(15,20,35,.16);--tx:#161a22;--tx2:#4a5262;--tx3:#8a91a0;--acc-soft:color-mix(in oklab,var(--acc) 13%,transparent);--acc-tx:color-mix(in oklab,var(--acc) 82%,black)}
 [data-theme=light] ::-webkit-scrollbar-thumb{background-color:#cfd3dc}
-[data-theme=light] .card-app:hover{box-shadow:0 24px 50px -28px rgba(20,25,40,.35)}
+[data-theme=light] .card-app{box-shadow:inset 0 1.5px 0 #fff,inset -1.5px 0 0 #fff,inset 0 -1.5px 0 rgba(15,20,35,.14),inset 1.5px 0 0 rgba(15,20,35,.08),0 1px 3px rgba(15,20,35,.08)}
+[data-theme=light] .card-app:hover{box-shadow:inset 0 1.5px 0 #fff,inset -1.5px 0 0 #fff,inset 0 -1.5px 0 rgba(15,20,35,.16),inset 1.5px 0 0 rgba(15,20,35,.1),0 24px 50px -28px rgba(20,25,40,.35)}
+[data-theme=light] .card-app::after{background:linear-gradient(105deg,transparent 20%,color-mix(in oklab,var(--c) 3%,transparent) 45%,color-mix(in oklab,var(--c) 5%,transparent) 50%,color-mix(in oklab,var(--c) 3%,transparent) 55%,transparent 80%)}
 [data-theme=light] .home-grad{--gm-a:80%;--gm-b:70%;--gm-c:55%}
 [data-bg=time] .home-grad{--gm-a:75%;--gm-b:65%;--gm-c:50%}
 [data-theme=light][data-bg=time] .home-grad{--gm-a:90%;--gm-b:80%;--gm-c:65%}
@@ -273,16 +275,21 @@ button.apps-cnt:hover{color:var(--tx);background:var(--s3)}
 .bnv-zero-ico.face svg{width:34px;height:34px}
 .face::before{content:"";position:absolute;left:50%;top:-20%;width:5%;min-width:1.5px;height:21%;background:#a3a8b3;border-radius:2px;transform:translateX(-50%)}
 .face::after{content:"";position:absolute;left:50%;top:-33%;width:22%;height:22%;border-radius:50%;transform:translateX(-50%);background:radial-gradient(circle at 35% 35%,#fff7c2,#facc15 55%,#e3b008);box-shadow:0 0 10px rgba(250,204,21,.55)}
-.card-app:hover .app-ico{transform:rotate(-8deg) scale(1.1);box-shadow:0 16px 30px -12px var(--c),inset 0 1px 0 rgba(255,255,255,.25)}
+.card-app:hover .app-ico{transform:scale(1.12);box-shadow:0 16px 30px -12px var(--c),inset 0 1px 0 rgba(255,255,255,.25)}
 .card-app:active{transform:translateY(-1px) scale(.99)}
 .set-grp{margin-top:14px}
 .set-grp-t{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--tx3);padding:6px 2px 8px}
 .set-grp-t svg{width:13px;height:13px}
 .set-app-ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:var(--fg,#fff);background:linear-gradient(135deg,var(--c),var(--c2));flex:none}
 .set-app-ico svg{width:14px;height:14px}
-.card-app{position:relative;text-align:left;padding:22px;border-radius:18px;background:linear-gradient(180deg,var(--s1),color-mix(in oklab,var(--s1) 55%,var(--bg)));border:1px solid var(--line2);transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;display:flex;flex-direction:column;gap:14px;min-height:200px;isolation:isolate}
+.card-app{position:relative;text-align:left;padding:22px;border-radius:18px;background:linear-gradient(180deg,var(--s1),color-mix(in oklab,var(--s1) 55%,var(--bg)));border:0;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;display:flex;flex-direction:column;gap:14px;min-height:200px;isolation:isolate}
 .card-app::before{content:"";position:absolute;inset:0;background:radial-gradient(150% 130% at 100% 0%,color-mix(in oklab,var(--c) 22%,transparent),transparent 72%);opacity:.75;z-index:-1;transition:opacity .3s}
-.card-app:hover{transform:translateY(-3px);border-color:color-mix(in oklab,var(--c) 45%,var(--line2));box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.card-app:hover{transform:translateY(-3px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.3),inset -1.5px 0 0 rgba(255,255,255,.2),inset 0 -1.5px 0 rgba(0,0,0,.55),inset 1.5px 0 0 rgba(0,0,0,.4),inset 0 26px 34px -26px rgba(255,255,255,.16),0 24px 50px -24px rgba(0,0,0,.7)}
+.card-app{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),inset -1.5px 0 0 rgba(255,255,255,.14),inset 0 -1.5px 0 rgba(0,0,0,.5),inset 1.5px 0 0 rgba(0,0,0,.35),inset 0 26px 34px -26px rgba(255,255,255,.12)}
+.card-app::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;z-index:1;pointer-events:none;background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.025) 45%,rgba(255,255,255,.045) 50%,rgba(255,255,255,.025) 55%,transparent 75%);transform:translateX(-120%) skewX(-12deg);opacity:0}
+.card-app:hover::after{animation:cardShine .9s cubic-bezier(.3,.6,.3,1)}
+@keyframes cardShine{0%{transform:translateX(-120%) skewX(-12deg);opacity:1}100%{transform:translateX(260%) skewX(-12deg);opacity:1}}
+@media (prefers-reduced-motion:reduce){.card-app:hover::after{animation:none}}
 .card-app:hover::before{opacity:1}
 .is-scrolling .card-app,.is-scrolling .home-page button{pointer-events:none}
 .app-ico{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;color:var(--fg,#fff);background:linear-gradient(135deg,var(--c),var(--c2));box-shadow:0 12px 26px -12px var(--c),inset 0 1px 0 rgba(255,255,255,.25)}

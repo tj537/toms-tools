@@ -884,6 +884,26 @@ button.apps-cnt:hover{color:var(--tx);background:var(--s3)}
 .pfw-every-row{align-items:center;font-size:12.5px;color:var(--tx2)}
 .pfw-every-row .btn{flex:none;margin-left:auto}
 .pfw-every{width:64px;text-align:center}
+.pfw-every-row .inp:not(.pfw-every){flex:1;min-width:0}
+.pfw-blank{width:72%;aspect-ratio:1/1.414;background:#fff;border-radius:2px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)}
+.pfw-quick{align-items:center}
+.pfw-quick>.btn{flex:none;font-family:var(--mono);font-size:11.5px}
+.pfw-range{display:flex;gap:4px;flex:1;min-width:110px}
+.pfw-range .inp{flex:1;min-width:0;height:30px}
+.pfw-range .btn{flex:none;width:30px;padding:0;justify-content:center}
+.pfw-opts{border:1px solid var(--line);border-radius:11px;background:var(--bg2)}
+.pfw-opts summary{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--tx2);list-style:none}
+.pfw-opts summary::-webkit-details-marker{display:none}
+.pfw-opts summary::after{content:"";margin-left:auto;width:7px;height:7px;border:solid var(--tx3);border-width:0 1.6px 1.6px 0;transform:rotate(45deg);transition:transform .15s}
+.pfw-opts[open] summary::after{transform:rotate(-135deg)}
+.pfw-opts summary svg{width:14px;height:14px}
+.pfw-optn{font:700 10.5px var(--mono);color:#fff;background:var(--acc);border-radius:9px;padding:1px 6px}
+.pfw-opt{display:flex;flex-direction:column;gap:7px;padding:9px 12px;border-top:1px solid var(--line)}
+.pfw-opt-h{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;color:var(--tx);cursor:pointer}
+.pfw-opt-h small{display:block;font-size:11px;color:var(--tx3);margin-top:1px}
+.pfw-sub{display:flex;flex-direction:column;gap:6px}
+.pfw-sub .seg{align-self:flex-start}
+.pfw-hint{font-size:11px;color:var(--warn);line-height:1.4}
 /* ── WebP Converter ── icon in logo colors (--app-c), everything interactive in the accent color */
 .wp{height:100%;overflow:auto;padding:28px 24px 48px}
 .wp [hidden]{display:none!important}
@@ -3873,6 +3893,14 @@ const EN = {
   '{n} Seiten': '{n} pages', 'aus 1 Datei': 'from 1 file', 'aus {n} Dateien': 'from {n} files', 'Klick · ⇧ + Klick': 'Click · ⇧ + click',
   '„{n}“ ist geschützt und kann nicht bearbeitet werden.': '“{n}” is protected and can’t be edited.', '„{n}“ ist mit Passwort geschützt.': '“{n}” is password-protected.',
   '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.', '1 Seite = 1 PDF · ZIP': '1 page = 1 PDF · ZIP', 'Je': 'Every', 'Seiten': 'pages',
+  '{n} Seiten gemischt ✓': '{n} pages interleaved ✓', 'Bereiche angeben, z. B. 1-3, 4-9': 'Enter ranges, e.g. 1-3, 4-9', 'Nach der Auswahl, sonst am Ende': 'After the selection, otherwise at the end',
+  'Leerseite': 'Blank page', 'Einseitig gescannt? Datei 1 = Vorderseiten, Datei 2 = Rückseiten': 'Scanned single-sided? File 1 = fronts, file 2 = backs',
+  'Vorder- & Rückseiten mischen': 'Interleave fronts & backs', 'Rückseiten rückwärts': 'Backs in reverse order', 'Stapel umgedreht und nochmal gescannt – der Normalfall': 'You flipped the stack and scanned again – the usual case',
+  'Rückseiten vorwärts': 'Backs in normal order', 'Rückseiten liegen schon in richtiger Reihenfolge': 'The backs are already in the right order', 'Mischen': 'Interleave',
+  'Ungerade Seiten': 'Odd pages', 'Gerade Seiten': 'Even pages', 'Seiten werden zu Bildern – Text lässt sich danach nicht mehr markieren.': 'Pages turn into images – text can’t be selected afterwards.',
+  'Optionen': 'Options', 'Seitenzahlen': 'Page numbers', 'Stempel': 'Stamp', 'Verkleinern': 'Compress', 'für E-Mail-Anhänge': 'for email attachments', 'Graustufen': 'Grayscale',
+  'Formulare fixieren': 'Flatten forms', 'Ausgefüllte Felder werden fester Text': 'Filled-in fields become fixed text', 'Jeder Bereich wird eine eigene PDF': 'Each range becomes its own PDF',
+  'Als Bilder': 'As images', 'Alle Seiten': 'All pages', 'Die Originale waren schon kleiner – „Verkleinern“ lohnt sich nur bei Scans und Fotos.': 'The originals were already smaller – “Compress” only pays off for scans and photos.',
   // WebP Converter
   'Konvertierung fehlgeschlagen': 'Conversion failed', 'Bild nicht ladbar': 'Couldn’t load the image', 'Bilder hierher ziehen': 'Drop images here', 'oder': 'or', 'Bilder auswählen': 'Choose images',
   'Ordner auswählen': 'Choose folder', 'Bilder': 'Images', 'Ordner': 'Folder', 'Leeren': 'Clear', 'Keine unterstützten Bilder gefunden.': 'No supported images found.', 'Entfernen': 'Remove',
@@ -4111,7 +4139,7 @@ const EN = {
   'Farb-Looks erstellen & anwenden': 'Create & apply color looks',
   'Farb-Looks als 3D-LUT erstellen, .cube importieren und auf viele Bilder anwenden.': 'Create color looks as 3D LUTs, import .cube files and apply them to many images.',
   'PDFs zusammenführen & teilen': 'Merge & split PDFs',
-  'PDFs zusammenführen, teilen, Seiten drehen und sortieren.': 'Merge and split PDFs, rotate and reorder pages.',
+  'PDFs zusammenführen, teilen, sortieren und verkleinern – mit Seitenzahlen und Stempel.': 'Merge, split, reorder and compress PDFs – with page numbers and stamps.',
   'Dateien stapelweise umbenennen': 'Batch rename files',
   'Viele Dateien auf einmal umbenennen – mit Regeln und Vorschau.': 'Rename lots of files at once – with rules and a preview.',
   'Bilder nach WebP umwandeln': 'Convert images to WebP',
@@ -7688,8 +7716,11 @@ function mountPdfWerk(view) {
   const SRC_COLORS = ['#7c6cff', '#f97316', '#10b981', '#ec4899', '#06b6d4', '#eab308', '#ef4444', '#8b5cf6'];
   const A4 = [595.28, 841.89];
   let sources = [], pages = [], seq = 0, busy = false, lastClicked = null;
-  const opts = { name: isEN() ? 'document' : 'dokument', every: 2, ...Store.get('pdfwerk', {}) };
-  const saveOpts = saveLater(() => Store.set('pdfwerk', { name: opts.name, every: opts.every }), 300);
+  const opts = { name: isEN() ? 'document' : 'dokument', every: 2, ranges: '',
+    num: false, numPos: 'c', numFmt: 'nN', stamp: false, stampTxt: isEN() ? 'DRAFT' : 'ENTWURF', stampStyle: 'diag', dpi: 0, gray: false, flatten: false,
+    ...Store.get('pdfwerk', {}) };
+  const saveOpts = saveLater(() => Store.set('pdfwerk', { ...opts }), 300);
+  const BLANK = { kind: 'blank', name: '', color: '#94a3b8' };   // shared "source" for inserted blank pages
 
   /* ---------- Thumbnails: only visible pages, one after another ---------- */
   const queue = [];
@@ -7748,9 +7779,9 @@ function mountPdfWerk(view) {
     }
     setBusy(false); paint();
   }
-  function addPage(src, index) {
-    const p = { id: ++seq, src, index, rot: 0, rendered: false, sel: false };
-    p.thumb = h('div', { class: 'pfw-thumb' }, src.kind === 'img' ? h('img', { src: src.url, alt: '' }) : h('span', { class: 'pfw-spin' }));
+  function addPage(src, index, at = pages.length, rot = 0) {
+    const p = { id: ++seq, src, index, rot, rendered: false, sel: false };
+    p.thumb = h('div', { class: 'pfw-thumb' }, src.kind === 'img' ? h('img', { src: src.url, alt: '' }) : src.kind === 'blank' ? h('div', { class: 'pfw-blank' }) : h('span', { class: 'pfw-spin' }));
     const act = (ico, title, fn) => h('button', { class: 'pfw-act', title, onclick: e => { e.stopPropagation(); fn(); } }, icon(ico));
     p.no = h('span', { class: 'pfw-no' });
     p.el = h('div', { class: 'pfw-page', draggable: true, style: { '--sc': src.color },
@@ -7761,8 +7792,39 @@ function mountPdfWerk(view) {
       ondrop: e => { if (!dragging) return; e.preventDefault(); e.stopPropagation(); const r = p.el.getBoundingClientRect(); moveTo(p, e.clientX > r.left + r.width / 2); } },
       h('div', { class: 'pfw-thumb-box' }, p.thumb, h('span', { class: 'pfw-check' }, icon('check')),
         h('div', { class: 'pfw-acts' }, act('rotl', '−90°', () => rotate([p], -90)), act('rotr', '+90°', () => rotate([p], 90)), act('trash', T('Seite entfernen'), () => remove([p])))),
-      h('div', { class: 'pfw-cap' }, p.no, h('span', { class: 'pfw-src', title: src.name }, src.kind === 'img' ? T('Bild') : `#${index + 1}`)));
-    pages.push(p);
+      h('div', { class: 'pfw-cap' }, p.no, h('span', { class: 'pfw-src', title: src.name }, src.kind === 'img' ? T('Bild') : src.kind === 'blank' ? '□' : `#${index + 1}`)));
+    pages.splice(at, 0, p);
+    return p;
+  }
+  function addBlank() {   // after the last selected page, otherwise at the end
+    const sel = selected(), at = sel.length ? pages.indexOf(sel.at(-1)) + 1 : pages.length;
+    addPage(BLANK, 0, at); paint();
+  }
+  function duplicate(list) {
+    for (const p of [...list].reverse()) addPage(p.src, p.index, pages.indexOf(p) + 1, p.rot);
+    paint();
+  }
+  // "1-3, 5, 8-" → [[0,1,2],[4],[7,8,…]] (0-based, clamped to the page count)
+  function parseRanges(txt, n) {
+    const out = [];
+    for (const part of String(txt).split(/[,;]+/)) {
+      const m = part.trim().match(/^(\d*)\s*[-–]\s*(\d*)$|^(\d+)$/); if (!m) continue;
+      let a = m[3] ? +m[3] : (m[1] ? +m[1] : 1), b = m[3] ? +m[3] : (m[2] ? +m[2] : n);
+      a = Math.max(1, a); b = Math.min(n, b); if (a > b) continue;
+      out.push(Array.from({ length: b - a + 1 }, (_, i) => a - 1 + i));
+    }
+    return out;
+  }
+  function selectBy(fn) { pages.forEach((p, i) => { p.sel = fn(i); }); paint(); }
+  // Scanned without duplex: file 1 = fronts, file 2 = backs (usually in reverse because the stack was flipped)
+  function interleave(backsReversed) {
+    const [a, b] = sources; if (!a || !b) return;
+    const A = pages.filter(p => p.src === a), B = pages.filter(p => p.src === b);
+    if (backsReversed) B.reverse();
+    const mixed = [];
+    for (let i = 0; i < Math.max(A.length, B.length); i++) { if (A[i]) mixed.push(A[i]); if (B[i]) mixed.push(B[i]); }
+    pages = [...mixed, ...pages.filter(p => p.src !== a && p.src !== b)]; paint();
+    toast(T('{n} Seiten gemischt ✓', { n: mixed.length }), 'ok');
   }
 
   /* ---------- Select, rotate, delete, sort ---------- */
@@ -7794,11 +7856,90 @@ function mountPdfWerk(view) {
   }
 
   /* ---------- Saving ---------- */
-  async function build(list) {
+  // Page → canvas (for "shrink", grayscale and image export). dpi = output resolution.
+  async function renderPage(p, dpi) {
+    const k = dpi / 72;
+    let cv;
+    if (p.src.kind === 'pdf') {
+      const pg = await p.src.doc.getPage(p.index + 1);
+      const vp = pg.getViewport({ scale: k, rotation: (pg.rotate + p.rot) % 360 });
+      cv = h('canvas', { width: Math.ceil(vp.width), height: Math.ceil(vp.height) });
+      const c = cv.getContext('2d'); c.fillStyle = '#fff'; c.fillRect(0, 0, cv.width, cv.height);
+      await pg.render({ canvasContext: c, viewport: vp, annotationMode: pdfjsLib.AnnotationMode.ENABLE }).promise;   // incl. filled-in form fields
+      pg.cleanup();
+    } else {
+      const img = p.src.kind === 'img' ? await createImageBitmap(new Blob([p.src.bytes])) : null;
+      const [W, H] = img && img.width > img.height ? [A4[1], A4[0]] : A4, sw = p.rot % 180 ? H : W, sh = p.rot % 180 ? W : H;
+      cv = h('canvas', { width: Math.round(sw * k), height: Math.round(sh * k) });
+      const c = cv.getContext('2d'); c.fillStyle = '#fff'; c.fillRect(0, 0, cv.width, cv.height);
+      if (img) {
+        c.translate(cv.width / 2, cv.height / 2); c.rotate(p.rot * Math.PI / 180);
+        const s = Math.min(W / img.width, H / img.height) * k; c.drawImage(img, -img.width * s / 2, -img.height * s / 2, img.width * s, img.height * s);
+        img.close();
+      }
+    }
+    return cv;
+  }
+  function toGray(cv) {
+    const c = cv.getContext('2d'), d = c.getImageData(0, 0, cv.width, cv.height), a = d.data;
+    for (let i = 0; i < a.length; i += 4) { const y = a[i] * .299 + a[i + 1] * .587 + a[i + 2] * .114; a[i] = a[i + 1] = a[i + 2] = y; }
+    c.putImageData(d, 0, 0);
+  }
+  const canvasBytes = (cv, type, q) => new Promise(r => cv.toBlob(r, type, q)).then(b => b.arrayBuffer()).then(b => new Uint8Array(b));
+
+  // Visible page coordinates (origin bottom left, as you see the page) → PDF coordinates, respecting the page rotation
+  function pageFrame(pg) {
+    const r = ((pg.getRotation().angle % 360) + 360) % 360, { x: x0, y: y0, width: w, height: hh } = pg.getCropBox();
+    const at = (vx, vy) => r === 90 ? { x: x0 + w - vy, y: y0 + vx } : r === 180 ? { x: x0 + w - vx, y: y0 + hh - vy } : r === 270 ? { x: x0 + vy, y: y0 + hh - vx } : { x: x0 + vx, y: y0 + vy };
+    return { r, W: r % 180 ? hh : w, H: r % 180 ? w : hh, at };
+  }
+  // Page numbers & stamp – as real text, so it stays sharp and searchable
+  async function decorate(out) {
+    if (!opts.num && !(opts.stamp && opts.stampTxt.trim())) return;
+    const { StandardFonts, rgb, degrees } = PDFLib;
+    const font = await out.embedFont(StandardFonts.Helvetica), bold = await out.embedFont(StandardFonts.HelveticaBold);
+    const ok = new Set(bold.getCharacterSet()), clean = s => [...s].filter(ch => ok.has(ch.codePointAt(0))).join('');   // standard fonts only know Latin-1
+    const stamp = clean(opts.stampTxt.trim().toUpperCase()), all = out.getPages(), red = rgb(.86, .15, .15);
+    all.forEach((pg, i) => {
+      const f = pageFrame(pg), rot = a => degrees(f.r + a);
+      if (opts.num) {
+        const txt = opts.numFmt === 'nN' ? `${i + 1} / ${all.length}` : String(i + 1), size = Math.max(8, Math.min(11, f.W / 55)), tw = font.widthOfTextAtSize(txt, size), m = Math.max(24, f.W * .06);
+        const vx = opts.numPos === 'l' ? m : opts.numPos === 'r' ? f.W - m - tw : (f.W - tw) / 2;
+        pg.drawText(txt, { ...f.at(vx, Math.max(16, f.H * .028)), size, font, color: rgb(.35, .35, .38), rotate: rot(0) });
+      }
+      if (stamp) {
+        if (opts.stampStyle === 'diag') {   // large, transparent, diagonally across the page
+          const a = Math.atan2(f.H, f.W), size = Math.min(f.H * .2, .78 * Math.hypot(f.W, f.H) / bold.widthOfTextAtSize(stamp, 1)), tw = bold.widthOfTextAtSize(stamp, size), ch = size * .7;
+          const ux = Math.cos(a), uy = Math.sin(a);
+          pg.drawText(stamp, { ...f.at(f.W / 2 - ux * tw / 2 + uy * ch / 2, f.H / 2 - uy * tw / 2 - ux * ch / 2), size, font: bold, color: red, opacity: .22, rotate: rot(a * 180 / Math.PI) });
+        } else {   // framed stamp in the top right corner
+          const size = Math.max(10, Math.min(16, f.W / 36)), tw = bold.widthOfTextAtSize(stamp, size), pad = size * .55, bw = tw + pad * 2, bh = size * 1.6, m = Math.max(20, f.W * .05);
+          const bx = f.W - m - bw, by = f.H - m - bh;
+          pg.drawRectangle({ ...f.at(bx, by), width: bw, height: bh, borderColor: red, borderWidth: 1.6, borderOpacity: .85, rotate: rot(0) });
+          pg.drawText(stamp, { ...f.at(bx + pad, by + (bh - size * .7) / 2), size, font: bold, color: red, opacity: .85, rotate: rot(0) });
+        }
+      }
+    });
+  }
+
+  async function build(list, progress) {
     const { PDFDocument, degrees } = PDFLib, out = await PDFDocument.create(), docs = new Map();
-    for (const p of list) {
-      if (p.src.kind === 'pdf') {
-        let d = docs.get(p.src); if (!d) { d = await PDFDocument.load(p.src.bytes, { updateMetadata: false }); docs.set(p.src, d); }
+    const dpi = opts.dpi || (opts.gray ? 200 : 0), q = opts.dpi === 100 ? .6 : opts.dpi === 150 ? .72 : .85;
+    for (const [i, p] of list.entries()) {
+      if (dpi && p.src.kind !== 'blank') {   // shrink / grayscale: page becomes an image
+        progress?.(i + 1, list.length);
+        const cv = await renderPage(p, dpi); if (opts.gray) toGray(cv);
+        const img = await out.embedJpg(await canvasBytes(cv, 'image/jpeg', q)), w = cv.width * 72 / dpi, hh = cv.height * 72 / dpi;
+        out.addPage([w, hh]).drawImage(img, { x: 0, y: 0, width: w, height: hh });
+        cv.width = cv.height = 0;
+      } else if (p.src.kind === 'blank') {
+        out.addPage(A4).setRotation(degrees(p.rot));
+      } else if (p.src.kind === 'pdf') {
+        let d = docs.get(p.src);
+        if (!d) {
+          d = await PDFDocument.load(p.src.bytes, { updateMetadata: false }); docs.set(p.src, d);
+          if (opts.flatten) try { d.getForm().flatten(); } catch {}   // filled-in fields become fixed text
+        }
         const [cp] = await out.copyPages(d, [p.index]);
         cp.setRotation(degrees((cp.getRotation().angle + p.rot) % 360));
         out.addPage(cp);
@@ -7809,6 +7950,7 @@ function mountPdfWerk(view) {
         const pg = out.addPage([W, H]); pg.drawImage(img, { x: (W - w) / 2, y: (H - hh) / 2, width: w, height: hh }); pg.setRotation(degrees(p.rot));
       }
     }
+    await decorate(out);
     out.setProducer('Toms Tools · PDF-Werk'); out.setCreator('Toms Tools');
     return new Blob([await out.save()], { type: 'application/pdf' });
   }
@@ -7819,16 +7961,45 @@ function mountPdfWerk(view) {
     try { await fn(); } catch (e) { toast(T('Speichern fehlgeschlagen: ') + (e.message || e), 'err', { ms: 7000 }); }
     setBusy(false);
   }
-  const saveAll = () => run('PDF …', async () => { const b = await build(pages); download(fileName(), b, 'application/pdf'); toast(`${pagesTxt(pages.length)} ✓ · ${fmtSize(b.size)}`, 'ok'); });
-  const saveSel = () => run('PDF …', async () => { const l = selected(); if (!l.length) return; const b = await build(l); download(fileName(isEN() ? '-selection' : '-auswahl'), b, 'application/pdf'); toast(`${pagesTxt(l.length)} ✓`, 'ok'); });
-  const saveSplit = n => run('PDF …', async () => {
-    const files = [], base = fileName().replace(/\.pdf$/, ''), digits = String(Math.ceil(pages.length / n)).length;
-    for (let i = 0, k = 1; i < pages.length; i += n, k++) {
-      busyTxt.textContent = `PDF … ${k}/${Math.ceil(pages.length / n)}`;
-      files.push({ path: `${base}-${String(k).padStart(digits, '0')}.pdf`, blob: await build(pages.slice(i, i + n)), mtime: Date.now() });
+  const prog = (i, n) => { busyTxt.textContent = `PDF … ${i}/${n}`; };
+  const inSize = list => list.reduce((s, p) => s + (p.src.size || 0) / Math.max(1, pages.filter(x => x.src === p.src).length), 0);
+  const saveAll = () => run('PDF …', async () => {
+    const b = await build(pages, prog), before = inSize(pages); download(fileName(), b, 'application/pdf');
+    toast(`${pagesTxt(pages.length)} ✓ · ${fmtSize(b.size)}` + (opts.dpi && before > b.size ? ` (−${Math.round((1 - b.size / before) * 100)} %)` : ''), 'ok');
+    if (opts.dpi && b.size > before * 1.05) toast(T('Die Originale waren schon kleiner – „Verkleinern“ lohnt sich nur bei Scans und Fotos.'), 'warn', { ms: 6000 });
+  });
+  const saveSel = () => run('PDF …', async () => { const l = selected(); if (!l.length) return; const b = await build(l, prog); download(fileName(isEN() ? '-selection' : '-auswahl'), b, 'application/pdf'); toast(`${pagesTxt(l.length)} ✓`, 'ok'); });
+  async function saveGroups(groups) {
+    const files = [], base = fileName().replace(/\.pdf$/, ''), digits = String(groups.length).length;
+    for (const [k, g] of groups.entries()) {
+      busyTxt.textContent = `PDF … ${k + 1}/${groups.length}`;
+      files.push({ path: `${base}-${String(k + 1).padStart(digits, '0')}.pdf`, blob: await build(g), mtime: Date.now() });
     }
-    download(base + '.zip', await makeZip(files), 'application/zip');
-    toast(`${files.length} × PDF → ZIP ✓`, 'ok');
+    if (files.length === 1) download(files[0].path, files[0].blob, 'application/pdf');
+    else download(base + '.zip', await makeZip(files), 'application/zip');
+    toast(`${files.length} × PDF${files.length > 1 ? ' → ZIP' : ''} ✓`, 'ok');
+  }
+  const saveSplit = n => run('PDF …', () => {
+    const groups = []; for (let i = 0; i < pages.length; i += n) groups.push(pages.slice(i, i + n));
+    return saveGroups(groups);
+  });
+  const saveRanges = () => run('PDF …', () => {
+    const groups = parseRanges(opts.ranges, pages.length).map(g => g.map(i => pages[i]));
+    if (!groups.length) { toast(T('Bereiche angeben, z. B. 1-3, 4-9'), 'warn'); return; }
+    return saveGroups(groups);
+  });
+  // Pages → images (selection if there is one, otherwise all)
+  const saveImages = type => run(type.toUpperCase() + ' …', async () => {
+    const list = selected().length ? selected() : pages, base = fileName().replace(/\.pdf$/, ''), digits = String(list.length).length, files = [];
+    for (const [i, p] of list.entries()) {
+      busyTxt.textContent = `${type.toUpperCase()} … ${i + 1}/${list.length}`;
+      const cv = await renderPage(p, 150); if (opts.gray) toGray(cv);
+      files.push({ path: `${base}-${String(pages.indexOf(p) + 1).padStart(digits, '0')}.${type}`, blob: new Blob([await canvasBytes(cv, 'image/' + (type === 'jpg' ? 'jpeg' : 'png'), .9)]), mtime: Date.now() });
+      cv.width = cv.height = 0;
+    }
+    if (files.length === 1) download(files[0].path, files[0].blob, 'image/' + type);
+    else download(base + '-' + type + '.zip', await makeZip(files), 'application/zip');
+    toast(`${files.length} × ${type.toUpperCase()} ✓`, 'ok');
   });
 
   /* ---------- UI ---------- */
@@ -7844,11 +8015,17 @@ function mountPdfWerk(view) {
     h('span', null, T('oder')),
     h('button', { class: 'btn primary', onclick: pick }, icon('plus'), T('Dateien auswählen')),
     h('small', null, 'PDF + PDF → 1 PDF · JPG/PNG → A4'));
+  const mixBtn = h('button', { class: 'btn sm ghost', title: T('Einseitig gescannt? Datei 1 = Vorderseiten, Datei 2 = Rückseiten'), onclick: e => popMenu(e.currentTarget, [
+    { head: T('Vorder- & Rückseiten mischen') },
+    { label: T('Rückseiten rückwärts'), desc: T('Stapel umgedreht und nochmal gescannt – der Normalfall'), icon: 'refresh', onClick: () => interleave(true) },
+    { label: T('Rückseiten vorwärts'), desc: T('Rückseiten liegen schon in richtiger Reihenfolge'), icon: 'arrow', onClick: () => interleave(false) }]) }, icon('layers'), T('Mischen'));
   const head = h('div', { class: 'pfw-lhead' }, countEl,
     h('div', { class: 'pfw-lacts' },
       h('button', { class: 'btn sm ghost', onclick: pick }, icon('plus'), T('Dateien')),
       h('button', { class: 'btn sm ghost', onclick: () => { const all = pages.every(p => p.sel); pages.forEach(p => { p.sel = !all; }); paint(); } }, icon('check'), T('Alle')),
       h('button', { class: 'btn sm ghost', onclick: () => { pages.reverse(); paint(); } }, icon('down'), T('Umkehren')),
+      h('button', { class: 'btn sm ghost', title: T('Nach der Auswahl, sonst am Ende'), onclick: addBlank }, icon('file'), T('Leerseite')),
+      mixBtn,
       h('button', { class: 'btn sm ghost', onclick: () => remove([...pages]) }, icon('trash'), T('Leeren'))));
   const main = h('div', { class: 'pfw-card pfw-main',
     ondragover: e => { if (!dragging && [...(e.dataTransfer?.items || [])].some(i => i.kind === 'file')) { e.preventDefault(); main.classList.add('over'); } },
@@ -7861,17 +8038,59 @@ function mountPdfWerk(view) {
   const selBtns = [
     h('button', { class: 'btn sm', onclick: () => rotate(selected(), -90) }, icon('rotl'), '−90°'),
     h('button', { class: 'btn sm', onclick: () => rotate(selected(), 90) }, icon('rotr'), '+90°'),
-    h('button', { class: 'btn sm', onclick: () => remove(selected()) }, icon('trash'), T('Entfernen'))];
+    h('button', { class: 'btn sm', onclick: () => remove(selected()) }, icon('trash'), T('Entfernen')),
+    h('button', { class: 'btn sm', onclick: () => duplicate(selected()) }, icon('copy'), T('Duplizieren'))];
   const selSave = h('button', { class: 'btn block', onclick: saveSel }, icon('download'), T('Auswahl → PDF'));
+  const rangeSelInp = h('input', { class: 'inp', placeholder: '1-3, 7', spellcheck: false, autocomplete: 'off',
+    onkeydown: e => { if (e.key === 'Enter') rangeSelGo(); } });
+  const rangeSelGo = () => { const s = new Set(parseRanges(rangeSelInp.value, pages.length).flat()); selectBy(i => s.has(i)); };
+  const quickSel = h('div', { class: 'pfw-row pfw-quick' },
+    h('button', { class: 'btn sm ghost', title: T('Ungerade Seiten'), onclick: () => selectBy(i => i % 2 === 0) }, '1, 3, 5 …'),
+    h('button', { class: 'btn sm ghost', title: T('Gerade Seiten'), onclick: () => selectBy(i => i % 2 === 1) }, '2, 4, 6 …'),
+    h('div', { class: 'pfw-range' }, rangeSelInp, h('button', { class: 'btn sm', title: 'Enter', onclick: rangeSelGo }, icon('check'))));
+
+  // Options applied to every saved PDF
+  const optCount = h('span', { class: 'pfw-optn' });
+  const sub = (on, ...kids) => { const el = h('div', { class: 'pfw-sub', hidden: !on }, ...kids); return el; };
+  const optLine = (label, ctrl, subEl, desc) => h('div', { class: 'pfw-opt' }, h('label', { class: 'pfw-opt-h' }, h('span', null, label, desc ? h('small', null, desc) : null), ctrl), subEl);
+  const numSub = sub(opts.num,
+    segEl([['l', '1 · ·'], ['c', '· 1 ·'], ['r', '· · 1']], opts.numPos, v => { opts.numPos = v; saveOpts(); }),
+    segEl([['n', '1'], ['nN', '1 / 9']], opts.numFmt, v => { opts.numFmt = v; saveOpts(); }));
+  const stampList = h('datalist', { id: 'pfw-stamps' }, ...(isEN() ? ['DRAFT', 'COPY', 'CONFIDENTIAL', 'PAID', 'APPROVED', 'ORIGINAL'] : ['ENTWURF', 'KOPIE', 'VERTRAULICH', 'BEZAHLT', 'GEPRÜFT', 'ORIGINAL']).map(v => h('option', { value: v })));
+  const stampInp = h('input', { class: 'inp', value: opts.stampTxt, list: 'pfw-stamps', spellcheck: false, autocomplete: 'off', oninput: () => { opts.stampTxt = stampInp.value; saveOpts(); } });
+  const stampSub = sub(opts.stamp, stampInp, stampList,
+    segEl([['diag', '⤢ Diagonal'], ['corner', '↗ ▭']], opts.stampStyle, v => { opts.stampStyle = v; saveOpts(); }));
+  const dpiHint = h('small', { class: 'pfw-hint', hidden: !opts.dpi }, T('Seiten werden zu Bildern – Text lässt sich danach nicht mehr markieren.'));
+  const optSwitch = (key, subEl, after) => switchEl(opts[key], v => { opts[key] = v; if (subEl) subEl.hidden = !v; after?.(); saveOpts(); paintOpts(); });
+  const optsBox = h('details', { class: 'pfw-opts', open: !!opts.optOpen, ontoggle: e => { opts.optOpen = e.currentTarget.open; saveOpts(); } },
+    h('summary', null, icon('sliders'), T('Optionen'), optCount),
+    optLine(T('Seitenzahlen'), optSwitch('num', numSub), numSub),
+    optLine(T('Stempel'), optSwitch('stamp', stampSub), stampSub),
+    h('div', { class: 'pfw-opt' }, h('div', { class: 'pfw-opt-h' }, h('span', null, T('Verkleinern'), h('small', null, T('für E-Mail-Anhänge')))),
+      segEl([[0, 'Original'], [150, '150 dpi'], [100, '100 dpi']], opts.dpi, v => { opts.dpi = v; dpiHint.hidden = !v; saveOpts(); paintOpts(); }), dpiHint),
+    optLine(T('Graustufen'), optSwitch('gray')),
+    optLine(T('Formulare fixieren'), optSwitch('flatten'), null, T('Ausgefüllte Felder werden fester Text')));
+  function paintOpts() {
+    const n = [opts.num, opts.stamp, opts.dpi, opts.gray, opts.flatten].filter(Boolean).length;
+    optCount.textContent = n || ''; optCount.hidden = !n;
+  }
+  paintOpts();
+  const rangesInp = h('input', { class: 'inp', value: opts.ranges, placeholder: '1-3, 4-9', spellcheck: false, autocomplete: 'off',
+    oninput: () => { opts.ranges = rangesInp.value; saveOpts(); }, onkeydown: e => { if (e.key === 'Enter') saveRanges(); } });
+  const splitRanges = h('button', { class: 'btn', title: T('Jeder Bereich wird eine eigene PDF'), onclick: saveRanges }, T('Teilen'));
+  const imgBtns = [h('button', { class: 'btn sm', onclick: () => saveImages('jpg') }, icon('image'), 'JPG'), h('button', { class: 'btn sm', onclick: () => saveImages('png') }, icon('image'), 'PNG')];
+  const imgInfo = h('div', { class: 'pfw-selinfo' });
   const nameInp = h('input', { class: 'inp', value: opts.name, placeholder: T('Dateiname'), spellcheck: false, autocomplete: 'off', oninput: () => { opts.name = nameInp.value; saveOpts(); } });
   const everyInp = h('input', { class: 'inp pfw-every', type: 'number', min: 1, max: 999, value: opts.every, oninput: () => { opts.every = Math.max(1, Math.min(999, Math.round(+everyInp.value) || 1)); saveOpts(); paint(); } });
   const saveBtn = h('button', { class: 'btn primary block pfw-go', onclick: saveAll }, icon('download'), h('span'));
   const splitOne = h('button', { class: 'btn block', onclick: () => saveSplit(1) }, icon('layers'), T('1 Seite = 1 PDF · ZIP'));
   const splitN = h('button', { class: 'btn', onclick: () => saveSplit(opts.every) }, T('Teilen'));
   const side = h('div', { class: 'pfw-card pfw-side' },
-    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Auswahl')), selInfo, h('div', { class: 'pfw-row' }, ...selBtns), selSave),
-    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Speichern')), h('label', { class: 'pfw-field' }, h('span', null, T('Dateiname')), h('div', { class: 'pfw-name' }, nameInp, h('span', null, '.pdf'))), saveBtn),
-    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Teilen')), splitOne, h('div', { class: 'pfw-row pfw-every-row' }, h('span', null, T('Je')), everyInp, h('span', null, T('Seiten')), splitN)));
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Auswahl')), selInfo, quickSel, h('div', { class: 'pfw-row' }, ...selBtns), selSave),
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Speichern')), h('label', { class: 'pfw-field' }, h('span', null, T('Dateiname')), h('div', { class: 'pfw-name' }, nameInp, h('span', null, '.pdf'))), optsBox, saveBtn),
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Teilen')), splitOne, h('div', { class: 'pfw-row pfw-every-row' }, h('span', null, T('Je')), everyInp, h('span', null, T('Seiten')), splitN),
+      h('div', { class: 'pfw-row pfw-every-row' }, rangesInp, splitRanges)),
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Als Bilder')), imgInfo, h('div', { class: 'pfw-row' }, ...imgBtns)));
 
   function setBusy(on, txt) { busy = on; busyEl.hidden = !on; busyTxt.textContent = txt || ''; paint(); }
   function paint() {
@@ -7893,8 +8112,11 @@ function mountPdfWerk(view) {
     selInfo.textContent = sel ? T('{p} ausgewählt', { p: pagesTxt(sel) }) : T('Klick · ⇧ + Klick');
     selBtns.forEach(b => { b.disabled = !sel || busy; }); selSave.disabled = !sel || busy;
     saveBtn.lastChild.textContent = n > 1 && sources.length > 1 ? T('Zusammenführen → PDF') : 'PDF';
-    saveBtn.disabled = splitOne.disabled = splitN.disabled = !n || busy;
+    saveBtn.disabled = splitOne.disabled = splitN.disabled = splitRanges.disabled = !n || busy;
     everyInp.disabled = !n || busy;
+    mixBtn.hidden = sources.length < 2;
+    imgBtns.forEach(b => { b.disabled = !n || busy; });
+    imgInfo.textContent = (sel ? pagesTxt(sel) : T('Alle Seiten')) + ' · 150 dpi';
   }
 
   view.append(h('div', { class: 'pfw' }, h('div', { class: 'pfw-in' },
@@ -7921,7 +8143,7 @@ function mountPdfWerk(view) {
 TT.register({
   id: 'pdfwerk', name: 'PDF-Werk', icon: 'files', c: '#ae215d', c2: '#ae215d',   // Rosé → wine red
   tagline: 'PDFs zusammenführen & teilen',
-  desc: 'PDFs zusammenführen, teilen, Seiten drehen und sortieren.',
+  desc: 'PDFs zusammenführen, teilen, sortieren und verkleinern – mit Seitenzahlen und Stempel.',
   mount: mountPdfWerk,
 });
 

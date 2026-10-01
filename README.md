@@ -79,7 +79,7 @@ Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechne
 
 <img src="docs/webp.png" alt="WebP Converter" width="720">
 
-**PDF-Werk** – PDFs zusammenführen, teilen, Seiten drehen und sortieren.
+**PDF-Werk** – PDFs zusammenführen, teilen und sortieren, Seiten drehen und duplizieren. Seitenzahlen, Stempel (z. B. ENTWURF), Verkleinern für E-Mail, Graustufen, Formulare fixieren, einseitige Scans mischen, Seiten als JPG/PNG.
 
 <img src="docs/pdfwerk.png" alt="PDF-Werk" width="720">
 

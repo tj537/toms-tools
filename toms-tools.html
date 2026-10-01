@@ -3791,6 +3791,54 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Laberwerk (2)
+  'Text hier eingeben oder einfügen …': 'Type or paste text here …', 'Doppelklick: zurücksetzen': 'Double-click to reset',
+  // Laberwerk
+  'Der Browser hat die Sprachausgabe blockiert – bitte einmal auf ▶ klicken.': 'The browser blocked speech output – click ▶ once.',
+  'Diese Stimme ist gerade nicht verfügbar – bitte eine andere wählen.': 'This voice isn’t available right now – please pick another one.',
+  'Dieser Browser unterstützt keine Sprachausgabe.': 'This browser doesn’t support speech output.', 'Kein Text zum Vorlesen.': 'Nothing to read.',
+  'Aufnahme wird von diesem Browser nicht unterstützt – bitte Chrome oder Edge nutzen.': 'This browser can’t record – please use Chrome or Edge.', 'Kein Text zum Aufnehmen.': 'Nothing to record.',
+  'Kein Ton geteilt. Bitte „Gesamter Bildschirm“ wählen und „Systemaudio teilen“ aktivieren.': 'No audio was shared. Choose “Entire screen” and turn on “Share system audio”.',
+  'Aufnahme abgebrochen.': 'Recording cancelled.', 'Verwerfen': 'Discard', 'Aufnahme fertig – jetzt herunterladen.': 'Recording done – download it now.',
+  'Browser können Sprachausgabe nicht direkt speichern – daher nehmen wir den Systemton auf.': 'Browsers can’t save speech output directly – so we record the system audio instead.',
+  'Während der Aufnahme keine anderen Töne abspielen – sie würden mit aufgenommen.': 'Don’t play other sounds while recording – they would be recorded too.',
+  'Systemaudio lässt sich auf dem Mac nur mit aktuellem macOS (14.2+) und Chrome teilen. Unter Windows mit Chrome oder Edge klappt es zuverlässig.': 'On a Mac, system audio can only be shared with a current macOS (14.2+) and Chrome. On Windows it works reliably with Chrome or Edge.',
+  'Abbrechen': 'Cancel', 'Aufnahme starten': 'Start recording', 'Aus der Zwischenablage einfügen': 'Paste from clipboard',
+  'Kein Zugriff auf die Zwischenablage – bitte mit Strg+V einfügen.': 'No clipboard access – paste with Ctrl+V instead.', 'Einfügen': 'Paste', 'Beispieltext': 'Sample text', 'Beispiel': 'Example',
+  'Text leeren': 'Clear text', 'Nächster Satz': 'Next sentence', 'Bereit': 'Ready', 'Kein Text': 'No text',
+  'Pausiert · Klicke auf einen Satz, um dorthin zu springen': 'Paused · click a sentence to jump to it',
+  'Klicke auf einen Satz, um dorthin zu springen · Esc stoppt': 'Click a sentence to jump to it · Esc stops',
+  'Tipp: Markiere einen Teil des Textes, um nur diesen vorlesen zu lassen.': 'Tip: select part of the text to have only that read aloud.', 'Stimme suchen …': 'Search voices …',
+  'Stimmen werden geladen …': 'Loading voices …', 'Sprachausgabe wird von diesem Browser nicht unterstützt.': 'This browser doesn’t support speech output.',
+  'Keine Offline-Stimme gefunden. Schalter „Nur Offline“ ausschalten?': 'No offline voice found. Turn off “Offline only”?', 'Keine passende Stimme.': 'No matching voice.',
+  'Probe hören': 'Play sample', 'Tempo': 'Speed', 'Tonhöhe': 'Pitch', 'Lautstärke': 'Volume', 'Als Audio aufnehmen': 'Record as audio', 'Stimme': 'Voice',
+  'Online-Stimmen brauchen Internet': 'Online voices need internet', 'Klang': 'Sound', 'Zurücksetzen': 'Reset',
+  'Unhörbares Rauschen hält Kopfhörer & Lautsprecher wach': 'Inaudible noise keeps headphones & speakers awake', 'Knackschutz': 'Anti-crackle',
+  'Gegen Knacken in Satzpausen (Bluetooth, USB-Audio)': 'Prevents crackling between sentences (Bluetooth, USB audio)',
+  'In Firefox kann es in Satzpausen leise knacken. Safari und Chrome klingen meist sauberer.': 'Firefox may crackle softly between sentences. Safari and Chrome usually sound cleaner.',
+  'Die Klangqualität hängt vom Browser ab – Safari und Chrome klingen meist sauberer als Firefox.': 'Sound quality depends on the browser – Safari and Chrome usually sound cleaner than Firefox.',
+  'Exportieren': 'Export', 'Systemton aufnehmen → WAV': 'Record system audio → WAV',
+  'Online-Stimme braucht Internet – bitte eine Offline-Stimme wählen.': 'Online voices need internet – please pick an offline voice.', 'Sprachausgabe fehlgeschlagen: ': 'Speech output failed: ',
+  'Umwandlung in WAV fehlgeschlagen – bitte als {f} speichern.': 'Converting to WAV failed – please save as {f} instead.', 'Im nächsten Fenster ': 'In the next window, choose ',
+  '„Gesamter Bildschirm“': '“Entire screen”', ' wählen.': '.', 'Unten ': 'Turn on ', '„Systemaudio teilen“': '“Share system audio”',
+  ' einschalten und auf „Teilen“ klicken.': ' at the bottom and click “Share”.',
+  'Der Text wird von vorne vorgelesen und aufgenommen. Danach als ': 'The text is read from the start and recorded. Then download it as ', ' herunterladen.': '.', 'Tipp': 'Tip',
+  'Hinweis für Mac': 'Note for Mac', 'Satz {a} von {b}': 'Sentence {a} of {b}', 'Alle Sprachen ({n})': 'All languages ({n})', 'Nur Offline': 'Offline only',
+  // Pitcher
+  'Weiter': 'Next', '→ · Leertaste': '→ · Space', 'Aufklappen': 'Reveal', 'Einzeln': 'One by one',
+  'Aufklappen = Schritt für Schritt · Einzeln = ein Abschnitt': 'Reveal = step by step · One by one = one section at a time',
+  'Vollbild wird hier nicht unterstützt.': 'Fullscreen isn’t supported here.', 'Markdown Kurzreferenz': 'Markdown cheat sheet', 'Umbruch · Strg/⌘+Enter': 'Break · Ctrl/⌘+Enter',
+  'Markdown-Referenz': 'Markdown reference', 'Vorschau': 'Preview', 'Umbruch für den Präsentationsmodus': 'Break for presentation mode', 'Umbruch': 'Break', 'Ende': 'End', 'Präsentieren': 'Present',
+  'Beenden': 'Stop', 'Überschrift 1': 'Heading 1', 'Überschrift 2': 'Heading 2', 'Überschrift 3': 'Heading 3', 'Fett': 'Bold', 'Kursiv': 'Italic', 'Inline-Code': 'Inline code',
+  'Aufzählung': 'Bullet list', 'Nummeriert': 'Numbered list', 'Checkbox offen': 'Open checkbox', 'Checkbox erledigt': 'Checked checkbox', 'Zitat': 'Quote', 'Trennlinie': 'Divider',
+  'Umbruch (Präsentation)': 'Break (presentation)', 'Codeblock': 'Code block',
+  // Timer
+  'Klicken, um die Zeit einzugeben': 'Click to type in a time', 'Bitte als Minuten („5“) oder „mm:ss“ / „h:mm:ss“ eingeben.': 'Enter minutes (“5”) or “mm:ss” / “h:mm:ss”.', 'Leertaste': 'Space',
+  'Vollbild (F)': 'Fullscreen (F)', 'Einstellungen': 'Settings', 'Zurücksetzen (R)': 'Reset (R)', '1 Minute weniger (↓)': '1 minute less (↓)', '1 Minute mehr (↑)': '1 minute more (↑)',
+  'Vollbild wird hier nicht unterstützt.': 'Fullscreen isn’t supported here.', 'Schließen': 'Close', 'Dauer': 'Duration', 'Minuten oder mm:ss': 'minutes or mm:ss', 'Beschriftung': 'Label',
+  'z. B. Redezeit, Pause …': 'e.g. Talk, Break …', 'Gelb ab': 'Yellow from', 'Sek., 0 = aus': 'sec, 0 = off', 'Rot ab': 'Red from', 'Sek., blinkt': 'sec, flashes', 'Nach Ablauf': 'When time is up',
+  'Weiterzählen (+)': 'Keep counting (+)', 'Bei 0 stoppen': 'Stop at 0', 'Hintergrund': 'Background', 'Schwarz': 'Black', 'Dunkel': 'Dark', 'Hell': 'Light', 'Ziffernfarbe': 'Digit color',
+  'Fortschrittsbalken': 'Progress bar', 'Uhrzeit anzeigen': 'Show clock', 'Signalton bei 0': 'Beep at 0', 'Vollbild': 'Fullscreen',
   // Todo
   'Heute': 'Today', 'Morgen': 'Tomorrow', 'Gestern': 'Yesterday', 'Alle Aufgaben': 'All tasks', 'Demnächst': 'Upcoming', 'Erledigt': 'Done', 'Projektname…': 'Project name…', 'Projekte': 'Projects',
   'Ansicht': 'View', 'Suchen…': 'Search…', 'Aufgabe eingeben …': 'Add a task …', 'Priorität': 'Priority', 'Projekt': 'Project', 'Hinzufügen': 'Add', 'Keine Aufgaben hier.': 'No tasks here.',
@@ -11773,7 +11821,7 @@ TT.register({
 function mountPitcher(view) {
   view.style.padding = '0';
 
-  const DEFAULT = '# Pitch Deck 2025\n\n## Das Problem\n\nUnternehmen verlieren täglich Stunden durch **manuelle Prozesse** und fehlende Tools.\n\n- Dateneingabe kostet *3+ Stunden täglich* pro Mitarbeiter\n- Fehlerquote bei manueller Erfassung liegt bei `~8%`\n- Keine einheitliche Datenbasis zwischen Teams\n- Berichte werden mit `Excel` erstellt – error-prone & langsam\n\n---\n\n## Die Lösung\n\n**Unsere KI-Plattform** automatisiert den gesamten Workflow von Erfassung bis Report.\n\n### Kernfunktionen\n\n- [x] Echtzeit-Datenintegration aus 50+ Quellen\n- [x] Automatische Berichterstellung per KI\n- [x] Rollenbasierte Zugriffssteuerung\n- [x] Audit-Trail & Compliance-Export\n- [ ] Mobile App für iOS & Android (Q2 2025)\n- [ ] Drittanbieter-API mit Webhook-Support (Q3 2025)\n\n### Technologie\n\n> Gebaut auf modernster Cloud-Infrastruktur – 99.9% Uptime garantiert, SOC 2 zertifiziert.\n\n## Warum wir gewinnen\n\n1. **10× schneller** als bestehende Lösungen\n2. **Keine IT-Kenntnisse** nötig – Setup in unter 1 Stunde\n3. **DSGVO-konform** – Daten bleiben in der EU\n\n---\n\n## Zahlen & Fakten\n\n1. **500+** Unternehmen im Einsatz\n2. **87%** Zeitersparnis im Durchschnitt\n3. **ROI** von 340% im ersten Jahr nachgewiesen\n\n---\n\n## Nächste Schritte\n\n> Demo-Termin vereinbaren – wir zeigen alles live in 30 Minuten.\n\n1. Kostenlose Demo buchen\n2. Pilotphase mit Ihrem Team starten\n3. Rollout & Onboarding planen';
+  const DEFAULT = isEN() ? '# Pitch Deck 2025\n\n## The Problem\n\nCompanies lose hours every day to **manual processes** and missing tools.\n\n- Data entry costs *3+ hours a day* per employee\n- Error rate in manual entry is around `~8%`\n- No shared data between teams\n- Reports are built in `Excel` – error-prone & slow\n\n---\n\n## The Solution\n\n**Our AI platform** automates the whole workflow, from data entry to report.\n\n### Key features\n\n- [x] Real-time data integration from 50+ sources\n- [x] Automatic AI reporting\n- [x] Role-based access control\n- [x] Audit trail & compliance export\n- [ ] Mobile app for iOS & Android (Q2 2025)\n- [ ] Third-party API with webhook support (Q3 2025)\n\n### Technology\n\n> Built on state-of-the-art cloud infrastructure – 99.9% uptime guaranteed, SOC 2 certified.\n\n## Why we win\n\n1. **10× faster** than existing solutions\n2. **No IT skills** needed – set up in under an hour\n3. **GDPR-compliant** – data stays in the EU\n\n---\n\n## Facts & figures\n\n1. **500+** companies using it\n2. **87%** time saved on average\n3. **ROI** of 340% proven in the first year\n\n---\n\n## Next steps\n\n> Book a demo – we’ll show you everything live in 30 minutes.\n\n1. Book a free demo\n2. Start a pilot with your team\n3. Plan rollout & onboarding' : '# Pitch Deck 2025\n\n## Das Problem\n\nUnternehmen verlieren täglich Stunden durch **manuelle Prozesse** und fehlende Tools.\n\n- Dateneingabe kostet *3+ Stunden täglich* pro Mitarbeiter\n- Fehlerquote bei manueller Erfassung liegt bei `~8%`\n- Keine einheitliche Datenbasis zwischen Teams\n- Berichte werden mit `Excel` erstellt – error-prone & langsam\n\n---\n\n## Die Lösung\n\n**Unsere KI-Plattform** automatisiert den gesamten Workflow von Erfassung bis Report.\n\n### Kernfunktionen\n\n- [x] Echtzeit-Datenintegration aus 50+ Quellen\n- [x] Automatische Berichterstellung per KI\n- [x] Rollenbasierte Zugriffssteuerung\n- [x] Audit-Trail & Compliance-Export\n- [ ] Mobile App für iOS & Android (Q2 2025)\n- [ ] Drittanbieter-API mit Webhook-Support (Q3 2025)\n\n### Technologie\n\n> Gebaut auf modernster Cloud-Infrastruktur – 99.9% Uptime garantiert, SOC 2 zertifiziert.\n\n## Warum wir gewinnen\n\n1. **10× schneller** als bestehende Lösungen\n2. **Keine IT-Kenntnisse** nötig – Setup in unter 1 Stunde\n3. **DSGVO-konform** – Daten bleiben in der EU\n\n---\n\n## Zahlen & Fakten\n\n1. **500+** Unternehmen im Einsatz\n2. **87%** Zeitersparnis im Durchschnitt\n3. **ROI** von 340% im ersten Jahr nachgewiesen\n\n---\n\n## Nächste Schritte\n\n> Demo-Termin vereinbaren – wir zeigen alles live in 30 Minuten.\n\n1. Kostenlose Demo buchen\n2. Pilotphase mit Ihrem Team starten\n3. Rollout & Onboarding planen';
 
   let content = Store.get('pitcher-text', null) ?? DEFAULT, ptSize = 16, presenting = false, step = 0, nSteps = 1, pMode = Store.get('pitcher-mode', 'unfold');
   const saveContent = saveLater(() => Store.set('pitcher-text', content.length < 300000 ? content : DEFAULT), 400);   // Presentation survives reloads & ends up in the backup
@@ -11797,7 +11845,7 @@ function mountPitcher(view) {
         continue;
       }
       if (inCode) { codeBuf.push(ln); continue; }
-      if (/^\+\+\+\s*$/.test(ln)) { html += '<div class="pt-break" title="Umbruch für den Präsentationsmodus">Umbruch</div>'; cut(); continue; }
+      if (/^\+\+\+\s*$/.test(ln)) { html += '<div class="pt-break" title="' + T('Umbruch für den Präsentationsmodus') + '">' + T('Umbruch') + '</div>'; cut(); continue; }
       if (ln.startsWith('## ')) cut();
       if      (ln.startsWith('# '))       html += '<h1 class="pt-h1">'+inl(ln.slice(2))+'</h1>';
       else if (ln.startsWith('## '))      html += '<h2 class="pt-h2">'+inl(ln.slice(3))+'</h2>';
@@ -11833,8 +11881,8 @@ function mountPitcher(view) {
   /* ── Presentation: step by step ── */
   const navBack = h('button', {class:'pt-nav-back', title:'←', onclick:() => go(-1)}, icon('chev'));
   const navCnt = h('span', {class:'pt-nav-cnt'});
-  const navNextLbl = h('span', null, 'Weiter');
-  const navNext = h('button', {class:'pt-nav-next', title:'→ · Leertaste', onclick:() => go(1)}, navNextLbl, icon('chev'));
+  const navNextLbl = h('span', null, T('Weiter'));
+  const navNext = h('button', {class:'pt-nav-next', title:T('→ · Leertaste'), onclick:() => go(1)}, navNextLbl, icon('chev'));
   const navEl = h('div', {class:'pt-nav'}, navBack, navCnt, navNext);
   function showStep(dir) {
     const secs = [...preview.children];
@@ -11844,7 +11892,7 @@ function mountPitcher(view) {
     navCnt.textContent = (step + 1) + ' / ' + nSteps;
     navBack.disabled = step === 0;
     navNext.disabled = step >= nSteps - 1;
-    navNextLbl.textContent = step >= nSteps - 1 ? 'Ende' : 'Weiter';
+    navNextLbl.textContent = step >= nSteps - 1 ? T('Ende') : T('Weiter');
     if (!presenting || !dir) return;
     const cur = secs[step];
     if (!cur) return;
@@ -11859,14 +11907,14 @@ function mountPitcher(view) {
     step = n;
     showStep(d);
   }
-  const modeSeg = segEl([['all', 'Normal'], ['unfold', 'Aufklappen'], ['single', 'Einzeln']], pMode, m => {
+  const modeSeg = segEl([['all', 'Normal'], ['unfold', T('Aufklappen')], ['single', T('Einzeln')]], pMode, m => {
     pMode = m; Store.set('pitcher-mode', m);
     rightPanel.classList.toggle('pt-unfold', m === 'unfold');
     showStep(0); previewWrap.scrollTop = 0;
     if (m === 'unfold') preview.children[step]?.scrollIntoView({block:'start'});
   });
   modeSeg.classList.add('pt-mode');
-  modeSeg.title = 'Aufklappen = Schritt für Schritt · Einzeln = ein Abschnitt';
+  modeSeg.title = T('Aufklappen = Schritt für Schritt · Einzeln = ein Abschnitt');
 
   preview.addEventListener('click', e => {
     const item = e.target.closest('[data-li]');
@@ -11906,7 +11954,7 @@ function mountPitcher(view) {
   }
 
   const presentBtn = h('button', {class:'pt-present-btn', onclick: togglePresent},
-    icon('expand'), ' Präsentieren');
+    icon('expand'), ' ' + T('Präsentieren'));
 
   function togglePresent() {
     presenting = !presenting;
@@ -11915,18 +11963,18 @@ function mountPitcher(view) {
     leftPanel.style.display = presenting ? 'none' : '';
     rightPanel.classList.toggle('pt-presenting', presenting);
     presentBtn.replaceChildren(icon(presenting ? 'minimize2' : 'expand'));
-    presentBtn.append(presenting ? ' Beenden' : ' Präsentieren');
+    presentBtn.append(' ' + (presenting ? T('Beenden') : T('Präsentieren')));
     if (!presenting && document.fullscreenElement === rightPanel) document.exitFullscreen().catch(() => {});
     updatePreview();
   }
 
   /* ── Fullscreen: content only, controlled with the arrow keys ── */
-  const fsBtn = h('button', {class:'pt-present-btn pt-fs-btn', title:'F · ← →', onclick: () => toggleFs()}, icon('expand'), ' Vollbild');
+  const fsBtn = h('button', {class:'pt-present-btn pt-fs-btn', title:'F · ← →', onclick: () => toggleFs()}, icon('expand'), ' ' + T('Vollbild'));
   async function toggleFs() {
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
       else await rightPanel.requestFullscreen();
-    } catch { toast('Vollbild wird hier nicht unterstützt.', 'warn'); }
+    } catch { toast(T('Vollbild wird hier nicht unterstützt.'), 'warn'); }
   }
   let fsIdle = 0;
   const fsWake = () => {
@@ -11982,10 +12030,10 @@ function mountPitcher(view) {
     ['```',         'Codeblock'],
   ];
   const refPanel = h('div', {class:'pt-ref'});
-  refPanel.append(h('div', {class:'pt-ref-title'}, 'Markdown Kurzreferenz'));
+  refPanel.append(h('div', {class:'pt-ref-title'}, T('Markdown Kurzreferenz')));
   CHEAT.forEach(([s, l]) => {
     const code = h('code'); code.textContent = s;
-    refPanel.append(h('div', {class:'pt-ref-row'}, code, h('span', null, l)));
+    refPanel.append(h('div', {class:'pt-ref-row'}, code, h('span', null, T(l))));
   });
   let refOpen = false;
   function toggleRef() {
@@ -11997,8 +12045,8 @@ function mountPitcher(view) {
     h('div', {class:'pt-hd-row'},
       h('span', {class:'pt-hd-lbl'}, 'Markdown'),
       h('div', {class:'pt-hd-btns'},
-        h('button', {class:'pt-hd-btn pt-hd-brk', title:'Umbruch · Strg/⌘+Enter', onclick:insertBreak}, '+++'),
-        h('button', {class:'pt-hd-btn', title:'Markdown-Referenz', onclick:toggleRef}, '?'),
+        h('button', {class:'pt-hd-btn pt-hd-brk', title:T('Umbruch · Strg/⌘+Enter'), onclick:insertBreak}, '+++'),
+        h('button', {class:'pt-hd-btn', title:T('Markdown-Referenz'), onclick:toggleRef}, '?'),
         h('button', {class:'pt-hd-btn', title:'.md ↑', onclick:()=>fileIn.click()}, '↑'),
         h('button', {class:'pt-hd-btn', title:'.md ↓', onclick:downloadMd}, '↓'))),
     fileIn,
@@ -12011,7 +12059,7 @@ function mountPitcher(view) {
   const previewWrap = h('div', {class:'pt-preview-wrap', tabindex:-1, onmousemove: () => fsWake()}, preview);
   const rightPanel = h('div', {class:'pt-right' + (pMode === 'unfold' ? ' pt-unfold' : '')},
     h('div', {class:'pt-toolbar'},
-      h('span', {class:'pt-toolbar-lbl'}, 'Vorschau'),
+      h('span', {class:'pt-toolbar-lbl'}, T('Vorschau')),
       h('div', {class:'pt-toolbar-r'}, modeSeg, fsBtn, presentBtn)),
     previewWrap, navEl);
 
@@ -14328,8 +14376,8 @@ function mountSprechwerk(view) {
     it: 'Ciao, sono {n}. Questa è la mia voce.',
     nl: 'Hallo, ik ben {n}. Zo klink ik.',
   };
-  const DEMO = 'Willkommen bei Laberwerk.\n\nFüge hier einen beliebigen Text ein und lass ihn dir vorlesen – ganz ohne Internet, mit den Stimmen, die auf deinem Computer installiert sind. Während des Vorlesens wird das aktuelle Wort hervorgehoben. Klicke auf einen Satz, um direkt dorthin zu springen.';
-  const dn = (() => { try { return new Intl.DisplayNames(['de'], { type: 'language' }); } catch { return null; } })();
+  const DEMO = isEN() ? 'Welcome to Laberwerk.\n\nPaste any text here and have it read aloud – no internet needed, using the voices installed on your computer. The current word is highlighted while reading. Click a sentence to jump straight to it.' : 'Willkommen bei Laberwerk.\n\nFüge hier einen beliebigen Text ein und lass ihn dir vorlesen – ganz ohne Internet, mit den Stimmen, die auf deinem Computer installiert sind. Während des Vorlesens wird das aktuelle Wort hervorgehoben. Klicke auf einen Satz, um direkt dorthin zu springen.';
+  const dn = (() => { try { return new Intl.DisplayNames([isEN() ? 'en' : 'de'], { type: 'language' }); } catch { return null; } })();
   const langName = l => { l = l.replace('_', '-'); try { return dn?.of(l) || l; } catch { return l; } };
   const flag = l => { const r = (l.split(/[-_]/)[1] || '').toUpperCase(); return /^[A-Z]{2}$/.test(r) ? String.fromCodePoint(...[...r].map(c => 0x1F1A5 + c.charCodeAt(0))) : '🌐'; };
   const cleanName = n => n.replace(/^(Microsoft|Google|Apple)\s+/i, '').replace(/\s+-\s+.*$/, '').replace(/\s*\((Enhanced|Premium|Natural|Erweitert)\)/gi, '').replace(/\s+Online$/i, '').replace(/\s*\((?:[^()]|\([^()]*\))*\)\s*$/, '').trim();
@@ -14416,7 +14464,7 @@ function mountSprechwerk(view) {
     u.onend = () => { if (eng.utt !== u) return; eng.i = j; eng.word = null; speakChunk(); };
     u.onerror = e => {
       if (eng.utt !== u || e.error === 'interrupted' || e.error === 'canceled') return;
-      toast(e.error === 'not-allowed' ? 'Der Browser hat die Sprachausgabe blockiert – bitte einmal auf ▶ klicken.' : e.error === 'language-unavailable' || e.error === 'voice-unavailable' ? 'Diese Stimme ist gerade nicht verfügbar – bitte eine andere wählen.' : e.error === 'network' ? 'Online-Stimme braucht Internet – bitte eine Offline-Stimme wählen.' : 'Sprachausgabe fehlgeschlagen: ' + e.error, 'err');
+      toast(e.error === 'not-allowed' ? T('Der Browser hat die Sprachausgabe blockiert – bitte einmal auf ▶ klicken.') : e.error === 'language-unavailable' || e.error === 'voice-unavailable' ? T('Diese Stimme ist gerade nicht verfügbar – bitte eine andere wählen.') : e.error === 'network' ? T('Online-Stimme braucht Internet – bitte eine Offline-Stimme wählen.') : T('Sprachausgabe fehlgeschlagen: ') + e.error, 'err');
       stop();
     };
     eng.utt = u; eng.word = null; eng.gotB = false; eng.t0 = 0; eng.acc = 0;
@@ -14449,10 +14497,10 @@ function mountSprechwerk(view) {
     } catch {}
   }
   function start(from, to, onDone) {
-    if (!synth) { toast('Dieser Browser unterstützt keine Sprachausgabe.', 'err'); return false; }
+    if (!synth) { toast(T('Dieser Browser unterstützt keine Sprachausgabe.'), 'err'); return false; }
     const text = ta.value;
     const chunks = buildChunks(text, from, to ?? text.length);
-    if (!chunks.length) { toast('Kein Text zum Vorlesen.', 'warn'); return false; }
+    if (!chunks.length) { toast(T('Kein Text zum Vorlesen.'), 'warn'); return false; }
     eng.utt = null; synth.cancel();
     Object.assign(eng, { text, chunks, i: 0, playing: true, paused: false, word: null, onDone: onDone || null, sample: false });
     keepAlive(true);
@@ -14507,8 +14555,8 @@ function mountSprechwerk(view) {
   /* ---------- Recording (system audio) ---------- */
   let rec = null, result = null, recTimer = 0;
   async function record() {
-    if (!navigator.mediaDevices?.getDisplayMedia || !window.MediaRecorder) { toast('Aufnahme wird von diesem Browser nicht unterstützt – bitte Chrome oder Edge nutzen.', 'err'); return; }
-    if (!buildChunks(ta.value, 0, ta.value.length).length) { toast('Kein Text zum Aufnehmen.', 'warn'); return; }
+    if (!navigator.mediaDevices?.getDisplayMedia || !window.MediaRecorder) { toast(T('Aufnahme wird von diesem Browser nicht unterstützt – bitte Chrome oder Edge nutzen.'), 'err'); return; }
+    if (!buildChunks(ta.value, 0, ta.value.length).length) { toast(T('Kein Text zum Aufnehmen.'), 'warn'); return; }
     let stream;
     try {
       stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false }, systemAudio: 'include', selfBrowserSurface: 'exclude', monitorTypeSurfaces: 'include' });
@@ -14516,7 +14564,7 @@ function mountSprechwerk(view) {
     const at = stream.getAudioTracks();
     if (!at.length) {
       stream.getTracks().forEach(t => t.stop());
-      toast('Kein Ton geteilt. Bitte „Gesamter Bildschirm“ wählen und „Systemaudio teilen“ aktivieren.', 'err', { ms: 7000 });
+      toast(T('Kein Ton geteilt. Bitte „Gesamter Bildschirm“ wählen und „Systemaudio teilen“ aktivieren.'), 'err', { ms: 7000 });
       return;
     }
     const mime = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'].find(m => MediaRecorder.isTypeSupported(m)) || '';
@@ -14527,7 +14575,7 @@ function mountSprechwerk(view) {
       stream.getTracks().forEach(t => t.stop());
       clearInterval(recTimer);
       const ok = rec?.ok; rec = null; setMode();
-      if (!ok || !parts.length) { toast('Aufnahme abgebrochen.', 'info'); return; }
+      if (!ok || !parts.length) { toast(T('Aufnahme abgebrochen.'), 'info'); return; }
       setResult(new Blob(parts, { type: mr.mimeType || 'audio/webm' }));
     };
     at[0].addEventListener('ended', () => { if (rec) { eng.playing && stop(); } });
@@ -14575,7 +14623,7 @@ function mountSprechwerk(view) {
     const wavBtn = h('button', { class: 'btn sm primary', onclick: async () => {
       wavBtn.disabled = true;
       try { result.wav ||= await toWav(blob); download(fileBase() + '.wav', result.wav); }
-      catch { toast('Umwandlung in WAV fehlgeschlagen – bitte als ' + ext.toUpperCase() + ' speichern.', 'err'); }
+      catch { toast(T('Umwandlung in WAV fehlgeschlagen – bitte als {f} speichern.', { f: ext.toUpperCase() }), 'err'); }
       wavBtn.disabled = false;
     } }, icon('download'), 'WAV');
     resEl.replaceChildren(
@@ -14583,28 +14631,28 @@ function mountSprechwerk(view) {
       h('div', { class: 'sp-res-row' }, wavBtn,
         h('button', { class: 'btn sm', onclick: () => download(fileBase() + '.' + ext, blob) }, icon('download'), ext.toUpperCase()),
         h('span', { class: 'sp-res-sz' }, fmtSize(blob.size)),
-        h('button', { class: 'mini', title: 'Verwerfen', onclick: () => { URL.revokeObjectURL(result.url); result = null; resEl.replaceChildren(); } }, icon('trash'))));
-    toast('Aufnahme fertig – jetzt herunterladen.', 'ok');
+        h('button', { class: 'mini', title: T('Verwerfen'), onclick: () => { URL.revokeObjectURL(result.url); result = null; resEl.replaceChildren(); } }, icon('trash'))));
+    toast(T('Aufnahme fertig – jetzt herunterladen.'), 'ok');
   }
   function recordInfo() {
     const isWin = /Windows/.test(navigator.userAgent);
     modal({
-      title: '→ WAV', sub: 'Browser können Sprachausgabe nicht direkt speichern – daher nehmen wir den Systemton auf.', width: 520,
+      title: '→ WAV', sub: T('Browser können Sprachausgabe nicht direkt speichern – daher nehmen wir den Systemton auf.'), width: 520,
       body: h('div', { class: 'sp-steps' },
-        h('div', { class: 'sp-step' }, h('b', null, '1'), h('span', null, 'Im nächsten Fenster ', h('strong', null, '„Gesamter Bildschirm“'), ' wählen.')),
-        h('div', { class: 'sp-step' }, h('b', null, '2'), h('span', null, 'Unten ', h('strong', null, '„Systemaudio teilen“'), ' einschalten und auf „Teilen“ klicken.')),
-        h('div', { class: 'sp-step' }, h('b', null, '3'), h('span', null, 'Der Text wird von vorne vorgelesen und aufgenommen. Danach als ', h('strong', null, 'WAV'), ' herunterladen.')),
+        h('div', { class: 'sp-step' }, h('b', null, '1'), h('span', null, T('Im nächsten Fenster '), h('strong', null, T('„Gesamter Bildschirm“')), T(' wählen.'))),
+        h('div', { class: 'sp-step' }, h('b', null, '2'), h('span', null, T('Unten '), h('strong', null, T('„Systemaudio teilen“')), T(' einschalten und auf „Teilen“ klicken.'))),
+        h('div', { class: 'sp-step' }, h('b', null, '3'), h('span', null, T('Der Text wird von vorne vorgelesen und aufgenommen. Danach als '), h('strong', null, 'WAV'), T(' herunterladen.'))),
         h('div', { class: 'callout' + (isWin ? '' : ' warn') }, icon(isWin ? 'info' : 'alert'),
-          h('div', null, h('b', null, isWin ? 'Tipp' : 'Hinweis für Mac'),
+          h('div', null, h('b', null, isWin ? T('Tipp') : T('Hinweis für Mac')),
             h('p', null, isWin
-              ? 'Während der Aufnahme keine anderen Töne abspielen – sie würden mit aufgenommen.'
-              : 'Systemaudio lässt sich auf dem Mac nur mit aktuellem macOS (14.2+) und Chrome teilen. Unter Windows mit Chrome oder Edge klappt es zuverlässig.')))),
-      actions: [{ label: 'Abbrechen', kind: 'ghost' }, { label: 'Aufnahme starten', kind: 'primary', icon: 'mic', onClick: () => { record(); } }],
+              ? T('Während der Aufnahme keine anderen Töne abspielen – sie würden mit aufgenommen.')
+              : T('Systemaudio lässt sich auf dem Mac nur mit aktuellem macOS (14.2+) und Chrome teilen. Unter Windows mit Chrome oder Edge klappt es zuverlässig.'))))),
+      actions: [{ label: T('Abbrechen'), kind: 'ghost' }, { label: T('Aufnahme starten'), kind: 'primary', icon: 'mic', onClick: () => { record(); } }],
     });
   }
 
   /* ---------- UI: text / reading mode ---------- */
-  const ta = h('textarea', { class: 'sp-ta', placeholder: 'Text hier eingeben oder einfügen …', spellcheck: false,
+  const ta = h('textarea', { class: 'sp-ta', placeholder: T('Text hier eingeben oder einfügen …'), spellcheck: false,
     oninput: () => { o.text = ta.value; persist(); paintMeta(); } });
   ta.value = o.text;
   const reader = h('div', { class: 'sp-reader', onclick: e => {
@@ -14615,11 +14663,11 @@ function mountSprechwerk(view) {
   const card = h('div', { class: 'sp-card' },
     h('div', { class: 'sp-card-h' },
       metaEl, h('div', { style: { flex: 1 } }),
-      h('button', { class: 'btn sm ghost sp-edit-only', title: 'Aus der Zwischenablage einfügen', onclick: async () => {
-        try { const t = await navigator.clipboard.readText(); if (t) { ta.focus(); document.execCommand('insertText', false, t); } } catch { toast('Kein Zugriff auf die Zwischenablage – bitte mit Strg+V einfügen.', 'warn'); }
-      } }, icon('copy'), 'Einfügen'),
-      h('button', { class: 'btn sm ghost sp-edit-only', title: 'Beispieltext', onclick: () => { ta.value = DEMO; o.text = DEMO; persist(); paintMeta(); } }, icon('sparkle'), 'Beispiel'),
-      h('button', { class: 'btn sm ghost sp-edit-only', title: 'Text leeren', onclick: () => { ta.value = ''; o.text = ''; persist(); paintMeta(); ta.focus(); } }, icon('trash'))),
+      h('button', { class: 'btn sm ghost sp-edit-only', title: T('Aus der Zwischenablage einfügen'), onclick: async () => {
+        try { const t = await navigator.clipboard.readText(); if (t) { ta.focus(); document.execCommand('insertText', false, t); } } catch { toast(T('Kein Zugriff auf die Zwischenablage – bitte mit Strg+V einfügen.'), 'warn'); }
+      } }, icon('copy'), T('Einfügen')),
+      h('button', { class: 'btn sm ghost sp-edit-only', title: T('Beispieltext'), onclick: () => { ta.value = DEMO; o.text = DEMO; persist(); paintMeta(); } }, icon('sparkle'), T('Beispiel')),
+      h('button', { class: 'btn sm ghost sp-edit-only', title: T('Text leeren'), onclick: () => { ta.value = ''; o.text = ''; persist(); paintMeta(); ta.focus(); } }, icon('trash'))),
     h('div', { class: 'sp-body' }, ta, reader),
     h('div', { class: 'sp-hint' }));
 
@@ -14662,7 +14710,7 @@ function mountSprechwerk(view) {
   const playBtn = h('button', { class: 'sp-play', title: 'Strg+Enter', onclick: togglePlay });
   const stopBtn = h('button', { class: 'sp-tbtn', title: 'Esc', onclick: () => { if (rec) rec.mr.state === 'recording' && rec.mr.stop(); stop(); } }, icon('stop'));
   const prevBtn = h('button', { class: 'sp-tbtn', title: 'Vorheriger Satz', onclick: () => jumpTo(eng.i - 1) }, icon('skipb'));
-  const nextBtn = h('button', { class: 'sp-tbtn', title: 'Nächster Satz', onclick: () => jumpTo(eng.i + 1) }, icon('skipf'));
+  const nextBtn = h('button', { class: 'sp-tbtn', title: T('Nächster Satz'), onclick: () => jumpTo(eng.i + 1) }, icon('skipf'));
   const progFill = h('div', { class: 'sp-prog-fill' });
   const prog = h('div', { class: 'sp-prog', onclick: e => {
     if (!eng.playing) return;
@@ -14685,19 +14733,19 @@ function mountSprechwerk(view) {
       const frac = Math.min(1, (eng.i + inner) / eng.chunks.length);
       progFill.style.width = (frac * 100) + '%';
       const left = eng.chunks.slice(eng.i).reduce((n, x) => n + x.e - x.s, 0) - (eng.word && c ? eng.word.s - c.s : 0);
-      progL.textContent = `Satz ${Math.min(eng.i + 1, eng.chunks.length)} von ${eng.chunks.length}`;
+      progL.textContent = T('Satz {a} von {b}', { a: Math.min(eng.i + 1, eng.chunks.length), b: eng.chunks.length });
       progR.textContent = `noch ~${fmtT(left / charsPerSec())}`;
     } else {
       progFill.style.width = '0%';
       const n = ta.value.replace(/\s+/g, ' ').trim().length;
-      progL.textContent = n ? 'Bereit' : 'Kein Text';
+      progL.textContent = n ? T('Bereit') : T('Kein Text');
       progR.textContent = n ? `Dauer ~${fmtT(n / charsPerSec())}` : '';
     }
     if (rec) recBadge.lastChild.textContent = ' REC ' + fmtT((Date.now() - rec.t0) / 1000);
   }
   function paintMeta() {
     const v = ta.value, words = (v.match(/[\p{L}\p{N}]+/gu) || []).length;
-    metaEl.textContent = `${words} Wörter · ${v.length} Zeichen`;
+    metaEl.textContent = `${words} ${lc(T('Wörter'))} · ${v.length} ${lc(T('Zeichen'))}`;
     paintProgress();
   }
   function setMode() {
@@ -14709,13 +14757,13 @@ function mountSprechwerk(view) {
     playBtn.title = reading && !eng.paused ? 'Pause (Strg+Enter)' : 'Vorlesen (Strg+Enter)';
     [prevBtn, nextBtn, stopBtn].forEach(b => b.disabled = !reading && !rec);
     recBtn.disabled = !!rec;
-    card.lastChild.textContent = reading ? (eng.paused ? 'Pausiert · Klicke auf einen Satz, um dorthin zu springen' : 'Klicke auf einen Satz, um dorthin zu springen · Esc stoppt') : 'Tipp: Markiere einen Teil des Textes, um nur diesen vorlesen zu lassen.';
+    card.lastChild.textContent = reading ? (eng.paused ? T('Pausiert · Klicke auf einen Satz, um dorthin zu springen') : T('Klicke auf einen Satz, um dorthin zu springen · Esc stoppt')) : T('Tipp: Markiere einen Teil des Textes, um nur diesen vorlesen zu lassen.');
     if (!reading) { lastChunkEl = null; ta.scrollTop = reader.scrollTop; }
     paintProgress();
   }
 
   /* ---------- UI: voices ---------- */
-  const voiceSearch = h('input', { class: 'inp', placeholder: 'Stimme suchen …', spellcheck: false, oninput: () => renderVoices() });
+  const voiceSearch = h('input', { class: 'inp', placeholder: T('Stimme suchen …'), spellcheck: false, oninput: () => renderVoices() });
   const langSel = h('select', { class: 'inp', onchange: () => { o.lang = langSel.value; persist(); renderVoices(); } });
   const offSw = switchEl(o.offline, v => { o.offline = v; persist(); renderVoices(); });
   const vList = h('div', { class: 'sp-vlist' });
@@ -14735,15 +14783,15 @@ function mountSprechwerk(view) {
   function renderVoices() {
     const langs = [...new Set(voices.map(v => v.lang.slice(0, 2).toLowerCase()))].sort((a, b) => langName(a).localeCompare(langName(b), 'de'));
     if (!o.lang) o.lang = langs.includes('de') ? 'de' : '';
-    langSel.replaceChildren(h('option', { value: '' }, `Alle Sprachen (${voices.length})`),
+    langSel.replaceChildren(h('option', { value: '' }, T('Alle Sprachen ({n})', { n: voices.length })),
       ...langs.map(l => h('option', { value: l, selected: l === o.lang }, `${langName(l)} (${voices.filter(v => v.lang.toLowerCase().startsWith(l)).length})`)));
     langSel.value = o.lang;
     const q = voiceSearch.value.trim().toLowerCase();
     const list = voices.filter(v => (!o.lang || v.lang.toLowerCase().startsWith(o.lang)) && (!o.offline || !isOnline(v)) && (!q || (v.name + ' ' + v.lang + ' ' + langName(v.lang)).toLowerCase().includes(q)))
       .sort((a, b) => (b.voiceURI === o.voice) - (a.voiceURI === o.voice) || a.lang.localeCompare(b.lang) || a.name.localeCompare(b.name));
     vCount.textContent = list.length;
-    if (!voices.length) { vList.replaceChildren(h('div', { class: 'sp-vnone' }, synth ? 'Stimmen werden geladen …' : 'Sprachausgabe wird von diesem Browser nicht unterstützt.')); return; }
-    if (!list.length) { vList.replaceChildren(h('div', { class: 'sp-vnone' }, o.offline && voices.some(isOnline) ? 'Keine Offline-Stimme gefunden. Schalter „Nur Offline“ ausschalten?' : 'Keine passende Stimme.')); return; }
+    if (!voices.length) { vList.replaceChildren(h('div', { class: 'sp-vnone' }, synth ? T('Stimmen werden geladen …') : T('Sprachausgabe wird von diesem Browser nicht unterstützt.'))); return; }
+    if (!list.length) { vList.replaceChildren(h('div', { class: 'sp-vnone' }, o.offline && voices.some(isOnline) ? T('Keine Offline-Stimme gefunden. Schalter „Nur Offline“ ausschalten?') : T('Keine passende Stimme.'))); return; }
     vList.replaceChildren(...list.map(v => {
       const on = v.voiceURI === o.voice;
       return h('div', { class: 'sp-v' + (on ? ' on' : ''), tabindex: 0, role: 'button', onclick: () => pickVoice(v), onkeydown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickVoice(v); } } },
@@ -14752,7 +14800,7 @@ function mountSprechwerk(view) {
           h('b', { title: v.name }, cleanName(v.name) || v.name),
           h('small', null, langName(v.lang), v.default ? ' · Standard' : '')),
         h('span', { class: 'sp-tag' + (isOnline(v) ? ' onl' : '') }, isOnline(v) ? 'Online' : 'Offline'),
-        h('button', { class: 'mini', title: 'Probe hören', onclick: e => { e.stopPropagation(); sample(v); } }, icon('play')));
+        h('button', { class: 'mini', title: T('Probe hören'), onclick: e => { e.stopPropagation(); sample(v); } }, icon('play')));
     }));
   }
   function loadVoices() {
@@ -14772,31 +14820,31 @@ function mountSprechwerk(view) {
     const r = h('input', { type: 'range', class: 'bw-range', min, max, step: stepV, value: o[key], style: { '--p': pct(o[key]) },
       oninput: () => { o[key] = +r.value; val.textContent = fmt(o[key]); r.style.setProperty('--p', pct(o[key])); persist(); paintNow(); paintProgress(); restartCurrent(); } });
     const reset = () => { r.value = { rate: 1, pitch: 1, volume: 1 }[key]; r.dispatchEvent(new Event('input')); };
-    return { el: h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h', ondblclick: reset, title: 'Doppelklick: zurücksetzen' }, h('label', null, label), val), r), reset };
+    return { el: h('div', { class: 'bw-sl' }, h('div', { class: 'bw-sl-h', ondblclick: reset, title: T('Doppelklick: zurücksetzen') }, h('label', null, label), val), r), reset };
   }
-  const sRate = slider('rate', 'Tempo', 0.5, 2, 0.05, v => fmtX(v) + '×');
-  const sPitch = slider('pitch', 'Tonhöhe', 0.5, 1.5, 0.05, v => v === 1 ? 'Normal' : (v > 1 ? '+' : '−') + Math.round(Math.abs(v - 1) * 100) + ' %');
-  const sVol = slider('volume', 'Lautstärke', 0, 1, 0.05, v => Math.round(v * 100) + ' %');
+  const sRate = slider('rate', T('Tempo'), 0.5, 2, 0.05, v => fmtX(v) + '×');
+  const sPitch = slider('pitch', T('Tonhöhe'), 0.5, 1.5, 0.05, v => v === 1 ? 'Normal' : (v > 1 ? '+' : '−') + Math.round(Math.abs(v - 1) * 100) + ' %');
+  const sVol = slider('volume', T('Lautstärke'), 0, 1, 0.05, v => Math.round(v * 100) + ' %');
 
   const panel = (ic, title, right, ...body) => h('section', { class: 'panel' },
     h('div', { class: 'panel-h' }, h('h3', null, icon(ic), title), right), h('div', { class: 'panel-b' }, body));
-  const recBtn = h('button', { class: 'btn block', onclick: recordInfo }, icon('mic'), 'Als Audio aufnehmen');
+  const recBtn = h('button', { class: 'btn block', onclick: recordInfo }, icon('mic'), T('Als Audio aufnehmen'));
   const resEl = h('div', { class: 'sp-res' });
   const side = h('aside', { class: 'sp-side' },
-    panel('speaker', 'Stimme', vCount,
-      h('div', { class: 'sp-vfilter' }, langSel, h('label', { class: 'sp-off', title: 'Online-Stimmen brauchen Internet' }, offSw, 'Nur Offline')),
+    panel('speaker', T('Stimme'), vCount,
+      h('div', { class: 'sp-vfilter' }, langSel, h('label', { class: 'sp-off', title: T('Online-Stimmen brauchen Internet') }, offSw, T('Nur Offline'))),
       h('div', { class: 'mw-srch' }, icon('search'), voiceSearch),
       vList),
-    panel('settings', 'Klang', h('button', { class: 'btn sm ghost', onclick: () => [sRate, sPitch, sVol].forEach(s => s.reset()) }, icon('undo'), 'Zurücksetzen'),
+    panel('settings', T('Klang'), h('button', { class: 'btn sm ghost', onclick: () => [sRate, sPitch, sVol].forEach(s => s.reset()) }, icon('undo'), T('Zurücksetzen')),
       sRate.el, sPitch.el, sVol.el,
-      h('label', { class: 'chk-row', title: 'Unhörbares Rauschen hält Kopfhörer & Lautsprecher wach' },
-        h('span', null, 'Knackschutz', h('small', { class: 'hint', style: { display: 'block' } }, 'Gegen Knacken in Satzpausen (Bluetooth, USB-Audio)')),
+      h('label', { class: 'chk-row', title: T('Unhörbares Rauschen hält Kopfhörer & Lautsprecher wach') },
+        h('span', null, T('Knackschutz'), h('small', { class: 'hint', style: { display: 'block' } }, T('Gegen Knacken in Satzpausen (Bluetooth, USB-Audio)'))),
         switchEl(o.keepAlive, v => { o.keepAlive = v; persist(); if (!v) keepAlive(false); else if (eng.playing) keepAlive(true); })),
       /Firefox\//.test(navigator.userAgent)
-        ? h('div', { class: 'sp-note warn' }, icon('info'), h('span', null, 'In Firefox kann es in Satzpausen leise knacken. Safari und Chrome klingen meist sauberer.'))
-        : h('div', { class: 'sp-note' }, icon('info'), h('span', null, 'Die Klangqualität hängt vom Browser ab – Safari und Chrome klingen meist sauberer als Firefox.'))),
-    panel('download', 'Exportieren', null,
-      h('p', { class: 'hint' }, 'Systemton aufnehmen → WAV'),
+        ? h('div', { class: 'sp-note warn' }, icon('info'), h('span', null, T('In Firefox kann es in Satzpausen leise knacken. Safari und Chrome klingen meist sauberer.')))
+        : h('div', { class: 'sp-note' }, icon('info'), h('span', null, T('Die Klangqualität hängt vom Browser ab – Safari und Chrome klingen meist sauberer als Firefox.')))),
+    panel('download', T('Exportieren'), null,
+      h('p', { class: 'hint' }, T('Systemton aufnehmen → WAV')),
       recBtn, resEl));
 
   const wrap = h('div', { class: 'sp-wrap' },
@@ -14889,7 +14937,7 @@ function mountTimer(view) {
   }
 
   /* ---------- Display ---------- */
-  const timeEl = h('div', { class: 'zw-time', title: 'Klicken, um die Zeit einzugeben' });
+  const timeEl = h('div', { class: 'zw-time', title: T('Klicken, um die Zeit einzugeben') });
   const labelEl = h('div', { class: 'zw-label' });
   const clockEl = h('div', { class: 'zw-clock' });
   const barFill = h('div', { class: 'zw-bar-fill' });
@@ -14898,7 +14946,7 @@ function mountTimer(view) {
     onblur: () => {
       const v = parseDur(timeInp.value);
       if (!timeInp.dataset.cancel && v != null && v > 0) setDur(v);
-      else if (!timeInp.dataset.cancel && timeInp.value.trim()) toast('Bitte als Minuten („5“) oder „mm:ss“ / „h:mm:ss“ eingeben.', 'warn');
+      else if (!timeInp.dataset.cancel && timeInp.value.trim()) toast(T('Bitte als Minuten („5“) oder „mm:ss“ / „h:mm:ss“ eingeben.'), 'warn');
       delete timeInp.dataset.cancel;
       wrap.classList.remove('editing');
     } });
@@ -14988,15 +15036,15 @@ function mountTimer(view) {
     paint(); wake();
   }
 
-  const playBtn = h('button', { class: 'zw-play', title: 'Leertaste', onclick: () => toggle() });
+  const playBtn = h('button', { class: 'zw-play', title: T('Leertaste'), onclick: () => toggle() });
   const cb = (ic, title, fn, lbl) => h('button', { class: 'zw-cb', title, onclick: e => { e.stopPropagation(); fn(); } }, ic && icon(ic), lbl);
-  const fsBtn = cb('expand', 'Vollbild (F)', () => toggleFs());
-  const setBtn = cb('settings', 'Einstellungen', () => wrap.classList.toggle('zw-open'));
+  const fsBtn = cb('expand', T('Vollbild (F)'), () => toggleFs());
+  const setBtn = cb('settings', T('Einstellungen'), () => wrap.classList.toggle('zw-open'));
   const ctl = h('div', { class: 'zw-ctl', onmousedown: e => e.preventDefault() },
-    cb('refresh', 'Zurücksetzen (R)', reset),
-    cb(null, '1 Minute weniger (↓)', () => add(-60), '−1'),
+    cb('refresh', T('Zurücksetzen (R)'), reset),
+    cb(null, T('1 Minute weniger (↓)'), () => add(-60), '−1'),
     playBtn,
-    cb(null, '1 Minute mehr (↑)', () => add(60), '+1'),
+    cb(null, T('1 Minute mehr (↑)'), () => add(60), '+1'),
     h('span', { class: 'zw-sep' }), setBtn, fsBtn);
   function paintCtl() {
     playBtn.replaceChildren(icon(state === 'running' ? 'pause' : state === 'done' ? 'refresh' : 'play'));
@@ -15010,7 +15058,7 @@ function mountTimer(view) {
   }
   async function toggleFs() {
     try { if (document.fullscreenElement) await document.exitFullscreen(); else await wrap.requestFullscreen(); }
-    catch { toast('Vollbild wird hier nicht unterstützt.', 'warn'); }
+    catch { toast(T('Vollbild wird hier nicht unterstützt.'), 'warn'); }
   }
 
   /* ---------- Settings ---------- */
@@ -15020,24 +15068,24 @@ function mountTimer(view) {
   const swatches = h('div', { class: 'zw-sw' }, COLORS.map(c => h('button', { class: 'zw-swc' + (c === z.color ? ' on' : ''), style: { background: c }, title: c,
     onclick: e => { z.color = c; save(); applyLook(); $$('.zw-swc', swatches).forEach(b => b.classList.toggle('on', b === e.currentTarget)); } })));
   const drawer = h('aside', { class: 'zw-drawer', onmousedown: e => e.stopPropagation() },
-    h('div', { class: 'zw-dh' }, h('b', null, 'Einstellungen'), h('button', { class: 'mini', title: 'Schließen', onclick: () => wrap.classList.remove('zw-open') }, icon('x'))),
-    h('div', { class: 'field' }, h('label', null, 'Dauer', h('span', { class: 'hint-i' }, 'Minuten oder mm:ss')),
+    h('div', { class: 'zw-dh' }, h('b', null, T('Einstellungen')), h('button', { class: 'mini', title: T('Schließen'), onclick: () => wrap.classList.remove('zw-open') }, icon('x'))),
+    h('div', { class: 'field' }, h('label', null, T('Dauer'), h('span', { class: 'hint-i' }, T('Minuten oder mm:ss'))),
       h('input', { class: 'inp mono zw-dur', value: fmt(z.dur * 1000), onchange: e => { const v = parseDur(e.target.value); if (v > 0) setDur(v); e.target.value = fmt(z.dur * 1000); } })),
-    h('div', { class: 'field' }, h('label', null, 'Beschriftung', h('span', { class: 'hint-i' }, 'optional')),
-      h('input', { class: 'inp', value: z.label, placeholder: 'z. B. Redezeit, Pause …', maxlength: 60, oninput: e => { z.label = e.target.value; save(); applyLook(); } })),
-    h('div', { class: 'zw-2' }, numField('yellow', 'Gelb ab', 'Sek., 0 = aus'), numField('red', 'Rot ab', 'Sek., blinkt')),
-    h('div', { class: 'field' }, h('label', null, 'Nach Ablauf'), segEl([['up', 'Weiterzählen (+)'], ['stop', 'Bei 0 stoppen']], z.over, v => { z.over = v; save(); })),
-    h('div', { class: 'field' }, h('label', null, 'Hintergrund'), segEl([['black', 'Schwarz'], ['dark', 'Dunkel'], ['light', 'Hell']], z.bg, v => { z.bg = v; save(); applyLook(); })),
-    h('div', { class: 'field' }, h('label', null, 'Ziffernfarbe'), swatches),
-    h('label', { class: 'chk-row' }, 'Fortschrittsbalken', switchEl(z.bar, v => { z.bar = v; save(); applyLook(); })),
-    h('label', { class: 'chk-row' }, 'Uhrzeit anzeigen', switchEl(z.clock, v => { z.clock = v; save(); applyLook(); paint(); })),
-    h('label', { class: 'chk-row' }, h('span', null, 'Signalton bei 0'), h('span', { class: 'zw-row-r' },
+    h('div', { class: 'field' }, h('label', null, T('Beschriftung'), h('span', { class: 'hint-i' }, T('optional'))),
+      h('input', { class: 'inp', value: z.label, placeholder: T('z. B. Redezeit, Pause …'), maxlength: 60, oninput: e => { z.label = e.target.value; save(); applyLook(); } })),
+    h('div', { class: 'zw-2' }, numField('yellow', T('Gelb ab'), T('Sek., 0 = aus')), numField('red', T('Rot ab'), T('Sek., blinkt'))),
+    h('div', { class: 'field' }, h('label', null, T('Nach Ablauf')), segEl([['up', T('Weiterzählen (+)')], ['stop', T('Bei 0 stoppen')]], z.over, v => { z.over = v; save(); })),
+    h('div', { class: 'field' }, h('label', null, T('Hintergrund')), segEl([['black', T('Schwarz')], ['dark', T('Dunkel')], ['light', T('Hell')]], z.bg, v => { z.bg = v; save(); applyLook(); })),
+    h('div', { class: 'field' }, h('label', null, T('Ziffernfarbe')), swatches),
+    h('label', { class: 'chk-row' }, T('Fortschrittsbalken'), switchEl(z.bar, v => { z.bar = v; save(); applyLook(); })),
+    h('label', { class: 'chk-row' }, T('Uhrzeit anzeigen'), switchEl(z.clock, v => { z.clock = v; save(); applyLook(); paint(); })),
+    h('label', { class: 'chk-row' }, h('span', null, T('Signalton bei 0')), h('span', { class: 'zw-row-r' },
       h('button', { class: 'btn sm ghost', onclick: () => { const s = z.sound; z.sound = true; beep(3); z.sound = s; } }, 'Test'),
       switchEl(z.sound, v => { z.sound = v; save(); }))),
     h('div', { class: 'zw-keys' },
-      h('span', null, h('kbd', null, 'Leertaste'), ' Start/Pause'), h('span', null, h('kbd', null, 'R'), ' Reset'),
-      h('span', null, h('kbd', null, '↑'), h('kbd', null, '↓'), ' ±1 Min.'), h('span', null, h('kbd', null, '⇧'), '+', h('kbd', null, '↑'), h('kbd', null, '↓'), ' ±10 s'),
-      h('span', null, h('kbd', null, 'F'), ' Vollbild')));
+      h('span', null, h('kbd', null, T('Leertaste')), ' Start/Pause'), h('span', null, h('kbd', null, 'R'), ' Reset'),
+      h('span', null, h('kbd', null, '↑'), h('kbd', null, '↓'), ' ±1 min'), h('span', null, h('kbd', null, '⇧'), '+', h('kbd', null, '↑'), h('kbd', null, '↓'), ' ±10 s'),
+      h('span', null, h('kbd', null, 'F'), ' ' + T('Vollbild'))));
 
   function applyLook() {
     wrap.dataset.bg = z.bg;

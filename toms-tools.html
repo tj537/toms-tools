@@ -3780,7 +3780,10 @@ S.data.apps ||= {};
    German is the source language: texts stay German in the code and get wrapped in T('…').
    In English mode T() looks the German text up in EN – anything not translated yet simply stays German.
    Placeholders: T('{n} Apps', { n: 5 }). Translated so far: top bar, home page, welcome dialog, settings (incl. app settings, folder backup & diagnostics). */
+// Very first start: preselect the browser language (German browser → German, anything else → English) – the welcome dialog lets you switch
+if (FIRST_RUN && !/^de\b/i.test(navigator.language || 'de')) { S.data.lang = 'en'; S.save(); }
 const isEN = () => S.data.lang === 'en';
+const lc = s => isEN() ? s.toLowerCase() : s;   // English words mid-sentence are lowercase, German nouns stay capitalised
 const T = (s, vars) => {
   let r = isEN() ? EN[s] ?? s : s;
   if (vars) r = r.replace(/\{(\w+)\}/g, (m, k) => vars[k] ?? m);
@@ -3788,6 +3791,29 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Todo
+  'Heute': 'Today', 'Morgen': 'Tomorrow', 'Gestern': 'Yesterday', 'Alle Aufgaben': 'All tasks', 'Demnächst': 'Upcoming', 'Erledigt': 'Done', 'Projektname…': 'Project name…', 'Projekte': 'Projects',
+  'Ansicht': 'View', 'Suchen…': 'Search…', 'Aufgabe eingeben …': 'Add a task …', 'Priorität': 'Priority', 'Projekt': 'Project', 'Hinzufügen': 'Add', 'Keine Aufgaben hier.': 'No tasks here.',
+  'Hierher ziehen': 'Drag here', 'Nichts offen 🎉': 'Nothing open 🎉', 'Notiz hinzufügen…': 'Add a note…', 'Kein Projekt': 'No project', 'Löschen': 'Delete', 'Niedrig': 'Low', 'Mittel': 'Medium',
+  'Hoch': 'High', 'Arbeit': 'Work', 'Lernen': 'Study', 'Persönlich': 'Personal', 'Aufgaben': 'Tasks', 'Liste': 'List', 'Keine offenen Aufgaben. Los geht’s!': 'No open tasks. Let’s go!',
+  'Nichts für heute – alle Aufgaben erledigt.': 'Nothing for today – all tasks done.', 'Keine anstehenden Aufgaben.': 'No upcoming tasks.', 'Noch nichts erledigt.': 'Nothing done yet.',
+  '+ {n} ältere – unter „Erledigt“ in der Liste': '+ {n} older – see “Done” in the list', 'Offen': 'To do', 'In Arbeit': 'In progress', 'Unteraufgabe': 'Subtask',
+  // Notizen
+  'Wort': 'word',
+  'Leer – zum Schreiben anklicken': 'Empty – click to write', 'Ohne Titel': 'Untitled', 'Farbe': 'Color', 'Erledigt': 'Done', 'Löschen': 'Delete', 'Neue Notiz': 'New note',
+  'Notiz gelöscht': 'Note deleted', 'Rückgängig': 'Undo', 'Schreib los …   „[] " = ☐': 'Start writing …   “[] ” = ☐', 'Titel': 'Title', 'Checkliste': 'Checklist', 'Zeilen → ☐': 'Lines → ☐',
+  'Notiz löschen': 'Delete note', 'Einfach drauflos schreiben …   „[] " = ☐': 'Just start writing …   “[] ” = ☐', 'Doppelklick zum Umbenennen': 'Double-click to rename', 'Tab schließen': 'Close tab',
+  'Neuer Tab': 'New tab', 'Noch nichts zum Exportieren.': 'Nothing to export yet.', 'Alles → .md': 'Everything → .md', 'Alle exportieren': 'Export all', 'Karten': 'Cards', 'Notizblock': 'Notepad',
+  '1 Karte': '1 card', '{n} Karten': '{n} cards', '„{n}“ geschlossen': 'Closed “{n}”', 'Exportiert am {d}': 'Exported on {d}',
+  // Vergleichswerk
+  'Ursprünglicher Text – z. B. die erste Fassung deiner Hausarbeit': 'Original text – e.g. the first draft of your term paper', 'Neue Version': 'New version',
+  'Füge oben zwei Texte ein – die Unterschiede erscheinen hier.': 'Paste two texts above – the differences show up here.', 'Änderung': 'Change', 
+  'Wort entfernt': 'Word removed', 'Wörter entfernt': 'Words removed', 'Wort neu': 'Word added', 'Wörter neu': 'Words added', 'gleich': 'Identical',
+  'Keine Unterschiede (mit den gewählten Ausnahmen).': 'No differences (with the options you chose).', 'Die Texte sind identisch.': 'The texts are identical.', 'Vorher': 'Before', 'Nachher': 'After',
+  'Zwei Textversionen vergleichen – was ist neu, was ist weg?': 'Compare two versions of a text – what’s new, what’s gone?', 'Texte tauschen': 'Swap texts', 'Wörter': 'Words',
+  'Zeichen': 'Characters', 'Zeilen': 'Lines', 'Groß/klein egal': 'Ignore case', 'Leerzeichen egal': 'Ignore spaces', 'Beispiel': 'Example', 'Leeren': 'Clear', 'Unterschiede': 'Differences',
+  'Nebeneinander': 'Side by side', 'Zusammen': 'Combined', 'Vorherige Änderung': 'Previous change', 'Nächste Änderung': 'Next change', 'entfernt': 'removed', 'neu': 'added',
+  '„Zeichen“ findet auch Tippfehler': '“Characters” also finds typos', '{n} Wörter': '{n} words',
   // Shaderwerk (4)
   'Präzisionsgrenze erreicht': 'Precision limit reached',
   // Shaderwerk (3)
@@ -3848,7 +3874,7 @@ const EN = {
   'Fläche hinter dem Logo freilassen': 'Keep the area behind the logo clear', 'Technik': 'Technical', 'höher = robuster, dichter': 'higher = sturdier but denser', 'Inhalt': 'Content',
   'Stil': 'Style', 'Gestaltung': 'Design', 'PNG-Größe': 'PNG size', 'Ohne Passwort': 'No password',
   'Wenig Kontrast ({r}:1) – manche Handys erkennen den Code dann nicht.': 'Low contrast ({r}:1) – some phones won’t recognize the code.', 'PNG gespeichert · {s}': 'PNG saved · {s}',
-  'Module': 'modules', 'Fehlerkorrektur': 'Error correction', 'Zeichen': 'characters', 'Rand (Ruhezone)': 'Quiet zone',
+  'Module': 'modules', 'Fehlerkorrektur': 'Error correction', 'Rand (Ruhezone)': 'Quiet zone',
   // Farbwerk
   'Noch keine eigenen Paletten.\n„Neue Palette“ oder unten eine Vorlage nehmen.': 'No palettes of your own yet.\nCreate a “New palette” or pick a preset below.',
   'Pipette: nur Chrome, Edge, Brave, Opera': 'Eyedropper: Chrome, Edge, Brave and Opera only', 'Farbe vom Bildschirm aufnehmen': 'Pick a color from the screen', 'Kopieren': 'Copy',
@@ -11009,12 +11035,12 @@ function mountTodo(view) {
   view.style.padding = '0';
 
   const PCLR = [null, '#64748b', '#f59e0b', '#ef4444'];
-  const PLBL = ['Normal', 'Niedrig', 'Mittel', 'Hoch'];
+  const PLBL = ['Normal', T('Niedrig'), T('Mittel'), T('Hoch')];
   const PICO = ['○', '↓', '→', '↑'];
   const PDEFS = [
-    {id:'work',  name:'Arbeit',      color:'#0ea5e9'},
-    {id:'learn', name:'Lernen',      color:'#8b5cf6'},
-    {id:'life',  name:'Persönlich',  color:'#10b981'},
+    {id:'work',  name:T('Arbeit'),      color:'#0ea5e9'},
+    {id:'learn', name:T('Lernen'),      color:'#8b5cf6'},
+    {id:'life',  name:T('Persönlich'),  color:'#10b981'},
   ];
   const ACOLS = ['#0ea5e9','#8b5cf6','#10b981','#f59e0b','#ef4444','#ec4899','#14b8a6','#f97316'];
 
@@ -11028,7 +11054,7 @@ function mountTodo(view) {
   const COLS = [
     { id: 'todo', name: 'Offen', c: '#64748b', has: t => !t.done && t.stage !== 'doing' },
     { id: 'doing', name: 'In Arbeit', c: '#f59e0b', has: t => !t.done && t.stage === 'doing' },
-    { id: 'done', name: 'Erledigt', c: '#10b981', has: t => t.done },
+    { id: 'done', name: T('Erledigt'), c: '#10b981', has: t => t.done },
   ];
   function setStage(t, col) {
     if (col === 'done') { if (!t.done) { t.done = true; t.doneAt = Date.now(); } t.stage = null; }
@@ -11044,8 +11070,8 @@ function mountTodo(view) {
   function fmtDate(s) {
     if(!s) return '';
     const diff = Math.round((dayOf(s)-todayD())/86400000);
-    if(diff===0) return 'Heute'; if(diff===1) return 'Morgen'; if(diff===-1) return 'Gestern';
-    return new Date(s).toLocaleDateString('de-DE',{day:'numeric',month:'short'});
+    if(diff===0) return T('Heute'); if(diff===1) return T('Morgen'); if(diff===-1) return T('Gestern');
+    return new Date(s).toLocaleDateString(isEN()?'en-US':'de-DE',{day:'numeric',month:'short'});
   }
   function counts() {
     const op = D.tasks.filter(t=>!t.done);
@@ -11077,10 +11103,10 @@ function mountTodo(view) {
   function buildSb() {
     const C = counts();
     const NAV = [
-      {f:'all',   lbl:'Alle Aufgaben', ico:'⊞', n:C.all,   c:null},
-      {f:'today', lbl:'Heute',         ico:'☀', n:C.today, c:'#f59e0b'},
-      {f:'later', lbl:'Demnächst',     ico:'◷', n:C.later, c:'#0ea5e9'},
-      {f:'done',  lbl:'Erledigt',      ico:'✓', n:C.done,  c:'#10b981'},
+      {f:'all',   lbl:T('Alle Aufgaben'), ico:'⊞', n:C.all,   c:null},
+      {f:'today', lbl:T('Heute'),         ico:'☀', n:C.today, c:'#f59e0b'},
+      {f:'later', lbl:T('Demnächst'),     ico:'◷', n:C.later, c:'#0ea5e9'},
+      {f:'done',  lbl:T('Erledigt'),      ico:'✓', n:C.done,  c:'#10b981'},
     ];
     const navEls = NAV.map(n => h('div',{
       class:'td-nav'+(vf===n.f?' td-on':''),
@@ -11107,7 +11133,7 @@ function mountTodo(view) {
         }); return d;
       });
       const clrRow = h('div',{class:'td-addp-clrs'},...dots);
-      const inp = h('input',{class:'td-addp-inp',placeholder:'Projektname…',
+      const inp = h('input',{class:'td-addp-inp',placeholder:T('Projektname…'),
         onkeydown:e=>{
           if(e.key==='Enter'){ const n=inp.value.trim(); if(n){D.projects.push({id:'p'+D.nid++,name:n,color:chosenClr});sv(D);} addingP=false; render(); }
           if(e.key==='Escape'){ addingP=false; render(); }
@@ -11119,9 +11145,9 @@ function mountTodo(view) {
     sb.replaceChildren(
       h('div',{class:'td-sb-hd'},'Todo'),
       h('div',{style:{padding:'4px 0'}},...navEls),
-      h('div',{class:'td-sec'},'Projekte'),
+      h('div',{class:'td-sec'},T('Projekte')),
       ...projEls,
-      addingP ? addProjEl : h('div',{class:'td-addp',onclick:()=>{addingP=true;render();}},'+','Projekt')
+      addingP ? addProjEl : h('div',{class:'td-addp',onclick:()=>{addingP=true;render();}},'+',T('Projekt'))
     );
   }
 
@@ -11130,48 +11156,48 @@ function mountTodo(view) {
   function buildMain() {
     const tasks = filtered();
     const proj  = D.projects.find(p=>p.id===vf);
-    const titles = {all:'Alle Aufgaben',today:'Heute',later:'Demnächst',done:'Erledigt'};
-    const title  = proj ? proj.name : (titles[vf]||'Aufgaben');
+    const titles = {all:T('Alle Aufgaben'),today:T('Heute'),later:T('Demnächst'),done:T('Erledigt')};
+    const title  = proj ? proj.name : (titles[vf]||T('Aufgaben'));
 
-    const modeSeg = h('div',{class:'td-mode',title:'Ansicht'},
-      ...[['list','☰ Liste'],['board','▦ Board']].map(([m,l])=>h('button',{class:mode===m?'on':'',onclick:()=>{mode=m;S.setApp('todo','mode',m);expId=null;render();}},l)));
+    const modeSeg = h('div',{class:'td-mode',title:T('Ansicht')},
+      ...[['list','☰ '+T('Liste')],['board','▦ Board']].map(([m,l])=>h('button',{class:mode===m?'on':'',onclick:()=>{mode=m;S.setApp('todo','mode',m);expId=null;render();}},l)));
     const hd = h('div',{class:'td-mhd'},
       h('h2',{class:'td-mhd-title'},title),
       modeSeg,
       h('div',{class:'td-srch'},
         h('span',{style:{color:'var(--tx3)',fontSize:'14px'}},'⌕'),
-        h('input',{class:'td-srch-i',placeholder:'Suchen…',value:q,oninput:e=>{q=e.target.value;render();}})
+        h('input',{class:'td-srch-i',placeholder:T('Suchen…'),value:q,oninput:e=>{q=e.target.value;render();}})
       )
     );
 
     let addBar = null;
     if(vf!=='done' || mode==='board') {
-      addInpRef = h('input',{class:'td-addi',placeholder:'Aufgabe eingeben …',
+      addInpRef = h('input',{class:'td-addi',placeholder:T('Aufgabe eingeben …'),
         onkeydown:e=>{if(e.key==='Enter') doAdd();}});
-      const prioBtn = h('div',{class:'td-opt',onclick:()=>{addPrio=(addPrio+1)%4;render();},title:'Priorität'},
+      const prioBtn = h('div',{class:'td-opt',onclick:()=>{addPrio=(addPrio+1)%4;render();},title:T('Priorität')},
         h('span',{style:{color:PCLR[addPrio]||'var(--tx3)',fontSize:'11px'}},PICO[addPrio]),
         PLBL[addPrio]);
       const pSel = h('select',{class:'td-opt',style:{appearance:'auto',fontFamily:'inherit'},
         onchange:e=>{addProjId=e.target.value||null;}},
-        h('option',{value:''},'Projekt'),
+        h('option',{value:''},T('Projekt')),
         ...D.projects.map(p=>h('option',{value:p.id},p.name)));
       if(addProjId) pSel.value=addProjId;
       else if(proj) pSel.value=proj.id;
       const dInp = h('input',{type:'date',class:'td-opt',value:addDate,
         style:{fontFamily:'inherit',padding:'3px 7px'},onchange:e=>{addDate=e.target.value;}});
-      const sub = h('div',{class:'td-addsubmit',onclick:doAdd,title:'Hinzufügen'},'+');
+      const sub = h('div',{class:'td-addsubmit',onclick:doAdd,title:T('Hinzufügen')},'+');
       addBar = h('div',{class:'td-addbar'},
         h('div',{class:'td-addrow'},addInpRef,h('div',{class:'td-addopts'},prioBtn,pSel,dInp),sub));
     }
 
     let listEl;
     if(tasks.length===0) {
-      const EMPTY={all:'Keine offenen Aufgaben. Los geht\'s!',today:'Nichts für heute – alle Aufgaben erledigt.',later:'Keine anstehenden Aufgaben.',done:'Noch nichts erledigt.'};
+      const EMPTY={all:T('Keine offenen Aufgaben. Los geht’s!'),today:T('Nichts für heute – alle Aufgaben erledigt.'),later:T('Keine anstehenden Aufgaben.'),done:T('Noch nichts erledigt.')};
       listEl = h('div',{class:'td-list'},h('div',{class:'td-empty'},
         h('div',{class:'td-empty-ico'},vf==='done'?'🎉':'✓'),
-        h('div',{class:'td-empty-txt'},EMPTY[vf]||'Keine Aufgaben hier.')));
+        h('div',{class:'td-empty-txt'},EMPTY[vf]||T('Keine Aufgaben hier.'))));
     } else if(vf==='all'||proj) {
-      const grps=[{p:3,lbl:'↑ Hoch'},{p:2,lbl:'→ Mittel'},{p:1,lbl:'↓ Niedrig'},{p:0,lbl:'○ Normal'}];
+      const grps=[{p:3,lbl:'↑ '+T('Hoch')},{p:2,lbl:'→ '+T('Mittel')},{p:1,lbl:'↓ '+T('Niedrig')},{p:0,lbl:'○ Normal'}];
       const items=[];
       grps.forEach(g=>{
         const ts=tasks.filter(t=>(t.prio||0)===g.p);
@@ -11217,10 +11243,10 @@ function mountTodo(view) {
           }
           return card;
         }),
-        !ts.length && h('div',{class:'td-col-empty'}, col.id==='doing' ? 'Hierher ziehen' : col.id==='done' ? '✓' : 'Nichts offen 🎉'),
-        more ? h('div',{class:'td-col-empty'},`+ ${more} ältere – unter „Erledigt“ in der Liste`) : null);
+        !ts.length && h('div',{class:'td-col-empty'}, col.id==='doing' ? T('Hierher ziehen') : col.id==='done' ? '✓' : T('Nichts offen 🎉')),
+        more ? h('div',{class:'td-col-empty'},T('+ {n} ältere – unter „Erledigt“ in der Liste', { n: more })) : null);
       const colEl = h('div',{class:'td-col',style:{'--td-c':col.c}},
-        h('div',{class:'td-col-h'},h('span',{class:'td-col-dot'}),col.name,h('span',{class:'td-col-n'},pool.filter(col.has).length)),
+        h('div',{class:'td-col-h'},h('span',{class:'td-col-dot'}),T(col.name),h('span',{class:'td-col-n'},pool.filter(col.has).length)),
         body);
       colEl.addEventListener('dragover',e=>{ if(dragId==null) return; e.preventDefault(); e.dataTransfer.dropEffect='move'; colEl.classList.add('td-over'); });
       colEl.addEventListener('dragleave',e=>{ if(!colEl.contains(e.relatedTarget)) colEl.classList.remove('td-over'); });
@@ -11261,7 +11287,7 @@ function mountTodo(view) {
       meta.push(h('span',{class:'td-mdt'+cls},pfx+fmtDate(t.due)));
     }
     if(sAll>0) meta.push(h('span',{class:'td-msb'},'☐ '+sDone+'/'+sAll));
-    if(t.stage==='doing'&&!t.done&&mode==='list') meta.push(h('span',{class:'td-mdoing'},'● In Arbeit'));
+    if(t.stage==='doing'&&!t.done&&mode==='list') meta.push(h('span',{class:'td-mdoing'},'● '+T('In Arbeit')));
 
     const expB = h('div',{class:'td-expb'+(open?' td-open':''),
       onclick:e=>{e.stopPropagation();expId=open?null:t.id;render();}},'›');
@@ -11281,12 +11307,12 @@ function mountTodo(view) {
   }
 
   function buildDetail(t) {
-    const noteEl = h('textarea',{class:'td-note',placeholder:'Notiz hinzufügen…',rows:2,
+    const noteEl = h('textarea',{class:'td-note',placeholder:T('Notiz hinzufügen…'),rows:2,
       oninput:e=>{t.note=e.target.value;sv(D);}});
     noteEl.value=t.note||'';
 
     const subsEl = t.subs.length>0 && h('div',{class:'td-subs'},...t.subs.map(s=>buildSub(t,s)));
-    const addSubEl = h('div',{class:'td-addsub',onclick:()=>addSub(t.id)},'+  Unteraufgabe');
+    const addSubEl = h('div',{class:'td-addsub',onclick:()=>addSub(t.id)},'+  '+T('Unteraufgabe'));
 
     const pDots = PCLR.map((c,i)=>h('div',{
       class:'td-pdot'+((t.prio||0)===i?' td-sel':''),
@@ -11294,13 +11320,13 @@ function mountTodo(view) {
       onclick:()=>{t.prio=i;sv(D);render();}}));
 
     const pjSel = h('select',{class:'td-fsel',onchange:e=>{t.proj=e.target.value||null;sv(D);render();}},
-      h('option',{value:''},'Kein Projekt'),
+      h('option',{value:''},T('Kein Projekt')),
       ...D.projects.map(p=>h('option',{value:p.id},p.name)));
     pjSel.value=t.proj||'';
 
     const dtEl = h('input',{type:'date',class:'td-fdate',value:t.due||'',
       onchange:e=>{t.due=e.target.value||null;sv(D);render();}});
-    const delEl = h('span',{class:'td-delb',onclick:()=>delTask(t.id)},'Löschen');
+    const delEl = h('span',{class:'td-delb',onclick:()=>delTask(t.id)},T('Löschen'));
 
     return h('div',{class:'td-detail'},
       noteEl,
@@ -12032,7 +12058,7 @@ function mountNotizen(view) {
   const isDone = m => /x/i.test(m[1]);
   const newNote = () => ({ id: uid(), title: '', body: '', c: COLORS[0] });
   const newTab = n => ({ id: uid(), title: 'Tab ' + n, body: '' });
-  const countWords = t => { const w = (t.match(/\S+/g) || []).length; return `${w} ${w === 1 ? 'Wort' : 'Wörter'} · ${t.length} Zeichen`; };
+  const countWords = t => { const w = (t.match(/\S+/g) || []).length; return `${w} ${lc(w === 1 ? T('Wort') : T('Wörter'))} · ${t.length} ${lc(T('Zeichen'))}`; };
 
   // Load + migrate (the entry used to be just an array of cards)
   const D = (() => {
@@ -12228,7 +12254,7 @@ function mountNotizen(view) {
 
   function preview(note) {
     const box = h('div', { class: 'nz-prev' });
-    if (!note.body.trim()) { box.append(h('div', { class: 'nz-empty' }, 'Leer – zum Schreiben anklicken')); return box; }
+    if (!note.body.trim()) { box.append(h('div', { class: 'nz-empty' }, T('Leer – zum Schreiben anklicken'))); return box; }
     note.body.replace(/\s+$/, '').split('\n').forEach((l, i) => {
       const m = l.match(CHK);
       if (!m) { box.append(h('div', { class: 'nz-line' }, l)); return; }
@@ -12247,15 +12273,15 @@ function mountNotizen(view) {
       onclick: () => openBig(note),
       onkeydown: e => { if (e.key === 'Enter' && e.target === card) openBig(note); },
     },
-      h('div', { class: 'nz-ctitle' + (note.title.trim() ? '' : ' nz-untitled') }, note.title.trim() || 'Ohne Titel'),
+      h('div', { class: 'nz-ctitle' + (note.title.trim() ? '' : ' nz-untitled') }, note.title.trim() || T('Ohne Titel')),
       preview(note),
       h('div', { class: 'nz-foot' },
         h('div', { class: 'nz-colors' }, COLORS.map(c => h('button', {
-          class: 'nz-dot' + (c === note.c ? ' on' : ''), title: 'Farbe', style: { background: c, color: c },
+          class: 'nz-dot' + (c === note.c ? ' on' : ''), title: T('Farbe'), style: { background: c, color: c },
           onclick: e => { e.stopPropagation(); note.c = c; save(); refreshCard(note); },
         }))),
-        lines.length ? h('span', { class: 'nz-prog', title: 'Erledigt' }, icon('check'), `${done}/${lines.length}`) : null,
-        h('button', { class: 'nz-del', title: 'Löschen', onclick: e => { e.stopPropagation(); removeNote(note); } }, icon('trash'))));
+        lines.length ? h('span', { class: 'nz-prog', title: T('Erledigt') }, icon('check'), `${done}/${lines.length}`) : null,
+        h('button', { class: 'nz-del', title: T('Löschen'), onclick: e => { e.stopPropagation(); removeNote(note); } }, icon('trash'))));
     return card;
   }
   function refreshCard(note) {
@@ -12266,9 +12292,9 @@ function mountNotizen(view) {
   }
   function renderGrid() {
     const add = h('button', { class: 'nz-add-card', onclick: () => { const n = newNote(); D.notes.push(n); save(); renderGrid(); openBig(n, true); } },
-      icon('plus'), 'Neue Notiz');
+      icon('plus'), T('Neue Notiz'));
     grid.replaceChildren(...D.notes.map(cardEl), add);
-    countEl.textContent = D.notes.length === 1 ? '1 Karte' : `${D.notes.length} Karten`;
+    countEl.textContent = D.notes.length === 1 ? T('1 Karte') : T('{n} Karten', { n: D.notes.length });
     fadeCheck(grid);
   }
   function removeNote(note) {
@@ -12276,7 +12302,7 @@ function mountNotizen(view) {
     if (i < 0) return;
     D.notes.splice(i, 1); save(); renderGrid();
     if (note.title.trim() || note.body.trim())
-      toast('Notiz gelöscht', 'info', { ms: 6000, action: { label: 'Rückgängig', fn: () => { D.notes.splice(Math.min(i, D.notes.length), 0, note); save(); renderGrid(); } } });
+      toast(T('Notiz gelöscht'), 'info', { ms: 6000, action: { label: T('Rückgängig'), fn: () => { D.notes.splice(Math.min(i, D.notes.length), 0, note); save(); renderGrid(); } } });
   }
 
   /* ---------- Large view ---------- */
@@ -12286,18 +12312,18 @@ function mountNotizen(view) {
     const panel = h('div', { class: 'nz-big', style: { '--nc': note.c } });
     const meta = h('span', { class: 'nz-meta' });
     const body = makeEditor({
-      cls: 'nz-big-body', placeholder: 'Schreib los …   „[] " = ☐',
+      cls: 'nz-big-body', placeholder: T('Schreib los …   „[] " = ☐'),
       onChange: (v, p) => { note.body = v; meta.textContent = countWords(p); saveSoon(); },
     });
     body.setValue(note.body); meta.textContent = countWords(body.plain());
     const title = h('input', {
-      class: 'nz-big-title', placeholder: 'Titel', maxlength: 120,
+      class: 'nz-big-title', placeholder: T('Titel'), maxlength: 120,
       oninput: () => { note.title = title.value; saveSoon(); },
       onkeydown: e => { if (e.key === 'Enter') { e.preventDefault(); body.focusEnd(); } },   // Enter in the title → move on to the text
     });
     title.value = note.title;
     const dots = COLORS.map(c => h('button', {
-      class: 'nz-dot' + (c === note.c ? ' on' : ''), title: 'Farbe', style: { background: c, color: c },
+      class: 'nz-dot' + (c === note.c ? ' on' : ''), title: T('Farbe'), style: { background: c, color: c },
       onclick: e => { note.c = c; save(); panel.style.setProperty('--nc', c); dots.forEach(d => d.classList.toggle('on', d === e.currentTarget)); },
     }));
     const bd = h('div', { class: 'backdrop' }, panel);
@@ -12314,10 +12340,10 @@ function mountNotizen(view) {
     panel.append(
       h('div', { class: 'nz-big-top' }, title, h('button', { class: 'icon-btn', title: 'Esc', onclick: close }, icon('x'))),
       h('div', { class: 'nz-big-tools' },
-        h('button', { class: 'btn sm', title: 'Zeilen → ☐', onmousedown: e => e.preventDefault(), onclick: body.toggleChecklist }, icon('check'), 'Checkliste'),
+        h('button', { class: 'btn sm', title: T('Zeilen → ☐'), onmousedown: e => e.preventDefault(), onclick: body.toggleChecklist }, icon('check'), T('Checkliste')),
         h('div', { class: 'nz-colors' }, dots),
         meta,
-        h('button', { class: 'nz-del', title: 'Notiz löschen', onclick: () => { close(); removeNote(note); } }, icon('trash'))),
+        h('button', { class: 'nz-del', title: T('Notiz löschen'), onclick: () => { close(); removeNote(note); } }, icon('trash'))),
       body.el);
     bd.addEventListener('mousedown', e => { if (e.target === bd) close(); });
     $('#layer').append(bd);
@@ -12331,7 +12357,7 @@ function mountNotizen(view) {
   const padMeta = h('span');
   const curTab = () => D.pad.tabs.find(t => t.id === D.pad.active) || D.pad.tabs[0];
   const padEd = makeEditor({
-    cls: 'nz-pad-ta', placeholder: 'Einfach drauflos schreiben …   „[] " = ☐',
+    cls: 'nz-pad-ta', placeholder: T('Einfach drauflos schreiben …   „[] " = ☐'),
     onChange: (v, p) => { curTab().body = v; padMeta.textContent = countWords(p); saveSoon(); },
   });
   let renaming = null;
@@ -12354,11 +12380,11 @@ function mountNotizen(view) {
           setTimeout(() => { inp.focus(); inp.select(); });
           return h('div', { class: 'nz-tab on' }, inp);
         }
-        return h('div', { class: 'nz-tab' + (on ? ' on' : ''), title: 'Doppelklick zum Umbenennen', onclick: () => { if (!on) showTab(t.id); }, ondblclick: () => { renaming = t.id; renderTabs(); } },
+        return h('div', { class: 'nz-tab' + (on ? ' on' : ''), title: T('Doppelklick zum Umbenennen'), onclick: () => { if (!on) showTab(t.id); }, ondblclick: () => { renaming = t.id; renderTabs(); } },
           h('span', null, t.title),
-          D.pad.tabs.length > 1 ? h('button', { class: 'x', title: 'Tab schließen', onclick: e => { e.stopPropagation(); removeTab(t); } }, icon('x')) : null);
+          D.pad.tabs.length > 1 ? h('button', { class: 'x', title: T('Tab schließen'), onclick: e => { e.stopPropagation(); removeTab(t); } }, icon('x')) : null);
       }),
-      h('button', { class: 'nz-tab-add', title: 'Neuer Tab', onclick: () => {
+      h('button', { class: 'nz-tab-add', title: T('Neuer Tab'), onclick: () => {
         let n = D.pad.tabs.length + 1;
         while (D.pad.tabs.some(t => t.title === 'Tab ' + n)) n++;
         const t = newTab(n); D.pad.tabs.push(t); showTab(t.id); padEd.focusEnd();
@@ -12370,7 +12396,7 @@ function mountNotizen(view) {
     D.pad.tabs.splice(i, 1);
     showTab(D.pad.active === t.id ? (D.pad.tabs[i] || D.pad.tabs[i - 1]).id : D.pad.active);
     if (t.body.trim())
-      toast(`„${t.title}" geschlossen`, 'info', { ms: 6000, action: { label: 'Rückgängig', fn: () => { D.pad.tabs.splice(Math.min(i, D.pad.tabs.length), 0, t); showTab(t.id); } } });
+      toast(T('„{n}“ geschlossen', { n: t.title }), 'info', { ms: 6000, action: { label: T('Rückgängig'), fn: () => { D.pad.tabs.splice(Math.min(i, D.pad.tabs.length), 0, t); showTab(t.id); } } });
   }
 
   /* ---------- Export: all cards + tabs into one Markdown file ---------- */
@@ -12379,26 +12405,26 @@ function mountNotizen(view) {
     const d = new Date(), stamp = `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
     const cards = D.notes.filter(n => n.title.trim() || n.body.trim());
     const tabs = D.pad.tabs.filter(t => t.body.trim());
-    if (!cards.length && !tabs.length) { toast('Noch nichts zum Exportieren.', 'info'); return; }
-    const parts = ['# Notizen', `_Exportiert am ${d.toLocaleString('de-DE', { dateStyle: 'long', timeStyle: 'short' })}_`];
-    if (cards.length) { parts.push('## Karten'); cards.forEach(n => parts.push(`### ${n.title.trim() || 'Ohne Titel'}\n\n${n.body.trim()}`)); }
-    if (tabs.length) { parts.push('## Notizblock'); tabs.forEach(t => parts.push(`### ${t.title}\n\n${t.body.trim()}`)); }
+    if (!cards.length && !tabs.length) { toast(T('Noch nichts zum Exportieren.'), 'info'); return; }
+    const parts = ['# ' + T('Notizen'), '_' + T('Exportiert am {d}', { d: d.toLocaleString(isEN() ? 'en-US' : 'de-DE', { dateStyle: 'long', timeStyle: 'short' }) }) + '_'];
+    if (cards.length) { parts.push('## ' + T('Karten')); cards.forEach(n => parts.push(`### ${n.title.trim() || T('Ohne Titel')}\n\n${n.body.trim()}`)); }
+    if (tabs.length) { parts.push('## ' + T('Notizblock')); tabs.forEach(t => parts.push(`### ${t.title}\n\n${t.body.trim()}`)); }
     download(`notizen-${stamp}.md`, parts.join('\n\n') + '\n', 'text/markdown;charset=utf-8');
     toast(`${cards.length + tabs.length} Notizen in eine Datei exportiert`, 'ok');
   }
 
   const secHd = (ico, name) => h('div', { class: 'nz-sec-hd' }, h('span', { class: 'nz-sec-ico' }, icon(ico)), h('b', null, name));
   view.replaceChildren(h('div', { class: 'nz' },
-    h('div', { class: 'nz-hd' }, h('h2', null, 'Notizen'), countEl,
-      h('button', { class: 'btn sm', title: 'Alles → .md', onclick: exportMd }, icon('download'), 'Alle exportieren')),
+    h('div', { class: 'nz-hd' }, h('h2', null, T('Notizen')), countEl,
+      h('button', { class: 'btn sm', title: T('Alles → .md'), onclick: exportMd }, icon('download'), T('Alle exportieren'))),
     h('section', { class: 'nz-sec' },
-      secHd('note', 'Karten'),
+      secHd('note', T('Karten')),
       grid),
     h('section', { class: 'nz-sec' },
-      secHd('zap', 'Notizblock'),
+      secHd('zap', T('Notizblock')),
       h('div', { class: 'nz-pad' }, tabsEl, padEd.el,
         h('div', { class: 'nz-pad-foot' }, padMeta,
-          h('button', { class: 'btn sm ghost', title: 'Zeilen → ☐', onmousedown: e => e.preventDefault(), onclick: padEd.toggleChecklist }, icon('check'), 'Checkliste'))))));
+          h('button', { class: 'btn sm ghost', title: T('Zeilen → ☐'), onmousedown: e => e.preventDefault(), onclick: padEd.toggleChecklist }, icon('check'), T('Checkliste')))))));
   renderGrid();
   showTab(D.pad.active);   // also saves right away in the new format
 
@@ -17712,14 +17738,14 @@ function mountVergleichswerk(view) {
   /* ---------- UI ---------- */
   const words = s => (s.match(/[\p{L}\p{N}]+/gu) || []).length;
   const area = (k, ph) => { const t = h('textarea', { class: 'vgw-ta', placeholder: ph, spellcheck: false, oninput: () => { st[k] = t.value; persist(); cnt(); runSoon(); } }); t.value = st[k]; return t; };
-  const taA = area('a', 'Ursprünglicher Text – z. B. die erste Fassung deiner Hausarbeit'), taB = area('b', 'Neue Version');
+  const taA = area('a', T('Ursprünglicher Text – z. B. die erste Fassung deiner Hausarbeit')), taB = area('b', T('Neue Version'));
   const cA = h('span', { class: 'vgw-c' }), cB = h('span', { class: 'vgw-c' });
-  const cnt = () => { cA.textContent = `${words(st.a).toLocaleString('de-DE')} Wörter`; cB.textContent = `${words(st.b).toLocaleString('de-DE')} Wörter`; };
+  const cnt = () => { cA.textContent = T('{n} Wörter', { n: words(st.a).toLocaleString(isEN() ? 'en-US' : 'de-DE') }); cB.textContent = T('{n} Wörter', { n: words(st.b).toLocaleString(isEN() ? 'en-US' : 'de-DE') }); };
   const stats = h('div', { class: 'vgw-stats' }), res = h('div', { class: 'vgw-res' }), navInfo = h('span', { class: 'vgw-nav-i' });
   let changes = [], cur = -1;
 
   function run() {
-    if (!st.a && !st.b) { stats.replaceChildren(); res.replaceChildren(h('div', { class: 'vgw-empty' }, 'Füge oben zwei Texte ein – die Unterschiede erscheinen hier.')); changes = []; paintNav(); return; }
+    if (!st.a && !st.b) { stats.replaceChildren(); res.replaceChildren(h('div', { class: 'vgw-empty' }, T('Füge oben zwei Texte ein – die Unterschiede erscheinen hier.'))); changes = []; paintNav(); return; }
     const ops = compare();
     let del = 0, ins = 0, same = 0, n = 0;
     for (const [t, s] of ops) { const w = words(s); if (t === '-') del += w; else if (t === '+') ins += w; else same += w; }
@@ -17734,14 +17760,14 @@ function mountVergleichswerk(view) {
       if (t === '-') { left.push(mk('-', s, cid)); inline.push(mk('-', s, cid)); if (ops[i + 1]?.[0] === '+') { const s2 = ops[++i][1]; right.push(mk('+', s2, cid)); inline.push(mk('+', s2, cid)); } else right.push(h('mark', { class: 'vgw-gap', dataset: { c: cid } })); }
       else { right.push(mk('+', s, cid)); inline.push(mk('+', s, cid)); left.push(h('mark', { class: 'vgw-gap', dataset: { c: cid } })); }
     }
-    const fmt = x => x.toLocaleString('de-DE');
+    const fmt = x => x.toLocaleString(isEN() ? 'en-US' : 'de-DE');
     stats.replaceChildren(
-      h('div', { class: 'vgw-st' }, h('b', null, n ? `${fmt(n)}` : '0'), h('span', null, n === 1 ? 'Änderung' : 'Änderungen')),
-      h('div', { class: 'vgw-st del' }, h('b', null, '− ' + fmt(del)), h('span', null, del === 1 ? 'Wort entfernt' : 'Wörter entfernt')),
-      h('div', { class: 'vgw-st ins' }, h('b', null, '+ ' + fmt(ins)), h('span', null, ins === 1 ? 'Wort neu' : 'Wörter neu')),
-      h('div', { class: 'vgw-st' }, h('b', null, Math.round(sim * 100) + ' %'), h('span', null, 'gleich')));
-    res.replaceChildren(n === 0 ? h('div', { class: 'vgw-same' }, icon('check'), st.ic || st.iw ? 'Keine Unterschiede (mit den gewählten Ausnahmen).' : 'Die Texte sind identisch.')
-      : st.view === 'side' ? h('div', { class: 'vgw-side' }, h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dh' }, 'Vorher'), h('div', { class: 'vgw-dt' }, ...left)), h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dh' }, 'Nachher'), h('div', { class: 'vgw-dt' }, ...right)))
+      h('div', { class: 'vgw-st' }, h('b', null, n ? `${fmt(n)}` : '0'), h('span', null, n === 1 ? T('Änderung') : T('Änderungen'))),
+      h('div', { class: 'vgw-st del' }, h('b', null, '− ' + fmt(del)), h('span', null, del === 1 ? T('Wort entfernt') : T('Wörter entfernt'))),
+      h('div', { class: 'vgw-st ins' }, h('b', null, '+ ' + fmt(ins)), h('span', null, ins === 1 ? T('Wort neu') : T('Wörter neu'))),
+      h('div', { class: 'vgw-st' }, h('b', null, Math.round(sim * 100) + ' %'), h('span', null, T('gleich'))));
+    res.replaceChildren(n === 0 ? h('div', { class: 'vgw-same' }, icon('check'), st.ic || st.iw ? T('Keine Unterschiede (mit den gewählten Ausnahmen).') : T('Die Texte sind identisch.'))
+      : st.view === 'side' ? h('div', { class: 'vgw-side' }, h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dh' }, T('Vorher')), h('div', { class: 'vgw-dt' }, ...left)), h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dh' }, T('Nachher')), h('div', { class: 'vgw-dt' }, ...right)))
       : h('div', { class: 'vgw-doc' }, h('div', { class: 'vgw-dt' }, ...inline)));
     changes = [...Array(n).keys()]; cur = -1; paintNav();
   }
@@ -17757,32 +17783,32 @@ function mountVergleichswerk(view) {
   }
   function paintNav() { navInfo.textContent = changes.length ? (cur < 0 ? `${changes.length}` : `${cur + 1} / ${changes.length}`) : ''; }
 
-  const EX_A = 'Das Unternehmen setzt vor allem auf klassische Werbung in Zeitungen und im Radio.\nDie Zielgruppe sind Menschen zwischen 30 und 50 Jahren.\nIm nächsten Jahr soll der Umsatz um 5 % steigen.';
-  const EX_B = 'Das Unternehmen setzt vor allem auf Social Media und Influencer-Marketing.\nDie Zielgruppe sind Menschen zwischen 20 und 35 Jahren.\nIm nächsten Jahr soll der Umsatz um 12 % steigen.\nDazu kommt ein eigener Online-Shop.';
+  const EX_A = isEN() ? 'The company relies mainly on classic advertising in newspapers and on the radio.\nThe target group is people between 30 and 50.\nNext year, sales are set to grow by 5 %.' : 'Das Unternehmen setzt vor allem auf klassische Werbung in Zeitungen und im Radio.\nDie Zielgruppe sind Menschen zwischen 30 und 50 Jahren.\nIm nächsten Jahr soll der Umsatz um 5 % steigen.';
+  const EX_B = isEN() ? 'The company relies mainly on social media and influencer marketing.\nThe target group is people between 20 and 35.\nNext year, sales are set to grow by 12 %.\nOn top of that comes its own online shop.' : 'Das Unternehmen setzt vor allem auf Social Media und Influencer-Marketing.\nDie Zielgruppe sind Menschen zwischen 20 und 35 Jahren.\nIm nächsten Jahr soll der Umsatz um 12 % steigen.\nDazu kommt ein eigener Online-Shop.';
   const setTexts = (a, b) => { st.a = a; st.b = b; taA.value = a; taB.value = b; persist(); cnt(); run(); };
 
   const root = h('div', { class: 'cw vgw' }, h('div', { class: 'cw-in' },
     h('div', { class: 'cw-hd' }, h('div', { class: 'cw-logo' }, icon('vergleichswerk')),
-      h('div', null, h('h2', null, 'Vergleichswerk'), h('p', null, 'Zwei Textversionen vergleichen – was ist neu, was ist weg?'))),
+      h('div', null, h('h2', null, 'Vergleichswerk'), h('p', null, T('Zwei Textversionen vergleichen – was ist neu, was ist weg?')))),
     h('div', { class: 'vgw-in' },
-      h('div', { class: 'vgw-col' }, h('div', { class: 'vgw-lh' }, h('b', null, 'Vorher'), cA), taA),
-      h('button', { class: 'vgw-swap', title: 'Texte tauschen', onclick: () => setTexts(st.b, st.a) }, icon('refresh')),
-      h('div', { class: 'vgw-col' }, h('div', { class: 'vgw-lh' }, h('b', null, 'Nachher'), cB), taB)),
+      h('div', { class: 'vgw-col' }, h('div', { class: 'vgw-lh' }, h('b', null, T('Vorher')), cA), taA),
+      h('button', { class: 'vgw-swap', title: T('Texte tauschen'), onclick: () => setTexts(st.b, st.a) }, icon('refresh')),
+      h('div', { class: 'vgw-col' }, h('div', { class: 'vgw-lh' }, h('b', null, T('Nachher')), cB), taB)),
     h('div', { class: 'vgw-bar' },
-      segEl([['word', 'Wörter'], ['char', 'Zeichen'], ['line', 'Zeilen']], st.mode, v => { st.mode = v; persist(); run(); }),
-      h('label', { class: 'cw-sw' }, 'Groß/klein egal', switchEl(st.ic, v => { st.ic = v; persist(); run(); })),
-      h('label', { class: 'cw-sw' }, 'Leerzeichen egal', switchEl(st.iw, v => { st.iw = v; persist(); run(); })),
+      segEl([['word', T('Wörter')], ['char', T('Zeichen')], ['line', T('Zeilen')]], st.mode, v => { st.mode = v; persist(); run(); }),
+      h('label', { class: 'cw-sw' }, T('Groß/klein egal'), switchEl(st.ic, v => { st.ic = v; persist(); run(); })),
+      h('label', { class: 'cw-sw' }, T('Leerzeichen egal'), switchEl(st.iw, v => { st.iw = v; persist(); run(); })),
       h('div', { class: 'cw-acts' },
-        h('button', { class: 'btn sm ghost', onclick: () => setTexts(EX_A, EX_B) }, icon('sparkle'), 'Beispiel'),
-        h('button', { class: 'btn sm ghost', onclick: () => setTexts('', '') }, icon('eraser'), 'Leeren'))),
+        h('button', { class: 'btn sm ghost', onclick: () => setTexts(EX_A, EX_B) }, icon('sparkle'), T('Beispiel')),
+        h('button', { class: 'btn sm ghost', onclick: () => setTexts('', '') }, icon('eraser'), T('Leeren')))),
     stats,
     h('section', { class: 'cw-card' },
-      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('vergleichswerk')), h('h3', null, 'Unterschiede'),
+      h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('vergleichswerk')), h('h3', null, T('Unterschiede')),
         h('div', { class: 'cw-acts' },
-          segEl([['side', 'Nebeneinander'], ['inline', 'Zusammen']], st.view, v => { st.view = v; persist(); run(); }),
-          h('div', { class: 'vgw-nav' }, h('button', { class: 'btn sm ghost', title: 'Vorherige Änderung', onclick: () => go(-1) }, icon('up')), navInfo, h('button', { class: 'btn sm ghost', title: 'Nächste Änderung', onclick: () => go(1) }, icon('down'))))),
+          segEl([['side', T('Nebeneinander')], ['inline', T('Zusammen')]], st.view, v => { st.view = v; persist(); run(); }),
+          h('div', { class: 'vgw-nav' }, h('button', { class: 'btn sm ghost', title: T('Vorherige Änderung'), onclick: () => go(-1) }, icon('up')), navInfo, h('button', { class: 'btn sm ghost', title: T('Nächste Änderung'), onclick: () => go(1) }, icon('down'))))),
       res,
-      h('div', { class: 'vgw-leg' }, h('span', null, h('del', null, 'entfernt')), h('span', null, h('ins', null, 'neu')), h('span', { class: 'hint' }, '„Zeichen“ findet auch Tippfehler')))));
+      h('div', { class: 'vgw-leg' }, h('span', null, h('del', null, T('entfernt'))), h('span', null, h('ins', null, T('neu'))), h('span', { class: 'hint' }, T('„Zeichen“ findet auch Tippfehler'))))));
   view.append(root);
   cnt(); run();
 }
@@ -19749,7 +19775,7 @@ function mountQrwerk(view) {
     prevEl.classList.toggle('checker', !d.bgOn);
     infoEl.replaceChildren(
       h('span', null, 'Version ', h('b', null, qr.version)), h('span', null, h('b', null, `${qr.size}×${qr.size}`), ' ' + T('Module')),
-      h('span', null, T('Fehlerkorrektur') + ' ', h('b', null, qr.ecl)), h('span', null, h('b', null, [...text].length), ' ' + T('Zeichen')));
+      h('span', null, T('Fehlerkorrektur') + ' ', h('b', null, qr.ecl)), h('span', null, h('b', null, [...text].length), ' ' + lc(T('Zeichen'))));
     const warns = [];
     const bgC = d.bgOn ? d.bg : '#ffffff', fgs = d.fill === 'solid' ? [d.c1] : [d.c1, d.c2];
     if (d.eyeOwn) fgs.push(d.eyeColor);

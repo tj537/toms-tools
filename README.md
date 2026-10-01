@@ -24,7 +24,7 @@ Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[�
 
 ![Startseite von Toms Tools](docs/home.png)
 
-> 🇬🇧 **English:** 32 offline tools in one single HTML file – image editing, screenshots, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is mostly German – English is coming app by app (already in English: home page, top bar, settings, Bildwerk, Screenshotwerk, LUT-Werk, Metawerk, Wasserzeichenwerk, WebP Converter, PDF-Werk, Bildbenamung, Bulk Rename, Sortierwerk, Farbwerk, QR-Werk and Shaderwerk – pick English right at the first start or later at the top of the settings). Feedback welcome!
+> 🇬🇧 **English:** 32 offline tools in one single HTML file – image editing, screenshots, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is mostly German – English is coming app by app (already in English: home page, top bar, settings, Bildwerk, Screenshotwerk, LUT-Werk, Metawerk, Wasserzeichenwerk, WebP Converter, PDF-Werk, Bildbenamung, Bulk Rename, Sortierwerk, Farbwerk, QR-Werk, Shaderwerk, Vergleichswerk, Notizen and Todo – pick English right at the first start or later at the top of the settings). Feedback welcome!
 
 ---
 

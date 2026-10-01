@@ -49,173 +49,57 @@ Toms Tools ist mein erstes größeres Projekt – Feedback ist jederzeit willkom
 <a id="apps"></a>
 ## 🧩 Die Apps
 
-Klick auf eine Gruppe, um ihre Apps mit Screenshot aufzuklappen.
-
 Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechner** und **Formatierung entfernen** – Text z. B. aus Word kopieren, auf den Knopf klicken, Strg + V drücken (Mac: ⌘ + V): Schon liegt er als reiner Text in der Zwischenablage, ohne Schrift, Farben und Word-Ballast.
 
-<details>
-<summary><b>🖼️ Bilder & Dateien</b> · 10 Apps</summary>
-<br>
-
-**Bildwerk** – Bilder zuschneiden, freistellen, mit Ebenen, Text und Effekten bearbeiten.
-
-<img src="docs/bildwerk.png" alt="Bildwerk" width="720">
-
-**Screenshotwerk** – Bildschirm aufnehmen (mit Selbstauslöser) oder mit Strg + V einfügen, dann mit Pfeilen, Rahmen, Text, nummerierten Schritten und Textmarker markieren, Namen & Daten verpixeln – und schick gemacht mit Hintergrund und Browserrahmen kopieren oder speichern.
-
-<img src="docs/screenshotwerk.png" alt="Screenshotwerk" width="720">
-
-**LUT-Werk** – Farb-Looks als 3D-LUT erstellen, `.cube` importieren und auf viele Bilder anwenden.
-
-<img src="docs/lutwerk.png" alt="LUT-Werk" width="720">
-
-**Metawerk** – EXIF-Metadaten von Bildern ansehen, bearbeiten oder entfernen.
-
-<img src="docs/metawerk.png" alt="Metawerk" width="720">
-
-**Wasserzeichenwerk** – Text, Logo oder **KI-Label** auf Bilder setzen – einzeln oder ganz viele auf einmal (ZIP oder Ordner). Das KI-Label kann zusätzlich maschinenlesbar in die Datei geschrieben werden (IPTC) – das hilft bei der Kennzeichnung im Sinne des EU AI Act. Welche Pflichten für dich gelten, hängt davon ab, wie du KI nutzt; keine Rechtsberatung.
-
-<img src="docs/wasserzeichenwerk.png" alt="Wasserzeichenwerk" width="720">
-
-**WebP Converter** – Bilder stapelweise ins platzsparende WebP-Format umwandeln.
-
-<img src="docs/webp.png" alt="WebP Converter" width="720">
-
-**PDF-Werk** – PDFs zusammenführen, teilen und sortieren, Seiten drehen und duplizieren. Seitenzahlen, Stempel (z. B. ENTWURF), Verkleinern für E-Mail, Graustufen, Formulare fixieren, einseitige Scans mischen, Seiten als JPG/PNG.
-
-<img src="docs/pdfwerk.png" alt="PDF-Werk" width="720">
-
-**Bildbenamung** – Bildnamen aus Bausteinen zusammenklicken und direkt umbenennen.
-
-<img src="docs/bildbenamung.png" alt="Bildbenamung" width="720">
-
-**Bulk Rename** – Viele Dateien auf einmal umbenennen – mit Regeln und Vorschau.
-
-<img src="docs/bulk-rename.png" alt="Bulk Rename" width="720">
-
-**Sortierwerk** – Fotoordner nach Aufnahmedatum, Kamera, Ausrichtung oder Dateityp in Unterordner sortieren.
-
-<img src="docs/sortierwerk.png" alt="Sortierwerk" width="720">
-
-</details>
-
-<details>
-<summary><b>🎨 Design & Grafik</b> · 3 Apps</summary>
-<br>
-
-**Farbwerk** – Farbpaletten zusammenstellen, Farbwähler, Farbcodes per Klick kopieren.
-
-<img src="docs/farbwerk.png" alt="Farbwerk" width="720">
-
-**QR-Werk** – QR-Codes für Links, WLAN und Kontakte erstellen und gestalten.
-
-<img src="docs/qrwerk.png" alt="QR-Werk" width="720">
-
-**Shaderwerk** – Fraktale und generative Kunst in Echtzeit – über 30 Vorlagen, eigener Code, Musik-Modus, Video-Export.
-
-<img src="docs/shaderwerk.png" alt="Shaderwerk" width="720">
-
-</details>
-
-<details>
-<summary><b>✍️ Text, Präsentation & Sprache</b> · 6 Apps</summary>
-<br>
-
-**Textwerk** – Textstatistik & Lesbarkeit, Suchen & Ersetzen, Teleprompter, Blindtext, sichere Passwörter.
-
-<img src="docs/textwerk.png" alt="Textwerk" width="720">
-
-**Vergleichswerk** – Zwei Textversionen vergleichen – Änderungen Wort für Wort (oder Zeichen / Zeile) farbig markiert, mit Statistik und Sprung von Änderung zu Änderung.
-
-<img src="docs/vergleichswerk.png" alt="Vergleichswerk" width="720">
-
-**Codewerk** – JSON, Regex, Base64, URL, Hashes, UUIDs, Zeitstempel, Zahlensysteme, JWT.
-
-<img src="docs/codewerk.png" alt="Codewerk" width="720">
-
-**Spickzettel** – Sonderzeichen, Emojis, Snippets und Vorlagen, Git- und Terminal-Befehle, Shortcuts für Windows & Mac und ein Linux-Cheatsheet mit Erklärungen – ein Klick kopiert.
-
-<img src="docs/spickzettel.png" alt="Spickzettel" width="720">
-
-**Pitcher** – Markdown schreiben und als Präsentation im Vollbild zeigen.
-
-<img src="docs/pitcher.png" alt="Pitcher" width="720">
-
-**Laberwerk** – Texte mit den Stimmen deines Systems vorlesen lassen.
-
-<img src="docs/sprechwerk.png" alt="Laberwerk" width="720">
-
-</details>
-
-<details>
-<summary><b>🗂️ Organisation & Planung</b> · 5 Apps</summary>
-<br>
-
-**Notizen** – Bunte Notizkarten mit Checklisten und ein Notizblock mit Tabs.
-
-<img src="docs/notizen.png" alt="Notizen" width="720">
-
-**Todo** – Aufgaben mit Projekten, Prioritäten, Fristen – als Liste oder Kanban-Board.
-
-<img src="docs/todo.png" alt="Todo" width="720">
-
-**Gedankenwerk** – Mindmaps bauen, gestalten und als Bild oder Text exportieren.
-
-<img src="docs/gedankenwerk.png" alt="Gedankenwerk" width="720">
-
-**Timer** – Großer Countdown im Vollbild mit Warnfarben und Signalton.
-
-<img src="docs/zeitwerk.png" alt="Timer" width="720">
-
-**Rechnungswerk** – Saubere Rechnungen mit Logo, MwSt. und GiroCode – als PDF. Dazu Geschäftsbriefe.
-
-<img src="docs/rechnungswerk.png" alt="Rechnungswerk" width="720">
-
-</details>
-
-<details>
-<summary><b>📊 Business & Lernen</b> · 5 Apps</summary>
-<br>
-
-**Modellwerk** – 15 Vorlagen mit Leitfragen – von SWOT, Business Model Canvas und Persona bis Pro & Contra, Eisenhower-Matrix und SMART-Ziel. Export als Text, PNG oder PDF.
-
-<img src="docs/modellwerk.png" alt="Modellwerk" width="720">
-
-**Kennzahlwerk** – 20 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse, Preiskalkulation (Handel), Zuschlagskalkulation, Betriebsergebnis und mehr.
-
-<img src="docs/kennzahlwerk.png" alt="Kennzahlwerk" width="720">
-
-**Diagrammwerk** – Säulen-, Balken-, Linien- und Kreisdiagramme und Zeitpläne (z. B. Mo–Di Recherche, Di–Do Konzept) – Daten aus Excel einfügen, als PNG oder SVG exportieren oder direkt in Word/PowerPoint kopieren.
-
-<img src="docs/diagrammwerk.png" alt="Diagrammwerk" width="720">
-
-**Quellenwerk** – Bücher, Artikel und Links mit Notizen und Zitaten sammeln – Beleg mit „vgl.“ und Literaturverzeichnis per Klick kopieren (deutsch oder APA 7).
-
-<img src="docs/quellenwerk.png" alt="Quellenwerk" width="720">
-
-**Karteiwerk** – Karteikarten für jedes Thema mit Karteikasten-Prinzip: Du übst vor allem, was noch nicht sitzt. Import und Export für Anki und Quizlet, Lernserie 🔥.
-
-<img src="docs/karteiwerk.png" alt="Karteiwerk" width="720">
-
-</details>
-
-<details>
-<summary><b>🎲 Spaß & Musik</b> · 3 Apps</summary>
-<br>
-
-**Entscheidungshilfe** – Glücksrad-Maschine, Münzwurf oder Orakel – lass den Zufall entscheiden.
-
-<img src="docs/entscheidung.png" alt="Entscheidungshilfe" width="720">
-
-**Spielwiese** – Kleine Spiele: Neon-Arena (Twin-Stick-Shooter mit Maus oder Pfeiltasten, Bossen und Power-ups), Tipptrainer, Reaktionstest und mehr.
-
-<img src="docs/spielwiese.png" alt="Spielwiese" width="720">
-
-**Beatwerk** – Drums, Bass und Melodie – Beats und Loops im Browser bauen.
-
-<img src="docs/beatwerk.png" alt="Beatwerk" width="720">
-
-</details>
+### 🖼️ Bilder & Dateien · 10 Apps
+
+- **Bildwerk** – Bilder zuschneiden, skalieren und freistellen: Hintergrund per Klick entfernen, mit Zauberstab und Maske nachbessern. Dazu Ebenen (z. B. ein Logo auf jedes Bild), Pinsel, Text und Farbkorrektur. Export als PNG, JPG oder WebP – auch viele Bilder nacheinander.
+- **Screenshotwerk** – Bildschirm aufnehmen (mit Selbstauslöser) oder mit Strg + V einfügen, dann mit Pfeilen, Rahmen, Text, nummerierten Schritten und Textmarker markieren und Namen & Daten verpixeln. Zum Schluss schick gemacht mit Hintergrund und Browserrahmen kopieren oder speichern.
+- **LUT-Werk** – Eigene Farb-Looks als 3D-LUT bauen oder `.cube`-Dateien importieren und auf viele Bilder auf einmal anwenden. Looks lassen sich als `.cube` exportieren, z. B. für Videoschnitt-Programme.
+- **Metawerk** – Versteckte Bild-Infos (EXIF & IPTC) wie Kamera, Aufnahmedatum oder Urheber ansehen, bearbeiten oder vor dem Teilen entfernen.
+- **Wasserzeichenwerk** – Text, Logo oder **KI-Label** auf Bilder setzen – einzeln oder ganz viele auf einmal (ZIP oder Ordner). Das KI-Label kann zusätzlich maschinenlesbar in die Datei geschrieben werden (IPTC) – das hilft bei der Kennzeichnung im Sinne des EU AI Act. Welche Pflichten für dich gelten, hängt davon ab, wie du KI nutzt; keine Rechtsberatung.
+- **WebP Converter** – Bilder stapelweise ins platzsparende WebP-Format umwandeln, mit Qualitätsregler und auf Wunsch web-tauglichen Dateinamen (klein, ohne Leerzeichen). Als ZIP oder direkt in einen Ordner.
+- **PDF-Werk** – PDFs und Bilder zusammenführen, teilen und per Drag & Drop sortieren, Seiten drehen, duplizieren oder löschen. Für den Büroalltag: Seitenzahlen, Stempel (z. B. ENTWURF oder VERTRAULICH), Verkleinern für E-Mail-Anhänge, Graustufen, Formulare fixieren, einseitig gescannte Vorder- und Rückseiten mischen und Seiten als JPG/PNG speichern.
+- **Bildbenamung** – Bildnamen aus Bausteinen (z. B. Produkt, Farbe, Ansicht) zusammenklicken und die Dateien direkt umbenennen – praktisch für Produktfotos.
+- **Bulk Rename** – Viele Dateien auf einmal umbenennen – mit Regeln wie Suchen & Ersetzen (auch Regex), Nummerieren oder Groß-/Kleinschreibung. Du siehst vorher jede Änderung und kannst sie rückgängig machen.
+- **Sortierwerk** – Einen Fotoordner automatisch in Unterordner sortieren – nach Aufnahmedatum, Kamera, Ausrichtung oder Dateityp. Begleitdateien wie `.xmp` und `.aae` wandern mit.
+
+### 🎨 Design & Grafik · 3 Apps
+
+- **Farbwerk** – Farbpaletten zusammenstellen, Farben aus dem Bildschirm aufnehmen und Farbcodes (HEX, RGB & Co.) per Klick kopieren.
+- **QR-Werk** – QR-Codes für Links, WLAN und Kontakte erstellen, farbig gestalten und als PNG oder SVG speichern.
+- **Shaderwerk** – Fraktale und generative Kunst in Echtzeit auf der Grafikkarte – über 30 Vorlagen, eigener Code, Musik-Modus und Video-Export. Schön als Hintergrund oder einfach zum Staunen.
+
+### ✍️ Text, Präsentation & Sprache · 6 Apps
+
+- **Textwerk** – Textstatistik & Lesbarkeit, Suchen & Ersetzen, Teleprompter, Blindtext und sichere Passwörter.
+- **Vergleichswerk** – Zwei Textversionen vergleichen: Änderungen werden Wort für Wort (oder Zeichen / Zeile) farbig markiert, mit Statistik und Sprung von Änderung zu Änderung.
+- **Codewerk** – Kleine Helfer für Code und Daten: JSON formatieren, Regex testen, Base64, URL, Hashes, UUIDs, Zeitstempel, Zahlensysteme und JWT.
+- **Spickzettel** – Sonderzeichen, Emojis, Snippets und Vorlagen, Git- und Terminal-Befehle, Shortcuts für Windows & Mac und ein Linux-Cheatsheet mit Erklärungen – ein Klick kopiert.
+- **Pitcher** – Markdown schreiben und als Präsentation im Vollbild zeigen.
+- **Laberwerk** – Texte mit den Stimmen deines Systems vorlesen lassen, mit einstellbarem Tempo – auf Wunsch nur mit Offline-Stimmen.
+
+### 🗂️ Organisation & Planung · 5 Apps
+
+- **Notizen** – Bunte Notizkarten mit Checklisten und ein Notizblock mit Tabs.
+- **Todo** – Aufgaben mit Projekten, Prioritäten und Fristen – als Liste oder Kanban-Board.
+- **Gedankenwerk** – Mindmaps bauen, gestalten und als Bild oder Text exportieren.
+- **Timer** – Großer Countdown im Vollbild mit Warnfarben und Signalton – z. B. für Präsentationen oder Prüfungen.
+- **Rechnungswerk** – Saubere Rechnungen mit Logo, MwSt. und GiroCode als PDF. Dazu Geschäftsbriefe.
+
+### 📊 Business & Lernen · 5 Apps
+
+- **Modellwerk** – 15 Vorlagen mit Leitfragen – von SWOT, Business Model Canvas und Persona bis Pro & Contra, Eisenhower-Matrix und SMART-Ziel. Export als Text, PNG oder PDF.
+- **Kennzahlwerk** – 20 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse, Preiskalkulation (Handel), Zuschlagskalkulation, Betriebsergebnis und mehr.
+- **Diagrammwerk** – Säulen-, Balken-, Linien- und Kreisdiagramme und Zeitpläne (z. B. Mo–Di Recherche, Di–Do Konzept). Daten aus Excel einfügen, als PNG oder SVG exportieren oder direkt in Word/PowerPoint kopieren.
+- **Quellenwerk** – Bücher, Artikel und Links mit Notizen und Zitaten sammeln – Beleg mit „vgl.“ und Literaturverzeichnis per Klick kopieren (deutsch oder APA 7).
+- **Karteiwerk** – Karteikarten für jedes Thema mit Karteikasten-Prinzip: Du übst vor allem, was noch nicht sitzt. Import und Export für Anki und Quizlet, Lernserie 🔥.
+
+### 🎲 Spaß & Musik · 3 Apps
+
+- **Entscheidungshilfe** – Glücksrad, Münzwurf oder Orakel – lass den Zufall entscheiden.
+- **Spielwiese** – Kleine Spiele für zwischendurch: Neon-Arena (Twin-Stick-Shooter mit Maus oder Pfeiltasten, Bossen und Power-ups), Tipptrainer, Ausweichen, Reaktionstest und Perfekter Kreis.
+- **Beatwerk** – Drums, Bass und Melodie im Step-Sequencer – mit Genre-Vorlagen, Zufalls-Beats per Würfel und WAV-Export.
 
 ## 🎛️ So wie du's brauchst
 

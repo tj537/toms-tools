@@ -280,10 +280,15 @@ button.apps-cnt:hover{color:var(--tx);background:var(--s3)}
 .set-grp-t svg{width:13px;height:13px}
 .set-app-ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:var(--fg,#fff);background:linear-gradient(135deg,var(--c),var(--c2));flex:none}
 .set-app-ico svg{width:14px;height:14px}
-.card-app{position:relative;text-align:left;padding:22px;border-radius:18px;background:linear-gradient(180deg,var(--s1),color-mix(in oklab,var(--s1) 55%,var(--bg)));border:1px solid var(--line);transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;display:flex;flex-direction:column;gap:14px;min-height:200px;isolation:isolate}
-.card-app::before{content:"";position:absolute;inset:-40% -20% auto auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c) 30%,transparent),transparent 70%);opacity:.5;z-index:-1;transition:opacity .3s}
-.card-app:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.card-app{position:relative;text-align:left;padding:22px;border-radius:18px;background:linear-gradient(180deg,var(--s1),color-mix(in oklab,var(--s1) 55%,var(--bg)));border:1px solid var(--line2);transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;display:flex;flex-direction:column;gap:14px;min-height:200px;isolation:isolate}
+.card-app::before{content:"";position:absolute;inset:0;background:radial-gradient(110% 90% at 100% 0%,color-mix(in oklab,var(--c) 16%,transparent),transparent 60%);opacity:.8;z-index:-1;transition:opacity .3s}
+.card-app::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle,color-mix(in oklab,var(--c) 85%,white) 1.1px,transparent 1.7px);background-size:13px 13px;background-position:6px 6px;-webkit-mask:radial-gradient(75% 95% at 100% 0%,#000 0%,rgba(0,0,0,.35) 45%,transparent 75%);mask:radial-gradient(75% 95% at 100% 0%,#000 0%,rgba(0,0,0,.35) 45%,transparent 75%);opacity:.42;transition:opacity .35s}
+.card-app:hover::after{opacity:.7}
+.tiles-compact .card-app::after{opacity:.2}
+.card-app:hover{transform:translateY(-3px);border-color:color-mix(in oklab,var(--c) 45%,var(--line2));box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
 .card-app:hover::before{opacity:1}
+[data-theme=light] .card-app::after{opacity:.4;background-image:radial-gradient(circle,var(--c) 1.1px,transparent 1.7px)}
+[data-theme=light] .card-app:hover::after{opacity:.75}
 .is-scrolling .card-app,.is-scrolling .home-page button{pointer-events:none}
 .app-ico{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;color:var(--fg,#fff);background:linear-gradient(135deg,var(--c),var(--c2));box-shadow:0 12px 26px -12px var(--c),inset 0 1px 0 rgba(255,255,255,.25)}
 .app-ico svg{width:24px;height:24px;stroke-width:2}

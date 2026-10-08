@@ -7,15 +7,17 @@
   <a href="https://tj537.github.io/toms-tools/"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Try%20it%20live-374151?style=for-the-badge" alt="Try Toms Tools live in your browser" height="56"></a>
 </p>
 
-![100 % offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
-![No admin rights](https://img.shields.io/badge/no-admin%20rights-22c55e)
-![No tracking](https://img.shields.io/badge/no-tracking-64748b)
-![English · Deutsch](https://img.shields.io/badge/English-Deutsch-8b5cf6)
-![Built with Claude Opus 5.5](https://img.shields.io/badge/built%20with-Claude%20Opus%205.5-d97757)
+<p align="center">
+  <img src="https://img.shields.io/badge/100%25-offline-0ea5e9" alt="100 % offline">
+  <img src="https://img.shields.io/badge/no-admin%20rights-22c55e" alt="No admin rights">
+  <img src="https://img.shields.io/badge/no-tracking-64748b" alt="No tracking">
+  <img src="https://img.shields.io/badge/English-Deutsch-8b5cf6" alt="English · Deutsch">
+  <img src="https://img.shields.io/badge/built%20with-Claude%20Opus%205.5-d97757" alt="Built with Claude Opus 5.5">
+</p>
 
 ![Toms Tools home page](docs/home.png)
 
-> 🇩🇪 **Kurz auf Deutsch:** 32 kleine Werkzeuge in einer einzigen HTML-Datei – Bilder bearbeiten, Screenshots, Wasserzeichen & KI-Labels, PDFs, Textvergleich, Rechnungen, Business-Modelle wie SWOT und Canvas, Diagramme, Rechner mit Rechenweg, Quellen & Zitieren, Karteikarten und mehr. Gemacht für den **Arbeits-PC**: keine Installation, keine Admin-Rechte, kein Konto – die Datei kann auf einem USB-Stick oder im OneDrive liegen. Alles läuft offline im Browser, nichts verlässt deinen Rechner. Die Oberfläche gibt es auf **Deutsch und Englisch** (beim ersten Start wählbar, später oben in den Einstellungen). **[⬇️ Herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)**, doppelklicken, fertig. Gebaut von Tom, Marketing-Student und Einsteiger in die Webentwicklung, zusammen mit Claude Opus 5.5. Feedback gern als [Issue](../../issues) – auch auf Deutsch.
+> 🇩🇪 **Kurz auf Deutsch:** 32 kleine Werkzeuge in einer einzigen HTML-Datei – Bilder bearbeiten, Screenshots, Wasserzeichen & KI-Labels, PDFs, Textvergleich, Rechnungen, Business-Modelle wie SWOT und Canvas, Diagramme, Rechner mit Rechenweg, Quellen & Zitieren, Karteikarten und mehr. Gemacht für den **Arbeits-PC**: keine Installation, keine Admin-Rechte, kein Konto – die Datei kann auf einem USB-Stick oder im OneDrive liegen. Alles läuft offline im Browser, nichts verlässt deinen Rechner. Die Oberfläche gibt es auf **Deutsch und Englisch** (beim ersten Start wählbar, später oben in den Einstellungen). **[⬇️ Herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)**, im Browser öffnen, loslegen. Gebaut von Tom, Marketing-Student und Einsteiger in die Webentwicklung, zusammen mit Claude Opus 5.5. Feedback gern als [Issue](../../issues) – auch auf Deutsch.
 
 ---
 

@@ -19,6 +19,16 @@
 
 > 🇩🇪 **Kurz auf Deutsch:** 32 kleine Werkzeuge in einer einzigen HTML-Datei – Bilder bearbeiten, Screenshots, Wasserzeichen & KI-Labels, PDFs, Textvergleich, Rechnungen, Business-Modelle wie SWOT und Canvas, Diagramme, Rechner mit Rechenweg, Quellen & Zitieren, Karteikarten und mehr. Gemacht für den **Arbeits-PC**: keine Installation, keine Admin-Rechte, kein Konto – die Datei kann auf einem USB-Stick oder im OneDrive liegen. Alles läuft offline im Browser, nichts verlässt deinen Rechner. Die Oberfläche gibt es auf **Deutsch und Englisch** (beim ersten Start wählbar, später oben in den Einstellungen). **[⬇️ Herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)**, im Browser öffnen, loslegen. Gebaut von Tom, Marketing-Student und Einsteiger in die Webentwicklung, zusammen mit Claude Opus 5.5. Feedback gern als [Issue](../../issues) – auch auf Deutsch.
 
+## 🛡️ Your files stay on your computer
+
+Most free online tools – PDF mergers, background removers, image converters, QR code generators – upload your files to someone else's server. Toms Tools does the same jobs right in your browser: contracts, product photos and customer data never leave your PC. That's why it's a good fit for work, where uploading company files to random websites is often not allowed. → [Is it safe to use at work?](#safe)
+
+## 🎯 Who it's for
+
+- 🎓 **Students** – SWOT, Business Model Canvas & co., citations in Harvard or APA, flashcards, grade average, mind maps
+- 📣 **Marketing** – resize and convert images, watermarks & AI labels, QR codes, color palettes, KPI calculators (ROI, ROAS, CLV)
+- 🗂️ **Office work** – merge and split PDFs, mark up screenshots, rename lots of files at once, compare text versions, notes & to-dos
+
 ---
 
 ## 👋 Hi!
@@ -141,12 +151,21 @@ The two variants keep separate data. With *Settings → Storage & backup → Exp
 - **Storage space:** The browser gives Toms Tools around 5 MB. How much each app uses is also shown under *Storage & backup*.
 - ⚠️ Clearing your browser data also clears your Toms Tools data. So: turn on folder backup.
 
-## 🔒 Privacy & security
+<a id="safe"></a>
+## 🔒 Is it safe to use at work?
 
-- The page ships with a strict **Content Security Policy** (`default-src 'none'`, connections only to `data:`/`blob:`). The browser therefore blocks every connection to the internet – accidental ones too.
-- There's **no analytics, no third-party cookies, no external fonts or scripts**.
-- Passwords, hashes and JWTs from Textwerk/Codewerk are **never stored**.
-- Outside links only open when you click them – always in a new tab: the optional coffee button (PayPal) and the link to this GitHub page, both in the settings, and the links you save yourself in Quellenwerk.
+- **Nothing gets installed.** Toms Tools is a web page you open in the browser you already have. It doesn't need admin rights and doesn't change anything on your system.
+- **It can't go online.** The page ships with a strict **Content Security Policy** (`default-src 'none'`, connections only to `data:`/`blob:`), so the browser blocks every connection to the internet – accidental ones too. No analytics, no third-party cookies, no external fonts or scripts.
+- **Your data stays local.** Everything is stored in your browser on your computer. Passwords, hashes and JWTs from Textwerk/Codewerk are **never stored**.
+- **Outside links only on click.** The only links that leave the page open in a new tab when you click them: the optional coffee button (PayPal) and the link to this GitHub page, both in the settings, and the links you save yourself in Quellenwerk.
+- **Open source.** The whole app is one readable file under the MIT license – you (or your IT team) can look at every line.
+- **Check that your file is genuine.** Every release lists the file's SHA-256 checksum. Compare it with your download:
+  - Windows (PowerShell): `Get-FileHash .\toms-tools.html`
+  - Mac (Terminal): `shasum -a 256 toms-tools.html`
+
+  Same value = the file is exactly the one from the release.
+
+If your company has rules about software, just show this section to your IT team.
 
 ## 🛠️ Under the hood
 

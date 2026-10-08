@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Questions & chat
+    url: https://github.com/tj537/toms-tools/discussions
+    about: How does something work? Want to share how you use Toms Tools? Ask and chat here.
+  - name: ⬇️ Download the latest version
+    url: https://github.com/tj537/toms-tools/releases/latest
+    about: Maybe your problem is already fixed in the newest release.

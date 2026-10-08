@@ -17,7 +17,7 @@
 
 ![Toms Tools home page](docs/home.png)
 
-> 🇩🇪 **Kurz auf Deutsch:** 32 kleine Werkzeuge in einer einzigen HTML-Datei – Bilder bearbeiten, Screenshots, Wasserzeichen & KI-Labels, PDFs, Textvergleich, Rechnungen, Business-Modelle wie SWOT und Canvas, Diagramme, Rechner mit Rechenweg, Quellen & Zitieren, Karteikarten und mehr. Gemacht für den **Arbeits-PC**: keine Installation, keine Admin-Rechte, kein Konto – die Datei kann auf einem USB-Stick oder im OneDrive liegen. Alles läuft offline im Browser, nichts verlässt deinen Rechner. Die Oberfläche gibt es auf **Deutsch und Englisch** (beim ersten Start wählbar, später oben in den Einstellungen). **[⬇️ Herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)**, im Browser öffnen, loslegen. Gebaut von Tom, Marketing-Student und Einsteiger in die Webentwicklung, zusammen mit Claude Opus 5.5. Feedback gern als [Issue](../../issues) – auch auf Deutsch.
+> 🇩🇪 **Kurz auf Deutsch:** 32 kleine Werkzeuge in einer einzigen HTML-Datei – Bilder bearbeiten, Screenshots, Wasserzeichen & KI-Labels, PDFs, Textvergleich, Rechnungen, Business-Modelle wie SWOT und Canvas, Diagramme, Rechner mit Rechenweg, Quellen & Zitieren, Karteikarten und mehr. Gemacht für den **Arbeits-PC**: keine Installation, keine Admin-Rechte, kein Konto – die Datei kann auf einem USB-Stick oder im OneDrive liegen. Alles läuft offline im Browser, nichts verlässt deinen Rechner. Die Oberfläche gibt es auf **Deutsch und Englisch** (beim ersten Start wählbar, später oben in den Einstellungen). **[⬇️ Herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)**, im Browser öffnen, loslegen. Gebaut von Tom, Marketing-Student und Einsteiger in die Webentwicklung, zusammen mit Claude Opus 5.5. Feedback gern als [Issue](../../issues/new/choose) oder in den [Discussions](../../discussions) – auch auf Deutsch.
 
 ## 🛡️ Your files stay on your computer
 
@@ -41,7 +41,7 @@ Toms Tools is my first bigger project – feedback is always welcome!
 - 🌍 **English & German.** Pick the language at the first start or later at the top of the settings. Two apps – Spickzettel (cheat sheet) and Rechnungswerk (invoices) – are German-only for now and hidden in English mode.
 - 💻 **Made for desktop.** Toms Tools is built for Chrome, Edge & co. on a computer. On phones and tablets the layout isn't tested everywhere, and features like folder access or drag & drop need a desktop browser.
 - 🐛 **There are surely still bugs.** For apps that rename or move files (Bulk Rename, Sortierwerk), try them on a copy first.
-- 💬 **Tell me what you think.** Bug, idea or "this could be better": just open an [issue](../../issues).
+- 💬 **Tell me what you think.** Found a bug or have an idea? Open an [issue](../../issues/new/choose) – questions and chat go to [Discussions](../../discussions).
 
 ## ✨ What makes it different
 
@@ -176,7 +176,11 @@ If your company has rules about software, just show this section to your IT team
 
 ## 💬 Feedback
 
-Found a bug, have an idea for a new tool or criticism of the code? Just open an [issue](../../issues) – in English or German. I'm happy about any feedback, honest feedback too.
+- 🐛 **Found a bug?** [Report it](../../issues/new?template=bug.yml) – a short form asks for the app, browser and what happened.
+- 💡 **Have an idea?** [Share it](../../issues/new?template=idea.yml) – a new tool, a feature or something that could be better.
+- 💬 **Questions, tips or showing how you use it?** Head over to [Discussions](../../discussions).
+
+English or German are both fine. I'm happy about any feedback, honest feedback too.
 
 ## 📄 License
 

@@ -1,0 +1,44 @@
+name: 💡 Idea or wish
+description: A new tool, a feature or something that could be better
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every idea is welcome – big or small. English or German are both fine. · Gern auch auf Deutsch.
+        Not sure yet or just want to chat about it? Start a [discussion](https://github.com/tj537/toms-tools/discussions) instead.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of idea?
+      options:
+        - Improve an existing app
+        - A completely new app
+        - Something for the whole Toms Tools (home page, settings, design …)
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: Which app? (if any)
+      placeholder: "e.g. PDF-Werk"
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What should Toms Tools be able to do?
+      placeholder: "It would be great if PDF-Werk could …"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What would you use it for?
+      description: A real example helps a lot – at work, at university, at home.
+      placeholder: "Every week I have to … and right now I use a website that uploads my files."
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Sketches, screenshots or links to similar tools.

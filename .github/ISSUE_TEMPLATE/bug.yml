@@ -1,0 +1,116 @@
+name: 🐛 Bug report
+description: Something doesn't work as it should
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time! English or German are both fine. · Gern auch auf Deutsch.
+        Please don't paste personal or company data – a short description is enough.
+  - type: dropdown
+    id: app
+    attributes:
+      label: Which app?
+      options:
+        - Home page / top bar / settings
+        - Bildwerk
+        - Screenshotwerk
+        - LUT-Werk
+        - Metawerk
+        - Wasserzeichenwerk
+        - WebP Converter
+        - PDF-Werk
+        - Image Naming (Bildbenamung)
+        - Bulk Rename
+        - Sortierwerk
+        - Farbwerk
+        - QR-Werk
+        - Shaderwerk
+        - Textwerk
+        - Vergleichswerk
+        - Codewerk
+        - Spickzettel
+        - Pitcher
+        - Laberwerk
+        - Notes (Notizen)
+        - Todo
+        - Gedankenwerk
+        - Timer
+        - Rechnungswerk
+        - Modellwerk
+        - Kennzahlwerk
+        - Diagrammwerk
+        - Quellenwerk
+        - Karteiwerk
+        - Decision Helper (Entscheidungshilfe)
+        - Playground (Spielwiese)
+        - Beatwerk
+        - Not sure / several apps
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, and what went wrong?
+      placeholder: "I merged two PDFs in PDF-Werk and the second one was missing …"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: If you can, describe how to make it happen again.
+      placeholder: |
+        1. Open PDF-Werk
+        2. Drop two PDFs
+        3. Click "Merge"
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Edge
+        - Brave
+        - Opera
+        - Firefox
+        - Safari
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Android / iOS
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Toms Tools version
+      description: Shown at the top of the settings (⚙️), e.g. "1.7.1".
+      placeholder: "1.7.1"
+  - type: dropdown
+    id: variant
+    attributes:
+      label: Download or live?
+      options:
+        - Downloaded file
+        - Live version (tj537.github.io)
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or anything else
+      description: You can drag screenshots in here. Please blur personal data.

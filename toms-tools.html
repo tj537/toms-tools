@@ -6016,7 +6016,7 @@ function demo(){
   - Pfeiltasten wechseln den Knoten
 - Gestalten
   - Farbe, Form und Stil pro Knoten
-  - Acht Designvorlagen im Panel
+  - Zehn Designvorlagen im Panel
   - Vier Layouts zur Auswahl
   - Symbole und Notizen
 - Ansicht
@@ -6057,7 +6057,7 @@ function demo(){
 <script>
 (() => {
 'use strict';
-const VERSION = '1.7.0';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
+const VERSION = '1.7.1';   // X.Y.Z – new app/big feature: Y+1 · fixes & small stuff: Z+1 (plus git tag vX.Y.Z)
 // Set a date for testing, e.g. '2026-12-24' (time of day stays real) – null = real date (live)
 const TEST_DATE = null;
 function appNow() {
@@ -6537,6 +6537,7 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  'Alle sichtbaren an/aus': 'Toggle all visible',
   // Modellwerk
   'Als Text kopiert – z. B. in Word einfügen.': 'Copied as text – paste it into Word, for example.', 'Als Text kopiert.': 'Copied as text.', 'günstig': 'cheap', 'teuer': 'expensive',
   'klassisch': 'classic', 'Unsere Marke': 'Our brand', 'Wettbewerber {n}': 'Competitor {n}', ' (Kopie)': ' (copy)', 'Alle Felder geleert': 'All fields cleared',
@@ -8963,7 +8964,7 @@ function mountBulkRename(view) {
   /* --- List --- */
   const segFilter = h('div', { class: 'seg' });
   const searchInp = h('input', { class: 'inp', placeholder: T('Dateien filtern …'), spellcheck: false, oninput: e => { st.q = e.target.value.toLowerCase(); refreshRows(); } });
-  const headCb = h('input', { type: 'checkbox', class: 'cb', title: 'Alle sichtbaren an/aus', onclick: e => { const v = e.target.checked; st.rows.forEach(r => r.checked = v); schedule(); } });
+  const headCb = h('input', { type: 'checkbox', class: 'cb', title: T('Alle sichtbaren an/aus'), onclick: e => { const v = e.target.checked; st.rows.forEach(r => r.checked = v); schedule(); } });
   const space = h('div', { class: 'vspace' });
   const list = h('div', { class: 'vlist', onscroll: () => { cancelAnimationFrame(sraf); sraf = requestAnimationFrame(renderRows); } }, space);
   const table = h('div', { class: 'table' },
@@ -12027,7 +12028,7 @@ function mountEntscheidung(view) {
 }
 
 /* ================= Groovebox ================= */
-// Source: <script type="text/plain" id="app-beatwerk"> before the main script
+// Source: text block #app-beatwerk before the main script
 
 /* ---------- Storage bridge for embedded apps ----------
    Beatwerk & Gedankenwerk run as blob: iframes with an opaque origin – localStorage is
@@ -12068,14 +12069,15 @@ function mountFrameApp(view, html, ns) {
   return { destroy() { URL.revokeObjectURL(url); window.removeEventListener('message', onMsg); } };
 }
 
-// Embedded apps sit as readable text in <script type="text/plain"> blocks right before the main script (so they exist when the
-// session is restored on load). "</script" can't appear inside such a block, so it's stored as "<!/script" (and "<!--" as "<!!--").
+// Embedded apps sit as readable text in type="text/plain" script blocks right before the main script (so they exist when the
+// session is restored on load). A closing script tag can't appear inside such a block, so the apps' own closing tags are
+// stored with "<!" instead of "<" + "/" (and comment openers "<!" + "--" as "<!!--"); frameSrc() turns them back.
 const frameSrc = id => document.getElementById(id).textContent.replace(/^\n|\n$/g, '').replace(/<!\/(script)/gi, '</$1').replace(/<!!--/g, '<!--');
 
 function mountBeatwerk(view) { return mountFrameApp(view, frameSrc('app-beatwerk'), 'beatwerk'); }
 
 /* ================= Gedankenwerk (mind map) ================= */
-// Source: <script type="text/plain" id="app-gedankenwerk"> before the main script
+// Source: text block #app-gedankenwerk before the main script
 
 function mountGedankenwerk(view) { return mountFrameApp(view, frameSrc('app-gedankenwerk'), 'gedankenwerk'); }
 

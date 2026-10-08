@@ -1,176 +1,182 @@
 # 🧰 Toms Tools
 
-**32 kleine Werkzeuge in einer einzigen HTML-Datei – offline, ohne Installation, ohne Cloud.**
+**32 small tools in one single HTML file – offline, no install, no cloud.**
+
+💼 **Made for the work PC:** no installation, no admin rights, no account. Keep the file on a USB stick or in OneDrive, double-click it and it runs in Chrome or Edge – even on a locked-down company laptop.
 
 <p align="center">
-  <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Toms Tools herunterladen" height="56"></a>
-  <a href="https://tj537.github.io/toms-tools/"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Live%20ausprobieren-374151?style=for-the-badge" alt="Toms Tools live im Browser ausprobieren" height="56"></a>
+  <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Download Toms Tools" height="56"></a>
+  <a href="https://tj537.github.io/toms-tools/"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Try%20it%20live-374151?style=for-the-badge" alt="Try Toms Tools live in your browser" height="56"></a>
   <br>
-  <sub>Download lädt immer die neueste Version · Live ist zum Reinschnuppern – für den Alltag lieber herunterladen</sub>
+  <sub>Download always gets the latest release · Live is for a quick look – for everyday use, download it</sub>
 </p>
 
-<p align="center">🆕 <b>Neu in 1.7:</b> Screenshotwerk · PDF-Werk mit Seitenzahlen, Stempel &amp; Verkleinern · erste Apps auf Englisch · Neon-Arena mit Maus – <a href="https://github.com/tj537/toms-tools/releases/tag/v1.7.0">alle Neuerungen</a></p>
+<p align="center">🆕 <b>New in 1.7.1:</b> the whole interface in English · Harvard &amp; APA citations in English · Beatwerk with real WAV export · a fresh home page – <a href="https://github.com/tj537/toms-tools/releases/tag/v1.7.1">all changes</a></p>
 
-Doppelklick, und es läuft – alles im Browser, alles auf deinem Rechner. **[👉 Alle 32 Apps ansehen](#apps)**
+Double-click and it runs – all in your browser, all on your computer. **[👉 See all 32 apps](#apps)**
 
 ![100 % offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
-![Eine Datei](https://img.shields.io/badge/eine%20Datei-HTML-f97316)
-![Ohne Admin-Rechte](https://img.shields.io/badge/ohne-Admin--Rechte-22c55e)
-![Für Desktop](https://img.shields.io/badge/f%C3%BCr-Desktop-0891b2)
-![Kein Tracking](https://img.shields.io/badge/kein-Tracking-64748b)
-![Deutsch · teils English](https://img.shields.io/badge/Deutsch-teils%20English-8b5cf6)
-![Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-eab308)
-![Gebaut mit Claude Opus 5.5](https://img.shields.io/badge/gebaut%20mit-Claude%20Opus%205.5-d97757)
+![One file](https://img.shields.io/badge/one%20file-HTML-f97316)
+![No admin rights](https://img.shields.io/badge/no-admin%20rights-22c55e)
+![For desktop](https://img.shields.io/badge/for-desktop-0891b2)
+![No tracking](https://img.shields.io/badge/no-tracking-64748b)
+![English · Deutsch](https://img.shields.io/badge/English-Deutsch-8b5cf6)
+![Work in progress](https://img.shields.io/badge/status-work%20in%20progress-eab308)
+![Built with Claude Opus 5.5](https://img.shields.io/badge/built%20with-Claude%20Opus%205.5-d97757)
 
-![Startseite von Toms Tools](docs/home.png)
+![Toms Tools home page](docs/home.png)
 
-> 🇬🇧 **English:** 32 offline tools in one single HTML file – image editing, screenshots, watermarks & AI labels, PDFs, text comparison, invoices, business models, charts, calculators, a source manager, flashcards and more. No install, no admin rights, no account: everything runs locally in your browser. Made by a beginner in marketing and web development, together with Claude Opus 5.5. The interface is mostly German – English is coming app by app (already in English: home page, top bar, settings, Bildwerk, Screenshotwerk, LUT-Werk, Metawerk, Wasserzeichenwerk, WebP Converter, PDF-Werk, Bildbenamung, Bulk Rename, Sortierwerk, Farbwerk, QR-Werk, Shaderwerk, Vergleichswerk, Notizen, Todo, Timer, Pitcher, Laberwerk, Codewerk, Diagrammwerk, Karteiwerk, Modellwerk, Kennzahlwerk, Quellenwerk (with English Harvard & APA citations), Textwerk, Beatwerk, Gedankenwerk, Decision Helper and Playground – pick English right at the first start or later at the top of the settings). Spickzettel and Rechnungswerk are German-only for now and hidden in English mode. Feedback welcome!
+> 🇩🇪 **Kurz auf Deutsch:** 32 kleine Werkzeuge in einer einzigen HTML-Datei – Bilder bearbeiten, Screenshots, Wasserzeichen & KI-Labels, PDFs, Textvergleich, Rechnungen, Business-Modelle wie SWOT und Canvas, Diagramme, Rechner mit Rechenweg, Quellen & Zitieren, Karteikarten und mehr. Gemacht für den **Arbeits-PC**: keine Installation, keine Admin-Rechte, kein Konto – die Datei kann auf einem USB-Stick oder im OneDrive liegen. Alles läuft offline im Browser, nichts verlässt deinen Rechner. Die Oberfläche gibt es auf **Deutsch und Englisch** (beim ersten Start wählbar, später oben in den Einstellungen). **[⬇️ Herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)**, doppelklicken, fertig. Gebaut von Tom, Marketing-Student und Einsteiger in die Webentwicklung, zusammen mit Claude Opus 5.5. Feedback gern als [Issue](../../issues) – auch auf Deutsch.
 
 ---
 
 ## 👋 Hi!
 
-Ich bin Tom. Auf der Arbeit und im Studium brauche ich ständig kleine Werkzeuge – vor allem rund um Marketing, BWL, Bilder, Texte, Daten und Code. Also habe ich sie mir selbst gebaut, zusammen mit [Claude Opus 5.5](https://claude.ai), und stelle sie hier öffentlich. Vielleicht helfen sie ja auch dir.
+I'm Tom. At work and at university I constantly need small tools – mostly around marketing, business, images, text, data and code. So I built them myself, together with [Claude Opus 5.5](https://claude.ai), and I'm sharing them here. Maybe they help you too.
 
-Toms Tools ist mein erstes größeres Projekt – Feedback ist jederzeit willkommen!
+Toms Tools is my first bigger project – feedback is always welcome!
 
-- 🚧 **Work in Progress.** Es kommt laufend Neues dazu – und nach und nach auch mehr auf Englisch.
-- 💻 **Für den Desktop gemacht.** Toms Tools ist für Chrome, Edge & Co. am Computer gedacht. Auf Handy und Tablet ist die Darstellung nicht überall geprüft, und Funktionen wie Ordnerzugriff oder Drag & Drop brauchen einen Desktop-Browser.
-- 🐛 **Bestimmt sind noch Fehler drin.** Bei Apps, die Dateien umbenennen oder verschieben (Bulk Rename, Sortierwerk), erst mit einer Kopie testen.
-- 💬 **Sag mir, was du denkst.** Ob Bug, Idee oder „das geht besser so“: einfach ein [Issue](../../issues) aufmachen.
+- 🚧 **Work in progress.** New things keep coming.
+- 🌍 **English & German.** Pick the language at the first start or later at the top of the settings. Two apps – Spickzettel (cheat sheet) and Rechnungswerk (invoices) – are German-only for now and hidden in English mode.
+- 💻 **Made for desktop.** Toms Tools is built for Chrome, Edge & co. on a computer. On phones and tablets the layout isn't tested everywhere, and features like folder access or drag & drop need a desktop browser.
+- 🐛 **There are surely still bugs.** For apps that rename or move files (Bulk Rename, Sortierwerk), try them on a copy first.
+- 💬 **Tell me what you think.** Bug, idea or "this could be better": just open an [issue](../../issues).
 
-## ✨ Das Besondere
+## ✨ What makes it different
 
-- **Eine Datei.** Keine Installation, keine Admin-Rechte, kein Konto. Die Datei kann auf einem USB-Stick liegen oder im OneDrive – perfekt für den Arbeits-PC.
-- **Wirklich lokal.** Eine Content-Security-Policy sperrt die Seite komplett vom Netz aus: Sie *kann* gar nichts hochladen oder nachladen. Kein Tracking, keine Werbung, keine Server. Zwei kleine Ausnahmen gibt es – beide unten in den Einstellungen und nur auf Klick: den freiwilligen Kaffee-Knopf (PayPal) und einen Link zu dieser GitHub-Seite.
-- **Schnell.** Alles läuft direkt im Browser, Grafik-Lastiges auf der Grafikkarte (WebGL2).
-- **Deine Daten gehören dir.** Gespeichert wird im Browser – mit Backup-Export und automatischer Sicherung in einen Ordner deiner Wahl.
+- **One file.** No installation, no admin rights, no account. The file can live on a USB stick or in OneDrive – perfect for the work PC.
+- **Truly local.** A Content Security Policy locks the page off from the internet completely: it *can't* upload or download anything. No tracking, no ads, no servers. There are two small exceptions – both at the bottom of the settings and only on click: the optional coffee button (PayPal) and a link to this GitHub page.
+- **Fast.** Everything runs right in the browser, graphics-heavy work on the GPU (WebGL2).
+- **Your data is yours.** It's stored in your browser – with backup export and automatic backup to a folder of your choice.
 
 <a id="apps"></a>
-## 🧩 Die Apps
+## 🧩 The apps
 
-Dazu immer griffbereit in der oberen Leiste: **Pomodoro-Timer**, **Taschenrechner** und **Formatierung entfernen** – Text z. B. aus Word kopieren, auf den Knopf klicken, Strg + V drücken (Mac: ⌘ + V): Schon liegt er als reiner Text in der Zwischenablage, ohne Schrift, Farben und Word-Ballast.
+Always at hand in the top bar: a **Pomodoro timer**, a **calculator** and **Remove formatting** – copy text from Word, for example, click the button and paste with Ctrl + V (Mac: ⌘ + V): it's now plain text, without fonts, colors and Word clutter.
 
-### 🖼️ Bilder & Dateien · 10 Apps
+The "-werk" names are the apps' brand names and stay the same in both languages ("Werk" is German for "works" or "workshop").
 
-- **Bildwerk** – Bilder zuschneiden, skalieren und freistellen: Hintergrund per Klick entfernen, mit Zauberstab und Maske nachbessern. Dazu Ebenen (z. B. ein Logo auf jedes Bild), Pinsel, Text und Farbkorrektur. Export als PNG, JPG oder WebP – auch viele Bilder nacheinander.
-- **Screenshotwerk** – Bildschirm aufnehmen (mit Selbstauslöser) oder mit Strg + V einfügen, dann mit Pfeilen, Rahmen, Text, nummerierten Schritten und Textmarker markieren und Namen & Daten verpixeln. Zum Schluss schick gemacht mit Hintergrund und Browserrahmen kopieren oder speichern.
-- **LUT-Werk** – Eigene Farb-Looks als 3D-LUT bauen oder `.cube`-Dateien importieren und auf viele Bilder auf einmal anwenden. Looks lassen sich als `.cube` exportieren, z. B. für Videoschnitt-Programme.
-- **Metawerk** – Versteckte Bild-Infos (EXIF & IPTC) wie Kamera, Aufnahmedatum oder Urheber ansehen, bearbeiten oder vor dem Teilen entfernen.
-- **Wasserzeichenwerk** – Text, Logo oder **KI-Label** auf Bilder setzen – einzeln oder ganz viele auf einmal (ZIP oder Ordner). Das KI-Label kann zusätzlich maschinenlesbar in die Datei geschrieben werden (IPTC) – das hilft bei der Kennzeichnung im Sinne des EU AI Act. Welche Pflichten für dich gelten, hängt davon ab, wie du KI nutzt; keine Rechtsberatung.
-- **WebP Converter** – Bilder stapelweise ins platzsparende WebP-Format umwandeln, mit Qualitätsregler und auf Wunsch web-tauglichen Dateinamen (klein, ohne Leerzeichen). Als ZIP oder direkt in einen Ordner.
-- **PDF-Werk** – PDFs und Bilder zusammenführen, teilen und per Drag & Drop sortieren, Seiten drehen, duplizieren oder löschen. Für den Büroalltag: Seitenzahlen, Stempel (z. B. ENTWURF oder VERTRAULICH), Verkleinern für E-Mail-Anhänge, Graustufen, Formulare fixieren, einseitig gescannte Vorder- und Rückseiten mischen und Seiten als JPG/PNG speichern.
-- **Bildbenamung** – Bildnamen aus Bausteinen (z. B. Produkt, Farbe, Ansicht) zusammenklicken und die Dateien direkt umbenennen – praktisch für Produktfotos.
-- **Bulk Rename** – Viele Dateien auf einmal umbenennen – mit Regeln wie Suchen & Ersetzen (auch Regex), Nummerieren oder Groß-/Kleinschreibung. Du siehst vorher jede Änderung und kannst sie rückgängig machen.
-- **Sortierwerk** – Einen Fotoordner automatisch in Unterordner sortieren – nach Aufnahmedatum, Kamera, Ausrichtung oder Dateityp. Begleitdateien wie `.xmp` und `.aae` wandern mit.
+### 🖼️ Images & Files · 10 apps
 
-### 🎨 Design & Grafik · 3 Apps
+- **Bildwerk** – Crop, resize and cut out images: remove the background with one click, refine it with a magic wand and mask. Plus layers (e.g. a logo on every image), brush, text and color correction. Export as PNG, JPG or WebP – also for many images in a row.
+- **Screenshotwerk** – Capture your screen (with a self-timer) or paste with Ctrl + V, then mark it up with arrows, frames, text, numbered steps and a highlighter, and pixelate names and data. Finally, make it look good with a background and browser frame, then copy or save it.
+- **LUT-Werk** – Build your own color looks as 3D LUTs or import `.cube` files and apply them to many images at once. Looks can be exported as `.cube`, e.g. for video editing software.
+- **Metawerk** – View, edit or remove hidden image info (EXIF & IPTC) such as camera, capture date or author before sharing.
+- **Wasserzeichenwerk** – Put text, a logo or an **AI label** on images – one at a time or lots at once (ZIP or folder). The AI label can also be written into the file in machine-readable form (IPTC) – which helps with labelling under the EU AI Act. Which obligations apply to you depends on how you use AI; this isn't legal advice.
+- **WebP Converter** – Convert images to the space-saving WebP format in batches, with a quality slider and, if you like, web-friendly file names (lowercase, no spaces). As a ZIP or straight into a folder.
+- **PDF-Werk** – Merge, split and sort PDFs and images by drag & drop, rotate, duplicate or delete pages. For everyday office work: page numbers, stamps (e.g. DRAFT or CONFIDENTIAL), compression for email attachments, grayscale, flattening forms, merging single-sided scans of front and back pages, and saving pages as JPG/PNG.
+- **Image Naming** (Bildbenamung) – Click image names together from building blocks (e.g. product, color, view) and rename the files right away – handy for product photos.
+- **Bulk Rename** – Rename lots of files at once – with rules like find & replace (regex too), numbering or upper/lower case. You see every change beforehand and can undo it.
+- **Sortierwerk** – Sort a photo folder into subfolders automatically – by capture date, camera, orientation or file type. Sidecar files like `.xmp` and `.aae` move along.
 
-- **Farbwerk** – Farbpaletten zusammenstellen, Farben aus dem Bildschirm aufnehmen und Farbcodes (HEX, RGB & Co.) per Klick kopieren.
-- **QR-Werk** – QR-Codes für Links, WLAN und Kontakte erstellen, farbig gestalten und als PNG oder SVG speichern.
-- **Shaderwerk** – Fraktale und generative Kunst in Echtzeit auf der Grafikkarte – über 30 Vorlagen, eigener Code, Musik-Modus und Video-Export. Schön als Hintergrund oder einfach zum Staunen.
+### 🎨 Design & Graphics · 3 apps
 
-### ✍️ Text, Präsentation & Sprache · 6 Apps
+- **Farbwerk** – Put together color palettes, pick colors from the screen and copy color codes (HEX, RGB & co.) with one click.
+- **QR-Werk** – Create QR codes for links, Wi-Fi and contacts, style them in color and save them as PNG or SVG.
+- **Shaderwerk** – Fractals and generative art in real time on the GPU – over 30 presets, your own code, music mode and video export. Nice as a background or just to marvel at.
 
-- **Textwerk** – Textstatistik & Lesbarkeit, Suchen & Ersetzen, Teleprompter, Blindtext und sichere Passwörter.
-- **Vergleichswerk** – Zwei Textversionen vergleichen: Änderungen werden Wort für Wort (oder Zeichen / Zeile) farbig markiert, mit Statistik und Sprung von Änderung zu Änderung.
-- **Codewerk** – Kleine Helfer für Code und Daten: JSON formatieren, Regex testen, Base64, URL, Hashes, UUIDs, Zeitstempel, Zahlensysteme und JWT.
-- **Spickzettel** – Sonderzeichen, Emojis, Snippets und Vorlagen, Git- und Terminal-Befehle, Shortcuts für Windows & Mac und ein Linux-Cheatsheet mit Erklärungen – ein Klick kopiert.
-- **Pitcher** – Markdown schreiben und als Präsentation im Vollbild zeigen.
-- **Laberwerk** – Texte mit den Stimmen deines Systems vorlesen lassen, mit einstellbarem Tempo – auf Wunsch nur mit Offline-Stimmen.
+### ✍️ Text, Presentation & Speech · 6 apps
 
-### 🗂️ Organisation & Planung · 5 Apps
+- **Textwerk** – Text statistics & readability, find & replace, teleprompter, placeholder text and secure passwords.
+- **Vergleichswerk** – Compare two versions of a text: changes are highlighted word by word (or by character / line), with statistics and jumping from change to change.
+- **Codewerk** – Small helpers for code and data: format JSON, test regex, Base64, URL, hashes, UUIDs, timestamps, number systems and JWT.
+- **Spickzettel** (cheat sheet, German only) – Special characters, emojis, snippets and templates, Git and terminal commands, shortcuts for Windows & Mac and a Linux cheat sheet with explanations – one click copies.
+- **Pitcher** – Write Markdown and present it as full-screen slides.
+- **Laberwerk** – Have texts read aloud with your system's voices, at an adjustable speed – offline voices only, if you like.
 
-- **Notizen** – Bunte Notizkarten mit Checklisten und ein Notizblock mit Tabs.
-- **Todo** – Aufgaben mit Projekten, Prioritäten und Fristen – als Liste oder Kanban-Board.
-- **Gedankenwerk** – Mindmaps bauen, gestalten und als Bild oder Text exportieren.
-- **Timer** – Großer Countdown im Vollbild mit Warnfarben und Signalton – z. B. für Präsentationen oder Prüfungen.
-- **Rechnungswerk** – Saubere Rechnungen mit Logo, MwSt. und GiroCode als PDF. Dazu Geschäftsbriefe.
+### 🗂️ Organization & Planning · 5 apps
 
-### 📊 Business & Lernen · 5 Apps
+- **Notes** (Notizen) – Colorful note cards with checklists and a notepad with tabs.
+- **Todo** – Tasks with projects, priorities and deadlines – as a list or Kanban board.
+- **Gedankenwerk** – Build and style mind maps and export them as an image or text.
+- **Timer** – Big full-screen countdown with warning colors and a signal tone – e.g. for presentations or exams.
+- **Rechnungswerk** (invoices, German only) – Clean invoices with logo, VAT and GiroCode as PDF. Plus business letters.
 
-- **Modellwerk** – 15 Vorlagen mit Leitfragen – von SWOT, Business Model Canvas und Persona bis Pro & Contra, Eisenhower-Matrix und SMART-Ziel. Export als Text, PNG oder PDF.
-- **Kennzahlwerk** – 20 Rechner mit Formel und Rechenweg – Prozente, Netto/Brutto, Zinseszins, Notenschnitt, ROI, CLV, Break-even, Nutzwertanalyse, Preiskalkulation (Handel), Zuschlagskalkulation, Betriebsergebnis und mehr.
-- **Diagrammwerk** – Säulen-, Balken-, Linien- und Kreisdiagramme und Zeitpläne (z. B. Mo–Di Recherche, Di–Do Konzept). Daten aus Excel einfügen, als PNG oder SVG exportieren oder direkt in Word/PowerPoint kopieren.
-- **Quellenwerk** – Bücher, Artikel und Links mit Notizen und Zitaten sammeln – Beleg mit „vgl.“ und Literaturverzeichnis per Klick kopieren (deutsch oder APA 7).
-- **Karteiwerk** – Karteikarten für jedes Thema mit Karteikasten-Prinzip: Du übst vor allem, was noch nicht sitzt. Import und Export für Anki und Quizlet, Lernserie 🔥.
+### 📊 Business & Learning · 5 apps
 
-### 🎲 Spaß & Musik · 3 Apps
+- **Modellwerk** – 15 templates with guiding questions – from SWOT, Business Model Canvas and persona to pros & cons, Eisenhower matrix and SMART goal. Export as text, PNG or PDF.
+- **Kennzahlwerk** – 20 calculators with formula and working – percentages, net/gross, compound interest, grade average, ROI, CLV, break-even, weighted scoring, retail pricing, job order costing, operating result and more.
+- **Diagrammwerk** – Column, bar, line and pie charts and timelines (e.g. Mon–Tue research, Tue–Thu concept). Paste data from Excel, export as PNG or SVG or copy straight into Word/PowerPoint.
+- **Quellenwerk** – Collect books, articles and links with notes and quotes – copy citations and the reference list in one click. Harvard and APA 7 in English, German citation style and APA in German.
+- **Karteiwerk** – Flashcards for any topic using the Leitner box system: you mostly practise what hasn't stuck yet. Import and export for Anki and Quizlet, learning streak 🔥.
 
-- **Entscheidungshilfe** – Glücksrad, Münzwurf oder Orakel – lass den Zufall entscheiden.
-- **Spielwiese** – Kleine Spiele für zwischendurch: Neon-Arena (Twin-Stick-Shooter mit Maus oder Pfeiltasten, Bossen und Power-ups), Tipptrainer, Ausweichen, Reaktionstest und Perfekter Kreis.
-- **Beatwerk** – Drums, Bass und Melodie im Step-Sequencer – mit Genre-Vorlagen, Zufalls-Beats per Würfel und WAV-Export.
+### 🎲 Fun & Music · 3 apps
 
-## 🎛️ So wie du's brauchst
+- **Decision Helper** (Entscheidungshilfe) – Wheel of fortune, coin toss or oracle – let chance decide.
+- **Playground** (Spielwiese) – Little games for in between: Neon Arena (twin-stick shooter with mouse or arrow keys, bosses and power-ups), typing trainer, dodge, reaction test and perfect circle.
+- **Beatwerk** – Drums, bass and melody in a step sequencer – with genre presets, random beats at the roll of a die and WAV export.
 
-Du brauchst nicht alle 32 Apps? Kein Problem:
+## 🎛️ Make it yours
 
-- **Apps ausblenden:** Unter *Einstellungen → Apps* schaltest du jede App einzeln an oder aus. Ausgeblendete Apps verschwinden von der Startseite – übrig bleibt dein persönlicher Werkzeugkasten. Deine Daten bleiben dabei erhalten. Oben neben „Apps“ siehst du, wie viele gerade aktiv sind (z. B. „24 / 32“).
-- **Gruppen einklappen:** Auf der Startseite lassen sich die Gruppen (z. B. „Bilder & Dateien“) mit einem Klick zu- und aufklappen.
-- **Dein Name:** Die Startseite begrüßt dich persönlich. Den Namen trägst du unter *Einstellungen → Start* ein – und kannst ihn dort jederzeit ändern.
-- **Maskottchen:** Auf der Startseite schwebt ein kleiner Roboter mit Raketenantrieb – und macht ein Nickerchen, wenn du eine Weile nichts tust. Unter *Einstellungen → Maskottchen* stellst du seine Größe ein oder blendest ihn aus.
-- **Aussehen:** Farbthema, Akzentfarbe, eigenes Hintergrundbild oder Weltall, Funfacts in der Begrüßung und ob beim Start die letzte Sitzung wieder aufgeht – alles unter *Einstellungen*.
+Don't need all 32 apps? No problem:
 
-## 🚀 Loslegen
+- **Hide apps:** Under *Settings → Apps* you can turn each app on or off. Hidden apps disappear from the home page – what's left is your personal toolbox. Your data is kept. Next to "Apps" at the top you can see how many are currently active (e.g. "24 / 32").
+- **Collapse groups:** On the home page, the groups (e.g. "Images & Files") open and close with one click.
+- **Your name:** The home page greets you personally. Enter your name under *Settings → Startup* – and change it there any time.
+- **Mascot:** A little rocket-powered robot floats on the home page – and takes a nap when you've been idle for a while. Under *Settings → Mascot* you can set its size or hide it.
+- **Appearance:** Color theme, accent color, your own background image or outer space, fun facts in the greeting and whether your last session reopens at startup – all under *Settings*.
 
-1. **[`toms-tools.html` herunterladen](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)** – oder über den Download-Knopf ganz oben.
-2. **Doppelklick** auf die Datei – sie öffnet sich im Browser.
-3. Fertig. Tipp: Als Lesezeichen speichern oder an die Taskleiste anheften.
+## 🚀 Get started
 
-**Live ausprobieren:** Ohne Download geht es auch direkt unter **[tj537.github.io/toms-tools](https://tj537.github.io/toms-tools/)** – ideal zum Reinschnuppern. Was der Unterschied zum Download ist, steht [gleich hier drunter](#live).
+1. **[Download `toms-tools.html`](https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html)** – or use the download button at the top.
+2. **Double-click** the file – it opens in your browser.
+3. Done. Tip: bookmark it or pin it to the taskbar.
 
-**Browser:** Toms Tools ist für den **Desktop** gemacht – am besten **Chrome, Edge, Brave oder Opera**. Auf Handy und Tablet ist die Darstellung nicht überall geprüft. Firefox und Safari gehen für die meisten Apps auch – nur die Funktionen mit direktem Ordnerzugriff (Bulk Rename, Sortierwerk, Ordner-Sicherung) und die Pipette brauchen einen Chromium-Browser.
+**Try it live:** It also works without downloading at **[tj537.github.io/toms-tools](https://tj537.github.io/toms-tools/)** – ideal for a first look. The difference to the download is explained [right below](#live).
+
+**Browser:** Toms Tools is made for **desktop** – ideally **Chrome, Edge, Brave or Opera**. On phones and tablets the layout isn't tested everywhere. Firefox and Safari work for most apps too – only the features with direct folder access (Bulk Rename, Sortierwerk, folder backup) and the eyedropper need a Chromium browser.
 
 <a id="live"></a>
-## 🌐 Download oder live?
+## 🌐 Download or live?
 
-Beides ist dieselbe App. Für den Alltag empfehle ich trotzdem den Download – das hier ist der Unterschied:
+Both are the same app. For everyday use I still recommend the download – here's the difference:
 
-| | ⬇️ Download | ▶️ Live im Browser |
+| | ⬇️ Download | ▶️ Live in the browser |
 |---|---|---|
-| **Stand** | fester, getesteter Release | immer der allerneueste Stand – auch Dinge, die noch in Arbeit sind |
-| **Internet** | läuft komplett offline | braucht zum Laden eine Verbindung; in manchen Firmennetzen ist `github.io` gesperrt |
-| **Deine Daten** | liegen im Browser auf deinem Rechner | hängen an der Webadresse – Browser dürfen sie bei längerer Nichtnutzung aufräumen (Safari z. B. nach 7 Tagen) |
-| **Updates** | neue Version einfach herunterladen | kommen automatisch |
+| **Version** | a fixed, tested release | always the very latest – including things still in progress |
+| **Internet** | runs completely offline | needs a connection to load; some company networks block `github.io` |
+| **Your data** | stays in the browser on your computer | is tied to the web address – browsers may clear it after a long time unused (Safari e.g. after 7 days) |
+| **Updates** | just download the new version | arrive automatically |
 
-Die Daten der beiden Varianten sind getrennt. Mit *Einstellungen → Speicher & Sicherung → Backup exportieren / importieren* ziehst du sie jederzeit von der einen zur anderen um.
+The two variants keep separate data. With *Settings → Storage & backup → Export backup / Import backup* you can move it from one to the other at any time.
 
-## 💾 Deine Daten & Speichern (Local Storage)
+## 💾 Your data & saving (local storage)
 
-- **Alles speichert sich automatisch** – sobald du tippst, klickst oder eine Karteikarte beantwortest. Einen Speichern-Knopf gibt es nicht, und du brauchst ihn auch nicht.
-- Die Daten liegen **nur im Local Storage deines Browsers auf deinem Rechner** (pro Browser). Nichts wird an einen Server geschickt.
-- **Ordner-Sicherung (empfohlen):** Unter *Einstellungen → Speicher & Sicherung* einen Ordner wählen, z. B. in OneDrive. Toms Tools sichert dann automatisch in die Datei `toms-tools-daten.json` – gesammelt, sobald du kurz innehältst, also nicht bei jedem Tastendruck. Dazu kommt pro Tag eine Kopie im Unterordner `sicherungen`; ältere als 14 Tage werden automatisch gelöscht, der Ordner bleibt also übersichtlich. Geht in Chrome, Edge und Brave.
-- **Zweiter PC:** Dort denselben Ordner wählen und *Aus Ordner laden* – schon sind Notizen, Karteikarten, Quellen & Co. auch da.
-- **Backup exportieren / importieren:** Alles als eine Datei zum Mitnehmen – funktioniert in jedem Browser.
-- **Speicherplatz:** Der Browser gibt Toms Tools rund 5 MB. Wie viel jede App davon belegt, siehst du ebenfalls unter *Speicher & Sicherung*.
-- ⚠️ Wer die Browserdaten löscht, löscht auch die Toms-Tools-Daten. Also: Ordner-Sicherung einschalten.
+- **Everything saves automatically** – as soon as you type, click or answer a flashcard. There's no save button, and you don't need one.
+- Your data lives **only in your browser's local storage on your computer** (per browser). Nothing is sent to a server.
+- **Folder backup (recommended):** Under *Settings → Storage & backup*, choose a folder, e.g. in OneDrive. Toms Tools then backs up automatically to the file `toms-tools-daten.json` – in batches whenever you pause briefly, not on every keystroke. On top of that there's one copy per day in the `sicherungen` subfolder; copies older than 14 days are deleted automatically, so the folder stays tidy. Works in Chrome, Edge and Brave.
+- **Second PC:** Choose the same folder there and click *Load from folder* – and your notes, flashcards, sources & co. are there too.
+- **Export / import backup:** Everything as one file to take with you – works in every browser.
+- **Storage space:** The browser gives Toms Tools around 5 MB. How much each app uses is also shown under *Storage & backup*.
+- ⚠️ Clearing your browser data also clears your Toms Tools data. So: turn on folder backup.
 
-## 🔒 Datenschutz & Sicherheit
+## 🔒 Privacy & security
 
-- Die Seite bringt eine strenge **Content-Security-Policy** mit (`default-src 'none'`, Verbindungen nur zu `data:`/`blob:`). Der Browser verhindert damit jede Verbindung ins Internet – auch versehentliche.
-- Es gibt **keine Analyse, keine Cookies von Dritten, keine externen Schriften oder Skripte**.
-- Passwörter, Hashes und JWTs aus Textwerk/Codewerk werden **nie gespeichert**.
-- Links nach draußen öffnen sich nur, wenn du sie anklickst – jeweils in einem neuen Tab: der freiwillige Kaffee-Knopf (PayPal) und der Link zu dieser GitHub-Seite, beide in den Einstellungen, sowie die Links, die du selbst im Quellenwerk speicherst.
+- The page ships with a strict **Content Security Policy** (`default-src 'none'`, connections only to `data:`/`blob:`). The browser therefore blocks every connection to the internet – accidental ones too.
+- There's **no analytics, no third-party cookies, no external fonts or scripts**.
+- Passwords, hashes and JWTs from Textwerk/Codewerk are **never stored**.
+- Outside links only open when you click them – always in a new tab: the optional coffee button (PayPal) and the link to this GitHub page, both in the settings, and the links you save yourself in Quellenwerk.
 
-## 🛠️ Unter der Haube
+## 🛠️ Under the hood
 
-- Reines **HTML, CSS und JavaScript** – kein Framework, keine Abhängigkeiten, kein Build.
-- Etwa 3,5 MB groß, davon rund 2 MB für die eingebetteten PDF-Bibliotheken (werden erst beim Öffnen von PDF-Werk geladen).
-- **WebGL2** für Shaderwerk und LUT-Werk, **File System Access API** für die Ordner-Funktionen.
+- Plain **HTML, CSS and JavaScript** – no framework, no dependencies, no build step.
+- About 3.7 MB, around 2 MB of which are the embedded PDF libraries (only loaded when you open PDF-Werk).
+- **WebGL2** for Shaderwerk and LUT-Werk, the **File System Access API** for the folder features.
+- Translations: German is the source language; the English texts live in one lookup table, so anything not translated yet simply shows in German instead of breaking.
 
 ## 💬 Feedback
 
-Fehler gefunden, eine Idee für ein neues Werkzeug oder Kritik am Code? Einfach ein [Issue](../../issues) aufmachen. Ich freue mich über jede Rückmeldung, auch über ehrliche.
+Found a bug, have an idea for a new tool or criticism of the code? Just open an [issue](../../issues) – in English or German. I'm happy about any feedback, honest feedback too.
 
-## 📄 Lizenz
+## 📄 License
 
-Toms Tools steht unter der **[MIT-Lizenz](LICENSE)** – du darfst es frei nutzen, verändern und weitergeben, solange der Lizenzhinweis erhalten bleibt.
+Toms Tools is released under the **[MIT License](LICENSE)** – you may use, modify and share it freely as long as the license notice is kept.
 
-Eingebettete Fremdbibliotheken behalten ihre eigenen Lizenzen:
+Embedded third-party libraries keep their own licenses:
 
-- [pdf-lib](https://pdf-lib.js.org) 1.17.1 – MIT (enthält tslib, © Microsoft, Apache 2.0)
+- [pdf-lib](https://pdf-lib.js.org) 1.17.1 – MIT (includes tslib, © Microsoft, Apache 2.0)
 - [pdf.js](https://mozilla.github.io/pdf.js/) 3.11.174 – Apache 2.0, © Mozilla Foundation
-- Der QR-Kodierer folgt dem [QR Code generator](https://www.nayuki.io/page/qr-code-generator-library) von Project Nayuki – MIT
+- The QR encoder follows the [QR Code generator](https://www.nayuki.io/page/qr-code-generator-library) by Project Nayuki – MIT
 
 ---
 

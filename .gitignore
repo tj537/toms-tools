@@ -1,0 +1,4 @@
+# System files from macOS and Windows – never part of the project
+.DS_Store
+Thumbs.db
+desktop.ini

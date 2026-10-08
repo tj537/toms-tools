@@ -174,6 +174,7 @@ If your company has rules about software, just show this section to your IT team
 - **WebGL2** for Shaderwerk and LUT-Werk, the **File System Access API** for the folder features.
 - Translations: German is the source language; the English texts live in one lookup table, so anything not translated yet simply shows in German instead of breaking.
 - Before every release, `node tools/check.mjs` opens every app in both languages in a headless Chrome/Edge and checks for JavaScript errors, missing translations and broken script blocks (Node 22+, nothing to install).
+- Want to change something – yourself or with an AI assistant? [AGENTS.md](AGENTS.md) explains the structure and the rules of the code.
 
 ## 💬 Feedback
 

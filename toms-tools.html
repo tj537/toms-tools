@@ -6537,6 +6537,129 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Modellwerk
+  'Als Text kopiert – z. B. in Word einfügen.': 'Copied as text – paste it into Word, for example.', 'Als Text kopiert.': 'Copied as text.', 'günstig': 'cheap', 'teuer': 'expensive',
+  'klassisch': 'classic', 'Unsere Marke': 'Our brand', 'Wettbewerber {n}': 'Competitor {n}', ' (Kopie)': ' (copy)', 'Alle Felder geleert': 'All fields cleared',
+  'Noch keine Modelle. Wähle rechts eine Vorlage.': 'No models yet. Pick a template on the right.', 'Neues Modell': 'New model', 'Willkommen im Modellwerk': 'Welcome to Modellwerk',
+  'Vorlage wählen und losschreiben – eine Zeile = ein Stichpunkt · Text, PNG, PDF': 'Pick a template and start writing – one line per bullet point · Text, PNG, PDF', 'Achse links': 'Left axis',
+  'Achse rechts': 'Right axis', 'Achse oben': 'Top axis', 'Achse unten': 'Bottom axis', 'Ziehen zum Verschieben': 'Drag to move', 'Marke': 'Brand', 'Marke {n}': 'Brand {n}',
+  'Marke hinzufügen': 'Add brand', 'Marken': 'Brands', 'Punkte in der Karte ziehen': 'Drag the dots on the map', '{n} · zuletzt geändert {d}': '{n} · last edited {d}', 'PDF / Drucken': 'PDF / print',
+  'Tipp:': 'Tip:', 'Achsen': 'Axes', 'vertikal': 'vertical', 'Marken (Skala 0–10)': 'Brands (scale 0–10)', 'Modell': 'Model',
+  'Bitte Pop-ups für diese Seite erlauben.': 'Please allow pop-ups for this page.', 'Strategie & BWL': 'Strategy & business', 'Allgemein & Projekte': 'General & projects',
+  'Aufmerksamkeit': 'Awareness', 'Überlegung': 'Consideration', 'Kauf': 'Purchase', 'Nutzung': 'Use', 'Bindung': 'Loyalty', 'Handlungen': 'Actions', 'Gedanken & Gefühle': 'Thoughts & feelings',
+  'Chancen': 'Opportunities', 'Wo kommt die Person mit der Marke in Kontakt?': 'Where does the person come into contact with the brand?',
+  'Was tut die Person in dieser Phase?': 'What does the person do in this phase?', 'Was denkt und fühlt sie?': 'What do they think and feel?',
+  'Was nervt sie oder hält sie auf?': 'What annoys them or holds them back?', 'Was können wir hier verbessern?': 'What can we improve here?', 'gering': 'low', 'mittel': 'medium', 'hoch': 'high',
+  'SWOT-Analyse': 'SWOT analysis',
+  'Stärken und Schwächen (intern), Chancen und Risiken (extern) auf einen Blick.': 'Strengths and weaknesses (internal), opportunities and threats (external) at a glance.',
+  'Stärken/Schwächen betreffen das Unternehmen selbst, Chancen/Risiken kommen aus dem Umfeld. Aus den Kombinationen entstehen SO-, ST-, WO- und WT-Strategien (TOWS-Matrix).': 'Strengths and weaknesses concern the company itself, opportunities and threats come from the environment. Combining them gives SO, ST, WO and WT strategies (TOWS matrix).',
+  'Stärken': 'Strengths', 'intern · positiv': 'internal · positive',
+  'Was können wir besser als die Konkurrenz?\nWelche Ressourcen, Marke, Know-how haben wir?': 'What do we do better than the competition?\nWhat resources, brand and know-how do we have?',
+  'Schwächen': 'Weaknesses', 'intern · negativ': 'internal · negative',
+  'Wo sind wir schlechter als andere?\nWas fehlt uns (Budget, Personal, Reichweite)?': 'Where are we worse than others?\nWhat are we missing (budget, staff, reach)?',
+  'extern · positiv': 'external · positive', 'Welche Trends, Zielgruppen oder Marktlücken können wir nutzen?': 'Which trends, target groups or market gaps can we use?', 'Risiken': 'Threats',
+  'extern · negativ': 'external · negative', 'Welche Wettbewerber, Gesetze oder Entwicklungen gefährden uns?': 'Which competitors, laws or developments threaten us?',
+  'PESTEL-Analyse': 'PESTEL analysis',
+  'Das Makro-Umfeld in sechs Bereichen: Politik, Wirtschaft, Gesellschaft, Technik, Umwelt, Recht.': 'The macro environment in six areas: political, economic, social, technological, environmental, legal.',
+  'PESTEL liefert die externen Faktoren – ideal als Vorarbeit für Chancen und Risiken in der SWOT-Analyse. Nur Faktoren notieren, die für den Markt wirklich relevant sind.': 'PESTEL gives you the external factors – ideal groundwork for the opportunities and threats in a SWOT analysis. Only note factors that really matter for the market.',
+  'Politisch': 'Political', 'Regierung, Steuern, Handelspolitik, Förderprogramme …': 'Government, taxes, trade policy, funding programmes …', 'Ökonomisch': 'Economic',
+  'Konjunktur, Inflation, Kaufkraft, Zinsen, Wechselkurse …': 'Economic cycle, inflation, purchasing power, interest rates, exchange rates …', 'Soziokulturell': 'Social',
+  'Werte, Demografie, Lebensstile, Trends, Bildung …': 'Values, demographics, lifestyles, trends, education …', 'Technologisch': 'Technological',
+  'Digitalisierung, KI, neue Kanäle, Innovationen …': 'Digitalisation, AI, new channels, innovations …', 'Ökologisch': 'Environmental',
+  'Klimawandel, Nachhaltigkeit, Ressourcen, Umweltauflagen …': 'Climate change, sustainability, resources, environmental regulations …', 'Rechtlich': 'Legal',
+  'DSGVO, UWG, Verbraucherschutz, Kennzeichnungspflichten …': 'GDPR, competition law, consumer protection, labelling rules …',
+  'Fünf Wettbewerbskräfte, die bestimmen, wie attraktiv eine Branche ist.': 'Five competitive forces that determine how attractive an industry is.',
+  'Je stärker die Kräfte, desto unattraktiver die Branche. Bewerte jede Kraft (gering/mittel/hoch) und begründe die Einschätzung in Stichpunkten.': 'The stronger the forces, the less attractive the industry. Rate each force (low/medium/high) and back up your rating with bullet points.',
+  'Neue Anbieter': 'New entrants', 'Bedrohung': 'threat',
+  'Wie hoch sind die Markteintrittsbarrieren?\nKapitalbedarf, Markentreue, Regulierung …': 'How high are the barriers to entry?\nCapital needs, brand loyalty, regulation …',
+  'Lieferanten': 'Suppliers', 'Verhandlungsmacht': 'bargaining power', 'Wie viele Lieferanten gibt es?\nWie teuer ist ein Wechsel?': 'How many suppliers are there?\nHow expensive is switching?',
+  'Rivalität im Markt': 'Industry rivalry', 'Wettbewerbsintensität': 'competitive intensity',
+  'Wie viele Wettbewerber, wie ähnlich sind die Angebote?\nWie stark wächst der Markt?': 'How many competitors, how similar are the offers?\nHow fast is the market growing?',
+  'Wie leicht können Kunden wechseln?\nWie preissensibel sind sie?': 'How easily can customers switch?\nHow price-sensitive are they?', 'Ersatzprodukte': 'Substitutes',
+  'Welche anderen Lösungen erfüllen denselben Zweck?': 'Which other solutions serve the same purpose?',
+  'Ein ganzes Geschäftsmodell auf einer Seite – neun Bausteine nach Osterwalder.': 'A whole business model on one page – nine building blocks after Osterwalder.',
+  'Am besten rechts anfangen: Kundensegmente → Nutzenversprechen → Kanäle → Beziehungen → Einnahmen. Danach die linke Seite (wie liefern wir das?) und die Kosten.': 'Best to start on the right: customer segments → value proposition → channels → relationships → revenue. Then the left side (how do we deliver it?) and the costs.',
+  'Schlüsselpartner': 'Key partners', 'Wer hilft uns? Lieferanten, Kooperationen, Dienstleister …': 'Who helps us? Suppliers, partnerships, service providers …',
+  'Schlüsselaktivitäten': 'Key activities', 'Was müssen wir tun, damit das Nutzenversprechen funktioniert?': 'What do we have to do to deliver the value proposition?',
+  'Schlüsselressourcen': 'Key resources', 'Was brauchen wir? Personal, Technik, Marke, Kapital …': 'What do we need? Staff, technology, brand, capital …', 'Nutzenversprechen': 'Value proposition',
+  'Welches Problem lösen wir?\nWelchen Wert liefern wir den Kunden?': 'Which problem do we solve?\nWhat value do we deliver to customers?', 'Kundenbeziehungen': 'Customer relationships',
+  'Wie gewinnen und halten wir Kunden?\nPersönlich, Self-Service, Community …': 'How do we win and keep customers?\nPersonal, self-service, community …', 'Kanäle': 'Channels',
+  'Wie erreichen wir die Kunden?\nShop, Social Media, Handel …': 'How do we reach customers?\nShop, social media, retail …', 'Kundensegmente': 'Customer segments',
+  'Für wen schaffen wir Wert?\nWer sind die wichtigsten Kunden?': 'Who do we create value for?\nWho are our most important customers?', 'Kostenstruktur': 'Cost structure',
+  'Was sind die wichtigsten Kosten? Fix oder variabel?': 'What are the main costs? Fixed or variable?', 'Einnahmequellen': 'Revenue streams',
+  'Wofür zahlen Kunden? Preismodell, Abo, Provision …': 'What do customers pay for? Pricing model, subscription, commission …', 'Marketing-Mix (7P)': 'Marketing mix (7P)',
+  'Die klassischen 4P plus die drei Dienstleistungs-P: People, Process, Physical Evidence.': 'The classic 4Ps plus the three service Ps: people, process, physical evidence.',
+  'Die 4P (Product, Price, Place, Promotion) passen für Sachgüter. Für Dienstleistungen kommen People, Process und Physical Evidence dazu. Alle Instrumente müssen zur Positionierung passen.': 'The 4Ps (product, price, place, promotion) fit physical goods. Services add people, process and physical evidence. Every tool has to fit the positioning.',
+  'Produkt': 'Product', 'Leistung, Qualität, Design, Marke, Verpackung, Service …': 'Offer, quality, design, brand, packaging, service …', 'Preis': 'Price',
+  'Preisstrategie, Rabatte, Zahlungsbedingungen …': 'Pricing strategy, discounts, payment terms …', 'Distribution': 'Place',
+  'Absatzkanäle, Standorte, Logistik, online/offline …': 'Sales channels, locations, logistics, online/offline …', 'Kommunikation': 'Promotion',
+  'Werbung, Social Media, PR, Verkaufsförderung …': 'Advertising, social media, PR, sales promotion …', 'Personal': 'People',
+  'Wer hat Kundenkontakt? Schulung, Auftreten …': 'Who deals with customers? Training, appearance …', 'Prozesse': 'Process',
+  'Wie läuft die Leistung ab? Wartezeiten, Buchung …': 'How is the service delivered? Waiting times, booking …', 'Ausstattung': 'Physical evidence',
+  'Räume, Website, Uniformen, Belege – was macht die Leistung sichtbar?': 'Premises, website, uniforms, receipts – what makes the service visible?', 'Ansoff-Matrix': 'Ansoff matrix',
+  'Vier Wachstumsstrategien aus bestehenden oder neuen Produkten und Märkten.': 'Four growth strategies from existing or new products and markets.',
+  'Das Risiko steigt von links oben (Marktdurchdringung) nach rechts unten (Diversifikation). Pro Feld konkrete Maßnahmen notieren.': 'Risk rises from top left (market penetration) to bottom right (diversification). Note concrete actions in each box.',
+  'Marktdurchdringung': 'Market penetration', 'bestehende Produkte · bestehende Märkte': 'existing products · existing markets',
+  'Wie verkaufen wir mehr an bestehende Kunden?\nPreisaktionen, Werbung, Kundenbindung …': 'How do we sell more to existing customers?\nPrice promotions, advertising, loyalty …',
+  'Produktentwicklung': 'Product development', 'neue Produkte · bestehende Märkte': 'new products · existing markets',
+  'Welche neuen Produkte passen zu unseren Kunden?': 'Which new products suit our customers?', 'Marktentwicklung': 'Market development',
+  'bestehende Produkte · neue Märkte': 'existing products · new markets', 'Neue Regionen, Zielgruppen oder Kanäle?': 'New regions, target groups or channels?', 'Diversifikation': 'Diversification',
+  'neue Produkte · neue Märkte': 'new products · new markets', 'Komplett neues Geschäftsfeld? Chancen und Risiken?': 'An entirely new line of business? Opportunities and risks?',
+  'Ein greifbarer Steckbrief der Zielgruppe – mit Zielen, Frust und Mediennutzung.': 'A tangible profile of the target group – with goals, frustrations and media use.',
+  'Eine Persona ist fiktiv, beruht aber auf echten Daten (Umfragen, Interviews, Analytics). Lieber eine konkrete Person als einen Durchschnitt beschreiben.': 'A persona is fictional but based on real data (surveys, interviews, analytics). Describe one specific person rather than an average.',
+  'Steckbrief': 'Profile', 'Name, Alter, Beruf, Wohnort, Einkommen, Familie …': 'Name, age, job, location, income, family …', 'Typisches Zitat': 'Typical quote',
+  '„Ich will nicht ewig vergleichen – es soll einfach passen.“': '“I don’t want to compare forever – it should just fit.”', 'Ziele & Wünsche': 'Goals & wishes',
+  'Was will die Person erreichen?': 'What does the person want to achieve?', 'Frust & Pain Points': 'Frustrations & pain points',
+  'Was nervt sie? Was hält sie vom Kauf ab?': 'What annoys them? What stops them from buying?', 'Verhalten & Alltag': 'Behaviour & daily life',
+  'Wie sieht ein typischer Tag aus? Wie informiert sie sich?': 'What does a typical day look like? How do they find information?', 'Kaufmotive': 'Buying motives',
+  'Preis, Qualität, Status, Nachhaltigkeit, Bequemlichkeit …': 'Price, quality, status, sustainability, convenience …',
+  'Wo erreichen wir sie? Instagram, TikTok, Newsletter, Laden …': 'Where can we reach them? Instagram, TikTok, newsletter, store …', 'Marken & Medien': 'Brands & media',
+  'Welche Marken, Podcasts, Influencer mag sie?': 'Which brands, podcasts and influencers do they like?',
+  'Der Weg der Kunden durch fünf Phasen – mit Touchpoints, Gefühlen und Pain Points.': 'The customer’s path through five phases – with touchpoints, feelings and pain points.',
+  'Aus Sicht der Kunden denken, nicht aus Sicht des Unternehmens. Die Pain Points sind die wichtigste Zeile: Dort entstehen die Chancen für Maßnahmen.': 'Think from the customer’s point of view, not the company’s. The pain points are the most important row: that’s where the opportunities for action come from.',
+  'Positionierungskarte': 'Perceptual map', 'Marken auf zwei Achsen einordnen und Lücken im Markt finden (Perceptual Map).': 'Place brands on two axes and find gaps in the market.',
+  'Achsen wählen, die für die Kaufentscheidung wirklich zählen (z. B. Preis und Qualität). Punkte ziehen, um Marken einzuordnen. Freie Flächen zeigen mögliche Positionierungslücken.': 'Choose axes that really matter for the buying decision (e.g. price and quality). Drag the dots to place brands. Empty areas show possible positioning gaps.',
+  'Erkenntnisse': 'Insights', 'Wo gibt es Lücken?\nWer sind die direkten Konkurrenten?\nWo wollen wir hin?': 'Where are the gaps?\nWho are the direct competitors?\nWhere do we want to be?',
+  'Sich in die Zielgruppe hineinversetzen: Was sie denkt, sieht, hört und tut.': 'Put yourself in the target group’s shoes: what they think, see, hear and do.',
+  'Kommt aus dem Design Thinking. Immer eine konkrete Person im Kopf haben – passt perfekt zur Persona. Pains und Gains zeigen, wo ein Angebot ansetzen kann.': 'Comes from design thinking. Always keep a specific person in mind – it goes perfectly with a persona. Pains and gains show where an offer can make a difference.',
+  'Denkt & fühlt': 'Thinks & feels', 'Was beschäftigt die Person wirklich?\nSorgen, Hoffnungen, Träume …': 'What’s really on their mind?\nWorries, hopes, dreams …', 'Sieht': 'Sees',
+  'Umfeld, Freunde, Angebote am Markt …': 'Surroundings, friends, offers on the market …', 'Hört': 'Hears',
+  'Was sagen Freunde, Familie, Influencer, Kollegen?': 'What do friends, family, influencers and colleagues say?', 'Sagt & tut': 'Says & does',
+  'Verhalten, Aussagen, Gewohnheiten …': 'Behaviour, statements, habits …', 'Frust · Ängste · Hürden': 'frustrations · fears · obstacles',
+  'Was stört oder bremst sie?': 'What bothers them or slows them down?', 'Wünsche · Ziele · Nutzen': 'wishes · goals · benefits',
+  'Was will sie erreichen? Woran misst sie Erfolg?': 'What do they want to achieve? How do they measure success?', 'Stakeholder-Analyse': 'Stakeholder analysis',
+  'Wer ist von einem Projekt betroffen – und wie geht man mit wem um? Sortiert nach Einfluss und Interesse.': 'Who is affected by a project – and how do you deal with each of them? Sorted by power and interest.',
+  'Oben rechts stehen die Schlüsselpersonen mit viel Einfluss und viel Interesse: eng einbinden. Unten links reicht es, sie im Blick zu behalten.': 'Top right are the key players with high power and high interest: manage them closely. Bottom left, it’s enough to keep an eye on them.',
+  'Zufriedenstellen': 'Keep satisfied', 'viel Einfluss · wenig Interesse': 'high power · low interest',
+  'z. B. Geschäftsführung, Behörden …\nRegelmäßig abholen, nicht überfordern.': 'e.g. management, authorities …\nCheck in regularly, don’t overload them.', 'Eng einbinden': 'Manage closely',
+  'viel Einfluss · viel Interesse': 'high power · high interest',
+  'Auftraggeber, Investoren, Projektleitung …\nFrüh einbeziehen, oft sprechen.': 'Client, investors, project lead …\nInvolve them early, talk often.', 'Beobachten': 'Monitor',
+  'wenig Einfluss · wenig Interesse': 'low power · low interest', 'Wer ist nur am Rand betroffen?': 'Who is only marginally affected?', 'Informieren': 'Keep informed',
+  'wenig Einfluss · viel Interesse': 'low power · high interest',
+  'z. B. Mitarbeitende, Anwohner, Community …\nAuf dem Laufenden halten.': 'e.g. employees, residents, community …\nKeep them up to date.', 'Pro & Contra': 'Pros & cons',
+  'Eine Entscheidung sauber abwägen – mit Argumenten dafür, dagegen und einem klaren Fazit.': 'Weigh up a decision properly – with arguments for, against and a clear conclusion.',
+  'Erst sammeln, dann gewichten: Welche drei Argumente wiegen am schwersten? Das Fazit ist die Entscheidung in einem Satz – mit Begründung.': 'Collect first, then weigh: which three arguments carry the most weight? The conclusion is the decision in one sentence – with the reason.',
+  'Frage': 'Question', 'z. B. Soll ich ein Auslandssemester machen?': 'e.g. Should I do a semester abroad?', 'dafür': 'for', 'Was spricht dafür?': 'What speaks for it?', 'Contra': 'Con',
+  'dagegen': 'against', 'Was spricht dagegen?': 'What speaks against it?', 'Fazit': 'Conclusion', 'Wie entscheide ich mich – und warum?': 'What do I decide – and why?',
+  'Eisenhower-Matrix': 'Eisenhower matrix', 'Aufgaben nach wichtig und dringend sortieren – und wissen, was zuerst dran ist.': 'Sort tasks by importance and urgency – and know what comes first.',
+  'Das Feld „Planen“ ist das wertvollste: Dort liegen Lernen, Gesundheit und große Ziele. Was weder wichtig noch dringend ist, darf weg.': 'The “Schedule” box is the most valuable: that’s where learning, health and big goals live. Anything neither important nor urgent can go.',
+  'Sofort erledigen': 'Do it now', 'wichtig · dringend': 'important · urgent', 'Deadlines, Prüfungen, echte Notfälle …': 'Deadlines, exams, real emergencies …', 'Planen': 'Schedule',
+  'wichtig · nicht dringend': 'important · not urgent',
+  'Lernen, Projekte, Sport, Beziehungen …\nFeste Termine dafür eintragen.': 'Learning, projects, sport, relationships …\nBlock fixed time for them.', 'Abgeben': 'Delegate',
+  'nicht wichtig · dringend': 'not important · urgent', 'Anrufe, manche Mails, Kleinkram …\nDelegieren oder schnell abhaken.': 'Calls, some emails, small stuff …\nDelegate or tick off quickly.',
+  'Weglassen': 'Drop it', 'nicht wichtig · nicht dringend': 'not important · not urgent', 'Zeitfresser wie endloses Scrollen …': 'Time wasters like endless scrolling …', 'SMART-Ziel': 'SMART goal',
+  'Ein Ziel so formulieren, dass es klar, messbar und erreichbar ist.': 'Phrase a goal so it’s clear, measurable and achievable.',
+  'Am Ende steht ein einziger Satz, der alle fünf Kriterien erfüllt – z. B. „Bis zum 31.12. steigern wir die Newsletter-Anmeldungen um 20 % durch ein Gewinnspiel.“': 'You end up with a single sentence that meets all five criteria – e.g. “By 31 December we’ll grow newsletter sign-ups by 20 % with a prize draw.”',
+  'Ziel (grob)': 'Goal (rough)', 'Was will ich erreichen?': 'What do I want to achieve?', 'Spezifisch': 'Specific', 'Was genau? Wer, was, wo?': 'What exactly? Who, what, where?',
+  'Messbar': 'Measurable', 'Woran erkenne ich den Erfolg?': 'How will I know I’ve succeeded?', 'Attraktiv': 'Achievable', 'Warum lohnt es sich?': 'Achievable with my resources?',
+  'Realistisch': 'Relevant', 'Mit meinen Mitteln schaffbar?': 'Why does it matter to me?', 'Terminiert': 'Time-bound', 'Bis wann? Zwischenschritte?': 'By when? Milestones?',
+  'SMART formuliert': 'SMART version', 'Das Ziel in einem Satz, der alle fünf Punkte erfüllt.': 'The goal in one sentence that meets all five points.', 'Retrospektive': 'Retrospective',
+  'Nach einem Projekt oder einer Gruppenarbeit zurückschauen: Was lief gut, was ändern wir?': 'Look back after a project or group work: what went well, what do we change?',
+  'Ehrlich, aber fair: Es geht um Abläufe, nicht um Schuld. Am Ende sollten zwei, drei konkrete Maßnahmen mit Verantwortlichen stehen.': 'Honest but fair: it’s about processes, not blame. You should end up with two or three concrete actions, each with an owner.',
+  'Lief gut': 'Went well', 'beibehalten': 'keep', 'Was hat funktioniert?': 'What worked?', 'Lief nicht gut': 'Didn’t go well', 'lassen': 'stop',
+  'Was hat genervt oder Zeit gekostet?': 'What was annoying or wasted time?', 'Ideen': 'Ideas', 'ausprobieren': 'try', 'Was machen wir nächstes Mal anders?': 'What will we do differently next time?',
+  'Maßnahmen': 'Actions', 'wer macht was bis wann?': 'who does what by when?', 'z. B. Wöchentlicher Check-in – Lisa – ab Montag': 'e.g. Weekly check-in – Lisa – from Monday',
+  '{n} gibt es bisher nur auf Deutsch.': '{n} is only available in German for now.',
   // Quellenwerk
   'Buch': 'Book', 'Sammelband': 'Edited book', 'Zeitschrift': 'Journal', 'Internet': 'Website', 'Kopiert: {t}': 'Copied: {t}', 'Suchen …': 'Search …',
   'Nach Projekt filtern': 'Filter by project', 'Alle Projekte': 'All projects', 'Ohne Titel': 'Untitled', 'Quelle löschen': 'Delete source', 'Nichts gefunden.': 'Nothing found.',
@@ -7654,6 +7777,8 @@ async function makeZip(files, onProgress) {
 }
 
 /* ---------- App shell ---------- */
+// Apps with deOnly: true aren't translated yet – in the English interface they are hidden everywhere and can't be opened
+const deOnlyOff = a => !!a?.deOnly && isEN();
 const TT = {
   apps: new Map(), open: [], active: 'home', views: new Map(), inst: new Map(),
   register(app) { this.apps.set(app.id, app); },
@@ -7662,6 +7787,7 @@ const TT = {
     const app = this.apps.get(id);
     if (!app) return;
     if (app.soon) { toast(`${app.name} ist noch in Planung.`, 'info'); return; }
+    if (deOnlyOff(app)) { if (!quiet) toast(T('{n} gibt es bisher nur auf Deutsch.', { n: appName(app) }), 'info'); return; }
     if (!this.open.includes(id)) {
       const view = h('section', { class: 'view' + (app.full ? ' full' : ''), dataset: { id }, style: { '--app-c': app.c, '--app-c2': app.c2, ...(app.fg && { '--app-fg': app.fg }) } });
       $('#views').append(view);
@@ -7722,7 +7848,7 @@ function renderTabs() {
     }),
     h('button', {
       class: 'tab-add', title: T('App öffnen'),
-      onclick: e => popMenu(e.currentTarget, [{ head: T('App öffnen') }, ...[...TT.apps.values()].map(a => ({ label: appName(a), desc: T(a.soon ? 'In Planung' : a.tagline), icon: a.icon, disabled: a.soon, onClick: () => TT.openApp(a.id) }))]),
+      onclick: e => popMenu(e.currentTarget, [{ head: T('App öffnen') }, ...[...TT.apps.values()].filter(a => !deOnlyOff(a)).map(a => ({ label: appName(a), desc: T(a.soon ? 'In Planung' : a.tagline), icon: a.icon, disabled: a.soon, onClick: () => TT.openApp(a.id) }))]),
     }, icon('plus')),
   );
   t.querySelector('.tab.active')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
@@ -8161,7 +8287,7 @@ function renderHome() {
   const bgMode = S.data.homeBg, bgImg = bgMode === 'image' ? homeBgUrl() : '';
   const hidden = S.data.hidden || [], closed = S.data.collapsed || [];
   // Groups without a visible app disappear completely
-  const groups = appGroups().map(g => ({ ...g, list: g.apps.map(id => TT.apps.get(id)).filter(a => a && !hidden.includes(a.id)) })).filter(g => g.list.length);
+  const groups = appGroups().map(g => ({ ...g, list: g.apps.map(id => TT.apps.get(id)).filter(a => a && !hidden.includes(a.id) && !deOnlyOff(a)) })).filter(g => g.list.length);
   const animate = !homeAnimated; homeAnimated = true;
   let tileNo = 0;
   const card = a => h('button', {
@@ -8199,7 +8325,7 @@ function renderHome() {
   } });
   // Counter next to „Apps“: visible apps, plus the total when some are hidden (a click opens the settings)
   const appsCount = () => {
-    const all = [...TT.apps.values()].filter(a => !a.soon), shown = all.filter(a => !hidden.includes(a.id)).length, off = all.length - shown;
+    const all = [...TT.apps.values()].filter(a => !a.soon && !deOnlyOff(a)), shown = all.filter(a => !hidden.includes(a.id)).length, off = all.length - shown;
     return off
       ? h('button', { class: 'hg-cnt apps-cnt', title: T('{n} ausgeblendet – in den Einstellungen unter „Apps“ einblenden', { n: off }), onclick: () => openSettings() }, `${shown} / ${all.length}`)
       : h('span', { class: 'hg-cnt apps-cnt', title: T('{n} Apps', { n: shown }) }, shown);
@@ -8330,7 +8456,7 @@ function openSettings(keepScroll) {
     } }, T(label));
     return b;
   };
-  const setApps = [...TT.apps.values()].filter(a => a.settings?.length && !a.soon);
+  const setApps = [...TT.apps.values()].filter(a => a.settings?.length && !a.soon && !deOnlyOff(a));
   const isHidden = id => (S.data.hidden || []).includes(id);
   const appSecEls = new Map();
   const appSec = a => {
@@ -8471,7 +8597,7 @@ function openSettings(keepScroll) {
       sec('Apps',
         row('Legacy-App-Modus', 'Bildbenamung heißt wieder „Bildbert Namuel Verwaldemar“ – mit Gesicht', switchEl(S.data.bildbert, v => { S.data.bildbert = v; S.save(); applyBildbert(true); })),
         ...appGroups().map(g => {
-          const list = g.apps.map(id => TT.apps.get(id)).filter(a => a && !a.soon);
+          const list = g.apps.map(id => TT.apps.get(id)).filter(a => a && !a.soon && !deOnlyOff(a));
           if (!list.length) return null;
           return h('div', { class: 'set-grp' }, h('div', { class: 'set-grp-t' }, icon(g.icon), T(g.name)),
             list.map(a => h('div', { class: 'set-row', dataset: { id: a.id } },
@@ -18651,10 +18777,16 @@ function mountModellwerk(view) {
   const saved = Store.get('modellwerk', {});
   const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null };
   const persist = saveLater(() => Store.set('modellwerk', st), 300);
-  const tplOf = id => MW_TEMPLATES.find(t => t.id === id) || MW_TEMPLATES[0];
+  // The templates are constants evaluated at load → translated copies are made here, when the app opens
+  const lt = s => s && T(s);
+  const TPLS = MW_TEMPLATES.map(t => ({ ...t, name: lt(t.name), desc: lt(t.desc), tip: lt(t.tip),
+    fields: t.fields.map(f => ({ ...f, label: lt(f.label), sub: lt(f.sub), hint: lt(f.hint), group: lt(f.group) })) }));
+  const PH = MW_JOURNEY_PH.map(lt), ROWS = MW_JOURNEY_ROWS.map(([k, l, c, hint]) => [k, lt(l), c, lt(hint)]);
+  const RATES = Object.fromEntries(Object.entries(MW_RATES).map(([k, [l, c]]) => [k, [lt(l), c]])), CATS = MW_CATS.map(([k, l]) => [k, lt(l)]);
+  const tplOf = id => TPLS.find(t => t.id === id) || TPLS[0];
   const cur = () => st.items.find(x => x.id === st.active);
   const PT_COLORS = ['#7c6cff', '#ef4444', '#0ea5e9', '#22c55e', '#f59e0b', '#ec4899', '#64748b'];
-  const fmtD = t => new Date(t).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' });
+  const fmtD = t => new Date(t).toLocaleDateString(isEN() ? 'en-GB' : 'de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' });
   let board = null;   // current board element (source for the PNG export)
 
   function copy(txt) {
@@ -18662,8 +18794,8 @@ function mountModellwerk(view) {
     t.value = txt; document.body.append(t); t.select();
     let ok = false; try { ok = document.execCommand('copy'); } catch {}
     t.remove();
-    if (ok) toast('Als Text kopiert – z. B. in Word einfügen.', 'ok');
-    else navigator.clipboard?.writeText(txt).then(() => toast('Als Text kopiert.', 'ok'), () => toast('Kopieren hat nicht geklappt.', 'err'));
+    if (ok) toast(T('Als Text kopiert – z. B. in Word einfügen.'), 'ok');
+    else navigator.clipboard?.writeText(txt).then(() => toast(T('Als Text kopiert.'), 'ok'), () => toast(T('Kopieren hat nicht geklappt.'), 'err'));
   }
   const grow = ta => { ta.style.height = '0'; ta.style.height = ta.scrollHeight + 'px'; };
   const growAll = () => view.querySelectorAll('.mdw-ta').forEach(grow);
@@ -18673,15 +18805,15 @@ function mountModellwerk(view) {
   function create(type) {
     const tp = tplOf(type);
     const it = { id: uid(), type, title: tp.name, created: Date.now(), updated: Date.now(), f: {}, rates: {} };
-    if (tp.map) it.map = { x0: 'günstig', x1: 'teuer', y0: 'klassisch', y1: 'modern', pts: [
-      { id: uid(), n: 'Unsere Marke', x: .62, y: .72, c: PT_COLORS[0] },
-      { id: uid(), n: 'Wettbewerber A', x: .25, y: .3, c: PT_COLORS[1] },
-      { id: uid(), n: 'Wettbewerber B', x: .8, y: .25, c: PT_COLORS[2] }] };
+    if (tp.map) it.map = { x0: T('günstig'), x1: T('teuer'), y0: T('klassisch'), y1: T('modern'), pts: [
+      { id: uid(), n: T('Unsere Marke'), x: .62, y: .72, c: PT_COLORS[0] },
+      { id: uid(), n: T('Wettbewerber {n}', { n: 'A' }), x: .25, y: .3, c: PT_COLORS[1] },
+      { id: uid(), n: T('Wettbewerber {n}', { n: 'B' }), x: .8, y: .25, c: PT_COLORS[2] }] };
     st.items.push(it); st.active = it.id; persist(); render();
     setTimeout(() => { const t = view.querySelector('.mdw-title'); t?.focus(); t?.select(); }, 30);
   }
   function duplicate(it) {
-    const c = { ...structuredClone(it), id: uid(), title: it.title + ' (Kopie)', created: Date.now(), updated: Date.now() };
+    const c = { ...structuredClone(it), id: uid(), title: it.title + T(' (Kopie)'), created: Date.now(), updated: Date.now() };
     st.items.push(c); st.active = c.id; persist(); render();
   }
   function remove(it) {
@@ -18689,12 +18821,12 @@ function mountModellwerk(view) {
     st.items.splice(i, 1);
     if (wasActive) st.active = null;
     persist(); render();
-    toast(`„${it.title}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.items.splice(i, 0, it); st.active = it.id; persist(); render(); } } });
+    toast(T('„{t}“ gelöscht', { t: it.title }), 'info', { action: { label: T('Rückgängig'), fn: () => { st.items.splice(i, 0, it); st.active = it.id; persist(); render(); } } });
   }
   function clearFields(it) {
     const old = structuredClone(it);
     it.f = {}; it.rates = {}; touch(); render();
-    toast('Alle Felder geleert', 'info', { action: { label: 'Rückgängig', fn: () => { Object.assign(it, old); touch(); render(); } } });
+    toast(T('Alle Felder geleert'), 'info', { action: { label: T('Rückgängig'), fn: () => { Object.assign(it, old); touch(); render(); } } });
   }
 
   /* ---------- Sidebar ---------- */
@@ -18703,25 +18835,25 @@ function mountModellwerk(view) {
     const items = [...st.items].sort((a, b) => b.updated - a.updated);
     list.replaceChildren(...items.map(it => {
       const tp = tplOf(it.type);
-      const more = h('button', { class: 'mdw-more', title: 'Mehr', onclick: e => { e.stopPropagation(); popMenu(e.currentTarget, [
-        { label: 'Duplizieren', icon: 'copy', onClick: () => duplicate(it) },
-        { label: 'Löschen', icon: 'trash', danger: true, onClick: () => remove(it) }]); } }, icon('grip'));
+      const more = h('button', { class: 'mdw-more', title: T('Mehr'), onclick: e => { e.stopPropagation(); popMenu(e.currentTarget, [
+        { label: T('Duplizieren'), icon: 'copy', onClick: () => duplicate(it) },
+        { label: T('Löschen'), icon: 'trash', danger: true, onClick: () => remove(it) }]); } }, icon('grip'));
       return h('div', { class: 'mdw-it' + (it.id === st.active ? ' on' : ''), onclick: () => { st.active = it.id; persist(); render(); } },
         h('span', { class: 'mdw-badge' }, tp.short),
         h('div', { class: 'mdw-it-tx' }, h('div', { class: 'mdw-it-t' }, it.title || tp.name), h('div', { class: 'mdw-it-d' }, fmtD(it.updated))),
         more);
     }));
-    if (!items.length) list.append(h('div', { class: 'mdw-empty' }, 'Noch keine Modelle. Wähle rechts eine Vorlage.'));
+    if (!items.length) list.append(h('div', { class: 'mdw-empty' }, T('Noch keine Modelle. Wähle rechts eine Vorlage.')));
   }
   const listSoon = debounce(renderList, 250);
 
   /* ---------- Gallery (new model) ---------- */
   function gallery() {
     return h('div', { class: 'mdw-in' },
-      h('div', null, h('h2', { class: 'mdw-h2' }, st.items.length ? 'Neues Modell' : 'Willkommen im Modellwerk'),
-        h('p', { class: 'mdw-meta' }, 'Vorlage wählen und losschreiben – eine Zeile = ein Stichpunkt · Text, PNG, PDF')),
-      ...MW_CATS.flatMap(([cat, label]) => [h('div', { class: 'mdw-gcat' }, label),
-        h('div', { class: 'mdw-gal' }, ...MW_TEMPLATES.filter(t => t.cat === cat).map(t => h('button', { class: 'mdw-g', onclick: () => create(t.id) },
+      h('div', null, h('h2', { class: 'mdw-h2' }, st.items.length ? T('Neues Modell') : T('Willkommen im Modellwerk')),
+        h('p', { class: 'mdw-meta' }, T('Vorlage wählen und losschreiben – eine Zeile = ein Stichpunkt · Text, PNG, PDF'))),
+      ...CATS.flatMap(([cat, label]) => [h('div', { class: 'mdw-gcat' }, label),
+        h('div', { class: 'mdw-gal' }, ...TPLS.filter(t => t.cat === cat).map(t => h('button', { class: 'mdw-g', onclick: () => create(t.id) },
           h('span', { class: 'mdw-badge' }, t.short), h('b', null, t.name), h('span', null, t.desc))))]));
   }
 
@@ -18730,7 +18862,7 @@ function mountModellwerk(view) {
     const ta = h('textarea', { class: 'mdw-ta', placeholder: f.hint || '…', oninput: () => { it.f[f.k] = ta.value; grow(ta); touch(); } });
     ta.value = it.f[f.k] || '';
     const head = tp.matrix ? null : h('div', { class: 'mdw-fh' }, h('b', null, f.label), f.sub && h('small', null, f.sub),
-      f.rate && h('div', { class: 'mdw-rate' }, segEl([['', '–'], ...Object.entries(MW_RATES).map(([k, [l]]) => [k, l])], it.rates?.[f.k] || '', v => { (it.rates ||= {})[f.k] = v; touch(); })));
+      f.rate && h('div', { class: 'mdw-rate' }, segEl([['', '–'], ...Object.entries(RATES).map(([k, [l]]) => [k, l])], it.rates?.[f.k] || '', v => { (it.rates ||= {})[f.k] = v; touch(); })));
     return h('div', { class: 'mdw-f' + (tp.matrix ? ' sm' : ''), style: { '--fc': f.c, ...(tp.areas && { gridArea: f.k }) }, dataset: { x: 'field', k: f.k } }, head, ta);
   }
 
@@ -18738,13 +18870,13 @@ function mountModellwerk(view) {
     const m = it.map;
     const area = h('div', { class: 'mdw-map', dataset: { x: 'map' } }, h('i', { class: 'mdw-ax x' }), h('i', { class: 'mdw-ax y' }));
     const axIn = (k, cls, title) => { const i = h('input', { class: 'mdw-axl ' + cls, value: m[k], title, spellcheck: false, oninput: () => { m[k] = i.value; touch(); } }); return i; };
-    area.append(axIn('x0', 'x0', 'Achse links'), axIn('x1', 'x1', 'Achse rechts'), axIn('y1', 'y1', 'Achse oben'), axIn('y0', 'y0', 'Achse unten'));
+    area.append(axIn('x0', 'x0', T('Achse links')), axIn('x1', 'x1', T('Achse rechts')), axIn('y1', 'y1', T('Achse oben')), axIn('y0', 'y0', T('Achse unten')));
     const clamp = v => Math.min(1, Math.max(0, v));
     const place = (el, p) => { el.style.left = (6 + p.x * 88) + '%'; el.style.top = (6 + (1 - p.y) * 88) + '%'; };
     function drawPts() {
       area.querySelectorAll('.mdw-pt').forEach(n => n.remove());
       for (const p of m.pts) {
-        const el = h('div', { class: 'mdw-pt', style: { '--pc': p.c }, title: 'Ziehen zum Verschieben' }, h('i'), h('span', null, p.n || '?'));
+        const el = h('div', { class: 'mdw-pt', style: { '--pc': p.c }, title: T('Ziehen zum Verschieben') }, h('i'), h('span', null, p.n || '?'));
         place(el, p);
         el.addEventListener('pointerdown', e => {
           e.preventDefault(); el.setPointerCapture(e.pointerId); el.classList.add('drag');
@@ -18763,18 +18895,18 @@ function mountModellwerk(view) {
     const plist = h('div', { class: 'mdw-plist' });
     function drawList() {
       plist.replaceChildren(...m.pts.map(p => h('div', { class: 'mdw-prow' },
-        h('input', { type: 'color', value: p.c, title: 'Farbe', oninput: e => { p.c = e.target.value; drawPts(); touch(); } }),
-        h('input', { class: 'inp', value: p.n, placeholder: 'Marke', spellcheck: false, oninput: e => { p.n = e.target.value; drawPts(); touch(); } }),
-        h('button', { class: 'mdw-more on', title: 'Entfernen', onclick: () => { m.pts = m.pts.filter(q => q !== p); drawPts(); drawList(); touch(); } }, icon('trash')))),
+        h('input', { type: 'color', value: p.c, title: T('Farbe'), oninput: e => { p.c = e.target.value; drawPts(); touch(); } }),
+        h('input', { class: 'inp', value: p.n, placeholder: T('Marke'), spellcheck: false, oninput: e => { p.n = e.target.value; drawPts(); touch(); } }),
+        h('button', { class: 'mdw-more on', title: T('Entfernen'), onclick: () => { m.pts = m.pts.filter(q => q !== p); drawPts(); drawList(); touch(); } }, icon('trash')))),
       h('button', { class: 'btn sm', onclick: () => {
-        m.pts.push({ id: uid(), n: 'Marke ' + (m.pts.length + 1), x: .35 + Math.random() * .3, y: .35 + Math.random() * .3, c: PT_COLORS[m.pts.length % PT_COLORS.length] });
+        m.pts.push({ id: uid(), n: T('Marke {n}', { n: m.pts.length + 1 }), x: .35 + Math.random() * .3, y: .35 + Math.random() * .3, c: PT_COLORS[m.pts.length % PT_COLORS.length] });
         drawPts(); drawList(); touch(); plist.querySelectorAll('.inp')[m.pts.length - 1]?.select();
-      } }, icon('plus'), 'Marke hinzufügen'));
+      } }, icon('plus'), T('Marke hinzufügen')));
     }
     drawPts(); drawList();
     return h('div', { class: 'mdw-mapwrap' }, area,
       h('div', { class: 'mdw-mapside' }, fieldEl(tp.fields[0], it, tp),   // notes first: the brand list is not part of the export
-        h('div', { class: 'mdw-f', style: { '--fc': '#64748b' } }, h('div', { class: 'mdw-fh' }, h('b', null, 'Marken'), h('small', null, 'Punkte in der Karte ziehen')), plist)));
+        h('div', { class: 'mdw-f', style: { '--fc': '#64748b' } }, h('div', { class: 'mdw-fh' }, h('b', null, T('Marken')), h('small', null, T('Punkte in der Karte ziehen'))), plist)));
   }
 
   function editor(it) {
@@ -18782,25 +18914,25 @@ function mountModellwerk(view) {
     if (tp.map) board = mapEditor(it, tp);
     else if (tp.matrix) {
       board = h('div', { class: 'mdw-board', style: { gridTemplateColumns: tp.cols } }, h('div'),
-        ...MW_JOURNEY_PH.map(ph => h('div', { class: 'mdw-lab col', dataset: { x: 'label' } }, ph)),
-        ...MW_JOURNEY_ROWS.flatMap(([r, label, c]) => [h('div', { class: 'mdw-lab', style: { '--fc': c }, dataset: { x: 'label' } }, label),
+        ...PH.map(ph => h('div', { class: 'mdw-lab col', dataset: { x: 'label' } }, ph)),
+        ...ROWS.flatMap(([r, label, c]) => [h('div', { class: 'mdw-lab', style: { '--fc': c }, dataset: { x: 'label' } }, label),
           ...tp.fields.filter(f => f.k.startsWith(r) && /^\d$/.test(f.k.slice(r.length))).map(f => fieldEl(f, it, tp))]));
     } else board = h('div', { class: 'mdw-board', style: { gridTemplateColumns: tp.cols, gridTemplateAreas: tp.areas.map(r => `"${r}"`).join(' ') } }, ...tp.fields.map(f => fieldEl(f, it, tp)));
     const title = h('input', { class: 'mdw-title', value: it.title, placeholder: tp.name, spellcheck: false, oninput: () => { it.title = title.value; touch(); } });
-    const moreBtn = h('button', { class: 'btn sm ghost', title: 'Mehr', onclick: e => popMenu(e.currentTarget, [
-      { label: 'Duplizieren', icon: 'copy', onClick: () => duplicate(it) },
-      { label: 'Alle Felder leeren', icon: 'eraser', onClick: () => clearFields(it) },
+    const moreBtn = h('button', { class: 'btn sm ghost', title: T('Mehr'), onclick: e => popMenu(e.currentTarget, [
+      { label: T('Duplizieren'), icon: 'copy', onClick: () => duplicate(it) },
+      { label: T('Alle Felder leeren'), icon: 'eraser', onClick: () => clearFields(it) },
       '-',
-      { label: 'Löschen', icon: 'trash', danger: true, onClick: () => remove(it) }]) }, icon('grip'));
+      { label: T('Löschen'), icon: 'trash', danger: true, onClick: () => remove(it) }]) }, icon('grip'));
     return h('div', { class: 'mdw-in' },
       h('div', { class: 'mdw-top' },
-        h('div', { class: 'mdw-top-t' }, title, h('div', { class: 'mdw-meta' }, tp.name + ' · zuletzt geändert ' + fmtD(it.updated))),
+        h('div', { class: 'mdw-top-t' }, title, h('div', { class: 'mdw-meta' }, T('{n} · zuletzt geändert {d}', { n: tp.name, d: fmtD(it.updated) }))),
         h('div', { class: 'mdw-acts' },
           h('button', { class: 'btn sm', title: 'Text → 📋', onclick: () => copy(toText(it)) }, icon('copy'), 'Text'),
           h('button', { class: 'btn sm', title: 'PNG', onclick: () => exportPng(it) }, icon('image'), 'PNG'),
-          h('button', { class: 'btn sm', title: 'PDF / Drucken', onclick: () => exportPdf(it) }, icon('file'), 'PDF'),
+          h('button', { class: 'btn sm', title: T('PDF / Drucken'), onclick: () => exportPdf(it) }, icon('file'), 'PDF'),
           moreBtn)),
-      h('div', { class: 'mdw-tip' }, h('b', null, 'Tipp: '), tp.tip),
+      h('div', { class: 'mdw-tip' }, h('b', null, T('Tipp:') + ' '), tp.tip),
       board);
   }
 
@@ -18810,11 +18942,12 @@ function mountModellwerk(view) {
     const tp = tplOf(it.type), out = [it.title || tp.name, tp.name, ''];
     if (tp.map) {
       const m = it.map;
-      out.push('Achsen', `- horizontal: ${m.x0} → ${m.x1}`, `- vertikal: ${m.y0} → ${m.y1}`, '', 'Marken (Skala 0–10)',
-        ...m.pts.map(p => `- ${p.n || '?'}: ${m.x1 || 'x'} ${(p.x * 10).toFixed(1).replace('.', ',')} · ${m.y1 || 'y'} ${(p.y * 10).toFixed(1).replace('.', ',')}`), '');
+      const dec = n => isEN() ? n : n.replace('.', ',');
+      out.push(T('Achsen'), `- horizontal: ${m.x0} → ${m.x1}`, `- ${T('vertikal')}: ${m.y0} → ${m.y1}`, '', T('Marken (Skala 0–10)'),
+        ...m.pts.map(p => `- ${p.n || '?'}: ${m.x1 || 'x'} ${dec((p.x * 10).toFixed(1))} · ${m.y1 || 'y'} ${dec((p.y * 10).toFixed(1))}`), '');
     }
     for (const f of tp.fields) {
-      const b = bullets(it.f[f.k]), r = MW_RATES[it.rates?.[f.k]];
+      const b = bullets(it.f[f.k]), r = RATES[it.rates?.[f.k]];
       if (!b.length && !r) continue;
       out.push((f.group ? f.group + ' – ' : '') + f.label + (r ? ` (${r[0]})` : ''), ...b.map(l => '- ' + l), '');
     }
@@ -18864,7 +18997,7 @@ function mountModellwerk(view) {
           g.font = `700 13px ${FONT}`; g.fillStyle = f.c; g.fillText(f.label, x + 12, y + 22);
           let hx = x + 12 + g.measureText(f.label).width + 8;
           if (f.sub) { g.font = `500 11px ${FONT}`; g.fillStyle = '#6b7280'; g.fillText(f.sub, hx, y + 22); hx += g.measureText(f.sub).width + 8; }
-          const rt = MW_RATES[it.rates?.[f.k]];
+          const rt = RATES[it.rates?.[f.k]];
           if (rt) { g.font = `700 10.5px ${FONT}`; const tw = g.measureText(rt[0]).width; rr(g, x + w - tw - 26, y + 9, tw + 14, 18, 9); g.fillStyle = rgba(rt[1], .14); g.fill(); g.fillStyle = rt[1]; g.fillText(rt[0], x + w - tw - 19, y + 22); }
           ty = y + 32;
         }
@@ -18902,15 +19035,15 @@ function mountModellwerk(view) {
       g.lineWidth = 4; g.strokeStyle = 'rgba(255,255,255,.9)'; g.strokeText(p.n || '?', px - tw / 2, py + 25); g.fillStyle = '#111827'; g.fillText(p.n || '?', px - tw / 2, py + 25);
     }
   }
-  const fileName = it => (it.title || 'Modell').replace(/[\\/:*?"<>|]+/g, '').trim().slice(0, 80) || 'Modell';
+  const fileName = it => (it.title || T('Modell')).replace(/[\\/:*?"<>|]+/g, '').trim().slice(0, 80) || T('Modell');
   function exportPng(it) {
     const { cv } = renderCanvas(it);
-    cv.toBlob(b => { download(fileName(it) + '.png', b); toast('PNG gespeichert', 'ok'); }, 'image/png');
+    cv.toBlob(b => { download(fileName(it) + '.png', b); toast(T('PNG gespeichert'), 'ok'); }, 'image/png');
   }
   function exportPdf(it) {
     const { cv, W, H } = renderCanvas(it), land = W >= H;
     const w = window.open('', '_blank', 'width=1100,height=800');
-    if (!w) { toast('Bitte Pop-ups für diese Seite erlauben.', 'err'); return; }
+    if (!w) { toast(T('Bitte Pop-ups für diese Seite erlauben.'), 'err'); return; }
     w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${esc(fileName(it))}</title><style>
 @page{size:A4 ${land ? 'landscape' : 'portrait'};margin:10mm}html,body{margin:0}body{display:flex;justify-content:center}
 img{max-width:100%;max-height:${land ? 188 : 275}mm;object-fit:contain}</style></head><body><img src="${cv.toDataURL('image/png')}"></body></html>`);
@@ -18931,7 +19064,7 @@ img{max-width:100%;max-height:${land ? 188 : 275}mm;object-fit:contain}</style><
   view.append(h('div', { class: 'mdw' },
     h('aside', { class: 'mdw-side' },
       h('div', { class: 'mdw-side-hd' }, h('div', { class: 'mdw-logo' }, icon('modellwerk')), h('b', null, 'Modellwerk')),
-      h('div', { class: 'mdw-side-new' }, h('button', { class: 'btn primary sm block', onclick: () => { st.active = null; persist(); render(); } }, icon('plus'), 'Neues Modell')),
+      h('div', { class: 'mdw-side-new' }, h('button', { class: 'btn primary sm block', onclick: () => { st.active = null; persist(); render(); } }, icon('plus'), T('Neues Modell'))),
       list),
     main));
   render();
@@ -23758,6 +23891,7 @@ Ctrl + Z / Ctrl + Y | Rückgängig / Wiederholen`) },
 
 TT.register({
   id: 'rechnungswerk', name: 'Rechnungswerk', icon: 'rechnungswerk', c: '#fd95fa', c2: '#fd95fa', fg: '#381837',
+  deOnly: true,   // not translated yet → hidden in the English interface
   tagline: 'Professionelle Rechnungen für Deutschland',
   desc: 'Saubere Rechnungen als PDF schreiben.',
   mount: mountRechnungswerk,
@@ -24252,6 +24386,7 @@ ${[st.sSteuernr,st.sUstId,st.sEmail,st.sWeb,st.footer].some(Boolean)?`<div class
 
 TT.register({
   id: 'spickzettel', name: 'Spickzettel', icon: 'clipboard', c: '#7c7ffd', c2: '#7c7ffd',   // Coral → violet (swapped with Pitcher)
+  deOnly: true,   // not translated yet → hidden in the English interface
   full: true,
   tagline: 'Zeichen, Snippets & Vorlagen zum Kopieren',
   desc: 'Nützliches zum Nachschlagen und Kopieren.',
@@ -25389,6 +25524,7 @@ function paintLang() {
 function setLang(l) {
   if ((isEN() ? 'en' : 'de') === l) return;
   S.data.lang = l; S.save();
+  for (const id of [...TT.open]) if (deOnlyOff(TT.apps.get(id))) TT.closeApp(id);   // German-only apps close when switching to English
   paintLang(); _tick(true); renderTabs(); settingsRebuild?.();
   if (TT.inst.size) toast(T('Offene Apps wechseln die Sprache beim nächsten Öffnen.'), 'info', { ms: 3500 });
   if (TT.active === 'home') renderHome();

@@ -9395,7 +9395,7 @@ function mountBulkRename(view) {
     if (st.view === 'problems' && !s.prob) { st.view = 'all'; refreshRows(); }
     segFilter.replaceChildren(...[['all', T('Alle'), s.total], ['changed', T('Änderungen'), s.ok], ['problems', T('Probleme'), s.prob]].map(([k, l, n]) =>
       h('button', { class: (st.view === k ? 'on ' : '') + (k === 'problems' && n ? 'warn' : ''), onclick: () => { st.view = k; list.scrollTop = 0; updateStats(); refreshRows(); } }, l, h('span', { class: 'cnt' }, n))));
-    const stat = (n, l, dot) => h('span', { class: 'stat' }, dot && h('span', { class: 'dot ' + dot }), h('b', null, n.toLocaleString('de-DE')), l);
+    const stat = (n, l, dot) => h('span', { class: 'stat' }, dot && h('span', { class: 'dot ' + dot }), h('b', null, n.toLocaleString(isEN() ? 'en-US' : 'de-DE')), l);
     statsEl.replaceChildren(...(st.src ? [
       stat(s.total, T('Dateien')), stat(s.ok, T('werden umbenannt'), s.ok ? 'ok' : ''),
       s.prob && stat(s.prob, s.prob === 1 ? T('Problem') : T('Probleme'), 'warn'),

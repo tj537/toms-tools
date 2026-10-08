@@ -1,27 +1,18 @@
 # 🧰 Toms Tools
 
-**32 small tools in one single HTML file – offline, no install, no cloud.**
-
-💼 **Made for the work PC:** no installation, no admin rights, no account. Keep the file on a USB stick or in OneDrive, double-click it and it runs in Chrome or Edge – even on a locked-down company laptop.
+**32 small tools in one HTML file – offline, no install, no admin rights.** 💼 Made for the work PC: keep it on a USB stick or in OneDrive and double-click. **[👉 See all apps](#apps)**
 
 <p align="center">
   <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Download Toms Tools" height="56"></a>
   <a href="https://tj537.github.io/toms-tools/"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Try%20it%20live-374151?style=for-the-badge" alt="Try Toms Tools live in your browser" height="56"></a>
   <br>
-  <sub>Download always gets the latest release · Live is for a quick look – for everyday use, download it</sub>
+  <sub>🆕 <b>1.7.1:</b> the whole interface in English · Harvard &amp; APA citations · Beatwerk WAV export – <a href="https://github.com/tj537/toms-tools/releases/tag/v1.7.1">all changes</a></sub>
 </p>
 
-<p align="center">🆕 <b>New in 1.7.1:</b> the whole interface in English · Harvard &amp; APA citations in English · Beatwerk with real WAV export · a fresh home page – <a href="https://github.com/tj537/toms-tools/releases/tag/v1.7.1">all changes</a></p>
-
-Double-click and it runs – all in your browser, all on your computer. **[👉 See all 32 apps](#apps)**
-
 ![100 % offline](https://img.shields.io/badge/100%25-offline-0ea5e9)
-![One file](https://img.shields.io/badge/one%20file-HTML-f97316)
 ![No admin rights](https://img.shields.io/badge/no-admin%20rights-22c55e)
-![For desktop](https://img.shields.io/badge/for-desktop-0891b2)
 ![No tracking](https://img.shields.io/badge/no-tracking-64748b)
 ![English · Deutsch](https://img.shields.io/badge/English-Deutsch-8b5cf6)
-![Work in progress](https://img.shields.io/badge/status-work%20in%20progress-eab308)
 ![Built with Claude Opus 5.5](https://img.shields.io/badge/built%20with-Claude%20Opus%205.5-d97757)
 
 ![Toms Tools home page](docs/home.png)

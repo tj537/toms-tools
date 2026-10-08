@@ -1,12 +1,10 @@
 # 🧰 Toms Tools
 
-**32 small tools in one HTML file – offline, no install, no admin rights.** 💼 Made for the work PC: keep it on a USB stick or in OneDrive and double-click. **[👉 See all apps](#apps)**
+**32 small tools in one HTML file – offline, no install, no admin rights.** 💼 Made for the work PC: keep it on a USB stick or in OneDrive, open it in your browser and enjoy. **[👉 See all apps](#apps)**
 
 <p align="center">
   <a href="https://github.com/tj537/toms-tools/releases/latest/download/toms-tools.html"><img src="https://img.shields.io/github/v/release/tj537/toms-tools?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20Download&labelColor=7c6cff&color=c26bff" alt="Download Toms Tools" height="56"></a>
   <a href="https://tj537.github.io/toms-tools/"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Try%20it%20live-374151?style=for-the-badge" alt="Try Toms Tools live in your browser" height="56"></a>
-  <br>
-  <sub>🆕 <b>1.7.1:</b> the whole interface in English · Harvard &amp; APA citations · Beatwerk WAV export – <a href="https://github.com/tj537/toms-tools/releases/tag/v1.7.1">all changes</a></sub>
 </p>
 
 ![100 % offline](https://img.shields.io/badge/100%25-offline-0ea5e9)

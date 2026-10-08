@@ -3798,6 +3798,134 @@ const T = (s, vars) => {
 };
 const appName = a => T(a.name);
 const EN = {
+  // Quellenwerk
+  'Buch': 'Book', 'Sammelband': 'Edited book', 'Zeitschrift': 'Journal', 'Internet': 'Website', 'Kopiert: {t}': 'Copied: {t}', 'Suchen …': 'Search …',
+  'Nach Projekt filtern': 'Filter by project', 'Alle Projekte': 'All projects', 'Ohne Titel': 'Untitled', 'Quelle löschen': 'Delete source', 'Nichts gefunden.': 'Nothing found.',
+  'Noch keine Quellen.': 'No sources yet.', '1 Quelle': '1 source', '{n} Quellen': '{n} sources', 'Keine Quellen in der Liste.': 'No sources in the list.',
+  '„{t}“ gelöscht': '“{t}” deleted', 'Quelle': 'Source', 'Verlag': 'Publisher', 'z. B. Springer Gabler': 'e.g. Springer', 'z. B. Wiesbaden': 'e.g. London',
+  'Auflage': 'Edition', 'z. B. 3': 'e.g. 3', 'Herausgeber': 'Editors', 'Nachname, Vorname; …': 'Last name, first name; …', 'Titel des Sammelbands': 'Book title',
+  'Seiten': 'Pages', 'z. B. 45–67': 'e.g. 45–67', 'z. B. Harvard Business Manager': 'e.g. Harvard Business Review', 'Jahrgang / Band': 'Volume', 'Heft': 'Issue',
+  'z. B. 12–19': 'e.g. 12–19', 'Website / Herausgeber': 'Website / publisher', 'z. B. Statistisches Bundesamt': 'e.g. Office for National Statistics', 'Zugriff am': 'Accessed',
+  'Link im Browser öffnen': 'Open link in browser', 'z. B. Hausarbeit BWL': 'e.g. Marketing essay', 'Wörtliches Zitat oder Kernaussage …': 'Direct quote or key point …',
+  'Seite': 'Page', 'Zitat + Beleg': 'Quote + citation', 'Beleg': 'Citation', 'Zitat löschen': 'Delete quote', 'Zitat hinzufügen': 'Add quote',
+  'Beleg (indirekt)': 'Parenthetical', 'Indirekt · mit vgl.': 'Paraphrase · with vgl.', 'Direkt · wörtlich': 'Direct quote', 'Im Satz': 'Narrative', 'Fußnote': 'Footnote',
+  'Autor*innen': 'Authors', 'Nachname, Vorname; Nachname, Vorname – oder Institution': 'Last name, first name; last name, first name – or organisation',
+  'z. B. 2024': 'e.g. 2024', 'Titel (und ggf. Untertitel)': 'Title (and subtitle, if any)', 'Inhalt & Notizen': 'Content & notes',
+  'Worum geht es? Wichtigste Aussagen, Kapitel, eigene Gedanken …': 'What is it about? Key points, chapters, your own thoughts …', 'Zitate & Kernaussagen': 'Quotes & key points',
+  'Zitieren': 'Cite', 'Deutsch': 'German', 'Literaturverzeichnis': 'Reference list', 'Eintrag kopieren': 'Copy entry', 'Beleg im Text': 'In-text citation',
+  'APA 7: Autor, Jahr und Seite in Klammern, ohne „vgl.“. Titel werden kursiv kopiert, wenn du in Word einfügst.': 'APA 7: author, year and page in brackets. Titles stay italic when you paste into Word.',
+  'Deutsche Zitierweise (Harvard) mit „vgl.“ für sinngemäße Wiedergaben. Jede Hochschule hat eigene Details – im Zweifel den Leitfaden deines Lehrstuhls prüfen.': 'German Harvard style, as used at German universities – “vgl.” marks a paraphrase. Every department has its own details, so check their style guide if in doubt.',
+  'Bücher, Artikel und Links mit Notizen und Zitaten – Beleg („vgl.“) und Literaturverzeichnis per Klick kopieren.': 'Books, articles and links with notes and quotes – copy citations and the reference list in one click.',
+  'Neue Quelle': 'New source', 'Beispiel ansehen': 'See an example', 'Literaturverzeichnis kopieren': 'Copy reference list',
+  // Kennzahlwerk
+  'Allgemein': 'General', 'Kampagne & Online': 'Campaign & online', 'Kunden': 'Customers', 'Preis & Kosten': 'Price & cost', 'Markt': 'Market',
+  'Prozentrechnung': 'Percentages', 'Anteil, Veränderung, plus und minus': 'Share, change, plus and minus', 'Wert A (Teil / vorher)': 'Value A (part / before)',
+  'Wert B (Ganzes / nachher)': 'Value B (whole / after)', 'Prozentsatz': 'Percentage', 'Anteil = A ÷ B · Veränderung = (B − A) ÷ A · A ± p % = A × (1 ± p ÷ 100)': 'Share = A ÷ B · Change = (B − A) ÷ A · A ± p % = A × (1 ± p ÷ 100)',
+  'Prozent ist nicht Prozentpunkt: Steigt eine Quote von 10 % auf 12 %, sind das 2 Prozentpunkte – aber 20 % mehr.': 'Percent isn’t percentage points: if a rate rises from 10 % to 12 %, that’s 2 percentage points – but 20 % more.',
+  'A ist … von B': 'A is … of B', 'Veränderung von A nach B': 'Change from A to B', '{p} % von A': '{p} % of A',
+  'Netto / Brutto': 'Net / gross', 'Mehrwertsteuer drauf- oder rausrechnen': 'Add or remove VAT', 'Betrag': 'Amount', 'Steuersatz': 'Tax rate',
+  'Brutto = Netto × (1 + Satz) · Netto = Brutto ÷ (1 + Satz)': 'Gross = net × (1 + rate) · Net = gross ÷ (1 + rate)',
+  'In Deutschland gelten 19 % und ermäßigt 7 % (z. B. Lebensmittel, Bücher). Typischer Fehler: 19 % vom Bruttobetrag abziehen – das ergibt zu wenig.': 'Germany uses 19 % and a reduced 7 % (e.g. food, books). Common mistake: taking 19 % off the gross amount – that gives too little.',
+  'Betrag ist brutto → netto': 'Amount is gross → net', 'Darin enthaltene Steuer': 'Tax included', 'Betrag ist netto → brutto': 'Amount is net → gross', 'Steuer obendrauf': 'Tax on top',
+  'Dreisatz': 'Rule of three', 'A gehört zu B – was gehört zu C?': 'A goes with B – what goes with C?', 'Wenn … (A)': 'If … (A)', '… dann … (B)': '… then … (B)',
+  'Was ergibt … (C)?': 'What about … (C)?', 'proportional: C × B ÷ A · antiproportional: A × B ÷ C': 'direct: C × B ÷ A · inverse: A × B ÷ C',
+  'Proportional heißt: je mehr, desto mehr (3 kg kosten 12 € – was kosten 5 kg?). Antiproportional: je mehr, desto weniger (3 Leute brauchen 12 Tage – wie lange brauchen 5?).': 'Direct means the more, the more (3 kg cost €12 – what do 5 kg cost?). Inverse means the more, the less (3 people need 12 days – how long do 5 need?).',
+  'Proportional': 'Direct proportion', 'Antiproportional': 'Inverse proportion',
+  'Zinseszins & Sparplan': 'Compound interest & savings', 'Wie wächst Geld über die Jahre?': 'How does money grow over the years?', 'Startkapital': 'Starting balance',
+  'Sparrate pro Monat': 'Monthly savings', 'Zinssatz pro Jahr': 'Annual interest rate', 'Laufzeit': 'Term', 'Jahre': 'years',
+  'Endkapital = K × (1 + i/12)ᴺ + Rate × ((1 + i/12)ᴺ − 1) ÷ (i/12), N = Jahre × 12': 'Final balance = K × (1 + i/12)ᴺ + savings × ((1 + i/12)ᴺ − 1) ÷ (i/12), N = years × 12',
+  'Vereinfacht: Zinsen werden monatlich gutgeschrieben, die Sparrate kommt am Monatsende. Steuern, Gebühren und Inflation sind nicht eingerechnet.': 'Simplified: interest is paid monthly and savings go in at the end of each month. Taxes, fees and inflation aren’t included.',
+  'Eingezahlt': 'Paid in', '{n} Monate': '{n} months', 'Endkapital': 'Final balance', 'Davon Zinsen': 'Of which interest',
+  'Aus jedem eingezahlten Euro werden {x}.': 'Every euro paid in grows to {x}.',
+  'Notendurchschnitt': 'Grade average', 'Gewichtet nach ECTS oder Credits': 'Weighted by ECTS or credits', 'Note {n}': 'Grade {n}', 'Schnitt = Σ (Note × ECTS) ÷ Σ ECTS': 'Average = Σ (grade × ECTS) ÷ Σ ECTS',
+  'Leere Zeilen zählen nicht. Ohne Gewichtung einfach überall 1 als ECTS eintragen. Viele Hochschulen schneiden nach der ersten Nachkommastelle ab, statt zu runden.': 'Empty rows don’t count. For an unweighted average, enter 1 as ECTS everywhere. Many German universities truncate after the first decimal instead of rounding.',
+  'Durchschnitt': 'Average', 'Abgeschnitten': 'Truncated', 'nur die erste Nachkommastelle zählt': 'only the first decimal counts', 'ECTS gesamt': 'Total ECTS',
+  'Kampagne & Funnel': 'Campaign & funnel', 'Werbekosten': 'Ad spend', 'Impressionen': 'Impressions', 'Klicks': 'Clicks', 'Conversions (Käufe)': 'Conversions (purchases)', 'Umsatz': 'Revenue',
+  'CTR = Klicks ÷ Impressionen · CR = Conversions ÷ Klicks · ROAS = Umsatz ÷ Werbekosten': 'CTR = clicks ÷ impressions · CR = conversions ÷ clicks · ROAS = revenue ÷ ad spend',
+  'ROAS 1 : 1 heißt nur: Werbekosten wieder drin. Waren- und sonstige Kosten sind damit noch nicht gedeckt.': 'A ROAS of 1 : 1 only means you’ve earned back the ad spend. Product and other costs aren’t covered yet.',
+  'CTR (Klickrate)': 'CTR (click-through rate)', 'CPM (Tausenderpreis)': 'CPM (cost per thousand)', 'CPC (Kosten pro Klick)': 'CPC (cost per click)',
+  'CPA / CPO (Kosten pro Kauf)': 'CPA / CPO (cost per order)', 'Ø Warenkorb': 'Avg. order value',
+  'Lohnt sich die Maßnahme?': 'Does the campaign pay off?', 'Zusätzlicher Umsatz durch die Maßnahme': 'Extra revenue from the campaign', 'Marge (Deckungsbeitrag)': 'Margin (contribution)',
+  'Kosten der Maßnahme': 'Campaign cost', 'Gewinn = Umsatz × Marge − Kosten · ROI = Gewinn ÷ Kosten × 100': 'Profit = revenue × margin − cost · ROI = profit ÷ cost × 100',
+  'Break-even-ROAS = 1 ÷ Marge: Ab diesem ROAS bringt Werbung mehr ein, als sie kostet.': 'Break-even ROAS = 1 ÷ margin: above this ROAS, advertising earns more than it costs.',
+  'Deckungsbeitrag': 'Contribution margin', 'Gewinn der Maßnahme': 'Campaign profit', 'Break-even-ROAS': 'Break-even ROAS',
+  'Jeder eingesetzte Euro bringt {x} zurück.': 'Every euro spent brings back {x}.', 'Verlust: Von jedem eingesetzten Euro kommen nur {x} zurück.': 'Loss: every euro spent only brings back {x}.',
+  'Kosten pro Neukunde': 'Cost per new customer', 'Marketingkosten': 'Marketing costs', 'Vertriebskosten': 'Sales costs', 'Gewonnene Neukunden': 'New customers won',
+  'CAC = (Marketingkosten + Vertriebskosten) ÷ Neukunden': 'CAC = (marketing costs + sales costs) ÷ new customers',
+  'Immer denselben Zeitraum für Kosten und Neukunden nehmen, z. B. ein Quartal.': 'Always use the same period for costs and new customers, e.g. one quarter.',
+  'Was ist ein Kunde wert?': 'What is a customer worth?', 'Ø Bestellwert': 'Avg. order value', 'Käufe pro Jahr': 'Purchases per year', 'Marge': 'Margin',
+  'Bindungsrate pro Jahr': 'Annual retention rate', 'Kalkulationszins': 'Discount rate', 'Betrachtung in Jahren': 'Period in years',
+  'Beitrag/Jahr m = Bestellwert × Käufe × Marge · CLV = Σ m × Bindungsrateᵗ ÷ (1 + Zins)ᵗ für t = 0 … Jahre − 1': 'Contribution/year m = order value × purchases × margin · CLV = Σ m × retentionᵗ ÷ (1 + rate)ᵗ for t = 0 … years − 1',
+  'Faustregel: CLV : CAC von mindestens 3 : 1 gilt als gesund. Unter 1 : 1 kostet jeder Neukunde Geld.': 'Rule of thumb: a CLV : CAC of at least 3 : 1 is considered healthy. Below 1 : 1, every new customer costs you money.',
+  'Beitrag pro Jahr': 'Contribution per year', 'CLV einfach': 'Simple CLV', '{a} × {n} Jahre (ohne Abwanderung und Zins)': '{a} × {n} years (no churn or discounting)',
+  'CLV (mit Bindung & Zins)': 'CLV (with retention & discounting)',
+  '„Würden Sie uns weiterempfehlen?“ (0–10)': '“Would you recommend us?” (0–10)', 'Promotoren (9–10)': 'Promoters (9–10)', 'Passive (7–8)': 'Passives (7–8)', 'Detraktoren (0–6)': 'Detractors (0–6)',
+  'NPS = % Promotoren − % Detraktoren (Skala −100 bis +100)': 'NPS = % promoters − % detractors (scale −100 to +100)',
+  'Über 0 ist okay, über 30 gut, über 50 sehr gut. Passive zählen nur im Nenner mit.': 'Above 0 is okay, above 30 good, above 50 excellent. Passives only count in the total.',
+  'Befragte': 'Respondents', 'Promotoren / Detraktoren': 'Promoters / detractors',
+  'Kundenbindung & Churn': 'Retention & churn', 'Wie viele Kunden bleiben?': 'How many customers stay?', 'Kunden am Anfang': 'Customers at start', 'Kunden am Ende': 'Customers at end',
+  'Neukunden im Zeitraum': 'New customers in the period', 'Bindungsrate = (Ende − Neukunden) ÷ Anfang · Churn = 1 − Bindungsrate': 'Retention = (end − new) ÷ start · Churn = 1 − retention',
+  'Ø Kundenlebensdauer ≈ 1 ÷ Churn-Rate, gemessen in der gewählten Periode (z. B. Jahre).': 'Avg. customer lifetime ≈ 1 ÷ churn rate, measured in the period you chose (e.g. years).',
+  'Verlorene Kunden': 'Customers lost', 'Bindungsrate': 'Retention rate', 'Churn-Rate': 'Churn rate', 'Ø Kundenlebensdauer': 'Avg. customer lifetime', '{n} Perioden': '{n} periods',
+  'Ab wann schreiben wir schwarze Zahlen?': 'When do we start making a profit?', 'Fixkosten': 'Fixed costs', 'Preis pro Stück (netto)': 'Price per unit (net)',
+  'Variable Kosten pro Stück': 'Variable cost per unit', 'Geplante Menge (optional)': 'Planned quantity (optional)', 'Stk.': 'pcs',
+  'Deckungsbeitrag/Stück = Preis − variable Kosten · Break-even-Menge = Fixkosten ÷ DB/Stück': 'Contribution/unit = price − variable cost · Break-even quantity = fixed costs ÷ contribution/unit',
+  'Der Deckungsbeitrag ist der Teil des Preises, der die Fixkosten „deckt“. Ist er 0 oder negativ, gibt es keinen Break-even.': 'The contribution margin is the part of the price that “covers” the fixed costs. If it’s 0 or negative, there’s no break-even.',
+  'Deckungsbeitrag / Stück': 'Contribution / unit', 'DB-Quote': 'Contribution margin ratio', 'Break-even-Menge': 'Break-even quantity', '{n} Stück': '{n} units',
+  '{a} ÷ {b} = {c} → aufgerundet': '{a} ÷ {b} = {c} → rounded up', 'Break-even-Umsatz': 'Break-even revenue', 'Gewinn bei geplanter Menge': 'Profit at planned quantity', 'Sicherheitsabstand': 'Margin of safety',
+  'Preiselastizität': 'Price elasticity', 'Wie reagiert die Nachfrage auf den Preis?': 'How does demand react to price?', 'Preis vorher': 'Price before', 'Preis nachher': 'Price after',
+  'Absatz vorher': 'Units sold before', 'Absatz nachher': 'Units sold after',
+  'ε = (Δ Menge ÷ Menge) ÷ (Δ Preis ÷ Preis) · Bogenelastizität mit Mittelwerten als Basis': 'ε = (Δ quantity ÷ quantity) ÷ (Δ price ÷ price) · arc elasticity uses midpoints as the base',
+  '|ε| > 1: elastisch – Preiserhöhung senkt den Umsatz. |ε| < 1: unelastisch – Preiserhöhung steigert den Umsatz.': '|ε| > 1: elastic – a price rise lowers revenue. |ε| < 1: inelastic – a price rise increases revenue.',
+  'Elastizität (einfach)': 'Elasticity (simple)', 'Bogenelastizität': 'Arc elasticity', 'Umsatz vorher → nachher': 'Revenue before → after',
+  'Elastisch: Die Menge reagiert stärker als der Preis.': 'Elastic: quantity reacts more strongly than price.', 'Unelastisch: Die Menge reagiert schwächer als der Preis.': 'Inelastic: quantity reacts less strongly than price.',
+  'Etwa isoelastisch: Der Umsatz bleibt ungefähr gleich.': 'Roughly unit elastic: revenue stays about the same.',
+  'Aufschlag & Handelsspanne': 'Markup & margin', 'Handelskalkulation': 'Retail pricing', 'Einkaufspreis (netto)': 'Purchase price (net)', 'Kalkulationsaufschlag': 'Markup', 'Umsatzsteuer': 'VAT',
+  'VK netto = EK × (1 + Aufschlag) · Handelsspanne = (VK − EK) ÷ VK': 'Net price = cost × (1 + markup) · Margin = (price − cost) ÷ price',
+  'Klausurfalle: Der Aufschlag bezieht sich auf den Einkaufspreis, die Spanne auf den Verkaufspreis. Spanne = Aufschlag ÷ (100 % + Aufschlag).': 'Exam trap: markup is based on the purchase price, margin on the selling price. Margin = markup ÷ (100 % + markup).',
+  'Verkaufspreis netto': 'Selling price (net)', 'Verkaufspreis brutto': 'Selling price (gross)', 'Handelsspanne': 'Gross margin', 'Rohgewinn pro Stück': 'Gross profit per unit',
+  'Rabatt & Skonto': 'Discount & early payment', 'Vom Listenpreis zum Überweisungsbetrag': 'From list price to the amount you pay', 'Listenpreis': 'List price', 'Rabatt': 'Discount', 'Skonto': 'Early payment discount',
+  'Zielpreis = Listenpreis × (1 − Rabatt) · Barzahlungspreis = Zielpreis × (1 − Skonto)': 'Invoice price = list price × (1 − discount) · Cash price = invoice price × (1 − early payment discount)',
+  'Rabatt gibt es sofort (Menge, Aktion, Treue), Skonto nur bei schneller Zahlung, z. B. „2 % innerhalb von 10 Tagen“. Die Prozente werden nacheinander gerechnet, nicht addiert.': 'A discount applies right away (volume, promotion, loyalty), an early payment discount only if you pay quickly, e.g. “2 % within 10 days”. The percentages are applied one after the other, not added up.',
+  'Zielpreis': 'Invoice price', 'Barzahlungspreis': 'Cash price', 'Ersparnis gesamt': 'Total savings',
+  'Preiskalkulation (Handel)': 'Retail price calculation', 'Vom Einkaufspreis zum Verkaufspreis – Schritt für Schritt': 'From purchase price to selling price – step by step',
+  'Listeneinkaufspreis': 'List purchase price', 'Liefererrabatt': 'Supplier discount', 'Liefererskonto': 'Supplier early payment discount', 'Bezugskosten (Fracht …)': 'Delivery costs (freight …)',
+  'Handlungskosten': 'Overheads', 'Gewinnzuschlag': 'Profit markup', 'Kundenskonto': 'Customer early payment discount', 'Vertreterprovision': 'Sales commission', 'Kundenrabatt': 'Customer discount',
+  'Rabatt & Skonto beim Einkauf werden abgezogen („vom Hundert“), Kundenskonto, Provision & Kundenrabatt werden aufgeschlagen („im Hundert“: ÷ (1 − Satz))': 'Purchase discounts are deducted from the base, customer discounts & commission are built into the price (÷ (1 − rate))',
+  'Klausurfalle: Kundenskonto und Kundenrabatt werden im Hundert gerechnet – der Kunde zieht sie später vom höheren Preis ab, darum wird durch (1 − Satz) geteilt, nicht mit (1 + Satz) multipliziert.': 'Exam trap: customer discounts are calculated on the final price – the customer deducts them later from the higher price, so you divide by (1 − rate) instead of multiplying by (1 + rate).',
+  'Zieleinkaufspreis': 'Purchase price after discount', '{a} − {p} % Rabatt': '{a} − {p} % discount', 'Bareinkaufspreis': 'Net purchase price', '{a} − {p} % Skonto': '{a} − {p} % early payment',
+  'Bezugspreis (Einstandspreis)': 'Landed cost', '{a} + {b} Bezugskosten': '{a} + {b} delivery', 'Selbstkosten': 'Total cost', '{a} + {p} % Handlungskosten': '{a} + {p} % overheads',
+  'Barverkaufspreis': 'Cash selling price', '{a} + {p} % Gewinn': '{a} + {p} % profit', 'Zielverkaufspreis': 'Invoice selling price',
+  '{a} ÷ (1 − {p} %) – Skonto + Provision im Hundert': '{a} ÷ (1 − {p} %) – early payment + commission built in', '{a} ÷ (1 − {p} %) – Skonto im Hundert': '{a} ÷ (1 − {p} %) – early payment built in',
+  'Listenverkaufspreis (netto)': 'List selling price (net)', '{a} ÷ (1 − {p} %) – Rabatt im Hundert': '{a} ÷ (1 − {p} %) – discount built in',
+  'Kalkulationszuschlag': 'Total markup', 'Kalkulationsfaktor': 'Markup factor',
+  'Zuschlagskalkulation (KLR)': 'Job order costing', 'Kostenträgerrechnung: Was kostet ein Produkt?': 'Product costing: what does a product cost?', 'Fertigungsmaterial': 'Direct materials',
+  'Materialgemeinkosten': 'Material overheads', 'Fertigungslöhne': 'Direct labour', 'Fertigungsgemeinkosten': 'Production overheads', 'Sondereinzelkosten Fertigung': 'Special production costs',
+  'Verwaltungsgemeinkosten': 'Admin overheads', 'Vertriebsgemeinkosten': 'Selling overheads', 'Sondereinzelkosten Vertrieb': 'Special selling costs',
+  'Materialkosten + Fertigungskosten = Herstellkosten · + Verwaltungs- & Vertriebsgemeinkosten (auf die Herstellkosten) = Selbstkosten · + Gewinn = Barverkaufspreis': 'Material costs + production costs = cost of production · + admin & selling overheads (on cost of production) = total cost · + profit = cash selling price',
+  'Die Zuschlagssätze kommen aus dem Betriebsabrechnungsbogen (BAB). Einzelkosten lassen sich dem Produkt direkt zurechnen, Gemeinkosten werden per Zuschlag verteilt.': 'The overhead rates come from the overhead allocation sheet. Direct costs can be assigned to the product directly, overheads are spread via percentage rates.',
+  'Materialkosten': 'Material costs', 'MGK': 'material OH', 'Fertigungskosten': 'Production costs', 'FGK': 'production OH', 'SEKF': 'special costs', 'Herstellkosten': 'Cost of production',
+  'Verwaltungs- & Vertriebsgemeinkosten': 'Admin & selling overheads', 'SEKV': 'special selling costs',
+  'Betriebsergebnis (KLR)': 'Operating result', 'Leistungen minus Kosten einer Periode': 'Output minus costs for a period', 'Umsatzerlöse': 'Sales revenue',
+  'Bestandsveränderung (+/−)': 'Change in inventory (+/−)', 'Aktivierte Eigenleistungen': 'Own work capitalised', 'Kosten gesamt': 'Total costs',
+  'Leistungen = Umsatzerlöse ± Bestandsveränderung + aktivierte Eigenleistungen · Betriebsergebnis = Leistungen − Kosten': 'Output = sales revenue ± change in inventory + own work capitalised · Operating result = output − costs',
+  'Wirtschaftlichkeit über 1 heißt: Der Betrieb erwirtschaftet mehr, als er verbraucht. Neutrale Erträge und Aufwendungen (z. B. Zinsen, Spenden) gehören nicht hierher, sondern ins neutrale Ergebnis.': 'Efficiency above 1 means the business generates more than it uses up. Non-operating income and expenses (e.g. interest, donations) don’t belong here but in the non-operating result.',
+  'Leistungen': 'Output', 'Betriebsergebnis': 'Operating result', 'Wirtschaftlichkeit': 'Efficiency', 'Umsatzrentabilität (betrieblich)': 'Operating return on sales',
+  'Marktanteil & Marktpotenzial': 'Market share & potential', 'Wie groß ist unser Stück vom Kuchen?': 'How big is our slice of the pie?', 'Eigener Umsatz': 'Own revenue',
+  'Umsatz größter Wettbewerber': 'Largest competitor’s revenue', 'Marktvolumen': 'Market volume', 'Marktpotenzial': 'Market potential', 'Mio. €': '€ m',
+  'Marktanteil = eigener Umsatz ÷ Marktvolumen · relativer Marktanteil = eigener Umsatz ÷ größter Wettbewerber': 'Market share = own revenue ÷ market volume · relative market share = own revenue ÷ largest competitor',
+  'Relativer Marktanteil > 1 heißt Marktführer (wichtig für die BCG-Matrix). Sättigungsgrad = Marktvolumen ÷ Marktpotenzial.': 'A relative market share > 1 means you’re the market leader (key for the BCG matrix). Saturation = market volume ÷ market potential.',
+  'Marktanteil': 'Market share', 'Relativer Marktanteil': 'Relative market share', 'Sättigungsgrad': 'Saturation', 'Freies Potenzial': 'Untapped potential',
+  'Kriterium': 'Criterion', 'Gewicht %': 'Weight %', 'Option entfernen': 'Remove option', 'Kriterium entfernen': 'Remove criterion', 'Summe': 'Total',
+  'Mindestens ein Kriterium braucht ein Gewicht.': 'At least one criterion needs a weight.',
+  'Die Gewichte ergeben {n} % – sie werden automatisch auf 100 % umgerechnet.': 'The weights add up to {n} % – they’re scaled to 100 % automatically.',
+  'Sehr knappes Ergebnis – lohnt sich, die Gewichte noch einmal kritisch anzuschauen.': 'Very close result – worth taking another critical look at the weights.', 'Gewichte ergeben 100 %.': 'Weights add up to 100 %.',
+  'Nutzwertanalyse': 'Weighted scoring', 'Kriterien': 'Criteria', 'Skala': 'Scale', 'Optionen nach gewichteten Kriterien vergleichen': 'Compare options using weighted criteria',
+  'Leere Tabelle': 'Empty table', 'Beispiel einsetzen': 'Insert example', 'Punkteskala': 'Points', 'Maximal 12 Kriterien.': 'Max. 12 criteria.', 'Maximal 6 Optionen.': 'Max. 6 options.',
+  'Nutzwert = Σ (Gewicht × Punkte) · alle Gewichte zusammen = 100 %': 'Score = Σ (weight × points) · all weights together = 100 %',
+  'Tipp: Erst Kriterien und Gewichte festlegen, dann bewerten – sonst rechnet man sich das Wunschergebnis schön. Punkte: hoch = gut, auch bei Kosten oder Entfernung (günstig = viele Punkte).': 'Tip: set criteria and weights first, then score – otherwise it’s easy to nudge the numbers towards the result you wanted. High points = good, even for cost or distance (cheap = many points).',
+  'Bitte nur Zahlen eingeben, z. B. 1.250,50': 'Numbers only, e.g. 1,250.50', 'Alle Felder leeren': 'Clear all fields', 'Beispielwerte einsetzen': 'Insert example values',
+  'Rechner mit Formel und Rechenweg · 1,5 = 1.5': 'Calculators with formula and working · 1.5 = 1,5', 'Rechenweg zeigen': 'Show working',
   // Spielwiese
   '⌨️ Tipptrainer': '⌨️ Typing trainer', '☄️ Ausweichen': '☄️ Dodge', '⚡ Reaktion': '⚡ Reaction', '⭕ Perfekter Kreis': '⭕ Perfect circle', 'Weitere Spiele folgen …': 'More games coming …',
   'Weiter (P)': 'Resume (P)', 'Boss besiegt!': 'Boss defeated!', '+1 Bombe  (Leertaste)': '+1 bomb  (Space)', '+1 Leben': '+1 life', 'Dauerfeuer!': 'Rapid fire!', 'Keine Bombe': 'No bombs left',
@@ -4195,7 +4323,7 @@ const EN = {
   'Dateiname': 'File name', 'Teilen': 'Split', 'Auswahl': 'Selection', 'Speichern': 'Save', 'Datei entfernen': 'Remove file', 'Zusammenführen → PDF': 'Merge → PDF', '1 Seite': '1 page', '{p} ausgewählt': '{p} selected',
   '{n} Seiten': '{n} pages', 'aus 1 Datei': 'from 1 file', 'aus {n} Dateien': 'from {n} files', 'Klick · ⇧ + Klick': 'Click · ⇧ + click',
   '„{n}“ ist geschützt und kann nicht bearbeitet werden.': '“{n}” is protected and can’t be edited.', '„{n}“ ist mit Passwort geschützt.': '“{n}” is password-protected.',
-  '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.', '1 Seite = 1 PDF · ZIP': '1 page = 1 PDF · ZIP', 'Je': 'Every', 'Seiten': 'pages',
+  '„{n}“ konnte nicht gelesen werden.': 'Couldn’t read “{n}”.', '1 Seite = 1 PDF · ZIP': '1 page = 1 PDF · ZIP', 'Je': 'Every',
   '{n} Seiten gemischt ✓': '{n} pages interleaved ✓', 'Bereiche angeben, z. B. 1-3, 4-9': 'Enter ranges, e.g. 1-3, 4-9', 'Nach der Auswahl, sonst am Ende': 'After the selection, otherwise at the end',
   'Leerseite': 'Blank page', 'Einseitig gescannt? Datei 1 = Vorderseiten, Datei 2 = Rückseiten': 'Scanned single-sided? File 1 = fronts, file 2 = backs',
   'Vorder- & Rückseiten mischen': 'Interleave fronts & backs', 'Rückseiten rückwärts': 'Backs in reverse order', 'Stapel umgedreht und nochmal gescannt – der Normalfall': 'You flipped the stack and scanned again – the usual case',
@@ -8391,7 +8519,7 @@ function mountPdfWerk(view) {
   const side = h('div', { class: 'pfw-card pfw-side' },
     h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Auswahl')), selInfo, quickSel, h('div', { class: 'pfw-row' }, ...selBtns), selSave),
     h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Speichern')), h('label', { class: 'pfw-field' }, h('span', null, T('Dateiname')), h('div', { class: 'pfw-name' }, nameInp, h('span', null, '.pdf'))), optsBox, saveBtn),
-    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Teilen')), splitOne, h('div', { class: 'pfw-row pfw-every-row' }, h('span', null, T('Je')), everyInp, h('span', null, T('Seiten')), splitN),
+    h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Teilen')), splitOne, h('div', { class: 'pfw-row pfw-every-row' }, h('span', null, T('Je')), everyInp, h('span', null, lc(T('Seiten'))), splitN),
       h('div', { class: 'pfw-row pfw-every-row' }, rangesInp, splitRanges)),
     h('div', { class: 'pfw-sec' }, h('div', { class: 'pfw-lbl' }, T('Als Bilder')), imgInfo, h('div', { class: 'pfw-row' }, ...imgBtns)));
 
@@ -16077,263 +16205,264 @@ TT.register({
 
 /* ================= Kennzahlwerk (marketing KPIs with formula and calculation path) ================= */
 // in: [key, label, unit, example value] · out(v) → rows { l: label, v: value, w: calculation path, main, t: tone } or { say: text }
-const KZ_TOPICS = [['all', 'Alle'], ['allg', 'Allgemein'], ['online', 'Kampagne & Online'], ['kunden', 'Kunden'], ['preis', 'Preis & Kosten'], ['markt', 'Markt']];
+const KZ_TOPICS = [['all', 'Alle'], ['allg', 'Allgemein'], ['online', 'Kampagne & Online'], ['kunden', 'Kunden'], ['preis', 'Preis & Kosten'], ['markt', 'Markt']];   // labels go through T() when shown
+// Called when the app opens, so T() is fine here
 function kzDefs({ eur, pct, nf, div }) {
   const sp = n => Number.isFinite(n) ? (n > 0 ? '+' : '') + pct(n) : '–';   // signed percent
   return [
-    { id: 'pct', topic: 'allg', icon: 'percent', title: 'Prozentrechnung', sub: 'Anteil, Veränderung, plus und minus',
-      in: [['a', 'Wert A (Teil / vorher)', '', '45'], ['b', 'Wert B (Ganzes / nachher)', '', '60'], ['p', 'Prozentsatz', '%', '15']],
-      f: 'Anteil = A ÷ B · Veränderung = (B − A) ÷ A · A ± p % = A × (1 ± p ÷ 100)',
-      note: 'Prozent ist nicht Prozentpunkt: Steigt eine Quote von 10 % auf 12 %, sind das 2 Prozentpunkte – aber 20 % mehr.',
+    { id: 'pct', topic: 'allg', icon: 'percent', title: T('Prozentrechnung'), sub: T('Anteil, Veränderung, plus und minus'),
+      in: [['a', T('Wert A (Teil / vorher)'), '', '45'], ['b', T('Wert B (Ganzes / nachher)'), '', '60'], ['p', T('Prozentsatz'), '%', '15']],
+      f: T('Anteil = A ÷ B · Veränderung = (B − A) ÷ A · A ± p % = A × (1 ± p ÷ 100)'),
+      note: T('Prozent ist nicht Prozentpunkt: Steigt eine Quote von 10 % auf 12 %, sind das 2 Prozentpunkte – aber 20 % mehr.'),
       out: v => [
-        { l: 'A ist … von B', v: pct(div(v.a, v.b), 2), w: `${nf(v.a)} ÷ ${nf(v.b)}`, main: true },
-        { l: 'Veränderung von A nach B', v: sp(div(v.b - v.a, v.a)), w: `(${nf(v.b)} − ${nf(v.a)}) ÷ ${nf(v.a)}`, t: v.b >= v.a ? 'ok' : 'err' },
-        { l: `${nf(v.p)} % von A`, v: nf(v.a * v.p / 100), w: `${nf(v.a)} × ${nf(v.p)} %` },
+        { l: T('A ist … von B'), v: pct(div(v.a, v.b), 2), w: `${nf(v.a)} ÷ ${nf(v.b)}`, main: true },
+        { l: T('Veränderung von A nach B'), v: sp(div(v.b - v.a, v.a)), w: `(${nf(v.b)} − ${nf(v.a)}) ÷ ${nf(v.a)}`, t: v.b >= v.a ? 'ok' : 'err' },
+        { l: T('{p} % von A', { p: nf(v.p) }), v: nf(v.a * v.p / 100), w: `${nf(v.a)} × ${nf(v.p)} %` },
         { l: `A plus ${nf(v.p)} %`, v: nf(v.a * (1 + v.p / 100)), w: `${nf(v.a)} × ${nf(1 + v.p / 100, 4)}` },
         { l: `A minus ${nf(v.p)} %`, v: nf(v.a * (1 - v.p / 100)), w: `${nf(v.a)} × ${nf(1 - v.p / 100, 4)}` },
       ] },
-    { id: 'vat', topic: 'allg', icon: 'file', title: 'Netto / Brutto', sub: 'Mehrwertsteuer drauf- oder rausrechnen',
-      in: [['x', 'Betrag', '€', '119'], ['s', 'Steuersatz', '%', '19']],
-      f: 'Brutto = Netto × (1 + Satz) · Netto = Brutto ÷ (1 + Satz)',
-      note: 'In Deutschland gelten 19 % und ermäßigt 7 % (z. B. Lebensmittel, Bücher). Typischer Fehler: 19 % vom Bruttobetrag abziehen – das ergibt zu wenig.',
+    { id: 'vat', topic: 'allg', icon: 'file', title: T('Netto / Brutto'), sub: T('Mehrwertsteuer drauf- oder rausrechnen'),
+      in: [['x', T('Betrag'), '€', '119'], ['s', T('Steuersatz'), '%', '19']],
+      f: T('Brutto = Netto × (1 + Satz) · Netto = Brutto ÷ (1 + Satz)'),
+      note: T('In Deutschland gelten 19 % und ermäßigt 7 % (z. B. Lebensmittel, Bücher). Typischer Fehler: 19 % vom Bruttobetrag abziehen – das ergibt zu wenig.'),
       out: v => {
         const q = 1 + v.s / 100, net = div(v.x, q);
         return [
-          { l: 'Betrag ist brutto → netto', v: eur(net), w: `${eur(v.x)} ÷ ${nf(q, 4)}`, main: true },
-          { l: 'Darin enthaltene Steuer', v: eur(v.x - net), w: `${eur(v.x)} − ${eur(net)}` },
-          { l: 'Betrag ist netto → brutto', v: eur(v.x * q), w: `${eur(v.x)} × ${nf(q, 4)}` },
-          { l: 'Steuer obendrauf', v: eur(v.x * v.s / 100), w: `${eur(v.x)} × ${nf(v.s)} %` },
+          { l: T('Betrag ist brutto → netto'), v: eur(net), w: `${eur(v.x)} ÷ ${nf(q, 4)}`, main: true },
+          { l: T('Darin enthaltene Steuer'), v: eur(v.x - net), w: `${eur(v.x)} − ${eur(net)}` },
+          { l: T('Betrag ist netto → brutto'), v: eur(v.x * q), w: `${eur(v.x)} × ${nf(q, 4)}` },
+          { l: T('Steuer obendrauf'), v: eur(v.x * v.s / 100), w: `${eur(v.x)} × ${nf(v.s)} %` },
         ];
       } },
-    { id: 'dreisatz', topic: 'allg', icon: 'arrow', title: 'Dreisatz', sub: 'A gehört zu B – was gehört zu C?',
-      in: [['a', 'Wenn … (A)', '', '3'], ['b', '… dann … (B)', '', '12'], ['c', 'Was ergibt … (C)?', '', '5']],
-      f: 'proportional: C × B ÷ A · antiproportional: A × B ÷ C',
-      note: 'Proportional heißt: je mehr, desto mehr (3 kg kosten 12 € – was kosten 5 kg?). Antiproportional: je mehr, desto weniger (3 Leute brauchen 12 Tage – wie lange brauchen 5?).',
+    { id: 'dreisatz', topic: 'allg', icon: 'arrow', title: T('Dreisatz'), sub: T('A gehört zu B – was gehört zu C?'),
+      in: [['a', T('Wenn … (A)'), '', '3'], ['b', T('… dann … (B)'), '', '12'], ['c', T('Was ergibt … (C)?'), '', '5']],
+      f: T('proportional: C × B ÷ A · antiproportional: A × B ÷ C'),
+      note: T('Proportional heißt: je mehr, desto mehr (3 kg kosten 12 € – was kosten 5 kg?). Antiproportional: je mehr, desto weniger (3 Leute brauchen 12 Tage – wie lange brauchen 5?).'),
       out: v => [
-        { l: 'Proportional', v: nf(div(v.c * v.b, v.a), 4), w: `${nf(v.c)} × ${nf(v.b)} ÷ ${nf(v.a)}`, main: true },
-        { l: 'Antiproportional', v: nf(div(v.a * v.b, v.c), 4), w: `${nf(v.a)} × ${nf(v.b)} ÷ ${nf(v.c)}` },
+        { l: T('Proportional'), v: nf(div(v.c * v.b, v.a), 4), w: `${nf(v.c)} × ${nf(v.b)} ÷ ${nf(v.a)}`, main: true },
+        { l: T('Antiproportional'), v: nf(div(v.a * v.b, v.c), 4), w: `${nf(v.a)} × ${nf(v.b)} ÷ ${nf(v.c)}` },
       ] },
-    { id: 'zins', topic: 'allg', icon: 'kennzahlwerk', title: 'Zinseszins & Sparplan', sub: 'Wie wächst Geld über die Jahre?',
-      in: [['k', 'Startkapital', '€', '5000'], ['r', 'Sparrate pro Monat', '€', '100'], ['i', 'Zinssatz pro Jahr', '%', '5'], ['n', 'Laufzeit', 'Jahre', '10']],
-      f: 'Endkapital = K × (1 + i/12)ᴺ + Rate × ((1 + i/12)ᴺ − 1) ÷ (i/12), N = Jahre × 12',
-      note: 'Vereinfacht: Zinsen werden monatlich gutgeschrieben, die Sparrate kommt am Monatsende. Steuern, Gebühren und Inflation sind nicht eingerechnet.',
+    { id: 'zins', topic: 'allg', icon: 'kennzahlwerk', title: T('Zinseszins & Sparplan'), sub: T('Wie wächst Geld über die Jahre?'),
+      in: [['k', T('Startkapital'), '€', '5000'], ['r', T('Sparrate pro Monat'), '€', '100'], ['i', T('Zinssatz pro Jahr'), '%', '5'], ['n', T('Laufzeit'), T('Jahre'), '10']],
+      f: T('Endkapital = K × (1 + i/12)ᴺ + Rate × ((1 + i/12)ᴺ − 1) ÷ (i/12), N = Jahre × 12'),
+      note: T('Vereinfacht: Zinsen werden monatlich gutgeschrieben, die Sparrate kommt am Monatsende. Steuern, Gebühren und Inflation sind nicht eingerechnet.'),
       out: v => {
         const m = v.i / 100 / 12, N = Math.max(0, Math.min(1200, Math.round(v.n * 12))), f = (1 + m) ** N;
         const paid = v.k + v.r * N, end = v.k * f + (m ? v.r * (f - 1) / m : v.r * N);
         return [
-          { l: 'Eingezahlt', v: eur(paid), w: `${eur(v.k)} + ${eur(v.r)} × ${N} Monate` },
-          { l: 'Endkapital', v: eur(end), w: `${eur(v.k)} × ${nf(f, 4)} + ${eur(v.r)} × (${nf(f, 4)} − 1) ÷ ${nf(m, 6)}`, main: true },
-          { l: 'Davon Zinsen', v: eur(end - paid), w: `${eur(end)} − ${eur(paid)}`, t: end >= paid ? 'ok' : 'err' },
-          { say: paid > 0 && end > 0 ? `Aus jedem eingezahlten Euro werden ${eur(end / paid)}.` : '' },
+          { l: T('Eingezahlt'), v: eur(paid), w: `${eur(v.k)} + ${eur(v.r)} × ${T('{n} Monate', { n: N })}` },
+          { l: T('Endkapital'), v: eur(end), w: `${eur(v.k)} × ${nf(f, 4)} + ${eur(v.r)} × (${nf(f, 4)} − 1) ÷ ${nf(m, 6)}`, main: true },
+          { l: T('Davon Zinsen'), v: eur(end - paid), w: `${eur(end)} − ${eur(paid)}`, t: end >= paid ? 'ok' : 'err' },
+          { say: paid > 0 && end > 0 ? T('Aus jedem eingezahlten Euro werden {x}.', { x: eur(end / paid) }) : '' },
         ];
       } },
-    { id: 'noten', topic: 'allg', icon: 'cap', title: 'Notendurchschnitt', sub: 'Gewichtet nach ECTS oder Credits',
-      in: [1, 2, 3, 4, 5].flatMap(i => [['n' + i, 'Note ' + i, '', ['1,7', '2,3', '1,3', '', ''][i - 1]], ['c' + i, 'ECTS ' + i, '', ['5', '10', '5', '', ''][i - 1]]]),
-      f: 'Schnitt = Σ (Note × ECTS) ÷ Σ ECTS',
-      note: 'Leere Zeilen zählen nicht. Ohne Gewichtung einfach überall 1 als ECTS eintragen. Viele Hochschulen schneiden nach der ersten Nachkommastelle ab, statt zu runden.',
+    { id: 'noten', topic: 'allg', icon: 'cap', title: T('Notendurchschnitt'), sub: T('Gewichtet nach ECTS oder Credits'),
+      in: [1, 2, 3, 4, 5].flatMap(i => [['n' + i, T('Note {n}', { n: i }), '', ['1,7', '2,3', '1,3', '', ''][i - 1]], ['c' + i, 'ECTS ' + i, '', ['5', '10', '5', '', ''][i - 1]]]),
+      f: T('Schnitt = Σ (Note × ECTS) ÷ Σ ECTS'),
+      note: T('Leere Zeilen zählen nicht. Ohne Gewichtung einfach überall 1 als ECTS eintragen. Viele Hochschulen schneiden nach der ersten Nachkommastelle ab, statt zu runden.'),
       out: v => {
         let sum = 0, w = 0; const parts = [];
         for (let i = 1; i <= 5; i++) { const n = v['n' + i], c = v['c' + i]; if (n && c) { sum += n * c; w += c; parts.push(`${nf(n)} × ${nf(c)}`); } }
         const avg = div(sum, w);
         return [
-          { l: 'Durchschnitt', v: nf(avg), w: parts.length ? `(${parts.join(' + ')}) ÷ ${nf(w)}` : '', main: true },
-          { l: 'Abgeschnitten', v: Number.isFinite(avg) ? nf(Math.floor(avg * 10 + 1e-9) / 10, 1) : '–', w: 'nur die erste Nachkommastelle zählt' },
-          { l: 'ECTS gesamt', v: nf(w) },
+          { l: T('Durchschnitt'), v: nf(avg), w: parts.length ? `(${parts.join(' + ')}) ÷ ${nf(w)}` : '', main: true },
+          { l: T('Abgeschnitten'), v: Number.isFinite(avg) ? nf(Math.floor(avg * 10 + 1e-9) / 10, 1) : '–', w: T('nur die erste Nachkommastelle zählt') },
+          { l: T('ECTS gesamt'), v: nf(w) },
         ];
       } },
     { id: 'nwa', topic: 'allg', custom: true },   // Nutzwertanalyse – own card, see nwaCard()
-    { id: 'funnel', topic: 'online', icon: 'zap', title: 'Kampagne & Funnel', sub: 'CTR, CPC, CPM, CR, CPA, ROAS',
-      in: [['cost', 'Werbekosten', '€', '2000'], ['imp', 'Impressionen', '', '250000'], ['clk', 'Klicks', '', '5000'], ['conv', 'Conversions (Käufe)', '', '150'], ['rev', 'Umsatz', '€', '9000']],
-      f: 'CTR = Klicks ÷ Impressionen · CR = Conversions ÷ Klicks · ROAS = Umsatz ÷ Werbekosten',
-      note: 'ROAS 1 : 1 heißt nur: Werbekosten wieder drin. Waren- und sonstige Kosten sind damit noch nicht gedeckt.',
+    { id: 'funnel', topic: 'online', icon: 'zap', title: T('Kampagne & Funnel'), sub: 'CTR, CPC, CPM, CR, CPA, ROAS',
+      in: [['cost', T('Werbekosten'), '€', '2000'], ['imp', T('Impressionen'), '', '250000'], ['clk', T('Klicks'), '', '5000'], ['conv', T('Conversions (Käufe)'), '', '150'], ['rev', T('Umsatz'), '€', '9000']],
+      f: T('CTR = Klicks ÷ Impressionen · CR = Conversions ÷ Klicks · ROAS = Umsatz ÷ Werbekosten'),
+      note: T('ROAS 1 : 1 heißt nur: Werbekosten wieder drin. Waren- und sonstige Kosten sind damit noch nicht gedeckt.'),
       out: v => [
-        { l: 'CTR (Klickrate)', v: pct(div(v.clk, v.imp), 2), w: `${nf(v.clk)} ÷ ${nf(v.imp)}` },
-        { l: 'CPM (Tausenderpreis)', v: eur(div(v.cost, v.imp) * 1000), w: `${eur(v.cost)} ÷ ${nf(v.imp)} × 1.000` },
-        { l: 'CPC (Kosten pro Klick)', v: eur(div(v.cost, v.clk)), w: `${eur(v.cost)} ÷ ${nf(v.clk)}` },
+        { l: T('CTR (Klickrate)'), v: pct(div(v.clk, v.imp), 2), w: `${nf(v.clk)} ÷ ${nf(v.imp)}` },
+        { l: T('CPM (Tausenderpreis)'), v: eur(div(v.cost, v.imp) * 1000), w: `${eur(v.cost)} ÷ ${nf(v.imp)} × ${nf(1000)}` },
+        { l: T('CPC (Kosten pro Klick)'), v: eur(div(v.cost, v.clk)), w: `${eur(v.cost)} ÷ ${nf(v.clk)}` },
         { l: 'Conversion Rate', v: pct(div(v.conv, v.clk), 2), w: `${nf(v.conv)} ÷ ${nf(v.clk)}` },
-        { l: 'CPA / CPO (Kosten pro Kauf)', v: eur(div(v.cost, v.conv)), w: `${eur(v.cost)} ÷ ${nf(v.conv)}` },
-        { l: 'Ø Warenkorb', v: eur(div(v.rev, v.conv)), w: `${eur(v.rev)} ÷ ${nf(v.conv)}` },
+        { l: T('CPA / CPO (Kosten pro Kauf)'), v: eur(div(v.cost, v.conv)), w: `${eur(v.cost)} ÷ ${nf(v.conv)}` },
+        { l: T('Ø Warenkorb'), v: eur(div(v.rev, v.conv)), w: `${eur(v.rev)} ÷ ${nf(v.conv)}` },
         { l: 'ROAS', v: Number.isFinite(div(v.rev, v.cost)) ? `${nf(div(v.rev, v.cost))} : 1 · ${pct(div(v.rev, v.cost), 0)}` : '–', w: `${eur(v.rev)} ÷ ${eur(v.cost)}`, main: true, t: div(v.rev, v.cost) >= 1 ? 'ok' : 'err' },
       ] },
-    { id: 'roi', topic: 'online', icon: 'arrow', title: 'ROI / ROMI', sub: 'Lohnt sich die Maßnahme?',
-      in: [['rev', 'Zusätzlicher Umsatz durch die Maßnahme', '€', '30000'], ['m', 'Marge (Deckungsbeitrag)', '%', '40'], ['cost', 'Kosten der Maßnahme', '€', '8000']],
-      f: 'Gewinn = Umsatz × Marge − Kosten · ROI = Gewinn ÷ Kosten × 100',
-      note: 'Break-even-ROAS = 1 ÷ Marge: Ab diesem ROAS bringt Werbung mehr ein, als sie kostet.',
+    { id: 'roi', topic: 'online', icon: 'arrow', title: 'ROI / ROMI', sub: T('Lohnt sich die Maßnahme?'),
+      in: [['rev', T('Zusätzlicher Umsatz durch die Maßnahme'), '€', '30000'], ['m', T('Marge (Deckungsbeitrag)'), '%', '40'], ['cost', T('Kosten der Maßnahme'), '€', '8000']],
+      f: T('Gewinn = Umsatz × Marge − Kosten · ROI = Gewinn ÷ Kosten × 100'),
+      note: T('Break-even-ROAS = 1 ÷ Marge: Ab diesem ROAS bringt Werbung mehr ein, als sie kostet.'),
       out: v => {
         const db = v.rev * v.m / 100, g = db - v.cost, roi = div(g, v.cost);
         return [
-          { l: 'Deckungsbeitrag', v: eur(db), w: `${eur(v.rev)} × ${nf(v.m)} %` },
-          { l: 'Gewinn der Maßnahme', v: eur(g), w: `${eur(db)} − ${eur(v.cost)}`, t: g >= 0 ? '' : 'err' },
+          { l: T('Deckungsbeitrag'), v: eur(db), w: `${eur(v.rev)} × ${nf(v.m)} %` },
+          { l: T('Gewinn der Maßnahme'), v: eur(g), w: `${eur(db)} − ${eur(v.cost)}`, t: g >= 0 ? '' : 'err' },
           { l: 'ROI', v: pct(roi), w: `${eur(g)} ÷ ${eur(v.cost)}`, main: true, t: roi >= 0 ? 'ok' : 'err' },
-          { l: 'Break-even-ROAS', v: Number.isFinite(div(100, v.m)) ? nf(div(100, v.m)) + ' : 1' : '–', w: `1 ÷ ${nf(v.m)} %` },
-          { say: !Number.isFinite(roi) ? '' : roi >= 0 ? `Jeder eingesetzte Euro bringt ${eur(1 + roi)} zurück.` : `Verlust: Von jedem eingesetzten Euro kommen nur ${eur(1 + roi)} zurück.` },
+          { l: T('Break-even-ROAS'), v: Number.isFinite(div(100, v.m)) ? nf(div(100, v.m)) + ' : 1' : '–', w: `1 ÷ ${nf(v.m)} %` },
+          { say: !Number.isFinite(roi) ? '' : roi >= 0 ? T('Jeder eingesetzte Euro bringt {x} zurück.', { x: eur(1 + roi) }) : T('Verlust: Von jedem eingesetzten Euro kommen nur {x} zurück.', { x: eur(1 + roi) }) },
         ];
       } },
-    { id: 'cac', topic: 'kunden', icon: 'user', title: 'CAC', sub: 'Kosten pro Neukunde',
-      in: [['mk', 'Marketingkosten', '€', '20000'], ['vk', 'Vertriebskosten', '€', '10000'], ['n', 'Gewonnene Neukunden', '', '400']],
-      f: 'CAC = (Marketingkosten + Vertriebskosten) ÷ Neukunden',
-      note: 'Immer denselben Zeitraum für Kosten und Neukunden nehmen, z. B. ein Quartal.',
+    { id: 'cac', topic: 'kunden', icon: 'user', title: 'CAC', sub: T('Kosten pro Neukunde'),
+      in: [['mk', T('Marketingkosten'), '€', '20000'], ['vk', T('Vertriebskosten'), '€', '10000'], ['n', T('Gewonnene Neukunden'), '', '400']],
+      f: T('CAC = (Marketingkosten + Vertriebskosten) ÷ Neukunden'),
+      note: T('Immer denselben Zeitraum für Kosten und Neukunden nehmen, z. B. ein Quartal.'),
       out: v => [{ l: 'CAC', v: eur(div(v.mk + v.vk, v.n)), w: `(${eur(v.mk)} + ${eur(v.vk)}) ÷ ${nf(v.n)}`, main: true }] },
-    { id: 'clv', topic: 'kunden', icon: 'sparkle', title: 'Customer Lifetime Value', sub: 'Was ist ein Kunde wert?',
-      in: [['aov', 'Ø Bestellwert', '€', '60'], ['fq', 'Käufe pro Jahr', '', '4'], ['m', 'Marge', '%', '35'], ['r', 'Bindungsrate pro Jahr', '%', '70'], ['i', 'Kalkulationszins', '%', '8'], ['n', 'Betrachtung in Jahren', '', '5'], ['cac', 'CAC (optional)', '€', '75']],
-      f: 'Beitrag/Jahr m = Bestellwert × Käufe × Marge · CLV = Σ m × Bindungsrateᵗ ÷ (1 + Zins)ᵗ für t = 0 … Jahre − 1',
-      note: 'Faustregel: CLV : CAC von mindestens 3 : 1 gilt als gesund. Unter 1 : 1 kostet jeder Neukunde Geld.',
+    { id: 'clv', topic: 'kunden', icon: 'sparkle', title: 'Customer Lifetime Value', sub: T('Was ist ein Kunde wert?'),
+      in: [['aov', T('Ø Bestellwert'), '€', '60'], ['fq', T('Käufe pro Jahr'), '', '4'], ['m', T('Marge'), '%', '35'], ['r', T('Bindungsrate pro Jahr'), '%', '70'], ['i', T('Kalkulationszins'), '%', '8'], ['n', T('Betrachtung in Jahren'), '', '5'], ['cac', T('CAC (optional)'), '€', '75']],
+      f: T('Beitrag/Jahr m = Bestellwert × Käufe × Marge · CLV = Σ m × Bindungsrateᵗ ÷ (1 + Zins)ᵗ für t = 0 … Jahre − 1'),
+      note: T('Faustregel: CLV : CAC von mindestens 3 : 1 gilt als gesund. Unter 1 : 1 kostet jeder Neukunde Geld.'),
       out: v => {
         const my = v.aov * v.fq * v.m / 100, n = Math.max(0, Math.min(100, Math.round(v.n))), r = v.r / 100, i = v.i / 100;
         let clv = 0; for (let t = 0; t < n; t++) clv += my * r ** t / (1 + i) ** t;
         const ratio = div(clv, v.cac);
         return [
-          { l: 'Beitrag pro Jahr', v: eur(my), w: `${eur(v.aov)} × ${nf(v.fq)} × ${nf(v.m)} %` },
-          { l: 'CLV einfach', v: eur(my * n), w: `${eur(my)} × ${n} Jahre (ohne Abwanderung und Zins)` },
-          { l: 'CLV (mit Bindung & Zins)', v: Number.isFinite(clv) ? eur(clv) : '–', w: `Σ ${eur(my)} × ${nf(r)}ᵗ ÷ ${nf(1 + i, 3)}ᵗ, t = 0 … ${Math.max(0, n - 1)}`, main: true },
+          { l: T('Beitrag pro Jahr'), v: eur(my), w: `${eur(v.aov)} × ${nf(v.fq)} × ${nf(v.m)} %` },
+          { l: T('CLV einfach'), v: eur(my * n), w: T('{a} × {n} Jahre (ohne Abwanderung und Zins)', { a: eur(my), n }) },
+          { l: T('CLV (mit Bindung & Zins)'), v: Number.isFinite(clv) ? eur(clv) : '–', w: `Σ ${eur(my)} × ${nf(r)}ᵗ ÷ ${nf(1 + i, 3)}ᵗ, t = 0 … ${Math.max(0, n - 1)}`, main: true },
           v.cac > 0 && { l: 'CLV : CAC', v: Number.isFinite(ratio) ? nf(ratio, 1) + ' : 1' : '–', w: `${eur(clv)} ÷ ${eur(v.cac)}`, t: ratio >= 3 ? 'ok' : ratio >= 1 ? 'warn' : 'err' },
         ];
       } },
-    { id: 'nps', topic: 'kunden', icon: 'msg', title: 'Net Promoter Score', sub: '„Würden Sie uns weiterempfehlen?“ (0–10)',
-      in: [['pro', 'Promotoren (9–10)', '', '120'], ['pas', 'Passive (7–8)', '', '50'], ['det', 'Detraktoren (0–6)', '', '30']],
-      f: 'NPS = % Promotoren − % Detraktoren (Skala −100 bis +100)',
-      note: 'Über 0 ist okay, über 30 gut, über 50 sehr gut. Passive zählen nur im Nenner mit.',
+    { id: 'nps', topic: 'kunden', icon: 'msg', title: 'Net Promoter Score', sub: T('„Würden Sie uns weiterempfehlen?“ (0–10)'),
+      in: [['pro', T('Promotoren (9–10)'), '', '120'], ['pas', T('Passive (7–8)'), '', '50'], ['det', T('Detraktoren (0–6)'), '', '30']],
+      f: T('NPS = % Promotoren − % Detraktoren (Skala −100 bis +100)'),
+      note: T('Über 0 ist okay, über 30 gut, über 50 sehr gut. Passive zählen nur im Nenner mit.'),
       out: v => {
         const all = v.pro + v.pas + v.det, pp = div(v.pro, all), pd = div(v.det, all), nps = (pp - pd) * 100;
         return [
-          { l: 'Befragte', v: nf(all), w: `${nf(v.pro)} + ${nf(v.pas)} + ${nf(v.det)}` },
-          { l: 'Promotoren / Detraktoren', v: `${pct(pp)} / ${pct(pd)}`, w: `${nf(v.pro)} ÷ ${nf(all)} · ${nf(v.det)} ÷ ${nf(all)}` },
+          { l: T('Befragte'), v: nf(all), w: `${nf(v.pro)} + ${nf(v.pas)} + ${nf(v.det)}` },
+          { l: T('Promotoren / Detraktoren'), v: `${pct(pp)} / ${pct(pd)}`, w: `${nf(v.pro)} ÷ ${nf(all)} · ${nf(v.det)} ÷ ${nf(all)}` },
           { l: 'NPS', v: Number.isFinite(nps) ? (nps > 0 ? '+' : '') + nf(nps, 1) : '–', w: `${pct(pp)} − ${pct(pd)}`, main: true, t: nps >= 30 ? 'ok' : nps >= 0 ? 'warn' : 'err' },
         ];
       } },
-    { id: 'churn', topic: 'kunden', icon: 'refresh', title: 'Kundenbindung & Churn', sub: 'Wie viele Kunden bleiben?',
-      in: [['s', 'Kunden am Anfang', '', '1000'], ['e', 'Kunden am Ende', '', '1050'], ['nw', 'Neukunden im Zeitraum', '', '200']],
-      f: 'Bindungsrate = (Ende − Neukunden) ÷ Anfang · Churn = 1 − Bindungsrate',
-      note: 'Ø Kundenlebensdauer ≈ 1 ÷ Churn-Rate, gemessen in der gewählten Periode (z. B. Jahre).',
+    { id: 'churn', topic: 'kunden', icon: 'refresh', title: T('Kundenbindung & Churn'), sub: T('Wie viele Kunden bleiben?'),
+      in: [['s', T('Kunden am Anfang'), '', '1000'], ['e', T('Kunden am Ende'), '', '1050'], ['nw', T('Neukunden im Zeitraum'), '', '200']],
+      f: T('Bindungsrate = (Ende − Neukunden) ÷ Anfang · Churn = 1 − Bindungsrate'),
+      note: T('Ø Kundenlebensdauer ≈ 1 ÷ Churn-Rate, gemessen in der gewählten Periode (z. B. Jahre).'),
       out: v => {
         const kept = v.e - v.nw, ret = div(kept, v.s), churn = 1 - ret;
         return [
-          { l: 'Verlorene Kunden', v: nf(v.s - kept), w: `${nf(v.s)} − (${nf(v.e)} − ${nf(v.nw)})` },
-          { l: 'Bindungsrate', v: pct(ret), w: `(${nf(v.e)} − ${nf(v.nw)}) ÷ ${nf(v.s)}`, main: true },
-          { l: 'Churn-Rate', v: pct(churn), w: `1 − ${pct(ret)}`, t: churn > .3 ? 'err' : '' },
-          { l: 'Ø Kundenlebensdauer', v: churn > 0 ? nf(1 / churn, 1) + ' Perioden' : '–', w: `1 ÷ ${pct(churn)}` },
+          { l: T('Verlorene Kunden'), v: nf(v.s - kept), w: `${nf(v.s)} − (${nf(v.e)} − ${nf(v.nw)})` },
+          { l: T('Bindungsrate'), v: pct(ret), w: `(${nf(v.e)} − ${nf(v.nw)}) ÷ ${nf(v.s)}`, main: true },
+          { l: T('Churn-Rate'), v: pct(churn), w: `1 − ${pct(ret)}`, t: churn > .3 ? 'err' : '' },
+          { l: T('Ø Kundenlebensdauer'), v: churn > 0 ? T('{n} Perioden', { n: nf(1 / churn, 1) }) : '–', w: `1 ÷ ${pct(churn)}` },
         ];
       } },
-    { id: 'bep', topic: 'preis', icon: 'table', title: 'Break-even', sub: 'Ab wann schreiben wir schwarze Zahlen?',
-      in: [['fix', 'Fixkosten', '€', '50000'], ['p', 'Preis pro Stück (netto)', '€', '25'], ['kv', 'Variable Kosten pro Stück', '€', '15'], ['q', 'Geplante Menge (optional)', 'Stk.', '6000']],
-      f: 'Deckungsbeitrag/Stück = Preis − variable Kosten · Break-even-Menge = Fixkosten ÷ DB/Stück',
-      note: 'Der Deckungsbeitrag ist der Teil des Preises, der die Fixkosten „deckt“. Ist er 0 oder negativ, gibt es keinen Break-even.',
+    { id: 'bep', topic: 'preis', icon: 'table', title: 'Break-even', sub: T('Ab wann schreiben wir schwarze Zahlen?'),
+      in: [['fix', T('Fixkosten'), '€', '50000'], ['p', T('Preis pro Stück (netto)'), '€', '25'], ['kv', T('Variable Kosten pro Stück'), '€', '15'], ['q', T('Geplante Menge (optional)'), T('Stk.'), '6000']],
+      f: T('Deckungsbeitrag/Stück = Preis − variable Kosten · Break-even-Menge = Fixkosten ÷ DB/Stück'),
+      note: T('Der Deckungsbeitrag ist der Teil des Preises, der die Fixkosten „deckt“. Ist er 0 oder negativ, gibt es keinen Break-even.'),
       out: v => {
         const db = v.p - v.kv, bq = div(v.fix, db), ok = db > 0;
         return [
-          { l: 'Deckungsbeitrag / Stück', v: eur(db), w: `${eur(v.p)} − ${eur(v.kv)}`, t: ok ? '' : 'err' },
-          { l: 'DB-Quote', v: pct(div(db, v.p)), w: `${eur(db)} ÷ ${eur(v.p)}` },
-          { l: 'Break-even-Menge', v: ok ? nf(Math.ceil(bq)) + ' Stück' : '–', w: `${eur(v.fix)} ÷ ${eur(db)} = ${nf(bq)} → aufgerundet`, main: true },
-          { l: 'Break-even-Umsatz', v: ok ? eur(Math.ceil(bq) * v.p) : '–', w: `${nf(Math.ceil(bq))} × ${eur(v.p)}` },
-          ok && v.q > 0 && { l: 'Gewinn bei geplanter Menge', v: eur(v.q * db - v.fix), w: `${nf(v.q)} × ${eur(db)} − ${eur(v.fix)}`, t: v.q * db >= v.fix ? 'ok' : 'err' },
-          ok && v.q > 0 && { l: 'Sicherheitsabstand', v: pct(div(v.q - bq, v.q)), w: `(${nf(v.q)} − ${nf(bq)}) ÷ ${nf(v.q)}` },
+          { l: T('Deckungsbeitrag / Stück'), v: eur(db), w: `${eur(v.p)} − ${eur(v.kv)}`, t: ok ? '' : 'err' },
+          { l: T('DB-Quote'), v: pct(div(db, v.p)), w: `${eur(db)} ÷ ${eur(v.p)}` },
+          { l: T('Break-even-Menge'), v: ok ? T('{n} Stück', { n: nf(Math.ceil(bq)) }) : '–', w: T('{a} ÷ {b} = {c} → aufgerundet', { a: eur(v.fix), b: eur(db), c: nf(bq) }), main: true },
+          { l: T('Break-even-Umsatz'), v: ok ? eur(Math.ceil(bq) * v.p) : '–', w: `${nf(Math.ceil(bq))} × ${eur(v.p)}` },
+          ok && v.q > 0 && { l: T('Gewinn bei geplanter Menge'), v: eur(v.q * db - v.fix), w: `${nf(v.q)} × ${eur(db)} − ${eur(v.fix)}`, t: v.q * db >= v.fix ? 'ok' : 'err' },
+          ok && v.q > 0 && { l: T('Sicherheitsabstand'), v: pct(div(v.q - bq, v.q)), w: `(${nf(v.q)} − ${nf(bq)}) ÷ ${nf(v.q)}` },
         ];
       } },
-    { id: 'elast', topic: 'preis', icon: 'sliders', title: 'Preiselastizität', sub: 'Wie reagiert die Nachfrage auf den Preis?',
-      in: [['p1', 'Preis vorher', '€', '10'], ['p2', 'Preis nachher', '€', '12'], ['q1', 'Absatz vorher', 'Stk.', '1000'], ['q2', 'Absatz nachher', 'Stk.', '850']],
-      f: 'ε = (Δ Menge ÷ Menge) ÷ (Δ Preis ÷ Preis) · Bogenelastizität mit Mittelwerten als Basis',
-      note: '|ε| > 1: elastisch – Preiserhöhung senkt den Umsatz. |ε| < 1: unelastisch – Preiserhöhung steigert den Umsatz.',
+    { id: 'elast', topic: 'preis', icon: 'sliders', title: T('Preiselastizität'), sub: T('Wie reagiert die Nachfrage auf den Preis?'),
+      in: [['p1', T('Preis vorher'), '€', '10'], ['p2', T('Preis nachher'), '€', '12'], ['q1', T('Absatz vorher'), T('Stk.'), '1000'], ['q2', T('Absatz nachher'), T('Stk.'), '850']],
+      f: T('ε = (Δ Menge ÷ Menge) ÷ (Δ Preis ÷ Preis) · Bogenelastizität mit Mittelwerten als Basis'),
+      note: T('|ε| > 1: elastisch – Preiserhöhung senkt den Umsatz. |ε| < 1: unelastisch – Preiserhöhung steigert den Umsatz.'),
       out: v => {
         const dq = v.q2 - v.q1, dp = v.p2 - v.p1;
         const e = div(div(dq, v.q1), div(dp, v.p1)), eb = div(div(dq, (v.q1 + v.q2) / 2), div(dp, (v.p1 + v.p2) / 2));
         const u1 = v.p1 * v.q1, u2 = v.p2 * v.q2, a = Math.abs(eb);
         return [
-          { l: 'Elastizität (einfach)', v: nf(e), w: `(${nf(dq)} ÷ ${nf(v.q1)}) ÷ (${nf(dp)} ÷ ${nf(v.p1)})` },
-          { l: 'Bogenelastizität', v: nf(eb), w: `(${nf(dq)} ÷ ${nf((v.q1 + v.q2) / 2)}) ÷ (${nf(dp)} ÷ ${nf((v.p1 + v.p2) / 2)})`, main: true },
-          { l: 'Umsatz vorher → nachher', v: `${eur(u1)} → ${eur(u2)}`, w: `${eur(v.p1)} × ${nf(v.q1)} → ${eur(v.p2)} × ${nf(v.q2)}`, t: u2 >= u1 ? 'ok' : 'err' },
-          { say: !Number.isFinite(eb) ? '' : a > 1.02 ? 'Elastisch: Die Menge reagiert stärker als der Preis.' : a < .98 ? 'Unelastisch: Die Menge reagiert schwächer als der Preis.' : 'Etwa isoelastisch: Der Umsatz bleibt ungefähr gleich.' },
+          { l: T('Elastizität (einfach)'), v: nf(e), w: `(${nf(dq)} ÷ ${nf(v.q1)}) ÷ (${nf(dp)} ÷ ${nf(v.p1)})` },
+          { l: T('Bogenelastizität'), v: nf(eb), w: `(${nf(dq)} ÷ ${nf((v.q1 + v.q2) / 2)}) ÷ (${nf(dp)} ÷ ${nf((v.p1 + v.p2) / 2)})`, main: true },
+          { l: T('Umsatz vorher → nachher'), v: `${eur(u1)} → ${eur(u2)}`, w: `${eur(v.p1)} × ${nf(v.q1)} → ${eur(v.p2)} × ${nf(v.q2)}`, t: u2 >= u1 ? 'ok' : 'err' },
+          { say: !Number.isFinite(eb) ? '' : a > 1.02 ? T('Elastisch: Die Menge reagiert stärker als der Preis.') : a < .98 ? T('Unelastisch: Die Menge reagiert schwächer als der Preis.') : T('Etwa isoelastisch: Der Umsatz bleibt ungefähr gleich.') },
         ];
       } },
-    { id: 'markup', topic: 'preis', icon: 'tag', title: 'Aufschlag & Handelsspanne', sub: 'Handelskalkulation',
-      in: [['ek', 'Einkaufspreis (netto)', '€', '40'], ['a', 'Kalkulationsaufschlag', '%', '60'], ['mwst', 'Umsatzsteuer', '%', '19']],
-      f: 'VK netto = EK × (1 + Aufschlag) · Handelsspanne = (VK − EK) ÷ VK',
-      note: 'Klausurfalle: Der Aufschlag bezieht sich auf den Einkaufspreis, die Spanne auf den Verkaufspreis. Spanne = Aufschlag ÷ (100 % + Aufschlag).',
+    { id: 'markup', topic: 'preis', icon: 'tag', title: T('Aufschlag & Handelsspanne'), sub: T('Handelskalkulation'),
+      in: [['ek', T('Einkaufspreis (netto)'), '€', '40'], ['a', T('Kalkulationsaufschlag'), '%', '60'], ['mwst', T('Umsatzsteuer'), '%', '19']],
+      f: T('VK netto = EK × (1 + Aufschlag) · Handelsspanne = (VK − EK) ÷ VK'),
+      note: T('Klausurfalle: Der Aufschlag bezieht sich auf den Einkaufspreis, die Spanne auf den Verkaufspreis. Spanne = Aufschlag ÷ (100 % + Aufschlag).'),
       out: v => {
         const vk = v.ek * (1 + v.a / 100), br = vk * (1 + v.mwst / 100);
         return [
-          { l: 'Verkaufspreis netto', v: eur(vk), w: `${eur(v.ek)} × (1 + ${nf(v.a)} %)` },
-          { l: 'Verkaufspreis brutto', v: eur(br), w: `${eur(vk)} × (1 + ${nf(v.mwst)} %)`, main: true },
-          { l: 'Handelsspanne', v: pct(div(vk - v.ek, vk)), w: `(${eur(vk)} − ${eur(v.ek)}) ÷ ${eur(vk)}` },
-          { l: 'Rohgewinn pro Stück', v: eur(vk - v.ek), w: `${eur(vk)} − ${eur(v.ek)}` },
+          { l: T('Verkaufspreis netto'), v: eur(vk), w: `${eur(v.ek)} × (1 + ${nf(v.a)} %)` },
+          { l: T('Verkaufspreis brutto'), v: eur(br), w: `${eur(vk)} × (1 + ${nf(v.mwst)} %)`, main: true },
+          { l: T('Handelsspanne'), v: pct(div(vk - v.ek, vk)), w: `(${eur(vk)} − ${eur(v.ek)}) ÷ ${eur(vk)}` },
+          { l: T('Rohgewinn pro Stück'), v: eur(vk - v.ek), w: `${eur(vk)} − ${eur(v.ek)}` },
         ];
       } },
-    { id: 'rabatt', topic: 'preis', icon: 'percent', title: 'Rabatt & Skonto', sub: 'Vom Listenpreis zum Überweisungsbetrag',
-      in: [['lp', 'Listenpreis', '€', '1200'], ['r', 'Rabatt', '%', '10'], ['s', 'Skonto', '%', '2']],
-      f: 'Zielpreis = Listenpreis × (1 − Rabatt) · Barzahlungspreis = Zielpreis × (1 − Skonto)',
-      note: 'Rabatt gibt es sofort (Menge, Aktion, Treue), Skonto nur bei schneller Zahlung, z. B. „2 % innerhalb von 10 Tagen“. Die Prozente werden nacheinander gerechnet, nicht addiert.',
+    { id: 'rabatt', topic: 'preis', icon: 'percent', title: T('Rabatt & Skonto'), sub: T('Vom Listenpreis zum Überweisungsbetrag'),
+      in: [['lp', T('Listenpreis'), '€', '1200'], ['r', T('Rabatt'), '%', '10'], ['s', T('Skonto'), '%', '2']],
+      f: T('Zielpreis = Listenpreis × (1 − Rabatt) · Barzahlungspreis = Zielpreis × (1 − Skonto)'),
+      note: T('Rabatt gibt es sofort (Menge, Aktion, Treue), Skonto nur bei schneller Zahlung, z. B. „2 % innerhalb von 10 Tagen“. Die Prozente werden nacheinander gerechnet, nicht addiert.'),
       out: v => {
         const zp = v.lp * (1 - v.r / 100), bp = zp * (1 - v.s / 100);
         return [
-          { l: 'Rabatt', v: eur(v.lp - zp), w: `${eur(v.lp)} × ${nf(v.r)} %` },
-          { l: 'Zielpreis', v: eur(zp), w: `${eur(v.lp)} − ${eur(v.lp - zp)}` },
-          { l: 'Skonto', v: eur(zp - bp), w: `${eur(zp)} × ${nf(v.s)} %` },
-          { l: 'Barzahlungspreis', v: eur(bp), w: `${eur(zp)} − ${eur(zp - bp)}`, main: true },
-          { l: 'Ersparnis gesamt', v: `${eur(v.lp - bp)} · ${pct(div(v.lp - bp, v.lp))}`, w: `${eur(v.lp)} − ${eur(bp)}`, t: 'ok' },
+          { l: T('Rabatt'), v: eur(v.lp - zp), w: `${eur(v.lp)} × ${nf(v.r)} %` },
+          { l: T('Zielpreis'), v: eur(zp), w: `${eur(v.lp)} − ${eur(v.lp - zp)}` },
+          { l: T('Skonto'), v: eur(zp - bp), w: `${eur(zp)} × ${nf(v.s)} %` },
+          { l: T('Barzahlungspreis'), v: eur(bp), w: `${eur(zp)} − ${eur(zp - bp)}`, main: true },
+          { l: T('Ersparnis gesamt'), v: `${eur(v.lp - bp)} · ${pct(div(v.lp - bp, v.lp))}`, w: `${eur(v.lp)} − ${eur(bp)}`, t: 'ok' },
         ];
       } },
-    { id: 'handelskalk', topic: 'preis', icon: 'tag', title: 'Preiskalkulation (Handel)', sub: 'Vom Einkaufspreis zum Verkaufspreis – Schritt für Schritt',
-      in: [['lep', 'Listeneinkaufspreis', '€', '800'], ['r1', 'Liefererrabatt', '%', '10'], ['s1', 'Liefererskonto', '%', '2'], ['bk', 'Bezugskosten (Fracht …)', '€', '25'],
-        ['hk', 'Handlungskosten', '%', '30'], ['g', 'Gewinnzuschlag', '%', '10'], ['s2', 'Kundenskonto', '%', '2'], ['p', 'Vertreterprovision', '%', '0'], ['r2', 'Kundenrabatt', '%', '15'], ['ust', 'Umsatzsteuer', '%', '19']],
-      f: 'Rabatt & Skonto beim Einkauf werden abgezogen („vom Hundert“), Kundenskonto, Provision & Kundenrabatt werden aufgeschlagen („im Hundert“: ÷ (1 − Satz))',
-      note: 'Klausurfalle: Kundenskonto und Kundenrabatt werden im Hundert gerechnet – der Kunde zieht sie später vom höheren Preis ab, darum wird durch (1 − Satz) geteilt, nicht mit (1 + Satz) multipliziert.',
+    { id: 'handelskalk', topic: 'preis', icon: 'tag', title: T('Preiskalkulation (Handel)'), sub: T('Vom Einkaufspreis zum Verkaufspreis – Schritt für Schritt'),
+      in: [['lep', T('Listeneinkaufspreis'), '€', '800'], ['r1', T('Liefererrabatt'), '%', '10'], ['s1', T('Liefererskonto'), '%', '2'], ['bk', T('Bezugskosten (Fracht …)'), '€', '25'],
+        ['hk', T('Handlungskosten'), '%', '30'], ['g', T('Gewinnzuschlag'), '%', '10'], ['s2', T('Kundenskonto'), '%', '2'], ['p', T('Vertreterprovision'), '%', '0'], ['r2', T('Kundenrabatt'), '%', '15'], ['ust', T('Umsatzsteuer'), '%', '19']],
+      f: T('Rabatt & Skonto beim Einkauf werden abgezogen („vom Hundert“), Kundenskonto, Provision & Kundenrabatt werden aufgeschlagen („im Hundert“: ÷ (1 − Satz))'),
+      note: T('Klausurfalle: Kundenskonto und Kundenrabatt werden im Hundert gerechnet – der Kunde zieht sie später vom höheren Preis ab, darum wird durch (1 − Satz) geteilt, nicht mit (1 + Satz) multipliziert.'),
       out: v => {
         const zep = v.lep * (1 - v.r1 / 100), bep = zep * (1 - v.s1 / 100), bp = bep + v.bk, sk = bp * (1 + v.hk / 100), bvp = sk * (1 + v.g / 100);
         const zvp = div(bvp, 1 - (v.s2 + v.p) / 100), lvp = div(zvp, 1 - v.r2 / 100), brutto = lvp * (1 + v.ust / 100);
         return [
-          { l: 'Zieleinkaufspreis', v: eur(zep), w: `${eur(v.lep)} − ${nf(v.r1)} % Rabatt` },
-          { l: 'Bareinkaufspreis', v: eur(bep), w: `${eur(zep)} − ${nf(v.s1)} % Skonto` },
-          { l: 'Bezugspreis (Einstandspreis)', v: eur(bp), w: `${eur(bep)} + ${eur(v.bk)} Bezugskosten` },
-          { l: 'Selbstkosten', v: eur(sk), w: `${eur(bp)} + ${nf(v.hk)} % Handlungskosten` },
-          { l: 'Barverkaufspreis', v: eur(bvp), w: `${eur(sk)} + ${nf(v.g)} % Gewinn` },
-          { l: 'Zielverkaufspreis', v: eur(zvp), w: `${eur(bvp)} ÷ (1 − ${nf(v.s2 + v.p)} %) – Skonto${v.p ? ' + Provision' : ''} im Hundert` },
-          { l: 'Listenverkaufspreis (netto)', v: eur(lvp), w: `${eur(zvp)} ÷ (1 − ${nf(v.r2)} %) – Rabatt im Hundert`, main: true },
-          { l: 'Verkaufspreis brutto', v: eur(brutto), w: `${eur(lvp)} × (1 + ${nf(v.ust)} %)` },
-          { l: 'Kalkulationszuschlag', v: pct(div(lvp - bp, bp)), w: `(${eur(lvp)} − ${eur(bp)}) ÷ ${eur(bp)}` },
-          { l: 'Kalkulationsfaktor', v: nf(div(lvp, bp), 4), w: `${eur(lvp)} ÷ ${eur(bp)}` },
-          { l: 'Handelsspanne', v: pct(div(lvp - bp, lvp)), w: `(${eur(lvp)} − ${eur(bp)}) ÷ ${eur(lvp)}` },
+          { l: T('Zieleinkaufspreis'), v: eur(zep), w: T('{a} − {p} % Rabatt', { a: eur(v.lep), p: nf(v.r1) }) },
+          { l: T('Bareinkaufspreis'), v: eur(bep), w: T('{a} − {p} % Skonto', { a: eur(zep), p: nf(v.s1) }) },
+          { l: T('Bezugspreis (Einstandspreis)'), v: eur(bp), w: T('{a} + {b} Bezugskosten', { a: eur(bep), b: eur(v.bk) }) },
+          { l: T('Selbstkosten'), v: eur(sk), w: T('{a} + {p} % Handlungskosten', { a: eur(bp), p: nf(v.hk) }) },
+          { l: T('Barverkaufspreis'), v: eur(bvp), w: T('{a} + {p} % Gewinn', { a: eur(sk), p: nf(v.g) }) },
+          { l: T('Zielverkaufspreis'), v: eur(zvp), w: T(v.p ? '{a} ÷ (1 − {p} %) – Skonto + Provision im Hundert' : '{a} ÷ (1 − {p} %) – Skonto im Hundert', { a: eur(bvp), p: nf(v.s2 + v.p) }) },
+          { l: T('Listenverkaufspreis (netto)'), v: eur(lvp), w: T('{a} ÷ (1 − {p} %) – Rabatt im Hundert', { a: eur(zvp), p: nf(v.r2) }), main: true },
+          { l: T('Verkaufspreis brutto'), v: eur(brutto), w: `${eur(lvp)} × (1 + ${nf(v.ust)} %)` },
+          { l: T('Kalkulationszuschlag'), v: pct(div(lvp - bp, bp)), w: `(${eur(lvp)} − ${eur(bp)}) ÷ ${eur(bp)}` },
+          { l: T('Kalkulationsfaktor'), v: nf(div(lvp, bp), 4), w: `${eur(lvp)} ÷ ${eur(bp)}` },
+          { l: T('Handelsspanne'), v: pct(div(lvp - bp, lvp)), w: `(${eur(lvp)} − ${eur(bp)}) ÷ ${eur(lvp)}` },
         ];
       } },
-    { id: 'zuschlag', topic: 'preis', icon: 'layers', title: 'Zuschlagskalkulation (KLR)', sub: 'Kostenträgerrechnung: Was kostet ein Produkt?',
-      in: [['fm', 'Fertigungsmaterial', '€', '200'], ['mgk', 'Materialgemeinkosten', '%', '15'], ['fl', 'Fertigungslöhne', '€', '120'], ['fgk', 'Fertigungsgemeinkosten', '%', '180'],
-        ['sekf', 'Sondereinzelkosten Fertigung', '€', '0'], ['vwgk', 'Verwaltungsgemeinkosten', '%', '12'], ['vtgk', 'Vertriebsgemeinkosten', '%', '8'], ['sekv', 'Sondereinzelkosten Vertrieb', '€', '0'], ['g', 'Gewinnzuschlag', '%', '10']],
-      f: 'Materialkosten + Fertigungskosten = Herstellkosten · + Verwaltungs- & Vertriebsgemeinkosten (auf die Herstellkosten) = Selbstkosten · + Gewinn = Barverkaufspreis',
-      note: 'Die Zuschlagssätze kommen aus dem Betriebsabrechnungsbogen (BAB). Einzelkosten lassen sich dem Produkt direkt zurechnen, Gemeinkosten werden per Zuschlag verteilt.',
+    { id: 'zuschlag', topic: 'preis', icon: 'layers', title: T('Zuschlagskalkulation (KLR)'), sub: T('Kostenträgerrechnung: Was kostet ein Produkt?'),
+      in: [['fm', T('Fertigungsmaterial'), '€', '200'], ['mgk', T('Materialgemeinkosten'), '%', '15'], ['fl', T('Fertigungslöhne'), '€', '120'], ['fgk', T('Fertigungsgemeinkosten'), '%', '180'],
+        ['sekf', T('Sondereinzelkosten Fertigung'), '€', '0'], ['vwgk', T('Verwaltungsgemeinkosten'), '%', '12'], ['vtgk', T('Vertriebsgemeinkosten'), '%', '8'], ['sekv', T('Sondereinzelkosten Vertrieb'), '€', '0'], ['g', T('Gewinnzuschlag'), '%', '10']],
+      f: T('Materialkosten + Fertigungskosten = Herstellkosten · + Verwaltungs- & Vertriebsgemeinkosten (auf die Herstellkosten) = Selbstkosten · + Gewinn = Barverkaufspreis'),
+      note: T('Die Zuschlagssätze kommen aus dem Betriebsabrechnungsbogen (BAB). Einzelkosten lassen sich dem Produkt direkt zurechnen, Gemeinkosten werden per Zuschlag verteilt.'),
       out: v => {
         const mk = v.fm * (1 + v.mgk / 100), fk = v.fl * (1 + v.fgk / 100) + v.sekf, hk = mk + fk;
         const vw = hk * v.vwgk / 100, vt = hk * v.vtgk / 100, sk = hk + vw + vt + v.sekv, bvp = sk * (1 + v.g / 100);
         return [
-          { l: 'Materialkosten', v: eur(mk), w: `${eur(v.fm)} + ${nf(v.mgk)} % MGK` },
-          { l: 'Fertigungskosten', v: eur(fk), w: `${eur(v.fl)} + ${nf(v.fgk)} % FGK${v.sekf ? ` + ${eur(v.sekf)} SEKF` : ''}` },
-          { l: 'Herstellkosten', v: eur(hk), w: `${eur(mk)} + ${eur(fk)}` },
-          { l: 'Verwaltungs- & Vertriebsgemeinkosten', v: eur(vw + vt), w: `${eur(hk)} × (${nf(v.vwgk)} % + ${nf(v.vtgk)} %)` },
-          { l: 'Selbstkosten', v: eur(sk), w: `${eur(hk)} + ${eur(vw + vt)}${v.sekv ? ` + ${eur(v.sekv)} SEKV` : ''}`, main: true },
-          { l: 'Barverkaufspreis', v: eur(bvp), w: `${eur(sk)} + ${nf(v.g)} % Gewinn` },
+          { l: T('Materialkosten'), v: eur(mk), w: `${eur(v.fm)} + ${nf(v.mgk)} % ${T('MGK')}` },
+          { l: T('Fertigungskosten'), v: eur(fk), w: `${eur(v.fl)} + ${nf(v.fgk)} % ${T('FGK')}${v.sekf ? ` + ${eur(v.sekf)} ${T('SEKF')}` : ''}` },
+          { l: T('Herstellkosten'), v: eur(hk), w: `${eur(mk)} + ${eur(fk)}` },
+          { l: T('Verwaltungs- & Vertriebsgemeinkosten'), v: eur(vw + vt), w: `${eur(hk)} × (${nf(v.vwgk)} % + ${nf(v.vtgk)} %)` },
+          { l: T('Selbstkosten'), v: eur(sk), w: `${eur(hk)} + ${eur(vw + vt)}${v.sekv ? ` + ${eur(v.sekv)} ${T('SEKV')}` : ''}`, main: true },
+          { l: T('Barverkaufspreis'), v: eur(bvp), w: T('{a} + {p} % Gewinn', { a: eur(sk), p: nf(v.g) }) },
         ];
       } },
-    { id: 'betriebsergebnis', topic: 'preis', icon: 'table', title: 'Betriebsergebnis (KLR)', sub: 'Leistungen minus Kosten einer Periode',
-      in: [['u', 'Umsatzerlöse', '€', '500000'], ['bv', 'Bestandsveränderung (+/−)', '€', '20000'], ['ae', 'Aktivierte Eigenleistungen', '€', '5000'], ['k', 'Kosten gesamt', '€', '460000']],
-      f: 'Leistungen = Umsatzerlöse ± Bestandsveränderung + aktivierte Eigenleistungen · Betriebsergebnis = Leistungen − Kosten',
-      note: 'Wirtschaftlichkeit über 1 heißt: Der Betrieb erwirtschaftet mehr, als er verbraucht. Neutrale Erträge und Aufwendungen (z. B. Zinsen, Spenden) gehören nicht hierher, sondern ins neutrale Ergebnis.',
+    { id: 'betriebsergebnis', topic: 'preis', icon: 'table', title: T('Betriebsergebnis (KLR)'), sub: T('Leistungen minus Kosten einer Periode'),
+      in: [['u', T('Umsatzerlöse'), '€', '500000'], ['bv', T('Bestandsveränderung (+/−)'), '€', '20000'], ['ae', T('Aktivierte Eigenleistungen'), '€', '5000'], ['k', T('Kosten gesamt'), '€', '460000']],
+      f: T('Leistungen = Umsatzerlöse ± Bestandsveränderung + aktivierte Eigenleistungen · Betriebsergebnis = Leistungen − Kosten'),
+      note: T('Wirtschaftlichkeit über 1 heißt: Der Betrieb erwirtschaftet mehr, als er verbraucht. Neutrale Erträge und Aufwendungen (z. B. Zinsen, Spenden) gehören nicht hierher, sondern ins neutrale Ergebnis.'),
       out: v => {
         const L = v.u + v.bv + v.ae, be = L - v.k, w = div(L, v.k);
         return [
-          { l: 'Leistungen', v: eur(L), w: `${eur(v.u)} ${v.bv < 0 ? '−' : '+'} ${eur(Math.abs(v.bv))} + ${eur(v.ae)}` },
-          { l: 'Betriebsergebnis', v: eur(be), w: `${eur(L)} − ${eur(v.k)}`, main: true, t: be >= 0 ? 'ok' : 'err' },
-          { l: 'Wirtschaftlichkeit', v: nf(w, 3), w: `${eur(L)} ÷ ${eur(v.k)}`, t: w >= 1 ? 'ok' : 'err' },
-          { l: 'Umsatzrentabilität (betrieblich)', v: pct(div(be, v.u)), w: `${eur(be)} ÷ ${eur(v.u)}` },
+          { l: T('Leistungen'), v: eur(L), w: `${eur(v.u)} ${v.bv < 0 ? '−' : '+'} ${eur(Math.abs(v.bv))} + ${eur(v.ae)}` },
+          { l: T('Betriebsergebnis'), v: eur(be), w: `${eur(L)} − ${eur(v.k)}`, main: true, t: be >= 0 ? 'ok' : 'err' },
+          { l: T('Wirtschaftlichkeit'), v: nf(w, 3), w: `${eur(L)} ÷ ${eur(v.k)}`, t: w >= 1 ? 'ok' : 'err' },
+          { l: T('Umsatzrentabilität (betrieblich)'), v: pct(div(be, v.u)), w: `${eur(be)} ÷ ${eur(v.u)}` },
         ];
       } },
-    { id: 'share', topic: 'markt', icon: 'layers', title: 'Marktanteil & Marktpotenzial', sub: 'Wie groß ist unser Stück vom Kuchen?',
-      in: [['own', 'Eigener Umsatz', 'Mio. €', '12'], ['top', 'Umsatz größter Wettbewerber', 'Mio. €', '20'], ['vol', 'Marktvolumen', 'Mio. €', '80'], ['pot', 'Marktpotenzial', 'Mio. €', '120']],
-      f: 'Marktanteil = eigener Umsatz ÷ Marktvolumen · relativer Marktanteil = eigener Umsatz ÷ größter Wettbewerber',
-      note: 'Relativer Marktanteil > 1 heißt Marktführer (wichtig für die BCG-Matrix). Sättigungsgrad = Marktvolumen ÷ Marktpotenzial.',
+    { id: 'share', topic: 'markt', icon: 'layers', title: T('Marktanteil & Marktpotenzial'), sub: T('Wie groß ist unser Stück vom Kuchen?'),
+      in: [['own', T('Eigener Umsatz'), T('Mio. €'), '12'], ['top', T('Umsatz größter Wettbewerber'), T('Mio. €'), '20'], ['vol', T('Marktvolumen'), T('Mio. €'), '80'], ['pot', T('Marktpotenzial'), T('Mio. €'), '120']],
+      f: T('Marktanteil = eigener Umsatz ÷ Marktvolumen · relativer Marktanteil = eigener Umsatz ÷ größter Wettbewerber'),
+      note: T('Relativer Marktanteil > 1 heißt Marktführer (wichtig für die BCG-Matrix). Sättigungsgrad = Marktvolumen ÷ Marktpotenzial.'),
       out: v => {
         const rel = div(v.own, v.top);
         return [
-          { l: 'Marktanteil', v: pct(div(v.own, v.vol)), w: `${nf(v.own)} ÷ ${nf(v.vol)}`, main: true },
-          { l: 'Relativer Marktanteil', v: nf(rel), w: `${nf(v.own)} ÷ ${nf(v.top)}`, t: rel > 1 ? 'ok' : '' },
-          { l: 'Sättigungsgrad', v: pct(div(v.vol, v.pot)), w: `${nf(v.vol)} ÷ ${nf(v.pot)}` },
-          { l: 'Freies Potenzial', v: nf(v.pot - v.vol) + ' Mio. €', w: `${nf(v.pot)} − ${nf(v.vol)}` },
+          { l: T('Marktanteil'), v: pct(div(v.own, v.vol)), w: `${nf(v.own)} ÷ ${nf(v.vol)}`, main: true },
+          { l: T('Relativer Marktanteil'), v: nf(rel), w: `${nf(v.own)} ÷ ${nf(v.top)}`, t: rel > 1 ? 'ok' : '' },
+          { l: T('Sättigungsgrad'), v: pct(div(v.vol, v.pot)), w: `${nf(v.vol)} ÷ ${nf(v.pot)}` },
+          { l: T('Freies Potenzial'), v: nf(v.pot - v.vol) + ' ' + T('Mio. €'), w: `${nf(v.pot)} − ${nf(v.vol)}` },
         ];
       } },
   ];
@@ -16342,20 +16471,26 @@ function kzDefs({ eur, pct, nf, div }) {
 function mountKennzahlwerk(view) {
   const st = { topic: 'all', way: true, v: {}, ...Store.get('kennzahlwerk', {}) };
   const persist = saveLater(() => Store.set('kennzahlwerk', st), 300);
+  const en = isEN(), loc = en ? 'en-GB' : 'de-DE';
   const ok = n => typeof n === 'number' && Number.isFinite(n);
-  const nf = (n, d = 2) => ok(n) ? n.toLocaleString('de-DE', { maximumFractionDigits: d }) : '–';
-  const eur = n => ok(n) ? n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) : '–';
-  const pct = (n, d = 1) => ok(n) ? (n * 100).toLocaleString('de-DE', { maximumFractionDigits: d }) + ' %' : '–';
+  const nf = (n, d = 2) => ok(n) ? n.toLocaleString(loc, { maximumFractionDigits: d }) : '–';
+  const eur = n => ok(n) ? n.toLocaleString(loc, { style: 'currency', currency: 'EUR' }) : '–';
+  const pct = (n, d = 1) => ok(n) ? (n * 100).toLocaleString(loc, { maximumFractionDigits: d }) + ' %' : '–';
   const div = (a, b) => b ? a / b : NaN;
-  // German & English input: "1.234,5" · "1234.5" · "1.500" (thousands) · spaces/€/% are ignored
+  // German & English input: "1.234,5" · "1234.5" · "1,234.5" · spaces/€/% are ignored.
+  // Only one separator → German UI: "1.500" = thousands, "1,5" = decimal · English UI: "1,500" = thousands, "1.5" = decimal
   const num = s => {
     s = String(s ?? '').replace(/[\s€%]/g, '');
     if (!s) return NaN;
-    if (s.includes(',')) s = s.replace(/\./g, '').replace(',', '.');
+    const de = () => s.replace(/\./g, '').replace(',', '.'), us = () => s.replace(/,/g, '');
+    if (s.includes(',') && s.includes('.')) s = s.lastIndexOf(',') > s.lastIndexOf('.') ? de() : us();
+    else if (en) s = /^-?\d{1,3}(,\d{3})+$/.test(s) ? us() : s.replace(',', '.');
+    else if (s.includes(',')) s = de();
     else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, '');
     return Number(s);
   };
   const defs = kzDefs({ eur, pct, nf, div });
+  if (en) defs.forEach(d => d.in?.forEach(x => { x[3] = x[3].replace(',', '.'); }));   // example grades "1,7" → "1.7"
 
   function copy(txt, btn) {
     const t = h('textarea', { style: { position: 'fixed', left: '-9999px', opacity: '0' } });
@@ -16363,14 +16498,15 @@ function mountKennzahlwerk(view) {
     let done = false; try { done = document.execCommand('copy'); } catch {}
     t.remove();
     const flash = () => { btn.classList.add('done'); btn.replaceChildren(icon('check')); setTimeout(() => { btn.classList.remove('done'); btn.replaceChildren(icon('copy')); }, 1200); };
-    if (done) flash(); else navigator.clipboard?.writeText(txt).then(flash, () => toast('Kopieren hat nicht geklappt.', 'err'));
+    if (done) flash(); else navigator.clipboard?.writeText(txt).then(flash, () => toast(T('Kopieren hat nicht geklappt.'), 'err'));
   }
 
   /* ---------- Nutzwertanalyse (own card: options × weighted criteria) ---------- */
   function nwaCard() {
     const EX = { scale: 10,
-      crit: [{ id: 'k1', n: 'Gehalt', w: '20' }, { id: 'k2', n: 'Lerneffekt', w: '35' }, { id: 'k3', n: 'Entfernung', w: '15' }, { id: 'k4', n: 'Übernahmechance', w: '30' }],
-      opts: [{ id: 'o1', n: 'Agentur' }, { id: 'o2', n: 'Konzern' }, { id: 'o3', n: 'Start-up' }],
+      crit: en ? [{ id: 'k1', n: 'Salary', w: '20' }, { id: 'k2', n: 'Learning', w: '35' }, { id: 'k3', n: 'Commute', w: '15' }, { id: 'k4', n: 'Chance of a job offer', w: '30' }]
+        : [{ id: 'k1', n: 'Gehalt', w: '20' }, { id: 'k2', n: 'Lerneffekt', w: '35' }, { id: 'k3', n: 'Entfernung', w: '15' }, { id: 'k4', n: 'Übernahmechance', w: '30' }],
+      opts: en ? [{ id: 'o1', n: 'Agency' }, { id: 'o2', n: 'Corporate' }, { id: 'o3', n: 'Start-up' }] : [{ id: 'o1', n: 'Agentur' }, { id: 'o2', n: 'Konzern' }, { id: 'o3', n: 'Start-up' }],
       s: { o1: { k1: '6', k2: '8', k3: '9', k4: '5' }, o2: { k1: '9', k2: '7', k3: '5', k4: '8' }, o3: { k1: '4', k2: '9', k3: '7', k4: '6' } } };
     if (!st.nwa?.crit?.length || !st.nwa?.opts?.length) st.nwa = structuredClone(EX);
     let N = st.nwa;
@@ -16382,14 +16518,14 @@ function mountKennzahlwerk(view) {
 
     function renderTable() {
       const cols = `minmax(150px,1.6fr) 84px repeat(${N.opts.length},minmax(92px,1fr)) 30px`;
-      const cells = [h('span', { class: 'nwa-h' }, 'Kriterium'), h('span', { class: 'nwa-h' }, 'Gewicht %')];
+      const cells = [h('span', { class: 'nwa-h' }, T('Kriterium')), h('span', { class: 'nwa-h' }, T('Gewicht %'))];
       for (const o of N.opts) {
         const inp = h('input', { class: 'inp nwa-on', value: o.n, placeholder: 'Option', spellcheck: false, oninput: () => { o.n = inp.value; persist(); calc(); } });
-        cells.push(h('div', { class: 'nwa-oh' }, inp, N.opts.length > 2 && iconBtn('x', 'Option entfernen', () => { N.opts = N.opts.filter(x => x !== o); delete N.s[o.id]; persist(); renderTable(); calc(); })));
+        cells.push(h('div', { class: 'nwa-oh' }, inp, N.opts.length > 2 && iconBtn('x', T('Option entfernen'), () => { N.opts = N.opts.filter(x => x !== o); delete N.s[o.id]; persist(); renderTable(); calc(); })));
       }
       cells.push(h('span'));
       for (const c of N.crit) {
-        const name = h('input', { class: 'inp', value: c.n, placeholder: 'Kriterium', spellcheck: false, oninput: () => { c.n = name.value; persist(); calc(); } });
+        const name = h('input', { class: 'inp', value: c.n, placeholder: T('Kriterium'), spellcheck: false, oninput: () => { c.n = name.value; persist(); calc(); } });
         const w = h('input', { class: 'inp nwa-sc', value: c.w, inputMode: 'decimal', oninput: () => { c.w = w.value; persist(); calc(); } });
         cells.push(name, w);
         for (const o of N.opts) {
@@ -16397,9 +16533,9 @@ function mountKennzahlwerk(view) {
             oninput: () => { (N.s[o.id] ||= {})[c.id] = sc.value; persist(); calc(); } });
           cells.push(sc);
         }
-        cells.push(N.crit.length > 1 ? iconBtn('x', 'Kriterium entfernen', () => { N.crit = N.crit.filter(x => x !== c); persist(); renderTable(); calc(); }) : h('span'));
+        cells.push(N.crit.length > 1 ? iconBtn('x', T('Kriterium entfernen'), () => { N.crit = N.crit.filter(x => x !== c); persist(); renderTable(); calc(); }) : h('span'));
       }
-      cells.push(h('span', { class: 'nwa-h' }, 'Summe'), sumEl);
+      cells.push(h('span', { class: 'nwa-h' }, T('Summe')), sumEl);
       table.replaceChildren(h('div', { class: 'nwa-t', style: { gridTemplateColumns: cols } }, ...cells));
     }
 
@@ -16419,30 +16555,30 @@ function mountKennzahlwerk(view) {
         h('div', { class: 'nwa-bar' }, h('i', { style: { width: Math.max(0, Math.min(100, r.tot / N.scale * 100)) + '%' } })),
         h('div', { class: 'kz-w' }, '= ' + r.parts.join(' + ')))));
       const close = ranked.length > 1 && ranked[0].tot > 0 && ranked[0].tot - ranked[1].tot < N.scale * .03;
-      const [k, t] = !wsum ? ['err', 'Mindestens ein Kriterium braucht ein Gewicht.']
-        : Math.abs(wsum - 100) > .01 ? ['', `Die Gewichte ergeben ${nf(wsum)} % – sie werden automatisch auf 100 % umgerechnet.`]
-        : close ? ['', 'Sehr knappes Ergebnis – lohnt sich, die Gewichte noch einmal kritisch anzuschauen.'] : ['ok', 'Gewichte ergeben 100 %.'];
+      const [k, t] = !wsum ? ['err', T('Mindestens ein Kriterium braucht ein Gewicht.')]
+        : Math.abs(wsum - 100) > .01 ? ['', T('Die Gewichte ergeben {n} % – sie werden automatisch auf 100 % umgerechnet.', { n: nf(wsum) })]
+        : close ? ['', T('Sehr knappes Ergebnis – lohnt sich, die Gewichte noch einmal kritisch anzuschauen.')] : ['ok', T('Gewichte ergeben 100 %.')];
       stat.className = 'cw-status' + (k ? ' ' + k : ''); stat.replaceChildren(...(k === 'ok' ? [icon('check')] : k === 'err' ? [icon('alert')] : []), t);
     }
 
     const set = next => { N = st.nwa = next; persist(); renderTable(); calc(); };
-    const cb = h('button', { class: 'cw-copy', title: 'Text → 📋', onclick: () => copy(['Nutzwertanalyse',
-      'Kriterien: ' + N.crit.map(c => `${c.n || 'Kriterium'} (${nf(val(c.w))} %)`).join(', '), `Skala: 1–${N.scale}`, '',
+    const cb = h('button', { class: 'cw-copy', title: 'Text → 📋', onclick: () => copy([T('Nutzwertanalyse'),
+      `${T('Kriterien')}: ` + N.crit.map(c => `${c.n || T('Kriterium')} (${nf(val(c.w))} %)`).join(', '), `${T('Skala')}: 1–${N.scale}`, '',
       ...ranked.map((r, i) => `${i + 1}. ${r.o.n || 'Option'}: ${nf(r.tot)}  (= ${r.parts.join(' + ')})`)].join('\n'), cb) }, icon('copy'));
     const el = h('section', { class: 'cw-card kz-wide', dataset: { topic: 'allg' } },
       h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon('sliders')),
-        h('div', { class: 'kz-tt' }, h('h3', null, 'Nutzwertanalyse'), h('small', { class: 'kz-sub' }, 'Optionen nach gewichteten Kriterien vergleichen')),
+        h('div', { class: 'kz-tt' }, h('h3', null, T('Nutzwertanalyse')), h('small', { class: 'kz-sub' }, T('Optionen nach gewichteten Kriterien vergleichen'))),
         h('div', { class: 'cw-acts' },
-          h('button', { class: 'btn sm ghost', title: 'Leere Tabelle', onclick: () => set({ scale: N.scale, crit: [{ id: uid(), n: '', w: '' }, { id: uid(), n: '', w: '' }], opts: [{ id: uid(), n: '' }, { id: uid(), n: '' }], s: {} }) }, icon('eraser')),
-          h('button', { class: 'btn sm ghost', title: 'Beispiel einsetzen', onclick: () => set(structuredClone(EX)) }, icon('undo')), cb)),
+          h('button', { class: 'btn sm ghost', title: T('Leere Tabelle'), onclick: () => set({ scale: N.scale, crit: [{ id: uid(), n: '', w: '' }, { id: uid(), n: '', w: '' }], opts: [{ id: uid(), n: '' }, { id: uid(), n: '' }], s: {} }) }, icon('eraser')),
+          h('button', { class: 'btn sm ghost', title: T('Beispiel einsetzen'), onclick: () => set(structuredClone(EX)) }, icon('undo')), cb)),
       h('div', { class: 'nwa-bar-top' },
-        h('span', { class: 'kz-sub' }, 'Punkteskala'), segEl([[5, '1–5'], [10, '1–10']], N.scale, v => { N.scale = v; persist(); calc(); }),
+        h('span', { class: 'kz-sub' }, T('Punkteskala')), segEl([[5, '1–5'], [10, '1–10']], N.scale, v => { N.scale = v; persist(); calc(); }),
         h('div', { class: 'nwa-add' },
-          h('button', { class: 'btn sm', onclick: () => { if (N.crit.length >= 12) return toast('Maximal 12 Kriterien.', 'info'); N.crit.push({ id: uid(), n: '', w: '' }); persist(); renderTable(); calc(); table.querySelectorAll('.nwa-t > .inp:not(.nwa-sc)')[N.crit.length - 1]?.focus(); } }, icon('plus'), 'Kriterium'),
-          h('button', { class: 'btn sm', onclick: () => { if (N.opts.length >= 6) return toast('Maximal 6 Optionen.', 'info'); N.opts.push({ id: uid(), n: '' }); persist(); renderTable(); calc(); table.querySelectorAll('.nwa-on')[N.opts.length - 1]?.focus(); } }, icon('plus'), 'Option'))),
+          h('button', { class: 'btn sm', onclick: () => { if (N.crit.length >= 12) return toast(T('Maximal 12 Kriterien.'), 'info'); N.crit.push({ id: uid(), n: '', w: '' }); persist(); renderTable(); calc(); table.querySelectorAll('.nwa-t > .inp:not(.nwa-sc)')[N.crit.length - 1]?.focus(); } }, icon('plus'), T('Kriterium')),
+          h('button', { class: 'btn sm', onclick: () => { if (N.opts.length >= 6) return toast(T('Maximal 6 Optionen.'), 'info'); N.opts.push({ id: uid(), n: '' }); persist(); renderTable(); calc(); table.querySelectorAll('.nwa-on')[N.opts.length - 1]?.focus(); } }, icon('plus'), 'Option'))),
       table, stat, res,
-      h('div', { class: 'kz-f' }, 'Nutzwert = Σ (Gewicht × Punkte) · alle Gewichte zusammen = 100 %'),
-      h('div', { class: 'cw-note' }, 'Tipp: Erst Kriterien und Gewichte festlegen, dann bewerten – sonst rechnet man sich das Wunschergebnis schön. Punkte: hoch = gut, auch bei Kosten oder Entfernung (günstig = viele Punkte).'));
+      h('div', { class: 'kz-f' }, T('Nutzwert = Σ (Gewicht × Punkte) · alle Gewichte zusammen = 100 %')),
+      h('div', { class: 'cw-note' }, T('Tipp: Erst Kriterien und Gewichte festlegen, dann bewerten – sonst rechnet man sich das Wunschergebnis schön. Punkte: hoch = gut, auch bei Kosten oder Entfernung (günstig = viele Punkte).')));
     renderTable(); calc();
     return el;
   }
@@ -16455,7 +16591,7 @@ function mountKennzahlwerk(view) {
     function calc() {
       const v = {}; let bad = false;
       for (const [k, , , ex] of d.in) { const raw = vals[k] ?? ex; v[k] = raw.trim() === '' ? 0 : num(raw); if (Number.isNaN(v[k])) bad = true; }
-      if (bad) { rows = []; outs.replaceChildren(h('div', { class: 'cw-status err' }, icon('alert'), 'Bitte nur Zahlen eingeben, z. B. 1.250,50')); return; }
+      if (bad) { rows = []; outs.replaceChildren(h('div', { class: 'cw-status err' }, icon('alert'), T('Bitte nur Zahlen eingeben, z. B. 1.250,50'))); return; }
       rows = d.out(v).filter(Boolean);
       outs.replaceChildren(...rows.map(r => r.say != null
         ? (r.say ? h('div', { class: 'kz-say' }, r.say) : null)
@@ -16473,8 +16609,8 @@ function mountKennzahlwerk(view) {
     const el = h('section', { class: 'cw-card', dataset: { topic: d.topic } },
       h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon(d.icon)), h('div', { class: 'kz-tt' }, h('h3', null, d.title), h('small', { class: 'kz-sub' }, d.sub)),
         h('div', { class: 'cw-acts' },
-          h('button', { class: 'btn sm ghost', title: 'Alle Felder leeren', onclick: clear }, icon('eraser')),
-          h('button', { class: 'btn sm ghost', title: 'Beispielwerte einsetzen', onclick: reset }, icon('undo')), cb)),
+          h('button', { class: 'btn sm ghost', title: T('Alle Felder leeren'), onclick: clear }, icon('eraser')),
+          h('button', { class: 'btn sm ghost', title: T('Beispielwerte einsetzen'), onclick: reset }, icon('undo')), cb)),
       h('div', { class: 'kz-ins' }, ...inputs.map(x => x.el)),
       outs,
       h('div', { class: 'kz-f' }, d.f),
@@ -16489,10 +16625,10 @@ function mountKennzahlwerk(view) {
   root.append(h('div', { class: 'cw-in' },
     h('div', { class: 'cw-hd' },
       h('div', { class: 'cw-logo' }, icon('kennzahlwerk')),
-      h('div', null, h('h2', null, 'Kennzahlwerk'), h('p', null, 'Rechner mit Formel und Rechenweg · 1,5 = 1.5'))),
+      h('div', null, h('h2', null, 'Kennzahlwerk'), h('p', null, T('Rechner mit Formel und Rechenweg · 1,5 = 1.5')))),
     h('div', { class: 'kz-bar' },
-      segEl(KZ_TOPICS, st.topic, v => { st.topic = v; persist(); filter(); }),
-      h('label', { class: 'cw-sw' }, 'Rechenweg zeigen', switchEl(st.way, v => { st.way = v; persist(); root.classList.toggle('noway', !v); }))),
+      segEl(KZ_TOPICS.map(([k, l]) => [k, T(l)]), st.topic, v => { st.topic = v; persist(); filter(); }),
+      h('label', { class: 'cw-sw' }, T('Rechenweg zeigen'), switchEl(st.way, v => { st.way = v; persist(); root.classList.toggle('noway', !v); }))),
     grid));
   view.append(root);
   filter();
@@ -16506,15 +16642,22 @@ TT.register({
 });
 
 /* ================= Quellenwerk (sources, notes and ready-to-copy citations) ================= */
-const QW_TYPES = [['buch', 'Buch'], ['sammel', 'Sammelband'], ['artikel', 'Zeitschrift'], ['web', 'Internet']];
+const QW_TYPES = [['buch', 'Buch'], ['sammel', 'Sammelband'], ['artikel', 'Zeitschrift'], ['web', 'Internet']];   // labels go through T() when shown
 function mountQuellenwerk(view) {
   view.style.padding = '0';
   const saved = Store.get('quellenwerk', {});
   const st = { items: Array.isArray(saved.items) ? saved.items : [], active: saved.active || null, style: saved.style === 'apa' ? 'apa' : 'de', project: saved.project || '', q: '' };
   const persist = saveLater(() => { const { q, ...r } = st; Store.set('quellenwerk', r); }, 300);
   const cur = () => st.items.find(x => x.id === st.active);
-  const fmtD = s => { if (!s) return ''; const [y, m, d] = s.split('-'); return `${d}.${m}.${y}`; };
   const apa = () => st.style === 'apa';
+  // The citation text follows the style, not the interface: German style stays German, APA is English in the English UI
+  const en = () => apa() && isEN();
+  const L = (de, enTxt) => en() ? enTxt : de;
+  const fmtD = s => {
+    if (!s) return '';
+    const [y, m, d] = s.split('-');
+    return en() ? new Date(+y, m - 1, +d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : `${d}.${m}.${y}`;
+  };
   let refresh = () => {};   // set by the editor: updates the citation panel without re-rendering the form
   const touch = it => { it.updated = Date.now(); persist(); listSoon(); refresh(); };
 
@@ -16525,8 +16668,8 @@ function mountQuellenwerk(view) {
     document.addEventListener('copy', onCopy);
     try { document.execCommand('copy'); } catch {}
     document.removeEventListener('copy', onCopy);
-    const msg = 'Kopiert: ' + (text.length > 70 ? text.slice(0, 70) + ' …' : text);
-    if (ok) toast(msg, 'ok'); else navigator.clipboard?.writeText(text).then(() => toast(msg, 'ok'), () => toast('Kopieren hat nicht geklappt.', 'err'));
+    const msg = T('Kopiert: {t}', { t: text.length > 70 ? text.slice(0, 70) + ' …' : text });
+    if (ok) toast(msg, 'ok'); else navigator.clipboard?.writeText(text).then(() => toast(msg, 'ok'), () => toast(T('Kopieren hat nicht geklappt.'), 'err'));
   }
 
   /* ---------- Citation rules ---------- */
@@ -16536,17 +16679,18 @@ function mountQuellenwerk(view) {
     return i < 0 ? { last: x, first: '' } : { last: x.slice(0, i).trim(), first: x.slice(i + 1).trim() };
   });
   const ini = f => f.split(/\s+/).filter(Boolean).map(w => w.split('-').map(p => p ? p[0].toUpperCase() + '.' : '').join('-')).join(' ');
-  const year = it => (it.year || '').trim() || 'o. J.';
+  const year = it => (it.year || '').trim() || L('o. J.', 'n.d.');
   const pg = p => String(p || '').trim().replace(/\s*-\s*/g, '–');
+  const pAbbr = pp => en() ? (pp.includes('–') ? 'pp. ' : 'p. ') : 'S. ';
   function shortNames(it) {
     const ps = people(it.authors);
-    if (!ps.length) return (it.pub || '').trim() || 'o. V.';
+    if (!ps.length) return (it.pub || '').trim() || L('o. V.', 'Anon.');
     if (ps.length === 1) return ps[0].last;
     if (ps.length === 2) return ps[0].last + (apa() ? ' & ' : '/') + ps[1].last;
     return ps[0].last + ' et al.';
   }
   function cite(it, p, kind) {
-    const pp = pg(p), n = shortNames(it), y = year(it), page = pp ? `, S. ${pp}` : '';
+    const pp = pg(p), n = shortNames(it), y = year(it), page = pp ? `, ${pAbbr(pp)}${pp}` : '';
     if (apa()) return kind === 'fn' ? `${n} (${y}${page})` : `(${n}, ${y}${page})`;
     return kind === 'vgl' ? `(vgl. ${n} ${y}${page})` : kind === 'fn' ? `Vgl. ${n} ${y}${page}.`.replace(/\.\.$/, '.') : `(${n} ${y}${page})`;
   }
@@ -16561,25 +16705,31 @@ function mountQuellenwerk(view) {
     const f = ps.map(p => (p.first ? ini(p.first) + ' ' : '') + p.last);
     return f.length < 3 ? f.join(' & ') : f.slice(0, -1).join(', ') + ', & ' + f[f.length - 1];
   };
-  const edition = e => { e = String(e || '').trim(); return !e ? '' : /^\d+$/.test(e) ? e + '. Aufl.' : /aufl/i.test(e) ? e : e + ' Aufl.'; };
+  const ordinal = n => n + ((n % 100 - n % 10 === 10) ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] || 'th');
+  const edition = e => {
+    e = String(e || '').trim();
+    if (en()) return !e ? '' : /^\d+$/.test(e) ? ordinal(+e) + ' ed.' : /ed/i.test(e) ? e : e + ' ed.';
+    return !e ? '' : /^\d+$/.test(e) ? e + '. Aufl.' : /aufl/i.test(e) ? e : e + ' Aufl.';
+  };
   // Bibliography entry as pieces [text, italic]
   function entry(it) {
-    const out = [], T = s => out.push([s, false]), I = s => out.push([s, true]);
-    const ps = people(it.authors), who = ps.length ? fullNames(ps) : ((it.pub || '').trim() || 'o. V.');
-    const t = (it.title || '').trim() || 'Ohne Titel', ed = edition(it.ed), pp = pg(it.pages);
+    const out = [], P = s => out.push([s, false]), I = s => out.push([s, true]);
+    const ps = people(it.authors), who = ps.length ? fullNames(ps) : ((it.pub || '').trim() || L('o. V.', 'Anon.'));
+    const t = (it.title || '').trim() || L('Ohne Titel', 'Untitled'), ed = edition(it.ed), pp = pg(it.pages);
     const place = [it.place, it.pub].map(x => (x || '').trim()).filter(Boolean).join(': ');
     if (apa()) {
-      T(`${who} (${year(it)}). `);
-      if (it.type === 'sammel') { T(`${t}. In `); if (it.editors) T(editorNames(it.editors) + ' (Hrsg.), '); I(it.book || 'Sammelband'); T(`${pp ? ` (S. ${pp})` : ''}.${it.pub ? ` ${it.pub}.` : ''}`); }
-      else if (it.type === 'artikel') { T(`${t}. `); I(it.journal || 'Zeitschrift'); if (it.vol) { T(', '); I(it.vol); } T(`${it.issue ? `(${it.issue})` : ''}${pp ? `, ${pp}` : ''}.${it.url ? ' ' + it.url : ''}`); }
-      else if (it.type === 'web') { I(t); T(`. ${ps.length && it.pub ? it.pub + '. ' : ''}${it.acc ? `Abgerufen am ${fmtD(it.acc)}, von ` : ''}${it.url || ''}`); }
-      else { I(t); T(`${ed ? ` (${ed})` : ''}.${it.pub ? ` ${it.pub}.` : ''}`); }
+      const eds = people(it.editors).length > 1 ? L('Hrsg.', 'Eds.') : L('Hrsg.', 'Ed.');
+      P(`${who} (${year(it)}). `);
+      if (it.type === 'sammel') { P(`${t}. In `); if (it.editors) P(`${editorNames(it.editors)} (${eds}), `); I(it.book || L('Sammelband', 'Edited book')); P(`${pp ? ` (${pAbbr(pp)}${pp})` : ''}.${it.pub ? ` ${it.pub}.` : ''}`); }
+      else if (it.type === 'artikel') { P(`${t}. `); I(it.journal || L('Zeitschrift', 'Journal')); if (it.vol) { P(', '); I(it.vol); } P(`${it.issue ? `(${it.issue})` : ''}${pp ? `, ${pp}` : ''}.${it.url ? ' ' + it.url : ''}`); }
+      else if (it.type === 'web') { I(t); P(`. ${ps.length && it.pub ? it.pub + '. ' : ''}${it.acc ? (en() ? `Retrieved ${fmtD(it.acc)}, from ` : `Abgerufen am ${fmtD(it.acc)}, von `) : ''}${it.url || ''}`); }
+      else { I(t); P(`${ed ? ` (${ed})` : ''}.${it.pub ? ` ${it.pub}.` : ''}`); }
     } else {
-      T(`${who} (${year(it)}): ${t}`);
-      if (it.type === 'sammel') T(`. In: ${it.editors ? editorNames(it.editors) + ' (Hrsg.): ' : ''}${it.book || 'Sammelband'}${place ? ', ' + place : ''}${pp ? `, S. ${pp}` : ''}.`);
-      else if (it.type === 'artikel') T(`. In: ${it.journal || 'Zeitschrift'}${it.vol ? `, ${it.vol}` : ''}${it.issue ? ` (${it.issue})` : ''}${pp ? `, S. ${pp}` : ''}.`);
-      else if (it.type === 'web') T(`.${ps.length && it.pub ? ` ${it.pub}.` : ''} Online unter: ${it.url || '–'}${it.acc ? ` (Zugriff am ${fmtD(it.acc)})` : ''}.`);
-      else { const rest = [ed, place].filter(Boolean).join(', '); T(rest ? `. ${rest}.` : '.'); }
+      P(`${who} (${year(it)}): ${t}`);
+      if (it.type === 'sammel') P(`. In: ${it.editors ? editorNames(it.editors) + ' (Hrsg.): ' : ''}${it.book || 'Sammelband'}${place ? ', ' + place : ''}${pp ? `, S. ${pp}` : ''}.`);
+      else if (it.type === 'artikel') P(`. In: ${it.journal || 'Zeitschrift'}${it.vol ? `, ${it.vol}` : ''}${it.issue ? ` (${it.issue})` : ''}${pp ? `, S. ${pp}` : ''}.`);
+      else if (it.type === 'web') P(`.${ps.length && it.pub ? ` ${it.pub}.` : ''} Online unter: ${it.url || '–'}${it.acc ? ` (Zugriff am ${fmtD(it.acc)})` : ''}.`);
+      else { const rest = [ed, place].filter(Boolean).join(', '); P(rest ? `. ${rest}.` : '.'); }
     }
     return out;
   }
@@ -16588,8 +16738,8 @@ function mountQuellenwerk(view) {
   const asHtml = pcs => tidy(pcs.map(([s, i]) => i ? `<i>${esc(s)}</i>` : esc(s)).join(''));
 
   /* ---------- Sidebar ---------- */
-  const search = h('input', { class: 'inp', placeholder: 'Suchen …', spellcheck: false, oninput: () => { st.q = search.value.trim().toLowerCase(); renderList(); } });
-  const projSel = h('select', { class: 'inp', title: 'Nach Projekt filtern', onchange: () => { st.project = projSel.value; persist(); renderList(); } });
+  const search = h('input', { class: 'inp', placeholder: T('Suchen …'), spellcheck: false, oninput: () => { st.q = search.value.trim().toLowerCase(); renderList(); } });
+  const projSel = h('select', { class: 'inp', title: T('Nach Projekt filtern'), onchange: () => { st.project = projSel.value; persist(); renderList(); } });
   const list = h('div', { class: 'qlw-list' }), countEl = h('div', { class: 'qlw-count' });
   const projects = () => [...new Set(st.items.map(x => (x.project || '').trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'de'));
   const sortKey = it => ((people(it.authors)[0]?.last || it.pub || it.title || '') + ' ' + (it.year || '')).toLowerCase();
@@ -16599,19 +16749,19 @@ function mountQuellenwerk(view) {
   function renderList() {
     const ps = projects();
     if (st.project && !ps.includes(st.project)) st.project = '';
-    projSel.replaceChildren(h('option', { value: '' }, 'Alle Projekte'), ...ps.map(p => h('option', { value: p }, p)));
+    projSel.replaceChildren(h('option', { value: '' }, T('Alle Projekte')), ...ps.map(p => h('option', { value: p }, p)));
     projSel.value = st.project; projSel.hidden = !ps.length;
     const items = visible();
     list.replaceChildren(...items.map(it => h('div', { class: 'qlw-it' + (it.id === st.active ? ' on' : ''), onclick: () => { st.active = it.id; persist(); render(); } },
-      h('div', { class: 'qlw-it-tx' }, h('div', { class: 'qlw-it-a' }, `${shortNames(it)} ${year(it)}`), h('div', { class: 'qlw-it-t' }, it.title || 'Ohne Titel')),
-      h('button', { class: 'cw-copy qlw-it-del', title: 'Quelle löschen', onclick: e => { e.stopPropagation(); remove(it); } }, icon('trash')))));
-    if (!items.length) list.append(h('div', { class: 'qlw-empty' }, st.items.length ? 'Nichts gefunden.' : 'Noch keine Quellen.'));
-    countEl.textContent = items.length === 1 ? '1 Quelle' : `${items.length} Quellen`;
+      h('div', { class: 'qlw-it-tx' }, h('div', { class: 'qlw-it-a' }, `${shortNames(it)} ${year(it)}`), h('div', { class: 'qlw-it-t' }, it.title || T('Ohne Titel'))),
+      h('button', { class: 'cw-copy qlw-it-del', title: T('Quelle löschen'), onclick: e => { e.stopPropagation(); remove(it); } }, icon('trash')))));
+    if (!items.length) list.append(h('div', { class: 'qlw-empty' }, st.items.length ? T('Nichts gefunden.') : T('Noch keine Quellen.')));
+    countEl.textContent = items.length === 1 ? T('1 Quelle') : T('{n} Quellen', { n: items.length });
   }
   const listSoon = debounce(renderList, 250);
   function copyBibliography() {
     const items = visible();
-    if (!items.length) return toast('Keine Quellen in der Liste.', 'info');
+    if (!items.length) return toast(T('Keine Quellen in der Liste.'), 'info');
     copy(items.map(it => asText(entry(it))).join('\n'), items.map(it => `<p>${asHtml(entry(it))}</p>`).join(''));
   }
 
@@ -16624,11 +16774,15 @@ function mountQuellenwerk(view) {
   function remove(it) {
     const i = st.items.indexOf(it);
     st.items.splice(i, 1); if (st.active === it.id) st.active = null; persist(); render();
-    toast(`„${it.title || 'Quelle'}“ gelöscht`, 'info', { action: { label: 'Rückgängig', fn: () => { st.items.splice(i, 0, it); st.active = it.id; persist(); render(); } } });
+    toast(T('„{t}“ gelöscht', { t: it.title || T('Quelle') }), 'info', { action: { label: T('Rückgängig'), fn: () => { st.items.splice(i, 0, it); st.active = it.id; persist(); render(); } } });
   }
-  const EXAMPLE = { type: 'buch', authors: 'Muster, Max; Beispiel, Erika', year: '2024', title: 'Grundlagen des Marketings', ed: '3', pub: 'Beispielverlag', place: 'Musterstadt', project: 'Beispiel',
-    notes: 'So kannst du hier festhalten, worum es in der Quelle geht:\n– Kapitel 2: Marktsegmentierung\n– Kapitel 5: Marketing-Mix\nEigene Gedanken: gut für die Einleitung der Hausarbeit.',
-    quotes: [{ id: uid(), t: 'Hier steht ein wörtliches Zitat aus der Quelle.', p: '45' }, { id: uid(), t: 'Oder eine Kernaussage in eigenen Worten.', p: '112–114' }] };
+  const EXAMPLE = () => isEN()
+    ? { type: 'buch', authors: 'Sample, Sam; Example, Erica', year: '2024', title: 'Principles of Marketing', ed: '3', pub: 'Example Press', place: 'Sampletown', project: 'Example',
+      notes: 'Note here what the source is about:\n– Chapter 2: market segmentation\n– Chapter 5: marketing mix\nOwn thoughts: good for the introduction of the paper.',
+      quotes: [{ id: uid(), t: 'A direct quote from the source goes here.', p: '45' }, { id: uid(), t: 'Or a key point in your own words.', p: '112–114' }] }
+    : { type: 'buch', authors: 'Muster, Max; Beispiel, Erika', year: '2024', title: 'Grundlagen des Marketings', ed: '3', pub: 'Beispielverlag', place: 'Musterstadt', project: 'Beispiel',
+      notes: 'So kannst du hier festhalten, worum es in der Quelle geht:\n– Kapitel 2: Marktsegmentierung\n– Kapitel 5: Marketing-Mix\nEigene Gedanken: gut für die Einleitung der Hausarbeit.',
+      quotes: [{ id: uid(), t: 'Hier steht ein wörtliches Zitat aus der Quelle.', p: '45' }, { id: uid(), t: 'Oder eine Kernaussage in eigenen Worten.', p: '112–114' }] };
 
   /* ---------- Editor ---------- */
   function field(it, label, key, o = {}) {
@@ -16638,7 +16792,7 @@ function mountQuellenwerk(view) {
     return h('label', { class: 'cw-field', style: { gridColumn: `span ${o.span || 1}` } }, h('span', null, label), inp);
   }
   function editor(it) {
-    const F = (l, k, o) => field(it, l, k, o);
+    const F = (l, k, o) => field(it, T(l), k, o && o.ph ? { ...o, ph: T(o.ph) } : o);
     const specific = {
       buch: [F('Verlag', 'pub', { ph: 'z. B. Springer Gabler', span: 2 }), F('Ort', 'place', { ph: 'z. B. Wiesbaden' }), F('Auflage', 'ed', { ph: 'z. B. 3' })],
       sammel: [F('Herausgeber', 'editors', { ph: 'Nachname, Vorname; …', span: 2 }), F('Titel des Sammelbands', 'book', { span: 2 }), F('Verlag', 'pub', { span: 2 }), F('Ort', 'place'), F('Seiten', 'pages', { ph: 'z. B. 45–67' })],
@@ -16646,35 +16800,35 @@ function mountQuellenwerk(view) {
       web: [F('Website / Herausgeber', 'pub', { ph: 'z. B. Statistisches Bundesamt', span: 2 }), F('Zugriff am', 'acc', { type: 'date' })],
     }[it.type] || [];
     // Link with "Öffnen" button
-    const open = h('a', { class: 'btn sm', target: '_blank', rel: 'noopener noreferrer', title: 'Link im Browser öffnen' }, icon('arrow'), 'Öffnen');
+    const open = h('a', { class: 'btn sm', target: '_blank', rel: 'noopener noreferrer', title: T('Link im Browser öffnen') }, icon('arrow'), T('Öffnen'));
     const urlIn = h('input', { class: 'inp', type: 'url', placeholder: 'https://…', spellcheck: false, oninput: () => { it.url = urlIn.value.trim(); touch(it); } });
     urlIn.value = it.url || '';
     const setLink = () => { const ok = /^https?:\/\/\S+$/i.test(it.url || ''); open.hidden = !ok; if (ok) open.href = it.url; };
-    const projIn = h('input', { class: 'inp', placeholder: 'z. B. Hausarbeit BWL', list: 'qlw-projects', oninput: () => { it.project = projIn.value; touch(it); } });
+    const projIn = h('input', { class: 'inp', placeholder: T('z. B. Hausarbeit BWL'), list: 'qlw-projects', oninput: () => { it.project = projIn.value; touch(it); } });
     projIn.value = it.project || '';
 
     // Quotes
     const qList = h('div', { class: 'qlw-quotes' });
     function drawQuotes() {
       qList.replaceChildren(...(it.quotes ||= []).map(q => {
-        const ta = h('textarea', { class: 'qlw-ta sm', placeholder: 'Wörtliches Zitat oder Kernaussage …', oninput: () => { q.t = ta.value; touch(it); } });
+        const ta = h('textarea', { class: 'qlw-ta sm', placeholder: T('Wörtliches Zitat oder Kernaussage …'), oninput: () => { q.t = ta.value; touch(it); } });
         ta.value = q.t || '';
-        const p = h('input', { class: 'inp qlw-pg', placeholder: 'Seite', spellcheck: false, oninput: () => { q.p = p.value; touch(it); } });
+        const p = h('input', { class: 'inp qlw-pg', placeholder: T('Seite'), spellcheck: false, oninput: () => { q.p = p.value; touch(it); } });
         p.value = q.p || '';
         return h('div', { class: 'qlw-q' }, ta, h('div', { class: 'qlw-q-acts' }, p,
-          h('button', { class: 'btn sm', title: '„…“ + Beleg', onclick: () => copy(`„${(q.t || '').trim()}“ ${cite(it, q.p, 'direkt')}`) }, icon('copy'), 'Zitat + Beleg'),
-          h('button', { class: 'btn sm', title: 'vgl. …', onclick: () => copy(cite(it, q.p, 'vgl')) }, icon('copy'), apa() ? 'Beleg' : 'vgl.'),
-          h('button', { class: 'cw-copy qlw-del', title: 'Zitat löschen', onclick: () => { it.quotes = it.quotes.filter(x => x !== q); touch(it); drawQuotes(); } }, icon('trash'))));
-      }), h('button', { class: 'btn sm', onclick: () => { it.quotes.push({ id: uid(), t: '', p: '' }); touch(it); drawQuotes(); [...qList.querySelectorAll('textarea')].pop()?.focus(); } }, icon('plus'), 'Zitat hinzufügen'));
+          h('button', { class: 'btn sm', title: L('„…“ + Beleg', '“…” + citation'), onclick: () => copy(`${L('„', '“')}${(q.t || '').trim()}${L('“', '”')} ${cite(it, q.p, 'direkt')}`) }, icon('copy'), T('Zitat + Beleg')),
+          h('button', { class: 'btn sm', title: apa() ? '(…)' : 'vgl. …', onclick: () => copy(cite(it, q.p, 'vgl')) }, icon('copy'), apa() ? T('Beleg') : 'vgl.'),
+          h('button', { class: 'cw-copy qlw-del', title: T('Zitat löschen'), onclick: () => { it.quotes = it.quotes.filter(x => x !== q); touch(it); drawQuotes(); } }, icon('trash'))));
+      }), h('button', { class: 'btn sm', onclick: () => { it.quotes.push({ id: uid(), t: '', p: '' }); touch(it); drawQuotes(); [...qList.querySelectorAll('textarea')].pop()?.focus(); } }, icon('plus'), T('Zitat hinzufügen')));
     }
     drawQuotes();
 
     // Citation panel
     const entryEl = h('div', { class: 'qlw-entry' });
-    const page = h('input', { class: 'inp qlw-pg', placeholder: 'Seite', spellcheck: false, oninput: () => refresh() });
+    const page = h('input', { class: 'inp qlw-pg', placeholder: T('Seite'), spellcheck: false, oninput: () => refresh() });
     const rows = [['vgl', apa() ? 'Beleg (indirekt)' : 'Indirekt · mit vgl.'], ['direkt', 'Direkt · wörtlich'], ['fn', apa() ? 'Im Satz' : 'Fußnote']].map(([k, l]) => {
       const code = h('code');
-      return { k, code, el: h('div', { class: 'qlw-c' }, h('small', null, l), code, h('button', { class: 'cw-copy', title: 'Kopieren', onclick: () => copy(code.textContent) }, icon('copy'))) };
+      return { k, code, el: h('div', { class: 'qlw-c' }, h('small', null, T(l)), code, h('button', { class: 'cw-copy', title: T('Kopieren'), onclick: () => copy(code.textContent) }, icon('copy'))) };
     });
     refresh = () => { entryEl.innerHTML = asHtml(entry(it)); rows.forEach(r => { r.code.textContent = cite(it, page.value, r.k); }); setLink(); };
 
@@ -16682,24 +16836,24 @@ function mountQuellenwerk(view) {
       h('div', { class: 'cw-ch' }, h('span', { class: 'cw-ico' }, icon(ico)), h('h3', null, title), acts ? h('div', { class: 'cw-acts' }, acts) : null), ...body);
     const box = h('div', { class: 'qlw-in' },
       h('div', { class: 'qlw-col' },
-        card('quellenwerk', 'Quelle', h('button', { class: 'cw-copy', title: 'Quelle löschen', onclick: () => remove(it) }, icon('trash')),
-          segEl(QW_TYPES, it.type, v => { it.type = v; touch(it); render(); }),
+        card('quellenwerk', T('Quelle'), h('button', { class: 'cw-copy', title: T('Quelle löschen'), onclick: () => remove(it) }, icon('trash')),
+          segEl(QW_TYPES.map(([k, l]) => [k, T(l)]), it.type, v => { it.type = v; touch(it); render(); }),
           h('div', { class: 'qlw-fields' },
             F('Autor*innen', 'authors', { ph: 'Nachname, Vorname; Nachname, Vorname – oder Institution', span: 3 }), F('Jahr', 'year', { ph: 'z. B. 2024' }),
             F('Titel', 'title', { ph: 'Titel (und ggf. Untertitel)', span: 4 }),
             ...specific,
             h('label', { class: 'cw-field', style: { gridColumn: 'span 3' } }, h('span', null, 'Link'), h('div', { class: 'qlw-url' }, urlIn, open)),
-            h('label', { class: 'cw-field' }, h('span', null, 'Projekt'), projIn),
+            h('label', { class: 'cw-field' }, h('span', null, T('Projekt')), projIn),
             h('datalist', { id: 'qlw-projects' }, ...projects().map(p => h('option', { value: p }))))),
-        card('note', 'Inhalt & Notizen', null, field(it, 'Worum geht es? Wichtigste Aussagen, Kapitel, eigene Gedanken …', 'notes', { area: true, span: 1 })),
-        card('msg', 'Zitate & Kernaussagen', null, qList)),
+        card('note', T('Inhalt & Notizen'), null, field(it, T('Worum geht es? Wichtigste Aussagen, Kapitel, eigene Gedanken …'), 'notes', { area: true, span: 1 })),
+        card('msg', T('Zitate & Kernaussagen'), null, qList)),
       h('div', { class: 'qlw-col qlw-sticky' },
-        card('copy', 'Zitieren', segEl([['de', 'Deutsch'], ['apa', 'APA 7']], st.style, v => { st.style = v; persist(); render(); }),
-          h('div', { class: 'qlw-lbl' }, 'Literaturverzeichnis'), entryEl,
-          h('button', { class: 'btn sm', onclick: () => copy(asText(entry(it)), asHtml(entry(it))) }, icon('copy'), 'Eintrag kopieren'),
-          h('div', { class: 'qlw-lbl qlw-pgrow' }, 'Beleg im Text', page), ...rows.map(r => r.el),
-          h('div', { class: 'cw-note' }, apa() ? 'APA 7: Autor, Jahr und Seite in Klammern, ohne „vgl.“. Titel werden kursiv kopiert, wenn du in Word einfügst.'
-            : 'Deutsche Zitierweise (Harvard) mit „vgl.“ für sinngemäße Wiedergaben. Jede Hochschule hat eigene Details – im Zweifel den Leitfaden deines Lehrstuhls prüfen.'))));
+        card('copy', T('Zitieren'), segEl([['de', T('Deutsch')], ['apa', 'APA 7']], st.style, v => { st.style = v; persist(); render(); }),
+          h('div', { class: 'qlw-lbl' }, T('Literaturverzeichnis')), entryEl,
+          h('button', { class: 'btn sm', onclick: () => copy(asText(entry(it)), asHtml(entry(it))) }, icon('copy'), T('Eintrag kopieren')),
+          h('div', { class: 'qlw-lbl qlw-pgrow' }, T('Beleg im Text'), page), ...rows.map(r => r.el),
+          h('div', { class: 'cw-note' }, apa() ? T('APA 7: Autor, Jahr und Seite in Klammern, ohne „vgl.“. Titel werden kursiv kopiert, wenn du in Word einfügst.')
+            : T('Deutsche Zitierweise (Harvard) mit „vgl.“ für sinngemäße Wiedergaben. Jede Hochschule hat eigene Details – im Zweifel den Leitfaden deines Lehrstuhls prüfen.')))));
     refresh();
     return box;
   }
@@ -16708,10 +16862,10 @@ function mountQuellenwerk(view) {
     return h('div', { class: 'qlw-welcome' },
       h('div', { class: 'qlw-logo big' }, icon('quellenwerk')),
       h('h2', null, 'Quellenwerk'),
-      h('p', null, 'Bücher, Artikel und Links mit Notizen und Zitaten – Beleg („vgl.“) und Literaturverzeichnis per Klick kopieren.'),
+      h('p', null, T('Bücher, Artikel und Links mit Notizen und Zitaten – Beleg („vgl.“) und Literaturverzeichnis per Klick kopieren.')),
       h('div', { class: 'qlw-row' },
-        h('button', { class: 'btn primary', onclick: () => create() }, icon('plus'), 'Neue Quelle'),
-        !st.items.length && h('button', { class: 'btn', onclick: () => create(structuredClone(EXAMPLE)) }, icon('sparkle'), 'Beispiel ansehen')));
+        h('button', { class: 'btn primary', onclick: () => create() }, icon('plus'), T('Neue Quelle')),
+        !st.items.length && h('button', { class: 'btn', onclick: () => create(EXAMPLE()) }, icon('sparkle'), T('Beispiel ansehen'))));
   }
 
   /* ---------- Layout ---------- */
@@ -16725,9 +16879,9 @@ function mountQuellenwerk(view) {
   view.append(h('div', { class: 'qlw' },
     h('aside', { class: 'qlw-side' },
       h('div', { class: 'qlw-hd' }, h('div', { class: 'qlw-logo' }, icon('quellenwerk')), h('b', null, 'Quellenwerk')),
-      h('div', { class: 'qlw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => create() }, icon('plus'), 'Neue Quelle'), search, projSel),
+      h('div', { class: 'qlw-tools' }, h('button', { class: 'btn primary sm block', onclick: () => create() }, icon('plus'), T('Neue Quelle')), search, projSel),
       list,
-      h('div', { class: 'qlw-foot' }, h('button', { class: 'btn sm block', title: 'A–Z → 📋', onclick: copyBibliography }, icon('copy'), 'Literaturverzeichnis kopieren'), countEl)),
+      h('div', { class: 'qlw-foot' }, h('button', { class: 'btn sm block', title: 'A–Z → 📋', onclick: copyBibliography }, icon('copy'), T('Literaturverzeichnis kopieren')), countEl)),
     main));
   render();
 }
